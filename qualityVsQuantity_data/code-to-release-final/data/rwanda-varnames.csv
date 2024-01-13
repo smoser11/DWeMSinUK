@@ -1,0 +1,59 @@
+qnum,varname,known.size,description,source
+201,widower,36147,Widower,DHS
+202,nurse.or.doctor,7807,Nurse or doctor,MoH
+203,male.community.health,22000,Male community health worker,MoH
+204,teacher,47745,Teacher,M of Education
+205,woman.smoke,119438,Woman who smokes,DHS
+206,priest,1004,Priest,Antoine called Catholic Church
+207,civil.servant,NA,,(dropped)
+208,woman.gave.birth,256164,Woman who gave birth last 12 mo.,DHS
+209,muslim,195449,Muslim,DHS
+210,incarcerated,68000,Incarcerated,ICRC 2010 Report
+211,judge,NA,,(dropped)
+212,man.divorced,50698,Divorced man,DHS
+213,treatedfortb,NA,,(dropped)
+214,nsengimana,32528,Nsengimana,ID database
+215,murekatete,30531,Murekatete,ID database
+216,twahirwa,10420,Twahirwa,ID database
+217,mukandekezi,10520,Mukandekezi,ID database
+218,nsabimana,48560,Nsabimana,ID database
+219,mukamana,51449,Mukamana,ID database
+220,ndayambaje,22724,Ndayambaje,ID database
+221,nyiraneza,21705,Nyiraneza,ID database
+222,bizimana,38497,Bizimana,ID database
+223,nyirahabimana,42727,Nyirahabimana,ID database
+224,ndagijimana,37375,Ndagijimana,ID database
+225,mukandayisenga,35055,Mukandayisenga,ID database
+226,died,NA,,
+302,immediate.family,NA,,
+303,larger.family,NA,,
+304,inlaw.family,NA,,
+305,best.friends,NA,,
+306,ordinary.friends,NA,,
+307,sports,NA,,
+308,same.problems,NA,,
+309,church,NA,,
+310,neighbors,NA,,
+311,umuganda,NA,,
+312,parties,NA,,
+313,taxis,NA,,
+314,coworkers,NA,,
+315,former.coworkers,NA,,
+316,training.providers,NA,,
+317,training.people,NA,,
+318,nonfamily.meetings,NA,,
+319,classmates,NA,,
+320,former.teachers,NA,,
+321,medical.providers,NA,,
+322,service.providers,NA,,
+323,benefactors,NA,,
+324,those.you.help,NA,,
+325,market,NA,,
+326,sellers,NA,,
+327,cooperatives,NA,,
+328,police.soldiers,NA,,
+329,leaders,NA,,
+402,sex.workers,NA,,
+403,msm,NA,,
+404,idu,NA,,
+405,clients,NA,,
