@@ -21,8 +21,16 @@ library(Neighboot)
 ## Gile et. al. replication materials!
 # https://www-tandfonline-com.nottingham.idm.oclc.org/doi/suppl/10.1198/jasa.2011.ap09475
 # https://onlinelibrary-wiley-com.nottingham.idm.oclc.org/doi/full/10.1111/biom.12255
+# @hand15-supporting  and @hand15-estimating
+"~/Dropbox/research/DWeMSinUK2/Web-based Supplementary Materials for Estimating the Size of Populations at High Risk for HIV using Respondent-Driven Sampling Data by Handcock, Gile and Mar"
+
 # https://cran.r-project.org/web/packages/RDS/
-# 
+# ##CITATIONS:
+
+# @fell12-deducer; @hand23-rds; @RDSA
+
+citation(package="RDS")
+
 # http://hpmrg.org/sspse/
 
 library(sspse)

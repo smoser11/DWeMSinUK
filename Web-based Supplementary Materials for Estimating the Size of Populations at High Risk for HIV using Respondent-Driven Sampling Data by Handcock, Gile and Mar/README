@@ -1,0 +1,20 @@
+This archive contains the Web-based Supplementary Materials for Estimating the Size of Populations at High Risk for HIV using Respondent-Driven Sampling Data by Handcock, Gile and Mar.
+
+The contents are the following files:
+1) size_0.2.tar.gz: The gzipped tar file of the R package "size". It contains software that implements the methods used in the paper and was used to do the analyses
+in the paper. It contains documentation for the functions. It can be installed with the "install.packages" command within R or with other standard methods.
+2) fauxmadrona.RData: A R workspace containing the "fauxmadrona" networked population and an RDS sample draw from it. The former is called "fauxmadrona.network and
+is a "network" object. The latter is called "fauxmadrona" and is an "rds.data.frame" object.
+3) exampleposteriorsize.fauxmadrona.R: R code to fit the model to the RDS sample from the "fauxmadrona" networked population. The code produces diagnostics,
+visualizations and summary statistics.
+4) exampleposteriorsize.fauxmadrona.pdf: The graphics file produced by "exampleposteriorsize.fauxmadrona.R". This is to verify the code is running correctly.  
+5) exampleposteriorsize.fauxmadrona.flat.R: R code to fit the model to the RDS sample from the "fauxmadrona" networked population. The fit uses a reference prior. The code produces diagnostics,
+6) exampleposteriorsize.fauxmadrona.flat.pdf: The graphics file produced by "exampleposteriorsize.fauxmadrona.flat.R". This is to verify the code is turning correctly.  
+
+Getting started
+----------------
+1) Install the "size" package in "size_0.2.tar.gz" into R.
+2) Run the code "exampleposteriorsize.fauxmadrona.R" within R. You may need to change the address in the "load" command to point to the file "fauxmadrona.RData".
+3) Compare the results to that in "exampleposteriorsize.fauxmadrona.pdf" to verify the results.
+4) Run the code "exampleposteriorsize.fauxmadrona.flat.R" within R. You may need to change the address in the "load" command to point to the file "fauxmadrona.RData".
+5) Compare the results to that in "exampleposteriorsize.fauxmadrona.flat.pdf" to verify the results.
