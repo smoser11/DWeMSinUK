@@ -8,48 +8,63 @@ library(gtools)
 setwd("C:/Users/ldzsm2/OneDrive - The University of Nottingham/research/RightsLab/GNSUM-CEandS")
 setwd("~/Dropbox/research/RightsLab/DWeMSinUK/survey")
 
-
-## Playing with RDS and NSUM methods
-
-# https://hpmrg.org/
-
-# install.packages(c("RDS","sspse", "Neighboot","RDStreeboot"))
-
-# https://github.com/LJGamble/netclust/tree/main/R
-# library(devtools)
-# devtools::install_github("https://github.com/LJGamble/netclust")
-library(netclust)
-library(RDS)
-library(sspse)    # https://github.com/LJGamble/netclust is the non-connected version of 
-library(Neighboot)
-
-## Gile et. al. replication materials!
-# https://www-tandfonline-com.nottingham.idm.oclc.org/doi/suppl/10.1198/jasa.2011.ap09475
-# https://onlinelibrary-wiley-com.nottingham.idm.oclc.org/doi/full/10.1111/biom.12255
-# https://cran.r-project.org/web/packages/RDS/
-# 
-# http://hpmrg.org/sspse/
-
-
-# http://hpmrg.org/rds/
-
-
-#	https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/XKOVUN
+### DATA WORK:
 
 
 dir()
 library(janitor)
-dd <- read_xlsx("Further Coding Update.xlsx")
-dd <- clean_names(dd)
-dd$q13 <- as.numeric(dd$q13)
+data <- read_xlsx("Further Coding Update.xlsx")
+data <- clean_names(data)
+data$q13 <- as.numeric(data$q13)
 
-dd<- dd %>% select(q13, everything())
-names(dd)
-dd$id <- dd$node_2_id_respondent_recruit
-dd$recruiter.id <- dd$node_1_recruiter
-dd$recruiter.id[is.na(dd$recruiter.id)] <- -1
+data<- data %>% select(q13, everything())
+names(data)
+data$id <- data$node_2_id_respondent_recruit
+data$recruiter.id <- data$node_1_recruiter
+data$recruiter.id[is.na(data$recruiter.id)] <- -1
+data<- data %>% select(id, recruiter.id,  q13, everything())
 
 ## deal with zeros: fix if incorrect; remove if 'true zero'
+
+names(data)
+
+library(tidyr)
+library(dplyr)
+
+
+sort(names(data))
+
+data <- data %>% select(-contains("column"))
+
+# Select the columns you want to reshape
+columns_to_reshape <- c("q105", "q106", "q107", "q108", "q109", "q110")
+
+sort(names(data))
+
+
+library(tidyr)
+library(dplyr)
+
+data %>%
+	pivot_longer(cols = starts_with("q10"), 
+				 names_to = "question",
+				 values_to = "referralPhone",
+				 values_drop_na = TRUE)
+
+
+
+# Reshape tdata# Reshape the data while keeping other variables
+reshaped_data <- data %>%
+	pivot_longer(cols = all_of(columns_to_reshape), 
+				 names_to = "referralPhone", 
+				 values_to = "Value") %>%
+	filter(!is.na(Value))
+
+sort(names(reshaped_data) )
+
+
+
+data <- data %>% select()
 
 
 
@@ -89,6 +104,52 @@ dd$network.size.variable <- dd$q13
 
 
 
+#####--
+## Use updated sum_categories2 (!!!)
+
+
+library(car)
+dd$sum_categories_factor <- as.factor(dd$sum_categories)
+dd$sum_categories_cut <- cut_interval(dd$sum_categories, n = 10)
+table(dd$sum_categories_cut)
+describe(dd$sum_categories)
+
+sort(names(dd))
+# dd <- dd %>% select(id, recruiter.id, wave, network.size.variable, degree, everything())
+
+
+
+
+
+
+## Playing with RDS and NSUM methods
+
+# https://hpmrg.org/
+
+# install.packages(c("RDS","sspse", "Neighboot","RDStreeboot"))
+
+# https://github.com/LJGamble/netclust/tree/main/R
+# library(devtools)
+# devtools::install_github("https://github.com/LJGamble/netclust")
+library(netclust)
+library(RDS)
+library(sspse)    # https://github.com/LJGamble/netclust is the non-connected version of 
+library(Neighboot)
+
+## Gile et. al. replication materials!
+# https://www-tandfonline-com.nottingham.idm.oclc.org/doi/suppl/10.1198/jasa.2011.ap09475
+# https://onlinelibrary-wiley-com.nottingham.idm.oclc.org/doi/full/10.1111/biom.12255
+# https://cran.r-project.org/web/packages/RDS/
+# 
+# http://hpmrg.org/sspse/
+
+
+# http://hpmrg.org/rds/
+
+
+#	https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/XKOVUN
+
+
 
 ## This is a fudge -- don't do this.
 summary(dd$q13)
@@ -104,17 +165,6 @@ proportions(table(as.numeric(dd$q62) ))
 
 str(rd.dd)
 
-
-#####--
-
-library(car)
-dd$sum_categories_factor <- as.factor(dd$sum_categories)
-dd$sum_categories_cut <- cut_interval(dd$sum_categories, n = 10)
-table(dd$sum_categories_cut)
-describe(dd$sum_categories)
-
-sort(names(dd))
-# dd <- dd %>% select(id, recruiter.id, wave, network.size.variable, degree, everything())
 
 dd$recruiter.id <- as.character(dd$recruiter.id)
 rd.dd <- as.rds.data.frame(dd, max.coupons = 5)
