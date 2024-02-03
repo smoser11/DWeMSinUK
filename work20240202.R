@@ -1,3 +1,4 @@
+rm(list=ls())
 library(tidyverse)
 library(haven)
 library(openxlsx)
@@ -29,33 +30,9 @@ library(Neighboot)
 # 
 # http://hpmrg.org/sspse/
 
-library(sspse)
-data(fauxmadrona)
-reingold.tilford.plot(fauxmadrona, 
-                      vertex.label=NA, 
-                      vertex.size="degree",
-                      show.legend=FALSE,
-                      vertex.color="seed")
-
-
 
 # http://hpmrg.org/rds/
 
-
-reingold.tilford.plot(fauxmadrona, 
-                      vertex.label=NA, 
-                      vertex.size="degree",
-                      show.legend=FALSE,
-                      vertex.color="seed")
-
-RDS.I.estimates(rds.data=fauxmadrona,outcome.variable="disease",N=1000)
-RDS.II.estimates(rds.data=fauxmadrona,outcome.variable="disease",N=1000)
-RDS.SS.estimates(rds.data=fauxmadrona,outcome.variable="disease",N=1000)
-RDS.HCG.estimates(rds.data=fauxmadrona,outcome.variable="disease",N=1000)
-
-data(fauxtime)
-RDS.HCG.estimates(rds.data=fauxtime,outcome.variable='var1')
-show.rds.data.frame(fauxtime)
 
 #	https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/XKOVUN
 
@@ -72,13 +49,11 @@ dd$id <- dd$node_2_id_respondent_recruit
 dd$recruiter.id <- dd$node_1_recruiter
 dd$recruiter.id[is.na(dd$recruiter.id)] <- -1
 
-summary(dd$q13)
-dd$network.size.variable <- dd$q13+1
-dd$degree <- dd$q13+1
-unique(dd$degree)
-dd1 <- dd
-dd <- dd %>% filter( degree <105)
+## deal with zeros: fix if incorrect; remove if 'true zero'
 
+
+
+## This removes the D/K
 library(car)
 unique(dd$q36)
 dd$zQ36 <- recode(dd$q36, "5=NA")
@@ -95,16 +70,51 @@ describe(as.numeric(dd$q80) )
 
 summary(dd$zQ80)
 
+## County D/K as not experiencing Exploitation -- this is CONSERVATIVE b/c the proportion of those experienceing Exp will be lower than if removing D/Ks
+
+library(car)
+unique(dd$q36)
+dd$zQ36 <- recode(dd$q36, "c(0,1,2,3) = 1; c(4,5)=0")
+unique(dd$q80)
+dd$zQ80 <- recode(dd$q80, "c(0,1) = 1; c(2,3,4,5)=0")
+
+summary(dd$zQ36)
+unique(dd$q80)
+library(psych)
+describe(as.numeric(dd$q80) )
+
+summary(dd$zQ80)
+
+dd$network.size.variable <- dd$q13
+
+
+
+
+## This is a fudge -- don't do this.
+summary(dd$q13)
+dd$network.size.variable <- dd$q13+1
+dd$degree <- dd$q13+1
+unique(dd$degree)
+dd1 <- dd
+dd <- dd %>% filter( degree <105)
+
+
 prop.table(as.numeric(dd$q62) )
 proportions(table(as.numeric(dd$q62) ))
 
 str(rd.dd)
+
+
+#####--
+
 library(car)
 dd$sum_categories_factor <- as.factor(dd$sum_categories)
 dd$sum_categories_cut <- cut_interval(dd$sum_categories, n = 10)
 table(dd$sum_categories_cut)
+describe(dd$sum_categories)
 
-dd <- dd %>% select(id, recruiter.id, wave, network.size.variable, degree, everything())
+sort(names(dd))
+# dd <- dd %>% select(id, recruiter.id, wave, network.size.variable, degree, everything())
 
 dd$recruiter.id <- as.character(dd$recruiter.id)
 rd.dd <- as.rds.data.frame(dd, max.coupons = 5)
@@ -116,20 +126,39 @@ reingold.tilford.plot(rd.dd,
 					  vertex.size="degree",
 					  show.legend=TRUE)
 
-data(faux)
-convergence.plot(faux,c("X","Y"))
-
 convergence.plot(rd.dd,c("zQ36","zQ80"))
 
-install.packages(c("JGR","Deducer","DeducerExtras"))
+#install.packages(c("JGR","Deducer","DeducerExtras"))
 
-RDS.SS.estimates(rd.dd, outcome.variable = "zQ36", N=1000)
-RDS.SS.estimates(rd.dd, outcome.variable = "zQ36", N=100000)
 
-RDS.II.estimates(rd.dd, outcome.variable = "zQ36", N=1000)
 
-RDS.SS.estimates(rd.dd, outcome.variable = "zQ80", N=1000)
-RDS.SS.estimates(rd.dd, outcome.variable = "zQ80", N=100000)
+
+MA.estimates(rd.dd, trait.variable = "zQ36", N=1000, parallel = 4)
+MA.estimates(rd.dd, trait.variable = "zQ80", N=1000, parallel = 4)
+
+MA.estimates(rd.dd, trait.variable = "zQ36", N=10000)
+MA.estimates(rd.dd, trait.variable = "zQ36", N=100000)
+MA.estimates(rd.dd, trait.variable = "zQ36", N=100000, seed.selection = "sample")
+MA.estimates(rd.dd, trait.variable = "zQ36", N=100000, seed.selection = "random")
+
+
+
+## (overnight)
+m1m_q36 <- MA.estimates(rd.dd, trait.variable = "zQ36", N=1000000, parallel = 4)
+m1.7m_q36_samp <- MA.estimates(rd.dd, trait.variable = "zQ36", N=1.76e6, seed.selection = "sample", parallel = 4)
+
+m1m_q80 <- MA.estimates(rd.dd, trait.variable = "zQ80", N=1000000, parallel = 4)
+m1.7m_q80_samp <- MA.estimates(rd.dd, trait.variable = "zQ80", N=1.76e6, seed.selection = "sample", parallel = 4)
+save.image()
+##
+m1.7m_q36_rand <- MA.estimates(rd.dd, trait.variable = "zQ36", N=1.76e6, seed.selection = "random", parallel = 4)
+
+m1.7m_q80_rand <- MA.estimates(rd.dd, trait.variable = "zQ80", N=1.76e6, seed.selection = "random", parallel = 4)
+
+save.image()
+
+
+## Use updated sum_categories2 (!!!)
 
 RDS.SS.estimates(rd.dd, outcome.variable = "sum_categories", N=10000)
 
@@ -145,6 +174,40 @@ ddf
 ## https://stackoverflow.com/questions/19599957/plotting-confidence-intervals-in-ggplot
 
 # ggplot2(ddf, aex(x))
+
+RDS.I.estimates(rd.dd, outcome.variable = "zQ36", N=1000)
+RDS.I.estimates(rd.dd, outcome.variable = "zQ36", N=10000)
+RDS.I.estimates(rd.dd, outcome.variable = "zQ36", N=100000)
+RDS.I.estimates(rd.dd, outcome.variable = "zQ36", N=1000000)
+RDS.I.estimates(rd.dd, outcome.variable = "zQ36", N=1.74e6)
+
+RDS.II.estimates(rd.dd, outcome.variable = "zQ36", N=1000)
+RDS.II.estimates(rd.dd, outcome.variable = "zQ36", N=10000)
+RDS.II.estimates(rd.dd, outcome.variable = "zQ36", N=100000)
+RDS.II.estimates(rd.dd, outcome.variable = "zQ36", N=1000000)
+RDS.II.estimates(rd.dd, outcome.variable = "zQ36", N=1.74e6)
+
+
+RDS.SS.estimates(rd.dd, outcome.variable = "zQ80", N=1000)
+RDS.SS.estimates(rd.dd, outcome.variable = "zQ80", N=100000)
+RDS.SS.estimates(rd.dd, outcome.variable = "zQ80", N=1000000)
+RDS.SS.estimates(rd.dd, outcome.variable = "zQ80", N=1.74e6)
+
+RDS.I.estimates(rd.dd, outcome.variable = "zQ80", N=1000)
+RDS.I.estimates(rd.dd, outcome.variable = "zQ80", N=10000)
+RDS.I.estimates(rd.dd, outcome.variable = "zQ80", N=100000)
+RDS.I.estimates(rd.dd, outcome.variable = "zQ80", N=1000000)
+RDS.I.estimates(rd.dd, outcome.variable = "zQ80", N=1.74e6)
+
+RDS.II.estimates(rd.dd, outcome.variable = "zQ80", N=1000)
+RDS.II.estimates(rd.dd, outcome.variable = "zQ80", N=10000)
+RDS.II.estimates(rd.dd, outcome.variable = "zQ80", N=100000)
+RDS.II.estimates(rd.dd, outcome.variable = "zQ80", N=1000000)
+RDS.II.estimates(rd.dd, outcome.variable = "zQ80", N=1.74e6)
+
+
+
+
 
 
 
