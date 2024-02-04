@@ -43,15 +43,30 @@ ss <- data %>% select(id, recruiter.id, q13, all_of(columns_to_reshape), suspici
 
 head(ss) %>% write.csv("", row.names = FALSE)
 
+
+names(data)
+# Assuming 'data' is your original dataset
+result <- data %>%
+	group_by(id) %>%  
+	summarize(count = sum(!is.na(c_across(all_of(columns_to_reshape)))))
+
+names(result)
+# If you want to add the counts to the original 'data' DataFrame, you can merge them
+ddata <- left_join(data, result, by = "id") %>% select(id, recruiter.id, q13, all_of(columns_to_reshape), starts_with("count_"), everything()) 
+
+
 library(tidyr)
 
-sample_data <- read.csv("sample_data.csv") 
-
+## reshape -- misses true zeros
 long_data <- data %>%  
 pivot_longer(cols = all_of(columns_to_reshape), 
-			 names_to = "question", 
 			 values_to = "referralPhone") %>%
+	select(recruiter.id,id, q13, referralPhone, everything() ) %>%
 	filter(!is.na(referralPhone)) %>% group_by(id) %>% arrange (q13, desc=FALSE)
+
+	
+# If you want to add the counts to the original 'data' DataFrame, you can merge them
+dddata <- left_join(data, long_data, by = "id") %>% select(id, recruiter.id, q13, all_of(columns_to_reshape), starts_with("count_"), everything()) 
 
 write.csv(long_data, "long_format_data.csv", row.names = FALSE)
 
@@ -69,7 +84,11 @@ transformed_data <- long_data %>%
 		   numRef = pmax(n(), q13)) %>%
 	ungroup() %>% select(recruiter.id, id, q13, referralPhone, numRef, suspicious_variable, everything())
 
+
 dd <- transformed_data
+
+getwd()
+write.csv(data, "DWinUK_data.csv", row.names = FALSE)
 
 
 
@@ -90,13 +109,13 @@ describe(as.numeric(dd$q80) )
 
 summary(dd$zQ80)
 
-## Count D/K as not experiencing Exploitation -- this is CONSERVATIVE b/c the proportion of those experienceing Exp will be lower than if removing D/Ks
-
-library(car)
-unique(dd$q36)
-dd$zQ36 <- recode(dd$q36, "c(0,1,2,3) = 1; c(4,5)=0")
-unique(dd$q80)
-dd$zQ80 <- recode(dd$q80, "c(0,1) = 1; c(2,3,4,5)=0")
+# ## Count D/K as not experiencing Exploitation -- this is CONSERVATIVE b/c the proportion of those experienceing Exp will be lower than if removing D/Ks
+# 
+# library(car)
+# unique(dd$q36)
+# dd$zQ36 <- recode(dd$q36, "c(0,1,2,3) = 1; c(4,5)=0")
+# unique(dd$q80)
+# dd$zQ80 <- recode(dd$q80, "c(0,1) = 1; c(2,3,4,5)=0")
 
 summary(dd$zQ36)
 unique(dd$q80)
@@ -106,6 +125,7 @@ describe(as.numeric(dd$q80) )
 summary(dd$zQ80)
 
 dd$network.size.variable <- dd$q13
+dd$network.size.variable <- dd$numRef
 
 
 
@@ -155,18 +175,16 @@ library(Neighboot)
 #	https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/XKOVUN
 
 
+# 
+# ## This is a fudge -- don't do this.
+# summary(dd$q13)
+# dd$network.size.variable <- dd$q13+1
+# dd$degree <- dd$q13+1
+# unique(dd$degree)
+# dd1 <- dd
+# dd <- dd %>% filter( degree <105)
+# 
 
-## This is a fudge -- don't do this.
-summary(dd$q13)
-dd$network.size.variable <- dd$q13+1
-dd$degree <- dd$q13+1
-unique(dd$degree)
-dd1 <- dd
-dd <- dd %>% filter( degree <105)
-
-
-prop.table(as.numeric(dd$q62) )
-proportions(table(as.numeric(dd$q62) ))
 
 str(rd.dd)
 
