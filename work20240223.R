@@ -13,82 +13,58 @@ setwd("~/Dropbox/research/RightsLab/DWeMSinUK/survey")
 
 dir()
 library(janitor)
-data <- read_xlsx("Further Coding Update.xlsx")
+data <- read_xlsx("./survey/Further Coding Update.xlsx")
 data <- clean_names(data)
 data$q13 <- as.numeric(data$q13)
+names(data)
+data<- data %>% select(q13, starts_with("node_"),  everything())
+data$recruiter.id <- as.numeric(data$node_1_recruiter)
 
-data<- data %>% select(q13, everything())
+data$rowNum <- rownames(data)
 names(data)
 data$id <- data$node_2_id_respondent_recruit
-data$recruiter.id <- data$node_1_recruiter
 data$recruiter.id[is.na(data$recruiter.id)] <- -1
-data<- data %>% select(id, recruiter.id,  q13, everything())
-
-## deal with zeros: fix if incorrect; remove if 'true zero'
-
-names(data)
-
-library(tidyr)
-library(dplyr)
-
+data<- data %>% select(rowNum, recruiter.id,  id, q13, everything())
 
 sort(names(data))
-
 data <- data %>% select(-contains("column"))
 
-# Select the columns you want to reshape
-columns_to_reshape <- c("q105", "q106", "q107", "q108", "q109", "q110")
 
-ss <- data %>% select(id, recruiter.id, q13, all_of(columns_to_reshape), suspicious_variable, wave)
+## deal with zeros: fix if incorrect; remove if 'true zero' -- TAKE TWO
+### Fix if incorrect:
+df <- data
 
-head(ss) %>% write.csv("", row.names = FALSE)
+df_processed <- df %>%
+	rowwise() %>%
+	mutate(NonEmptyCount = sum(!is.na(c_across(q105:q115))),
+		   NonEmptyValues = list(na.omit(c_across(q105:q115)))) %>%
+	ungroup()
 
-
-names(data)
-# Assuming 'data' is your original dataset
-result <- data %>%
-	group_by(id) %>%  
-	summarize(count = sum(!is.na(c_across(all_of(columns_to_reshape)))))
-
-names(result)
-# If you want to add the counts to the original 'data' DataFrame, you can merge them
-ddata <- left_join(data, result, by = "id") %>% select(id, recruiter.id, q13, all_of(columns_to_reshape), starts_with("count_"), everything()) 
+## Make long, why not..
 
 
-library(tidyr)
+data <- df_processed %>%
+mutate(suspicious_variable = ifelse(NonEmptyCount > q13, 1, 0),
+	   numRef = pmax(NonEmptyCount, q13)) %>% select(numRef, NonEmptyCount, q13, everything())
 
-## reshape -- misses true zeros
-long_data <- data %>%  
-pivot_longer(cols = all_of(columns_to_reshape), 
-			 values_to = "referralPhone") %>%
-	select(recruiter.id,id, q13, referralPhone, everything() ) %>%
-	filter(!is.na(referralPhone)) %>% group_by(id) %>% arrange (q13, desc=FALSE)
+### Remove if 'true zero'
 
-	
-# If you want to add the counts to the original 'data' DataFrame, you can merge them
-dddata <- left_join(data, long_data, by = "id") %>% select(id, recruiter.id, q13, all_of(columns_to_reshape), starts_with("count_"), everything()) 
+dd <- data %>% filter(numRef >0)
 
-write.csv(long_data, "long_format_data.csv", row.names = FALSE)
+
+
+## Make long, sure why not.
+
+df_long <- df_processed %>%
+	mutate(id = row_number()) %>%
+	unnest(NonEmptyValues) %>%
+	select(id, NonEmptyCount, NonEmptyValues, everything())
+
+write.csv(df_long, "./survey/long_format_data.csv", row.names = FALSE)
 
 
 
 sort(names(data))
-
-
-library(tidyr)
-library(dplyr)
-
-transformed_data <- long_data %>%
-	group_by(id) %>%
-	mutate(suspicious_variable = ifelse(n() > q13, 1, 0),
-		   numRef = pmax(n(), q13)) %>%
-	ungroup() %>% select(recruiter.id, id, q13, referralPhone, numRef, suspicious_variable, everything())
-
-
-dd <- transformed_data
-
-getwd()
-write.csv(data, "DWinUK_data.csv", row.names = FALSE)
 
 
 
@@ -124,10 +100,11 @@ describe(as.numeric(dd$q80) )
 
 summary(dd$zQ80)
 
-dd$network.size.variable <- dd$q13
+# dd$network.size.variable <- dd$q13
 dd$network.size.variable <- dd$numRef
+dd$network.size <- dd$numRef
 
-
+data$network.size <- data$numRef
 
 #####--
 ## Use updated sum_categories2 (!!!)
@@ -175,23 +152,15 @@ library(Neighboot)
 #	https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/XKOVUN
 
 
-# 
-# ## This is a fudge -- don't do this.
-# summary(dd$q13)
-# dd$network.size.variable <- dd$q13+1
-# dd$degree <- dd$q13+1
-# unique(dd$degree)
-# dd1 <- dd
-# dd <- dd %>% filter( degree <105)
-# 
-
-
 str(rd.dd)
 
+dd$network.size.variable <- dd$q13
 
 dd$recruiter.id <- as.character(dd$recruiter.id)
-rd.dd <- as.rds.data.frame(dd, max.coupons = 5)
+dd$recruiter.id <- as.numeric(dd$recruiter.id)
 
+rd.dd <- as.rds.data.frame(dd, max.coupons = 5)
+dd$recruiter.id
 
 
 reingold.tilford.plot(rd.dd, 
@@ -423,3 +392,42 @@ RDS.bootstrap.intervals(rd.ddd, outcome.variable = "zQ36", N = 1.74e6)
 RDS.bootstrap.intervals(rd.dd, outcome.variable = "zQ36", N = 10000)
 RDS.bootstrap.intervals(rd.ddd, outcome.variable = "zQ80", N = 10000)
 RDS.bootstrap.intervals(rd.dd, outcome.variable = "zQ80", N = 10000)
+
+
+
+##########################################
+
+########
+
+library(Neighboot)
+data("pop.network")
+
+require(RDStreeboot)
+RDS.samp <- sample.RDS(pop.network$traits, pop.network$adj.mat, 200, 10,
+					   3, c(1/6,1/3,1/3,1/6), FALSE)
+
+treeboot.RDS(RDS.samp, c(0.025, 0.10, 0.90, 0.975), 2000)
+rr <- neighb(RDS.data=RDS.samp, quant=c(0.025, 0.975),method="percentile", B=100)
+
+
+########
+
+Nsamp <- length(rownames(data))
+
+# Find recruiters
+rec <- sort(unique(data$recruiter.id) )
+rec
+rec <- rec[-1]
+
+Nrec <- length(rec)
+
+# first re-sample with replacement
+
+boot1 <- sample(rec,Nrec, replace = TRUE)
+
+# add in everyone those in boot1 recruited:
+
+ww <- which(  data$recruiter.id %in% boot1 )
+ww
+
+data[ww,] %>% View()

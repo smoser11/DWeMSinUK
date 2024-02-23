@@ -16,13 +16,50 @@ library(janitor)
 data <- read_xlsx("Further Coding Update.xlsx")
 data <- clean_names(data)
 data$q13 <- as.numeric(data$q13)
+names(data)
+data<- data %>% select(q13, starts_with("node_"),  everything())
+data$recruiter.id <- as.numeric(data$node_1_recruiter)
 
-data<- data %>% select(q13, everything())
+data$rowNum <- rownames(data)
 names(data)
 data$id <- data$node_2_id_respondent_recruit
-data$recruiter.id <- data$node_1_recruiter
 data$recruiter.id[is.na(data$recruiter.id)] <- -1
-data<- data %>% select(id, recruiter.id,  q13, everything())
+data<- data %>% select(rowNum, recruiter.id,  id, q13, everything())
+
+########
+
+library(Neighboot)
+data("pop.network")
+
+require(RDStreeboot)
+RDS.samp <- sample.RDS(pop.network$traits, pop.network$adj.mat, 200, 10,
+					   3, c(1/6,1/3,1/3,1/6), FALSE)
+
+treeboot.RDS(RDS.samp, c(0.025, 0.10, 0.90, 0.975), 2000)
+rr <- neighb(RDS.data=RDS.samp, quant=c(0.025, 0.975),method="percentile", B=100)
+
+
+########
+
+Nsamp <- length(rownames(data))
+
+# Find recruiters
+rec <- sort(unique(data$recruiter.id) )
+rec
+rec <- rec[-1]
+
+Nrec <- length(rec)
+
+# first re-sample with replacement
+
+boot1 <- sample(rec,Nrec, replace = TRUE)
+
+# add in everyone those in boot1 recruited:
+
+ww <- which(  data$recruiter.id %in% boot1 )
+ww
+
+data[ww,] %>% View()
 
 ## deal with zeros: fix if incorrect; remove if 'true zero'
 
