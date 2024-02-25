@@ -5,8 +5,8 @@ library(openxlsx)
 library(readxl)
 library(gtools)
 
-setwd("C:/Users/ldzsm2/OneDrive - The University of Nottingham/research/RightsLab/GNSUM-CEandS")
-setwd("~/Dropbox/research/RightsLab/DWeMSinUK/survey")
+# setwd("C:/Users/ldzsm2/OneDrive - The University of Nottingham/research/RightsLab/GNSUM-CEandS")
+# setwd("~/Dropbox/research/RightsLab/DWeMSinUK/survey")
 
 ### DATA WORK:
 
@@ -14,20 +14,23 @@ setwd("~/Dropbox/research/RightsLab/DWeMSinUK/survey")
 dir()
 library(janitor)
 data <- read_xlsx("./survey/Further Coding Update.xlsx")
+data <- read.csv("./survey/Update Selim Risk Index.csv")
+data <- data %>% select(-contains("column"))
 data <- clean_names(data)
 data$q13 <- as.numeric(data$q13)
 names(data)
-data<- data %>% select(q13, starts_with("node_"),  everything())
 data$recruiter.id <- as.numeric(data$node_1_recruiter)
+data<- data %>% select(recruiter.id, q13, starts_with("node_"),  everything())
 
 data$rowNum <- rownames(data)
 names(data)
 data$id <- data$node_2_id_respondent_recruit
-data$recruiter.id[is.na(data$recruiter.id)] <- -1
-data<- data %>% select(rowNum, recruiter.id,  id, q13, everything())
+data$ridc <- data$node_1_recruiter
+data$recruiter.id[is.na(data$recruiter.id)] <- 0
+data<- data %>% select(rowNum, ridc, recruiter.id,  id, q13, everything())
+data$ridc[is.na(data$ridc)] <- "seed"
 
 sort(names(data))
-data <- data %>% select(-contains("column"))
 
 
 ## deal with zeros: fix if incorrect; remove if 'true zero' -- TAKE TWO
@@ -40,12 +43,11 @@ df_processed <- df %>%
 		   NonEmptyValues = list(na.omit(c_across(q105:q115)))) %>%
 	ungroup()
 
-## Make long, why not..
-
 
 data <- df_processed %>%
 mutate(suspicious_variable = ifelse(NonEmptyCount > q13, 1, 0),
 	   numRef = pmax(NonEmptyCount, q13)) %>% select(numRef, NonEmptyCount, q13, everything())
+
 
 ### Remove if 'true zero'
 
@@ -138,6 +140,13 @@ library(RDS)
 library(sspse)    # https://github.com/LJGamble/netclust is the non-connected version of 
 library(Neighboot)
 
+
+data(fauxmadrona)
+
+ff <- as.rds.data.frame(fauxmadrona, max.coupons = 5)
+
+RDS.SS.estimates(ff, outcome.variable = "disease")
+
 ## Gile et. al. replication materials!
 # https://www-tandfonline-com.nottingham.idm.oclc.org/doi/suppl/10.1198/jasa.2011.ap09475
 # https://onlinelibrary-wiley-com.nottingham.idm.oclc.org/doi/full/10.1111/biom.12255
@@ -154,12 +163,20 @@ library(Neighboot)
 
 str(rd.dd)
 
-dd$network.size.variable <- dd$q13
+dd$network.size.variable <- dd$numRef
+dd$network.size <- dd$q13
 
+unique(dd$network.size.variable)
+
+dd$recruiter.id <- as.character(dd$ridc)
 dd$recruiter.id <- as.character(dd$recruiter.id)
-dd$recruiter.id <- as.numeric(dd$recruiter.id)
 
-rd.dd <- as.rds.data.frame(dd, max.coupons = 5)
+unique(dd$recruiter.id)
+levels(dd$recruiter.id)
+
+rd.dd <- as.rds.data.frame(dd)
+						   
+						   max.coupons = 5, check.valid = FALSE)
 dd$recruiter.id
 
 
@@ -401,6 +418,9 @@ RDS.bootstrap.intervals(rd.dd, outcome.variable = "zQ80", N = 10000)
 
 library(Neighboot)
 data("pop.network")
+
+?`Neighboot-package`
+neighb
 
 require(RDStreeboot)
 RDS.samp <- sample.RDS(pop.network$traits, pop.network$adj.mat, 200, 10,
