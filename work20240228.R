@@ -30,11 +30,24 @@ data$rowNum <- rownames(data)
 names(data)
 data$id <- data$node_2_id_respondent_recruit
 data$ridc <- data$node_1_recruiter
-data$recruiter.id[is.na(data$recruiter.id)] <- 0
+data$recruiter.id[is.na(data$recruiter.id)] <- -1
 data<- data %>% select(rowNum, ridc, recruiter.id,  id, q13, everything())
 data$ridc[is.na(data$ridc)] <- "seed"
 
 sort(names(data))
+
+library(RDS)
+data$network.size.variable <- as.numeric(data$q13)
+sort(names(data))
+"network.size"  %in% names(as.data.frame(data) )
+
+as.rds.data.frame(data)
+as.rds.data.frame(data, max.coupons = 5)
+write.csv(data, file = "./survey/data.csv", row.names = FALSE)
+
+summary(data$network.size)
+table(data$network.size <= 0)
+data %>% filter(network.size.variable > 0) %>% as.rds.data.frame()
 
 
 ## deal with zeros: fix if incorrect; remove if 'true zero' -- TAKE TWO
@@ -107,10 +120,10 @@ describe(as.numeric(dd$q80) )
 summary(dd$zQ80)
 
 # dd$network.size.variable <- dd$q13
-dd$network.size.variable <- dd$numRef
+dd$network.size.variable <- as.numeric(dd$numRef)
 dd$network.size <- dd$numRef
 
-data$network.size <- data$numRef
+data$network.size.variable <- data$numRef
 
 #####--
 ## Use updated sum_categories2 (!!!)
@@ -165,8 +178,6 @@ RDS.SS.estimates(ff, outcome.variable = "disease")
 #	https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/XKOVUN
 
 
-str(rd.dd)
-
 dd$network.size.variable <- dd$numRef
 dd$network.size <- dd$q13
 
@@ -178,9 +189,41 @@ dd$recruiter.id <- as.character(dd$recruiter.id)
 unique(dd$recruiter.id)
 levels(dd$recruiter.id)
 
-rd.dd <- as.rds.data.frame(dd)
-						   
-						   max.coupons = 5, check.valid = FALSE)
+getwd()
+df <- apply(dd,2,as.character)
+write.csv(as.data.frame(df), file = "./survey/dd.csv", row.names = FALSE)
+
+
+# Identify unique recruiter.ids that don't match any id in the dataset
+unique_recruiter_ids <- unique(dd$recruiter.id)
+seed_recruiter_ids <- unique_recruiter_ids[!unique_recruiter_ids %in% dd$id]
+
+# Print out the identified seed recruiter.ids for review
+print(seed_recruiter_ids)
+
+dd %>% filter(recruiter.id == seed_recruiter_ids) %>% View()
+
+# Decide on a standard seed identifier, e.g., 0
+standard_seed_id <- 0
+
+# Update the dataset: Set recruiter.id to the standard seed identifier for seeds
+dd$recruiter.id[dd$recruiter.id %in% seed_recruiter_ids] <- standard_seed_id
+
+# Optionally, check if there are still any recruiter.id values that don't match any id (there shouldn't be)
+remaining_unique_recruiter_ids <- unique(dd$recruiter.id[!dd$recruiter.id %in% dd$id])
+print(remaining_unique_recruiter_ids)
+
+# Continue with converting to an rds.data.frame
+# Assuming other necessary columns are correctly formatted
+rd.dd <- as.rds.data.frame(dd, id="id", recruiter.id="recruiter.id", max.coupons = 5, check.valid = FALSE)
+
+# Note: This code assumes the column names for ID and recruiter ID in your dataset are 'id' and 'recruiter.id', respectively.
+# Adjust the column names in the code if they are different.
+
+
+
+rd.dd <- as.rds.data.frame(dd, max.coupons = 5, check.valid = FALSE)
+
 dd$recruiter.id
 
 
@@ -207,11 +250,44 @@ MA.estimates(rd.dd, trait.variable = "zQ36", N=100000, seed.selection = "random"
 
 
 ## (overnight)
+mP_q36_samp <- MA.estimates(rd.dd, trait.variable = "zQ36", N=953000, parallel = 4)
+mP_q80_samp <- MA.estimates(rd.dd, trait.variable = "zQ80", N=953000, parallel = 4, seed.selection = "sample")
+
+mP_q80_rand <- MA.estimates(rd.dd, trait.variable = "zQ80", N=953000, parallel = 4, seed.selection = "random")
+mP_q36_rand <- MA.estimates(rd.dd, trait.variable = "zQ36", N=953000, parallel = 4, seed.selection = "random")
+
+save.image()
+
+m100k_q80_samp <- MA.estimates(rd.dd, trait.variable = "zQ80", N=100000, seed.selection = "sample", parallel = 4)
+m100k_q36_samp <- MA.estimates(rd.dd, trait.variable = "zQ36", N=100000, seed.selection = "sample", parallel = 4)
+
+m100k_q80_rand <- MA.estimates(rd.dd, trait.variable = "zQ80", N=100000, seed.selection = "random", parallel = 4)
+m100k_q36_rand <- MA.estimates(rd.dd, trait.variable = "zQ36", N=100000, seed.selection = "random", parallel = 4)
+
+save.image()
+
+
+m1.7m_q36_samp <- MA.estimates(rd.dd, trait.variable = "zQ36", N=100000, seed.selection = "sample", parallel = 4)
+
+
+m1m_q80_rand <- MA.estimates(rd.dd, trait.variable = "zQ80", N=1000000, seed.selection = "random", parallel = 4)
+m1m_q36_rand <- MA.estimates(rd.dd, trait.variable = "zQ36", N=1000000, seed.selection = "random", parallel = 4)
+
+
 m1m_q36 <- MA.estimates(rd.dd, trait.variable = "zQ36", N=1000000, parallel = 4)
 m1.7m_q36_samp <- MA.estimates(rd.dd, trait.variable = "zQ36", N=1.76e6, seed.selection = "sample", parallel = 4)
 
 m1m_q80 <- MA.estimates(rd.dd, trait.variable = "zQ80", N=1000000, parallel = 4)
 m1.7m_q80_samp <- MA.estimates(rd.dd, trait.variable = "zQ80", N=1.76e6, seed.selection = "sample", parallel = 4)
+save.image()
+
+
+
+m1m_q36_rand <- MA.estimates(rd.dd, trait.variable = "zQ36", N=1000000, parallel = 4)
+m1.7m_q36_samp <- MA.estimates(rd.dd, trait.variable = "zQ36", N=1.76e6, seed.selection = "random", parallel = 4)
+
+m1m_q80_rand <- MA.estimates(rd.dd, trait.variable = "zQ80", N=1000000, seed.selection = "random", parallel = 4)
+m1m_q36_rand <- MA.estimates(rd.dd, trait.variable = "zQ36", N=1000000, seed.selection = "random", parallel = 4)
 save.image()
 ##
 m1.7m_q36_rand <- MA.estimates(rd.dd, trait.variable = "zQ36", N=1.76e6, seed.selection = "random", parallel = 4)

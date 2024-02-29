@@ -1,0 +1,98 @@
+function (df, id = if (is.null(attr(df, "id"))) "id" else attr(df, 
+    "id"), recruiter.id = if (is.null(attr(df, "recruiter.id"))) {
+    "recruiter.id"
+} else attr(df, "recruiter.id"), network.size = if (is.null(attr(df, 
+    "network.size.variable"))) {
+    "network.size.variable"
+} else attr(df, "network.size.variable"), population.size = if (all(is.na(get.population.size(df, 
+    FALSE)))) {
+    NULL
+} else get.population.size(df, FALSE), max.coupons = if (is.null(attr(df, 
+    "max.coupons"))) {
+    NULL
+} else attr(df, "max.coupons"), notes = if (is.null(attr(df, 
+    "notes"))) {
+    NULL
+} else attr(df, "time"), time = if (is.null(attr(df, "time"))) {
+    NULL
+} else attr(df, "time"), check.valid = TRUE) 
+{
+    x <- as.data.frame(df)
+    if (!(id %in% names(x))) 
+        stop("Invalid id")
+    if (!(recruiter.id %in% names(x))) 
+        stop("Invalid recruiter.id")
+    if (!(network.size %in% names(x))) 
+        stop("Invalid network.size")
+    attr(x, "recruiter.id") <- recruiter.id
+    attr(x, "id") <- id
+    xid <- as.char(x[[id]])
+    xrecruiter.id <- as.char(x[[recruiter.id]])
+    if (any(is.na(xid))) 
+        stop("No missing ids allowed")
+    if (any(is.na(xrecruiter.id))) 
+        stop("Missing values in recruiter.id. No missing values allowed. Note that all seeds should be given the same unique identifier.")
+    sid <- unique(xrecruiter.id[!xrecruiter.id %in% xid])
+    if (length(sid) < 1) 
+        stop("No seeds in data")
+    if (length(sid) > 1) 
+        stop("All seeds should be given the same recruiter.id, for example '0'")
+    x[[id]] <- xid
+    x[[recruiter.id]] <- xrecruiter.id
+    attr(x, "network.size.variable") <- network.size
+    if (!(network.size %in% names(x))) 
+        stop("invalid network size variable")
+    x[[network.size]] <- as.numeric(x[[network.size]])
+    if (is.null(population.size)) {
+        attr(x, "population.size.low") <- NULL
+        attr(x, "population.size.mid") <- NULL
+        attr(x, "population.size.high") <- NULL
+    }
+    else if (length(population.size) == 1) {
+        attr(x, "population.size.low") <- NULL
+        attr(x, "population.size.mid") <- as.numeric(population.size)
+        attr(x, "population.size.high") <- NULL
+    }
+    else if (length(population.size) == 3) {
+        attr(x, "population.size.low") <- if (!is.na(population.size[1])) 
+            as.numeric(population.size[1])
+        else NULL
+        attr(x, "population.size.mid") <- if (!is.na(population.size[2])) 
+            as.numeric(population.size[2])
+        else NULL
+        attr(x, "population.size.high") <- if (!is.na(population.size[3])) 
+            as.numeric(population.size[3])
+        else NULL
+    }
+    else stop("Population size estimates must be of length 1 or 3")
+    if (!is.null(max.coupons)) 
+        attr(x, "max.coupons") <- max.coupons
+    if (!is.null(notes)) 
+        attr(x, "notes") <- notes
+    if (!is.null(time)) {
+        tm <- x[[time]]
+        if (is.null(tm)) {
+            stop("Recruitment time variable not in dataset")
+        }
+        if (is.factor(tm)) 
+            tm <- as.character(tm)
+        if (is.character(tm)) 
+            tm <- anytime::anytime(tm, tz = "UTC")
+        r <- match(xrecruiter.id, xid)
+        rtime <- tm[r]
+        invalid <- which(tm < rtime)
+        if (length(invalid) > 0) 
+            warning(paste("Some subjects recruited before their recruiter. ids=", 
+                paste(xid[invalid], collapse = ","), "...imputing values..."))
+        tm[invalid] <- NA
+        x[[time]] <- tm
+        attr(x, "time") <- time
+        x[[time]] <- make.valid.recruitment.time(x)
+    }
+    class(x) <- unique(c("rds.data.frame", class(x)))
+    if (check.valid) 
+        assert.valid.rds.data.frame(x)
+    x
+}
+<bytecode: 0x148108e80>
+<environment: namespace:RDS>
