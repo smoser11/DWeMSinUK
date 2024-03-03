@@ -40,7 +40,7 @@ library(RDS)
 data$network.size.variable <- as.numeric(data$q13)
 sort(names(data))
 write.csv(data, file = "./survey/data.csv", row.names = FALSE)
-
+as.rds.data.frame(data)
 
 ## deal with zeros: fix if incorrect; remove if 'true zero' -- TAKE TWO
 ### Fix if incorrect:
@@ -53,20 +53,44 @@ df_processed <- df %>%
 	ungroup()
 
 
+library(dplyr)
+
+# Assuming 'data' is your original data frame
+# Step 1: Count occurrences of each id in 'node_1_recruiter'
+count_df <- df_processed %>%
+  group_by(node_1_recruiter) %>%
+  summarise(referedFreq = n(), .groups = 'drop')
+
+# Step 2: Join this information back to the original data frame
+df_processed <- df_processed %>%
+  left_join(count_df, by = c("id" = "node_1_recruiter"))
+
+# If any id does not appear in 'node_2_id_respondent_recruit', it will have NA in 'referedFreq'
+# Replace NA with 0 to indicate 0 occurrences
+df_processed$referedFreq[is.na(df_processed$referedFreq)] <- 0
+
+
+
+
 data <- df_processed %>%
-mutate(suspicious_variable = ifelse(NonEmptyCount > q13, 1, 0),
-	   numRef = pmax(NonEmptyCount, q13)) %>% select(numRef, NonEmptyCount, q13, everything())
+mutate(suspicious_variable = ifelse(NonEmptyCount > q13 | referedFreq > q13, 1, 0),
+	   numRef = pmax(NonEmptyCount, q13, referedFreq)) %>% select(numRef, NonEmptyCount, referedFreq,  q13, suspicious_variable, everything())
 
 
 ### Remove if 'true zero'
 
 dd <- data %>% filter(numRef >0)
 
+as.rds.data.frame(dd)
+
+table(dd$recruiter.id, dd$node_1_recruiter, useNA = 'always')
+
+table(data$recruiter.id, data$node_1_recruiter, useNA = 'always')
 
 
 ## Make long, sure why not.
 
-df_long <- df_processed %>%
+df_long <- data %>%
 	mutate(id = row_number()) %>%
 	unnest(NonEmptyValues) %>%
 	select(id, NonEmptyCount, NonEmptyValues, everything())
@@ -165,9 +189,10 @@ RDS.SS.estimates(ff, outcome.variable = "disease")
 
 #	https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/XKOVUN
 
-rd.dd <- as.rds.data.frame(dd, id="id", recruiter.id="recruiter.id", max.coupons = 5, check.valid = FALSE)
+dd$network.size.variable <- as.numeric(dd$numRef)
 
 rd.dd <- as.rds.data.frame(dd, id="id", recruiter.id="recruiter.id", max.coupons = 5, check.valid = FALSE)
+
 
 
 dd$network.size.variable <- dd$numRef
@@ -190,33 +215,12 @@ write.csv(as.data.frame(df), file = "./survey/dd.csv", row.names = FALSE)
 unique_recruiter_ids <- unique(dd$recruiter.id)
 seed_recruiter_ids <- unique_recruiter_ids[!unique_recruiter_ids %in% dd$id]
 
+unique_recruiter_ids
 # Print out the identified seed recruiter.ids for review
 print(seed_recruiter_ids)
 
 dd %>% filter(recruiter.id == seed_recruiter_ids) %>% View()
 
-# Decide on a standard seed identifier, e.g., 0
-standard_seed_id <- 0
-
-# Update the dataset: Set recruiter.id to the standard seed identifier for seeds
-dd$recruiter.id[dd$recruiter.id %in% seed_recruiter_ids] <- standard_seed_id
-
-# Optionally, check if there are still any recruiter.id values that don't match any id (there shouldn't be)
-remaining_unique_recruiter_ids <- unique(dd$recruiter.id[!dd$recruiter.id %in% dd$id])
-print(remaining_unique_recruiter_ids)
-
-# Continue with converting to an rds.data.frame
-# Assuming other necessary columns are correctly formatted
-rd.dd <- as.rds.data.frame(dd, id="id", recruiter.id="recruiter.id", max.coupons = 5, check.valid = FALSE)
-
-# Note: This code assumes the column names for ID and recruiter ID in your dataset are 'id' and 'recruiter.id', respectively.
-# Adjust the column names in the code if they are different.
-
-
-
-rd.dd <- as.rds.data.frame(dd, max.coupons = 5, check.valid = FALSE)
-
-dd$recruiter.id
 
 
 reingold.tilford.plot(rd.dd, 
