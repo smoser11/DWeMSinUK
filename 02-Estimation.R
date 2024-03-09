@@ -96,6 +96,8 @@ Fili_MAdegr_1m_q36 <- MA.estimates(  fff, trait.variable = "zQ36", N=1000000, pa
 
 Fili_MAdegr_1m_q80 <- MA.estimates(  fff, trait.variable = "zQ80", N=1000000, parallel = 4, seed.selection = "degree")
 
+Fili_MAdegr_1m_q36
+
 Fili_MAdegr_1m_sum_categories <- MA.estimates(fff, trait.variable = "sum_categories", N=1000000, parallel = 4, seed.selection = "degree")
 Fili_MAdegr_1m_sum_categories_cut <- MA.estimates(fff, trait.variable = "sum_categories_cut", N=1000000, parallel = 4, seed.selection = "degree")
 

@@ -140,7 +140,28 @@ describe(dd$sum_categories)
 sort(names(dd))
 # dd <- dd %>% select(id, recruiter.id, wave, network.size.variable, degree, everything())
 
+rd.dd <- as.rds.data.frame(dd, id="id", recruiter.id="recruiter.id", max.coupons = 5, check.valid = FALSE)
+
+dd$wt.RDS1_zQ36 <- rds.I.weights(rd.dd, "zQ36")
+dd$wt.RDS1_zQ80 <- rds.I.weights(rd.dd, "zQ80")
+dd$wt.RDS1_sum_categories_cut <- rds.I.weights(rd.dd, "sum_categories_cut")
+dd$wt.RDS1_sum_categories_factor <- rds.I.weights(rd.dd, "sum_categories_factor")
+
+dd$wt.vh_980k <- vh.weights(dd$numRef, N= 980000)
+dd$wt.vh_100k <- vh.weights(dd$numRef, N= 100000)
+dd$wt.vh_050k <- vh.weights(dd$numRef, N= 50000)
+
+dd$wt.SS_980k <- gile.ss.weights(dd$numRef, N= 980000)
+dd$wt.SS_100k <- gile.ss.weights(dd$numRef, N= 100000)
+dd$wt.SS_050k <- gile.ss.weights(dd$numRef, N= 50000)
+
+
+# dd$wt.RDS1_sum_categories_cut <- rds.I.weights(rd.dd, "sum_categories_cut")
+# dd$wt.RDS1_sum_categories_factor <- rds.I.weights(rd.dd, "sum_categories_factor")
+
+
 df <- apply(dd,2,as.character)
 write.csv(as.data.frame(df), file = "./survey/dd.csv", row.names = FALSE)
+
 rd.dd <- as.rds.data.frame(dd, id="id", recruiter.id="recruiter.id", max.coupons = 5, check.valid = FALSE)
-save.image("./survey/dd.RData")
+save(dd, rd.dd, file = "./survey/dd.RData")
