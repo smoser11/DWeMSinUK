@@ -1,3 +1,12 @@
+load("./survey/dd.RData")
+rd.ddd <- cbind(rd.dd, out_degree_df)
+sort(names(rd.ddd))
+
+rd.ddd <- rd.ddd %>% select(recruiter.id, recruiter_id, network.size.variable, id, id2,out_degree, numRef, NonEmptyCount, q13, referedFreq, everything())
+names(rd.ddd)
+
+
+
 # Extract unique node IDs
 nodes <- unique(c(as.numeric(rd.dd$id), as.numeric(rd.dd$recruiter.id)))
 
@@ -50,7 +59,7 @@ traits <- as.matrix(traits)
 
 
 # Create the degree vector
-degree <- as.numeric(rd.ddd$out_degree0)  # Assuming 'network.size' represents the degree
+degree <- as.numeric(rd.dd$out_degree0)  # Assuming 'network.size' represents the degree
 
 # Create the RDS.data list
 RDS.data <- list(
@@ -578,3 +587,93 @@ neighb(samp2c, B=10)
 
 ## So provided CRAN packages do not allow for zero degree vertices.  
 
+
+
+
+
+###########################################################
+
+# Extract and name the components for clarity
+nodes <- RDS.data$nodes
+edges <- data.frame(node1 = RDS.data$edges$node1, node2 = RDS.data$edges$node2)
+traits <- RDS.data$traits
+
+# Ensure the 'traits' data frame has unique IDs
+if(any(duplicated(traits[, 1]))) {
+	stop("Duplicate IDs found in traits.")
+}
+
+# Ensure edges refer to valid nodes
+invalid_edges <- !(edges$node1 %in% nodes & edges$node2 %in% nodes)
+if(any(invalid_edges)) {
+	stop("Edges refer to nodes not present in traits: ", paste(which(invalid_edges), collapse = ", "))
+}
+
+# Prepare the vertices data frame
+vertices <- data.frame(id = nodes)
+
+# Create the graph
+g <- igraph::graph_from_data_frame(edges, directed = FALSE, vertices = vertices)
+print(g)
+
+
+# Assuming you have the igraph object 'g'
+library(igraph)
+library(Neighboot)
+
+# Assuming you have the igraph object 'g'
+library(igraph)
+library(Neighboot)
+
+# Extract nodes
+nodes <- as.numeric(V(g)$name)
+
+# Extract edges
+edges <- as_data_frame(g, what = "edges")
+
+# Assuming you have traits data separately and it's aligned with node IDs
+traits <- RDS.data$traits
+
+# Ensure the traits data frame has the same number of rows as the nodes
+if (nrow(traits) != length(nodes)) {
+	stop("The number of rows in traits does not match the number of nodes.")
+}
+
+# Calculate the degree for each node
+degree <- degree(g, mode = "all")
+
+# Ensure the degree vector has the same length as the nodes
+if (length(degree) != length(nodes)) {
+	stop("The length of the degree vector does not match the number of nodes.")
+}
+
+# Create the RDS.data list
+RDS.data <- list(
+	nodes = nodes,
+	edges = list(node1 = edges$from, node2 = edges$to),
+	traits = traits,
+	degree = degree
+)
+
+# Check if all vertices in edges are listed in nodes
+missing_vertices <- setdiff(unique(c(edges$from, edges$to)), nodes)
+if (length(missing_vertices) > 0) {
+	stop("Some vertex names in edge list are not listed in vertex data frame: ", paste(missing_vertices, collapse = ", "))
+}
+
+# Perform neighborhood bootstrap with specific parameters
+results <- neighb(RDS.data, quant = c(0.025, 0.975), method = "percentile", B = 500)
+
+# Print the results
+print(results)
+
+
+
+
+?sample.RDS
+library(Neighboot)
+
+samp2c <- sample.RDS(faux.network_zeroCols$traits, faux.network_zeroCols$adj.mat, 100, 2, 3, c(0,1/3,1/3,1/3), TRUE)
+str(samp2c)
+samp2c$degree
+neighb(samp2c, B=10)

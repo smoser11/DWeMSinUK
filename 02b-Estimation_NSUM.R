@@ -122,7 +122,7 @@ calculateOutDegreeIncludingZeros <- function(rds.df) {
  out_degree0_df
  colnames(out_degree0_df) <- c("id2", "out_degree0")
  
- rd.ddd <- cbind(rd.dd, out_degree_df)
+ rd.ddd <- cbind(rd.dd, out_degree0_df)
  sort(names(rd.ddd))
  
  rd.ddd <- rd.ddd %>% select(recruiter.id, recruiter_id, network.size.variable, id, id2,out_degree, numRef, NonEmptyCount, q13, referedFreq, everything())
@@ -317,6 +317,37 @@ Using this function:
 Error in igraph::graph_from_data_frame(RDS.data$edges, directed = F, vertices = cbind(id = 1:length(RDS.data$traits[,  : 
 																														Duplicate vertex names
 																													"""
+																													
+																													
+																													# Inspect the structure of RDS.data
+str(RDS.data)
+
+# Check for duplicate IDs in RDS.data$traits
+duplicate_ids <- duplicated(RDS.data$traits[, 1])
+if (any(duplicate_ids)) {
+  cat("Duplicate IDs found in RDS.data$traits:\n")
+  print(RDS.data$traits[duplicate_ids, ])
+}
+
+# Ensure edges refer to existing vertices
+all_vertices <- 1:length(RDS.data$traits[, 1])
+edges_vertices <- unique(c(RDS.data$edges[, 1], RDS.data$edges[, 2]))
+
+# Check for any vertices in edges that are not in the traits data frame
+missing_vertices <- setdiff(edges_vertices, all_vertices)
+if (length(missing_vertices) > 0) {
+  cat("Edges refer to vertices not present in RDS.data$traits:\n")
+  print(missing_vertices)
+}
+
+# Create the graph after ensuring there are no duplicate IDs and all edges are valid
+if (!any(duplicate_ids) && length(missing_vertices) == 0) {
+  g <- igraph::graph_from_data_frame(RDS.data$edges, directed = FALSE, vertices = cbind(id = all_vertices))
+  print(g)
+} else {
+  cat("Please resolve the duplicate IDs or missing vertices issue before creating the graph.\n")
+}
+
 																													
 																													
 																													
