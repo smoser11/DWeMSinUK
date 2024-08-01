@@ -1,0 +1,1472 @@
+WEBVTT
+
+00:00.000 --> 00:07.320
+there you go there you go sorry for being late thanks for tech problems you
+
+00:07.320 --> 00:13.080
+know how it is but I got all of your documents I've read them in skimmed is
+
+00:13.080 --> 00:18.840
+probably a more accurate word but I've got my coffee I've got my pen I'm
+
+00:18.840 --> 00:26.200
+eager to get into it so thank you you're absolutely right with those things
+
+00:26.960 --> 00:35.160
+that is what we need to work out sorry I'm not arriving with a map saying this
+
+00:35.160 --> 00:40.200
+is how we we have to proceed I think it's something that we will find our way
+
+00:40.200 --> 00:49.160
+through the jungle between us I hope so I mean already you're pointing us in the
+
+00:49.160 --> 00:56.160
+direction of bootstrapping has been invaluable so yeah we really just sort of
+
+00:56.160 --> 01:01.400
+feeling a way through the next steps to understand who's actually say what to do
+
+01:01.400 --> 01:08.720
+and who's doing what right yeah that's all
+
+01:08.720 --> 01:16.120
+I mean it might be an ongoing conversation it might be something we can't bottom now but it probably is a good idea also to discuss sort of time
+
+01:16.120 --> 01:21.880
+frames that or at least share what we have in our own minds about time frame
+
+01:21.880 --> 01:26.200
+so that we can see whether whether everything matches together or whether
+
+01:26.200 --> 01:35.800
+there are going to be problems yeah so yeah so in terms of what's next you
+
+01:35.800 --> 01:40.480
+talked about the objective and the division of labour well the objective
+
+01:40.480 --> 01:46.440
+remains really to generate this estimate of the hidden population among
+
+01:46.440 --> 01:52.160
+domestic workers as far as we are able to and you you can generalize network
+
+01:52.160 --> 01:59.440
+scale-up methods to do that I mean that's the the overriding objective and
+
+01:59.440 --> 02:03.280
+then how we do that I mean I think that's a matter of debate we I think as I
+
+02:03.280 --> 02:07.160
+mentioned in my email have you seen it we've got Selim with us definitely full
+
+02:07.200 --> 02:11.280
+time until the end of the month so again this comes into the time frame
+
+02:11.280 --> 02:19.880
+conversation can we make maximum use of Selim's time now and then there's the
+
+02:19.880 --> 02:25.020
+possibility I mean Selim come in here now if you want to but I believe
+
+02:25.020 --> 02:33.180
+Selim's keen to continue looking at this yeah so you don't need to share my screen
+
+02:33.180 --> 02:37.460
+yeah what you don't want to be able to share this so Dr. Moseley you sent this
+
+02:37.460 --> 02:45.420
+article about the yoke yoke at all pay but who's on 22 for the neighborhood so
+
+02:45.420 --> 02:51.220
+I've tried to understand it and and also work on it and what I understand is that
+
+02:51.260 --> 02:59.300
+we need certain points or aspects to perform that bootstrap for our data set
+
+02:59.300 --> 03:07.540
+and that is like the notes this is the list of our IDs basically and then we
+
+03:07.540 --> 03:12.500
+have the edges and then we have the trades and degree so all that stuff I
+
+03:12.500 --> 03:17.980
+have tried to put this down to the Excel spreadsheet I'm going to share it now so
+
+03:17.980 --> 03:27.180
+you can tell me to what extent it looks cleaned up can you see it yes I can see
+
+03:27.180 --> 03:30.840
+it thank you very much okay yeah so you're 100% right Selim so the I was
+
+03:30.840 --> 03:38.420
+thinking about this this morning the the so I did have a quick look at the
+
+03:38.420 --> 03:45.180
+okay let me take half a step back so by the way Caroline not that you need to
+
+03:45.180 --> 03:49.740
+hear it for me but kudos your your lit review the document that you sent was
+
+03:49.740 --> 03:56.100
+really really really spot-on but the so taking a whole step back the the
+
+03:56.100 --> 04:01.780
+neighborhood boot is it's building on this thing called a tree okay so what's
+
+04:01.780 --> 04:04.620
+the issue the issue is we want to bootstrapping but we definitely don't
+
+04:04.620 --> 04:07.620
+have independence here Caroline's you rightly mentioned you know at best we
+
+04:07.620 --> 04:12.620
+have a convenience sample in our DS so the issue is how do you bootstrapping in
+
+04:12.620 --> 04:17.660
+these in this setting where you don't have independence whatsoever and so these
+
+04:17.660 --> 04:21.980
+clever people have different ideas and there's this very very sophisticated and
+
+04:21.980 --> 04:26.660
+I confess I didn't fully comprehend it but there's this tree method which is
+
+04:26.660 --> 04:31.540
+meant to anyway doesn't matter then these other people as you both rightly said
+
+04:31.540 --> 04:35.300
+come along and say actually there's an easier and better way to do this called
+
+04:35.300 --> 04:39.100
+this neighborhood boot and and you're 100% right Selim that what's crucial here
+
+04:39.100 --> 04:44.420
+is we need we need we need IDs we need to be able to uniquely identify each
+
+04:44.420 --> 04:49.660
+respondent and then we need to know who referred who and so usually that that
+
+04:49.660 --> 04:53.740
+takes the form of what's called an adjacency matrix this is just a graph so
+
+04:53.740 --> 04:59.100
+you've got the nodes are the are the IDs and so if I'm person 60 and you're a
+
+04:59.100 --> 05:05.740
+person 41 and I refer you then there's an edge from person 60 to person 41 you
+
+05:05.740 --> 05:08.900
+get the idea and so on and so forth so that's the sort of the structure of the
+
+05:08.900 --> 05:16.700
+data well that's one of the that's one component of the data that will need to
+
+05:16.700 --> 05:19.780
+do this this neighborhood bootstrap that the idea behind the input was really
+
+05:19.780 --> 05:24.460
+kind of surprising to me that it works so well but it does and we can sit sit
+
+05:24.460 --> 05:27.940
+site and that's great but the idea is you just take everybody who refers
+
+05:27.940 --> 05:33.980
+anybody and you just you just sample with replacement them and turns out that
+
+05:33.980 --> 05:38.980
+works really well it's it's sort of surprisingly simple and and but at least
+
+05:38.980 --> 05:45.540
+according to the papers it seems to work really really well so so so that's the
+
+05:45.540 --> 05:49.060
+structure that we need so right so now I'm rambling coffee's just now kicking
+
+05:49.060 --> 05:54.620
+in sorry so so Selim we need unique IDs for every single every single person and
+
+05:54.620 --> 06:00.700
+then we need to know who referred who so thank you for sharing your screen so
+
+06:00.700 --> 06:07.660
+like on line three it's a recruiter so you got node one recruiter and then node
+
+06:07.660 --> 06:13.820
+two respondent recruit I don't understand can you flush that out for me I can I
+
+06:13.820 --> 06:19.700
+can walk you through thank you so what we see here are the IDs of the people so
+
+06:19.700 --> 06:26.500
+for some two is the ID person three four five these are the ID of the people and
+
+06:26.500 --> 06:31.780
+when when there's written note one that's the recruiter that is 60 so when
+
+06:31.780 --> 06:39.460
+we scroll down to 60 here we are seeing that is Anna here that would be Anna so
+
+06:39.460 --> 06:49.140
+Anna has preferred on recruiting the second one so 60 ID 60 has recruited or
+
+06:49.140 --> 06:55.860
+referred person ID to and when there's no number written this means they haven't
+
+06:56.140 --> 07:04.020
+recruited they just complete the survey based on the promotion that our NGO
+
+07:04.020 --> 07:10.020
+partners has forwarded to their to their own people so these are the seeds so this
+
+07:10.020 --> 07:17.220
+right okay and then we can continue with that for some 41 has recruited 10 and
+
+07:17.380 --> 07:25.860
+and six these are these other people good good yeah good good good so then that's
+
+07:25.860 --> 07:31.380
+excellent thank you so then the next step would be to turn that into an adjacency
+
+07:31.380 --> 07:39.180
+matrix I'm trying to think of the can you if you maybe already have sorry if you
+
+07:39.180 --> 07:42.780
+have something but could you email me that excel file and I can have a think on
+
+07:42.780 --> 07:54.500
+the easiest way to reshape this into an adjacency matrix yeah yeah I read and
+
+07:54.500 --> 07:59.820
+I think there's something like zero and one yeah exactly so where where do we have
+
+07:59.820 --> 08:07.740
+like where do these connections exist exactly yeah so I will send you the
+
+08:07.740 --> 08:12.860
+excellent spreadsheet and you will tell me what to do next yeah after a lot more
+
+08:12.860 --> 08:18.660
+coffee yeah so but just to be clear so this is this is only relevant for the
+
+08:18.660 --> 08:24.100
+for the bootstrapping which I think we're all on board with is this is the
+
+08:24.100 --> 08:31.260
+way to go with with these uncertainty estimates the I mean I guess you know we
+
+08:31.260 --> 08:36.380
+could start with the calculations already right I mean Caroline you're you're I
+
+08:36.380 --> 08:41.860
+know we call it memo or outline of sort of what how to proceed with the
+
+08:41.860 --> 08:46.700
+calculations we could we could start with that given the data that we have I
+
+08:46.700 --> 08:54.140
+think so that protocol that I sent through that had the different sum
+
+08:54.140 --> 09:00.140
+quantities and actually the sort of the translation of the formula into our from
+
+09:00.900 --> 09:10.340
+results into fiend and salgonics equations yes yes yes yes yes yes exactly
+
+09:10.340 --> 09:18.340
+sorry sorry again fresh cup of coffee yeah I mean that would be our sample our
+
+09:18.340 --> 09:22.420
+original sample data but without the bootstrapping exactly so we would be
+
+09:22.420 --> 09:27.100
+doing a first pass through with our raw data I don't know I'm using the right
+
+09:27.100 --> 09:34.120
+terminology as the first the first approach to actually plugging some
+
+09:34.120 --> 09:39.020
+data in and getting some output yeah that's right so this would just be point
+
+09:39.020 --> 09:43.100
+estimates without without any kind of uncertainty the end you're right the
+
+09:43.100 --> 09:50.340
+bootstrapping would be a post hoc or ex post it would come later I think it's
+
+09:50.340 --> 09:55.860
+gonna I think it's neat I think it's a nice contribution it's as slim as
+
+09:55.860 --> 10:02.620
+intimated it's gonna take a bit more work to to structure the data in a way
+
+10:02.620 --> 10:06.420
+that is amenable to doing this neighborhood bootstrap but we can we can
+
+10:06.420 --> 10:11.900
+we can do that I mean I should have prepared more for this I'm sorry about
+
+10:11.900 --> 10:20.540
+that I mean drink my coffee oh really it's it's definitely we're feeling our
+
+10:20.540 --> 10:26.020
+way here so this is definitely a joint process the feelings mutual feelings
+
+10:26.020 --> 10:31.980
+mutual and please stop you're gonna blush like a like a pink pig if you
+
+10:31.980 --> 10:36.300
+anyway thank you very much with the feelings mutual I'm very much I guess
+
+10:36.300 --> 10:41.780
+and again I'm so sorry for my completely scattered emails and behavior this
+
+10:41.780 --> 10:47.420
+morning a few questions come to mind so I take your point Caroline thank you
+
+10:47.420 --> 10:52.140
+very much for the the clarity on you know I think we all see what the
+
+10:52.140 --> 10:56.020
+objective is and the tasks that are required we need to do these calculations
+
+10:56.020 --> 11:00.860
+we need to get these uncertainty estimates a few questions that popped my
+
+11:00.860 --> 11:07.140
+mind are things like audience or and I think Salimi mentioned a journal journal
+
+11:07.140 --> 11:15.180
+so like so what what do we want this paper to look like is this a methods
+
+11:15.180 --> 11:19.060
+paper is this a substance paper is it a little from column A a little from column
+
+11:19.060 --> 11:28.100
+B is it you know what what um what what do we want the yeah who do we want the
+
+11:28.100 --> 11:34.220
+paper to be for I guess is probably better yeah so I'm I'm wondering whether
+
+11:34.220 --> 11:40.980
+it could go into a modern slavery journal if it isn't a methods paper which
+
+11:40.980 --> 11:45.140
+I suspect it isn't I think we're not really going to make a contribution to
+
+11:45.140 --> 11:50.620
+methods we're going to be using methods in an interesting way we hope to
+
+11:50.620 --> 11:58.780
+produce an output but actually the the interest is in the the application of
+
+11:58.780 --> 12:04.940
+this method to a particular social situation and which is looking at labor
+
+12:04.940 --> 12:11.180
+exploitation among domestic workers in the UK and somewhere like the Journal of
+
+12:11.180 --> 12:16.900
+Modern Slavery might be interested in the application of this method because
+
+12:16.900 --> 12:23.500
+there have been recommendations from GFMS which is the Global Fund for Ending
+
+12:23.500 --> 12:28.380
+Modern Slavery that these sorts of techniques ought to be used but as yet
+
+12:28.380 --> 12:33.980
+there isn't any as far as I'm aware anyone who's tried to do it yeah so that
+
+12:33.980 --> 12:38.660
+would probably protect us a little bit from the purists who would say well
+
+12:38.700 --> 12:43.900
+you're really not using your method as appropriate as pristinely as perhaps you
+
+12:43.900 --> 12:51.300
+could have done but it would perhaps meet the needs of a community for an
+
+12:51.300 --> 12:56.260
+example of how this method was used but also providing some as you say a little
+
+12:56.260 --> 12:59.860
+bit of common and a little bit but providing some substance that would be
+
+12:59.860 --> 13:05.540
+of interest so potentially I mean I don't know whether you're interested in
+
+13:05.540 --> 13:10.940
+publishing in that sort of journal it's not high-ranking but it is this is sort
+
+13:10.940 --> 13:16.900
+of it's bread and butter how does that sound oh yeah yeah yeah I'm interested
+
+13:16.900 --> 13:20.420
+in publishing anywhere I mean not literally anywhere but I mean I'm I'm
+
+13:20.420 --> 13:25.260
+very very open to I'm not at all purists or snob or anything but yeah
+
+13:25.260 --> 13:33.780
+that's absolutely fine for me so then I guess the what's next is sort of you
+
+13:33.780 --> 13:37.500
+know tasks and I think I think you're you're right Caroline that we're yeah
+
+13:37.500 --> 13:40.540
+we're not gonna make a methodological contribution I think the contribution is
+
+13:40.540 --> 13:46.180
+applying these techniques to this and you're right I've been I've only seen G
+
+13:46.180 --> 13:52.980
+and some used in very limited applications and I agree with you I've
+
+13:52.980 --> 13:56.580
+never seen it for for modern slavery and certainly not modern slavery in the UK so
+
+13:56.580 --> 14:02.660
+I think that's absolutely a contribution so I guess what's next is as you said
+
+14:02.660 --> 14:08.580
+times of the essence so yeah who does who does what when
+
+14:10.980 --> 14:18.020
+well I'm very happy to lead on the writing if that's oh yeah yeah I mean
+
+14:18.020 --> 14:24.020
+that's what I'm trying to collect in terms of keeping memos of our meeting
+
+14:24.020 --> 14:31.180
+so that I can generate a methodological section I know Salim and I are just
+
+14:31.300 --> 14:35.180
+about to publish a report on the descriptive statistics related to this
+
+14:35.180 --> 14:43.300
+work good so Salim's done quite a lot of work we had our survey checked through
+
+14:43.300 --> 14:47.540
+by the director of labor market enforcement directors team and they
+
+14:47.540 --> 14:51.660
+were particularly interested from a descriptive point of view in differences
+
+14:51.660 --> 14:56.860
+between employment statuses in domestic workers so we have a report coming out
+
+14:56.860 --> 15:00.980
+we're just talking about the date but we think it'll be the 9th of October that
+
+15:00.980 --> 15:05.060
+focuses very much on different employment statuses which draws on
+
+15:05.060 --> 15:10.500
+description descriptive statistics from that so that sort of side has been done
+
+15:10.500 --> 15:17.180
+good but it I see this work as sort of feeding directly into a journal output
+
+15:17.180 --> 15:23.100
+but when as I mentioned last time when I did do a blog about this for
+
+15:23.100 --> 15:28.100
+international domestic workers day there is a lot of press interest so we're
+
+15:28.100 --> 15:36.500
+talking to BBC's Midlands about the descriptive stats and we think they'll
+
+15:36.500 --> 15:41.900
+plan to cover that in conjunction with the NGOs that we'd be working with
+
+15:41.900 --> 15:48.140
+providing they get some case studies that's what's important for them but I
+
+15:48.140 --> 15:52.900
+think there's ongoing interest in this and that once we've got something more
+
+15:52.900 --> 15:59.420
+solid from a hidden population side I think they'll cover that too so I don't
+
+15:59.420 --> 16:05.460
+the report is sort of a stage on the journey and I think the paper would be
+
+16:05.460 --> 16:12.500
+another like a second stage another way marker and so that's how I'm seeing it
+
+16:12.500 --> 16:17.900
+at present we've already submit our descriptive well one analysis from the
+
+16:17.900 --> 16:22.540
+descriptive statistics to a director of labor market enforcement consultation
+
+16:22.540 --> 16:28.260
+that closed a couple of weeks ago so that was sort of preempting some of the
+
+16:28.260 --> 16:36.580
+figures that Salim's created from the report so we're hoping that this sort
+
+16:36.580 --> 16:43.540
+of cumulative effect will sway policy because at the moment domestic workers
+
+16:43.540 --> 16:48.180
+aren't identified as a sector of particular concern by the labor market
+
+16:48.180 --> 16:53.860
+enforcement director and we're pressing to try and get them on the agenda so if
+
+16:53.860 --> 16:59.220
+you like that's the impact case good excellent no thank you it's very very
+
+16:59.220 --> 17:02.700
+helpful and I will leave all the impact and all the writing to you Caroline
+
+17:02.700 --> 17:06.180
+because that is not my comparative advantage and clearly it is it is yours
+
+17:06.180 --> 17:09.540
+but I think that's fantastic and I think you're right that the congratulations
+
+17:09.540 --> 17:11.780
+by the way that just sounds really exciting to be honest with you that just
+
+17:11.780 --> 17:16.100
+sounds really neat but if things is very helpful so if I'm
+
+17:17.020 --> 17:23.780
+so I think I'm getting more focused now the the essentially you've cleaved off
+
+17:23.780 --> 17:28.060
+the descriptive stuff which kudos like I think I mentioned in an email that the
+
+17:28.060 --> 17:31.740
+survey that you have is really rich so there's tons of opportunity for
+
+17:31.740 --> 17:36.300
+descriptive so by the way please send it over I'd love to just look at it and
+
+17:36.300 --> 17:42.540
+just see what's going on if you don't mind right but the point is for this
+
+17:42.540 --> 17:46.860
+paper we're taking a much more focus it's much more focus it's GN some it's
+
+17:46.860 --> 17:51.180
+hidden population and and that's that and and and then the impact stuff can
+
+17:51.180 --> 17:54.780
+can can can follow if I'm understanding you so that sounds great that's that's
+
+17:54.780 --> 17:59.820
+that's very useful it's very helpful to sort of have that in in in mind so then
+
+17:59.820 --> 18:04.980
+I mean I guess in terms of division of labor like we decided to get down to it
+
+18:04.980 --> 18:12.900
+so the if I remember correctly so there's there's six different estimators in
+
+18:12.900 --> 18:17.380
+the that paper is just the more I read it and reread it the sort of the second
+
+18:17.380 --> 18:21.380
+onion it just keeps getting like it's just there's all these layers that I
+
+18:21.380 --> 18:24.020
+didn't know and I thought I've read it really carefully by the way saline you
+
+18:24.020 --> 18:27.900
+get all the credit for this because you you wouldn't we had a dissertation
+
+18:27.900 --> 18:32.540
+meeting I'm rambling point is I love that paper it's weird the more I read it
+
+18:32.540 --> 18:36.900
+the weirder it gets so there's these six different estimators I think Carolina
+
+18:36.900 --> 18:42.580
+you focused on two of interest and I had suggested that maybe we could sort of
+
+18:42.580 --> 18:48.620
+augment them 23 and 24 or something like that doesn't matter um they have these
+
+18:48.620 --> 18:54.620
+bounds for these these three different adjustment factors and I think we
+
+18:54.620 --> 18:59.060
+decided although I'm certainly open to revisiting this that we could ask that
+
+18:59.140 --> 19:03.140
+we could calculate two of the adjustment factors and that the visibility
+
+19:07.780 --> 19:14.820
+the true positive rate was going to be difficult but maybe with this last email
+
+19:16.500 --> 19:22.020
+maybe we could just there might be some kind of hack if we could make this somewhat
+
+19:22.100 --> 19:30.820
+Herculean assumption that people people in age that know people in they've gone
+
+19:30.820 --> 19:37.260
+through the national referral mechanism those people know the person in age that
+
+19:37.260 --> 19:45.020
+makes sense it doesn't make sense the issue for what I remember the issue with
+
+19:45.020 --> 19:50.620
+the visibility is the the true positive rate is that you need to know and this is
+
+19:50.860 --> 19:55.100
+my opinion one of the weaknesses of G and some is it's really cognitively demanding so you need
+
+19:55.100 --> 20:01.980
+to sample from age and you'd ask people in the hidden population about what people in the sample
+
+20:01.980 --> 20:11.420
+frame know about them exactly exactly exactly you're speaking better than than than I am um
+
+20:12.700 --> 20:17.340
+there are these sort of hacks I mentioned that maybe we could I mean we should try it out and
+
+20:17.420 --> 20:22.540
+then just you know report it honestly or not report it if there's nothing interesting to
+
+20:23.580 --> 20:29.180
+report but but and Caroline you seem to be from what I remember in your email that you somewhat
+
+20:29.180 --> 20:33.900
+positive about this assumption that people have gone through the national referral mechanism
+
+20:35.260 --> 20:41.900
+know I don't know how to say this in English if if someone who's in the hidden population
+
+20:42.380 --> 20:47.100
+reports knowing eight people they've gone through the the national referral mechanism
+
+20:47.820 --> 20:55.340
+can we assume that all eight of those people know that the person responding the person in age
+
+20:55.980 --> 21:02.700
+is in the hidden population and if we can make that assumption then we can I think we can calculate
+
+21:02.780 --> 21:21.900
+this the third um the third um adjustment factor that's really interesting I mean I'm sorry sorry
+
+21:22.780 --> 21:29.420
+yeah I'm sorry no it's it's very very strange because it's all these I don't have a clear
+
+21:29.420 --> 21:35.740
+head for it okay so we can so we sample people and then some of them there were there's referrals
+
+21:35.740 --> 21:40.300
+and oh by by the way just really really quick and I'm sorry again to be so scattered the um
+
+21:41.500 --> 21:45.500
+so how does the recruitment work you give them coupons is there a fixed number of coupons
+
+21:45.500 --> 21:53.020
+or is it just as many people as they want to refer no it was um contact telephone contact numbers
+
+21:53.980 --> 21:59.260
+and I think they had up to five is that correct can you remember on the survey okay but they
+
+21:59.260 --> 22:06.860
+could refer up to five people okay um mobile phone number so that was effectively acting as a unique
+
+22:06.860 --> 22:12.300
+coupon identifier right good good thank you thank you that's I just right back okay so so we have
+
+22:12.300 --> 22:20.700
+the sample and and it's uh and it comes in waves thanks to referrals and that's all that's fine it's
+
+22:20.700 --> 22:26.140
+absolutely no problem some of okay let me start differently we have a sample from the sampling
+
+22:26.140 --> 22:30.620
+frame which is domestic workers in the UK so it's very well defined well they have a mobile number
+
+22:31.180 --> 22:36.300
+fine perfectly well defined excellent fantastic so that's that's that's the sampling frame some of
+
+22:36.300 --> 22:42.220
+those people happen to be in the hidden population that we just sort of lucked out to to to get and
+
+22:42.220 --> 22:48.540
+we can identify them through a number of Caroline you have a much better grasp on this than I but
+
+22:48.540 --> 22:54.700
+there's half a dozen different questions that we could use to to or combinations thereof to
+
+22:54.700 --> 23:03.100
+identify um oh yeah that's another thing I should before I forget risk um uh that we can identify
+
+23:03.100 --> 23:08.940
+okay fine so I'm I'm tabling that and leaving it to you all the experts um so we sort of we just
+
+23:09.020 --> 23:19.660
+all happen to have some people in in age in our sample now the the the probalters are
+
+23:20.780 --> 23:24.300
+what I originally thought there was only one but Caroline you've really pointed out that we
+
+23:24.300 --> 23:30.860
+actually have more than that so one is domestic workers so how many domestic workers working in
+
+23:30.860 --> 23:37.020
+the UK that have a mobile number do you know so that's fine we we we have officials I think
+
+23:37.020 --> 23:40.540
+correct me if I'm wrong we have official statistics on that so we know the the the
+
+23:41.260 --> 23:46.620
+that the known size subpopulation so that's fine we can use that for the scale up
+
+23:47.260 --> 23:56.380
+yeah that's a big question oh sorry to dampen the fire on that one but among the the visa
+
+23:56.380 --> 24:02.460
+situation is a little bit strange so a large number of domestic workers come over on the overseas
+
+24:02.460 --> 24:09.260
+domestic worker visa so where we have people from the Philippines so sort of a subsets of our
+
+24:09.260 --> 24:17.580
+sample we have a um a population estimate which we can base on the visa issuing numbers but then
+
+24:17.580 --> 24:24.860
+there's this other part of the sample so particularly for example people from Latin America who may
+
+24:24.860 --> 24:34.780
+come over on a BA visa where they have nationality Spanish or Portuguese nationality so therefore
+
+24:34.780 --> 24:41.820
+they have the right to come into the UK to work now that bit is more difficult to estimate
+
+24:43.100 --> 24:48.940
+so we could assume that we are only counting people with overseas domestic workers but we
+
+24:48.940 --> 24:55.820
+know if we do that we will be artificially limiting the overall population size so our
+
+24:55.820 --> 25:01.740
+estimation would be too large so I mean we can make that assumption but we'd have to state that
+
+25:02.620 --> 25:10.220
+as a limitation of that approach what makes sense yes yes and thank you and that's again the onion
+
+25:10.220 --> 25:17.260
+just keeps getting um could could be is it would it is it less egregious to
+
+25:20.140 --> 25:21.820
+I thought this is getting weird
+
+25:25.660 --> 25:30.860
+is it is it more palpable to assume that
+
+25:31.820 --> 25:41.260
+that people entering on a particular visa no domestic workers they're also on that visa so
+
+25:41.260 --> 25:47.740
+for example people from the Philippines yeah that would work that so that that might be one
+
+25:47.740 --> 25:51.580
+possible I mean you're right like this is just a limitation we'll just have to say it but I'm
+
+25:51.580 --> 26:06.780
+just thinking aloud if we could yeah try to okay right and another way to justify this would be
+
+26:06.780 --> 26:10.940
+your from what I understand and you guys know this way better than I do but the dealing with the NGOs
+
+26:10.940 --> 26:17.740
+are are it's what I gathered and Craig from wrong they're sort of national or ethnicity specific
+
+26:17.820 --> 26:22.540
+is what I gathered so that that might also help with the justification though okay so okay so so
+
+26:24.460 --> 26:31.740
+data problem 41 aside um we just so happened to have people in in age and so what's this this
+
+26:31.740 --> 26:38.940
+augmented relational data the game of contacts what what they would do is they would take the
+
+26:38.940 --> 26:45.900
+people in age and they would ask them how many doctors do you know pro valter and then how many
+
+26:45.900 --> 26:53.500
+doctors do you know that know that you're in the hidden population that's a hard question but that's
+
+26:53.500 --> 26:57.900
+what's required that's what's required for this third adjustment factor um so we don't have that
+
+26:57.900 --> 27:05.180
+that's fine so what I was suggesting is could we assume that so so we don't have doctors we don't
+
+27:05.180 --> 27:11.980
+have people named John we have domestic workers in the UK and we have people have gone through the
+
+27:12.060 --> 27:16.060
+national referral mechanism so by the just so I'm clear we do have numbers on that don't we
+
+27:17.020 --> 27:22.700
+we do okay good so so what I'm suggesting and again it's this is a big assumption and I don't
+
+27:22.700 --> 27:29.020
+know if it's justified but could we assume that so just for simplicity let's just say there's two
+
+27:29.020 --> 27:34.380
+pro valter groups there's the UK domestic workers who have a mobile number and people that you know
+
+27:34.380 --> 27:39.660
+they've gone through the national referral mechanism so if we we do we so happen to have
+
+27:40.460 --> 27:43.900
+somebody in in age and we ask them how many people do you know they've gone through the
+
+27:43.900 --> 27:47.900
+natural referral mechanism we have that answer we had that's I don't know what it is was question
+
+27:47.900 --> 27:53.660
+something could we assume so say so say I'm in age and you just so happen to sample me and I say I
+
+27:53.660 --> 27:57.900
+know eight people have gone through the natural referral mechanism could we assume that all eight
+
+27:57.900 --> 28:02.860
+of those people that I know that have gone through the natural referral mechanism can we assume that
+
+28:02.860 --> 28:11.420
+all eight of them know that I'm in the hidden population if so then I think we could we could
+
+28:11.420 --> 28:16.700
+work out all three of these I think more copies needed that we could work out all three of these
+
+28:16.700 --> 28:22.540
+adjustment factors now I'm sort of on the one hand that seems like a big assumption on the other hand
+
+28:23.980 --> 28:29.900
+it seems plausible but again you guys are the substance experts on this because if I know people
+
+28:29.900 --> 28:33.660
+that if I'm in if I'm being exploited I know people have gone through the natural referral
+
+28:33.660 --> 28:41.980
+mechanism it doesn't seem too big a leap to think that those people that were sort of can
+
+28:41.980 --> 28:44.780
+that we're we're we're into you know that I know them they know me
+
+28:46.460 --> 28:51.660
+yeah if I think it's arguable that we could assume it I mean I think we can state our assumptions
+
+28:52.060 --> 28:53.580
+yes of course yeah
+
+28:53.580 --> 28:59.900
+and and then be challenged on it that's right that's right at least it's uh we can say that
+
+28:59.900 --> 29:04.460
+that assumption may not hold true but that's the assumption that we've made for practical purposes
+
+29:04.460 --> 29:08.700
+in this study and like I said this is this is this is kind of icing on the cake I mean we don't
+
+29:09.660 --> 29:16.860
+you know we don't we don't it's not a deal breaker we don't have to do this I mean we can we've we've
+
+29:16.860 --> 29:20.780
+we've got the data we've got and we can do the calculations and do the bootstrap and
+
+29:20.780 --> 29:25.740
+and I was just thinking a lot if we could if we could well like I said you know we should
+
+29:25.740 --> 29:32.860
+probably just do a bunch of stuff and see what we want to report and uh okay so sorry I'm so
+
+29:32.860 --> 29:41.260
+scattered so um so um so what's next who who's going to do what and then I did have one additional
+
+29:41.260 --> 29:46.700
+sort of okay so so so what's next so what I think is we just need to start doing calculations so we
+
+29:46.700 --> 29:53.900
+need to uh do the insum do the adjustment factors uh personally I really like this idea of
+
+29:55.020 --> 30:03.980
+the bounds in the subliminal appendix so basically so my idea is to is to um so say we can't estimate
+
+30:03.980 --> 30:08.700
+all three of the adjustment factors we can use a kind of sensitivity analysis and say so we we
+
+30:08.700 --> 30:14.300
+know that the true positive rate ranges between zero and one or zero infinity I don't remember
+
+30:14.300 --> 30:18.620
+where it is but it's it's in the paper what happens to our estimates of the size of the
+
+30:18.620 --> 30:26.220
+hidden population as we just sweep over all of the possible values for this this third adjustment
+
+30:26.220 --> 30:33.660
+factor um I kind of like that because it it sort of tells you something about I mean it's that it's
+
+30:33.660 --> 30:39.660
+heuristic but it tells you something about about well it tells you something about how important
+
+30:39.660 --> 30:44.940
+these adjustment factors are in in estimating the size of the hidden population right if if
+
+30:44.940 --> 30:49.900
+if you sweep over all the possible values and the size of the hidden population I mean it's
+
+30:49.900 --> 30:54.700
+going to change some who doesn't change by an order of magnitude and that gives you well that tells
+
+30:54.700 --> 30:58.540
+you something that that third adjustment factor the true positive rate isn't very important in
+
+30:58.540 --> 31:02.860
+this particular instance which is which is something I mean that that's that's information
+
+31:02.860 --> 31:08.060
+that's that's that's that's good you know okay so I think we need to just start doing calculations
+
+31:08.060 --> 31:11.580
+start doing this these what I'm calling sensitivity analysis but probably is a better word
+
+31:12.460 --> 31:17.340
+salim I'm going to put you to work on this adjacency matrix to to to do the the bootstrap
+
+31:19.180 --> 31:25.500
+and I'm sorry if I'm sounding bossy or whatnot I'm just I'm just trying to just just okay okay
+
+31:25.500 --> 31:29.180
+okay and regarding the method you are
+
+31:29.180 --> 31:30.300
+but
+
+31:59.180 --> 32:02.220
+and we it might take some time maybe
+
+32:06.540 --> 32:10.220
+good thank you see I'm I'm confident you're very capable and I know this from
+
+32:11.180 --> 32:17.820
+from years of working with you so um that's great sorry my legs fell asleep um there was one new
+
+32:18.620 --> 32:25.340
+thing that uh came up in one of Caroline's emails that I wanted to not not that I want to give us
+
+32:25.900 --> 32:29.020
+work to do or me more work to do or us more work to do but um
+
+32:30.780 --> 32:37.260
+sorry my fit fall asleep um Caroline you mentioned something about like okay so we mentioned earlier
+
+32:37.260 --> 32:41.980
+that there's these we have these different questions that are uh could be used to identify
+
+32:41.980 --> 32:48.940
+people in age and then I think Caroline from among you had suggested could be sort of create an index
+
+32:48.940 --> 32:56.300
+or an aggregate variable that indicated what I was hearing and I don't know if you said this
+
+32:57.020 --> 33:02.620
+something about risk um and I really like that I don't I'm just raising it to see if this is
+
+33:02.620 --> 33:08.780
+something we want to explore or put in the paper the the reason okay so look so we have these
+
+33:08.780 --> 33:14.780
+different indicators that we could definitely use to indicate if someone is in the hidden population
+
+33:14.780 --> 33:19.180
+that's great we can try out different ones and we can put a table and show the comparison and
+
+33:19.180 --> 33:24.220
+that that's very cool in and of itself because to my knowledge not a lot of studies do that so
+
+33:24.220 --> 33:30.620
+that's another advantage of the of your survey uh Caroline but I think and correct me if I'm wrong
+
+33:30.620 --> 33:38.300
+that you had suggested like um could we combine them or sort of some sort of like a likeert scale
+
+33:38.300 --> 33:41.900
+is kind of what I had in mind I really I I just want to raise it to see if that's something we
+
+33:41.900 --> 33:46.460
+want to explore but the reason I think it's needed is because it's as far as I can tell me again you
+
+33:46.460 --> 33:53.500
+all are the experts but when I read about modern slavery there's always this not always but there's
+
+33:53.500 --> 34:02.060
+almost always this modern slavery and risk of of uh of experiencing modern slavery and and
+
+34:02.940 --> 34:06.300
+what I'm getting at it seems like a lot of the literature that I read again you all are the
+
+34:06.300 --> 34:13.500
+experts on this there is this dichotomous component of experiencing modern slavery yes or no but then
+
+34:13.500 --> 34:20.220
+there's it seems on from like the policy pages white papers or whatnot that there's this risk
+
+34:20.220 --> 34:26.060
+aspect what's the risk of someone being exposed or experiencing modern slavery and and my ears
+
+34:26.060 --> 34:31.500
+sort of perked up when I read your email Caroline about combining various questions to get this index
+
+34:31.500 --> 34:35.420
+or ranking or I don't I don't remember the language that you used um so I just wanted to raise that
+
+34:35.420 --> 35:00.860
+to see if that's something we want to explore uh question mark I'm sorry I'm sorry I'm sorry
+
+35:05.740 --> 35:14.940
+say one to seven or one to five against a particular attribute and those attributes are
+
+35:14.940 --> 35:21.820
+you saying could be the various questions that we have um designed into the survey
+
+35:22.860 --> 35:30.140
+exactly yes yes yes and maybe you're right maybe the liquid scale is too is too strong maybe we
+
+35:30.220 --> 35:35.980
+we need something like a factor analysis or something so the way I and it's been since
+
+35:35.980 --> 35:40.540
+graduate school since I studied this so I could be wrong but the way I remember liquid scales is that
+
+35:40.540 --> 35:48.620
+there's it's a hierarchy right so if if you answered yes to question two then for sure you
+
+35:48.620 --> 35:53.260
+answered yes to question one so basically they're these like levels of experiences and from what I
+
+35:53.260 --> 35:58.860
+remember the questions kind of some of the questions seem to have that kind of flavor and correct me
+
+35:58.940 --> 36:03.500
+if I'm wrong I could be I could be wrong there but but I mean if it's liquid or if it's if it's not
+
+36:03.500 --> 36:08.940
+the the the liquid would be great but it's very very strong because it has this hierarchy this
+
+36:08.940 --> 36:15.420
+nesting feature attribute but if not then you know some other way of aggregating individual
+
+36:15.420 --> 36:21.180
+questions into a the idea is to get away from the dichotomous are you and are you speaking
+
+36:21.180 --> 36:28.700
+about slavery yes or no into some sort of gradient where we and then could we sell that the index
+
+36:28.700 --> 36:34.780
+or the ranking variable the thing that we make as something akin to risk of experiencing modern
+
+36:34.780 --> 36:46.380
+slavery
+
+36:51.100 --> 36:54.380
+yes yes 100% take take question
+
+36:54.380 --> 37:00.540
+if you answered yes to question one and yes to question two that would put you at a higher
+
+37:00.540 --> 37:06.060
+risk of modern slavery and sort of add on to end whatever exactly exactly right exactly right
+
+37:06.060 --> 37:11.580
+exactly right sorry you said it way better than I did and much more succinctly as well I'm so sorry
+
+37:11.580 --> 37:16.700
+oh boy waking up earlier next time drinking lots more coffee but but and like I said I don't know
+
+37:16.700 --> 37:21.820
+if this this is something we want to do I mean it's just again it's where it's it's icing on the
+
+37:21.820 --> 37:27.340
+cake it's not we definitely don't need to it's just the idea of risk popped into my head after
+
+37:27.340 --> 37:36.620
+reading one of your emails caroline and it rang this bell of a yeah the risk is really interesting
+
+37:36.620 --> 37:43.900
+and I think it comes from this criminalization of modern slavery so if you if you're saying that you
+
+37:43.900 --> 37:51.260
+are in modern slavery it implies that you've met the legal standard for your whatever conditions
+
+37:51.260 --> 37:59.340
+you're experiencing being proven and somebody being prosecuted so that's obviously quite a high bar
+
+38:00.140 --> 38:05.500
+and there's obviously a spectrum of labor what might be called labor exploitation rather than
+
+38:05.500 --> 38:13.020
+modern slavery which are undesirable conditions but they may not be modern they may not qualify you
+
+38:13.020 --> 38:22.060
+as being somebody with positive grounds for a modern slavery case right but the more of these
+
+38:22.060 --> 38:29.180
+poor um indicators of conditions that exist the more likely it is that your case would be considered
+
+38:29.820 --> 38:35.340
+that of modern slavery so that seems to tie in with what you're suggesting Scott
+
+38:35.820 --> 38:41.260
+perfect that's again I couldn't literally I couldn't say say it better myself Caroline yet
+
+38:41.260 --> 38:46.380
+that's exactly right and also just to double kill on that we don't we have that from what I remember
+
+38:46.380 --> 38:50.700
+reading through the code book we definitely have that there's these you know half a dozen a dozen
+
+38:50.700 --> 38:54.460
+different questions that sort of get at these different I don't know angles aspects would have
+
+38:54.460 --> 39:05.020
+you so like I mean I think that's yes Caroline yes 100% uh one thank you that's you've said it
+
+39:05.020 --> 39:09.340
+better than I did two I'm pretty sure I don't know if we're in a unique position but we definitely
+
+39:10.140 --> 39:14.140
+thanks to your survey I believe we have data to do just that and then three
+
+39:15.100 --> 39:21.820
+can't count is that something we want to do in this paper yeah we can it would it would seem a neat
+
+39:21.820 --> 39:30.300
+way of addressing these multiple instances of exploitation to to say that the more of these
+
+39:30.300 --> 39:36.620
+questions that you're demonstrating apply to your situation the more likely it is that you are at risk
+
+39:36.620 --> 39:43.740
+and the case we have to say at risk yes modern slavery yes because it's we haven't got legally
+
+39:43.740 --> 39:49.420
+improving cases but I think we can legitimately say that excellent okay so now there's more
+
+39:50.060 --> 39:57.420
+that's very very cool thank you uh now I just realized do I know how to do that I don't know
+
+39:58.060 --> 40:04.700
+I mean the neat thing there is like this might be oh boy I need a lot more coffee so now that I've
+
+40:04.700 --> 40:13.420
+just pitched this thing about risk and not a continuous rather than a dichotomous variable now
+
+40:13.420 --> 40:18.620
+I'm just now thinking hang on how do you do scale up with
+
+40:21.740 --> 40:25.660
+yeah what's it was a continuous dv I have I have no idea um
+
+40:28.220 --> 40:31.740
+yeah we should think about I mean it's a neat it's a neat question I like I like these patches
+
+40:31.740 --> 40:36.220
+okay all right well thank you for that and again sorry for just meandering all over the place but
+
+40:36.220 --> 40:38.940
+Caroline you've you've you've you've you've saved my
+
+40:41.260 --> 40:51.500
+nonsensical rhetoric um so um yeah so we've got Selene for September uh I'm gonna have to spend
+
+40:51.500 --> 40:54.300
+I don't know how much time we're gonna have for this I'm very very interested and I understand
+
+40:54.300 --> 40:58.940
+times of the essence and if I'm being honest I think you're both right that like or I don't
+
+40:58.940 --> 41:04.300
+know if you're saying this but the sort of September is my best it's going to be September
+
+41:04.300 --> 41:09.180
+or December because when teaching starts for me at least it just just the teaching starts it just
+
+41:09.180 --> 41:19.580
+it's it's really really heavy um so what should we do next so I guess we press ahead with um if
+
+41:19.580 --> 41:26.380
+you are happy to direct Selene for these last two weeks and see how far we can get um and then
+
+41:26.380 --> 41:34.380
+we take stop and I can start drafting an article for modern slavery based on what we've got and then
+
+41:34.380 --> 41:40.540
+if we need to we come back to it in December I guess sorry we don't get it no I mean that's the
+
+41:40.540 --> 41:46.940
+the um reality of research and teaching I understand so for me I'm not teaching this semester I'm
+
+41:46.940 --> 41:56.140
+teaching spring semester so I will have time to do some drafting um so I suppose the question is
+
+41:56.140 --> 42:03.740
+how far can we get by then that's the concept of it isn't it okay for Dr. Moser I will send you that
+
+42:03.740 --> 42:10.540
+excellent spreadsheet that I shared earlier and what else is needed for that data clinic or anything
+
+42:10.540 --> 42:16.060
+else you should tell us to leave in the email if you want yeah well so one thing and this is going
+
+42:16.060 --> 42:21.180
+to be a judgment so I'll leave it to to the two of you is is picking the questions I think you're
+
+42:21.260 --> 42:26.940
+100% right Carolina I was making it too let's just pick five six questions that we think are
+
+42:26.940 --> 42:34.060
+indicators of uh you had the right you had a better phrase but what questions we want to add
+
+42:34.060 --> 42:40.140
+together to come up with this index or rank rank variable there's several that we could we'll need
+
+42:40.140 --> 42:45.820
+to make a decision so I'll leave that to you we've got you know there's for my memory it's and again
+
+42:45.820 --> 42:51.980
+kudos to you for the survey design it's it's everything from before I remember there's even
+
+42:51.980 --> 42:56.460
+like an explicit question like are you being exploited maybe it's not literally that exploited
+
+42:56.460 --> 43:01.420
+that explicit but then there's all these other you know have you been detained does your employer
+
+43:01.420 --> 43:05.660
+have your travel documents there's all these other questions so we'll need to pick some
+
+43:06.300 --> 43:13.020
+collection of those to to add together to make this this this risk indicator I don't know which
+
+43:13.020 --> 43:19.020
+questions those are I'll leave that to to to to you um Selim uh yes you and I will be in touch
+
+43:19.020 --> 43:25.500
+regarding the data um are you comfortable Selim doing the calculation so Caroline had this really
+
+43:25.500 --> 43:33.340
+good uh it was it was from several emails ago but uh uh sort of a step by step the protocol
+
+43:33.340 --> 43:39.260
+yeah the protocol what to calculate um once you tell me the data cleaning is good to go
+
+43:39.980 --> 43:45.340
+then I can stop doing it and I will face some challenge that's fine and I'll get back that's
+
+43:45.340 --> 43:51.740
+fine good good so in the in the short run then um we need to pick questions that indicate that you're
+
+43:51.740 --> 43:57.820
+in the hidden population questions plural and then we can try out these individual questions
+
+43:57.820 --> 44:02.620
+then we can also add them all together to get this risk index which I think is very cool and also
+
+44:02.620 --> 44:09.900
+very challenging um step two uh Selim you and I will have to work on this adjacency matrix
+
+44:09.900 --> 44:15.980
+that's only important for the bootstrapping which comes later so in the in the in the short run we
+
+44:15.980 --> 44:23.100
+can you Selim can start doing these calculations based on on Caroline's protocol uh and Selim
+
+44:23.100 --> 44:29.820
+you and I can can email on that and yeah let's push hard in September uh and uh
+
+44:32.060 --> 44:37.580
+and see see what we we can do I I believe for sure we can do the calculations we can do the
+
+44:37.580 --> 44:43.500
+calculations today I think um well once we have the questions sorted out uh the bootstrapping will
+
+44:43.500 --> 44:48.220
+take a little bit of work but it's relatively straightforward the risk and scale up is really
+
+44:48.220 --> 44:56.060
+interesting and in my mind sort of the step three down down the road I don't I don't really
+
+44:56.060 --> 45:01.020
+know I don't have a clear picture on how to how to do that just yet um but I I think I have a
+
+45:02.620 --> 45:09.820
+more focused uh idea of what's of what's happening I wish we had more time I'm really sorry everybody
+
+45:09.820 --> 45:18.060
+that uh yeah sorry no that's great we appreciate everybody's juggling various things and we got
+
+45:18.060 --> 45:24.540
+started the semester coming up there's a lot to think about so let me read this back to you
+
+45:24.540 --> 45:31.980
+so that I can check I've got this right so from I need to pick the five or six question combinations
+
+45:32.940 --> 45:37.900
+to produce a rank variable that would indicate somebody was at risk of being in the hidden
+
+45:37.900 --> 45:47.900
+population um Selim will start calculating uh the GSM formula that were identified in the protocol
+
+45:49.180 --> 45:55.260
+from our existing data set and you and Selim will you will help Selim
+
+45:56.460 --> 46:00.860
+send the data in preparation for bootstrapping and then I think you had another point which
+
+46:01.420 --> 46:09.500
+uh the the risk uh uh sort of that's on me or all of us to think about how to do scale up when
+
+46:10.700 --> 46:17.340
+the dependent variable isn't dichotomous so scale up is meant to estimate the size of a population but
+
+46:18.460 --> 46:25.420
+if we want to estimate the amount of risk in a population I don't it's not I don't I don't know
+
+46:25.420 --> 46:30.780
+how to do that um but but I we we can think about it and we can figure out a way to do it does that
+
+46:30.780 --> 46:35.420
+make sense I don't know if that makes sense yeah I think you just say yeah we don't know how to do
+
+46:35.420 --> 46:42.380
+this yet but we think it could be interesting yeah that's right so um yeah yeah I think for me that
+
+46:42.380 --> 46:49.900
+would be going back to the and then Selgin again trying to work out what their equations say about
+
+46:49.900 --> 46:57.420
+yeah they use yeah whether you're in this situation of labor exploitation exploitation or not
+
+46:58.060 --> 47:06.220
+versus yeah okay rather uh more of a spectrum exactly exactly you nailed it I mean the the
+
+47:12.620 --> 47:17.260
+there's sort of cheap ways to do it like so there's all these model based so if you guys
+
+47:17.900 --> 47:22.380
+the Laga paper I don't I can't remember who I've talked to about which papers
+
+47:23.900 --> 47:33.580
+anyway so the the the Feehan and Solnik again amazing but they sort of have these two approaches
+
+47:33.580 --> 47:39.740
+design based and model based and they seem to my my reading is they kind of favor the design
+
+47:39.740 --> 47:44.060
+based which is fine so that's like designing the sample and whatnot there's this whole other way of
+
+47:44.060 --> 47:49.020
+doing this kind of estimation that's model based where you just write down formulas and then you get
+
+47:49.020 --> 47:56.540
+a fast computer to do MCMC bays posteriors blah blah blah and so it's sort of the cheap way to
+
+47:56.540 --> 48:02.220
+do this is you just in the model based world you just replace a binomial distribution with a
+
+48:02.220 --> 48:08.380
+Poisson distribution and and you're off and running um this is all regards to this this risk
+
+48:08.380 --> 48:14.540
+business um uh forget I said any of that let me let me think on it I don't know I don't know how to
+
+48:14.540 --> 48:18.940
+do it I'm sure there's some way to do it but let me forget I said anything let me let me let me
+
+48:18.940 --> 48:23.340
+think on it and come back to you if you find it if you find any papers that will be useful for us to
+
+48:23.340 --> 48:30.620
+read as background Scott then do just log them across and I'll um if you if you find a come across
+
+48:30.620 --> 48:39.420
+anything and I'll also do this yes please I think the answer we'll see if we can find the answer
+
+48:39.420 --> 48:45.980
+perhaps in the literature or the gap in the literature but I suspect that's for me going
+
+48:45.980 --> 48:52.140
+beyond my methodological capability is certainly a present this is why collaborating is great this
+
+48:52.140 --> 48:56.540
+we all have we all have comparative advantages and I horrible at writing I don't know this
+
+48:56.620 --> 49:02.220
+the substance of this whatsoever so it's great to yeah this is this is why collaborating is great
+
+49:02.220 --> 49:09.180
+um okay so hopefully we've got a complementary set of skills and I mean if we find I know at the
+
+49:09.180 --> 49:13.020
+beginning you said you're not statistician but you obviously have a great deal more statistical
+
+49:13.020 --> 49:19.900
+knowledge than I do but if you do feel that we need somebody else then I mean let me know and
+
+49:20.700 --> 49:25.100
+we can try and recruit somebody because there was another guy who made contact with me
+
+49:25.820 --> 49:31.340
+I said he was interested in this I think it's um David Murphy do you know David
+
+49:32.780 --> 49:37.660
+no so I just said it was something we were working on at the moment but I can have a look
+
+49:37.660 --> 49:44.860
+to see if we need to expand the team then we can do that too I think okay let's let's let's like you
+
+49:44.860 --> 49:52.140
+said present yeah I think I mean you've just been your advice has been invaluable so I think we
+
+49:52.220 --> 49:58.860
+we press on I agreed I agreed let's see I think you're on the same page let's let's let's do a
+
+49:58.860 --> 50:06.460
+hard push in September and see how far we get and um Selene you and I will be emailing a lot
+
+50:06.460 --> 50:14.780
+in the next two weeks um right that's perfect okay I think go ahead I've maybe making some
+
+50:14.780 --> 50:19.260
+notes just to capture what we've said um I'll tidy those up and then I'll email them around
+
+50:19.260 --> 50:23.660
+everybody say that we've got another marker in the sand about just just trying to capture the
+
+50:23.660 --> 50:29.260
+discussions really sounds great yeah thanks so much and uh it's very it's very cool I'm
+
+50:30.060 --> 50:33.100
+especially this next stage I'm actually very very excited about because this is like
+
+50:33.980 --> 50:37.580
+this is where we start learning stuff this is where we like actually get anyway I'm I'm very
+
+50:37.580 --> 50:45.500
+excited so let's let's uh thank you again thank you again right that's cool right fantastic thank
+
+50:45.500 --> 50:51.740
+thank you all uh we'll be in touch thanks very much take care bye
+
+51:15.500 --> 51:21.740
+okay
+
+52:45.500 --> 52:52.500
+Thank you very much.
+

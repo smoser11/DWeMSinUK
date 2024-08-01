@@ -1,0 +1,4 @@
+0000000000000000000000000000000000000000 4eced4517c7f2b32ca9ba4af117cd6190ac7154d smoser11 <scott.moser@gmail.com> 1708866230 +0000	clone: from https://github.com/smoser11/DWeMSinUK.git
+4eced4517c7f2b32ca9ba4af117cd6190ac7154d e906dfe73d47f8fd9dd5d2a75d39592d0d34502a smoser11 <scott.moser@gmail.com> 1709302726 +0000	pull --ff --recurse-submodules --progress origin: Fast-forward
+e906dfe73d47f8fd9dd5d2a75d39592d0d34502a c6ed34ac059599951238c005f538a02be8d02b88 smoser11 <scott.moser@gmail.com> 1709302757 +0000	commit: web-based
+c6ed34ac059599951238c005f538a02be8d02b88 89d15df64f956577d2902a7dc4b87cb22347246f smoser11 <scott.moser@gmail.com> 1709471799 +0000	commit: today

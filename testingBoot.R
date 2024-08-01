@@ -1,8 +1,35 @@
+getwd()
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
+library(tidyverse)
+library(Neighboot)
+
+#Load the synthetic population network dataset.
+data("pop.network")
+
+#Draw an RDS sample from the simulated network using the sampleRDS function
+#from the package RDStreeboot.
+require(RDStreeboot)
+RDS.samp <- sample.RDS(pop.network$traits, pop.network$adj.mat, 200, 10,
+					   3, c(1/6,1/3,1/3,1/6), FALSE)
+
+#Compute 95\% confidence intervals using the percentile method
+neighb(RDS.data=RDS.samp, quant=c(0.025, 0.975),method="percentile", B=100)
+
+str(RDS.samp)
+RDS.samp$degree
+
 load("./survey/dd.RData")
+
+rds.df <- rd.dd
+# Initialize a dataframe with unique ids and out_degree set to 0
+unique_ids <- unique(rds.df$id)
+out_degree_df <- data.frame(id = unique_ids, out_degree = 0)
 rd.ddd <- cbind(rd.dd, out_degree_df)
 sort(names(rd.ddd))
+rd.ddd <- rd.ddd %>% select(!id)
 
-rd.ddd <- rd.ddd %>% select(recruiter.id, recruiter_id, network.size.variable, id, id2,out_degree, numRef, NonEmptyCount, q13, referedFreq, everything())
+rd.ddd <- rd.ddd %>% select(recruiter.id, recruiter_id, network.size.variable,out_degree, numRef, NonEmptyCount, q13, referedFreq, everything())
 names(rd.ddd)
 
 
@@ -51,6 +78,7 @@ trait_vars <- c("suspicious_variable", "q1", "q2", "q3", "q4", "q5", "q6", "q7",
 
 traits <- rd.dd[, c("id", trait_vars)]
 traits[, trait_vars] <- lapply(traits[, trait_vars], as.numeric)
+warnings()
 
 # Convert traits to numeric
 traits <- as.data.frame(lapply(traits, as.numeric))
@@ -154,11 +182,9 @@ RDS.data <- list(
 	degree = degree
 )
 
+library(Neighboot)
 # Perform neighborhood bootstrap using neighb()
 bootstrap_results <- neighb(RDS.data, quant = c(0.025, 0.975), method = "percentile", B = 1000)
-
-
-
 
 
 
@@ -430,7 +456,7 @@ RDS.data <- list(nodes = nodes, edges = edges, traits = traits, degree = degree$
 library(dplyr)
 
 # Read the data
-rd.dd <- read.csv("/path/to/your/dd.csv")
+rd.dd <- read.csv("dd.csv")
 
 rd.dd$recruiter.id <- as.numeric(rd.dd$recruiter.id)
 rd.dd$id <- as.numeric(rd.dd$id)
@@ -677,3 +703,4 @@ samp2c <- sample.RDS(faux.network_zeroCols$traits, faux.network_zeroCols$adj.mat
 str(samp2c)
 samp2c$degree
 neighb(samp2c, B=10)
+

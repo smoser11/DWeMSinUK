@@ -1,0 +1,1229 @@
+[
+	{
+		"id": "gile15-network",
+		"type": "article-journal",
+		"abstract": "Respondent-driven sampling is a widely used method for sampling hard-to-reach human populations by link tracing over their social networks. Inference from such data requires specialized techniques because the sampling process is both partially beyond the control of the researcher, and partially implicitly defined. Therefore, it is not generally possible to compute the sampling weights for traditional design-based inference directly, and likelihood inference requires modelling the complex sampling process. As an alternative, we introduce a model-assisted approach, resulting in a design-based estimator leveraging a working network model. We derive a new class of estimators for population means and a corresponding bootstrap standard error estimator. We demonstrate improved performance compared with existing estimators, including adjustment for an initial convenience sample. We also apply the method and an extension to the estimation of the prevalence of human immunodeficiency virus in a high-risk population.",
+		"container-title": "Journal of the Royal Statistical Society: Series A (Statistics in Society)",
+		"DOI": "10.1111/rssa.12091",
+		"ISSN": "1467-985X",
+		"issue": "3",
+		"language": "en",
+		"note": "tex.ids= gile15-networka\n_eprint: https://rss.onlinelibrary.wiley.com/doi/pdf/10.1111/rssa.12091",
+		"page": "619-639",
+		"source": "Wiley Online Library",
+		"title": "Network model-assisted inference from respondent-driven sampling data",
+		"URL": "http://onlinelibrary.wiley.com/doi/abs/10.1111/rssa.12091",
+		"volume": "178",
+		"author": [
+			{
+				"family": "Gile",
+				"given": "Krista J."
+			},
+			{
+				"family": "Handcock",
+				"given": "Mark S."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					12,
+					17
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2015"
+				]
+			]
+		}
+	},
+	{
+		"id": "mccr12-evaluation",
+		"type": "article-journal",
+		"abstract": "Background: Respondent-driven sampling is a novel variant of link-tracing sampling for estimating the characteristics of hard-to-reach groups, such as HIV prevalence in sex workers. Despite its use by leading health organizations, the performance of this method in realistic situations is still largely unknown. We evaluated respondent-driven sampling by comparing estimates from a respondent-driven sampling survey with total population data. Methods: Total population data on age, tribe, religion, socioeconomic status, sexual activity, and HIV status were available on a population of 2402 male household heads from an open cohort in rural Uganda. A respondent-driven sampling (RDS) survey was carried out in this population, using current methods of sampling (RDS sample) and statistical inference (RDS estimates). Analyses were carried out for the full RDS sample and then repeated for the first 250 recruits (small sample). Results: We recruited 927 household heads. Full and small RDS samples were largely representative of the total population, but both samples underrepresented men who were younger, of higher socio-economic status, and with unknown sexual activity and HIV status. Respondent-driven sampling statistical inference methods failed to reduce these biases. Only 31%—37% (depending on method and sample size) of RDS estimates were closer to the true population proportions than the RDS sample proportions. Only 50%—74% of respondent-driven sampling bootstrap 95% confidence intervals included the population proportion. Conclusions: Respondent-driven sampling produced a generally representative sample of this well-connected nonhidden population. However, current respondent-driven sampling inference methods failed to reduce bias when it occurred. Whether the data required to remove bias and measure precision can be collected in a respondent-driven sampling survey is unresolved. Respondent-driven sampling should be regarded as a (potentially superior) form of convenience sampling method, and caution is required when interpreting findings based on the sampling method.",
+		"container-title": "Epidemiology",
+		"ISSN": "1044-3983",
+		"issue": "1",
+		"note": "tex.ids= mccr12-evaluationa\npublisher: Lippincott Williams & Wilkins",
+		"page": "138-147",
+		"source": "JSTOR",
+		"title": "Evaluation of respondent-driven sampling",
+		"URL": "https://www.jstor.org/stable/23214188",
+		"volume": "23",
+		"author": [
+			{
+				"family": "McCreesh",
+				"given": "Nicky"
+			},
+			{
+				"family": "Frost",
+				"given": "Simon D. W."
+			},
+			{
+				"family": "Seeley",
+				"given": "Janet"
+			},
+			{
+				"family": "Katongole",
+				"given": "Joseph"
+			},
+			{
+				"family": "Tarsh",
+				"given": "Matilda N."
+			},
+			{
+				"family": "Ndunguse",
+				"given": "Richard"
+			},
+			{
+				"family": "Jichi",
+				"given": "Fatima"
+			},
+			{
+				"family": "Lunel",
+				"given": "Natasha L."
+			},
+			{
+				"family": "Maher",
+				"given": "Dermot"
+			},
+			{
+				"family": "Johnston",
+				"given": "Lisa G."
+			},
+			{
+				"family": "Sonnenberg",
+				"given": "Pam"
+			},
+			{
+				"family": "Copas",
+				"given": "Andrew J."
+			},
+			{
+				"family": "Hayes",
+				"given": "Richard J."
+			},
+			{
+				"family": "White",
+				"given": "Richard G."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2023",
+					4,
+					25
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2012"
+				]
+			]
+		}
+	},
+	{
+		"id": "gile18-methods",
+		"type": "article-journal",
+		"abstract": "Respondent-driven sampling is a commonly used method for sampling from hard-to-reach human populations connected by an underlying social network of relations. Beginning with a convenience sample, participants pass coupons to invite their contacts to join the sample. Although the method is often effective at attaining large and varied samples, its reliance on convenience samples, social network contacts, and participant decisions makes it subject to a large number of statistical concerns. This article reviews inferential methods available for data collected by respondent-driven sampling.",
+		"container-title": "Annual Review of Statistics and Its Application",
+		"DOI": "10.1146/annurev-statistics-031017-100704",
+		"ISSN": "2326-8298, 2326-831X",
+		"issue": "1",
+		"journalAbbreviation": "Annu. Rev. Stat. Appl.",
+		"language": "en",
+		"note": "tex.ids= gile18-methodsa",
+		"page": "65-93",
+		"source": "DOI.org (Crossref)",
+		"title": "Methods for inference from respondent-driven sampling data",
+		"URL": "https://www.annualreviews.org/doi/10.1146/annurev-statistics-031017-100704",
+		"volume": "5",
+		"author": [
+			{
+				"family": "Gile",
+				"given": "Krista J."
+			},
+			{
+				"family": "Beaudry",
+				"given": "Isabelle S."
+			},
+			{
+				"family": "Handcock",
+				"given": "Mark S."
+			},
+			{
+				"family": "Ott",
+				"given": "Miles Q."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2023",
+					4,
+					25
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2018",
+					3,
+					7
+				]
+			]
+		}
+	},
+	{
+		"id": "vinc17-estimating",
+		"type": "article-journal",
+		"abstract": "We present a new design and method for estimating the size of a hidden population best reached through a link-tracing design. The design is based on selecting initial samples at random and then adaptively tracing links to add new members. The inferential procedure involves the Rao–Blackwell theorem applied to a sufficient statistic markedly different from the usual one that arises in sampling from a finite population. The strategy involves a combination of link-tracing and mark-recapture estimation methods. An empirical application is described. The result demonstrates that the strategy can efficiently incorporate adaptively selected members of the sample into the inferential procedure. Supplementary materials for this article are available online.",
+		"container-title": "Journal of the American Statistical Association",
+		"DOI": "10.1080/01621459.2016.1212712",
+		"ISSN": "0162-1459",
+		"issue": "519",
+		"note": "tex.ids= vinc17-estimatinga\n_eprint: https://doi.org/10.1080/01621459.2016.1212712\npublisher: Taylor & Francis",
+		"page": "1286-1295",
+		"source": "Taylor and Francis+NEJM",
+		"title": "Estimating population size with link-tracing sampling",
+		"URL": "https://doi.org/10.1080/01621459.2016.1212712",
+		"volume": "112",
+		"author": [
+			{
+				"family": "Vincent",
+				"given": "Kyle"
+			},
+			{
+				"family": "Thompson",
+				"given": "Steve"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2023",
+					6,
+					8
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2017",
+					7,
+					3
+				]
+			]
+		}
+	},
+	{
+		"id": "abdu06-effectiveness",
+		"type": "article-journal",
+		"container-title": "Journal of Urban Health",
+		"issue": "3",
+		"language": "en",
+		"page": "459–76",
+		"title": "Effectiveness of respondent-driven sampling for recruiting drug users in New York City: findings from a pilot study",
+		"volume": "83",
+		"author": [
+			{
+				"family": "Abdul-Quader",
+				"given": "A.S."
+			},
+			{
+				"family": "Heckathorn",
+				"given": "D.D."
+			},
+			{
+				"family": "McKnight",
+				"given": "C."
+			},
+			{
+				"family": "Bramson",
+				"given": "H."
+			},
+			{
+				"family": "Nemeth",
+				"given": "C."
+			},
+			{
+				"family": "Sabin",
+				"given": "K."
+			},
+			{
+				"family": "Gallagher",
+				"given": "K."
+			},
+			{
+				"family": "Jarlais",
+				"given": "D.C."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2006"
+				]
+			]
+		}
+	},
+	{
+		"id": "bern09-broken",
+		"type": "report",
+		"genre": "UCLA IRLE Report.",
+		"language": "en",
+		"title": "Broken laws, unprotected workers: Violations of employment and labor laws in america's cities",
+		"author": [
+			{
+				"family": "Bernhardt",
+				"given": "A."
+			},
+			{
+				"family": "Milkman",
+				"given": "R.Theodore"
+			},
+			{
+				"literal": "N."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2009"
+				]
+			]
+		}
+	},
+	{
+		"id": "brow06-you",
+		"type": "article-journal",
+		"container-title": "IRB: Ethics & Human Research",
+		"issue": "1",
+		"language": "en",
+		"page": "12–16",
+		"title": "You may have already won...”: An examination of the use of lottery payments in research",
+		"volume": "28",
+		"author": [
+			{
+				"family": "Brown",
+				"given": "J.S."
+			},
+			{
+				"family": "Schonfeld",
+				"given": "T.L."
+			},
+			{
+				"family": "Gordon",
+				"given": "B.G."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2006"
+				]
+			]
+		}
+	},
+	{
+		"id": "brun10-untold",
+		"type": "article-journal",
+		"container-title": "International Migration",
+		"issue": "4",
+		"language": "en",
+		"page": "1–37",
+		"title": "Untold stories: biases and selection effects in research with victims of trafficking for sexual exploitation",
+		"volume": "48",
+		"author": [
+			{
+				"family": "Brunovskis",
+				"given": "A."
+			},
+			{
+				"family": "Surtees",
+				"given": "R."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2010"
+				]
+			]
+		}
+	},
+	{
+		"id": "coba03-effect",
+		"type": "article-journal",
+		"container-title": "International Journal of Market Research",
+		"issue": "4",
+		"language": "en",
+		"page": "1–13",
+		"title": "The effect of incentives in web surveys: application and ethical considerations",
+		"volume": "45",
+		"author": [
+			{
+				"family": "Cobanoglu",
+				"given": "C."
+			},
+			{
+				"family": "Cobanoglu",
+				"given": "N."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2003"
+				]
+			]
+		}
+	},
+	{
+		"id": "dejo09-ethical",
+		"type": "article-journal",
+		"container-title": "American Journal of Public Health",
+		"issue": "9",
+		"language": "en",
+		"page": "1562–1567",
+		"title": "Ethical considerations in HIV/AIDS biobehavioral surveys that use respondent-driven sampling: illustrations from Lebanon",
+		"volume": "99",
+		"author": [
+			{
+				"family": "DeJong",
+				"given": "J."
+			},
+			{
+				"family": "Mahfoud",
+				"given": "Z."
+			},
+			{
+				"family": "Khoury",
+				"given": "D."
+			},
+			{
+				"family": "Barbir",
+				"given": "F."
+			},
+			{
+				"family": "Afifi",
+				"given": "R.A."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2009"
+				]
+			]
+		}
+	},
+	{
+		"id": "fran94-estimating",
+		"type": "article-journal",
+		"container-title": "Journal of Official Statistics-Stockholm",
+		"language": "en",
+		"page": "53–53",
+		"title": "Estimating the size of hidden populations using snowball sampling",
+		"volume": "10",
+		"author": [
+			{
+				"family": "Frank",
+				"given": "O."
+			},
+			{
+				"family": "Snijders",
+				"given": "T."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"1994"
+				]
+			]
+		}
+	},
+	{
+		"id": "gaji12-costeffectiveness",
+		"type": "article-journal",
+		"container-title": "The European Journal of Health Economics",
+		"issue": "6",
+		"language": "en",
+		"page": "789–799",
+		"title": "The cost-effectiveness of cash versus lottery incentives for a web-based, stated-preference community survey",
+		"volume": "13",
+		"author": [
+			{
+				"family": "Gajic",
+				"given": "A."
+			},
+			{
+				"family": "Cameron",
+				"given": "D."
+			},
+			{
+				"family": "Hurley",
+				"given": "J."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2012"
+				]
+			]
+		}
+	},
+	{
+		"id": "good11-comment",
+		"type": "article-journal",
+		"container-title": "Sociological Methodology",
+		"issue": "1",
+		"language": "en",
+		"page": "347–353",
+		"title": "Comment: On respondent-driven sampling and snowball sampling in hard-to-reach populations and snowball sampling not in hard-to-reach populations",
+		"volume": "41",
+		"author": [
+			{
+				"family": "Goodman",
+				"given": "L.A."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2011"
+				]
+			]
+		}
+	},
+	{
+		"id": "gowe16-calls",
+		"type": "document",
+		"language": "en",
+		"title": "Calls to change overseas domestic worker visa conditions",
+		"URL": "https://researchbriefings.files.parliament.uk/documents/SN04786/SN04786.pdf",
+		"author": [
+			{
+				"family": "Gower",
+				"given": "M."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2016"
+				]
+			]
+		}
+	},
+	{
+		"id": "heck97-respondentdriven",
+		"type": "article-journal",
+		"container-title": "Social Problems",
+		"issue": "2",
+		"language": "en",
+		"page": "174–199",
+		"title": "Respondent-driven sampling: A new approach to the study of hidden populations",
+		"volume": "44",
+		"author": [
+			{
+				"family": "Heckathorn",
+				"given": "D.D."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"1997"
+				]
+			]
+		}
+	},
+	{
+		"id": "heck02-respondentdriven",
+		"type": "article-journal",
+		"container-title": "Social problems",
+		"issue": "1",
+		"language": "pt",
+		"page": "11–34",
+		"title": "Respondent-driven sampling II: deriving valid population estimates from chain-referral samples of hidden populations",
+		"volume": "49",
+		"author": [
+			{
+				"family": "Heckathorn",
+				"given": "D.D."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2002"
+				]
+			]
+		}
+	},
+	{
+		"id": "heck11-comment",
+		"type": "article-journal",
+		"container-title": "Sociological Methodology",
+		"issue": "1",
+		"language": "en",
+		"page": "355–366",
+		"title": "Comment: Snowball versus respondent-driven sampling",
+		"volume": "41",
+		"author": [
+			{
+				"family": "Heckathorn",
+				"given": "D.D."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2011"
+				]
+			]
+		}
+	},
+	{
+		"id": "offi23-why",
+		"type": "document",
+		"language": "en",
+		"title": "Why do people come to the UK to work?",
+		"URL": "https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-june-2023/why-do-people-come-to-the-uk-to-work",
+		"author": [
+			{
+				"family": "Office",
+				"given": "Home"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2023"
+				]
+			]
+		}
+	},
+	{
+		"id": "ILO11-indicators",
+		"type": "document",
+		"language": "en",
+		"title": "ILO indicators of forced labour",
+		"URL": "https://www.ilo.org/global/topics/forced-labour/publications/WCMS_203832/lang--en/index.htm",
+		"author": [
+			{
+				"literal": "I.L.O."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2011"
+				]
+			]
+		}
+	},
+	{
+		"id": "ILO11-c189domestic",
+		"type": "document",
+		"language": "en",
+		"title": "C189-domestic workers convention 2011",
+		"URL": "https://www.ilo.org/dyn/normlex/en/f?p=NORMLEXPUB:12100:0::NO::P12100_ILO_CODE:C189.",
+		"author": [
+			{
+				"literal": "I.L.O."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2011"
+				]
+			]
+		}
+	},
+	{
+		"id": "jord20-overcoming",
+		"type": "article-journal",
+		"container-title": "International Social Work",
+		"issue": "3",
+		"language": "en",
+		"page": "371–385",
+		"title": "Overcoming methodological challenges in prevalence studies in developing contexts with vulnerable children",
+		"volume": "63",
+		"author": [
+			{
+				"family": "Jordan",
+				"given": "L."
+			},
+			{
+				"family": "Chui",
+				"given": "C.H.K."
+			},
+			{
+				"family": "Larmar",
+				"given": "S."
+			},
+			{
+				"family": "O’Leary",
+				"given": "P."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2020"
+				]
+			]
+		}
+	},
+	{
+		"id": "kala08-new",
+		"type": "document",
+		"language": "en",
+		"title": "The new bonded labour?",
+		"URL": "http://www.kalayaan.org.uk/documents/Kalayaan%20Oxfam%20report.pdf",
+		"author": [
+			{
+				"literal": "Kalayaan"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2008"
+				]
+			]
+		}
+	},
+	{
+		"id": "lagu11-can",
+		"type": "article-journal",
+		"container-title": "Research in Higher Education",
+		"issue": "5",
+		"language": "en",
+		"page": "537–553",
+		"title": "Can lottery incentives boost web survey response rates? Findings from four experiments",
+		"volume": "52",
+		"author": [
+			{
+				"family": "Laguilles",
+				"given": "J.S."
+			},
+			{
+				"family": "Williams",
+				"given": "E.A."
+			},
+			{
+				"family": "Saunders",
+				"given": "D.B."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2011"
+				]
+			]
+		}
+	},
+	{
+		"id": "serv23-closed",
+		"type": "document",
+		"language": "en",
+		"title": "Behind closed doors: Experiences of Latin American domestic workers in the UK",
+		"URL": "https://lawrs.org.uk/wp-content/uploads/2023/08/Behind-closed-doors_domestic_work.pdf",
+		"author": [
+			{
+				"family": "Service",
+				"given": "Latin American Women’s Rights"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2023"
+				]
+			]
+		}
+	},
+	{
+		"id": "mant16-modern",
+		"type": "chapter",
+		"container-title": "British politics and policy at LSE",
+		"language": "en",
+		"title": "Modern slavery? The UK visa system and the exploitation of migrant domestic workers",
+		"URL": "https://blogs.lse.ac.uk/politicsandpolicy/exploitation-of-migrant-domestic-workers-in-the-uk/.",
+		"author": [
+			{
+				"family": "Mantouvalou",
+				"given": "V."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2016"
+				]
+			]
+		}
+	},
+	{
+		"id": "mccr11-evaluation",
+		"type": "article-journal",
+		"container-title": "International Journal of Health Geography",
+		"issue": "56",
+		"language": "en",
+		"title": "Evaluation of the role of location and distance in recruitment in respondent-driven sampling",
+		"volume": "10",
+		"author": [
+			{
+				"family": "McCreesh",
+				"given": "N."
+			},
+			{
+				"family": "Johnston",
+				"given": "L.G."
+			},
+			{
+				"family": "Copas",
+				"given": "A."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2011"
+				]
+			]
+		}
+	},
+	{
+		"id": "mccr13-respondent",
+		"type": "article-journal",
+		"container-title": "PLoS ONE",
+		"issue": "10",
+		"language": "en",
+		"title": "Respondent driven sampling: Determinants of recruitment and a method to improve point estimation",
+		"volume": "8",
+		"author": [
+			{
+				"family": "McCreesh",
+				"given": "N."
+			},
+			{
+				"family": "Copas",
+				"given": "A."
+			},
+			{
+				"family": "Seeley",
+				"given": "J."
+			},
+			{
+				"family": "Johnston",
+				"given": "L.G."
+			},
+			{
+				"family": "Sonnenberg",
+				"given": "P."
+			},
+			{
+				"family": "Hayes",
+				"given": "R.J."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2013"
+				]
+			]
+		}
+	},
+	{
+		"id": "plat15-adapting",
+		"type": "article-journal",
+		"container-title": "Demographic Research",
+		"language": "en",
+		"page": "665–700",
+		"title": "Adapting chain referral methods to sample new migrants: Possibilities and limitations",
+		"volume": "33",
+		"author": [
+			{
+				"family": "Platt",
+				"given": "L."
+			},
+			{
+				"family": "Luthra",
+				"given": "R."
+			},
+			{
+				"family": "Frere-Smith",
+				"given": "T."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2015"
+				]
+			]
+		}
+	},
+	{
+		"id": "robi14-sampling",
+		"type": "article-journal",
+		"container-title": "Qualitative research in psychology",
+		"issue": "1",
+		"language": "en",
+		"page": "25–41",
+		"title": "Sampling in interview-based qualitative research: A theoretical and practical guide",
+		"volume": "11",
+		"author": [
+			{
+				"family": "Robinson",
+				"given": "O.C."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2014"
+				]
+			]
+		}
+	},
+	{
+		"id": "schw12-prevalence",
+		"type": "article-journal",
+		"container-title": "AIDS Behaviour",
+		"issue": "Supply Nr 1",
+		"language": "en",
+		"page": "68–76",
+		"title": "Prevalence of rape and client-initiated gender-based violence among female sex workers: Kampala, uganda",
+		"volume": "19",
+		"author": [
+			{
+				"family": "Schwitters",
+				"given": "A."
+			},
+			{
+				"family": "Swaminathan",
+				"given": "M."
+			},
+			{
+				"family": "Serwadda",
+				"given": "D."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2012"
+				]
+			]
+		}
+	},
+	{
+		"id": "sema09-ethical",
+		"type": "article-journal",
+		"container-title": "International Journal of Drug Policy",
+		"issue": "1",
+		"language": "en",
+		"page": "14–27",
+		"title": "Ethical and regulatory considerations in HIV prevention studies employing respondent-driven sampling",
+		"volume": "20",
+		"author": [
+			{
+				"family": "Semaan",
+				"given": "S."
+			},
+			{
+				"family": "Santibanez",
+				"given": "S."
+			},
+			{
+				"family": "Garfein",
+				"given": "R.S."
+			},
+			{
+				"family": "Heckathorn",
+				"given": "D.D."
+			},
+			{
+				"family": "Jarlais",
+				"given": "D.C."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2009"
+				]
+			]
+		}
+	},
+	{
+		"id": "sema10-timespace",
+		"type": "article-journal",
+		"container-title": "Methodological Innovations Online",
+		"issue": "2",
+		"language": "en",
+		"page": "60–75",
+		"title": "Time-space sampling and respondent-driven sampling with hard-to-reach populations",
+		"volume": "5",
+		"author": [
+			{
+				"family": "Semaan",
+				"given": "S."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2010"
+				]
+			]
+		}
+	},
+	{
+		"id": "sing06-incentives",
+		"type": "article-journal",
+		"container-title": "American journal of preventive medicine",
+		"issue": "5",
+		"language": "en",
+		"page": "411–418",
+		"title": "Incentives for survey participation: when are they “coercive”?",
+		"volume": "31",
+		"author": [
+			{
+				"family": "Singer",
+				"given": "E."
+			},
+			{
+				"family": "Bossarte",
+				"given": "R.M."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2006"
+				]
+			]
+		}
+	},
+	{
+		"id": "stra23-britain",
+		"type": "document",
+		"language": "en",
+		"title": "Britain after Brexit: The surprising surge in skilled migrants",
+		"author": [
+			{
+				"family": "Strauss",
+				"given": "D."
+			},
+			{
+				"family": "Cocco",
+				"given": "F."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2023"
+				]
+			]
+		}
+	},
+	{
+		"id": "thom20-new",
+		"type": "document",
+		"language": "en",
+		"note": "tex.arxiv: 2002.01350",
+		"title": "New estimates for network sampling",
+		"author": [
+			{
+				"family": "Thompson",
+				"given": "S."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2020"
+				]
+			]
+		}
+	},
+	{
+		"id": "tyld21-surveying",
+		"type": "article-journal",
+		"container-title": "International Journal of Social Research Methodology",
+		"issue": "3",
+		"language": "en",
+		"page": "341–35",
+		"title": "Surveying migrant populations with respondent-driven sampling. Experiences from surveys of east-west migration in Europe",
+		"volume": "24",
+		"author": [
+			{
+				"family": "Tyldum",
+				"given": "G."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2021"
+				]
+			]
+		}
+	},
+	{
+		"id": "wang05-respondentdriven",
+		"type": "article-journal",
+		"container-title": "Drug and alcohol dependence",
+		"issue": "2",
+		"language": "en",
+		"page": "147–157",
+		"title": "Respondent-driven sampling to recruit MDMA users: a methodological assessment",
+		"volume": "78",
+		"author": [
+			{
+				"family": "Wang",
+				"given": "J."
+			},
+			{
+				"family": "Carlson",
+				"given": "R.G."
+			},
+			{
+				"family": "Falck",
+				"given": "R.S."
+			},
+			{
+				"family": "Siegal",
+				"given": "H.A."
+			},
+			{
+				"family": "Rahman",
+				"given": "A."
+			},
+			{
+				"family": "Li",
+				"given": "L."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2005"
+				]
+			]
+		}
+	},
+	{
+		"id": "wejn08-webbased",
+		"type": "article-journal",
+		"container-title": "Sociological Methods & Research",
+		"issue": "1",
+		"language": "en",
+		"page": "105–134",
+		"title": "Web-based network sampling: efficiency and efficacy of respondent-driven sampling for online research",
+		"volume": "37",
+		"author": [
+			{
+				"family": "Wejnert",
+				"given": "C."
+			},
+			{
+				"family": "Heckathorn",
+				"given": "D.D."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2008"
+				]
+			]
+		}
+	},
+	{
+		"id": "zhan12-measuring",
+		"type": "article-journal",
+		"container-title": "Crime, Law and Social Change",
+		"language": "en",
+		"page": "469–482",
+		"title": "Measuring labour trafficking: a research note",
+		"volume": "58",
+		"author": [
+			{
+				"family": "Zhang",
+				"given": "S.X."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2012"
+				]
+			]
+		}
+	},
+	{
+		"id": "zhan19-victims",
+		"type": "article-journal",
+		"container-title": "Victims & Offenders",
+		"issue": "7",
+		"language": "en",
+		"page": "832–858",
+		"title": "Victims without a voice: Measuring worst forms of child labor in the Indian State of Bihar",
+		"volume": "14",
+		"author": [
+			{
+				"family": "Zhang",
+				"given": "S.X."
+			},
+			{
+				"family": "Dank",
+				"given": "M."
+			},
+			{
+				"family": "Vincent",
+				"given": "K."
+			},
+			{
+				"family": "Narayanan",
+				"given": "P."
+			},
+			{
+				"family": "Bharadwaj",
+				"given": "S."
+			},
+			{
+				"family": "Balasubramaniam",
+				"given": "S.M."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2019"
+				]
+			]
+		}
+	}
+]

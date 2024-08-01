@@ -1,0 +1,194 @@
+So I guess just a quick update on my end, so I've been, things are coming along, things
+are coming along, but it's just, I just need a lot of electrons, so I just have these big
+runs is what's going on right now, so I have a preferred model and then I have like 50,
+alternative models for robustness, shove it in the appendix or whatnot. That's what's taking all
+the electrons, so that's sort of chugging along. I'm almost done, but haven't finished implementing
+the Fihan and Solvnik. How can I, yeah. The insum, the insum, so I'm almost done with that.
+They, I've forgotten so much, I've forgotten everything about that paper, so I'm having to
+re-learn it. There's, so I'm doing that and then when I do that, then we'll get an estimate and do
+the bootstraps and that's, I think that'll be pretty neat. There's one weird thing about the data
+that I discovered, there's several weird things about the data. Oh, sorry, before I get there,
+I did subset it by just the people who identified as Philippine O and the estimates are about the
+same, they're slightly higher, it's something like 47%, depending on how you measure exploitation,
+so, but they're about the same, but slightly higher and I haven't done anything else on that,
+the data. So, there are two weird sources of errors. The one is, is these, these true zeros,
+remember we talked about from a while ago, so people could say that they don't know any, but
+okay, sorry, two other things, I should make notes to myself so I can pop size.
+You want to record it, Scott? That's okay, I'm, I take furious notes. Record it somewhere, yeah.
+But you feel, I don't object, please feel free to if you want to the
+pop size. Oh, so you could, people have reported that they know zero domestic workers in the UK
+with a mobile phone and then they give mobile phone, so that's, we fixed that up, that's fine.
+And then there was another one, which is really weird, which is where they, the number of people
+they reported knowing, Q13 I'm pretty sure is the one, I know these things are stuck in my head
+now for now. So that the number of people that they report knowing is smaller than the, the,
+the number of people they recruit, where recruiting is determined by the node one,
+node two, the network structure. So that's really weird. I don't, that one took me a while to sort
+of, and it's two people, but those two people really, really messed me up. So, so I fixed that.
+So, so now we have a new personal degree size, which is the max of all of those.
+So it's, it's the max of the Q13, the number of mobile numbers that you actually submit and the
+number of people that you recruit as given by the network structure. And like I said, the last one
+sort of a programming perspective was a real pain, but it only affected two people. So I'm not,
+I'm not super worried about it. And then we have these things this thing, we have these suspicious,
+suspicious variable. So we can, we can, what I'm trying to say is like, we can, we can remove
+the people for whom they don't know how to count and repeat. And that's, that's, that's fine. Okay.
+So that's that implementing the FIHAN. And so that's just electricity at this point, like it's
+just, it's, it's done. And again, the estimates are very, very, very consistent between 30 and 40
+percent, depending on how you measure exploitation. So to me, that's shockingly high, but it's,
+it's very consistent. So in some I'm working on the bootstrap is working. And I'm almost done with
+the estimator. The estimator needs some extra stuff. So we need the, the size of the frame.
+So that would be the number of domestic workers in the UK with a mobile phone in the last year.
+We needed that for the, the RDS stuff also. So I can just, I'm happy to just reuse that.
+The preferred number, thanks to you, Caroline, 980,000, I think, something like that came from
+Yeah, that was from the European PHS survey. Yeah. And again, I've found it out. I use,
+I use sample frame sizes from 10,000, 100,000, not in the 980,000, 1.5 million, just again,
+for robustness. I should probably add, because I think one of the, I don't know what was called,
+I drew it down, the, there are these two occupational classes that you used Caroline from.
+And, and one of them was like spot on. And then the other one was sort of, was plausible. But
+so what I'm trying to say is I should, I should use, so currently the preferred model uses the
+sum of those two numbers. But I should, I should, wait, and that's fine. I'm happy to report that
+and everything. But again, for robustness, I should probably repeat with not the aggregated
+whatever. So that's, that's, that's for me to do. Now, the probalters. So we need to know this,
+I only have one, and that's the number of people, you know, who have been referred to
+the National Referral Mechanism, or whatever it's called, NRM. So we have that question.
+And we, thanks to you, Caroline, we have the number of people in the UK, like we know the size
+of that group. And so, I'm sorry, I'm rambling, but the issue is that basically there's two
+population sizes we need. One is the size of the sample frame, which we needed from before.
+And there's some uncertainty there. So I'll have to do that. But for the in sum, we also need the
+size of these probalter groups. So I'd like to do some kind of robustness on that as well. And it
+just sort of, just sort of adds some complexity to, it adds noise really to these estimators. So I
+haven't done that. That's going to be more electrons, more electrons to use. So right,
+probalter group, that was the other pop size. And I told you about the weird, this thing with the
+people who can't vote, but that got fixed up. I'm sorry, I don't know how to count. And that's
+where I'm at. So sorry, I didn't, again, sorry, I was coding furiously, hoping I could get it done
+before three, but then I thought I didn't know how to read my calendar. So sorry about that. So,
+so that's sort of the update on my end. Data is
+I mean, that's all sounds fantastic, Scott. It sounds really, really good progress. And I
+suppose the question is, what do you need from us? So I think, I think we're good to
+electrons. That's fine. I think we're ready for venue discussion, where we want to submit it.
+And Slim, were we able to, did the Zoteros references work for you? I don't know. I sent
+it. It did. Oh, wonderful. Excellent. So basically, so what I'm trying to say, I think, I think we're,
+we're into like, once, while my batch is running, I think we're into polishing off the, the, you
+know, writing up the results, conclusion and submitting somewhere. Yeah, like, yeah.
+Okay, that's fantastic. So in terms of journal targets, I mean, the question is, I suppose,
+within the business school, we are encouraged to submit to journals within the ABS list.
+With ABS? Sorry. If I can, Association of Business School, Journal Quality List,
+the school signs up to the Dora principles that it's not all about journal destination,
+but it is a factor. So one of the first places to look for sort of potential journal target is
+that list. Okay. But I tend to publish anywhere that, so I have not really been following the rules
+very strictly. And I don't know what your publication targets might look like. And so I'm
+quite happy to be ecumenical about this, and not necessarily pick a journal off that list,
+just because that's what you're supposed to do. But, but having said that, there is one journal
+potentially, which is a three star journal. So it's not an absolute top quality, but it's
+a rectangle called Work Employment and Society, which has a strong theoretical basis. So I don't
+know whether, well, that would mean that I would need to do some background work on,
+they definitely published studies about domestic workers. It's sort of sociologically focused.
+And the advantage is one of the editor-in-chiefs is actually Marek,
+Causes Inksteed, who is, yeah, who's obviously at the business school. So I could sound him out
+and just say, would you accept a sort of, how would you view a sort of statistically orientated
+paper in the domestic workers sphere? Is that something that you think might fall within this
+scope of the journal? So that was the target that sort of occurred to me, but I'm very open to
+publishing where it would suit you, Scott. I mean, I think the ABS list is a great place to start.
+Because I know nothing about this, this field at all. But it sounds like, I mean,
+yeah, more stars is better in general for me. But at the same time, like I'm not,
+like you, Caroline, like I'm not, I'm not picky about these things. But, you know,
+my general thought is sort of start high and then move down, move down the tears as the rejection
+ladder just come, come in, which in my case, they, they fill up my mailbox. So that would be,
+yeah, so I mean, ABS look at the sort of best ranked that are sort of appropriate for, you know,
+labor, domestic work, UK, human rights, whatever, and start there and yeah, work our way down would be,
+I guess one of the things I hadn't thought about, which is important, could be potentially important
+is, so the strategy I just articulated is, is a lengthy process. So, so I guess we should talk
+about timeline. Are there are people going in for promotion or jobs or other, are there,
+is there pressure to publish at a certain sooner rather than later or?
+I think as long as it's in this ref for me personally, that's fine. I don't know, how
+does that sound for you? Yeah, again, I'm, I'm, I'm, I'm okay taking time and doing the, the
+start high. And when's the next, do we know when the ref cycle ends? I don't, I don't know. When is it?
+Well, it's been moved out a year, hasn't it? So it's ref 2029 now. But when the actual
+ref 2028. So, but when the actual deadline for paper submissions is, I don't know, but I mean
+24, we've got a few, we've got enough time to try a higher journal and then knock down to it. So
+we, I can have a look at the ABS list and look at possible four stars. If you think we'd like to
+start with that. That would be my preference, if that's it. If, if there's, yeah, that would be
+my preference. I'd like, I'd like you, I don't, I don't have time constraints. Somewhere like the
+British Journal of Management. That's a very highly regarded journal does have, in my view,
+a bit of a quantitative bias. So that might work in our favor. And I can have a bit of a
+search around and see what they've published in the field of domestic work. But I mean,
+the fact that it's UK statistics might be quite appropriate for them. We just,
+we just might need to sort of cite it in their literature to sort of see what debates they're,
+they're talking about. So that's a bit of work for me to do. And then, yeah, see what I mean,
+I asked our Dean and Alex to our terms about this. And he suggested research policy
+and science. Okay. Neither of those journals I know anything about. I did look at the
+aims and scope and to me, didn't seem to fit. But that was his initial suggestion. I don't know
+if you know anything about science. Science is absolutely top. But yeah, it's a strange
+fit. I wouldn't, I think of them as doing more like biology kinds of stuff. I mean,
+basically, what they do is like really, really high profile stuff, regardless of field. And so
+maybe that's why he suggested it to the extent that our paper is high profile, maybe. But yeah,
+it's said to be as an odd, as an odd suggestion, to be honest with you.
+Yeah. I've heard of you. Do you know anything about research policy?
+No, but I think policy sounds like a good, a good class of journals to maybe target.
+Although we don't really have any policy implications currently, but, but that could,
+that could be strengthened perhaps. Yeah, that brings to mind another journal called Millbank
+Quarterly. Have you heard of them? I don't know what rating they are, but I would guess they're
+A, B, B, S. That's possible from a policy point of view, but maybe British Journal of Management
+is better. Excellent. Yeah. So, and then I suppose work, employment and society, if we fail with
+BJM, it's like the next, the next tier down, but still respectable. Good. Excellent. Excellent.
+That's great. That's great. That's great. That sounds all right. Sounds great for me.
+So if I do a bit of a literature search, the problem is I'm going to struggle to do that until
+April. That's fine. And I've got seminar weeks coming up. So, and my diary is absolutely chock
+block. So the, the beginning of April, I've got a couple of days, I think I could perhaps spend
+some time. Actually, I've got one day next week carved out for research as well. So
+I can do, make a start on that then. And then, so at least get you sort of some indication and
+yeah, but we, I think British Journal of Management does seem to be quite a good fit. And that's,
+that's a good journal. Excellent. If we get into that. Let's, let's start there. Let's start there.
+I'm going to make a push to get the results done by next week, because like you, the next two to
+three weeks are just going to be quite hellish for me in terms of teaching stuff. But I'm,
+reading week has been good and I'm making, so I'm going to make a push to try to get, you know,
+the results done. Perfect. I mean, it's just been so fantastic having you on the team. It's
+really, really, really, really great. It's been fantastic working with the both of you. So thank
+you. Yeah, so it'd be fantastic to get, get something drafted and submitted. And yeah,
+if we were to aim to do that for the summer, is that too, is that all right? I think by the time
+we sort of tidied everything up. Yeah. And then, yeah. Yeah, June, I think it was a good target.
+And July, if we get, if we miss, you know, I think that's a, I think it's very feasible as well.
+I mean, like I said, the right sort of April, we'll, we'll be able to come back to it and polish and
+then, you know, yeah. And I'm hoping next term might be quite as bad as this term. I'll have a
+little bit, it'll be just marking then. Just marking. It just never ends. It just never ends. So
+but okay, this is great. I'm going to, I'm going to get back to my electrons and I'll, I'll email you
+with probably just like a draft of results at some point. But you know the, I'm not expecting any
+surprise. So the RDS stuff is done, done. And then the insum, I don't know. I'm not expecting to be
+surprised, but we'll see. So we'll see. Fantastic. Really, really good. Was there anything from you
+Selene that you wanted to share with us? I have two points. First, Dr. Moser, do you have anything
+that you need from my side other than the sort of references? Is there anything else? That's it.
+And the second point is I already spoke with Caroline. We started with BigBot. You may have
+seen my email that I don't want to be included in the publication for this research. What do you
+think about that? I strongly disagree, but I also completely defer to your, to your PhD advisor, Dr.
+Randall. I mean, in my opinion, you need, if you want to stay in academia, you need publications.
+And in the past, you've mentioned sort of wanting to fortify your quantitative
+credentials. And this would certainly help with that. I mean, I think I understand his point.
+If I'm not saying this point, it's something like branding, like you don't want to get labeled as
+something that you're not. But like I said, in my opinion, you just, you need publications
+and full stop. So, I wasn't from Dr. Randall. I have to say it's not from Dr. Randall. It's from
+the mentor in the US when I spent time there, because I'm still having meetings with the professor
+there. And I see he is also the Dean of the department for international relations and politics.
+And recently we had another meeting and he told me it would be not good if I have a profile
+that shows that I'm not someone from IR. And I feel a bit worried about that. And I,
+and I'm trying to be careful. That's why I think it's better if I don't include my name.
+I mean, it's one, it's your decision. And of course, I completely, I completely respect that. And
+I'm sorry for assuming presumptuously that it was Dr. Randall. You might run by him then in that
+case, get his opinion, because he's a proper IR theory person and see what, have you discussed it
+with him? No, we'll meet on Tuesday. So I will brace this up then. Okay. Because I was saying
+to Celine, we could perhaps acknowledge him. If he's so sure that he doesn't want to be included
+in the authorship. But yeah, yeah, I just wanted to perhaps it was an Indian idiosyncrasy of the
+American tenure system. I mean, that's what I would just caution you to find out, Celine,
+whether it's in a matter he's talking from an American's perspective.
+When that the same applies in Europe, if that's where you want to end up.
+All my supervisors are American. Dr. Mosa, Dr. Randall, also the drug supervisor.
+Sorry.
+Other than New Carolina.
+But for sure. I mean, I think sort of the bottom line is it's your decision, of course. And
+I think I can speak truthfully to say that like, you've definitely contributed a lot. And I think,
+yeah, you deserve to be credited in some way. And thank you. I mean, you've done a lot to help
+with the project. So yeah, thank you. Thank you too that I could learn from both of you. I still
+have to learn a lot. I understand that. But I will update you both after I speak to my first
+supervisor, Dr. Randall. Yeah. Okay. Brilliant. Thanks then. Thanks everyone. Have a great week.
+Do we need another meeting date in or are we happy to do it on email from now on?
+Yeah, I think email is probably good. April. Okay. Yeah.
+Right, that's super. Let's stick with that then. Thanks everyone. Thanks very much. Have a great weekend.
+Bye. Bye. Bye.

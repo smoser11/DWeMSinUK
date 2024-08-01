@@ -1,0 +1,598 @@
+TY  - JOUR
+TI  - Network model-assisted inference from respondent-driven sampling data
+AU  - Gile, Krista J.
+AU  - Handcock, Mark S.
+T2  - Journal of the Royal Statistical Society: Series A (Statistics in Society)
+AB  - Respondent-driven sampling is a widely used method for sampling hard-to-reach human populations by link tracing over their social networks. Inference from such data requires specialized techniques because the sampling process is both partially beyond the control of the researcher, and partially implicitly defined. Therefore, it is not generally possible to compute the sampling weights for traditional design-based inference directly, and likelihood inference requires modelling the complex sampling process. As an alternative, we introduce a model-assisted approach, resulting in a design-based estimator leveraging a working network model. We derive a new class of estimators for population means and a corresponding bootstrap standard error estimator. We demonstrate improved performance compared with existing estimators, including adjustment for an initial convenience sample. We also apply the method and an extension to the estimation of the prevalence of human immunodeficiency virus in a high-risk population.
+DA  - 2015///
+PY  - 2015
+DO  - 10.1111/rssa.12091
+DP  - Wiley Online Library
+VL  - 178
+IS  - 3
+SP  - 619
+EP  - 639
+LA  - en
+SN  - 1467-985X
+UR  - http://onlinelibrary.wiley.com/doi/abs/10.1111/rssa.12091
+Y2  - 2022/12/17/11:52:36
+L1  - http://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/rssa.12091
+L2  - http://rss.onlinelibrary.wiley.com/doi/full/10.1111/rssa.12091
+KW  - Social networks
+KW  - _tablet
+KW  - RDS
+KW  - Network sampling
+KW  - Hard-to-reach population sampling
+KW  - Exponential family random graph model
+KW  - Link tracing
+ER  - 
+
+TY  - JOUR
+TI  - Evaluation of respondent-driven sampling
+AU  - McCreesh, Nicky
+AU  - Frost, Simon D. W.
+AU  - Seeley, Janet
+AU  - Katongole, Joseph
+AU  - Tarsh, Matilda N.
+AU  - Ndunguse, Richard
+AU  - Jichi, Fatima
+AU  - Lunel, Natasha L.
+AU  - Maher, Dermot
+AU  - Johnston, Lisa G.
+AU  - Sonnenberg, Pam
+AU  - Copas, Andrew J.
+AU  - Hayes, Richard J.
+AU  - White, Richard G.
+T2  - Epidemiology
+AB  - Background: Respondent-driven sampling is a novel variant of link-tracing sampling for estimating the characteristics of hard-to-reach groups, such as HIV prevalence in sex workers. Despite its use by leading health organizations, the performance of this method in realistic situations is still largely unknown. We evaluated respondent-driven sampling by comparing estimates from a respondent-driven sampling survey with total population data. Methods: Total population data on age, tribe, religion, socioeconomic status, sexual activity, and HIV status were available on a population of 2402 male household heads from an open cohort in rural Uganda. A respondent-driven sampling (RDS) survey was carried out in this population, using current methods of sampling (RDS sample) and statistical inference (RDS estimates). Analyses were carried out for the full RDS sample and then repeated for the first 250 recruits (small sample). Results: We recruited 927 household heads. Full and small RDS samples were largely representative of the total population, but both samples underrepresented men who were younger, of higher socio-economic status, and with unknown sexual activity and HIV status. Respondent-driven sampling statistical inference methods failed to reduce these biases. Only 31%—37% (depending on method and sample size) of RDS estimates were closer to the true population proportions than the RDS sample proportions. Only 50%—74% of respondent-driven sampling bootstrap 95% confidence intervals included the population proportion. Conclusions: Respondent-driven sampling produced a generally representative sample of this well-connected nonhidden population. However, current respondent-driven sampling inference methods failed to reduce bias when it occurred. Whether the data required to remove bias and measure precision can be collected in a respondent-driven sampling survey is unresolved. Respondent-driven sampling should be regarded as a (potentially superior) form of convenience sampling method, and caution is required when interpreting findings based on the sampling method.
+DA  - 2012///
+PY  - 2012
+DP  - JSTOR
+VL  - 23
+IS  - 1
+SP  - 138
+EP  - 147
+SN  - 1044-3983
+UR  - https://www.jstor.org/stable/23214188
+Y2  - 2023/04/25/11:34:42
+KW  - RDS
+KW  - Hidden population sampling
+ER  - 
+
+TY  - JOUR
+TI  - Methods for inference from respondent-driven sampling data
+AU  - Gile, Krista J.
+AU  - Beaudry, Isabelle S.
+AU  - Handcock, Mark S.
+AU  - Ott, Miles Q.
+T2  - Annual Review of Statistics and Its Application
+AB  - Respondent-driven sampling is a commonly used method for sampling from hard-to-reach human populations connected by an underlying social network of relations. Beginning with a convenience sample, participants pass coupons to invite their contacts to join the sample. Although the method is often effective at attaining large and varied samples, its reliance on convenience samples, social network contacts, and participant decisions makes it subject to a large number of statistical concerns. This article reviews inferential methods available for data collected by respondent-driven sampling.
+DA  - 2018/03/07/
+PY  - 2018
+DO  - 10.1146/annurev-statistics-031017-100704
+DP  - DOI.org (Crossref)
+VL  - 5
+IS  - 1
+SP  - 65
+EP  - 93
+J2  - Annu. Rev. Stat. Appl.
+LA  - en
+SN  - 2326-8298, 2326-831X
+UR  - https://www.annualreviews.org/doi/10.1146/annurev-statistics-031017-100704
+Y2  - 2023/04/25/11:48:00
+KW  - _tablet
+KW  - inference
+KW  - RDS
+ER  - 
+
+TY  - JOUR
+TI  - Estimating population size with link-tracing sampling
+AU  - Vincent, Kyle
+AU  - Thompson, Steve
+T2  - Journal of the American Statistical Association
+AB  - We present a new design and method for estimating the size of a hidden population best reached through a link-tracing design. The design is based on selecting initial samples at random and then adaptively tracing links to add new members. The inferential procedure involves the Rao–Blackwell theorem applied to a sufficient statistic markedly different from the usual one that arises in sampling from a finite population. The strategy involves a combination of link-tracing and mark-recapture estimation methods. An empirical application is described. The result demonstrates that the strategy can efficiently incorporate adaptively selected members of the sample into the inferential procedure. Supplementary materials for this article are available online.
+DA  - 2017/07/03/
+PY  - 2017
+DO  - 10.1080/01621459.2016.1212712
+DP  - Taylor and Francis+NEJM
+VL  - 112
+IS  - 519
+SP  - 1286
+EP  - 1295
+SN  - 0162-1459
+UR  - https://doi.org/10.1080/01621459.2016.1212712
+Y2  - 2023/06/08/17:53:53
+L1  - https://www.tandfonline.com/doi/pdf/10.1080/01621459.2016.1212712
+N1  - <p><b>Extracted Annotations (27/10/2023, 16:05:40)</b></p>
+<p>"link-tracing design" (<a href="zotero://open-pdf/library/items/U33ZPS9U?page=2">Vincent and Thompson 2017:1287</a>)</p><p>"design-based" (<a href="zotero://open-pdf/library/items/U33ZPS9U?page=2">Vincent and Thompson 2017:1287</a>)</p><p>"inference" (<a href="zotero://open-pdf/library/items/U33ZPS9U?page=2">Vincent and Thompson 2017:1287</a>)</p><p>"w ij" (<a href="zotero://open-pdf/library/items/U33ZPS9U?page=3">Vincent and Thompson 2017:1288</a>)</p><p>"strength of the relationship" (<a href="zotero://open-pdf/library/items/U33ZPS9U?page=3">Vincent and Thompson 2017:1288</a>)</p><p>"Step 0" (<a href="zotero://open-pdf/library/items/U33ZPS9U?page=3">Vincent and Thompson 2017:1288</a>)</p><p>"Step t" (<a href="zotero://open-pdf/library/items/U33ZPS9U?page=3">Vincent and Thompson 2017:1288</a>)</p><p>"M t" (<a href="zotero://open-pdf/library/items/U33ZPS9U?page=3">Vincent and Thompson 2017:1288</a>)</p><p>"s k,t" (<a href="zotero://open-pdf/library/items/U33ZPS9U?page=3">Vincent and Thompson 2017:1288</a>)</p><p>"order within samples of subsequently selected units" (<a href="zotero://open-pdf/library/items/U33ZPS9U?page=4">Vincent and Thompson 2017:1289</a>)</p><p>"sample selection procedure" (<a href="zotero://open-pdf/library/items/U33ZPS9U?page=4">Vincent and Thompson 2017:1289</a>)</p><p>"Specifically" (<a href="zotero://open-pdf/library/items/U33ZPS9U?page=4">Vincent and Thompson 2017:1289</a>)</p><p>"data" (<a href="zotero://open-pdf/library/items/U33ZPS9U?page=4">Vincent and Thompson 2017:1289</a>)</p>
+KW  - _tablet
+KW  - Design-based inference
+KW  - Hidden population sampling
+KW  - Population size estimation
+KW  - Adaptive sampling
+KW  - Mark-recapture
+KW  - Rao–Blackwell method
+KW  - Unknown population size
+ER  - 
+
+TY  - JOUR
+TI  - Effectiveness of respondent-driven sampling for recruiting drug users in New York City: findings from a pilot study
+AU  - Abdul-Quader, A.S.
+AU  - Heckathorn, D.D.
+AU  - McKnight, C.
+AU  - Bramson, H.
+AU  - Nemeth, C.
+AU  - Sabin, K.
+AU  - Gallagher, K.
+AU  - Jarlais, D.C.
+T2  - Journal of Urban Health
+DA  - 2006///
+PY  - 2006
+VL  - 83
+IS  - 3
+SP  - 459
+EP  - 76
+LA  - en
+ER  - 
+
+TY  - RPRT
+TI  - Broken laws, unprotected workers: Violations of employment and labor laws in america's cities
+AU  - Bernhardt, A.
+AU  - Milkman, R.Theodore
+AU  - N.
+DA  - 2009///
+PY  - 2009
+LA  - en
+M3  - UCLA IRLE Report.
+ER  - 
+
+TY  - JOUR
+TI  - You may have already won...”: An examination of the use of lottery payments in research
+AU  - Brown, J.S.
+AU  - Schonfeld, T.L.
+AU  - Gordon, B.G.
+T2  - IRB: Ethics & Human Research
+DA  - 2006///
+PY  - 2006
+VL  - 28
+IS  - 1
+SP  - 12
+EP  - 16
+LA  - en
+ER  - 
+
+TY  - JOUR
+TI  - Untold stories: biases and selection effects in research with victims of trafficking for sexual exploitation
+AU  - Brunovskis, A.
+AU  - Surtees, R.
+T2  - International Migration
+DA  - 2010///
+PY  - 2010
+VL  - 48
+IS  - 4
+SP  - 1
+EP  - 37
+LA  - en
+ER  - 
+
+TY  - JOUR
+TI  - The effect of incentives in web surveys: application and ethical considerations
+AU  - Cobanoglu, C.
+AU  - Cobanoglu, N.
+T2  - International Journal of Market Research
+DA  - 2003///
+PY  - 2003
+VL  - 45
+IS  - 4
+SP  - 1
+EP  - 13
+LA  - en
+ER  - 
+
+TY  - JOUR
+TI  - Ethical considerations in HIV/AIDS biobehavioral surveys that use respondent-driven sampling: illustrations from Lebanon
+AU  - DeJong, J.
+AU  - Mahfoud, Z.
+AU  - Khoury, D.
+AU  - Barbir, F.
+AU  - Afifi, R.A.
+T2  - American Journal of Public Health
+DA  - 2009///
+PY  - 2009
+VL  - 99
+IS  - 9
+SP  - 1562
+EP  - 1567
+LA  - en
+ER  - 
+
+TY  - JOUR
+TI  - Estimating the size of hidden populations using snowball sampling
+AU  - Frank, O.
+AU  - Snijders, T.
+T2  - Journal of Official Statistics-Stockholm
+DA  - 1994///
+PY  - 1994
+VL  - 10
+SP  - 53
+EP  - 53
+LA  - en
+ER  - 
+
+TY  - JOUR
+TI  - The cost-effectiveness of cash versus lottery incentives for a web-based, stated-preference community survey
+AU  - Gajic, A.
+AU  - Cameron, D.
+AU  - Hurley, J.
+T2  - The European Journal of Health Economics
+DA  - 2012///
+PY  - 2012
+VL  - 13
+IS  - 6
+SP  - 789
+EP  - 799
+LA  - en
+ER  - 
+
+TY  - JOUR
+TI  - Comment: On respondent-driven sampling and snowball sampling in hard-to-reach populations and snowball sampling not in hard-to-reach populations
+AU  - Goodman, L.A.
+T2  - Sociological Methodology
+DA  - 2011///
+PY  - 2011
+VL  - 41
+IS  - 1
+SP  - 347
+EP  - 353
+LA  - en
+ER  - 
+
+TY  - GEN
+TI  - Calls to change overseas domestic worker visa conditions
+AU  - Gower, M.
+DA  - 2016///
+PY  - 2016
+LA  - en
+UR  - https://researchbriefings.files.parliament.uk/documents/SN04786/SN04786.pdf
+N1  - Briefing paper Number 4786 House of Commons Library Available at:
+ER  - 
+
+TY  - JOUR
+TI  - Respondent-driven sampling: A new approach to the study of hidden populations
+AU  - Heckathorn, D.D.
+T2  - Social Problems
+DA  - 1997///
+PY  - 1997
+VL  - 44
+IS  - 2
+SP  - 174
+EP  - 199
+LA  - en
+ER  - 
+
+TY  - JOUR
+TI  - Respondent-driven sampling II: deriving valid population estimates from chain-referral samples of hidden populations
+AU  - Heckathorn, D.D.
+T2  - Social problems
+DA  - 2002///
+PY  - 2002
+VL  - 49
+IS  - 1
+SP  - 11
+EP  - 34
+LA  - pt
+ER  - 
+
+TY  - JOUR
+TI  - Comment: Snowball versus respondent-driven sampling
+AU  - Heckathorn, D.D.
+T2  - Sociological Methodology
+DA  - 2011///
+PY  - 2011
+VL  - 41
+IS  - 1
+SP  - 355
+EP  - 366
+LA  - en
+ER  - 
+
+TY  - GEN
+TI  - Why do people come to the UK to work?
+AU  - Office, Home
+DA  - 2023///
+PY  - 2023
+LA  - en
+UR  - https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-june-2023/why-do-people-come-to-the-uk-to-work
+N1  - Available at:
+ER  - 
+
+TY  - GEN
+TI  - ILO indicators of forced labour
+AU  - I.L.O.
+DA  - 2011///
+PY  - 2011
+LA  - en
+UR  - https://www.ilo.org/global/topics/forced-labour/publications/WCMS_203832/lang--en/index.htm
+N1  - Available at:
+ER  - 
+
+TY  - GEN
+TI  - C189-domestic workers convention 2011
+AU  - I.L.O.
+DA  - 2011///
+PY  - 2011
+LA  - en
+UR  - https://www.ilo.org/dyn/normlex/en/f?p=NORMLEXPUB:12100:0::NO::P12100_ILO_CODE:C189.
+N1  - No. 189). Available at: .
+ER  - 
+
+TY  - JOUR
+TI  - Overcoming methodological challenges in prevalence studies in developing contexts with vulnerable children
+AU  - Jordan, L.
+AU  - Chui, C.H.K.
+AU  - Larmar, S.
+AU  - O’Leary, P.
+T2  - International Social Work
+DA  - 2020///
+PY  - 2020
+VL  - 63
+IS  - 3
+SP  - 371
+EP  - 385
+LA  - en
+ER  - 
+
+TY  - GEN
+TI  - The new bonded labour?
+AU  - Kalayaan
+DA  - 2008///
+PY  - 2008
+LA  - en
+UR  - http://www.kalayaan.org.uk/documents/Kalayaan%20Oxfam%20report.pdf
+N1  - Accessed 24 November 2023).
+ER  - 
+
+TY  - JOUR
+TI  - Can lottery incentives boost web survey response rates? Findings from four experiments
+AU  - Laguilles, J.S.
+AU  - Williams, E.A.
+AU  - Saunders, D.B.
+T2  - Research in Higher Education
+DA  - 2011///
+PY  - 2011
+VL  - 52
+IS  - 5
+SP  - 537
+EP  - 553
+LA  - en
+ER  - 
+
+TY  - GEN
+TI  - Behind closed doors: Experiences of Latin American domestic workers in the UK
+AU  - Service, Latin American Women’s Rights
+DA  - 2023///
+PY  - 2023
+LA  - en
+UR  - https://lawrs.org.uk/wp-content/uploads/2023/08/Behind-closed-doors_domestic_work.pdf
+N1  - Available at:
+ER  - 
+
+TY  - CHAP
+TI  - Modern slavery? The UK visa system and the exploitation of migrant domestic workers
+AU  - Mantouvalou, V.
+T2  - British politics and policy at LSE
+DA  - 2016///
+PY  - 2016
+LA  - en
+UR  - https://blogs.lse.ac.uk/politicsandpolicy/exploitation-of-migrant-domestic-workers-in-the-uk/.
+N1  - Available at:
+ER  - 
+
+TY  - JOUR
+TI  - Evaluation of the role of location and distance in recruitment in respondent-driven sampling
+AU  - McCreesh, N.
+AU  - Johnston, L.G.
+AU  - Copas, A.
+T2  - International Journal of Health Geography
+DA  - 2011///
+PY  - 2011
+VL  - 10
+IS  - 56
+LA  - en
+ER  - 
+
+TY  - JOUR
+TI  - Respondent driven sampling: Determinants of recruitment and a method to improve point estimation
+AU  - McCreesh, N.
+AU  - Copas, A.
+AU  - Seeley, J.
+AU  - Johnston, L.G.
+AU  - Sonnenberg, P.
+AU  - Hayes, R.J.
+T2  - PLoS ONE
+DA  - 2013///
+PY  - 2013
+VL  - 8
+IS  - 10
+LA  - en
+ER  - 
+
+TY  - JOUR
+TI  - Adapting chain referral methods to sample new migrants: Possibilities and limitations
+AU  - Platt, L.
+AU  - Luthra, R.
+AU  - Frere-Smith, T.
+T2  - Demographic Research
+DA  - 2015///
+PY  - 2015
+VL  - 33
+SP  - 665
+EP  - 700
+LA  - en
+ER  - 
+
+TY  - JOUR
+TI  - Sampling in interview-based qualitative research: A theoretical and practical guide
+AU  - Robinson, O.C.
+T2  - Qualitative research in psychology
+DA  - 2014///
+PY  - 2014
+VL  - 11
+IS  - 1
+SP  - 25
+EP  - 41
+LA  - en
+ER  - 
+
+TY  - JOUR
+TI  - Prevalence of rape and client-initiated gender-based violence among female sex workers: Kampala, uganda
+AU  - Schwitters, A.
+AU  - Swaminathan, M.
+AU  - Serwadda, D.
+T2  - AIDS Behaviour
+DA  - 2012///
+PY  - 2012
+VL  - 19
+IS  - Supply Nr 1
+SP  - 68
+EP  - 76
+LA  - en
+ER  - 
+
+TY  - JOUR
+TI  - Ethical and regulatory considerations in HIV prevention studies employing respondent-driven sampling
+AU  - Semaan, S.
+AU  - Santibanez, S.
+AU  - Garfein, R.S.
+AU  - Heckathorn, D.D.
+AU  - Jarlais, D.C.
+T2  - International Journal of Drug Policy
+DA  - 2009///
+PY  - 2009
+VL  - 20
+IS  - 1
+SP  - 14
+EP  - 27
+LA  - en
+ER  - 
+
+TY  - JOUR
+TI  - Time-space sampling and respondent-driven sampling with hard-to-reach populations
+AU  - Semaan, S.
+T2  - Methodological Innovations Online
+DA  - 2010///
+PY  - 2010
+VL  - 5
+IS  - 2
+SP  - 60
+EP  - 75
+LA  - en
+ER  - 
+
+TY  - JOUR
+TI  - Incentives for survey participation: when are they “coercive”?
+AU  - Singer, E.
+AU  - Bossarte, R.M.
+T2  - American journal of preventive medicine
+DA  - 2006///
+PY  - 2006
+VL  - 31
+IS  - 5
+SP  - 411
+EP  - 418
+LA  - en
+ER  - 
+
+TY  - GEN
+TI  - Britain after Brexit: The surprising surge in skilled migrants
+AU  - Strauss, D.
+AU  - Cocco, F.
+DA  - 2023///
+PY  - 2023
+LA  - en
+ER  - 
+
+TY  - GEN
+TI  - New estimates for network sampling
+AU  - Thompson, S.
+DA  - 2020///
+PY  - 2020
+LA  - en
+N1  - arXiv preprint arXiv:2002.01350.
+ER  - 
+
+TY  - JOUR
+TI  - Surveying migrant populations with respondent-driven sampling. Experiences from surveys of east-west migration in Europe
+AU  - Tyldum, G.
+T2  - International Journal of Social Research Methodology
+DA  - 2021///
+PY  - 2021
+VL  - 24
+IS  - 3
+SP  - 341
+EP  - 35
+LA  - en
+ER  - 
+
+TY  - JOUR
+TI  - Respondent-driven sampling to recruit MDMA users: a methodological assessment
+AU  - Wang, J.
+AU  - Carlson, R.G.
+AU  - Falck, R.S.
+AU  - Siegal, H.A.
+AU  - Rahman, A.
+AU  - Li, L.
+T2  - Drug and alcohol dependence
+DA  - 2005///
+PY  - 2005
+VL  - 78
+IS  - 2
+SP  - 147
+EP  - 157
+LA  - en
+ER  - 
+
+TY  - JOUR
+TI  - Web-based network sampling: efficiency and efficacy of respondent-driven sampling for online research
+AU  - Wejnert, C.
+AU  - Heckathorn, D.D.
+T2  - Sociological Methods & Research
+DA  - 2008///
+PY  - 2008
+VL  - 37
+IS  - 1
+SP  - 105
+EP  - 134
+LA  - en
+ER  - 
+
+TY  - JOUR
+TI  - Measuring labour trafficking: a research note
+AU  - Zhang, S.X.
+T2  - Crime, Law and Social Change
+DA  - 2012///
+PY  - 2012
+VL  - 58
+SP  - 469
+EP  - 482
+LA  - en
+ER  - 
+
+TY  - JOUR
+TI  - Victims without a voice: Measuring worst forms of child labor in the Indian State of Bihar
+AU  - Zhang, S.X.
+AU  - Dank, M.
+AU  - Vincent, K.
+AU  - Narayanan, P.
+AU  - Bharadwaj, S.
+AU  - Balasubramaniam, S.M.
+T2  - Victims & Offenders
+DA  - 2019///
+PY  - 2019
+VL  - 14
+IS  - 7
+SP  - 832
+EP  - 858
+LA  - en
+ER  - 
+
