@@ -63,7 +63,13 @@ show.rds.data.frame(fauxtime)
 dir()
 library(janitor)
 dd <- read_xlsx("./survey/Further Coding Update.xlsx")
+dd <- read_xlsx("./Further Coding Update.xlsx")
+
+dd <- dd %>% dplyr::select(!starts_with("column"))
+
 dd <- clean_names(dd)
+
+
 dd$q13 <- as.numeric(dd$q13)
 
 dd<- dd %>% select(q13, everything())
@@ -71,6 +77,47 @@ names(dd)
 dd$id <- dd$node_2_id_respondent_recruit
 dd$recruiter.id <- dd$node_1_recruiter
 dd$recruiter.id[is.na(dd$recruiter.id)] <- -1
+
+
+
+sort(names(dd) )
+
+library(tidyverse)
+dd %>% select(q105,q106, q115)
+
+
+set.seed(123) # For reproducibility
+df <- data.frame(
+  Var1 = c(1, NA, 3),
+  Var2 = c(NA, 5, NA),
+  Var3 = c(7, NA, 9),
+  Var4 = c(NA, NA, 12),
+  Var5 = c(15, NA, NA),
+  Var6 = c(NA, 18, NA),
+  Var7 = c(21, NA, 23),
+  Var8 = c(NA, NA, NA),
+  Var9 = c(27, NA, 29),
+  Var10 = c(NA, 31, NA)
+)
+
+library(dplyr)
+library(tidyr)
+
+df_processed <- df %>%
+  rowwise() %>%
+  mutate(NonEmptyCount = sum(!is.na(c_across(Var1:Var10))),
+         NonEmptyValues = list(na.omit(c_across(Var1:Var10)))) %>%
+  ungroup()
+
+df_long <- df_processed %>%
+  mutate(id = row_number()) %>%
+  unnest(NonEmptyValues) %>%
+  select(id, NonEmptyCount, NonEmptyValues)
+
+
+
+
+###########################
 
 dd$network.size.variable <- dd$q13+1
 dd$degree <- dd$q13+1
@@ -97,9 +144,9 @@ rd.dd <- as.rds.data.frame(dd, max.coupons = 10)
 
 
 reingold.tilford.plot(rd.dd, 
-					  vertex.label=NA, 
-					  vertex.size="degree",
-					  show.legend=FALSE)
+                      vertex.label=NA, 
+                      vertex.size="degree",
+                      show.legend=FALSE)
 
 
 
@@ -157,4 +204,5 @@ unique(ddd$recruiter.id)
 class(ddd$degree)	
 class(ddd$recruiter.id)
 rd.ddd <- as.rds.data.frame(ddd, max.coupons = 10)
+
 
