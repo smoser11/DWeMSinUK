@@ -1,11 +1,17 @@
 # 04-bootstrap_analysis.R
 library(Neighboot)
 library(RDStreeboot)
+library(tidyverse)
 
 load("./data/processed/prepared_data.RData")
 
+edges_df <- data.frame(
+	from = rd.dd$recruiter.id[rd.dd$recruiter.id != -1],
+	to = rd.dd$id[rd.dd$recruiter.id != -1]
+)
+
 # Renumber nodes sequentially 
-node_map <- setNames(1:length(rds_data$nodes), rds_data$nodes)
+node_map <- setNames(1:length(rd.dd$id), rd.dd$id)
 
 rds_data <- list(
 	nodes = 1:length(node_map),
@@ -14,19 +20,13 @@ rds_data <- list(
 		to = node_map[as.character(edges_df$to)]
 	),
 	traits = data.frame(
-		sum_categories = csv_data$sum_categories,
-		Q36 = csv_data$zQ36, 
-		Q80 = csv_data$zQ80,
-		row.names = 1:nrow(csv_data)
+		composite_risk = rd.dd$composite_risk,
+		Q36 = rd.dd$zQ36, 
+		Q80 = rd.dd$zQ80,
+		row.names = 1:nrow(rd.dd)
 	),
-	degree = setNames(csv_data$q13, 1:length(csv_data$q13))
+	degree = setNames(rd.dd$q13, 1:length(rd.dd$q13))
 )
-
-
-neighb(rds_data, 
-	   quant=c(0.025, 0.975),
-	   method="percentile", 
-	   B=1000)
 
 
 
@@ -34,44 +34,22 @@ run_bootstrap_analysis <- function() {
 
 	
 	# Neighborhood bootstrap with percentile method
-	neigh_results <- list(
-		q36 = neighb(rd.dd, 
-					 quant=c(0.025, 0.975),
-					 method="percentile", 
-					 B=1000),
-		
-		q80 = neighb(rd.dd, 
+	neigh_results <-  neighb(rds_data, 
 					 quant=c(0.025, 0.975),
 					 method="percentile", 
 					 B=1000)
-	)
 	
-	# Tree bootstrap 
-	tree_results <- list(
-		q36 = treeboot.RDS(rd.dd, 
-						   c(0.025, 0.10, 0.90, 0.975), 
-						   B=2000),
-		
-		q80 = treeboot.RDS(rd.dd,
-						   c(0.025, 0.10, 0.90, 0.975), 
-						   B=2000)
-	)
+
+
+
 	
-	# Compare bootstrap results by nationality clusters
-	cluster_results <- dd %>%
-		group_by(nationality_cluster) %>%
-		group_map(~neighb(.x, 
-						  quant=c(0.025, 0.975),
-						  method="percentile", 
-						  B=1000))
-	
-	save(neigh_results, tree_results, cluster_results,
+	save(neigh_results,   #, tree_results, cluster_results,
 		 file="output/bootstrap_results.RData")
 	
 	return(list(
-		neighborhood = neigh_results,
-		tree = tree_results, 
-		by_cluster = cluster_results
+		neighborhood = neigh_results
+	#	tree = tree_results, 
+	#	by_cluster = cluster_results
 	))
 }
 
