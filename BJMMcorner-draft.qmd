@@ -1,0 +1,81 @@
+---
+title: "Prevalence Estimation Using Respondent-Driven Sampling and Network Scale-Up Methods: An Exploratory Analysis of Labour Exploitation among UK Domestic Workers"
+author:
+  - name: Caroline Emberson
+    affiliations:
+      - University of Nottingham, Buisness School
+  - name: Scott Moser
+    affiliations:
+      - University of Nottingham, School of Politics and International Relations
+format: docx
+---
+
+
+
+
+
+## Bayesian Analysis
+
+### Population Size and Risk Distribution
+
+```{r}
+#| label: fig-posterior
+#| fig-cap: "Posterior Distributions by Prior Choice"
+
+# Plot posterior distributions
+posterior_plot <- mcmc_areas(
+    bayesian_results$size_priors,
+    prob = 0.95
+) +
+    theme_minimal() +
+    labs(title = "Posterior Population Size by Prior")
+
+print(posterior_plot)
+
+
+
+```
+
+
+```{r warning=FALSE, message=FALSE}
+#| label: fig-mcmc-diag
+#| fig-cap: "MCMC Convergence Diagnostics"
+
+# Trace plots
+mcmc_trace(bayesian_results$trait) +
+    facet_wrap(~parameter, scales = "free_y")
+
+# Autocorrelation plots
+mcmc_acf(bayesian_results$trait)
+```
+
+```{r}
+#| label: tbl-risk
+#| tbl-cap: "Composite Risk Score Distribution"
+
+risk_summary <- summary(bayesian_results$trait)
+kable(risk_summary, 
+      digits = 3,
+      col.names = c("Mean", "SD", "2.5%", "50%", "97.5%")) %>%
+    kable_styling()
+```
+
+
+
+```{r}
+#| label: fig-sensitivity
+#| fig-cap: "Prior Sensitivity Analysis Results"
+
+# Compare estimates across priors
+prior_comparison <- map_df(bayesian_results$size_priors, 
+                         ~summary(.)$statistics) %>%
+    mutate(prior = names(bayesian_results$size_priors))
+
+ggplot(prior_comparison, 
+       aes(x = prior, y = Mean)) +
+    geom_point() +
+    geom_errorbar(aes(ymin = `2.5%`, ymax = `97.5%`)) +
+    theme_minimal() +
+    labs(title = "Population Size Estimates by Prior Choice")
+```
+

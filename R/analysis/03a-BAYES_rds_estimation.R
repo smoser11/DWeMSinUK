@@ -1,4 +1,7 @@
 # Add to 03-rds_estimation.R
+library(RDS)
+library(sspse)
+library(tidyverse)
 
 run_bayesian_rds <- function() {
 	load("data/processed/prepared_data.RData")

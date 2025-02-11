@@ -65,3 +65,8 @@ run_rds_estimates <- function() {
 
 # Run analysis
 rds_results <- run_rds_estimates()
+
+
+
+#### BAYES:
+
