@@ -39,3 +39,6 @@ run_bayesian_rds <- function() {
 }
 
 bayesian_results <- run_bayesian_rds()
+
+save(bayesian_results, 
+     file = "output/rds_estimates-Bayes.RData")

@@ -56,7 +56,7 @@ run_rds_analyses <- function() {
 							visibility = TRUE)
 	
 	save(ma_results, rds_results, ss_pse, 
-		 file = "output/rds_estimates.RData")
+		 file = "output/rds_estimates-a.RData")
 	
 	return(list(
 		ma = ma_results,
