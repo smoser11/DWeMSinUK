@@ -2,11 +2,19 @@ library(RDS)
 library(sspse)
 library(tidyverse)
 library(coda)
+library(parallel)
+library(doParallel)
+
+# Setup parallel processing
+n_cores <- min(5, detectCores())
+cl <- makeCluster(n_cores)
+registerDoParallel(cl)
 
 run_rds_analysis <- function(data, 
                              pop_sizes = c(50000, 100000, 980000, 1740000),
                              seed_methods = c("sample", "random", "degree"),
-                             outcome_vars = c("zQ36", "zQ80", "composite_risk")) {
+                             outcome_vars = c("zQ36", "zQ80", "composite_risk"), 
+                             priors = c("beta", "flat", "nbinom", "pln") ) {
   
   # 1. Standard RDS Estimators
   rds_estimates <- expand_grid(
@@ -29,9 +37,10 @@ run_rds_analysis <- function(data,
   ma_estimates <- expand_grid(
     N = pop_sizes,
     method = seed_methods,
-    outcome = outcome_vars
+    outcome = outcome_vars,
+    priorsizedistribution = priors 
   ) %>%
-    group_by(N, method, outcome) %>%
+    group_by(N, method, outcome, priorsizedistribution) %>%
     group_modify(~{
       tibble(
         estimate = list(
@@ -50,15 +59,38 @@ run_rds_analysis <- function(data,
                           maxN = 2000000,
                           visibility = TRUE)
   
-  # 4. Bayesian Estimation
+  # 4. Bayesian Estimation using sspse
   bayes_estimates <- map(outcome_vars, ~{
-    posteriormean(data,
-                  trait.variable = .x,
-                  mean.prior.size = 980000,
-                  maxN = 2000000,
-                  B = 1000)
+    # Use successive sampling posterior for size estimation
+    ss_post <- posteriorsize(data,
+                             mean.prior.size = 980000,
+                             maxN = 2000000,
+                             visibility = TRUE,
+                             K = FALSE,          # Number of particles
+                             samplesize = 1000,        # MCMC iterations
+                             parallel = n_cores)
+    
+    # Get trait estimates conditional on size
+    trait_post <- with(data, {
+      # Extract posterior samples
+      size_samples <- ss_post$NK.values[seq(1, length(ss_post$NK.values), by=10)]
+      
+      # Get trait estimates for each size sample
+      foreach(N = size_samples, .combine=rbind) %dopar% {
+        est <- RDS.SS.estimates(data, outcome.variable = .x, N = N)
+        c(est$estimate, est$se)
+      }
+    })
+    
+    list(
+      size_posterior = ss_post,
+      trait_estimates = trait_post
+    )
   }) %>%
     setNames(outcome_vars)
+  
+  # Clean up parallel backend
+  stopCluster(cl)
   
   # Return results
   list(
@@ -118,8 +150,7 @@ format_results <- function(analysis_results) {
   )
 }
 
-
-#################################
+###############################################################################
 
 library(tidyverse)
 library(gt)
@@ -314,4 +345,5 @@ load("data/processed/prepared_data.RData")
 results <- run_rds_analysis(rd.dd)
 tables <- create_comparison_tables(results)
 plots <- create_comparison_plots(results)
-save_results(tables, plots)
+setwd("./output")
+save.image(results, tables, plots)
