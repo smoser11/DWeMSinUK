@@ -1,0 +1,415 @@
+I'm sorry, I'm late, I'm trying to do too much today and I'm just doing some admin.
+Yeah, maybe I might have overreacted a little bit.
+The weekend was productive but I'm still stuck.
+There's three things and the biggest is the question.
+We have three indicators at the individual level of you experience exploitation.
+There's this Q36, 80, and this very cool category index that you and Selim cooked up.
+That's great.
+We can use those variables to estimate prevalence of exploitation based on survey response,
+based on individuals working in domestic labor in the UK in the last year.
+That's these RDS methods, which we can do.
+That's great.
+That technique, that class of estimation, basically the whole trick is they're taking the sample as the sample
+and then the difficulties that RDS tries to fix up is the non-random sampling.
+It does it in several really creative ways and super-duper and we can do all that.
+Awesome.
+Great.
+Then I turn to insum.
+The strategy behind insum is much different.
+The information that insum uses isn't have you experienced exploitation.
+It's how many people do you know that have experienced exploitation?
+In that setting, what's really important is the number of people respondents know.
+It's not very important if a respondent is in the hidden population or not, has experienced
+exploitation or not, but it's important.
+The two things are how many people do you know, period, and that turns out that's hard to estimate,
+but there's ways.
+The one that I like is called the known population method.
+Then two, how many people do you know in the hidden population?
+A few things.
+First, thank you very much for making the time to talk with me.
+I appreciate it.
+I'm sorry for being a little bit spastic.
+I think both of our work weeks are turning hellish.
+Anyway, I appreciate it.
+A few issues here.
+One is, can we measure the same notion of exploitation using these two methods?
+I'm afraid, on Friday, my answer was no.
+I don't think we can because of the questions that are asked.
+The first type asks questions about, and there's only this morning that I had the clarity.
+There's different types of questions in the survey, but for this discussion, there's two
+relevant types.
+One is about your own experience at work, and the other is people you know.
+What we need is some overlap.
+We need there to be something that some, well, let me put it differently.
+If we want to use the two methods in the same paper and say that we're studying exploitation
+in a consistent way, then we need some sort of overlap.
+I'm having trouble finding that.
+The only one I've found so far is NRM, natural referral mechanisms.
+We know if a member has been referred, if a respondent's been referred, and we know how
+many they know in that population.
+Now, things get even weirder.
+One, hopefully there's more overlap because if that's the only one, that's a very, very
+clean measure of exploitation.
+We certainly, it's a high bar.
+You've picked it as one of the endpoints on the individual level, and I think all that's
+great, but then things get even weirder.
+One, I hope that there's more overlap than just that.
+For a number of reasons.
+One, it's a very, very high bar.
+Two, we're sort of using that group to do, it's wearing lots of hats because we're using
+it as the known population method, but then it's just pretty weird because we're saying
+like, okay, we're going to use this group to estimate individuals' degrees, the networks,
+how many people they know, but then we're also going to use it to try to estimate the
+hidden population.
+Wait a second.
+It can't be both, right?
+I mean, if we know, so what I'm trying to say is like, it gets back to this notion of
+like, what are we measuring?
+What notion of exploitation is being estimated in the insum?
+And that becomes especially problematic if the only overlap we have, hopefully it makes
+sense when I say overlap, is the number of referrals.
+So I very well could be wrong, and just this morning I pulled out, I think I identified
+questions of the first type and questions of the second type, and I haven't compared them,
+but hopefully I'm wrong and there is more overlap.
+But wait, it gets even weirder because it's kind of cool.
+If we can get both of these methods to work in the same paper, it's actually pretty methodologically
+cool because the, so in the first method, the RDS methods, you're looking for people in this
+hidden population, right?
+You're trying to identify them, and then you're doing some correction because of non-random
+sampling.
+And that's where the degree, that's where the social network comes in, is that it's just
+used for this kind of selection waiting issue.
+And again, I'm way glossing over people, really smart people who work on this.
+And in the insum method, it's really kind of intuitive.
+It's the exact opposite.
+You actually don't want members of the hidden population.
+You want people who know members of the hidden population.
+So for kind of technical reasons, it turns out you need to exclude if you found someone
+in the hidden population using the, using the particular type of insum that I've instantiated,
+and there are others that we could use that don't suffer from this problem.
+But if we use the one, the modified one from the Fihann and Solnick, then you actually need
+to exclude members from the hidden population when doing your calculations in the insum method.
+And the reason is because basically you just want, you want, you need to know the size
+of the frame minus the size of the hidden population.
+It's just kind of, it's annoying if you ask me, but fine.
+Okay, so here's where the hard part comes in.
+We have these different ways of indicating if you're in the hidden population.
+So I'll just take the two.
+So this is a Q80 and Q36.
+So get this.
+Okay, so we're up to speed.
+We're doing insum where we need to exclude members from the hidden population and then
+we need to know how many people in the sample, sorry, how many people in the hidden population
+are known to an individual respondent.
+Okay, I'm going to first cup of coffee.
+So depending on how we define members of the hidden population, like Q80 or Q36,
+we run into estimation problems in that.
+So for example, so here's the details.
+So say we use the high bar.
+So say we say, okay, we have a sample of individuals.
+We're going to say an individual, an individual in our sample is being exploited.
+If they say yes to the NRM, if they've been personally individually referred.
+Okay, so fine.
+So that means we need to find all those people and take them out and then do our.
+So if we use that method, then who's left?
+None of them know anyone in the hidden population.
+Zero is all around.
+Okay.
+So it just won't work.
+It just won't work.
+So if we use a Q36, then that's it.
+And that sort of gave me pause because what that means is no one who hasn't been referred
+is anyone who has been referred, which I mean, it's not implausible.
+And especially given the small numbers, it's, it's, it's even more not implausible.
+It's even less, it's even more plausible, I guess.
+But it's weird.
+Do you see what I mean?
+It's basically perfect separation.
+If you've been referred to the natural referral mechanism, then you might know other people that have.
+And if you haven't, you don't know anybody who has.
+And so as a result, we can't, we can't use that notion or things.
+Matthews breaks down.
+If we use Q80 as our notion of being in the hidden population and we do this removal business and we do in some things break.
+So we'd have to use other notions of, which is Z36, which is fine.
+We can do that.
+And that, that, that works.
+And that goes through.
+Excuse me.
+Sorry.
+I'm going to get way too excited about this stuff.
+No, that's okay.
+So just so I can reflect on what you're telling me.
+So to conduct a sensible new some, you need to have members of one of these bars who know other members who experiencing this, but are not themselves experiencing exploitation.
+I'm not sure I've got that.
+Yes, yes, yes.
+That's exactly right.
+Right.
+And for question 80, that doesn't apply.
+So we don't, we get a sample of zero effectively.
+Exactly.
+But for question 36, there are some people who aren't experiencing low level exploitation, but do know other people who are.
+So they can be used to do the new some.
+Is that what you're saying?
+Exactly right.
+Exactly right.
+Right.
+Exactly right.
+And then go ahead.
+All this gets fixed if we can find more overlap in these in the question.
+And like I say, I haven't.
+Not only this morning, I sort of tried to identify, I think, and thanks to you, you have that document that is a great start of individual indicators of individual exploitation.
+So that's like, you know, so that's basically what we're trying to do this morning is create one of those, but for the people, you know, questions.
+And then we'll have to see if there's overlap and hopefully there is.
+Because if not, we run into all these weird things that I hopefully I have not clearly articulated.
+But some of the weird things are technical, like we can't use Q80.
+Some of them are more conceptual, like if we're using number of referrals as both the known, if we're using that to both estimate individual degree sizes and in some, but then we're also using it as.
+As the hidden population, then it just things just get really, I mean, just at a conceptual level, it just sort of breaks down.
+Like what do you mean, like either you know the size or you don't.
+And I guess I mean, there's ways around that, like we could say, well, hang on, in some is open to more than just domestic workers.
+So, you know, we could, there's sort of conceptual tricks, I think we can play to sort of get out of that.
+But it just, it just gets, it doesn't not really, not really.
+But, but you know, things, I mean, at a technical level, I can get things to work.
+And then sort of good news and then a little bit of bad news, but with a thought that I don't know how clever it is, but I was light bulb popped on.
+So the good news, so the yes, so I get, I get estimates.
+And they're very consistent with at least sort of what I understand to be received wisdom.
+So like from the, the, the West Midlands police stuff.
+And of course, I'd be method has drawbacks and what.
+So the number that I think that I hear getting kicked around is like 100,000, very, very rough, you know, but, but something like that.
+And I'm getting, I think a conservative would be 120,000.
+And so that's, and it's, and that's sort of, you know, and that's, I find that believable.
+And, and the estimates now.
+So the bad news, unlike in the RDS, which had was pretty robust to like all these dials that you could tweak, not, not so in, in some.
+So what really matters is, is the size of an individual's degree now or so the social network information.
+And I was thinking about it, I was wondering, like, so why is that really important?
+So, so functioning, what that means is that if we change the, so if we use domestic workers in the UK as the known population, and if we say, okay, we're claiming that we know that there are 980,000 such workers.
+Great, that's a number we can use it.
+Chug, chug, chug, we get answers.
+If you say, well, no, actually there's only 50,000.
+Chug, chug, chug, you get way different numbers.
+And I was thinking, like, why is it, why are they so different in these two methods?
+Because it's the exact opposite over here with the, I hope this makes sense.
+In the RDS one.
+And it dawned on me, I was rather pleased with this.
+So, I mean, there's something interesting methodologically going on here.
+And the reason is, is because the degree network is playing at much different roles in the two estimation methods.
+So in the RDS, it's just being used just to, to fix up the sampling weights, to fix up the non-randomness.
+But in, but in, in some, the degree, the size of an individual's degree network is, is, is what, is what the scaling up is based on.
+So it's, it's really important to get that, to get that right.
+So I think that's sort of an interesting and unfortunate for us, not the logical.
+So what that means is that we really need to pin down these numbers.
+So just to give you an idea, so if I do the same sort of, you know, and by the way, I'm talking several orders of magnitude here.
+Say there's only 10,000 people in, in domestic work.
+Say there's 100,000.
+Say there's a million, you know, I mean, so there's a way different numbers.
+But the estimates using in some range from mid teens, 16,000 to 160,000, depending on basically the size of the known, of the known groups.
+So I'm sorry for rambling at you, but those are the most important thing.
+And the thing that, that is, well, I don't know if it's the most important thing, but the thing that would help us tremendously is this overlap issue is, is, is there a question?
+Is there a way of, of implementing a notion of exploitation that for which we have good questions, both at the individual, are you experiencing notion X of exploitation?
+And how many people do you know are experiencing notion X of exploitation?
+So we've got some, some possible candidates for those based on the risk index.
+But yeah, that would obviously take a bit of work to go through each one and see whether or not any of those hold up.
+Yeah, I can show you if you've got time, I can share screen to show you the what the, so like I said, I was just sort of, oh, no, no.
+I got one question.
+Sure.
+Please.
+Sorry.
+With question 80, we had a defined population of those people who had the, we knew the population for the NRM community.
+Does that mean if we use question 36 that we need to have a population estimate for those people who have not received the national minimum wage?
+For the comparability to work, yes.
+Because we don't have that yet, do we?
+No, no, I don't think so.
+But there's other individual questions, like the ones on your risk index, right?
+Yeah.
+And, and, and, you know, I've only, let me try to share screen.
+I've only just sit this morning.
+I think I found 15 questions that it's kind of, for me, it was fortunate because in the code book, they all say things like, if so, how many, like there's easy,
+I'm sorry, give me a second to, where did this thing go?
+Here it is.
+Hopefully you can see, I guess it's kind of ugly.
+Sorry about that.
+Let me see if I can make it prettier.
+Probably not.
+And everything just disappeared.
+Lovely.
+I suppose your question, your discussion about the difference in the sensitivity analysis.
+Worst case, we could just indicate that fact.
+Exactly.
+The two different methods result in very different sensitivities.
+Yeah.
+That's right.
+And I mean, to think, you know, the thing, I think we've always sort of just, you know, triangulating, I think, you know, I think they're personally,
+I think you and I are in the same page with us.
+I think we awesome to include, to write a paper that uses both of these techniques would be, I think we really strong.
+They are getting sort of qualitatively slightly different.
+So if we use the RDS, the estimates are, you know, something like 30 to 40%, which if we think there's about a million, you know, that gives about twice, at least twice as many domestic workers experience
+exploitation using the RDS methods as opposed to 300 to 400,000 compared to 120 to 160,000.
+So, you know, those are pretty big differences, but they're the same order of magnitude.
+And currently we don't really have, currently that's not really a fair comparison because the notion of exploitation is different using in the two methods.
+We have the Q30 Q80 over here and I guess we have the QQ80 over there too.
+Here's what I found, here's what I've identified as, yeah, so what, there's 15, yeah, as sort of, I don't know what I call them group questions.
+So, you know, 13 for sure we've used dissatisfied, you know, do not have good relations, you know, these aren't really, you see what I'm saying, right?
+Yeah.
+And now there are some, so there's some that are sort of exactly spot on, like, so threat of force, I believe, is asked to both.
+That's a good one, yeah.
+So that, that's a good one.
+And there's one that was just, so, yeah.
+So I guess to take, if you do not know where to, yeah, so there's, whoops, 33, so severe forms of labor exploitation without using NRM, we, you know, odd one.
+I thought there was one that was in order to help suffer bad environmental conditions, access to medical care.
+Maybe travel documents.
+Maybe.
+Yeah, that's another good one.
+A threat of force.
+So it's called slavery.
+Yeah, right.
+So I guess, I guess the takeaway is, you know, like bad working conditions that doesn't sound to me.
+I defer to you, but it's like, I don't know.
+Restrictions on freedom.
+I don't know if we have that at the individual level, but that's a possibility, I think.
+Okay, I'm going to stop sharing with you.
+So that's sort of hot off the presses.
+Oops, sorry, let me, but not everything.
+Not everything.
+And I guess sort of the, as I'm hearing myself talk, I guess one of the takeaways is, I'm so sorry about this, but given what we're finding when attempting to use the in some estimation technique, we might need to go back.
+It's looking like we need to go back and rethink and redo the RDS analysis with.
+Yeah, I see what you're saying, because we haven't got that comparator that strong comparator that with question 80 it just doesn't exist in this method.
+So, yeah.
+So it's worth.
+I suppose, from what you're saying it sounds like it's worth redoing it because this comparison is quite interesting methodologically.
+Also, I think we can say something about the nature of estimation using these two different techniques, even if our data doesn't enable us to.
+Well, our data says this is complicated and we can probably make some methodological recommendations for other people researching in this area.
+That's a great silver lining, Caroline.
+Yeah, no, that's right.
+So right.
+So what have we learned, right?
+Like going forward, how would you.
+What would we do differently?
+What would we advise people to, I mean, because this hasn't been tied before, I don't think.
+So this is, I mean, this is if we were doing it was starting and we wouldn't do it like this week, we do something different so we can say what we would do differently.
+It's a really good idea.
+It's a really good idea.
+Yeah, no, I think that's that's an excellent, that's an excellent idea.
+I think sort of most immediately and sadly, most immediately is going to be at least two weeks for me because of teaching, but the overlap issue.
+Like if we can find those questions that that would that would I think that's sort of the next step, I think.
+Okay.
+But what do you say after hearing me ramble for what do you think what should we do next?
+Sorry.
+Yeah.
+So I'm wondering those questions that we indicated on the risk indices are those the ones that you've pulled out that you're looking at in more detail now or these are the specific and some questions that asked about the difference in the population in population.
+Sorry.
+Sorry.
+Asked about the number of people that you knew the second this is a slightly different list.
+Exactly.
+And we have your list with individual educators we have what I think is my list with the how many people do you know. And so now we just need to see what the overlap is.
+I meant to email it to you right right as soon as I can.
+And that would be looking for strong and some questions really.
+We're looking we're looking for indicators of exploitation that are asked about the individual and about people the individual respondent knows.
+And I didn't really fully appreciate that those were, I just kind of figured and that's my my apologies I was an assumption on my part that there was kind of a like a symmetry there that like that those questions were the same which they are and that's fine.
+Yeah.
+Okay.
+But but I mean it's not it's not all gloom and doom I mean I think you know I did.
+Worst case scenario I think we're going to have to re operationalize.
+Exploitation.
+So, you know, verbally abused, maybe, or threat force, you know, threat of force or something like that, or not access to travel, whatever I don't know.
+I think worst case scenario we're going to have to.
+Well, again, all this is if we want to use these two methods in the same paper and and claim that we're estimating, you know, some something called exploitation in a coherent manner, which I think we do I think we all want that I think that's kind of the goal of the paper so.
+So, yeah.
+Does that make sense I'm so sorry for rambling at your Caroline.
+So it does make sense.
+I'm just trying to work out which is the best way forward.
+For me, I think it's the fact more time it would be that they would be looking at the questions with comparing the the individual indicators to the how many people do you know that.
+That's up for you know that have trade X, where trade X could be bad working environment, no access to your travel documents, been verbally harassed at work, etc, etc.
+Or could be have been referred to the National Referral Mechanism is also a perfectly fine indicator.
+Right now it's the only that's the only one that I'm that I know of and for all the reasons we've talked about it's somewhat problematic.
+It's a bit weird at the at the moment, like I said if we can find more and it's overlapped and things get things get better.
+Alternatively, or I guess concurrently if we had more known group sizes that would help.
+So if we knew the number of well domestic workers obviously but if we knew the well like you said so if we knew the number of domestic workers getting paid below the minimum wage that would that would be a big help.
+Of course, we don't and we likely can't know that number.
+I don't think we can find it.
+No, I don't think so either.
+I don't think we can estimate it even.
+No.
+Very convincingly.
+So that's sort of I don't see how we go down that track any further.
+Yeah, I agree.
+And you know more about this than I do so.
+So I guess to end on some on some slightly positive news is the.
+So I was rereading the Feehan and Solnick and they you know they have been modified the estimate that you picked and you're right is a great one.
+And they get these recommendations that's what we're using.
+And then the next line the next equation is they say well you know what would be even better is if you know they have these adjustment factors that they and so they say well even better as if you could you know you sort of include these adjustment factors and then just be upfront about what
+values you're choosing and I always thought that was kind of a dead end because we just you know you just don't because of the weird game of contacts like we just visibility basically is what is what we don't have that.
+But I was thinking you know it's very ad hoc but they're weirdly using so the main things there are transmission error and homophily.
+Which I don't remember what that what that is and weirdly you you get estimates for those from RDS methods.
+So it's very ad hoc and there's no statistical principle underlying it but we could.
+There are principle values that we could use in and again just be very upfront and say you know here's the range and here's the sensitivity but from these other estimation techniques we have a pretty good belief that the homophily level is 8.1.
+So we can plug that in which again I haven't seen done anywhere and maybe because it's a bad idea but it's it's also kind of cool because of this.
+Like you said like it's people don't I was shocked to when I started when we way back when I was.
+Yeah I don't think anyone's written on as far as I can tell this is this is not people don't do the two at once and and so I think that's very cool if we can get to work.
+But I think that the fact that people don't this idea of the sort of isolated community of people in the nrm who don't know other people.
+That's quite an interesting finding in itself.
+Yeah.
+Yeah.
+So if we do know more than reveal that and sort of stop at that point and say we weren't able to pursue the new some estimation further because this was an isolated community that's an interesting finding.
+And also we could then make recommendations about future studies that did want to combine these methods and say these these are the things that would need to be considered in survey design going forward.
+I agree.
+And another not to be too rare and well to be random I guess the.
+So I mean there's there's kind of a positive power.
+I don't know if it's positive or maybe depending on political scientists I'm always sort of thinking like policy homework not always but you use ideas but so if the nrm has seventy four thousand or referrals and that and again nrm is bigger than just domestic workers.
+But if we take that as as given.
+And if we believe that let's say I think one in my opinion one twenty is a conservative estimate 120,000 from them so far again very very preliminary.
+And that tells you something about the effectiveness of the nrm.
+You know, again, you have to adjust for the fact that nrm is everybody so it's domestic workers plus everybody else and our estimates is just domestic workers but.
+I mean I think that would you could say something about like okay well we have now at least we have a way of thinking about how effective is the nrm.
+Again in a very sort of.
+With lots of caveats and but I mean so if you if you had a guess at the proportion of everyone experiencing exploitation in the UK you had if you had an idea of what fraction of that set is occupied by domestic workers.
+Then hot dog you could say a bunch about about basically the capture of nrm.
+I don't know if we have principled estimates of that quantity of that proportion but but you get the idea right I mean even if you could sort of say something loosely.
+I hadn't thought about that but that's also kind of a nice like.
+Yeah things things aren't as gloom and doom as I thought they were on Friday so so one sorry for that and two thank you and your harm's around me think look at it right.
+Worst case scenario we write up what we have when we say and here's what we would do differently and you know please learn from our experience and for future research.
+Anyway that's the update that's where I was at I was hoping that you had sort of a oh you're the other questions but.
+No I'm afraid I can't but I can go through the end some questions and identify which are the strongest ones from a exploitation point of view.
+Probably try and do that tomorrow that'd be very helpful and send that across to you.
+Thank you that would be great.
+They are I mean I agree with the ones you put pulled out about coercion and retaining travel documents those are the ones that have the closest link to exploitation so if we find a number of those that have this satisfactory overlap.
+Big help big help.
+I mean could we say that we are demonstrating how the technique could be used.
+You're very good at this.
+I like I come with you in bad news you're like no no no no here's here's here's the reframe you just say I like that a lot I like that a lot you're very good at this.
+Sorry I'm sorry.
+I'm a mess but I'm given that our data is imperfect but that we but that it we are proving that this can be used if you can and there are improvements that you can make to the data collection.
+I think that's exactly right I mean it could be not something to say like a proof of concept but maybe more like you know the people haven't maybe more methodological than we thought people haven't combined these two.
+And there's lots of reasons why like way different sampling design assumptions but here's an attempt maybe it's wacky maybe it's maybe it's not.
+There's some there's some possible benefits or at least some discussion about the role of the social network in the two that wax philosophic about.
+Yes and and then say well so we tried it and here's what happened and here's here's what you would do going further.
+I mean I do think it's it's a powerful.
+It's I mean this is me waxing philosophic but it's.
+It just feels and this is really imprecise but it just feels like a more efficient way to use information and surveys because in this.
+The combining.
+Because in the one hand like if you.
+Because if you happen to find somebody in a hidden population then you definitely want their network and you definitely want their referrals.
+Okay but and RDS does that but but RDS sort of.
+It doesn't fully use the if.
+I'm doing really bad.
+Here's what I'm trying to say.
+In RDS methods then that's the personal networks of those in the hidden population and those not in the hidden population is it doesn't matter.
+That information isn't taken into account and that feels weird to me because in some is a great way of taking advantage of the of the difference in those in those networks so that's what I mean when I say it feels like sort of.
+Information it feels like one of the benefits of combining them if we can is that we're sort of.
+Using information we're using more information that's in the survey already that people aren't using currently at least this is the best of my knowledge.
+I've had too much coffee you can tell because I am just rambling at you I really like science I really like working with you Caroline so thank you for much for letting me.
+Well we I think it's fantastic what you're doing so we just need well what's practical to do with the data and I know we wouldn't start from here if we were starting again but this is where we are.
+It's yeah I think I'm hoping that with your help we can make a contribution from this absolutely no I think so I'll have a look at the questions tomorrow and do my best to pick out what I feel are the strongest ones.
+And let you have that and if somehow you can capture what has been useful from the discussion today and yeah.
+I'll do my best that way for how I might write it up.
+Sounds great sounds great and it's it's it's yeah so sorry.
+Sorry if I overreacted on Friday it's definitely not there's definitely a way forward so anyway thanks for thanks for this thanks for the timeliness I'll email you.
+Yeah it'd be great to get your your take on the the the how many people do you know questions and we'll go forward when we when our teaching schedules permit.
+Yes yeah I'm sorry I've got a really horrible two weeks.
+Yeah likewise likewise yeah I can get you the questions tomorrow and then yeah.
+If it if if this way till April so be it.
+I mean you know yeah you can do what you can do so.
+It's just the stop start I know when you're trying it's difficult to keep in your head I know because I've read the Felix and Salmanic paper a couple of times so you just have to start again and reread it to remind yourself what is what they say.
+But yeah I agree.
+Yeah unfortunately okay well good to catch up with you Scott.
+Yeah you as well and again thank you so much for your your your flexibility really really appreciate the meeting I'll set short short short short short notice so good luck with teaching Caroline and yeah we'll be in touch.
+Yeah okay thank you.
+Thank you.

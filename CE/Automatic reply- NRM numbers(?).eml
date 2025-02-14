@@ -1,0 +1,186 @@
+Received: from AS5PR06MB8869.eurprd06.prod.outlook.com (2603:10a6:20b:67c::16)
+ by DB9PR06MB8202.eurprd06.prod.outlook.com with HTTPS; Fri, 29 Mar 2024
+ 13:55:45 +0000
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=exmail.nottingham.ac.uk;
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com (2603:10a6:20b:99::17)
+ by AS5PR06MB8869.eurprd06.prod.outlook.com (2603:10a6:20b:67c::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7409.32; Fri, 29 Mar
+ 2024 13:55:44 +0000
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com ([::1]) by
+ AM6PR06MB5941.eurprd06.prod.outlook.com ([fe80::b883:f7bd:4abf:9b70%5]) with
+ Microsoft SMTP Server id 15.20.7409.028; Fri, 29 Mar 2024 13:55:44 +0000
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Automatic reply: NRM numbers(?)
+Thread-Topic: NRM numbers(?)
+Thread-Index: AQHageDK7il+XVoIIUmgRcrp7YNhZLFOvdWu
+References: <C6E8CBBC-9D49-49EA-9756-A277BD99E2F7@nottingham.ac.uk>
+In-Reply-To: <C6E8CBBC-9D49-49EA-9756-A277BD99E2F7@nottingham.ac.uk>
+X-MS-Has-Attach:
+X-Auto-Response-Suppress: All
+X-MS-Exchange-Organization-SCL: 1
+X-MS-Exchange-Inbox-Rules-Loop: lizce@exmail.nottingham.ac.uk
+X-MS-TNEF-Correlator: 93208ccb-0e8d-4410-b6df-b8ab4bf6bd61
+MIME-Version: 1.0
+Date: Fri, 29 Mar 2024 13:55:44 +0000
+X-MS-Exchange-Organization-MessageDirectionality: Originating
+X-MS-Exchange-Organization-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 03
+Message-Id:
+ <f8c3782fff8941f08fdfde4b98db8e18@AM6PR06MB5941.eurprd06.prod.outlook.com>
+X-MS-Exchange-Organization-Network-Message-Id:
+ 5b6b7a6b-a738-432c-7233-08dc4ff7edce
+X-MS-Exchange-Parent-Message-Id:
+ <C6E8CBBC-9D49-49EA-9756-A277BD99E2F7@nottingham.ac.uk>
+Auto-Submitted: auto-generated
+X-MS-Exchange-Generated-Message-Source: Mailbox Rules Agent
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ AM6PR06MB5941:EE_|AS5PR06MB8869:EE_|DB9PR06MB8202:EE_
+Return-Path: <>
+X-MS-Exchange-Organization-ExpirationStartTime: 29 Mar 2024 13:55:44.6778
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Office365-Filtering-Correlation-Id: 5b6b7a6b-a738-432c-7233-08dc4ff7edce
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR06MB5941.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:;DIR:INT;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Mar 2024 13:55:44.4847
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5b6b7a6b-a738-432c-7233-08dc4ff7edce
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS5PR06MB8869
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:00.6968759
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.7409.026
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(425001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	XH/BSIRcVNCF+M+GK+vkUSs6RaNK06TrtGNRBiuh3k/uocoKWolQknVrh0/o84SYFQIcfUe0aeQMFiLJTG2OH1LoxEzRVljnlHz/kcuwDqmCkrS6liPYFElPErA2m6O/inzZKrwsZ06/T1NxQNBUPihODbN/ElJiYyjB38WB9ieNIUtyl+xEZVRZBWBrICU1gm6NrKR2R7gLK3Ze3Yg5bcaijYO96xEJSyxigBe7PZs1gy/WDLKe8Ymirm0f0823t5Z0yAbZat0P69HTD0SC7rfeXOfMu/Fkx7SjPaIwgJzGY8Utev9NuGYGbHWmGW63tYtt174Rf8Skruu/bCZQ9LMKiv2mpqli9tNps5kax7fIkj8TptBoNw9ew2Sy88wigG9NZ7vk2UiL1tuV/Sfc42rwVn0S2h0vihrG1jSMGTMjXsKI57j/WR8pN6TuYZwNjvlL03Fbv8+YCCs2JGLbe0RMkt0xiRGOGz2z6j2Y4yw7rmS3d3YntZ5KRFSpzsYZpfoSKm3ImA9sC/pAOCtR9HkLB8CR8aSf3QhBGz5IMC6l2P1B8gxLekGG0DBQwA/YSwNmLEd1U0fGBpH8rAIlz72fELHMSpghlsuwnHyTG9mS2VaEs1jUH2ZDQt2yBrctfn1SobwEuZmIiOWHNFQMQB1ZmF0GJGUbEQ2ZuTJ/InP6YsGyUUyBBh7vweNnATtoZBAPJ51jum+zIhomii/VrbP02BK8FA6kiwNQt+2vvDWQVAy8o/lGi1IDPrDgIdlgK+62a1WmvTCiil566W5jtIcNojlA/fHPsaNdvz1B7+I=
+Content-type: multipart/alternative;
+	boundary="B_3821516406_100286239"
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3821516406_100286239
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: 7bit
+
+Thank you for your email. I am away from my email until 4th April and will respond on my return.
+
+ 
+
+The university will be closed from Friday 29 March to Tuesday 2 April (inclusive). The summer term will start on Monday 29th April. The University website provides more information about services available on campus over the Easter Break, and their opening hours. 
+
+ 
+
+However, if you are a student needing assistance in this time, the following support is available:
+
+ 
+
+Library Support
+
+These library web pages contain everything you need to know about accessing library resources and services before, and during, the break.
+
+ 
+
+Mental Health and Wellbeing
+
+There are many mental health & wellbeing resources here to help you pro-actively take care of your mental health and wellbeing during the break and support and wellbeing appointments can be booked online.
+
+
+
+Best wishes
+
+Caroline
+
+
+
+--B_3821516406_100286239
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"></head><=
+body><div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:1=
+2pt; color:rgb(0,0,0)"></div><div style=3D"font-size:15px; text-align:start; m=
+argin-top:0px; margin-bottom:0px; color:rgb(66,66,66)"><p style=3D"text-align:=
+left; margin:0px"><span style=3D"font-size:11pt; font-family:Arial,sans-serif;=
+ margin:0px; color:black"><span style=3D"background-color:white">Thank you for=
+ your email. I am away from my email until&nbsp;</span><span style=3D"backgrou=
+nd-color:rgb(229,241,143)">4<span><sup>th</sup>&nbsp;April</span></span></sp=
+an><span style=3D"font-size:12pt; font-family:&quot;Times New Roman&quot;,seri=
+f; margin:0px; color:black; background-color:white">&nbsp;and will respond o=
+n my return.</span></p><p style=3D"text-align:left; margin:0px; background-col=
+or:white"><span style=3D"font-size:11pt; font-family:Arial,sans-serif; margin:=
+0px; color:black">&nbsp;</span></p><p style=3D"text-align:left; margin:0px; ba=
+ckground-color:white"><span style=3D"font-size:11pt; font-family:Arial,sans-se=
+rif; margin:0px; color:black; background-color:white">The university will be=
+ closed from Friday 29 March to Tuesday 2 April (inclusive)</span><span styl=
+e=3D"font-size:11pt; font-family:Arial,sans-serif; margin:0px; color:black">. =
+The summer term will start on Monday 29<sup>th</sup>&nbsp;April. The Univers=
+ity website&nbsp;provides more information about<span>&nbsp;</span><a href=3D"=
+https://www.nottingham.ac.uk/currentstudents/news/easter-opening-hours-1" ta=
+rget=3D"_blank" rel=3D"noopener noreferrer" title=3D"https://www.nottingham.ac.uk/=
+currentstudents/news/opening-hours-over-the-winter-break-2" style=3D"margin:0p=
+x">services available on campus over the Easter Break, and their opening hou=
+rs.&nbsp;</a></span></p><p style=3D"margin:0px; background-color:white"><span =
+style=3D"font-size:11pt; font-family:Arial,sans-serif; margin:0px; color:black=
+">&nbsp;</span></p><p style=3D"text-align:left; margin:0px; background-color:w=
+hite"><span style=3D"font-size:11pt; font-family:Arial,sans-serif; margin:0px;=
+ color:black">However, if you are a student needing assistance in this time,=
+ the following support is available:</span></p><p style=3D"text-align:left; ma=
+rgin:0px; background-color:white"><span style=3D"font-size:11pt; font-family:A=
+rial,sans-serif; margin:0px; color:black">&nbsp;</span></p><p style=3D"text-al=
+ign:left; margin:0px; background-color:white"><span style=3D"font-size:11pt; f=
+ont-family:Arial,sans-serif; margin:0px; color:black"><b><a href=3D"https://ww=
+w.nottingham.ac.uk/library/support/winter.aspx" target=3D"_blank" rel=3D"noopene=
+r noreferrer" title=3D"https://www.nottingham.ac.uk/library/support/winter.asp=
+x" style=3D"margin:0px">Library Support</a></b></span></p><p style=3D"text-align=
+:left; margin:0px; background-color:white"><span style=3D"font-size:11pt; font=
+-family:Arial,sans-serif; margin:0px; color:black">These<span>&nbsp;</span><=
+a href=3D"https://www.nottingham.ac.uk/library/support/winter.aspx" target=3D"_b=
+lank" rel=3D"noopener noreferrer" title=3D"https://www.nottingham.ac.uk/library/=
+support/winter.aspx" style=3D"margin:0px">library web pages<span>&nbsp;</span>=
+</a>contain everything you need to know about accessing library resources an=
+d services before, and during, the break.</span></p><p style=3D"text-align:lef=
+t; margin:0px; background-color:white"><span style=3D"font-size:11pt; font-fam=
+ily:Arial,sans-serif; margin:0px; color:black">&nbsp;</span></p><p style=3D"te=
+xt-align:left; margin:0px; background-color:white"><span style=3D"font-size:11=
+pt; font-family:Arial,sans-serif; margin:0px; color:black"><b><a href=3D"https=
+://www.nottingham.ac.uk/currentstudents/healthyu/mental-health/bodymind.aspx=
+" target=3D"_blank" rel=3D"noopener noreferrer" title=3D"https://www.nottingham.ac=
+.uk/currentstudents/healthyu/mental-health/bodymind.aspx" style=3D"margin:0px"=
+>Mental Health and Wellbeing</a></b></span></p><p style=3D"text-align:left; ma=
+rgin:0px; background-color:white"><span style=3D"font-size:11pt; font-family:A=
+rial,sans-serif; margin:0px; color:black">There are<span>&nbsp;</span><a hre=
+f=3D"https://www.nottingham.ac.uk/currentstudents/healthyu/mental-health/bodym=
+ind.aspx" target=3D"_blank" rel=3D"noopener noreferrer" title=3D"https://www.notti=
+ngham.ac.uk/currentstudents/healthyu/mental-health/bodymind.aspx" style=3D"mar=
+gin:0px">many mental health &amp; wellbeing resources here</a>&nbsp;to help =
+you pro-actively take care of your mental health and wellbeing during the br=
+eak and<span>&nbsp;</span><a href=3D"https://studentlife.nottingham.ac.uk/s/my=
+wellbeing/appointments" target=3D"_blank" rel=3D"noopener noreferrer" title=3D"htt=
+ps://studentlife.nottingham.ac.uk/s/mywellbeing/appointments" style=3D"margin:=
+0px">support and wellbeing appointments can be booked online</a>.</span></p>=
+<p style=3D"text-align:left; margin:0px; background-color:white"><span style=3D"=
+font-size:11pt; font-family:Arial,sans-serif; margin:0px; color:black"><br><=
+/span></p><p style=3D"text-align:left; margin:0px; background-color:white"><sp=
+an style=3D"font-size:11pt; font-family:Arial,sans-serif; margin:0px; color:bl=
+ack">Best wishes</span></p><p style=3D"text-align:left; margin:0px; background=
+-color:white"><span style=3D"font-size:11pt; font-family:Arial,sans-serif; mar=
+gin:0px; color:black">Caroline</span></p><br></div></body></html>
+
+--B_3821516406_100286239--
+

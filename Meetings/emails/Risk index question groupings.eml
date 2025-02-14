@@ -1,0 +1,273 @@
+Received: from AM7PR06MB6738.eurprd06.prod.outlook.com (2603:10a6:20b:1ac::14)
+ by DB9PR06MB8202.eurprd06.prod.outlook.com with HTTPS; Tue, 19 Sep 2023
+ 11:14:32 +0000
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=exmail.nottingham.ac.uk;
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com (2603:10a6:20b:99::17)
+ by AM7PR06MB6738.eurprd06.prod.outlook.com (2603:10a6:20b:1ac::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6792.26; Tue, 19 Sep
+ 2023 11:14:32 +0000
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::d2c9:5b27:fde9:2719]) by AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::d2c9:5b27:fde9:2719%4]) with mapi id 15.20.6792.026; Tue, 19 Sep 2023
+ 11:14:32 +0000
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>, Selim Yilmaz
+	<ldxsy3@exmail.nottingham.ac.uk>
+Subject: Risk index question groupings
+Thread-Topic: Risk index question groupings
+Thread-Index: AQHZ6ukWw3g2NTWiv0CCLNEMWvfWKQ==
+Date: Tue, 19 Sep 2023 11:14:32 +0000
+Message-ID:
+ <AM6PR06MB5941DE6CA4C99794C53C2722A0FAA@AM6PR06MB5941.eurprd06.prod.outlook.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-GB
+X-MS-Has-Attach:
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+ <AM6PR06MB5941DE6CA4C99794C53C2722A0FAA@AM6PR06MB5941.eurprd06.prod.outlook.com>
+msip_labels:
+MIME-Version: 1.0
+X-MS-Exchange-Organization-MessageDirectionality: Originating
+X-MS-Exchange-Organization-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-Network-Message-Id:
+ d781c794-5f5f-494f-a39c-08dbb901995c
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ AM6PR06MB5941:EE_|AM7PR06MB6738:EE_|DB9PR06MB8202:EE_
+Return-Path: lizce@exmail.nottingham.ac.uk
+X-MS-Exchange-Organization-ExpirationStartTime: 19 Sep 2023 11:14:32.4203
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Office365-Filtering-Correlation-Id: d781c794-5f5f-494f-a39c-08dbb901995c
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR06MB5941.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:;DIR:INT;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Sep 2023 11:14:32.1606
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-Network-Message-Id: d781c794-5f5f-494f-a39c-08dbb901995c
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Ite1TUEDzAsWZnjByHlJOdoG5n9Z6WhhCk7LlMzQL9D4yhgyZfM3lha7K/C0c3mfAian0yp8XKjfUqPHs/NycZutbJokJXmfPoJkSRT+VRRY2nEWpDUvo25nY4rhPQ8e
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM7PR06MB6738
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:00.7406981
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.6792.025
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(425001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	2vU1ws9ahmfxVJF3MfQ7f5TVSdJCnnhj8aJtCq06EPwlMesxWffQ3n+wseyrm130UHQDaJJWOwXVd2cAMqNw+RdVVkAWpoIu14vTs7HpWSJHwEVZLZQwD+gDPLYobYhhXAjH69l/AjwIbzXLWj+EmampNk2nb2WEsQmPliWd7HTVSzWNgHZDHK1bVhPqc2Pg3908Dmmz37qsBRcbeaaIXDnlRge7bIFr4uSOTf9X4nzgVp2zn46oc+kExkGh3o01rOfaw8V3xXCbIulZL2EgNF/UdQdR5Zl+zeupxfMDr7qdtZI+9I4uGWm8WFoNaEdRUmbnaiT5RPB1bu7RS6vxWjTXs0qdfsE9juMSJBr2aFpzKe43YiFNBxJR/SZ78QpZMi5MVJLmwiqm4E0+/Vjx38lTrU2R+xT1/HmdK5fLDJc9ad17+fclrtO1Hd+oCTCbckpEaGWRkTtgxl9IESLQsizhv1iiqXOCgUe5JObXgzJ0y1EZtzI41Vu7LOLRUPMBk0EHXGaW6RC1H1EiyC6RT+b7R4QwmDftKmUtnPvlJ3atdnqUxGpvZCxN7tgX54r/855BKBzlGHpp65+MYecZBObPxWv+hmTTN2ZI+Zd2cspaKDirp0juLcaj+dOj20cr6R8I51A5o/gQHmPbIoQ1bIwr5+POQaQJJn3jgEQ+/kpKMm9UT6o0tm96DzxLloma4h/FYnEgNB0RfhBazPIzgRnFuhUgB07WZ50fqfIAKX+E/z089F5XEqJPnZsuO4lh
+Content-type: multipart/alternative;
+	boundary="B_3808391796_1953806721"
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3808391796_1953806721
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: 7bit
+
+Hi Scott and Selim,
+
+I have now been through the codebook and identified those questions that identify the respondent as a member of the hidden population of those at risk of forced labour. All 11 indicators are covered with the risk of forced labour increasing with the presence of more than one indicator. Questions that identify respondent as a member of the hidden population.docx
+
+Scott - I hope that this is more what you had in mind? 
+
+My next job is to revisit your comments related to the protocol. Would it be possible perhaps to give me access to review the latest version of the protocol document in the shared file so that I can add my comments as track changes?
+
+Best wishes
+Caroline 
+
+Best wishes
+Caroline
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Nottingham Research Fellow, Rights Lab
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+ 
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+ 
+
+ 
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+
+
+
+--B_3808391796_1953806721
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><style t=
+ype=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bottom:0;} </st=
+yle></head><body dir=3D"ltr"><div style=3D"font-family: Calibri, Arial, Helvetic=
+a, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof"=
+>Hi Scott and Selim,</div><div style=3D"font-family: Calibri, Arial, Helvetica=
+, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof">=
+<br></div><div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; fo=
+nt-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof">I have now been =
+through the codebook and identified those questions that identify the respon=
+dent as a member of the hidden population of those at risk of forced labour.=
+ All 11 indicators are covered with the risk of forced labour increasing wit=
+h the presence of more than one indicator.&nbsp;<span><a href=3D"https://uniof=
+nottm-my.sharepoint.com/:w:/g/personal/caroline_emberson_nottingham_ac_uk/Ef=
+cnICfjIIBDmSbGRsyP_OgBFVb82Rg9FDSddzqAqt0Dpg" rel=3D"noopener noreferrer" cont=
+enteditable=3D"false" id=3D"OLK_Beautified_3600043c-9991-6c8e-9679-68e4c847116a"=
+ class=3D"OWAAutoLink eScj0 none" style=3D"padding: 0px 1px; border-radius: 2px;=
+ user-select: all; background-color: rgb(243, 242, 241);" data-ogsc=3D""><img =
+class=3D"suRDx" alt=3D"" role=3D"presentation" style=3D"width: 16px; height: 16px; v=
+ertical-align: middle; padding: 1px 2px 2px 0px;" src=3D"https://res.cdn.offic=
+e.net/assets/mail/file-icon/png/docx_16x16.png">Questions that identify resp=
+ondent as a member of the hidden population.docx</a></span></div><div style=3D=
+"font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 12pt; color:=
+ rgb(0, 0, 0);" class=3D"elementToProof"><br></div><div style=3D"font-family: Ca=
+libri, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" =
+class=3D"elementToProof">Scott - I hope that this is more what you had in mind=
+?&nbsp;</div><div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif;=
+ font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof"><br></div><di=
+v style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 12pt=
+; color: rgb(0, 0, 0);" class=3D"elementToProof">My next job is to revisit you=
+r comments related to the protocol. Would it be possible perhaps to give me =
+access to review the latest version of the protocol document in the shared f=
+ile so that I can add my comments as track changes?</div><div style=3D"font-fa=
+mily: Calibri, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, =
+0, 0);" class=3D"elementToProof"><br></div><div style=3D"font-family: Calibri, A=
+rial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"e=
+lementToProof">Best wishes</div><div style=3D"font-family: Calibri, Arial, Hel=
+vetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToP=
+roof">Caroline<span style=3D"font-family: Calibri, Arial, Helvetica, sans-seri=
+f; font-size: 12pt; color: rgb(0, 0, 0);">&nbsp;</span></div><div style=3D"fon=
+t-family: Calibri, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb=
+(0, 0, 0);" class=3D"elementToProof"><br></div><div style=3D"font-family: Calibr=
+i, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">Best wishes</div><div style=3D"font-family: Calibri, Arial,=
+ Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elemen=
+tToProof">Caroline</div><div class=3D"elementToProof"><div style=3D"font-family:=
+ Calibri, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0)=
+;"><br></div><div id=3D"Signature"><div><div style=3D"font-family: Calibri, Aria=
+l, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br></div><=
+div></div><div id=3D"divtagdefaultwrapper" dir=3D"ltr" style=3D"font-size: 12pt; f=
+ont-family: Calibri, Helvetica, sans-serif; color: rgb(0, 0, 0);"><p style=3D"=
+margin-top:0px; margin-bottom:0px; margin-top:0; margin-bottom:0"></p><p cla=
+ss=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px"><font face=3D"Arial, =
+sans-serif" style=3D"color: rgb(0, 155, 189);"><b>Dr Caroline Emberson (prefer=
+red pronouns she/her)</b></font></p><p class=3D"MsoNormal" style=3D"margin-top:0=
+px; margin-bottom:0px"><font face=3D"Arial, sans-serif" style=3D"color: rgb(19, =
+27, 87);"><b>Nottingham Research Fellow, Rights Lab</b></font></p><p class=3D"=
+MsoNormal" style=3D"margin-top:0px; margin-bottom:0px"><span style=3D"font-size:=
+9.0pt; font-family:&quot;Arial&quot;,sans-serif">&nbsp;</span></p><p class=3D"=
+MsoNormal" style=3D"margin-top:0px; margin-bottom:0px"><span style=3D"font-size:=
+ 9pt; font-family: Arial, sans-serif; color: rgb(19, 27, 87);">Nottingham Un=
+iversity Business School OMIS/ Faculty of Social Science<br>University of No=
+ttingham</span><sub><span style=3D"font-size:11.0pt; font-family:&quot;Arial&q=
+uot;,sans-serif"></span></sub></p><p class=3D"MsoNormal" style=3D"margin-top:0px=
+; margin-bottom:0px"><span style=3D"font-size: 9pt; font-family: Arial, sans-s=
+erif; color: rgb(19, 27, 87);">A20, Highfield House</span></p><p class=3D"MsoN=
+ormal" style=3D"margin-top:0px; margin-bottom:0px"><span style=3D"font-size: 9pt=
+; font-family: Arial, sans-serif; color: rgb(19, 27, 87);">University Park</=
+span><sub><span style=3D"font-size:11.0pt; font-family:&quot;Arial&quot;,sans-=
+serif"></span></sub></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-b=
+ottom:0px"><span style=3D"font-size: 9pt; font-family: Arial, sans-serif; colo=
+r: rgb(19, 27, 87);">Nottingham, NG7 2RD</span></p><p class=3D"MsoNormal" styl=
+e=3D"margin-top:0px; margin-bottom:0px"><span style=3D"font-size:9.0pt; font-fam=
+ily:&quot;Arial&quot;,sans-serif">&nbsp;</span></p><p class=3D"MsoNormal" styl=
+e=3D"margin-top:0px; margin-bottom:0px"><span style=3D"font-size: 9pt; font-fami=
+ly: Arial, sans-serif; color: rgb(19, 27, 87);">+44 (0) 115 8283072<b>&nbsp;=
+</b></span><b><span style=3D"font-size: 9pt; font-family: Calibri, sans-serif;=
+ color: rgb(19, 27, 87);">| </span></b><span class=3D"MsoHyperlink"><span styl=
+e=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif"><a href=3D"http:=
+//nottingham.ac.uk/" target=3D"_blank">caroline.emberson@nottingham.ac.uk</a><=
+/span></span><span style=3D"font-size:11.0pt; font-family:&quot;Arial&quot;,sa=
+ns-serif"></span></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bott=
+om:0px"><span style=3D"font-size: 9pt; font-family: Arial, sans-serif; color: =
+black;">&nbsp;</span></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-=
+bottom:0px"><a href=3D"https://www.nottingham.ac.uk/servicesforbusiness"><span=
+ style=3D"font-size: 11pt; font-family: Arial, sans-serif; text-decoration: no=
+ne; color: black;"></span></a><span style=3D"font-size: 11pt; font-family: Ari=
+al, sans-serif; color: black;"></span></p><p class=3D"MsoNormal" style=3D"margin=
+-top:0px; margin-bottom:0px"><span style=3D"font-size: 9pt; font-family: Arial=
+, sans-serif; color: black;">&nbsp;</span></p><p class=3D"MsoNormal" style=3D"ma=
+rgin-top:0px; margin-bottom:0px; text-autospace:none"><b><span lang=3D"EN-US" =
+style=3D"font-size: 9pt; font-family: Georgia, serif; color: rgb(21, 118, 158)=
+;">Follow us</span></b><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family=
+: Calibri, sans-serif; color: rgb(25, 25, 25);"></span></p><p class=3D"MsoNorm=
+al" style=3D"margin-top:0px; margin-bottom:0px; text-autospace:none"><u style=3D=
+""><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Arial, sans-serif;=
+ color: rgb(0, 0, 233);"><a href=3D"http://facebook.com/TheUniofNottingham"><s=
+pan style=3D"color: rgb(0, 0, 233);">Facebook.com/UniofNottingham</span></a></=
+span></u><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Arial, sans-=
+serif; color: rgb(25, 25, 25);"></span></p><p class=3D"MsoNormal" style=3D"margi=
+n-top:0px; margin-bottom:0px; text-autospace:none"><u style=3D""><span lang=3D"E=
+N-US" style=3D"font-size: 9pt; font-family: Arial, sans-serif; color: rgb(0, 0=
+, 233);"><a href=3D"http://twitter.com/UniofNottingham"><span style=3D"color: rg=
+b(0, 0, 233);">Twitter.com/UniofNottingham</span></a></span></u><span lang=3D"=
+EN-US" style=3D"font-size: 9pt; font-family: Arial, sans-serif; color: rgb(25,=
+ 25, 25);"></span></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bot=
+tom:0px; text-autospace:none"><u style=3D""><span lang=3D"EN-US" style=3D"font-siz=
+e: 9pt; font-family: Arial, sans-serif; color: rgb(0, 0, 233);"><a href=3D"htt=
+p://youtube.com/nottmuniversity"><span style=3D"color: rgb(0, 0, 233);">Youtub=
+e.com/nottmuniversity</span></a></span></u><span lang=3D"EN-US" style=3D"font-si=
+ze: 9pt; font-family: Arial, sans-serif; color: rgb(25, 25, 25);"></span></p=
+><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px; text-autospa=
+ce:none"><u style=3D""><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: =
+Arial, sans-serif; color: rgb(0, 0, 233);"><a href=3D"http://instagram.com/uni=
+ofnottingham"><span style=3D"color: rgb(0, 0, 233);">Instagram.com/uniofnottin=
+gham</span></a></span></u><span lang=3D"EN-US" style=3D"font-size: 9pt; font-fam=
+ily: Arial, sans-serif; color: rgb(25, 25, 25);"></span></p><p class=3D"MsoNor=
+mal" style=3D"margin-top:0px; margin-bottom:0px"><u style=3D""><span lang=3D"EN-US=
+" style=3D"font-size: 9pt; font-family: Arial, sans-serif; color: rgb(0, 0, 23=
+3);"><a href=3D"http://linkedin.com/company/university-of-nottingham"><span st=
+yle=3D"color: rgb(0, 0, 233);">Linkedin.com/company/university-of-nottingham</=
+span></a></span></u></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-b=
+ottom:0px"><u style=3D""><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family=
+: Arial, sans-serif; color: rgb(0, 0, 233);"><a href=3D"http://www.foursquare.=
+com/uniofnottingham"><span style=3D"color: rgb(0, 0, 233);">F</span>oursquare.=
+com/uniofnottingham</a></span></u></p><p class=3D"MsoNormal" style=3D"margin-top=
+:0px; margin-bottom:0px"><u style=3D""><span lang=3D"EN-US" style=3D"font-size: 9p=
+t; font-family: Arial, sans-serif; color: rgb(0, 0, 233);"><span style=3D"text=
+-decoration:none">&nbsp;</span></span></u></p><br><p style=3D"margin-top:0px; =
+margin-bottom:0px"></p></div></div></div></div></body></html>
+
+--B_3808391796_1953806721--
+

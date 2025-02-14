@@ -1,0 +1,1145 @@
+Received: from VI1PR06MB6605.eurprd06.prod.outlook.com (2603:10a6:800:184::18)
+ by DB9PR06MB8202.eurprd06.prod.outlook.com with HTTPS; Thu, 7 Mar 2024
+ 13:14:53 +0000
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=exmail.nottingham.ac.uk;
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com (2603:10a6:20b:99::17)
+ by VI1PR06MB6605.eurprd06.prod.outlook.com (2603:10a6:800:184::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7362.24; Thu, 7 Mar
+ 2024 13:14:52 +0000
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::b883:f7bd:4abf:9b70]) by AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::b883:f7bd:4abf:9b70%4]) with mapi id 15.20.7362.019; Thu, 7 Mar 2024
+ 13:14:51 +0000
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+CC: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Fw: GNSUM Population estimates
+Thread-Topic: GNSUM Population estimates
+Thread-Index: AQHZ6gkhAHB//Kd0FE6WKNilzvFitLEtTpsV
+Date: Thu, 7 Mar 2024 13:14:51 +0000
+Message-ID:
+ <AM6PR06MB5941B166EC85F50BFEB2B242A0202@AM6PR06MB5941.eurprd06.prod.outlook.com>
+References:
+ <AM0PR06MB59373CBA21CFD968C7450B8DA0FBA@AM0PR06MB5937.eurprd06.prod.outlook.com>
+In-Reply-To:
+ <AM0PR06MB59373CBA21CFD968C7450B8DA0FBA@AM0PR06MB5937.eurprd06.prod.outlook.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-GB
+X-MS-Has-Attach: yes
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+ <AM6PR06MB5941B166EC85F50BFEB2B242A0202@AM6PR06MB5941.eurprd06.prod.outlook.com>
+msip_labels:
+MIME-Version: 1.0
+X-MS-Exchange-Organization-MessageDirectionality: Originating
+X-MS-Exchange-Organization-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-Network-Message-Id:
+ 7cc641d9-cd31-4e34-cc28-08dc3ea892c9
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ AM6PR06MB5941:EE_|VI1PR06MB6605:EE_|DB9PR06MB8202:EE_
+Return-Path: lizce@exmail.nottingham.ac.uk
+X-MS-Exchange-Organization-ExpirationStartTime: 07 Mar 2024 13:14:52.2857
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Office365-Filtering-Correlation-Id: 7cc641d9-cd31-4e34-cc28-08dc3ea892c9
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR06MB5941.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:;DIR:INT;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Mar 2024 13:14:51.7729
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7cc641d9-cd31-4e34-cc28-08dc3ea892c9
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: xnJufOZMQ2ZJ1nhRMqeJbwO7qTG2s/y7JvB3QsVvnTpbZj4nRtzwoUOyPRoYmEMacxXj/exkd8BGiuob3hDdXxVRUzg7OEjoJryK/otTJ6zZWBB6Z4wrwFuY2BngeVNh
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR06MB6605
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:02.0264348
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.7386.005
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(4955320)(920097)(425001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	1hpMnk5/9JeJ3X1iiGVZ6Js2iVZ0a+bFzSzmjx0+LTPIJhMBNwIkeYMs4tJb0E3Zsp42tqNYCQJVbWVEGnx6Z7a2XcG7cQQb/pf5xW/0bqSXjwwWnqo9x5f2bGZb70LHq5Nw6CVDSRJNKeKZMJaH4pu69Hwx2dD1EODFsXLiDv0I+452U+dLs1cpdO2MpXaizlK435yD+Pud/3C8IZTnJgztLnM4MQtWz8xPWoyR/eOBeZ+vl3jDnvAiFqm7dxxdhjdA7jy8ERV50R3PIV/qVI70j0hvBcllPzHVEJ399UF/Ppzqxa9xTky8xbsUYi718JDkSbNnb72IzEtqm23+Us4Ht33eVmWuXqttv64wcI/AE8XiAn4BjjXv6zAnnbh5RmWO1l2aQ1xVFqG7kyAX+2vrDBWyHKnz292SCiLo7M+5Bu0zJjmVwpYdvxh0Y6zp9lPFvL9dpuuN67J3IIYUked0G/RGGyt4Ya4V2HUgtsWPPeAdhnA1uf2Nk1bKNT9ZNT0aiNbXJV4XdMHNjLDkCG3Sq+3Jb8xnjrKC/Li3VeEncHY8xV6PxJ/WM215Xzuu926rW+opkJuGInrszngfu0xnI5CZQrizMZ0Zu6CUdz5BhTvEX/CgSrXRaAgZUQHiF8kktSk+Exm2W3X4jlNixl9OWGUfC8eZS9Cj42u/1j5ZXW6g9bUTTf89EesLICaaLqGq5Du79pIg9Ub+FNFo2XLTw0PYAFLmZZo0I3DFqR5mOozrr2xlanBQJ+tUP+FnT5XKEnpMkVPJGpgmBw1JU22sbopOR5V3KTCNwL5eLJ8=
+Content-type: multipart/mixed;
+	boundary="B_3808391796_1900076864"
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3808391796_1900076864
+Content-type: multipart/related;
+	boundary="B_3808391796_776346561"
+
+--B_3808391796_776346561
+Content-type: multipart/alternative;
+	boundary="B_3808391796_650466367"
+
+
+--B_3808391796_650466367
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: 7bit
+
+Yes, you're right Scott the figure I calculated was 73,019  - details as per the email below
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (AFHEA)
+
+
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB 
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+Book time to meet with me
+From: Caroline Emberson (staff)
+Sent: 18 September 2023 10:24
+To: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Cc: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Subject: GNSUM Population estimates 
+ 
+
+Hi Scott and Selim,
+
+I have now looked up the statistics related to the population estimates that we have discussed.
+
+Referrals to the NRM
+Perhaps the most robust are the UKs NRM figures. These start in April 2009, with the latest estimate available for the first quarter of 2023. Totally up these estimates gives a total of 73,019 referrals.
+
+Calculated from the following subtotals: 
+All referrals Jan to March 2023: 4,746
+All referrals Jan to Dec 2022: 16,938
+Positive reasonable grounds decisions at time of referral to the NRM (1st April 2009 - Dec 2021)(All adults, all minors and age unknown)* : 51,335
+
+*This represents a slightly lower figure than all referrals (e.g. for the annual figures that are available for 2021 - 'all referrals' stand at 12,706 while 'positive grounds referrals for all adults, all minors and age unknown is reported at 11,371). 
+
+
+The annual NRM figures reported between 2009-2021 are contained in the attached file, which I have downloaded from https://www.ons.gov.uk/peoplepopulationandcommunity/crimeandjustice/adhocs/14939numberofpotentialmodernslaveryvictimswithinthenationalreferralmechanismbyageandgenderukyearendingdecember2009toyearendingdecember2021
+
+The figure for the year 2022 was 16,938, obtained from from  https://www.gov.uk/government/statistics/modern-slavery-national-referral-mechanism-and-duty-to-notify-statistics-uk-end-of-year-summary-2022/modern-slavery-national-referral-mechanism-and-duty-to-notify-statistics-uk-end-of-year-summary-2022
+
+Further statistics are available for the first quarter of 2023 (Jan to Mar) with a further 4,746 referrals https://www.gov.uk/government/statistics/modern-slavery-national-referral-mechanism-and-duty-to-notify-statistics-uk-january-to-march-2023/modern-slavery-national-referral-mechanism-and-duty-to-notify-statistics-uk-quarter-1-2023-january-to-march
+
+
+Number of domestic workers in the UK
+Previous NGO reports have used the Overseas Domestic Workers' Visa figure to estimate the number of domestic workers in the UK (see for example, recent blog by Trust for London https://trustforlondon.org.uk/news/domestic-workers-day-2022/#:~:text=Worldwide%20there%20are%2067%20million,wages%2C%20physical%20and%20sexual%20abuse., and earlier Kalayaan report http://www.kalayaan.org.uk/documents/Kalayaan%20Oxfam%20report.pdf).  Selim has found the most recent published statistics for this, which state that 19,780 overseas domestic worker visas were issued in the year to June 2023
+https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-june-2023/why-do-people-come-to-the-uk-to-work
+
+As I mentioned, this direct comparison is complicated by the fact that some of our respondents may have now have settled status, or may be in domestic work on an EEA visa (e.g. those from South America) and so is likely an underestimation of the true population ( and not even considering those in domestic work without the legal right to work)
+
+We could perhaps clarify our sample and identify the sub set of those on 'tied' visas (we did ask this question) and then use this sub-sample for bootstrapping and comparison purposes. Selim - can you tell us how many respondents reported that they were on a tied visa?  or, alternatively/ in addition perhaps conduct some sort of sensitivity analysis to estimate the impact of various levels of under-estimation.
+
+I hope this helps, 
+
+Best wishes
+Caroline
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Nottingham Research Fellow, Rights Lab
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+ 
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+ 
+
+ 
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+
+
+--B_3808391796_650466367
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><style t=
+ype=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bottom:0;} </st=
+yle></head><body dir=3D"ltr"><div class=3D"elementToProof"><span style=3D"font-fam=
+ily: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, san=
+s-serif; font-size: 12pt; color: rgb(0, 0, 0);">Yes, you're right Scott the =
+figure I calculated was </span><span style=3D"font-family: Calibri, Arial, Hel=
+vetica, sans-serif; font-size: 16px; color: rgb(0, 0, 0); background-color: =
+rgb(255, 255, 255);">73,019 </span><span style=3D"font-family: Aptos, Aptos_Em=
+beddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: =
+12pt; color: rgb(0, 0, 0);">&nbsp;- details as per the email below</span></d=
+iv><div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFont=
+, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; colo=
+r: rgb(0, 0, 0);"><br></div><div id=3D"Signature"><div style=3D"font-family: Apt=
+os, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif;=
+ font-size: 12pt; color: rgb(0, 0, 0);"><br></div><div id=3D"divtagdefaultwrap=
+per" dir=3D"ltr" style=3D"color: rgb(0, 0, 0);"><p style=3D"margin-top: 0px; margi=
+n-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;=
+"><span style=3D"font-family: Arial, sans-serif; color: rgb(0, 155, 189);"><b>=
+Dr Caroline Emberson (preferred pronouns she/her)</b></span></p><p style=3D"ma=
+rgin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-ser=
+if; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; color: rg=
+b(19, 27, 87);"><b>Assistant Professor in Operations Management (AFHEA)</b><=
+/span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibr=
+i, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial,=
+ sans-serif; color: rgb(19, 27, 87);"><b><br></b></span></p><p style=3D"margin=
+-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; =
+font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: 9p=
+t;">&nbsp;</span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-fam=
+ily: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-fam=
+ily: Arial, sans-serif; font-size: 9pt; color: rgb(19, 27, 87);">Nottingham =
+University Business School OMIS/ Faculty of Social Science<br>University of =
+Nottingham</span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-fam=
+ily: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-fam=
+ily: Arial, sans-serif; font-size: 9pt; color: rgb(19, 27, 87);">B12,Si Yuan=
+ Building</span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-fami=
+ly: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-fami=
+ly: Arial, sans-serif; font-size: 9pt; color: rgb(19, 27, 87);">Jubilee Camp=
+us</span></p><p style=3D"margin-top: 0px; margin-bottom: 0px;"><span style=3D"fo=
+nt-family: Arial, sans-serif; font-size: 9pt; color: rgb(19, 27, 87);">Notti=
+ngham, NG8 1BB&nbsp;</span></p><p style=3D"margin-top: 0px; margin-bottom: 0px=
+; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span style=
+=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(19, 27, 87);">+=
+44 (0) 115 8466631<b>&nbsp;</b></span><span style=3D"font-family: Calibri, san=
+s-serif; font-size: 9pt; color: rgb(19, 27, 87);"><b>| </b></span><span styl=
+e=3D"font-family: Arial, sans-serif; font-size: 9pt;"><a href=3D"http://nottingh=
+am.ac.uk/" target=3D"_blank" id=3D"OWA69422550-fb52-e1dc-004a-d0c54a9ad576" clas=
+s=3D"OWAAutoLink" data-loopstyle=3D"linkonly" style=3D"margin-top: 0px; margin-bot=
+tom: 0px;">caroline.emberson@nottingham.ac.uk</a></span></p><p style=3D"margin=
+-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; =
+font-size: 12pt;"><br></p><p style=3D"margin-top: 0px; margin-bottom: 0px;"><s=
+pan style=3D"font-family: Arial, sans-serif; font-size: 12px;">Please note tha=
+t my working days are Monday, Tuesday, Thursday and Friday</span></p><p styl=
+e=3D"margin-top: 0px; margin-bottom: 0px;"><span style=3D"font-family: Arial, sa=
+ns-serif; font-size: 12px;"><br></span></p><p style=3D"margin-top: 0px; margin=
+-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"=
+><span style=3D"font-family: Georgia, serif; font-size: 9pt; color: rgb(21, 11=
+8, 158);"><b>Follow us</b></span></p><p style=3D"margin-top: 0px; margin-botto=
+m: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span=
+ style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233=
+);"><u><a href=3D"http://facebook.com/TheUniofNottingham" id=3D"OWA36dae15f-fca8=
+-6b66-c386-c381b8cded3d" class=3D"OWAAutoLink" data-loopstyle=3D"linkonly" style=
+=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Facebook.com/=
+UniofNottingham</a></u></span></p><p style=3D"margin-top: 0px; margin-bottom: =
+0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span st=
+yle=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"=
+><u><a href=3D"http://twitter.com/UniofNottingham" id=3D"OWA137d160f-a337-930c-9=
+8a0-e1de5c7a5f91" class=3D"OWAAutoLink" data-loopstyle=3D"linkonly" style=3D"color=
+: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Twitter.com/UniofNot=
+tingham</a></u></span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; fon=
+t-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"fon=
+t-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u><a h=
+ref=3D"http://youtube.com/nottmuniversity" id=3D"OWA05b84a09-0e58-b4e4-f9f3-fceb=
+82d788b2" class=3D"OWAAutoLink" data-loopstyle=3D"linkonly" style=3D"color: rgb(0,=
+ 0, 233); margin-top: 0px; margin-bottom: 0px;">Youtube.com/nottmuniversity<=
+/a></u></span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family=
+: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-family=
+: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u><a href=3D"htt=
+p://instagram.com/uniofnottingham" id=3D"OWAd5496743-b0c8-e75a-dd9c-196b796c08=
+41" class=3D"OWAAutoLink" data-loopstyle=3D"linkonly" style=3D"color: rgb(0, 0, 23=
+3); margin-top: 0px; margin-bottom: 0px;">Instagram.com/uniofnottingham</a><=
+/u></span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Ca=
+libri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-family: Ar=
+ial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u><a href=3D"http://=
+linkedin.com/company/university-of-nottingham" id=3D"OWA536baa44-0b5f-bc71-aa8=
+3-435cc2589836" class=3D"OWAAutoLink" data-loopstyle=3D"linkonly" style=3D"color: =
+rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Linkedin.com/company/u=
+niversity-of-nottingham</a></u></span></p><p style=3D"margin-top: 0px; margin-=
+bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;">=
+<span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0=
+, 233);"><u><a href=3D"http://www.foursquare.com/uniofnottingham" id=3D"OWAc8a96=
+790-3fc7-f40f-6949-4147ff62ceca" class=3D"OWAAutoLink" data-loopstyle=3D"linkonl=
+y" style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">F</a>=
+<a href=3D"http://www.foursquare.com/uniofnottingham" id=3D"OWAdd53f017-11b6-4da=
+8-d203-73fc1e04f22a" class=3D"OWAAutoLink" data-loopstyle=3D"linkonly" style=3D"ma=
+rgin-top: 0px; margin-bottom: 0px;">oursquare.com/uniofnottingham</a></u></s=
+pan></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri,=
+ Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, s=
+ans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u>&nbsp;</u></span></p><=
+br></div><table id=3D"pbpsiglinktable"><tbody><tr><td><span style=3D"font-family=
+: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-s=
+erif; font-size: 12pt; color: rgb(0, 0, 0);"><a href=3D"https://outlook.office=
+.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.u=
+k?anonymous&amp;ep=3DbwmEmailSignature" id=3D"OWAa440e40d-a903-2ccd-43ad-a428f28=
+a409a" class=3D"OWAAutoLink" data-loopstyle=3D"linkonly"><img data-outlook-trace=
+=3D"F:1|T:1" src=3D"cid:240b2a17-4a1f-4d5a-95a0-4b5e81d3cf48"></a></span></td><t=
+d></td><td><span style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFont=
+Service, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 120,=
+ 212);"><a href=3D"https://outlook.office.com/bookwithme/user/68c1e07fca314c1a=
+863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature"=
+ style=3D"color: rgb(0, 120, 212); text-decoration: none;" id=3D"OWA662c022d-0d6=
+e-6346-6216-deda46801702" class=3D"OWAAutoLink" data-loopstyle=3D"linkonly">Book=
+ time to meet with me</a></span></td><td></td></tr></tbody></table></div><di=
+v id=3D"appendonsend"></div><hr style=3D"display: inline-block; width: 98%;"><di=
+v dir=3D"ltr" id=3D"divRplyFwdMsg"><span style=3D"font-family: Calibri, sans-serif=
+; font-size: 11pt; color: rgb(0, 0, 0);"><b>From:</b>&nbsp;Caroline Emberson=
+ (staff)<br><b>Sent:</b>&nbsp;18 September 2023 10:24<br><b>To:</b>&nbsp;Sco=
+tt Moser (staff) &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Cc:</b>&nbsp;S=
+elim Yilmaz &lt;ldxsy3@exmail.nottingham.ac.uk&gt;<br><b>Subject:</b>&nbsp;G=
+NSUM Population estimates</span> <div>&nbsp;</div></div><div style=3D"directio=
+n: ltr; font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 12pt;=
+ color: rgb(0, 0, 0);"><br></div><div style=3D"direction: ltr; font-family: Ca=
+libri, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">=
+Hi Scott and Selim,</div><div style=3D"direction: ltr; font-family: Calibri, A=
+rial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br></di=
+v><div style=3D"direction: ltr; font-family: Calibri, Arial, Helvetica, sans-s=
+erif; font-size: 12pt; color: rgb(0, 0, 0);">I have now looked up the statis=
+tics related to the population estimates that we have discussed.</div><div s=
+tyle=3D"direction: ltr; font-family: Calibri, Arial, Helvetica, sans-serif; fo=
+nt-size: 12pt; color: rgb(0, 0, 0);"><br></div><ol start=3D"1" data-listchain=3D=
+"__List_Chain_40" data-editing-info=3D"{&quot;orderedStyleType&quot;:1,&quot;u=
+norderedStyleType&quot;:1}" style=3D"direction: ltr; list-style-type: decimal;=
+"><li style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size: =
+12pt; color: rgb(0, 0, 0); direction: ltr;"><span style=3D"font-family: Calibr=
+i, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">Refe=
+rrals to the NRM</span></li></ol><div style=3D"direction: ltr; font-family: Ca=
+libri, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">=
+<br></div><div style=3D"direction: ltr; font-family: Calibri, Arial, Helvetica=
+, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><span style=3D"background=
+-color: rgb(255, 255, 255);">Perhaps the most robust are the UKs NRM figures=
+. These start in April 2009, with the latest estimate available for the firs=
+t quarter of 2023. Totally up these estimates gives a t</span>otal of 73,019=
+ referrals.</div><div style=3D"direction: ltr; font-family: Calibri, Arial, He=
+lvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br></div><div s=
+tyle=3D"direction: ltr; font-family: Calibri, Arial, Helvetica, sans-serif; fo=
+nt-size: 12pt; color: rgb(0, 0, 0);">Calculated from the following subtotals=
+:&nbsp;</div><div style=3D"direction: ltr; font-family: Calibri, Arial, Helvet=
+ica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">All referrals Jan to=
+ March 2023: 4,746</div><div style=3D"direction: ltr; font-family: Calibri, Ar=
+ial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">All refer=
+rals Jan to Dec 2022: 16,938</div><div style=3D"direction: ltr; font-family: C=
+alibri, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"=
+>Positive reasonable grounds decisions at time of referral to the NRM (1<sup=
+>st</sup>&nbsp;April 2009 - Dec 2021)(All adults, all minors and age unknown=
+)* : 51,335</div><div style=3D"direction: ltr; font-family: Calibri, Arial, He=
+lvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br></div><div s=
+tyle=3D"direction: ltr; font-family: Calibri, Arial, Helvetica, sans-serif; fo=
+nt-size: 12pt; color: rgb(0, 0, 0);">*This represents a slightly lower figur=
+e than all referrals (e.g. for the annual figures that are available for 202=
+1 - 'all referrals' stand at 12,706 while 'positive grounds referrals for al=
+l adults, all minors and age unknown is reported at 11,371).&nbsp;</div><div=
+ style=3D"direction: ltr; font-family: Calibri, Arial, Helvetica, sans-serif; =
+font-size: 12pt; color: rgb(0, 0, 0);"><br></div><div style=3D"direction: ltr;=
+ font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 12pt; color:=
+ rgb(0, 0, 0);"><br></div><div style=3D"direction: ltr; font-family: Calibri, =
+Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">The ann=
+ual NRM figures reported between 2009-2021 are contained in the attached fil=
+e, which I have downloaded from <a href=3D"https://www.ons.gov.uk/peoplepopula=
+tionandcommunity/crimeandjustice/adhocs/14939numberofpotentialmodernslaveryv=
+ictimswithinthenationalreferralmechanismbyageandgenderukyearendingdecember20=
+09toyearendingdecember2021" id=3D"OWAb14dcc1b-ad79-a612-3fa5-dc9f4e4adda1" cla=
+ss=3D"x_OWAAutoLink" data-loopstyle=3D"linkonly" data-auth=3D"NotApplicable">https=
+://www.ons.gov.uk/peoplepopulationandcommunity/crimeandjustice/adhocs/14939n=
+umberofpotentialmodernslaveryvictimswithinthenationalreferralmechanismbyagea=
+ndgenderukyearendingdecember2009toyearendingdecember2021</a></div><div style=
+=3D"direction: ltr; font-family: Calibri, Arial, Helvetica, sans-serif; font-s=
+ize: 12pt; color: rgb(0, 0, 0);"><br></div><div style=3D"direction: ltr; font-=
+family: Calibri, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0=
+, 0, 0);">The figure for the year 2022 was 16,938, obtained from from&nbsp; =
+<a href=3D"https://www.gov.uk/government/statistics/modern-slavery-national-re=
+ferral-mechanism-and-duty-to-notify-statistics-uk-end-of-year-summary-2022/m=
+odern-slavery-national-referral-mechanism-and-duty-to-notify-statistics-uk-e=
+nd-of-year-summary-2022" id=3D"OWA116a1503-722a-bdc1-2556-8ed5ba058592" class=3D=
+"x_OWAAutoLink" data-loopstyle=3D"linkonly" data-auth=3D"NotApplicable">https://=
+www.gov.uk/government/statistics/modern-slavery-national-referral-mechanism-=
+and-duty-to-notify-statistics-uk-end-of-year-summary-2022/modern-slavery-nat=
+ional-referral-mechanism-and-duty-to-notify-statistics-uk-end-of-year-summar=
+y-2022</a></div><div id=3D"x_Signature"><div style=3D"font-family: Calibri, Aria=
+l, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br></div><=
+div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 12=
+pt; color: rgb(0, 0, 0);">Further statistics are available for the first qua=
+rter of 2023 (Jan to Mar) with a further 4,746 referrals <a href=3D"https://ww=
+w.gov.uk/government/statistics/modern-slavery-national-referral-mechanism-an=
+d-duty-to-notify-statistics-uk-january-to-march-2023/modern-slavery-national=
+-referral-mechanism-and-duty-to-notify-statistics-uk-quarter-1-2023-january-=
+to-march" id=3D"OWAba52c00b-1173-f9ef-eade-650443324047" class=3D"x_OWAAutoLink"=
+ data-loopstyle=3D"linkonly" data-auth=3D"NotApplicable">https://www.gov.uk/gove=
+rnment/statistics/modern-slavery-national-referral-mechanism-and-duty-to-not=
+ify-statistics-uk-january-to-march-2023/modern-slavery-national-referral-mec=
+hanism-and-duty-to-notify-statistics-uk-quarter-1-2023-january-to-march</a><=
+/div><div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-si=
+ze: 12pt; color: rgb(0, 0, 0);"><br></div><div style=3D"font-family: Calibri, =
+Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br></d=
+iv><ol start=3D"2" data-listchain=3D"__List_Chain_40" data-editing-info=3D"{&quot;=
+orderedStyleType&quot;:1,&quot;unorderedStyleType&quot;:1}" style=3D"list-styl=
+e-type: decimal;"><li style=3D"font-family: Calibri, Arial, Helvetica, sans-se=
+rif; font-size: 12pt; color: rgb(0, 0, 0);"><span style=3D"font-family: Calibr=
+i, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">Numb=
+er of domestic workers in the UK<br></span></li></ol><div style=3D"font-family=
+: Calibri, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0=
+);">Previous NGO reports have used the Overseas Domestic Workers' Visa figur=
+e to estimate the number of domestic workers in the UK (see for example, rec=
+ent blog by Trust for London <a href=3D"https://trustforlondon.org.uk/news/dom=
+estic-workers-day-2022/#:~:text=3DWorldwide%20there%20are%2067%20million,wages=
+%2C%20physical%20and%20sexual%20abuse." id=3D"OWA794be9fb-67fc-92e6-0f51-f32d2=
+0df8a66" class=3D"OWAAutoLink" data-auth=3D"NotApplicable" data-loopstyle=3D"linko=
+nly">https://trustforlondon.org.uk/news/domestic-workers-day-2022/#:~:text=3DW=
+orldwide%20there%20are%2067%20million,wages%2C%20physical%20and%20sexual%20a=
+buse.</a>, and earlier Kalayaan report <a href=3D"http://www.kalayaan.org.uk/d=
+ocuments/Kalayaan%20Oxfam%20report.pdf" id=3D"OWA6816b9d3-76d4-28ed-0add-8735a=
+7f2a766" class=3D"OWAAutoLink" data-auth=3D"NotApplicable" data-loopstyle=3D"linko=
+nly">http://www.kalayaan.org.uk/documents/Kalayaan%20Oxfam%20report.pdf</a>)=
+.&nbsp; Selim has found the most recent published statistics for this, which=
+ state that 19,780 overseas domestic worker visas were issued in the year to=
+ June 2023</div><div style=3D"font-family: Calibri, Arial, Helvetica, sans-ser=
+if; font-size: 12pt; color: rgb(0, 0, 0);"><a href=3D"https://www.gov.uk/gover=
+nment/statistics/immigration-system-statistics-year-ending-june-2023/why-do-=
+people-come-to-the-uk-to-work" id=3D"OWA68b1ba4c-d741-4c87-0ae0-b61e58cdee27" =
+class=3D"OWAAutoLink" data-auth=3D"NotApplicable" data-loopstyle=3D"linkonly">http=
+s://www.gov.uk/government/statistics/immigration-system-statistics-year-endi=
+ng-june-2023/why-do-people-come-to-the-uk-to-work</a></div><div style=3D"font-=
+family: Calibri, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0=
+, 0, 0);"><br></div><div style=3D"font-family: Calibri, Arial, Helvetica, sans=
+-serif; font-size: 12pt; color: rgb(0, 0, 0);">As I mentioned, this direct c=
+omparison is complicated by the fact that some of our respondents may have n=
+ow have settled status, or may be in domestic work on an EEA visa (e.g. thos=
+e from South America) and so is likely an underestimation of the true popula=
+tion ( and not even considering those in domestic work without the legal rig=
+ht to work)</div><div style=3D"font-family: Calibri, Arial, Helvetica, sans-se=
+rif; font-size: 12pt; color: rgb(0, 0, 0);"><br></div><div style=3D"font-famil=
+y: Calibri, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, =
+0);">We could perhaps clarify our sample and identify the sub set of those o=
+n 'tied' visas (we did ask this question) and then use this sub-sample for b=
+ootstrapping and comparison purposes. Selim - can you tell us how many respo=
+ndents reported that they were on a tied visa?&nbsp; or, alternatively/ in a=
+ddition perhaps conduct some sort of sensitivity analysis to estimate the im=
+pact of various levels of under-estimation.</div><div style=3D"font-family: Ca=
+libri, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">=
+<br></div><div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; fo=
+nt-size: 12pt; color: rgb(0, 0, 0);">I hope this helps,&nbsp;</div><div styl=
+e=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 12pt; colo=
+r: rgb(0, 0, 0);"><br></div><div style=3D"font-family: Calibri, Arial, Helveti=
+ca, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">Best wishes</div><div=
+ style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 12pt;=
+ color: rgb(0, 0, 0);">Caroline</div><div style=3D"font-family: Calibri, Arial=
+, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br></div><d=
+iv style=3D"font-size:12pt; font-family:Calibri,Helvetica,sans-serif; color:rg=
+b(0,0,0)" dir=3D"ltr" id=3D"x_divtagdefaultwrapper"><p style=3D"margin-top: 0px; m=
+argin-bottom: 0px;"><span style=3D"font-family: Arial, sans-serif; color: rgb(=
+0, 155, 189);"><b>Dr Caroline Emberson (preferred pronouns she/her)</b></spa=
+n></p><p style=3D"margin-top: 0px; margin-bottom: 0px;"><span style=3D"font-fami=
+ly: Arial, sans-serif; color: rgb(19, 27, 87);"><b>Nottingham Research Fello=
+w, Rights Lab</b></span></p><p style=3D"margin-top: 0px; margin-bottom: 0px;">=
+<span style=3D"font-family: Arial, sans-serif; font-size: 9pt;">&nbsp;</span><=
+/p><p style=3D"margin-top: 0px; margin-bottom: 0px;"><span style=3D"font-family:=
+ Arial, sans-serif; font-size: 9pt; color: rgb(19, 27, 87);">Nottingham Univ=
+ersity Business School OMIS/ Faculty of Social Science<br>University of Nott=
+ingham</span></p><p style=3D"margin-top: 0px; margin-bottom: 0px;"><span style=
+=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(19, 27, 87);">A=
+20, Highfield House</span></p><p style=3D"margin-top: 0px; margin-bottom: 0px;=
+"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(19=
+, 27, 87);">University Park</span></p><p style=3D"margin-top: 0px; margin-bott=
+om: 0px;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color=
+: rgb(19, 27, 87);">Nottingham, NG7 2RD</span></p><p style=3D"margin-top: 0px;=
+ margin-bottom: 0px;"><span style=3D"font-family: Arial, sans-serif; font-size=
+: 9pt;">&nbsp;</span></p><p style=3D"margin-top: 0px; margin-bottom: 0px;"><sp=
+an style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(19, 27,=
+ 87);">+44 (0) 115 8283072<b>&nbsp;</b></span><span style=3D"font-family: Cali=
+bri, sans-serif; font-size: 9pt; color: rgb(19, 27, 87);"><b>| </b></span><s=
+pan style=3D"font-family: Arial, sans-serif; font-size: 9pt;"><a href=3D"http://=
+nottingham.ac.uk/" id=3D"OWAf6be8c8f-4b4e-3da7-5b5c-424cb5f7d325" class=3D"x_OWA=
+AutoLink" data-loopstyle=3D"linkonly" data-auth=3D"NotApplicable" style=3D"margin-=
+top: 0px; margin-bottom: 0px;">caroline.emberson@nottingham.ac.uk</a></span>=
+</p><p style=3D"margin-top: 0px; margin-bottom: 0px;"><span style=3D"font-family=
+: Arial, sans-serif; font-size: 9pt; color: black;">&nbsp;</span></p><p styl=
+e=3D"margin-top: 0px; margin-bottom: 0px;"><span style=3D"font-family: Arial, sa=
+ns-serif; font-size: 9pt; color: black;">&nbsp;</span></p><p style=3D"margin-t=
+op: 0px; margin-bottom: 0px;"><span style=3D"font-family: Georgia, serif; font=
+-size: 9pt; color: rgb(21, 118, 158);"><b>Follow us</b></span></p><p style=3D"=
+margin-top: 0px; margin-bottom: 0px;"><span style=3D"font-family: Arial, sans-=
+serif; font-size: 9pt; color: rgb(0, 0, 233);"><u><a href=3D"http://facebook.c=
+om/TheUniofNottingham" id=3D"OWAdae44d92-a621-2cbb-e7f9-11e5e1f8f235" class=3D"x=
+_OWAAutoLink" data-loopstyle=3D"linkonly" data-auth=3D"NotApplicable" style=3D"col=
+or: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Facebook.com/Uniof=
+Nottingham</a></u></span></p><p style=3D"margin-top: 0px; margin-bottom: 0px;"=
+><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, =
+0, 233);"><u><a href=3D"http://twitter.com/UniofNottingham" id=3D"OWA2cbe5b9a-46=
+c7-5a04-3e79-c65e03a5ee51" class=3D"x_OWAAutoLink" data-loopstyle=3D"linkonly" d=
+ata-auth=3D"NotApplicable" style=3D"color: rgb(0, 0, 233); margin-top: 0px; marg=
+in-bottom: 0px;">Twitter.com/UniofNottingham</a></u></span></p><p style=3D"mar=
+gin-top: 0px; margin-bottom: 0px;"><span style=3D"font-family: Arial, sans-ser=
+if; font-size: 9pt; color: rgb(0, 0, 233);"><u><a href=3D"http://youtube.com/n=
+ottmuniversity" id=3D"OWAadede367-a929-e543-6a29-1fea33e4629a" class=3D"x_OWAAut=
+oLink" data-loopstyle=3D"linkonly" data-auth=3D"NotApplicable" style=3D"color: rgb=
+(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Youtube.com/nottmuniversi=
+ty</a></u></span></p><p style=3D"margin-top: 0px; margin-bottom: 0px;"><span s=
+tyle=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);=
+"><u><a href=3D"http://instagram.com/uniofnottingham" id=3D"OWA2bab323e-481b-773=
+a-509e-58569029cc7a" class=3D"x_OWAAutoLink" data-loopstyle=3D"linkonly" data-au=
+th=3D"NotApplicable" style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bot=
+tom: 0px;">Instagram.com/uniofnottingham</a></u></span></p><p style=3D"margin-=
+top: 0px; margin-bottom: 0px;"><span style=3D"font-family: Arial, sans-serif; =
+font-size: 9pt; color: rgb(0, 0, 233);"><u><a href=3D"http://linkedin.com/comp=
+any/university-of-nottingham" id=3D"OWA9d43156b-9de4-bfa6-48bc-c8e8fa9bd3ee" c=
+lass=3D"x_OWAAutoLink" data-loopstyle=3D"linkonly" data-auth=3D"NotApplicable" sty=
+le=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Linkedin.co=
+m/company/university-of-nottingham</a></u></span></p><p style=3D"margin-top: 0=
+px; margin-bottom: 0px;"><span style=3D"font-family: Arial, sans-serif; font-s=
+ize: 9pt; color: rgb(0, 0, 233);"><u><a href=3D"http://www.foursquare.com/unio=
+fnottingham" id=3D"OWAb0290dfd-96eb-edee-7869-959b8b6c3e3e" class=3D"x_OWAAutoLi=
+nk" data-loopstyle=3D"linkonly" data-auth=3D"NotApplicable" style=3D"color: rgb(0,=
+ 0, 233); margin-top: 0px; margin-bottom: 0px;">F</a><a href=3D"http://www.fou=
+rsquare.com/uniofnottingham" id=3D"OWAfe9adbf8-221f-701a-0765-47bc9c631a61" cl=
+ass=3D"x_OWAAutoLink" data-loopstyle=3D"linkonly" data-auth=3D"NotApplicable" styl=
+e=3D"margin-top: 0px; margin-bottom: 0px;">oursquare.com/uniofnottingham</a></=
+u></span></p><p style=3D"margin-top: 0px; margin-bottom: 0px;"><span style=3D"fo=
+nt-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u>&nb=
+sp;</u></span></p><br></div></div></body></html>
+
+--B_3808391796_650466367--
+
+
+--B_3808391796_776346561
+Content-type: image/png; name="Outlook-t45440d2.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <240b2a17-4a1f-4d5a-95a0-4b5e81d3cf48>
+Content-disposition: inline;
+	filename="Outlook-t45440d2.png"
+Content-transfer-encoding: base64
+
+
+iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAcpJREFU
+OE9jZAABr6aJDHqhuQwMDIxgPrHg19d3DLP91Bk+P3sD08IIN2x1hjPDy7NXiDWL4T8nM0NA
+33wGWRMPhg5NJgYGhv8gvYwMFdf/MYAMu3twP9GGISssv/qLYVdzMsP5FYthBv5nmO2pyfDz
+zVuyDEw/eJ3hxNyJDEenNSMMJMskJE2Hp9YxHJ2CZOBUM1GGz5/hAUuS+UVnXjOcXDCJygbO
+m4TqZUpcGDJjJcPzS1eoYyAvrzDD58/vGRgY/iHSYcX1/wykupBXWpghe89reEbY0RjNcGHF
+MkQsk2pgwYkXDBz84iiR16EJzmWghE26C8uv/mZgZGJBM5AZ5HXyDPRo7GMwCCuEG/jj40uG
+CRYS5LsQpNM6q4TBOLqE4emFgwxrs8NRI2WynSTD19cvSErQOBQzMhSdecvw8vophqWxngQN
+BCWTrBMvMMIPpnF7dQQjA6+UCEP23tcM//7+Zvjx8QNOQydZizFk7bvNwCepgs9iWIHKyGAY
+EcPALaQEUQwq3mBplQmi5siUBoa0bRcZhBT18Bj4n7QSWlhGmiF19xOcBh6aVEyagSCTQEEU
+Nf8Ag6CcFjyn/Pz8hmF9cQjDg8MHAaiKxp0eiZJ4AAAAAElFTkSuQmCC
+--B_3808391796_776346561--
+
+
+--B_3808391796_1900076864
+Content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; name="nrmreferrals.xlsx";
+ x-mac-creator="4F50494D"
+Content-disposition: attachment;
+	filename="nrmreferrals.xlsx"
+Content-transfer-encoding: base64
+
+UEsDBBQABgAIAAAAIQBqgxRFogEAAB0IAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIo
+oAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADMVU1LAzEQvQv+hyVX6aYqiEi3Hvw4qqCC
+17iZdkPzRWaq7b93NtUiUqvLFvSyy24y772ZycuMzhfOFi+Q0ARficNyKArwddDGTyvx+HA9
+OBUFkvJa2eChEktAcT7e3xs9LCNgwdEeK9EQxTMpsW7AKSxDBM8rk5CcIv5MUxlVPVNTkEfD
+4YmsgyfwNKAWQ4xHlzBRc0vF1YJ/r5Q8Gy+Ki9W+lqoSKkZrakUsVL54/YVkECYTU4MO9dwx
+dIkxgdLYAJCzZUyGGdM9EHFiKORGzgQWu5G+Z1VyZBaGjYl4wKl/w9CufJ/Ve9wttyMZDcWd
+SnSjHOcuF1a+hjR7DmFWbgfpWppcotIp4z90b+HPm1Hm1+GOhbT5ZeCOOo7+iY7jP9JB7DmQ
++dm/JRnmhwYgLS3gro9hBv2JuVEJ9D2xm6c7F/AZe5uOeo4U3JOz0hC4uxQi9q/7GrTFg0QG
+1tfIJjtu0NDfBv019LdARw183ecG8ERJ0P1EflzfbfQg/qrya0YeR70tAO2806C7cq+q1Jt+
+BbOBXObhPn4DAAD//wMAUEsDBBQABgAIAAAAIQATXr5lAgEAAN8CAAALAAgCX3JlbHMvLnJl
+bHMgogQCKKAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArJJNSwMxEIbvgv8hzL072yoi
+0mwvRehNZP0BMZn9YDeZkKS6/fdGQXShth56nK93nnmZ9Wayo3ijEHt2EpZFCYKcZtO7VsJL
+/bi4BxGTckaN7EjCgSJsquur9TONKuWh2PU+iqziooQuJf+AGHVHVsWCPblcaThYlXIYWvRK
+D6olXJXlHYbfGlDNNMXOSAg7cwOiPvi8+bw2N02vact6b8mlIyuQpkTOkFn4kNlC6vM1olah
+pSTBsH7K6YjK+yJjAx4nWv2f6O9r0VJSRiWFmgOd5vnsOAW0vKRFcxN/3JlGfOcwvDIPp1hu
+L8mi9zGxPWPOV883Es7esvoAAAD//wMAUEsDBBQABgAIAAAAIQBsOzSFpQMAAOkIAAAPAAAA
+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
+IsfQvMA49mSWmSJnAsonacPR
++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
+cmVsc1BLAQItABQABgAIAAAAIQBsOzSFpQMAAOkIAAAPAAAAAAAAAAAAAAAAAA4HAAB4bC93
+b3JrYm9vay54bWxQSwECLQAUAAYACAAAACEA/FN5pSUBAAB+BQAAGgAAAAAAAAAAAAAAAADg
+CgAAeGwvX3JlbHMvd29ya2Jvb2sueG1sLnJlbHNQSwECLQAUAAYACAAAACEABt0SVBIEAABt
+CgAAGAAAAAAAAAAAAAAAAABFDQAAeGwvd29ya3NoZWV0cy9zaGVldDEueG1sUEsBAi0AFAAG
+AAgAAAAhAOwEO+0FBAAAuwoAABgAAAAAAAAAAAAAAAAAjREAAHhsL3dvcmtzaGVldHMvc2hl
+ZXQyLnhtbFBLAQItABQABgAIAAAAIQCI87OWFBAAAPpZAAAYAAAAAAAAAAAAAAAAAMgVAAB4
+bC93b3Jrc2hlZXRzL3NoZWV0My54bWxQSwECLQAUAAYACAAAACEAwRcQvk4HAADGIAAAEwAA
+AAAAAAAAAAAAAAASJgAAeGwvdGhlbWUvdGhlbWUxLnhtbFBLAQItABQABgAIAAAAIQDKPfru
+Iw4AAOZGAAANAAAAAAAAAAAAAAAAAJEtAAB4bC9zdHlsZXMueG1sUEsBAi0AFAAGAAgAAAAh
+AIWv0XrMBQAASRAAABQAAAAAAAAAAAAAAAAA3zsAAHhsL3NoYXJlZFN0cmluZ3MueG1sUEsB
+Ai0AFAAGAAgAAAAhAFlmJMNcAQAAcwMAACMAAAAAAAAAAAAAAAAA3UEAAHhsL3dvcmtzaGVl
+dHMvX3JlbHMvc2hlZXQxLnhtbC5yZWxzUEsBAi0AFAAGAAgAAAAhALAgwOBVAQAAngIAACMA
+AAAAAAAAAAAAAAAAekMAAHhsL3dvcmtzaGVldHMvX3JlbHMvc2hlZXQyLnhtbC5yZWxzUEsB
+Ai0AFAAGAAgAAAAhADShCZLCAAAAQgEAACMAAAAAAAAAAAAAAAAAEEUAAHhsL3dvcmtzaGVl
+dHMvX3JlbHMvc2hlZXQzLnhtbC5yZWxzUEsBAi0AFAAGAAgAAAAhAK4L/Ym7AQAALBUAACcA
+AAAAAAAAAAAAAAAAE0YAAHhsL3ByaW50ZXJTZXR0aW5ncy9wcmludGVyU2V0dGluZ3MxLmJp
+blBLAQItABQABgAIAAAAIQB+EsEqqgEAADgsAAAnAAAAAAAAAAAAAAAAABNIAAB4bC9wcmlu
+dGVyU2V0dGluZ3MvcHJpbnRlclNldHRpbmdzMi5iaW5QSwECLQAUAAYACAAAACEAfhLBKqoB
+AAA4LAAAJwAAAAAAAAAAAAAAAAACSgAAeGwvcHJpbnRlclNldHRpbmdzL3ByaW50ZXJTZXR0
+aW5nczMuYmluUEsBAi0AFAAGAAgAAAAhAJz9zR9FAQAA/AIAABMAAAAAAAAAAAAAAAAA8UsA
+AGN1c3RvbVhtbC9pdGVtMS54bWxQSwECLQAUAAYACAAAACEA3DVya7EBAAD9AwAAGAAAAAAA
+AAAAAAAAAACPTQAAY3VzdG9tWG1sL2l0ZW1Qcm9wczEueG1sUEsBAi0AFAAGAAgAAAAhAPs9
+R0hjAAAAaAAAABMAAAAAAAAAAAAAAAAAnk8AAGN1c3RvbVhtbC9pdGVtMi54bWxQSwECLQAU
+AAYACAAAACEARZ7CBPMAAABPAQAAGAAAAAAAAAAAAAAAAABaUAAAY3VzdG9tWG1sL2l0ZW1Q
+cm9wczIueG1sUEsBAi0AFAAGAAgAAAAhAFMb8801CwAAFT8AABMAAAAAAAAAAAAAAAAAq1EA
+AGN1c3RvbVhtbC9pdGVtMy54bWxQSwECLQAUAAYACAAAACEA+DrCFcUBAADABAAAGAAAAAAA
+AAAAAAAAAAA5XQAAY3VzdG9tWG1sL2l0ZW1Qcm9wczMueG1sUEsBAi0AFAAGAAgAAAAhAAnD
+1h+bAQAALgMAABEAAAAAAAAAAAAAAAAAXF8AAGRvY1Byb3BzL2NvcmUueG1sUEsBAi0AFAAG
+AAgAAAAhABP6Ek2wAQAAfwMAABAAAAAAAAAAAAAAAAAALmIAAGRvY1Byb3BzL2FwcC54bWxQ
+SwECLQAUAAYACAAAACEAfvA+SA8BAACSAQAAEwAAAAAAAAAAAAAAAAAUZQAAZG9jUHJvcHMv
+Y3VzdG9tLnhtbFBLAQItABQABgAIAAAAIQB0Pzl6wgAAACgBAAAeAAAAAAAAAAAAAAAAAFxn
+AABjdXN0b21YbWwvX3JlbHMvaXRlbTEueG1sLnJlbHNQSwECLQAUAAYACAAAACEAXJYnIsMA
+AAAoAQAAHgAAAAAAAAAAAAAAAABiaQAAY3VzdG9tWG1sL19yZWxzL2l0ZW0yLnhtbC5yZWxz
+UEsBAi0AFAAGAAgAAAAhAHvzAqPDAAAAKAEAAB4AAAAAAAAAAAAAAAAAaWsAAGN1c3RvbVht
+bC9fcmVscy9pdGVtMy54bWwucmVsc1BLBQYAAAAAHAAcALgHAABwbQAAAAA=
+--B_3808391796_1900076864--
+

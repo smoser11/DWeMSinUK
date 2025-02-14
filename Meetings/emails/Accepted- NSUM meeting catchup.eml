@@ -1,0 +1,110 @@
+Received: from AM9PR06MB7265.eurprd06.prod.outlook.com (2603:10a6:20b:2d0::18)
+ by DB9PR06MB8202.eurprd06.prod.outlook.com with HTTPS; Fri, 3 Nov 2023
+ 13:13:49 +0000
+Received: from AM0PR06MB5937.eurprd06.prod.outlook.com (2603:10a6:208:117::19)
+ by AM9PR06MB7265.eurprd06.prod.outlook.com (2603:10a6:20b:2d0::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6954.21; Fri, 3 Nov
+ 2023 13:13:49 +0000
+Received: from AM0PR06MB5937.eurprd06.prod.outlook.com
+ ([fe80::7a74:6755:ac2a:ec43]) by AM0PR06MB5937.eurprd06.prod.outlook.com
+ ([fe80::7a74:6755:ac2a:ec43%4]) with mapi id 15.20.6954.021; Fri, 3 Nov 2023
+ 13:13:48 +0000
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Accepted: NSUM meeting catchup
+Thread-Topic: NSUM meeting catchup
+Thread-Index: AdoOUo5jGWhOTmhwS0u4JXmp6Bhs7wABQczs
+Date: Fri, 3 Nov 2023 13:13:48 +0000
+Message-ID:
+	<AM0PR06MB593707A8DE5A9734663048B3A0A5A@AM0PR06MB5937.eurprd06.prod.outlook.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-GB
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-AuthSource: AM0PR06MB5937.eurprd06.prod.outlook.com
+X-MS-Has-Attach:
+X-MS-Exchange-Organization-Network-Message-Id:
+	57eb0c22-065b-481e-e2ac-08dbdc6eb7ae
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-microsoft-antispam: BCL:0;
+x-forefront-antispam-report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM0PR06MB5937.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:;DIR:INT;
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=exmail.nottingham.ac.uk;
+x-ms-exchange-crosstenant-originalarrivaltime: 03 Nov 2023 13:13:48.8822 (UTC)
+x-ms-exchange-transport-crosstenantheadersstamped: AM9PR06MB7265
+x-ms-exchange-crosstenant-id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+x-ms-exchange-crosstenant-fromentityheader: Hosted
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 57eb0c22-065b-481e-e2ac-08dbdc6eb7ae
+x-ms-exchange-transport-endtoendlatency: 00:00:00.5741838
+x-ms-traffictypediagnostic:
+	AM0PR06MB5937:EE_|AM9PR06MB7265:EE_|DB9PR06MB8202:EE_
+x-ms-exchange-crosstenant-network-message-id:
+	57eb0c22-065b-481e-e2ac-08dbdc6eb7ae
+x-ms-exchange-crosstenant-mailboxtype: HOSTED
+x-ms-exchange-crosstenant-userprincipalname:
+	KJVHj9K/zmLnZZjL3YRDA/oKYiFssxHWcOu1Ul6Tq9D/fF0zwqGE6YzhUZU8guHdHAJn3zvpHjzp/yj5AVR9B8OlOF4QXdqpQ9D9h9ZYjytfi7HtTCRNrupwtQKfFn4S
+x-ms-exchange-processed-by-bccfoldering: 15.20.6954.021
+x-ms-exchange-crosstenant-authsource: AM0PR06MB5937.eurprd06.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Internal
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(425001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	lmTBwayhk2VTHdpDX4sC5hTjvh/mwqPp93dHi03rItXnjJKS6JWKCOn/2O+5Inhyz7bkcaPDo8iYLfWRJRl4Quc5cOoT/LRFs2kS6HwXo0MELEN28bhhzUkBX5CW0cqmnql3hDP/qq2aG0NXFzXbCdDW+89JsM/aC+gWGV2BmpGtlDIpQj3kLX44Ep7hOh6BboYSbNW0OdXRID+1uMZStnmE+KLYIUAM9XdyKV8kH6Fih/WkYXD7OdPIf3bjKLHsYkz+i+TaXoa/gwmOsZ2QkIeYwmMhEegRsPVuKN6QWzTTwFOQ1kZSgVc6K6qww/HNuPqSCklEjOW3oM1H4A6AUWPjbZR7Tmv5zJqEXb6X9SdgydVhJX/63ZyLyCAhM/akA4h7/SMAvgKv2A/4xXvsHcCuvSXekl8bZ/jt1JP9X51emBzYuw3O0i1Pg58PhyDpHWpZvJYHc8XpMuaqGp9ZiDXnyy3iK2VY1lGB3BceC5Q=
+Content-Type: multipart/alternative;
+	boundary="_000_AM0PR06MB593707A8DE5A9734663048B3A0A5AAM0PR06MB5937eurp_"
+MIME-Version: 1.0
+
+--_000_AM0PR06MB593707A8DE5A9734663048B3A0A5AAM0PR06MB5937eurp_
+Content-Type: text/plain; charset="us-ascii"
+
+
+
+--_000_AM0PR06MB593707A8DE5A9734663048B3A0A5AAM0PR06MB5937eurp_
+Content-Type: text/html; charset="us-ascii"
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+</head>
+<body>
+<div style="font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
+<br>
+</div>
+</body>
+</html>
+
+--_000_AM0PR06MB593707A8DE5A9734663048B3A0A5AAM0PR06MB5937eurp_
+Content-Type: text/calendar; charset="utf-8"; method=REPLY
+Content-Transfer-Encoding: base64
+
+QkVHSU46VkNBTEVOREFSDQpNRVRIT0Q6UkVQTFkNClBST0RJRDpNaWNyb3NvZnQgRXhjaGFuZ2Ug
+U2VydmVyIDIwMTANClZFUlNJT046Mi4wDQpCRUdJTjpWVElNRVpPTkUNClRaSUQ6R01UIFN0YW5k
+YXJkIFRpbWUNCkJFR0lOOlNUQU5EQVJEDQpEVFNUQVJUOjE2MDEwMTAxVDAyMDAwMA0KVFpPRkZT
+RVRGUk9NOiswMTAwDQpUWk9GRlNFVFRPOiswMDAwDQpSUlVMRTpGUkVRPVlFQVJMWTtJTlRFUlZB
+TD0xO0JZREFZPS0xU1U7QllNT05USD0xMA0KRU5EOlNUQU5EQVJEDQpCRUdJTjpEQVlMSUdIVA0K
+RFRTVEFSVDoxNjAxMDEwMVQwMTAwMDANClRaT0ZGU0VURlJPTTorMDAwMA0KVFpPRkZTRVRUTzor
+MDEwMA0KUlJVTEU6RlJFUT1ZRUFSTFk7SU5URVJWQUw9MTtCWURBWT0tMVNVO0JZTU9OVEg9Mw0K
+RU5EOkRBWUxJR0hUDQpFTkQ6VlRJTUVaT05FDQpCRUdJTjpWRVZFTlQNCkFUVEVOREVFO1BBUlRT
+VEFUPUFDQ0VQVEVEO0NOPUNhcm9saW5lIEVtYmVyc29uIChzdGFmZik6bWFpbHRvOmxpemNlQGV4
+bWFpbA0KIC5ub3R0aW5naGFtLmFjLnVrDQpDT01NRU5UO0xBTkdVQUdFPWVuLUdCOlxuDQpVSUQ6
+MDQwMDAwMDA4MjAwRTAwMDc0QzVCNzEwMUE4MkUwMDgwMDAwMDAwMDA2RkYxRThFNTIwRURBMDEw
+MDAwMDAwMDAwMDAwMDANCiAwMTAwMDAwMDA2QjcwRUE5MDRENDcwMDRGOEVFRTExMDIxNjEyOEM3
+RA0KU1VNTUFSWTtMQU5HVUFHRT1lbi1HQjpBY2NlcHRlZDogTlNVTSBtZWV0aW5nIGNhdGNodXAN
+CkRUU1RBUlQ7VFpJRD1HTVQgU3RhbmRhcmQgVGltZToyMDIzMTExMFQxMjAwMDANCkRURU5EO1Ra
+SUQ9R01UIFN0YW5kYXJkIFRpbWU6MjAyMzExMTBUMTMwMDAwDQpDTEFTUzpQVUJMSUMNClBSSU9S
+SVRZOjUNCkRUU1RBTVA6MjAyMzExMDNUMTMxMzQ4Wg0KVFJBTlNQOk9QQVFVRQ0KU1RBVFVTOkNP
+TkZJUk1FRA0KU0VRVUVOQ0U6MA0KTE9DQVRJT047TEFOR1VBR0U9ZW4tR0I6TWljcm9zb2Z0IFRl
+YW1zIE1lZXRpbmcNClgtTUlDUk9TT0ZULUNETy1BUFBULVNFUVVFTkNFOjANClgtTUlDUk9TT0ZU
+LUNETy1PV05FUkFQUFRJRDoyMTIxOTk3MzE4DQpYLU1JQ1JPU09GVC1DRE8tQlVTWVNUQVRVUzpC
+VVNZDQpYLU1JQ1JPU09GVC1DRE8tSU5URU5ERURTVEFUVVM6QlVTWQ0KWC1NSUNST1NPRlQtQ0RP
+LUFMTERBWUVWRU5UOkZBTFNFDQpYLU1JQ1JPU09GVC1DRE8tSU1QT1JUQU5DRToxDQpYLU1JQ1JP
+U09GVC1DRE8tSU5TVFRZUEU6MA0KWC1NSUNST1NPRlQtRE9OT1RGT1JXQVJETUVFVElORzpGQUxT
+RQ0KWC1NSUNST1NPRlQtRElTQUxMT1ctQ09VTlRFUjpGQUxTRQ0KWC1NSUNST1NPRlQtUkVRVUVT
+VEVEQVRURU5EQU5DRU1PREU6REVGQVVMVA0KRU5EOlZFVkVOVA0KRU5EOlZDQUxFTkRBUg0K
+
+--_000_AM0PR06MB593707A8DE5A9734663048B3A0A5AAM0PR06MB5937eurp_--

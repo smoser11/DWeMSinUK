@@ -1,0 +1,129 @@
+Received: from GV1PR06MB8402.eurprd06.prod.outlook.com (2603:10a6:150:21::17)
+ by DB9PR06MB8202.eurprd06.prod.outlook.com with HTTPS; Mon, 31 Jul 2023
+ 10:04:54 +0000
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=exmail.nottingham.ac.uk;
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com (2603:10a6:20b:99::17)
+ by GV1PR06MB8402.eurprd06.prod.outlook.com (2603:10a6:150:21::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6631.43; Mon, 31 Jul
+ 2023 10:04:53 +0000
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com ([::1]) by
+ AM6PR06MB5941.eurprd06.prod.outlook.com ([fe80::22ae:99e7:e1f7:1f88%5]) with
+ Microsoft SMTP Server id 15.20.6631.043; Mon, 31 Jul 2023 10:04:53 +0000
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Automatic reply: G-NSUM and Modern Slavery in the UK
+Thread-Topic: G-NSUM and Modern Slavery in the UK
+Thread-Index:
+ AQHZr1Fqr05xollwm0Se4mfyYk0EjK/EKxaQgAASliKAAD5tvoAGNwf8gAkWKqCAAAT6EQ==
+References:
+ <DB9PR06MB82028D1B9808B724D5BF4BCA872FA@DB9PR06MB8202.eurprd06.prod.outlook.com>
+ <DB9PR06MB82024B9556038D17A2800AED873FA@DB9PR06MB8202.eurprd06.prod.outlook.com>
+ <AM6PR06MB59415C8186A69C0D0DD6EBB3A03FA@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <DB9PR06MB8202681B939DF97F6C6682C8873FA@DB9PR06MB8202.eurprd06.prod.outlook.com>
+ <AM0PR06MB5937E508D481A6982BE8E118A003A@AM0PR06MB5937.eurprd06.prod.outlook.com>
+ <DB9PR06MB82029E037381713313F37A9B8705A@DB9PR06MB8202.eurprd06.prod.outlook.com>
+In-Reply-To:
+ <DB9PR06MB82029E037381713313F37A9B8705A@DB9PR06MB8202.eurprd06.prod.outlook.com>
+X-MS-Has-Attach:
+X-Auto-Response-Suppress: All
+X-MS-Exchange-Organization-SCL: 1
+X-MS-Exchange-Inbox-Rules-Loop: lizce@exmail.nottingham.ac.uk
+X-MS-TNEF-Correlator: 7e4ba59e-efc4-476e-936b-6fd823dd42d9
+MIME-Version: 1.0
+Date: Mon, 31 Jul 2023 10:04:53 +0000
+X-MS-Exchange-Organization-MessageDirectionality: Originating
+X-MS-Exchange-Organization-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 03
+Message-Id:
+ <b736f2af74ed4bfd8c4350f5776aa627@AM6PR06MB5941.eurprd06.prod.outlook.com>
+X-MS-Exchange-Organization-Network-Message-Id:
+ 496f4050-458b-43ab-97ae-08db91ad95f7
+X-MS-Exchange-Parent-Message-Id:
+ <DB9PR06MB82029E037381713313F37A9B8705A@DB9PR06MB8202.eurprd06.prod.outlook.com>
+Auto-Submitted: auto-generated
+X-MS-Exchange-Generated-Message-Source: Mailbox Rules Agent
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ AM6PR06MB5941:EE_|GV1PR06MB8402:EE_|DB9PR06MB8202:EE_
+Return-Path: <>
+X-MS-Exchange-Organization-ExpirationStartTime: 31 Jul 2023 10:04:53.5727
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Office365-Filtering-Correlation-Id: 496f4050-458b-43ab-97ae-08db91ad95f7
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR06MB5941.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:;DIR:INT;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Jul 2023 10:04:53.4145
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-Network-Message-Id: 496f4050-458b-43ab-97ae-08db91ad95f7
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV1PR06MB8402
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:01.0575236
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.6631.034
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(425001)(930097);
+X-Microsoft-Antispam-Message-Info:
+	ZH6P8lvfSJ3tcX1OoVG9WResLMEG9+6n7re4Fk1bjmTg0UYFZ5G3wF+eid3fxCS4b6emw57ffxjcQ82PI3EOpwewvDXn5Ej9ZOY6eXS3v5bBvFbAxB2vKXOv3M71yq/6jtIo17nVW0euQYcwLWw2rNnzyFZ7op2Nnw5TqGIxJujL7OoKn2wBHik3tbDvbD2wKl27ryZX/sd8O8k6yz6JLM+IU08GZYrb1BG69KTVnkpyEjs6TNnS/hMxCmnWSSo98887JuTIwODx64xmF97hY3rgAMwkx91af6MVwik8Nmb3f1ZXKXgYVRPiiXEBDr69ToXPC3Op4/7jy8xVCMFDhArXsM2ad6hTZnMyTro5KansjcqwzHmzeYrUVcTWJxLiDVUlFV+1bcJacvwIiAzse7lbtuIg0fnTKhI9FABBmyA9/OlACcaoTYYcc+RyhszNPLig2sUa4l9iIYLIdyOBWeok1F6+2PPcADgqNlOEVtmtPKAPMcIplbRrOvYBSPDGmscgyoUrnpVW4jNBfia0WWq9LzH0p2TSzncdjfX60tjn4ZlgsMmJPKcf/ny+zP/N5yC0BDD6hGQpXn+hpWl0DaSbM59ZY6BVLXke3p67zC96Z/7iCPdiPb580lL5uBt6aLdXEVW8OCGNqiL4s6UsoEYG9VoG3AitKpt89DlwuikhAdLXbbhm8tBKNkpiKkEqbNJkBEWPqIZHD+gA3AZzGtmPo9aiWsnYABnb8xHBnHl0rIN8y7qGGvOw/fnPWRt+
+Content-type: multipart/alternative;
+	boundary="B_3808391796_2169219303"
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3808391796_2169219303
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: 7bit
+
+
+Thank you for your email. I am now on leave until Monday 7th August. I will pick up your message upon my return. 
+
+Best wishes
+Caroline
+
+Best wishes
+Caroline
+
+
+--B_3808391796_2169219303
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"></head><=
+body><div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:1=
+2pt; color:rgb(0,0,0)"><br></div><div style=3D"font-family:Calibri,Arial,Helve=
+tica,sans-serif; font-size:12pt; color:rgb(0,0,0)"></div><div style=3D"font-fa=
+mily:Calibri,Arial,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)"><=
+/div><div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:1=
+2pt; color:rgb(0,0,0)"></div><div></div><div></div><div>Thank you for your e=
+mail. I am now on leave until Monday 7<span><sup>th</sup>&nbsp;August</span>=
+<span>. I</span><span>&nbsp;will pick up your message upon my return<span cl=
+ass=3D"ContentPasted3" style=3D"font-size:medium; margin:0px; text-align:start">=
+<span class=3D"ContentPasted3" style=3D"margin:0px">.</span></span> </span></div=
+><div><span><div style=3D"font-size:medium; margin:0px; text-align:start"></di=
+v><div style=3D"font-size:medium; margin:0px; text-align:start"></div><div sty=
+le=3D"font-size:medium; margin:0px; text-align:start"></div><div style=3D"font-s=
+ize:medium; margin:0px; text-align:start"></div><div style=3D"font-size:medium=
+; margin:0px; text-align:start"></div><div style=3D"font-size:medium; margin:0=
+px; text-align:start"></div><br class=3D"ContentPasted3" style=3D"font-size:medi=
+um; text-align:start"><span class=3D"ContentPasted3" style=3D"font-size:medium; =
+text-align:start; display:inline!important; background-color:rgb(255,255,255=
+)">Best wishes</span><br class=3D"ContentPasted3" style=3D"font-size:medium; tex=
+t-align:start"><span class=3D"ContentPasted3" style=3D"font-size:medium; text-al=
+ign:start; display:inline!important; background-color:rgb(255,255,255)">Caro=
+line</span></span><br></div><div></div><div></div><div></div><div></div><div=
+></div><div></div><br>Best wishes<br>Caroline<br></body></html>
+
+--B_3808391796_2169219303--
+

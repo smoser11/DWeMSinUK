@@ -1,0 +1,392 @@
+Received: from VI2PR06MB9155.eurprd06.prod.outlook.com (2603:10a6:800:21e::14)
+ by DB9PR06MB8202.eurprd06.prod.outlook.com with HTTPS; Mon, 11 Mar 2024
+ 08:46:34 +0000
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=exmail.nottingham.ac.uk;
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com (2603:10a6:20b:99::17)
+ by VI2PR06MB9155.eurprd06.prod.outlook.com (2603:10a6:800:21e::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7386.16; Mon, 11 Mar
+ 2024 08:46:32 +0000
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::b883:f7bd:4abf:9b70]) by AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::b883:f7bd:4abf:9b70%5]) with mapi id 15.20.7386.016; Mon, 11 Mar 2024
+ 08:46:32 +0000
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: Trouble in paradise
+Thread-Topic: Trouble in paradise
+Thread-Index: AQHacX8C8XNrWIoJ8E69AxStfjW7mrEyPhBR
+Date: Mon, 11 Mar 2024 08:46:32 +0000
+Message-ID:
+ <AM6PR06MB594123AE9B242E87274707AFA0242@AM6PR06MB5941.eurprd06.prod.outlook.com>
+References: <77C4A709-3231-4356-BD77-709319FE7AFD@nottingham.ac.uk>
+In-Reply-To: <77C4A709-3231-4356-BD77-709319FE7AFD@nottingham.ac.uk>
+Accept-Language: en-GB, en-US
+Content-Language: en-GB
+X-MS-Has-Attach: yes
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+ <AM6PR06MB594123AE9B242E87274707AFA0242@AM6PR06MB5941.eurprd06.prod.outlook.com>
+msip_labels:
+MIME-Version: 1.0
+X-MS-Exchange-Organization-MessageDirectionality: Originating
+X-MS-Exchange-Organization-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-Network-Message-Id:
+ 24271061-61f6-4bb4-17d8-08dc41a7c06e
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ AM6PR06MB5941:EE_|VI2PR06MB9155:EE_|DB9PR06MB8202:EE_
+Return-Path: lizce@exmail.nottingham.ac.uk
+X-MS-Exchange-Organization-ExpirationStartTime: 11 Mar 2024 08:46:32.5317
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Office365-Filtering-Correlation-Id: 24271061-61f6-4bb4-17d8-08dc41a7c06e
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR06MB5941.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:;DIR:INT;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Mar 2024 08:46:32.3237
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-Network-Message-Id: 24271061-61f6-4bb4-17d8-08dc41a7c06e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: qrm6CdcSEAOTJnF5E8jPdyiq8t8C6ly8Zxlbcz3ibAHkK/xS4ttiL3D0xQGyTy69AdqLZeY4JvCjiwrlrDA6v3IJR9VbnFNasTmm563QtBPSQu1gUg1Waw8nEdqjrhEr
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI2PR06MB9155
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:01.9595345
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.7386.010
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(425001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	Yc6VNR2/jc7OBtJzR3ULqZMRrcTkP5ZAU3CjpRNuj08m+IOtsPsNaGuF2zJ2xk+4Mw4ynpI+p9zW1OS/icDwJZeZVkC3kiLUODxFTtJMPQHhm+RF6FY4NFhV84f+YEjmX0vSOZtuOLPjF8Kgh6NJsLMoGxPRv3a9yXAQI2ts9W0Ji5TgB7qhEANHPktWzNgNohyYIDemPOr9p8eG5F0v849P2zKqZ08sVjTdJ/j+OKzUjs5jIatxs/7usxkEUY4uZgczf86hoCKr5hzsDHhrEoGlMsuxgXzbWBXQJOgNuKsQOCO5ZPrkd6EFnjkUTZjyJs/6MOAyHJy66KMLu+HA7I8W+HfsgKoErhTK54ofGBqQ7QzRZNwwm7zT7qO5upyBKzdMUW+S5vGdSKsodhyoqKwLkBbVR38VU/7QCB4tSm8Bd++PekFwOpF2jzM5zkuoXf4IREenqSCRjYJ1wcT5NyUImxCFZqe2y1H3AQzDAqBadBpddY1KQ2qN9SU2UU84RE6nSqYtQ5OVUFz5PEMt6MLw4LSGiHXZ1M4GWcIdlnXcSafSEhF4fm3BN1ThFctfVBI+WFtFLxBsvyZ3ALLMR3oFnzIUrzkopTxhXe0BDMWHW8H2T7JuXexFlNz6MfNiSlnA9nOBC+5qh0QdaHX3TZXDo2bc8+T4pxJqT21FnX4mVAhGC2gzsFLxe79vemgQFOLMCOmpqL1oxzsD2UNY/DePOrgInDYpo9SRsb/1n2G/lyUoJAtakqnaQ1zcFQd0xE7OSFlK4ltZKb4XRIL06YQBm8fSwse5/5j+I36DWWU=
+Content-type: multipart/mixed;
+	boundary="B_3821516406_1621542826"
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3821516406_1621542826
+Content-type: multipart/related;
+	boundary="B_3821516406_1964184865"
+
+--B_3821516406_1964184865
+Content-type: multipart/alternative;
+	boundary="B_3821516406_2136476185"
+
+
+--B_3821516406_2136476185
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+I am free to meeting today or tomorrow any time except today between 1-4.30=
+pm
+
+Best wishes
+Caroline
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (AFHEA)
+
+
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB=20
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 08 March 2024 17:35
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz=
+ <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Trouble in paradise=20
+=20
+Dear  Both,=20
+
+I did a bit of a deep dive (again!) into the F&S 2016 (?) paper and looked =
+at the data and codebook again.  I=E2=80=99m sorry I didn=E2=80=99t do so before our mee=
+ting today b/c/ it would have been much better to discuss the following inst=
+ead of an email.   Sorry for the bother, but could we meet on Teams very bri=
+efly early next week to have a short chat?    Here are some of the issues:
+
+The questions for =E2=80=98how many people in H (=3Dthe hidden population)=E2=80=99 =E2=80=93 e=
+.g.  Q33. 5a5 , Q33. 5a7, Q49. 5c6=20
+
+Q64. 5d11=20
+
+Q83. 5f16=20
+
+Q88. 5f16=20
+
+Q89. 5f15=20
+
+  -- don=E2=80=99t exactly match up with q36 and q80 that we use in the RDS estim=
+ation.
+
+=20
+
+Worse, the =E2=80=98known population=E2=80=99 method we discussed (using =E2=80=9CQ89. 5f15: =
+Do you know personally of any other domes=EF=BF=BDc workers who went through the N=
+RM system? If so, how many? Numerical value =E2=80=9C) has TONS of missing values =
+in the data-set, which makes it unusable for us.  We could try the number of=
+ DW in the UK, but we only have a vague idea of the size of this population.=
+ =20
+
+=20
+
+Basically, we need a way of estimating the average number of DWs people in =
+the sample know.  Weirdly, I think I need to _exclude_ those that we think a=
+re in H (the exact opposite as the RDS technique). =20
+
+=20
+
+Oh, and I continue to have questions about the codebook and how variables a=
+re named in the data set.  For example, the codebook only goes up to Q90, bu=
+t the excel data contains over 100 question varables.
+
+=20
+
+Sorry and thanks,
+
+Scott
+
+=20
+
+=20
+
+
+--B_3821516406_2136476185
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><style t=
+ype=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bottom:0;} </st=
+yle></head><body dir=3D"ltr"><div class=3D"elementToProof" style=3D"font-family: A=
+ptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-seri=
+f; font-size: 12pt; color: rgb(0, 0, 0);">I am free to meeting today or tomo=
+rrow any time except today between 1-4.30pm</div><div class=3D"elementToProof"=
+ style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri=
+, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br></div><d=
+iv class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFont, Apt=
+os_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rg=
+b(0, 0, 0);">Best wishes</div><div class=3D"elementToProof" style=3D"font-family=
+: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-s=
+erif; font-size: 12pt; color: rgb(0, 0, 0);">Caroline</div><div class=3D"eleme=
+ntToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontServic=
+e, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><b=
+r></div><div id=3D"Signature"><div style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; co=
+lor: rgb(0, 0, 0);"><br></div><div id=3D"divtagdefaultwrapper" dir=3D"ltr" style=
+=3D"color: rgb(0, 0, 0);"><p style=3D"margin-top: 0px; margin-bottom: 0px; font-=
+family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-=
+family: Arial, sans-serif; color: rgb(0, 155, 189);"><b>Dr Caroline Emberson=
+ (preferred pronouns she/her)</b></span></p><p style=3D"margin-top: 0px; margi=
+n-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;=
+"><span style=3D"font-family: Arial, sans-serif; color: rgb(19, 27, 87);"><b>A=
+ssistant Professor in Operations Management (AFHEA)</b></span></p><p style=3D"=
+margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-s=
+erif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; color: =
+rgb(19, 27, 87);"><b><br></b></span></p><p style=3D"margin-top: 0px; margin-bo=
+ttom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><s=
+pan style=3D"font-family: Arial, sans-serif; font-size: 9pt;">&nbsp;</span></p=
+><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvet=
+ica, sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-ser=
+if; font-size: 9pt; color: rgb(19, 27, 87);">Nottingham University Business =
+School OMIS/ Faculty of Social Science<br>University of Nottingham</span></p=
+><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvet=
+ica, sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-ser=
+if; font-size: 9pt; color: rgb(19, 27, 87);">B12,Si Yuan Building</span></p>=
+<p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helveti=
+ca, sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-seri=
+f; font-size: 9pt; color: rgb(19, 27, 87);">Jubilee Campus</span></p><p styl=
+e=3D"margin-top: 0px; margin-bottom: 0px;"><span style=3D"font-family: Arial, sa=
+ns-serif; font-size: 9pt; color: rgb(19, 27, 87);">Nottingham, NG8 1BB&nbsp;=
+</span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calib=
+ri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial=
+, sans-serif; font-size: 9pt; color: rgb(19, 27, 87);">+44 (0) 115 8466631<b=
+>&nbsp;</b></span><span style=3D"font-family: Calibri, sans-serif; font-size: =
+9pt; color: rgb(19, 27, 87);"><b>| </b></span><span style=3D"font-family: Aria=
+l, sans-serif; font-size: 9pt;"><a href=3D"http://nottingham.ac.uk/" target=3D"_=
+blank" style=3D"margin-top: 0px; margin-bottom: 0px;">caroline.emberson@nottin=
+gham.ac.uk</a></span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font=
+-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><br></p><p style=3D=
+"margin-top: 0px; margin-bottom: 0px;"><span style=3D"font-family: Arial, sans=
+-serif; font-size: 12px;">Please note that my working days are Monday, Tuesd=
+ay, Thursday and Friday</span></p><p style=3D"margin-top: 0px; margin-bottom: =
+0px;"><span style=3D"font-family: Arial, sans-serif; font-size: 12px;"><br></s=
+pan></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri,=
+ Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-family: Georgia,=
+ serif; font-size: 9pt; color: rgb(21, 118, 158);"><b>Follow us</b></span></=
+p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helve=
+tica, sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-se=
+rif; font-size: 9pt; color: rgb(0, 0, 233);"><u><a href=3D"http://facebook.com=
+/TheUniofNottingham" style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-b=
+ottom: 0px;">Facebook.com/UniofNottingham</a></u></span></p><p style=3D"margin=
+-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; =
+font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: 9p=
+t; color: rgb(0, 0, 233);"><u><a href=3D"http://twitter.com/UniofNottingham" s=
+tyle=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Twitter.c=
+om/UniofNottingham</a></u></span></p><p style=3D"margin-top: 0px; margin-botto=
+m: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span=
+ style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233=
+);"><u><a href=3D"http://youtube.com/nottmuniversity" style=3D"color: rgb(0, 0, =
+233); margin-top: 0px; margin-bottom: 0px;">Youtube.com/nottmuniversity</a><=
+/u></span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Ca=
+libri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-family: Ar=
+ial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u><a href=3D"http://=
+instagram.com/uniofnottingham" style=3D"color: rgb(0, 0, 233); margin-top: 0px=
+; margin-bottom: 0px;">Instagram.com/uniofnottingham</a></u></span></p><p st=
+yle=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, s=
+ans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; fo=
+nt-size: 9pt; color: rgb(0, 0, 233);"><u><a href=3D"http://linkedin.com/compan=
+y/university-of-nottingham" style=3D"color: rgb(0, 0, 233); margin-top: 0px; m=
+argin-bottom: 0px;">Linkedin.com/company/university-of-nottingham</a></u></s=
+pan></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri,=
+ Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, s=
+ans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u><a href=3D"http://www.fo=
+ursquare.com/uniofnottingham" style=3D"color: rgb(0, 0, 233); margin-top: 0px;=
+ margin-bottom: 0px;">F</a><a href=3D"http://www.foursquare.com/uniofnottingha=
+m" style=3D"margin-top: 0px; margin-bottom: 0px;">oursquare.com/uniofnottingha=
+m</a></u></span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-fami=
+ly: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-fami=
+ly: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u>&nbsp;</u>=
+</span></p><br></div><table id=3D"pbpsiglinktable"><tbody><tr><td><span style=3D=
+"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helve=
+tica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><a href=3D"https://ou=
+tlook.office.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.not=
+tingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature"><img data-outlook-trace=3D"F=
+:1|T:1" src=3D"cid:df4349b1-b2a0-4408-aba4-922b9a9e237a"></a></span></td><td><=
+/td><td><span style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontSer=
+vice, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 120, 21=
+2);"><a href=3D"https://outlook.office.com/bookwithme/user/68c1e07fca314c1a863=
+a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature" st=
+yle=3D"color: rgb(0, 120, 212); text-decoration: none;">Book time to meet with=
+ me</a></span></td><td></td></tr></tbody></table></div><div id=3D"appendonsend=
+"></div><hr style=3D"display:inline-block;width:98%" tabindex=3D"-1"><div id=3D"di=
+vRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" style=3D"font-size:11p=
+t" color=3D"#000000"><b>From:</b> Scott Moser (staff) &lt;ldzsm2@exmail.nottin=
+gham.ac.uk&gt;<br><b>Sent:</b> 08 March 2024 17:35<br><b>To:</b> Caroline Em=
+berson (staff) &lt;lizce@exmail.nottingham.ac.uk&gt;; Selim Yilmaz &lt;ldxsy=
+3@exmail.nottingham.ac.uk&gt;<br><b>Subject:</b> Trouble in paradise</font> =
+<div>&nbsp;</div></div><style>
+<!--
+@font-face
+	{font-family:"Cambria Math"}
+@font-face
+	{font-family:Calibri}
+p.x_MsoNormal, li.x_MsoNormal, div.x_MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif}
+span.x_EmailStyle17
+	{font-family:"Calibri",sans-serif;
+	color:windowtext}
+.x_MsoChpDefault
+	{font-family:"Calibri",sans-serif}
+@page WordSection1
+	{margin:72.0pt 72.0pt 72.0pt 72.0pt}
+div.x_WordSection1
+	{}
+-->
+</style><div lang=3D"EN-GB" link=3D"#0563C1" vlink=3D"#954F72"><div class=3D"x_Word=
+Section1"><p class=3D"x_MsoNormal"><span lang=3D"EN-US" style=3D"font-size:11.0pt"=
+>Dear&nbsp; Both, </span></p><p class=3D"x_MsoNormal"><span lang=3D"EN-US" style=
+=3D"font-size:11.0pt">I did a bit of a deep dive (again!) into the F&amp;S 201=
+6 (?) paper and looked at the data and codebook again.&nbsp; I=E2=80=99m sorry I d=
+idn=E2=80=99t do so before our meeting today b/c/ it would have been much better t=
+o discuss the following instead of an email. &nbsp;&nbsp;Sorry for the bothe=
+r, but could we meet on Teams very briefly early next week to have a short c=
+hat?&nbsp;&nbsp;&nbsp; Here are some of the issues:</span></p><p><span lang=3D=
+"EN-US">The questions for =E2=80=98how many people in H (=3Dthe hidden population)=E2=80=
+=99 =E2=80=93 e.g.&nbsp; </span><i>Q33. 5a5 , Q33. 5a7, Q49. 5c6 </i></p><p><i>Q64. =
+5d11 </i></p><p><i>Q83. 5f16 </i></p><p><i>Q88. 5f16 </i></p><p><i>Q89. 5f15=
+ </i></p><p class=3D"x_MsoNormal"><span lang=3D"EN-US" style=3D"font-size:11.0pt">=
+&nbsp;&nbsp;-- don=E2=80=99t exactly match up with q36 and q80 that we use in the =
+RDS estimation.</span></p><p class=3D"x_MsoNormal"><span lang=3D"EN-US" style=3D"f=
+ont-size:11.0pt">&nbsp;</span></p><p><span lang=3D"EN-US">Worse, the =E2=80=98known =
+population=E2=80=99 method we discussed (using =E2=80=9C</span><i>Q89. 5f15</i>: Do you =
+know personally of any other domes=EF=BF=BDc workers who went through the NRM syst=
+em? If so, how many? Numerical value =E2=80=9C) has TONS of missing values in the =
+data-set, which makes it unusable for us.&nbsp; We could try the number of D=
+W in the UK, but we only have a vague idea of the size of this population.&n=
+bsp; </p><p>&nbsp;</p><p>Basically, we need a way of estimating the average =
+number of DWs people in the sample know.&nbsp; Weirdly, I think I need to _<=
+i>exclude</i>_ those that we think are in H (the exact opposite as the RDS t=
+echnique).&nbsp; </p><p>&nbsp;</p><p>Oh, and I continue to have questions ab=
+out the codebook and how variables are named in the data set.&nbsp; For exam=
+ple, the codebook only goes up to Q90, but the excel data contains over 100 =
+question varables.</p><p>&nbsp;</p><p>Sorry and thanks,</p><p>Scott</p><p>&n=
+bsp;</p><p class=3D"x_MsoNormal"><span lang=3D"EN-US" style=3D"font-size:11.0pt">&=
+nbsp;</span></p></div></div></body></html>
+
+--B_3821516406_2136476185--
+
+
+--B_3821516406_1964184865
+Content-type: image/png; name="Outlook-2aav3v3h.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <df4349b1-b2a0-4408-aba4-922b9a9e237a>
+Content-disposition: inline;
+	filename="Outlook-2aav3v3h.png"
+Content-transfer-encoding: base64
+
+
+iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAcpJREFU
+OE9jZAABr6aJDHqhuQwMDIxgPrHg19d3DLP91Bk+P3sD08IIN2x1hjPDy7NXiDWL4T8nM0NA
+33wGWRMPhg5NJgYGhv8gvYwMFdf/MYAMu3twP9GGISssv/qLYVdzMsP5FYthBv5nmO2pyfDz
+zVuyDEw/eJ3hxNyJDEenNSMMJMskJE2Hp9YxHJ2CZOBUM1GGz5/hAUuS+UVnXjOcXDCJygbO
+m4TqZUpcGDJjJcPzS1eoYyAvrzDD58/vGRgY/iHSYcX1/wykupBXWpghe89reEbY0RjNcGHF
+MkQsk2pgwYkXDBz84iiR16EJzmWghE26C8uv/mZgZGJBM5AZ5HXyDPRo7GMwCCuEG/jj40uG
+CRYS5LsQpNM6q4TBOLqE4emFgwxrs8NRI2WynSTD19cvSErQOBQzMhSdecvw8vophqWxngQN
+BCWTrBMvMMIPpnF7dQQjA6+UCEP23tcM//7+Zvjx8QNOQydZizFk7bvNwCepgs9iWIHKyGAY
+EcPALaQEUQwq3mBplQmi5siUBoa0bRcZhBT18Bj4n7QSWlhGmiF19xOcBh6aVEyagSCTQEEU
+Nf8Ag6CcFjyn/Pz8hmF9cQjDg8MHAaiKxp0eiZJ4AAAAAElFTkSuQmCC
+--B_3821516406_1964184865--
+
+
+--B_3821516406_1621542826--
+

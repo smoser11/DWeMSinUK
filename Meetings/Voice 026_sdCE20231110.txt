@@ -1,0 +1,530 @@
+I can't. I came on last Saturday. Okay.
+Hello.
+Good afternoon, everybody. How are you?
+Good.
+Hi. Good to see you.
+And you.
+Yeah, go ahead, please, Caroline. I'm not prepared.
+Yeah, I was going to say, thank you for your email. It's really useful to capture the sort of the latest stage of thinking.
+It's just a way of trying to keep an aid memoir, isn't it?
+Of where we're up to with this, really. So it was really useful to see your thoughts, which all looked quite positive, I thought.
+Yeah, I think so.
+We might have a path forward from what you're saying.
+Yeah, honestly, that sounds really good.
+I had to write everything down because I knew I'd forget in the interim. And sure enough, I have. You know, I'm frantically looking for that email.
+Yeah. No, I'll keep talking while you're looking for it.
+Please, thank you.
+And interestingly, the Norck paper that you mentioned in it, I think that that is the first of two studies that they've done.
+Okay. And we've got now both references. So the one of the papers I shared with you was the second study they've done a cohort study.
+So now we've got both. So that's great. It makes our literature search look that much more professional, but we've tried to track down both reports.
+Small world, yeah.
+But I think we know what they're publishing anyway, and that's really useful. I haven't had a chance to read the Gile, is it Gile?
+Yeah.
+But I will read that. And that will be useful for just putting the literature related to RDS together.
+Yeah, I think so.
+And Selim has done a fantastic job, I think, in actually getting our coding of the risk assessment variables started.
+So I think we've made some pretty good progress this week.
+Good.
+So I do have one question about the risk assessment groupings.
+Yes.
+Like that's sort of my query for us as a team, but I don't know, do you want to start with the email, Scott?
+Or do you want to chat with them?
+Chat about the risk assessment?
+Yeah, if you don't mind, please do. I'm so sorry. Yeah, so sorry, please, please.
+Now, we'll talk about the risk assessment groupings then.
+Right.
+So what I tried to do, Selim, as you, I think you've managed to interpret it right, but there are various composite measures that you'd included in the survey originally.
+And Scott and I had discussed grouping them into different risk categories and then assigning weight so that overall they would add up to one.
+That's effectively an index of no exploitation through to every form of exploitation we could think of.
+And we thought at the time that we did that, that we might lose some of our sample because there may be some people who actually fell out of the exploitation category in that process.
+But from what you're saying in your emails, Selim, everybody we've spoken to is reporting some form of exploitation.
+Yeah, that's right. So I have gone through these steps that you have sent me in your email last Friday, and they all, 97 people, you know, so we have some level of exploitation.
+And if you go to the Excel spreadsheet that I shared with both of you last night, you can see when you go to the column, some categories, so you can see that 0.366, 0.2, 0.1, and that continues.
+And as long as there's no 0.00, this means there is a level of exploitation happening from one of these 12 or 13 categories that we have asked our respondents.
+Yeah, so the question that I had, and forgive me if I misunderstood this, but we, when we put the measures together, there were some that were sort of composite measures.
+So there were the 13 sort of individual indicators, but some of those were grouped into, for example, freedom of movement, where there were two or three together.
+So I wondered if you've been able to reflect that in the coding, Selim, or have you just done a sort of all or nothing coding?
+I've done all or nothing coding. So is this the, I mean, I didn't attend last week the meeting. Is this a complication then?
+Well, this is, I suppose this is a question for us to have a chat with Scott about whether we want to show composite measures or whether we want to just show this input.
+I mean, definitely, you've answered the first question was how many people in the sample experienced any form of exploitation and we know.
+Because of the way we've selected organisations to approach these domestic workers, we have actually accessed domestic workers experiencing exploitation, and not just generic people working in the sector.
+So that I think is good for our clarity of our method.
+And I suppose the question is, could we, or do we want to, do we need to group some of these variables into subclasses as well as having like the overall measure that you've got?
+Because the total will be the same, won't it? Because the way that I've designed the measures is just purely a cumulative sum.
+But it might be useful for us to have these like slightly larger groupings, the sort of sub-totals almost.
+I have a question for Scott in terms of what we can do when we run.
+I'm sorry.
+How you, how you sort of conceptualise the risk index?
+First cup of coffee, so apologies to all, but I'm not exactly, so I see there's what 13 categories, is that right? Some number of categories.
+13 categories, and saline's, for each person, saline's indicated the extent to which they fit in that category.
+And the categories in the Word document are, oh I see, the categories aren't individual questions, they're compilations of questions.
+Is that correct?
+In some cases.
+In some cases.
+It's not always, we haven't always got multiple indicators, but for some of them we have.
+Okay, and then, so sorry, give me a second.
+So Saline, how did you come up with the numbers that are in the Excel spreadsheet?
+So Caroline sent me the email, I think you have been also included in the same email, so I'm just, I think I'm just sharing it, this will solidify the communication.
+Can you see that?
+Yeah, that's exactly what I have, yeah.
+Yeah, so I, so going back to the question, let's start here.
+For example, this would be category one, yeah, category one, and we have our question, and for that question we have more answers in this survey.
+We don't have only yes, always, often, or sometimes there's also no, never, and so on.
+So, but as long as they answer one of these responses, they have been forced to do work against their will.
+Right.
+Back to the question.
+And that will be done, weighted with 0.25.
+Yeah.
+What do you mean weighted by 0.25?
+So it's like 0.25 times 0.025.
+0.025.
+So that's a proportion of the total index of one. So I broke down one across all the categories of potential risk, so that there was a sort of cumulative effect.
+So this is where I just want to check that I'm understanding, silly correctly, when you look at risk category one, silly, that was designed to be those two questions together.
+Yeah.
+And you see, because they both refer to vulnerability, abuse of vulnerability.
+Yeah.
+So that would give you a composite weighting.
+So if you answered the first question, and in any of those responses, you get 0.25. And if you answered yes to the second question, you get a further 0.25.
+Just make 0.05.
+Yeah.
+Yeah, just what I have done.
+Yeah.
+So as Karen and I said, we have your two questions.
+And if the respondent, our respondent has responded for both of these questions, then they will get a weighting for each 0.025.
+And some of this would be, for this question, 0.05. And that continues.
+So for all questions, so here, for example, would be, again, 0.05. Here we have, again, two questions.
+So it will be 0.025, 0.025.
+If they have been part of that indicator for exploitation, then they will get a weighting of 0.05.
+And this goes back to the beginning.
+So Caroline has let weighting for all our questions in a way that is first 0.35, 0.55.
+And at the bottom is also 0.10.
+So in total, this makes them one.
+Yeah.
+So that's what I sort of entered from our conversation last week, Scott.
+Yeah.
+That's what I creatively designed.
+Gotcha.
+Thank you.
+I'm hoping that I've interpreted it properly.
+Right.
+And then, yes, and then the, I don't know what you want to cook.
+So hang on.
+So it's category one.
+So I don't want to, I don't know how to describe this to the different.
+So there's like blocks of categories and some of the blocks have the same weight and some don't.
+And I just want to make sure I understand you, Caroline, you, you've selected those weights, not 0.35 for category 13.
+Yeah.
+And you've done that on a qualitatively done on the basis of the extent to which you did indicate exploitation, serious exploitation.
+So that we've got the middle block that saline's got on the screen where those are all indicators of forced labor risk.
+And there's a sort of cumulative effect.
+So if you see more than one indicator, then potentially there's greater risk.
+And so I've allowed, there were about 11 of those indicators.
+So it just made sense sort of mathematics or arithmetic lead to get a total of 0.55.
+By assigning this, these smaller weights to each composite measure.
+In addition to that, we've got this issue about whether people have been referred to the NRM, which if you like is a more objective measure of exploitation, because somebody other than the self, the person themselves has made an assessment that that person is experiencing exploitation.
+So we've only got one question on that.
+But actually that's a stronger indicator because it applied. It's somebody else's assessment. So I've given that 0.35 on its own.
+So you could have all these self reported indicators of risk and have been referred, which would then give you a pretty strong indicator that you have been experiencing exploit.
+One, which is this, I wanted a point one.
+So this is payment below the national living wage.
+So that's not necessarily forced labor or modern slavery, but it could be, it could be a exploitation, but it isn't always.
+So that's why I've waited at a lower level.
+So I could make a narrative argument for why I put those weightings in.
+But there's some convenience in making sure that they will add up to one.
+Yeah.
+But there is some sort of logic behind it.
+Yeah, that's great.
+So then just few more questions if I can.
+So the.
+So category 12 is this is like you were saying is like the suggestive, but not definitive indicator.
+But it gets a weight of not point one, which is twice the weight of say, category 11.
+Right.
+So why that confuses me is if it's if if if category 12 is the loosest, wouldn't we down weight it relative to the other categories.
+With the other indicator, it can be illegal.
+I suppose this issue about not getting the national minimum wage is it's actually an potentially illegal exploitation.
+That's true.
+It's true.
+Okay.
+Whereas excessive overtime.
+Yeah.
+Not necessarily illegal.
+Okay.
+I agree it's arguable.
+No, no, but I just, it's fine.
+It's fine.
+I'm understanding all the, all the, the, the not point fives and sorry, not point not fives.
+Excuse me.
+And so, so all the category, no, that's not true.
+All the categories in the middle block get not point not five.
+Yeah.
+11 indicators of forced labor and for each indicator, it's not point 05.
+And that's where the not point five five comes from is because you're okay.
+Good.
+And in category 13, it's, it's weighted, it stated it's weighted at not point three five,
+but it's also stated it's weighted at not point four.
+No, it is, isn't it?
+That's true.
+Which one of those is wrong?
+So, which one did you use?
+Did you use the point three five?
+I've done that.
+Okay.
+Yeah.
+That's fine.
+That's fine.
+That's a typo.
+That's no problem.
+That's no problem.
+That's great.
+Thank you.
+So thank you.
+So now I understand this.
+So, so now, now I'm able to at least try to process Caroline's question, which is,
+if I'm understanding it, do you, do you want to combine categories?
+Is that what you're, so for example, we have, um, go, sorry, sorry.
+I think Salim's done it.
+I think the answer is that he has combined them because he's combined them into these
+13 categories.
+I'm right on time.
+Salim, you have done it that way.
+Yeah.
+Yeah.
+I think that's a good question.
+The, the, the, yeah.
+The indicators into those questions.
+Good.
+Okay.
+And we're, I'm totally comfortable with that.
+Is that as, do we need any other aggregation?
+Sorry.
+I apologize to interrupt, but Caroline, do you mean that one?
+Some category.
+No, I'm happy with exactly, I'm happy with what you've done.
+I just wanted to check that we had the sub indicators in the composite
+measures, but we do.
+So that's perfect.
+Good.
+Okay.
+I'm, I'm happy with that.
+If you all are, I think that's, I think that's great.
+Um, good, good.
+So, and then for each of these, we get, there's some distribution of this
+risk, which is great.
+No problem.
+Good.
+Good.
+And there's no, there's no suggestion to like aggregate to a higher level.
+Is there.
+So, for example, combine categories.
+That's what I understood your question to be Caroline.
+But now I see, I, I'm mistaken.
+That's not what you were saying.
+So, sorry.
+You mean if there was, um, evidence of low payment and forced labor and
+NRM, I mean, we've got that in the summation, haven't we?
+Yeah, you're right.
+All the information's there.
+You could just, you would just, if you wanted higher levels of
+aggregation, you would just add up those categories on their own.
+Yep.
+Yep.
+You're right.
+You're right.
+You're right.
+Got it.
+That's good.
+That's good.
+Good.
+Thank you.
+Good game.
+This is the data that we need.
+And you have provided it.
+So that's great.
+Yeah.
+In a week as well.
+So thank you.
+Well done.
+I've done it.
+I've done it.
+Yeah.
+It's, it's, it looks great.
+Just like I said, this is totally spot on.
+We're looking for.
+I'm seeing.
+Caroline.
+I have to go back and correct.
+I didn't weigh it was 0.35.
+It's way.
+It was 0.4.
+these uh the sum category again by changing it to 0.35. Yeah I think so yeah sorry that's my mistake
+I was playing around with the weightings and I didn't or I just have to change whatever is written
+0.04 to 0.35 and then just take everything together this shouldn't take long. And it's only category
+13 so it's yeah it shouldn't be it shouldn't be too bad. It will impact the sum category. Yeah that's
+right category 13 in the sum that's right that's all excellent great good good good I still can't
+find the email do you mind sharing your screen Caroline or or Celine or somebody to well I
+might get more coffee sorry okay um
+see if I can
+share my screen
+thanks
+yeah we can see it can you see it yeah number seven okay um
+um papers right good so we've talked about the papers and and thank you for the rds paper as well
+I will read that that's cool right so I started playing around so one so the uh the trimming so um
+yeah so uh boy how do I start I start by drinking more coffee um okay on on point one
+there's there's something sneaky we can do there's a bit of a cheat so um
+um so so in rds the usually what's done is your your sampling from the hidden population but
+with convenience and snowball and all this jazz but everybody in your sample is is
+is in the hidden population and the objective is to calculate the size it's a size estimation
+so our setting is a little different but there's sort of a I mean there's a ton of
+tools in the rds toolkit and one of them is and I don't know why they they came up with this
+because but it's per it's great for us is um is a proportion estimate so you could say okay here's
+this here's this hidden populate so we're in the classical rds world which says everyone is in a
+hidden population and you want to know something about uh covariate so for example um you want to
+know the hiv status among iv drug users so iv drug users is your hidden population you can do an
+rds but you want to know you want a proportion that are hiv positive say so the point is there's
+some dichotomous variable that you can sample so for us it's are you exposed so here's take one take
+one is there's some indicator or there's 12 indicators whatever um and we so what i'm trying
+to say is is the the if we consider our popular hidden population to be the set of domestic workers
+in the uk with a cell phone and the covariate of interest being have you zero one have are you
+experiencing modern slavery yes or no again all the operationalization issues aside not with standing
+but there's a way then off the shelf methods we can use to calculate the proportion of people in
+our frame that have have this trait that are experiencing ms so why is that sneaky that sneak
+so that's straightforward we can do but the sneaky bit is that it doesn't give us a number
+it tells us the proportion of people in our sampling frame that we think are experiencing this
+so it's it's it's kind of a clever statistical trick where where in my opinion of statisticians
+is that they take questions that you actually want to know the answer to and turn them into
+questions that statisticians can actually answer but aren't necessarily questions that you're
+interested in and i think i think this kind of fits in that category so um so i take it as good
+news though like i said i mean one other sneaky thing we could do which is is different from us
+than the rds world is we we have x we have based on other sources we have estimates i think of
+like for example the size of domestic workers in the uk i think if so then we can do i mean
+estimate uncertainty is going to be a bear but if so then we could i'm trying to say we could we could
+we could we could force a number if we if we wanted to we can get a proportion using very
+straightforward very proper methods if we have an estimate for the size of domestic workers in
+the uk with a cell phone then we can we can we can gin up a size estimate so that's pretty cool i
+think so that's that's that's one thing and that requires like i mean i could do that this afternoon
+that get well yeah i could do that this afternoon requires very very little little little work i
+mean like i said uncertainty estimates is going to be a bear but we'll have to figure that that
+that's that now the risk uh actually i progressed since i wrote this email um so really i've been
+describing it is there's there's like a zero one your your your hib positive where you're not but
+turns out the the same methods actually apply for continuous variables so we can do exactly the same
+thing with the risk uh uh uh index now here the news is not as good and a little bit treacherous um
+so i was thinking about this what what's the quantity of interest here because so normally we
+were we're going to know the size of section such but with the risk index is that we don't i don't
+think and correct me if i'm wrong we don't care about like the total we don't want a number we don't
+want like the sum of everyone's risk indices i don't think i think instead what we want is a
+distribution we want to know in the population how is this risk distributed are there lots of
+people with high value you know etc etc etc so that that would be ideally what we'd want
+and i'm not aware of rds methods that will do that they'll give us numbers and confidence intervals
+um so that's not great now here's the treacherous bit is um lots of these you're gonna hate me
+so lots of these rds methods that have been playing with our our our Bayesian methods does that
+mean anything anybody if not no problem not much i heard the term but i don't know that i
+understand what it means absolutely no problem so so here's the here's Bayesian versus all the
+statistics that you probably wherever it's called frequent statistics so the idea there is you get
+an estimate and you get a standard error or confidence interval or whatever you can do hypothesis
+testing great go there's a whole other way of doing statistics called Bayesian in which um
+um the Bayesians say um well so let me put it differently so in the frequencies world there is
+truth there is some true size of this hidden population we just don't know it and our goal
+is to our challenge is to estimate it based on data that we get somehow great the Bayesians say
+no there's no such thing as truth doesn't exist there's only belief and data and i the good
+reverend bayes can tell you how you should adjust your beliefs in the presence of data okay so why
+do i why am i prattling on about this i'm prattling on about this because in the Bayesian world what
+you get out isn't an estimate and a confidence interval and hypothesis testing what you get out
+is modified beliefs and modified beliefs are represented as distributions so what you get
+out of a Bayesian analysis isn't a number and a confidence interval it's a shape it's a it's a
+posterior distribution of the quantity of interest so in the in our world it would be not a size of
+the hidden population it would be a distribution of how hard of our beliefs about the size of
+of the hidden population does that make sense i'm thinking about it okay it's really weird i mean
+it's a very they're two very very different ways of thinking about uh the world and learning from
+data basically is it a sort of variability graph is that what you would produce what you would produce
+is is a distribution saying for each value how likely how how confident are we the analyst
+that the the size of the hidden population is 8500 there's some there's some belief there's some
+probability that we have that the the size of the hidden population is 8500 people and there's some
+belief or some probability that the size of the hidden population is 9500 people that's some other
+number and so on and so forth for every for everything okay so so why is it somewhat treacherous
+this is somewhat treacherous because this is a way of getting out a distribution when these rds
+methods don't really produce distributions so the the treacherous bit is we if we use these Bayesian
+methods to this rds risk thing what we would get out is a distribution but not a distribution
+but not a distribution for the not not a distribution of the risk indices but a
+distribution for our beliefs about the total the the sum of the risk indices
+so that's what i'm saying it's a little treacherous like we it's a bit like before
+we could force a distribution but it's it's not exactly the distribution that we're interested
+in it's like it's it's kind of like the difference between a distribution a sample distribution like
+so you've got a bunch of x's and you can plot those or you could plot a sample means so take a
+bunch of samples calculate a mean for each one and plot those so those are two distributions but
+they're different they're not they're not and they both come from the variable x but they're
+definitely not the same thing um and so so that's that's what i'm proposing is sort of a
+it's like that it's very similar to the difference between that i just described um
+so again i don't know if that's useful or not um i was kind of disappointed to see that there wasn't
+a there's one more paper i need to read to before i ruled out the but but i mean i think
+i mean i think i i think i see what we need and and i don't i'm not aware of methods that
+that do that because we want essentially we want we want a different feature of the network than
+features of the network that people usually study right people usually study things like
+maybe degree distribution but almost always yeah prevalence size what have you and we that's fine
+but we want other features of of the network like uh the distribution of this continuous
+covariate across across the network it's sort of like a one step removed like the mean is a
+as a measure of the sample population exactly then the belief is a measure of confidence
+i'm not really expressing it very well you got it exactly right you got it exactly right you got
+exactly right and and so that's what exactly exactly and that's why it's treacherous because
+we get the we get the we get distribution but it's not exactly the distribution that we want
+but it kind of uses the variables whose distribution we do want to come up with this thing so
+i don't really know it's like i said it's it's it's a bit of mental gymnastics and at the end
+of the day i don't know how useful that would be but um let me write that down i do need one
+there's one other paper i need to check um let's bear with me in that work distribution
+and please correct me if i'm wrong if you if you either you know anything about uh
+you know caroline last week he corrected me when i was and that was wonderful or two weeks ago
+whatever it was but that was great so so uh hopefully um so anyway so so so point two is
+kind of a mix i guess i don't really don't really know what to make of point two um and i don't
+remember what i put it down as a possibility i think edward de bono has this idea of po doesn't
+hear you and to me this seems like a po what's po po it's a it's a well i think about it as a
+possibility it could be this could be possible but we we're sort of holding it up as a um a
+possibility rather than a definite something that we know we can do so it's an opportunity
+to engage in this pleasing discussion oh i see i see i understand i'm sorry i see yeah that's right
+that's right um i don't remember what point three was if there was a point three i don't
+i'm sorry i don't remember let me see if i can scroll down a bit further for you i'm hoping
+that you can see my screen oh yeah it's perfect it's absolutely fine yeah thank you uh off the shelf
+yeah um yeah there's there's software out there i've been playing with it again i've made some
+i've made more progress since i wrote this uh email but they're yeah they keep
+laptop yeah i keep crashing so i've had to switch a bit but i'm making some progress on that which is
+which is um which is good oh right and then four right right so then so i'm i'm i'm i mean i think
+we're solid on points uh one one and two and and three is sort of ongoing which is which is great but
+then you know there's a sense in which this is all we've sort of strayed in a sense and this is not
+a criticism of anybody this is not a criticism of anybody's data anybody's data gathering strategy
+no no no no no sorry oh that was great yeah lovely friday apologies for that um um we we sort of
+strayed in the following sense but we at least when i started working with you all which again is
+awesome um we're working from the within the in some literature and trying to use g-sum and and
+fian and all this and and we've totally straight away from that right it's just we're not the
+techniques that we're describing here don't don't don't scale anything up um and that's kind of
+unfortunate because we have all this we have this cool data and you know we have the possible
+we could do scale up it's just we don't have this representative sample and that's so we're
+worried about that um and it's especially bad because the those so normally uh non-random
+sampling sort of how do i say this the usual concern with sampling biases are in the uncertainty
+estimates but but here that's not the case the the the the sampling uh the selection mechanism
+affects not only the uncertainty estimates but actually the raw counts as well which kind of
+makes sense because if you are picking people for who are if you're picking people who scale up to
+bigger numbers and other people then okay that sort of makes sense that your your your your your
+estimate of the count is going to be is going to be off okay right so what so what so i was thinking
+like well okay we can do one two and three but we're sort of we're leaving yeah we've we've
+straight from the flock from the we've straight from the initial and we're sort of we're leaving a lot
+of juicy information on the table so is there is there any way that we can that we can do this and
+this is where i had to start writing things down because i knew for a fact i would not at all remember
+how to choose this but i i i think there's a way that um i i think we can i so sorry so what i'm
+trying to say is um i think we can combine the two so i and i think i see how um again uncertainty
+is going to be a real bear but the idea is basically you use the ideas from rds to to to
+use the ideas of rds when doing the scale up to account for the non-random selection
+and i tried to write down the details at least enough that would remind me of of where to go
+in the in the future but it's it's it's basically taking equations from the
+guile article and the fian and and sol sol and sort of gluing them together
+and and praying so again sounds absolutely fantastic and we'll see um but yeah i think
+i think it's worth trying circle in a way because this is what we were hoping that we would start
+off trying to do and we've sort of gone around going no it won't work because this won't work because
+this won't and now possibly there's a glimmer yep and i mean another nice i i think it's a
+nice thing that you all might disagree is that what i'm proposing here is we'll get you know
+oodles of estimates which i think is a good thing because you can sort of look across them and see
+if is their consistency is their not is there because we will have all these different methods
+you know to to throw at this problem and personally i think that's a i think it's informative
+either way if we have these different methods and they produce similar estimates that's
+reassuring in a certain sense and if they don't that's informative that's telling you something
+about about this so i think you know that opinion is not universal and is not without
+detractors but i'm i'm i'm i think i think that's on balance i think that's good news so
+that's my report which isn't really really exciting so that's fantastic if we think that
+that we might be able to circle back to reinstate new sim using summer fian and to sell
+yeah that's great that's that's the idea that's the idea yeah i mean i i yeah let me say i'll
+try it out the um i'll try it out i'll try it out yeah um and i suppose our our ground our
+foundation is that we can use the rds methods to get an estimator so estimator so even if this
+yeah more advanced work doesn't reveal what we wanted to we've got a yeah when we're talking
+about originally about that what we really wanted was some sort of estimate for this
+and we feel that we can now achieve that yeah again with with the caveat which is
+i don't know if it's good or bad but it's an important caveat that the thing that we're
+estimating is a proportion and not a count yeah um yeah with that with that caveat we're solid
+we're very very solid brilliant now i was reading a paper which was talking about this
+difference between proportion and counts so um we can include that in the write up um and yeah
+that's that's great i mean this i'm going to ask a really stupid question now but if we have a
+proportion and we have an estimator of the total population size can we not produce a scale up
+exactly we so that's right it's exactly so that we absolutely can't say what if we like if we
+want a number we can produce a number um there's two here's a pro here's a con the pro is we're
+bringing in outside information which i'm generally a fan of because you know one sample i mean
+again there's no distraction from anybody's anything but more information the better so if
+there's other sources of of of data that we can incorporate that's great uh there's the pro the
+con is um reflecting uncertainty in that world i'll have to think about um because
+unless we had like a census count of domestic workers in the uk which i don't think we do then
+then there's uncertainty in that estimate and i it's not immediately obvious to me how to combine
+those two sources of uncertainty it's got to be possible i just have to sit down i'll have to
+have another cup of coffee but yeah exactly if you if we if we if we want a number we can get a number
+now we just be yeah it wouldn't be that
+confidence is something yeah it would be tough to yeah it'll just be and we could just report that
+i mean we could just say look here's here's the here's the estimate um there's two sources of
+uncertainty we can't account for the one source of uncertainty and we can for the other and here's
+it would just be a front of it and say you know or even more straightforward here's our point
+estimate and because of data constraints we can't produce an uncertainty estimate sorry so like take
+it or leave it you know um yeah yeah okay but the and you tell me caroline and from like a policy
+perspective or impact perspective is i would think that a proportion would be i mean i know like
+at least what i hear from people like cod and and what i understand from my home office is that
+at the government level they they do want numbers they want counts but it i would think that a
+proportion would be of abuse question mark yes i think so yeah definitely it's more than we've
+got at the moment at the moment we've just got descriptive statistics so to have a proportion
+is a real step forward that's great i can i will yeah i will get another couple i will do that this
+afternoon uh that would be fantastic yeah that's really really good do you need anything more from
+us scott yeah at this stage uh can you write my lecture slides for for next week please that's
+the number one thing i need uh uh um seriously but that's uh no no well saline please just just
+share when you get the category 13 thing fixed up which is i'm not worried about it's
+trivial um just send it around again and i'll um i will do it after the meeting that's great that's
+great and and shouldn't take long no it shouldn't and um i will uh yeah i'll do the i'll do the
+proportion stuff this afternoon at least i'll i'll i'll try to and see uh see what comes out uh
+and then i'm afraid i'm gonna have to park it again because teaching is gonna be horrible yeah
+but i think we've really made some good progress here and i've got i've been looking forward in
+my diary and i've got a day booked in a couple of weeks time to try and draft up they i've been
+making notes from our discussions and some of the literature that we've been using so i want to
+consolidate that into a draft and i can share that with you that's a great idea so that'll be
+a couple of weeks time i'm afraid but oh no no no that's no rush no rush on my end
+time booked in so that we can start to build the argument for why we've done it this way i think
+we're in a position where we can start to do that i hope i'm not being overly optimistic but i think
+i think it's very exciting i think it's quite promising really if i i mean i don't know this
+literature as well as you all do but but it seems like there's a possibility to make a real contribution
+i think um which is exciting so thanks for the opportunity it's good yeah very cool yeah really
+good right well given that you've got lectures right i'm not proposing to detain you and yeah
+any longer any longer than we have to and slim was there anything else from your side
+that we needed to cover today uh this i mean there's just the category 13 yeah that i yeah
+i'm sorry about that so i have to make a different mistake i have also more attention so i will just
+dean up the category 13 and then uh recalculate the sound category and then share this
+as opposed to you haven't yeah is there anything else that i can help with dr moulton let me i'm
+just looking at the um right no as long as i've got the the node one the node two that that's
+important no it looks like the uh what's weather exploitation you've mentioned in the email i'm
+sorry whether that because we want to exclude respondents that have not been excluded exploited
+oh this is what you're saying about how everybody has had some form of reverie okay thank you thank
+you so they are all exploited gotcha something right which yeah and you got the waves and you got
+the no yep nope oh well there is one other thing i think we've already covered it and that is what are
+the if i'm gonna do that yeah there is one very important thing i think thank you for thank you
+for that caroline um it doesn't have to be a single question in fact i think like a set would be great
+which if i wanted to dichotomize and say yes you're in experiencing minor slavery no you're not
+what questions plural would i what question should i use and and if there's one of the
+one question that's fine which set of questions should i use there's the one like the n r m seems
+like a pretty gold standard yeah that's good so the gut and the forced labor ones as well
+are more indicative of forced uh of one slavery it's that last the point one one which is
+elit potentially illegal exploitation but not necessarily labor not necessarily modern slavery
+so you probably exclude people who had just that indicator they could be exploited it's labor
+exploitation but it isn't it isn't modern slavery okay and that's q 36 5 b 1 uh and so i should use
+that one and the n r m question mark yeah the n r m is definitely well as definitely as you can be
+yeah yeah within our data modern slavery but combined with the forced labor increases the
+confidence yeah good point and the two times to uh get anything else any other questions you think
+i should be using for this indicator variable not that i don't think i've still aim if you've got
+any anything you want to mention anything i'm looking at the document i i don't think so okay
+great mix my life thank you that's great super duper okay thanks as up thanks uh as always everyone
+yeah brilliant do you want to meet next week or give it a when do you want to catch up again
+someone's at my door give me a second i'm so sorry yeah are you around next right
+isn't it uh i for the next two weeks until the 22nd i might be not
+rainbow because my annual review is coming up okay and i'm in the process of putting everything
+together right okay now that's fine so it might be as well to have well if scott can circulate what he
+does statistically from this meeting and then we plan to meet again uh probably at the beginning
+of december when is your annual review on the 28th 28th so the beginning of December 29 or 29th
+of November any day after that right okay first of December since it's a Friday is that a Friday
+yeah yeah let me find my calendar too sorry about that fire alarm business um
+oh okay so we're suggesting scott perhaps if you could circulate the results of your work
+this afternoon but then we don't actually meet again until the first of december that works
+just if you don't mind sending me a team so invite that would be that would be great yeah
+and 12 o'clock is that still a good time yeah i'm flexible so whatever if another time works
+better for you all that's that's fine for me uh well 12 is all right for me what about you saloon
+11 or 12 this time okay let's go for 11 and i'll circulate an invite and before that date i'll
+circulate a draft so probably the week before whatever stage it's in i'll circulate it and then
+that gives us a chance to sort of have a look at that and comment on that as well
+great sounds great thanks everyone right good good to speak to you and you all have a nice
+weekend yeah me too talk to you later have a good weekend and you thank you bye

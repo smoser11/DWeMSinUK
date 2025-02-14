@@ -1,0 +1,207 @@
+This is embarrassing, I got, this reminds me that when I was younger, my parents would
+call me the voicemail and sometimes my dad especially would just ramble and the voicemail
+would cut off, he would have expired the maximal amount.
+I think that just happened to me, I've been rambling at you for more than the allotted
+time that Microsoft is letting me and yet here I go again.
+So I'll do my best to try and send along some kind of summary transcript.
+I'm sorry, this is me trying desperately to stay current and catch up on research of which
+this is literally the number one priority and you see it that I'm already falling behind.
+So I'm really sorry about that.
+Okay, right, blah, blah, blah.
+Where were we?
+So there are these estimates and they seem, I believe them more than I did when I first
+sent the preliminaries around.
+Now there's still stuff to do, there's still robustness, this, that and the other, but these
+numbers seem pretty high.
+Okay, again, 30 to 40%, something like that.
+Now there's a few caveats here, well I need to say caveats, there's a few things I need
+to say.
+The first is, I should have said earlier, isn't about the analysis, it's about the data
+and data cleaning, so one thing and much appreciation to Salim, he's done a ton of work, but one
+is, and this turns out to be a bit of a subtle issue at least in political science, so one
+is how do you deal with the don't knows?
+So some of the questions, for example, one of the questions, one of our indicator questions
+about are you in this hidden population, how are you experiencing modern slavery, is
+about referral to the national referral mechanism.
+And one of the response answers is, for I don't know.
+So the issue is, how do you deal with those?
+And those I don't know sort of pop up and obviously in lots of other questions.
+Currently in Salim's formulation, they're being coded as in the negative, no I'm not
+whatever the question is asking, something just happened, oh my god, I feel like I'm
+like one of the worst colleagues, I'm so sorry.
+So an alternative approach is to classify them as missing, so essentially you say, well
+look, if a person reports, I don't know if I've been referred to the national referral
+mechanism, we're just going to ignore you for purposes of analysis.
+We're not going to count you as no I haven't been referred.
+So doing that actually weirdly increases very slightly the estimates of domestic workers
+in the UK experiencing modern slavery.
+So Salim's descriptive statistics were, if you do what I'm suggesting, which is to
+treat the don't knows differently from either an affirmative or a negative, you get ever
+so slightly higher descriptive statistics, higher proportions just raw from the sample
+data.
+And it's something, you know, it's like 42 to 44, 42 to 43 or something like this, I
+mean it's not, they're not huge.
+That's one issue too, this one's a bit trickier, 17 out of 97 people in the sample report knowing
+zero domestic workers in the UK.
+So that one of the questions that, in fact the question, I should be more clear, I'm
+sorry Caroline, I'll try and clean up in the transcript, in the summary of the transcript,
+say I know zero people in the population, which we've defined to be, if I'm thinking
+about this correctly, domestic workers in the UK.
+Right.
+Okay.
+Okay, so maybe they do, maybe that's true or maybe they don't, but then in terms of
+this data cleaning business, but then some of them make referrals.
+So among the 17 that say I know zero domestic workers in the UK, there's another question
+that says, please give us the cell phone of a domestic worker in the UK that you know,
+where no is defined properly per your survey, and they'll give a cell phone number or two.
+Which again, this is like a logical inconsistency, if you report a referral, and a referral
+must be a domestic worker in the UK, then you cannot know zero domestic workers in the
+UK.
+So there's a few people in the survey like that.
+So those zero, essentially what I'm saying is those zeros should actually be something
+positive.
+We don't actually know, but a conservative answer would be turn those zeros into ones.
+So I haven't done that, but it's a handful of people.
+I can't imagine it's going to matter, but there's a larger issue which is what to do
+with these zeros.
+So if you claim that you know zero, if a person in the sample claims they know zero domestic
+workers in the UK, and like I said, there's 17 or so out of 97, so it's not nothing.
+What do we do with those?
+And the reason I say that is because the estimators that I've been using essentially
+can't handle the zeros.
+And the reason for that I hadn't thought very deeply about, but I guess kind of makes sense
+in the following way.
+The estimators that we're dealing with just extensively rely on social network information.
+And so if there's a person in your sample that says essentially I have, I don't have
+a social network, zero, then that causes some problems because the entire estimation
+strategy of these different techniques are to exploit, are to use whatever social network
+there is.
+But if that's zero, then something breaks.
+And to be honest, I haven't worked through the math.
+So what do we do with those?
+We could remove them.
+Turns out that doesn't really matter too much.
+We could try other techniques.
+I haven't fully explored that.
+I've explored that a little, and I don't really know what to make of it.
+Or we could just really add hawk, like just add one to everybody's reported degree.
+So all the zeros turn into ones, all the fives turn into sixes.
+That's not principled whatsoever.
+But it's another approach.
+Okay.
+So that's data stuff.
+All right.
+Now, with regard to results, which again, I've completely misordered this and hopefully
+it will be temporarily correct in the accompanying outline should I get around to producing it.
+So this 30, 40% business that I mentioned earlier, like I said, I believe it more than
+I did when I sent you the initial plumber results, which were relatively similar.
+The little convergence results, so we have this estimate that's doing a lot of math.
+And the idea is it comes up with lots and lots and lots of estimates.
+But when all these estimates get very, very close to each other, the algorithm stops and
+says, okay, here it is.
+And so you can look and see, you know, does it actually do that?
+And the answer is yes.
+It converges.
+Okay.
+So I'm relatively, I'm more confident in the numbers on resolve that.
+Okay.
+So what am I, I'm sorry, I need to look at, right.
+So the number one is just, do we believe these results?
+I've checked convergence preliminarily, it looks pretty good.
+We could do sensitivity analysis.
+That would be on me.
+I've done a little bit of that.
+And again, it seems, in my opinion, surprisingly robust, like, I don't remember my discussion
+about frequentist versus Bayesian, but the idea is you put some prior information into
+this, into this, into this estimator, like, for example, how many domestic workers are
+there in the UK?
+What is the size of the population?
+Now, we don't know that number, but we have some belief about it.
+The beliefs I've been using are something like 1.74 million, say 2 million, whatever.
+So you can change that number.
+And the resulting estimates are very, very similar, again, in this 30, 40% range.
+There are other techniques.
+So the techniques I've been using all assume that the graph is connected.
+So what that means is that if we were to know everybody's social network, which we don't,
+but if we were to know all of it, it's connected.
+So functioning with that means is that if there's a Ecuadorian in our sample, that truly,
+if we had the entire social network of all domestic workers in the UK, which we don't,
+if we did, there'd be some path for that there domestic worker from Ecuador to any other
+person, any other domestic worker in the UK, in particular to the Filipino worker who might
+be in our sample or might not, to the British born, the British national, whatever.
+So truly, they're all connected.
+Now, I think I mentioned this, but there's, I think there's some reasons to think that
+might not be true, that there really, there might be clusters or subgroups here, primarily
+around language, I would guess, again, this isn't, I'm not a subject of expert, but that's,
+so that's fine.
+There are techniques to deal with that.
+So we could, and I haven't, but we could pretty straightforwardly deal with, well, maybe there's
+a Filipino, Filipino, a network, and maybe there's a Spanish speaking network, or maybe
+there's a UK born network, and maybe those are different.
+Maybe they're not, maybe they're all connected.
+But we could, one might say, well, I don't really think that they're all connected.
+So that's fine.
+We can deal with that.
+I haven't, but, but, but we can.
+Okay.
+So that's one thing.
+So disaggregate by origin.
+We got that.
+Yeah.
+Like I said, it's, it's, in my opinion, shockingly high.
+And so, you know, there's the whole, do we believe it?
+Oh, and then, right.
+Okay.
+So then there's a, there's, there's an entirely separate, to my mind, this is a third sort
+of approach or strata estimation strategy, which is so far everything I've talked about
+is sort of off the shelf RDS.
+It's very sophisticated and involves tweaks, like visibility and measurement error, yada,
+yada, yada, yada, yada, but it's very, our sample is RDS.
+And we're trying to estimate the size of some population slash hidden population slash members
+of the population with some particular categorical attribute, et cetera, which again, perfectly
+fine fits the data fantastically.
+It's not at all what I thought we initially started this project with, which was some
+variant of in summer or network scale up in particular, you're very, very cool and very
+novel idea to use the generalized GN sum here.
+So the question is, can we use the data that we have to do some kind of in some ish estimation?
+And the reason I'm sort of pushing this or advocating for this is because I think it's
+much more.
+My guess is it's going to be much more powerful because in some is using more information.
+And it's not just, it's not just counting the number of, well, how do I say this?
+So in some is very, very powerful.
+The issue is if you don't have a random sample, what do you do about that?
+And the answer is lots of weird math that essentially boils down to the linchpin for
+us is what's called inclusion probabilities.
+So we don't have a random sample we acknowledge that that's fine.
+So how, what statistical tricks can we do to the data that we have in sample so as to
+be able to justify and use techniques that are meant for analysis of random samples like
+in some.
+Okay, so there's an answer to that and the answer is waiting.
+And I think there's some really, really nice intersections here and really pretty straightforward.
+I haven't implemented them, but essentially we can use, we can derive weights from these
+RDS estimators and logic and packages and R to come up with these inclusion probabilities.
+And again, we can do a few robustness whatever and then throw use those in the in some calculations.
+I haven't done that, but I'm really excited to do that because I think my hunch is that's
+going to be much more powerful in that it's just it's sort of taking the best, it's squeezing
+all the information that at least I am aware of out of the data that we that we actually
+have.
+Okay, I've been rambling the combined with that.
+So I haven't done that.
+So, so me, Scott Moser to do bootstraps, I've done some, I haven't done all of them.
+Since the analysis against some, not a bunch, this, this third way, this in some plus RDS
+weights, I'm very excited about, haven't touched it, I haven't touched it practically.
+I have thought about it and have notes, which are a mess.
+Okay, next topic presentation.
+What do we want to present?
+And how do we want to present it?
+Cables, graphs, distributions, confidence intervals, Bayesian plus series, what?
+I don't know.
+And if I'm being perfectly honest with Caroline, I don't, you know, I'm not really right now,
+I'm not in a huge position to sort of produce like publication ready graphics or what have
+you.
+But I think that's a discussion that would help me at least.
+Okay, I think I'm about to get cut off again.
+So I'm going to stop.
+This is what I was hoping to report, discuss, talk about with you on Monday.
+And like I said, I had early failed.
+Hopefully this has some meaning.

@@ -1,0 +1,110 @@
+Received: from VI1PR06MB8783.eurprd06.prod.outlook.com (2603:10a6:800:1dc::21)
+ by DB9PR06MB8202.eurprd06.prod.outlook.com with HTTPS; Fri, 26 May 2023
+ 16:34:02 +0000
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=exmail.nottingham.ac.uk;
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com (2603:10a6:20b:99::17)
+ by VI1PR06MB8783.eurprd06.prod.outlook.com (2603:10a6:800:1dc::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6433.18; Fri, 26 May
+ 2023 16:34:02 +0000
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com ([::1]) by
+ AM6PR06MB5941.eurprd06.prod.outlook.com ([fe80::d685:fe86:f55e:4bd5%3]) with
+ Microsoft SMTP Server id 15.20.6433.015; Fri, 26 May 2023 16:34:01 +0000
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Automatic reply: A measurement project, comparing different methods
+ and methodology for measuring prevalence and risk of modern slavery (Scott
+ Moser)
+Thread-Topic: A measurement project, comparing different methods and
+ methodology for measuring prevalence and risk of modern slavery (Scott Moser)
+Thread-Index:
+ AdmHMjGJfD/D9fFMDEKSV7PEqmWlDAHIdpGwADlKT4AAGvBd7wAGJb8bAABOoVIABXg9uAAGzEK0AAABvB4=
+References:
+ <PAXPR06MB75012C596CA7777FA2D90216B4789@PAXPR06MB7501.eurprd06.prod.outlook.com>
+ <DB9PR06MB749944E28191DBFB8CD8562FB4419@DB9PR06MB7499.eurprd06.prod.outlook.com>
+ <37BBBAEA-6ABB-4FCB-B396-5A16D84FD20B@nottingham.ac.uk>
+ <AM6PR06MB5941EDFF35905A093954D242A0479@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <DB9PR06MB820262DBF6C359A87158439087479@DB9PR06MB8202.eurprd06.prod.outlook.com>
+ <DB9PR06MB82020C96FE25E18CFC9DFC8A87479@DB9PR06MB8202.eurprd06.prod.outlook.com>
+ <AM6PR06MB59415AA45BDAB93C2D61C048A0479@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <DB9PR06MB82023106A8DAC6771494F75887479@DB9PR06MB8202.eurprd06.prod.outlook.com>
+In-Reply-To:
+ <DB9PR06MB82023106A8DAC6771494F75887479@DB9PR06MB8202.eurprd06.prod.outlook.com>
+X-MS-Has-Attach:
+X-Auto-Response-Suppress: All
+X-MS-Exchange-Organization-SCL: 1
+X-MS-Exchange-Inbox-Rules-Loop: lizce@exmail.nottingham.ac.uk
+X-MS-TNEF-Correlator: bce5f7e3-9c55-442f-a523-1a774bbcd067
+MIME-Version: 1.0
+Date: Fri, 26 May 2023 16:34:01 +0000
+X-MS-Exchange-Organization-MessageDirectionality: Originating
+X-MS-Exchange-Organization-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 03
+Message-Id:
+ <0fa3d2ff518b4e658c82ee7e1528a3d9@AM6PR06MB5941.eurprd06.prod.outlook.com>
+X-MS-Exchange-Organization-Network-Message-Id:
+ 1da250d8-a0cd-4ffe-d5c8-08db5e070367
+X-MS-Exchange-Parent-Message-Id:
+ <DB9PR06MB82023106A8DAC6771494F75887479@DB9PR06MB8202.eurprd06.prod.outlook.com>
+Auto-Submitted: auto-generated
+X-MS-Exchange-Generated-Message-Source: Mailbox Rules Agent
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ AM6PR06MB5941:EE_|VI1PR06MB8783:EE_|DB9PR06MB8202:EE_
+Return-Path: <>
+X-MS-Exchange-Organization-ExpirationStartTime: 26 May 2023 16:34:02.2879
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Office365-Filtering-Correlation-Id: 1da250d8-a0cd-4ffe-d5c8-08db5e070367
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR06MB5941.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:;DIR:INT;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 May 2023 16:34:01.7663
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1da250d8-a0cd-4ffe-d5c8-08db5e070367
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR06MB8783
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:01.1970647
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.6433.015
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(425001)(930097);
+X-Microsoft-Antispam-Message-Info:
+	JHTZpkqk5AYYEZOvzXZjKExxjFRsETptDH/cGxsjxTw7W7x7rbOlpzq6ykvSrAOdB1lUxdG40L+SX5h2O/ev3Y1c9x+dVX4FKI8p1/NCJq66OhtxlJJF66+aca0BPwMwI+IFL8+Q7MCYEd5yYgzOw3NAy3pyi83QD9gHU61Ck82OE7k9xZ4NALO7tUTPvcrp+TZ52bzVo8FqVnlcZA9byklaKRKKWKG+QYweX6nPchfcYFwMOK1h6G+LLTI0EzcYbFvvI+1iGneL309QHzdzH1Sr+3YYnVDat75L4dlCCYZyHMEWtxjage/TcL4yM7GQZtb0D+uRazsJTlTE+2els7OmZvS54EC0JNQFsXD6thYJK3sYUsQ6ILXoEaVQtAfJGXDIuPM6wxfQTf2SA5vyipA7j7yEhqvtES0LZOvh8ylh/jyd0MbmemiGxHsHxPg5NRhQ5F6RJWwzdKDp9/m7ayf1uwu+AhndDD4TZiSSevey1MQSKp6FB7pzojJ9D2NgN2vrmC2erSLrmT1f/KM7iUwAVmdYjrZ73XChSX6bVL1hL9H6j0skt0kd4q2GBWbSR/vrC4gxrE4dy26QG+otEdCfK6QPvy6SGjbEimnfp7oBI6gZbCrM5xU26n8ZuZgtH/+1TGN/YQsTJfleA/EE9tf+XaASXUFth1zxC8ZMKlVHiWQh1q/uUOp7eZsHPsqgl1u3ol2/h/P6FgCNkZhcGSxGVZyDGIH/fFbQtaoxHIdZwWhpYakWv5jJp1krpMO7
+Content-type: multipart/alternative;
+	boundary="B_3821516406_1781136119"
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3821516406_1781136119
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: 7bit
+
+Thank you for your email. I am now out of the office until Monday, 5th May and will pick up your message upon my return.
+
+Best wishes
+Caroline
+
+
+--B_3821516406_1781136119
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"></head><=
+body><div></div><div></div><div></div><div>Thank you for your email. I am no=
+w out of the office until Monday, 5th<span>&nbsp;May and will pick up your m=
+essage upon my return.</span><br></div><div></div><div></div><div></div><br>=
+Best wishes<br>Caroline<br></body></html>
+
+--B_3821516406_1781136119--
+

@@ -1,0 +1,359 @@
+Received: from GV1PR06MB9665.eurprd06.prod.outlook.com (2603:10a6:150:1cd::19)
+ by DB9PR06MB8202.eurprd06.prod.outlook.com with HTTPS; Mon, 15 Apr 2024
+ 15:50:59 +0000
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=exmail.nottingham.ac.uk;
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com (2603:10a6:20b:99::17)
+ by GV1PR06MB9665.eurprd06.prod.outlook.com (2603:10a6:150:1cd::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7472.30; Mon, 15 Apr
+ 2024 15:50:57 +0000
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::b883:f7bd:4abf:9b70]) by AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::b883:f7bd:4abf:9b70%5]) with mapi id 15.20.7472.025; Mon, 15 Apr 2024
+ 15:50:57 +0000
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: NRM numbers(?)
+Thread-Topic: NRM numbers(?)
+Thread-Index: AQHageDK7il+XVoIIUmgRcrp7YNhZLFO7WtXgBqgmRyAAAJtAIAABFH9
+Date: Mon, 15 Apr 2024 15:50:57 +0000
+Message-ID:
+ <AM6PR06MB59413EECCFC09BCC2B4A3AC3A0092@AM6PR06MB5941.eurprd06.prod.outlook.com>
+References: <C6E8CBBC-9D49-49EA-9756-A277BD99E2F7@nottingham.ac.uk>
+ <AM6PR06MB594108CC546E2F45ACC962C6A03A2@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <AM6PR06MB5941790939DA1C0D50295F97A0092@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <27747c7129874725bda74048ba2ab8c4@DB9PR06MB8202.eurprd06.prod.outlook.com>
+In-Reply-To:
+ <27747c7129874725bda74048ba2ab8c4@DB9PR06MB8202.eurprd06.prod.outlook.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-GB
+X-MS-Has-Attach: yes
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+ <AM6PR06MB59413EECCFC09BCC2B4A3AC3A0092@AM6PR06MB5941.eurprd06.prod.outlook.com>
+msip_labels:
+MIME-Version: 1.0
+X-MS-Exchange-Organization-MessageDirectionality: Originating
+X-MS-Exchange-Organization-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-Network-Message-Id:
+ 2d7bd0f7-9a28-4672-b899-08dc5d63d741
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ AM6PR06MB5941:EE_|GV1PR06MB9665:EE_|DB9PR06MB8202:EE_
+Return-Path: lizce@exmail.nottingham.ac.uk
+X-MS-Exchange-Organization-ExpirationStartTime: 15 Apr 2024 15:50:57.6255
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Office365-Filtering-Correlation-Id: 2d7bd0f7-9a28-4672-b899-08dc5d63d741
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR06MB5941.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(366007)(41050700001);DIR:INT;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Apr 2024 15:50:57.3696
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2d7bd0f7-9a28-4672-b899-08dc5d63d741
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: g3myW0vUwJlB/IT++JDqIRTWqi7Bp4n1cTnp7Jp1JHBIwcvVRL01DxQpCZxs48t/cxojtpS3iBbQel/vaye7gD1kbic04pUJ5649RwjqdO6tTjI2utaKiSX8ZZpKKLHY
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV1PR06MB9665
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:01.9318100
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.7472.019
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(425001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	/07YlgQVWrobRyNF0BeYekpQ/oA3TJVMymySSarzhzJ8e4QaYWGHu5gr+mHcCGF81XJWDRQTY91I9wqo1skAhXcDbZ1NkpUmmkYLumMAyBbv/xa4tPvMVIltavnKmMuDS4hw6ubrR2KJEJ9KpbOUh9ZKZZAhXg/2o/J2KYE/gc4JbCRnfSNNyUzow3suiU8Uj33biFmLn8pdgqYGSXDeO3TetWUQuSulbbU4hPYBviUJKUGvm4VKipZ2UjJUO8WIPFaxYy7VoJqLOCGYKcV85EnSzpc2DYfAN18AyVCjYSaXRiPedBR8gX0+4ppJ9ICGRNJbZVJNofpHCKXqnYkjxFO8VzTZ1jj0aae+M3BM9d10OKteQ6DW9dGj7fR+VnOrgOA1ZhbRmYkg9PliHgT1gu8euFuc6uE6HgjexlEYZFLuBDQrJRktD6gIyRUlMaZxaC1TpsBrFgMfhoP2s10tPE1Cya3HMBsUQDCDl/rQHJpo5IsEZZw1sfF3vnCuoWzTAtNyj6+HXiM7CQaU5Vq7x+3U6OLxpthFkdKLp96sQXxt/9wvX3GnsG+lN+njADS9q/NC8RSAshwjwIunxHKk5rOPnu/5z/Ep515Z8xDvkSDAkYitkk8zA3I/hax68KT9XOePUFg2iJhnJ3nyQpKB1BiweeAWfY9nvvP74ap5LipZcJMRFdELrO304FveaX6BAMB7epdXv6RfxWs+3pJ3sR57RrLMuHLIoDkT74baxF4Ll3aklJ7XlIi92Q1STMIeAZbXKuKzGIO7w/FabiT9U6Ys9Bi2lUMjvrfLhBXCKP1BhfZ7/cvE8H2UdMYg3t+Vz8Y2J969AWusQILiRdpEEQ==
+Content-type: multipart/mixed;
+	boundary="B_3808391796_751029710"
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3808391796_751029710
+Content-type: multipart/related;
+	boundary="B_3808391796_297756342"
+
+--B_3808391796_297756342
+Content-type: multipart/alternative;
+	boundary="B_3808391796_1225644038"
+
+
+--B_3808391796_1225644038
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: 7bit
+
+.. on further reflection your question has prompted me to review the total which, at the moment includes both adult and child referrals. Given that all the DWs we surveyed where over 23 I think that we should perhaps use a recalculated total of only adults. I'll do that tomorrow and email you the result for when you're back.
+
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (AFHEA)
+
+
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB 
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 15 April 2024 16:32
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Subject: Automatic reply: NRM numbers(?) 
+ 
+Thank you for your email. I am away from my email until April 18th and will respond on my return.
+
+ 
+
+The university will be closed from Friday 29 March to Tuesday 2 April (inclusive). The summer term will start on Monday 29th April. The University website provides more information about services available on campus over the Easter Break, and their opening hours. 
+
+ 
+
+However, if you are a student needing assistance in this time, the following support is available:
+
+ 
+
+Library Support
+
+These library web pages contain everything you need to know about accessing library resources and services before, and during, the break.
+
+ 
+
+Mental Health and Wellbeing
+
+There are many mental health & wellbeing resources here to help you pro-actively take care of your mental health and wellbeing during the break and support and wellbeing appointments can be booked online.
+
+
+--B_3808391796_1225644038
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><style t=
+ype=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bottom:0;} </st=
+yle></head><body dir=3D"ltr"><div class=3D"elementToProof" style=3D"font-family: A=
+ptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-seri=
+f; font-size: 12pt; color: rgb(0, 0, 0);">.. on further reflection your ques=
+tion has prompted me to review the total which, at the moment includes both =
+adult and child referrals. Given that all the DWs we surveyed where over 23 =
+I think that we should perhaps use a recalculated total of only adults. I'll=
+ do that tomorrow and email you the result for when you're back.</div><div c=
+lass=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_M=
+SFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0,=
+ 0, 0);"><br></div><div id=3D"Signature"><div style=3D"font-family: Aptos, Aptos=
+_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-siz=
+e: 12pt; color: rgb(0, 0, 0);"><br></div><p style=3D"direction: ltr; margin-to=
+p: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; fon=
+t-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; color: rgb(0, 15=
+5, 189);"><b>Dr Caroline Emberson (preferred pronouns she/her)</b></span></p=
+><p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family:=
+ Calibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-family:=
+ Arial, sans-serif; color: rgb(19, 27, 87);"><b>Assistant Professor in Opera=
+tions Management (AFHEA)</b></span></p><p style=3D"direction: ltr; margin-top:=
+ 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-=
+size: 12pt;"><span style=3D"font-family: Arial, sans-serif; color: rgb(19, 27,=
+ 87);"><b><br></b></span></p><p style=3D"direction: ltr; margin-top: 0px; marg=
+in-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt=
+;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0=
+, 0, 0);">&nbsp;</span></p><p style=3D"direction: ltr; margin-top: 0px; margin=
+-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"=
+><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(19,=
+ 27, 87);">Nottingham University Business School OMIS/ Faculty of Social Sci=
+ence<br>University of Nottingham</span></p><p style=3D"direction: ltr; margin-=
+top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; f=
+ont-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt=
+; color: rgb(19, 27, 87);">B12,Si Yuan Building</span></p><p style=3D"directio=
+n: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica=
+, sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif;=
+ font-size: 9pt; color: rgb(19, 27, 87);">Jubilee Campus</span></p><p style=3D=
+"direction: ltr; margin-top: 0px; margin-bottom: 0px;"><span style=3D"font-fam=
+ily: Arial, sans-serif; font-size: 9pt; color: rgb(19, 27, 87);">Nottingham,=
+ NG8 1BB&nbsp;</span></p><p style=3D"direction: ltr; margin-top: 0px; margin-b=
+ottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><=
+span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(19, 2=
+7, 87);">+44 (0) 115 8466631<b>&nbsp;</b></span><span style=3D"font-family: Ca=
+libri, sans-serif; font-size: 9pt; color: rgb(19, 27, 87);"><b>| </b></span>=
+<span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0=
+, 0);"><a href=3D"http://nottingham.ac.uk/" target=3D"_blank" style=3D"margin-top:=
+ 0px; margin-bottom: 0px;">caroline.emberson@nottingham.ac.uk</a></span></p>=
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: =
+Calibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"color: rgb(0,=
+ 0, 0);"><br></span></p><p style=3D"direction: ltr; margin-top: 0px; margin-bo=
+ttom: 0px;"><span style=3D"font-family: Arial, sans-serif; font-size: 12px; co=
+lor: rgb(0, 0, 0);">Please note that my working days are Monday, Tuesday, Th=
+ursday and Friday</span></p><p style=3D"direction: ltr; margin-top: 0px; margi=
+n-bottom: 0px;"><span style=3D"font-family: Arial, sans-serif; font-size: 12px=
+; color: rgb(0, 0, 0);"><br></span></p><p style=3D"direction: ltr; margin-top:=
+ 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-=
+size: 12pt;"><span style=3D"font-family: Georgia, serif; font-size: 9pt; color=
+: rgb(21, 118, 158);"><b>Follow us</b></span></p><p style=3D"direction: ltr; m=
+argin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-se=
+rif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-siz=
+e: 9pt; color: rgb(0, 0, 233);"><u><a href=3D"http://facebook.com/TheUniofNott=
+ingham" style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">=
+Facebook.com/UniofNottingham</a></u></span></p><p style=3D"direction: ltr; mar=
+gin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-seri=
+f; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size:=
+ 9pt; color: rgb(0, 0, 233);"><u><a href=3D"http://twitter.com/UniofNottingham=
+" style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Twitte=
+r.com/UniofNottingham</a></u></span></p><p style=3D"direction: ltr; margin-top=
+: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font=
+-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; c=
+olor: rgb(0, 0, 233);"><u><a href=3D"http://youtube.com/nottmuniversity" style=
+=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Youtube.com/n=
+ottmuniversity</a></u></span></p><p style=3D"direction: ltr; margin-top: 0px; =
+margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: =
+12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: r=
+gb(0, 0, 233);"><u><a href=3D"http://instagram.com/uniofnottingham" style=3D"col=
+or: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Instagram.com/unio=
+fnottingham</a></u></span></p><p style=3D"direction: ltr; margin-top: 0px; mar=
+gin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12p=
+t;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(=
+0, 0, 233);"><u><a href=3D"http://linkedin.com/company/university-of-nottingha=
+m" style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Linke=
+din.com/company/university-of-nottingham</a></u></span></p><p style=3D"directi=
+on: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetic=
+a, sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif=
+; font-size: 9pt; color: rgb(0, 0, 233);"><u><a href=3D"http://www.foursquare.=
+com/uniofnottingham" style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-b=
+ottom: 0px;">F</a><a href=3D"http://www.foursquare.com/uniofnottingham" style=3D=
+"margin-top: 0px; margin-bottom: 0px;">oursquare.com/uniofnottingham</a></u>=
+</span></p><p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; fo=
+nt-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"fo=
+nt-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u>&nb=
+sp;</u></span></p><div style=3D"direction: ltr; color: rgb(0, 0, 0);"><br></di=
+v><table id=3D"pbpsiglinktable"><tbody><tr><td><a href=3D"https://outlook.office=
+.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.u=
+k?anonymous&amp;ep=3DbwmEmailSignature"><img data-outlook-trace=3D"F:1|T:1" src=3D=
+"cid:c0bb7db6-954e-4619-8eb7-32b6adc7b7b7"></a></td><td></td><td><span style=
+=3D"color: rgb(0, 120, 212);"><a href=3D"https://outlook.office.com/bookwithme/u=
+ser/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;e=
+p=3DbwmEmailSignature" style=3D"color: rgb(0, 120, 212); text-decoration: none;"=
+>Book time to meet with me</a></span></td><td></td></tr></tbody></table></di=
+v><div id=3D"appendonsend"></div><hr style=3D"display:inline-block;width:98%" ta=
+bindex=3D"-1"><div id=3D"divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-seri=
+f" style=3D"font-size:11pt" color=3D"#000000"><b>From:</b> Scott Moser (staff) &=
+lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Sent:</b> 15 April 2024 16:32<br=
+><b>To:</b> Caroline Emberson (staff) &lt;lizce@exmail.nottingham.ac.uk&gt;<=
+br><b>Subject:</b> Automatic reply: NRM numbers(?)</font> <div>&nbsp;</div><=
+/div><style type=3D"text/css">
+<!--
+p.x_p1
+	{margin:0.0px 0.0px 0.0px 0.0px;
+	font:12.0px Times}
+p.x_p2
+	{margin:0.0px 0.0px 0.0px 0.0px;
+	font:12.0px Times;
+	color:#386573}
+span.x_s1
+	{font-kerning:none}
+span.x_s2
+	{font:10.0px Times;
+	font-kerning:none}
+span.x_s3
+	{text-decoration:underline;
+	font-kerning:none;
+	color:#386573}
+span.x_s4
+	{text-decoration:underline;
+	font-kerning:none}
+-->
+</style><div><p class=3D"x_p1"><span class=3D"x_s1">Thank you for your email. I=
+ am away from my email until&nbsp;April 18th&nbsp;and will respond on my ret=
+urn.</span></p><p class=3D"x_p1"><span class=3D"x_s1">&nbsp;</span></p><p class=3D=
+"x_p1"><span class=3D"x_s1">The university will be closed from Friday 29 March=
+ to Tuesday 2 April (inclusive). The summer term will start on Monday 29</sp=
+an><span class=3D"x_s2"><sup>th</sup></span><span class=3D"x_s1">&nbsp;April. Th=
+e University website&nbsp;provides more information about&nbsp;<a href=3D"http=
+s://www.nottingham.ac.uk/currentstudents/news/easter-opening-hours-1"><span =
+class=3D"x_s3">services available on campus over the Easter Break, and their o=
+pening hours.&nbsp;</span></a></span></p><p class=3D"x_p1"><span class=3D"x_s1">=
+&nbsp;</span></p><p class=3D"x_p1"><span class=3D"x_s1">However, if you are a st=
+udent needing assistance in this time, the following support is available:</=
+span></p><p class=3D"x_p1"><span class=3D"x_s1">&nbsp;</span></p><p class=3D"x_p2"=
+><span class=3D"x_s4"><a href=3D"https://www.nottingham.ac.uk/library/support/wi=
+nter.aspx"><b>Library Support</b></a></span></p><p class=3D"x_p1"><span class=3D=
+"x_s1">These <a href=3D"https://www.nottingham.ac.uk/library/support/winter.as=
+px"><span class=3D"x_s3">library web pages </span></a>contain everything you n=
+eed to know about accessing library resources and services before, and durin=
+g, the break.</span></p><p class=3D"x_p1"><span class=3D"x_s1">&nbsp;</span></p>=
+<p class=3D"x_p2"><span class=3D"x_s4"><a href=3D"https://www.nottingham.ac.uk/cur=
+rentstudents/healthyu/mental-health/bodymind.aspx"><b>Mental Health and Well=
+being</b></a></span></p><p class=3D"x_p1"><span class=3D"x_s1">There are <a href=
+=3D"https://www.nottingham.ac.uk/currentstudents/healthyu/mental-health/bodymi=
+nd.aspx"><span class=3D"x_s3">many mental health &amp; wellbeing resources her=
+e</span></a>&nbsp;to help you pro-actively take care of your mental health a=
+nd wellbeing during the break and <a href=3D"https://studentlife.nottingham.ac=
+.uk/s/mywellbeing/appointments"><span class=3D"x_s3">support and wellbeing app=
+ointments can be booked online</span></a>.</span></p></div></body></html>
+
+--B_3808391796_1225644038--
+
+
+--B_3808391796_297756342
+Content-type: image/png; name="Outlook-ee1ltces.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <c0bb7db6-954e-4619-8eb7-32b6adc7b7b7>
+Content-disposition: inline;
+	filename="Outlook-ee1ltces.png"
+Content-transfer-encoding: base64
+
+
+iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAcpJREFU
+OE9jZAABr6aJDHqhuQwMDIxgPrHg19d3DLP91Bk+P3sD08IIN2x1hjPDy7NXiDWL4T8nM0NA
+33wGWRMPhg5NJgYGhv8gvYwMFdf/MYAMu3twP9GGISssv/qLYVdzMsP5FYthBv5nmO2pyfDz
+zVuyDEw/eJ3hxNyJDEenNSMMJMskJE2Hp9YxHJ2CZOBUM1GGz5/hAUuS+UVnXjOcXDCJygbO
+m4TqZUpcGDJjJcPzS1eoYyAvrzDD58/vGRgY/iHSYcX1/wykupBXWpghe89reEbY0RjNcGHF
+MkQsk2pgwYkXDBz84iiR16EJzmWghE26C8uv/mZgZGJBM5AZ5HXyDPRo7GMwCCuEG/jj40uG
+CRYS5LsQpNM6q4TBOLqE4emFgwxrs8NRI2WynSTD19cvSErQOBQzMhSdecvw8vophqWxngQN
+BCWTrBMvMMIPpnF7dQQjA6+UCEP23tcM//7+Zvjx8QNOQydZizFk7bvNwCepgs9iWIHKyGAY
+EcPALaQEUQwq3mBplQmi5siUBoa0bRcZhBT18Bj4n7QSWlhGmiF19xOcBh6aVEyagSCTQEEU
+Nf8Ag6CcFjyn/Pz8hmF9cQjDg8MHAaiKxp0eiZJ4AAAAAElFTkSuQmCC
+--B_3808391796_297756342--
+
+
+--B_3808391796_751029710--
+

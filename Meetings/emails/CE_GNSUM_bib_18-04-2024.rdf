@@ -1,0 +1,2114 @@
+<rdf:RDF
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:z="http://www.zotero.org/namespaces/export#"
+ xmlns:dcterms="http://purl.org/dc/terms/"
+ xmlns:bib="http://purl.org/net/biblio#"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:vcard="http://nwalsh.com/rdf/vCard#"
+ xmlns:foaf="http://xmlns.com/foaf/0.1/"
+ xmlns:link="http://purl.org/rss/1.0/modules/link/"
+ xmlns:prism="http://prismstandard.org/namespaces/1.2/basic/">
+    <bib:Article rdf:about="#item_1">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+           <bib:Journal></bib:Journal>
+        </dcterms:isPartOf>
+    </bib:Article>
+    <bib:BookSection rdf:about="#item_5">
+        <z:itemType>bookSection</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Book>
+               <dc:title>Prevalence estimation: Methods brief</dc:title>
+            </bib:Book>
+        </dcterms:isPartOf>
+        <dc:publisher>
+            <foaf:Organization>
+                <vcard:adr>
+                    <vcard:Address>
+                        <vcard:locality>https://www.gfems.org/wp-content/uploads/2021/10/Revised_GFEMS_MethodologiesBooklet.pdf</vcard:locality>
+                    </vcard:Address>
+                </vcard:adr>
+                <foaf:name>Global Fund to End Modern Slavery</foaf:name>
+            </foaf:Organization>
+        </dc:publisher>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Blazek</foaf:surname>
+                        <foaf:givenName>Sam</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Feehan</foaf:surname>
+                        <foaf:givenName>Dennis</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:relation rdf:resource="#item_6"/>
+        <dc:title>Network Scale-up Method</dc:title>
+        <dc:date>2021</dc:date>
+        <bib:pages>18-22</bib:pages>
+    </bib:BookSection>
+    <bib:Book rdf:about="#item_6">
+        <z:itemType>book</z:itemType>
+        <dc:publisher>
+            <foaf:Organization>
+                <vcard:adr>
+                    <vcard:Address>
+                        <vcard:locality>https://www.gfems.org/wp-content/uploads/2021/10/Revised_GFEMS_MethodologiesBooklet.pdf</vcard:locality>
+                    </vcard:Address>
+                </vcard:adr>
+                <foaf:name>Global Fund to End Modern Slavery</foaf:name>
+            </foaf:Organization>
+        </dc:publisher>
+        <dc:relation rdf:resource="#item_5"/>
+        <dc:relation rdf:resource="#item_8"/>
+        <dc:relation rdf:resource="#item_7"/>
+        <dc:title>Prevalence estimation: Methods brief</dc:title>
+        <dc:date>2021</dc:date>
+    </bib:Book>
+    <bib:BookSection rdf:about="#item_7">
+        <z:itemType>bookSection</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Book>
+               <dc:title>Prevalence estimation: Methods brief</dc:title>
+            </bib:Book>
+        </dcterms:isPartOf>
+        <dc:publisher>
+            <foaf:Organization>
+                <vcard:adr>
+                    <vcard:Address>
+                        <vcard:locality>https://www.gfems.org/wp-content/uploads/2021/10/Revised_GFEMS_MethodologiesBooklet.pdf</vcard:locality>
+                    </vcard:Address>
+                </vcard:adr>
+                <foaf:name>Global Fund to End Modern Slavery</foaf:name>
+            </foaf:Organization>
+        </dc:publisher>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Zhang</foaf:surname>
+                        <foaf:givenName>Sheldon</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Kyle</foaf:surname>
+                        <foaf:givenName>Vincent</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:relation rdf:resource="#item_6"/>
+        <dc:title>Respondent driven sampling/ link-trace sampling</dc:title>
+        <dc:date>2021</dc:date>
+        <bib:pages>10-13</bib:pages>
+    </bib:BookSection>
+    <bib:BookSection rdf:about="#item_8">
+        <z:itemType>bookSection</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Book>
+               <dc:title>Prevalence estimation: Methods brief</dc:title>
+            </bib:Book>
+        </dcterms:isPartOf>
+        <dc:publisher>
+            <foaf:Organization>
+                <vcard:adr>
+                    <vcard:Address>
+                        <vcard:locality>https://www.gfems.org/wp-content/uploads/2021/10/Revised_GFEMS_MethodologiesBooklet.pdf</vcard:locality>
+                    </vcard:Address>
+                </vcard:adr>
+                <foaf:name>Global Fund to End Modern Slavery</foaf:name>
+            </foaf:Organization>
+        </dc:publisher>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Kysia</foaf:surname>
+                        <foaf:givenName>Kareem</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Zines</foaf:surname>
+                        <foaf:givenName>Clifford</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:relation rdf:resource="#item_6"/>
+        <dc:title>Hybrid Approaches</dc:title>
+        <dc:date>2021</dc:date>
+        <bib:pages>28-31</bib:pages>
+    </bib:BookSection>
+    <bib:Article rdf:about="https://www.jstor.org/stable/3096941">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:0037-7791"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Heckathorn</foaf:surname>
+                        <foaf:givenName>Douglas D.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_10"/>
+        <dc:title>Respondent-Driven Sampling: A New Approach to the Study of Hidden Populations</dc:title>
+        <dcterms:abstract>A population is &quot;hidden&quot; when no sampling frame exists and public acknowledgment of membership in the population is potentially threatening. Accessing such populations is difficult because standard probability sampling methods produce low response rates and responses that lack candor. Existing procedures for sampling these populations, including snowball and other chain-referral samples, the key-informant approach, and targeted sampling, introduce well-documented biases into their samples. This paper introduces a new variant of chain-referral sampling, respondent-driven sampling, that employs a dual system of structured incentives to overcome some of the deficiencies of such samples. A theoretic analysis, drawing on both Markov-chain theory and the theory of biased networks, shows that this procedure can reduce the biases generally associated with chain-referral methods. The analysis includes a proof showing that even though sampling begins with an arbitrarily chosen set of initial subjects, as do most chain-referral samples, the composition of the ultimate sample is wholly independent of those initial subjects. The analysis also includes a theoretic specification of the conditions under which the procedure yields unbiased samples. Empirical results, based on surveys of 277 active drug injectors in Connecticut, support these conclusions. Finally, the conclusion discusses how respondent-driven sampling can improve both network sampling and ethnographic 44investigation.</dcterms:abstract>
+        <dc:date>1997</dc:date>
+        <z:shortTitle>Respondent-Driven Sampling</z:shortTitle>
+        <z:libraryCatalog>JSTOR</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+               <rdf:value>https://www.jstor.org/stable/3096941</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2024-03-12 14:15:53</dcterms:dateSubmitted>
+        <dc:description>Publisher: [Oxford University Press, Society for the Study of Social Problems]</dc:description>
+        <bib:pages>174-199</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:0037-7791">
+        <prism:volume>44</prism:volume>
+        <dc:title>Social Problems</dc:title>
+        <dc:identifier>DOI 10.2307/3096941</dc:identifier>
+        <prism:number>2</prism:number>
+        <dc:identifier>ISSN 0037-7791</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_10">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>JSTOR Full Text PDF</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://www.jstor.org/stable/pdfplus/10.2307/3096941.pdf?acceptTC=true</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2024-03-12 14:15:56</dcterms:dateSubmitted>
+        <z:linkMode>1</z:linkMode>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://www.jstor.org/stable/2237615">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:0003-4851"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Goodman</foaf:surname>
+                        <foaf:givenName>Leo A.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_12"/>
+        <dc:title>Snowball Sampling</dc:title>
+        <dcterms:abstract>An s stage k name snowball sampling procedure is defined as follows: A random sample of individuals is drawn from a given finite population. (The kind of random sample will be discussed later in this section.) Each individual in the sample is asked to name k different individuals in the population, where k is a specified integer; for example, each individual may be asked to name his &quot;k best friends,&quot; or the &quot;k individuals with whom he most frequently associates,&quot; or the &quot;k individuals whose opinions he most frequently seeks,&quot; etc. (For the sake of simplicity, we assume throughout that an individual cannot include himself in his list of k individuals.) The individuals who were not in the random sample but were named by individuals in it form the first stage. Each of the individuals in the first stage is then asked to name k different individuals. (We assume that the question asked of the individuals in the random sample and of those in each stage is the same and that k is the same.) The individuals who were not in the random sample nor in the first stage but were named by individuals who were in the first stage form the second stage. Each of the individuals in the second stage is then asked to name k different individuals. The individuals who were not in the random sample nor in the first or second stages but were named by individuals who were in the second stage form the third stage. Each of the individuals in the third stage is then asked to name k different individuals. This procedure is continued until each of the individuals in the sth stage has been asked to name k different individuals. The data obtained using an s stage k name snowball sampling procedure can be utilized to make statistical inferences about various aspects of the relationships present in the population. The relationships present, in the hypothetical situation where each individual in the population is asked to name k different individuals, can be described by a matrix with rows and columns corresponding to the members of the population, rows for the individuals naming and columns for the individuals named, where the entry θij in the ith row and jth column is 1 if the ith individual in the population includes the jth individual among the k individuals he would name, and it is 0 otherwise. While the matrix of the θ's cannot be known in general unless every individual in the population is interviewed (i.e., asked to name k different individuals), it will be possible to make statistical inferences about various aspects of this matrix from the data obtained using an s stage k name snowball sampling procedure. For example, when s = k = 1, the number, M11, of mutual relationships present in the population (i.e., the number of values i with θij = θji = 1 for some value of $j &gt; i$) can be estimated. The methods of statistical inference applied to the data obtained from an s stage k name snowball sample will of course depend on the kind of random sample drawn as the initial step. In most of the present paper, we shall suppose that a random sample (i.e., the &quot;zero stage&quot; in snowball sample) is drawn so that the probability, p, that a given individual in the population will be in the sample is independent of whether a different given individual has appeared. This kind of sampling has been called binomial sampling; the specified value of p (assumed known) has been called the sampling fraction [4]. This sampling scheme might also be described by saying that a given individual is included in the sample just when a coin, which has a probability p of &quot;heads,&quot; comes up &quot;heads,&quot; where the tosses of the coin from individual to individual are independent. (To each individual there corresponds an independent Bernoulli trial determining whether he will or will not be included in the sample.) This sampling scheme differs in some respects from the more usual models where the sample size is fixed in advance or where the ratio of the sample size to the population size (i.e., the sample size-population size ratio) is fixed. For binomial sampling, this ratio is a random variable whose expected value is p. (The variance of this ratio approaches zero as the population becomes infinite.) In some situations (where, for example, the variance of this ratio is near zero), mathematical results obtained for binomial sampling are sometimes quite similar to results obtained using some of the more usual sampling models (see [4], [7]; compare the variance formulas in [3] and [5]); in such cases it will often not make much difference, from a practical point of view, which sampling model is utilized. (In Section 6 of the present paper some results for snowball sampling based on an initial sample of the more usual kind are obtained and compared with results presented in the earlier sections of this paper obtained for snowball sampling based on an initial binomial sample.) For snowball sampling based on an initial binomial sample, and with s = k = 1, so that each individual asked names just one other individual and there is just one stage beyond the initial sample, Section 2 of this paper discusses unbiased estimation of M11, the number of pairs of individuals in the population who would name each other. One of the unbiased estimators considered (among a certain specified class of estimators) has uniformly smallest variance when the population characteristics are unknown; this one is based on a sufficient statistic for a simplified summary of the data and is the only unbiased estimator of M11 based on that sufficient statistic (when the population characteristics are unknown). This estimator (when s = k = 1) has a smaller variance than a comparable minimum variance unbiased estimator computed from a larger random sample when s = 0 and k = 1 (i.e., where only the individuals in the random sample are interviewed) even where the expected number of individuals in the larger random sample (s = 0, k = 1) is equal to the maximum expected number of individuals studied when s = k = 1 (i.e., the sum of the expected number of individuals in the initial sample and the maximum expected number of individuals in the first stage). In fact, the variance of the estimator when s = 0 and k = 1 is at least twice as large as the variance of the comparable estimator when s = k = 1 even where the expected number of individuals studied when s = 0 and k = 1 is as large as the maximum expected number of individuals studied when s = k = 1. Thus, for estimating M11, the sampling scheme with s = k = 1 is preferable to the sampling scheme with s = 0 and k = 1. Furthermore, we observe that when s = k = 1 the unbiased estimator based on the simplified summary of the data having minimum variance when the population characteristics are unknown can be improved upon in cases where certain population characteristics are known, or where additional data not included in the simplified summary are available. Several improved estimators are derived and discussed. Some of the results for the special case of s = k = 1 are generalized in Sections 3 and 4 to deal with cases where s and k are any specified positive integers. In Section 5, results are presented about s stage k name snowball sampling procedures, where each individual asked to name k different individuals chooses k individuals at random from the population. (Except in Section 5, the numbers θij, which form the matrix referred to earlier, are assumed to be fixed (i.e., to be population parameters); in Section 5, they are random variables. A variable response error is not considered except in so far as Section 5 deals with an extreme case of this.) For social science literature that discusses problems related to snowball sampling, see [2], [8], and the articles they cite. This literature indicates, among other things, the importance of studying &quot;social structure and...the relations among individuals&quot; [2].</dcterms:abstract>
+        <dc:date>1961</dc:date>
+        <z:libraryCatalog>JSTOR</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+               <rdf:value>https://www.jstor.org/stable/2237615</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2024-03-12 14:19:45</dcterms:dateSubmitted>
+        <dc:description>Publisher: Institute of Mathematical Statistics</dc:description>
+        <bib:pages>148-170</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:0003-4851">
+        <prism:volume>32</prism:volume>
+        <dc:title>The Annals of Mathematical Statistics</dc:title>
+        <prism:number>1</prism:number>
+        <dc:identifier>ISSN 0003-4851</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_12">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>JSTOR Full Text PDF</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://www.jstor.org/stable/pdfplus/10.2307/2237615.pdf?acceptTC=true</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2024-03-12 14:19:49</dcterms:dateSubmitted>
+        <z:linkMode>1</z:linkMode>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://doi.org/10.1111/rssa.12091">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:0964-1998"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Gile</foaf:surname>
+                        <foaf:givenName>Krista J.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Handcock</foaf:surname>
+                        <foaf:givenName>Mark S.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_14"/>
+        <link:link rdf:resource="#item_15"/>
+        <dc:title>Network Model-Assisted Inference from Respondent-Driven Sampling Data</dc:title>
+        <dcterms:abstract>Respondent-driven sampling is a widely used method for sampling hard-to-reach human populations by link tracing over their social networks. Inference from such data requires specialized techniques because the sampling process is both partially beyond the control of the researcher, and partially implicitly defined. Therefore, it is not generally possible to compute the sampling weights for traditional design-based inference directly, and likelihood inference requires modelling the complex sampling process. As an alternative, we introduce a model-assisted approach, resulting in a design-based estimator leveraging a working network model. We derive a new class of estimators for population means and a corresponding bootstrap standard error estimator. We demonstrate improved performance compared with existing estimators, including adjustment for an initial convenience sample. We also apply the method and an extension to the estimation of the prevalence of human immunodeficiency virus in a high-risk population.</dcterms:abstract>
+        <dc:date>2015-06-01</dc:date>
+        <z:libraryCatalog>Silverchair</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+               <rdf:value>https://doi.org/10.1111/rssa.12091</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2024-03-12 14:23:25</dcterms:dateSubmitted>
+        <bib:pages>619-639</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:0964-1998">
+        <prism:volume>178</prism:volume>
+        <dc:title>Journal of the Royal Statistical Society Series A: Statistics in Society</dc:title>
+        <dc:identifier>DOI 10.1111/rssa.12091</dc:identifier>
+        <prism:number>3</prism:number>
+        <dcterms:alternative>Journal of the Royal Statistical Society Series A: Statistics in Society</dcterms:alternative>
+        <dc:identifier>ISSN 0964-1998</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_14">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Full Text PDF</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://academic.oup.com/jrsssa/article-pdf/178/3/619/49341346/jrsssa_178_3_619.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2024-03-12 14:23:28</dcterms:dateSubmitted>
+        <z:linkMode>1</z:linkMode>
+        <link:type>application/pdf</link:type>
+    </z:Attachment>
+    <z:Attachment rdf:about="#item_15">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Snapshot</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://academic.oup.com/jrsssa/article/178/3/619/7058638</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2024-03-12 14:23:41</dcterms:dateSubmitted>
+        <z:linkMode>1</z:linkMode>
+        <link:type>text/html</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://www.tandfonline.com/doi/full/10.1080/15564886.2019.1660289">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:1556-4886,%201556-4991"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Zhang</foaf:surname>
+                        <foaf:givenName>Sheldon X.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Dank</foaf:surname>
+                        <foaf:givenName>Meredith</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Vincent</foaf:surname>
+                        <foaf:givenName>Kyle</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Narayanan</foaf:surname>
+                        <foaf:givenName>Pradeep</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Bharadwaj</foaf:surname>
+                        <foaf:givenName>Sowmyaa</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Balasubramaniam</foaf:surname>
+                        <foaf:givenName>Sudharsanam Manni</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Victims without a Voice: Measuring Worst Forms of Child Labor in the Indian State of Bihar</dc:title>
+        <dc:date>2019-10-03</dc:date>
+        <z:language>en</z:language>
+        <z:shortTitle>Victims without a Voice</z:shortTitle>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://www.tandfonline.com/doi/full/10.1080/15564886.2019.1660289</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2024-03-12 14:42:52</dcterms:dateSubmitted>
+        <bib:pages>832-858</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:1556-4886,%201556-4991">
+        <prism:volume>14</prism:volume>
+        <dc:title>Victims &amp; Offenders</dc:title>
+        <dc:identifier>DOI 10.1080/15564886.2019.1660289</dc:identifier>
+        <prism:number>7</prism:number>
+        <dcterms:alternative>Victims &amp; Offenders</dcterms:alternative>
+        <dc:identifier>ISSN 1556-4886, 1556-4991</dc:identifier>
+    </bib:Journal>
+    <bib:Document rdf:about="https://journals.sagepub.com/doi/10.1177/0081175016665425">
+        <z:itemType>webpage</z:itemType>
+        <dcterms:isPartOf>
+           <z:Website></z:Website>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Feehan</foaf:surname>
+                        <foaf:givenName>Dennis M</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Salganick</foaf:surname>
+                        <foaf:givenName>Matthew J</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_18"/>
+        <dc:title>Generalizing the Network Scale-up Method: A New Estimator for the Size of Hidden Populations - Dennis M. Feehan, Matthew J. Salganik, 2016</dc:title>
+        <dc:date>2016</dc:date>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://journals.sagepub.com/doi/10.1177/0081175016665425</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2024-03-12 14:48:38</dcterms:dateSubmitted>
+    </bib:Document>
+    <z:Attachment rdf:about="#item_18">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Generalizing the Network Scale-up Method: A New Estimator for the Size of Hidden Populations - Dennis M. Feehan, Matthew J. Salganik, 2016</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://journals.sagepub.com/doi/10.1177/0081175016665425</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2024-03-12 14:48:55</dcterms:dateSubmitted>
+        <z:linkMode>1</z:linkMode>
+        <link:type>text/html</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://journals.sagepub.com/doi/full/10.1177/0007650320930417">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>60</prism:volume>
+                <dc:title>Business and Society</dc:title>
+                <prism:number>2</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Caruana</foaf:surname>
+                        <foaf:givenName>Robert</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Crane,</foaf:surname>
+                        <foaf:givenName>Andrew</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Gold</foaf:surname>
+                        <foaf:givenName>Stefan</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>LeBaron</foaf:surname>
+                        <foaf:givenName>Genevieve</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_20"/>
+        <dc:title>Modern Slavery in Business: The Sad and Sorry State of a Non-Field</dc:title>
+        <dc:date>2021</dc:date>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://journals.sagepub.com/doi/full/10.1177/0007650320930417</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2024-03-12 14:58:29</dcterms:dateSubmitted>
+    </bib:Article>
+    <z:Attachment rdf:about="#item_20">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Modern Slavery in Business: The Sad and Sorry State of a Non-Field - Robert Caruana, Andrew Crane, Stefan Gold, Genevieve LeBaron, 2021</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://journals.sagepub.com/doi/full/10.1177/0007650320930417</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2024-03-12 14:58:38</dcterms:dateSubmitted>
+        <z:linkMode>1</z:linkMode>
+        <link:type>text/html</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://onlinelibrary.wiley.com/doi/abs/10.1046/j.1467-6486.2003.00405.x">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>40</prism:volume>
+                <dc:title>Journal of Management Studies</dc:title>
+                <prism:number>8</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Cooke</foaf:surname>
+                        <foaf:givenName>Bill</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_22"/>
+        <dc:title>The Denial of Slavery in Management Studies</dc:title>
+        <dc:date>2003</dc:date>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://onlinelibrary.wiley.com/doi/abs/10.1046/j.1467-6486.2003.00405.x</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2024-03-12 15:02:15</dcterms:dateSubmitted>
+        <bib:pages>1895-1918</bib:pages>
+    </bib:Article>
+    <z:Attachment rdf:about="#item_22">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>The Denial of Slavery in Management Studies - Cooke - 2003 - Journal of Management Studies - Wiley Online Library</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://onlinelibrary.wiley.com/doi/abs/10.1046/j.1467-6486.2003.00405.x</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2024-03-12 15:02:21</dcterms:dateSubmitted>
+        <z:linkMode>1</z:linkMode>
+        <link:type>text/html</link:type>
+    </z:Attachment>
+    <bib:Document rdf:about="https://www.nottingham.ac.uk/~sazintra/_officeonline/UG-PGT-attendance/qr_setting.php">
+        <z:itemType>webpage</z:itemType>
+        <dcterms:isPartOf>
+           <z:Website></z:Website>
+        </dcterms:isPartOf>
+        <link:link rdf:resource="#item_24"/>
+        <dc:title>Generate a QR code - QR Attendance System</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://www.nottingham.ac.uk/~sazintra/_officeonline/UG-PGT-attendance/qr_setting.php</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2024-03-14 07:55:41</dcterms:dateSubmitted>
+    </bib:Document>
+    <z:Attachment rdf:about="#item_24">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Generate a QR code - QR Attendance System</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://www.nottingham.ac.uk/~sazintra/_officeonline/UG-PGT-attendance/qr_setting.php</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2024-03-14 07:55:43</dcterms:dateSubmitted>
+        <z:linkMode>1</z:linkMode>
+        <link:type>text/html</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="http://onlinelibrary.wiley.com/doi/abs/10.1111/rssa.12091">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:1467-985X"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Gile</foaf:surname>
+                        <foaf:givenName>Krista J.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Handcock</foaf:surname>
+                        <foaf:givenName>Mark S.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <link:link rdf:resource="#item_26"/>
+        <link:link rdf:resource="#item_27"/>
+        <dc:subject>_tablet</dc:subject>
+        <dc:subject>
+            <z:AutomaticTag>
+               <rdf:value>Exponential family random graph model</rdf:value>
+            </z:AutomaticTag>
+        </dc:subject>
+        <dc:subject>
+            <z:AutomaticTag>
+               <rdf:value>Hard-to-reach population sampling</rdf:value>
+            </z:AutomaticTag>
+        </dc:subject>
+        <dc:subject>
+           <z:AutomaticTag><rdf:value>Link tracing</rdf:value></z:AutomaticTag>
+        </dc:subject>
+        <dc:subject>
+            <z:AutomaticTag>
+               <rdf:value>Network sampling</rdf:value>
+            </z:AutomaticTag>
+        </dc:subject>
+        <dc:subject>RDS</dc:subject>
+        <dc:subject>
+           <z:AutomaticTag><rdf:value>Social networks</rdf:value></z:AutomaticTag>
+        </dc:subject>
+        <dc:title>Network model-assisted inference from respondent-driven sampling data</dc:title>
+        <dcterms:abstract>Respondent-driven sampling is a widely used method for sampling hard-to-reach human populations by link tracing over their social networks. Inference from such data requires specialized techniques because the sampling process is both partially beyond the control of the researcher, and partially implicitly defined. Therefore, it is not generally possible to compute the sampling weights for traditional design-based inference directly, and likelihood inference requires modelling the complex sampling process. As an alternative, we introduce a model-assisted approach, resulting in a design-based estimator leveraging a working network model. We derive a new class of estimators for population means and a corresponding bootstrap standard error estimator. We demonstrate improved performance compared with existing estimators, including adjustment for an initial convenience sample. We also apply the method and an extension to the estimation of the prevalence of human immunodeficiency virus in a high-risk population.</dcterms:abstract>
+        <dc:date>2015</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>Wiley Online Library</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://onlinelibrary.wiley.com/doi/abs/10.1111/rssa.12091</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2022-12-17 11:52:36</dcterms:dateSubmitted>
+        <dc:description>Number: 3
+tex.ids= gile15-networka
+_eprint: https://rss.onlinelibrary.wiley.com/doi/pdf/10.1111/rssa.12091</dc:description>
+        <bib:pages>619-639</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:1467-985X">
+        <prism:volume>178</prism:volume>
+        <dc:title>Journal of the Royal Statistical Society: Series A (Statistics in Society)</dc:title>
+        <dc:identifier>DOI 10.1111/rssa.12091</dc:identifier>
+        <prism:number>3</prism:number>
+        <dc:identifier>ISSN 1467-985X</dc:identifier>
+    </bib:Journal>
+    <z:Attachment rdf:about="#item_26">
+        <z:itemType>attachment</z:itemType>
+        <dc:subject>_tablet</dc:subject>
+        <dc:title>Gile and Handcock - 2015 - Network model-assisted inference from respondent-driven.pdf</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/rssa.12091</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2022-12-17 11:52:39</dcterms:dateSubmitted>
+        <z:linkMode>3</z:linkMode>
+        <link:type>application/pdf</link:type>
+        <dc:description>&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p id=&quot;zotfile-data&quot; style=&quot;color: #cccccc;&quot; title=&quot;{&amp;quot;lastmod&amp;quot;:1698325044000,&amp;quot;mode&amp;quot;:1,&amp;quot;location&amp;quot;:&amp;quot;[BaseFolder]/Gile and Handcock - 2015 - Network model-assisted inference from respondent-driven.pdf&amp;quot;,&amp;quot;projectFolder&amp;quot;:&amp;quot;&amp;quot;}&quot;&gt;(hidden zotfile data)&lt;/p&gt;&lt;/body&gt;</dc:description>
+    </z:Attachment>
+    <z:Attachment rdf:about="#item_27">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Snapshot</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://rss.onlinelibrary.wiley.com/doi/full/10.1111/rssa.12091</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2022-12-17 11:52:49</dcterms:dateSubmitted>
+        <z:linkMode>3</z:linkMode>
+        <link:type>text/html</link:type>
+    </z:Attachment>
+    <bib:Article rdf:about="https://www.jstor.org/stable/23214188">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:1044-3983"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>McCreesh</foaf:surname>
+                        <foaf:givenName>Nicky</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Frost</foaf:surname>
+                        <foaf:givenName>Simon D. W.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Seeley</foaf:surname>
+                        <foaf:givenName>Janet</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Katongole</foaf:surname>
+                        <foaf:givenName>Joseph</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Tarsh</foaf:surname>
+                        <foaf:givenName>Matilda N.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Ndunguse</foaf:surname>
+                        <foaf:givenName>Richard</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Jichi</foaf:surname>
+                        <foaf:givenName>Fatima</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Lunel</foaf:surname>
+                        <foaf:givenName>Natasha L.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Maher</foaf:surname>
+                        <foaf:givenName>Dermot</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Johnston</foaf:surname>
+                        <foaf:givenName>Lisa G.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Sonnenberg</foaf:surname>
+                        <foaf:givenName>Pam</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Copas</foaf:surname>
+                        <foaf:givenName>Andrew J.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Hayes</foaf:surname>
+                        <foaf:givenName>Richard J.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>White</foaf:surname>
+                        <foaf:givenName>Richard G.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:subject>RDS</dc:subject>
+        <dc:subject>Hidden population sampling</dc:subject>
+        <dc:title>Evaluation of respondent-driven sampling</dc:title>
+        <dcterms:abstract>Background: Respondent-driven sampling is a novel variant of link-tracing sampling for estimating the characteristics of hard-to-reach groups, such as HIV prevalence in sex workers. Despite its use by leading health organizations, the performance of this method in realistic situations is still largely unknown. We evaluated respondent-driven sampling by comparing estimates from a respondent-driven sampling survey with total population data. Methods: Total population data on age, tribe, religion, socioeconomic status, sexual activity, and HIV status were available on a population of 2402 male household heads from an open cohort in rural Uganda. A respondent-driven sampling (RDS) survey was carried out in this population, using current methods of sampling (RDS sample) and statistical inference (RDS estimates). Analyses were carried out for the full RDS sample and then repeated for the first 250 recruits (small sample). Results: We recruited 927 household heads. Full and small RDS samples were largely representative of the total population, but both samples underrepresented men who were younger, of higher socio-economic status, and with unknown sexual activity and HIV status. Respondent-driven sampling statistical inference methods failed to reduce these biases. Only 31%—37% (depending on method and sample size) of RDS estimates were closer to the true population proportions than the RDS sample proportions. Only 50%—74% of respondent-driven sampling bootstrap 95% confidence intervals included the population proportion. Conclusions: Respondent-driven sampling produced a generally representative sample of this well-connected nonhidden population. However, current respondent-driven sampling inference methods failed to reduce bias when it occurred. Whether the data required to remove bias and measure precision can be collected in a respondent-driven sampling survey is unresolved. Respondent-driven sampling should be regarded as a (potentially superior) form of convenience sampling method, and caution is required when interpreting findings based on the sampling method.</dcterms:abstract>
+        <dc:date>2012</dc:date>
+        <z:libraryCatalog>JSTOR</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+               <rdf:value>https://www.jstor.org/stable/23214188</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-04-25 11:34:42</dcterms:dateSubmitted>
+        <dc:description>Number: 1
+tex.ids= mccr12-evaluationa
+publisher: Lippincott Williams &amp; Wilkins</dc:description>
+        <bib:pages>138-147</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:1044-3983">
+        <prism:volume>23</prism:volume>
+        <dc:title>Epidemiology</dc:title>
+        <prism:number>1</prism:number>
+        <dc:identifier>ISSN 1044-3983</dc:identifier>
+    </bib:Journal>
+    <bib:Article rdf:about="https://www.annualreviews.org/doi/10.1146/annurev-statistics-031017-100704">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:2326-8298,%202326-831X"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Gile</foaf:surname>
+                        <foaf:givenName>Krista J.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Beaudry</foaf:surname>
+                        <foaf:givenName>Isabelle S.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Handcock</foaf:surname>
+                        <foaf:givenName>Mark S.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Ott</foaf:surname>
+                        <foaf:givenName>Miles Q.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:subject>_tablet</dc:subject>
+        <dc:subject>RDS</dc:subject>
+        <dc:subject>inference</dc:subject>
+        <dc:title>Methods for inference from respondent-driven sampling data</dc:title>
+        <dcterms:abstract>Respondent-driven sampling is a commonly used method for sampling from hard-to-reach human populations connected by an underlying social network of relations. Beginning with a convenience sample, participants pass coupons to invite their contacts to join the sample. Although the method is often effective at attaining large and varied samples, its reliance on convenience samples, social network contacts, and participant decisions makes it subject to a large number of statistical concerns. This article reviews inferential methods available for data collected by respondent-driven sampling.</dcterms:abstract>
+        <dc:date>2018-03-07</dc:date>
+        <z:language>en</z:language>
+        <z:libraryCatalog>DOI.org (Crossref)</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://www.annualreviews.org/doi/10.1146/annurev-statistics-031017-100704</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-04-25 11:48:00</dcterms:dateSubmitted>
+        <dc:description>Number: 1
+Citation Key: gile18-methods
+tex.ids= gile18-methodsa</dc:description>
+        <bib:pages>65-93</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:2326-8298,%202326-831X">
+        <prism:volume>5</prism:volume>
+        <dc:title>Annual Review of Statistics and Its Application</dc:title>
+        <dc:identifier>DOI 10.1146/annurev-statistics-031017-100704</dc:identifier>
+        <prism:number>1</prism:number>
+        <dcterms:alternative>Annu. Rev. Stat. Appl.</dcterms:alternative>
+        <dc:identifier>ISSN 2326-8298, 2326-831X</dc:identifier>
+    </bib:Journal>
+    <bib:Article rdf:about="https://doi.org/10.1080/01621459.2016.1212712">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf rdf:resource="urn:issn:0162-1459"/>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Vincent</foaf:surname>
+                        <foaf:givenName>Kyle</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Thompson</foaf:surname>
+                        <foaf:givenName>Steve</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dcterms:isReferencedBy rdf:resource="#item_31"/>
+        <link:link rdf:resource="#item_32"/>
+        <dc:subject>_tablet</dc:subject>
+        <dc:subject>Hidden population sampling</dc:subject>
+        <dc:subject>
+            <z:AutomaticTag>
+               <rdf:value>Adaptive sampling</rdf:value>
+            </z:AutomaticTag>
+        </dc:subject>
+        <dc:subject>
+            <z:AutomaticTag>
+               <rdf:value>Design-based inference</rdf:value>
+            </z:AutomaticTag>
+        </dc:subject>
+        <dc:subject>
+           <z:AutomaticTag><rdf:value>Mark-recapture</rdf:value></z:AutomaticTag>
+        </dc:subject>
+        <dc:subject>Population size estimation</dc:subject>
+        <dc:subject>
+            <z:AutomaticTag>
+               <rdf:value>Rao–Blackwell method</rdf:value>
+            </z:AutomaticTag>
+        </dc:subject>
+        <dc:subject>
+            <z:AutomaticTag>
+               <rdf:value>Unknown population size</rdf:value>
+            </z:AutomaticTag>
+        </dc:subject>
+        <dc:title>Estimating population size with link-tracing sampling</dc:title>
+        <dcterms:abstract>We present a new design and method for estimating the size of a hidden population best reached through a link-tracing design. The design is based on selecting initial samples at random and then adaptively tracing links to add new members. The inferential procedure involves the Rao–Blackwell theorem applied to a sufficient statistic markedly different from the usual one that arises in sampling from a finite population. The strategy involves a combination of link-tracing and mark-recapture estimation methods. An empirical application is described. The result demonstrates that the strategy can efficiently incorporate adaptively selected members of the sample into the inferential procedure. Supplementary materials for this article are available online.</dcterms:abstract>
+        <dc:date>2017-07-03</dc:date>
+        <z:libraryCatalog>Taylor and Francis+NEJM</z:libraryCatalog>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://doi.org/10.1080/01621459.2016.1212712</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-06-08 17:53:53</dcterms:dateSubmitted>
+        <dc:description>Number: 519
+tex.ids= vinc17-estimatinga
+_eprint: https://doi.org/10.1080/01621459.2016.1212712
+publisher: Taylor &amp; Francis</dc:description>
+        <bib:pages>1286-1295</bib:pages>
+    </bib:Article>
+    <bib:Journal rdf:about="urn:issn:0162-1459">
+        <prism:volume>112</prism:volume>
+        <dc:title>Journal of the American Statistical Association</dc:title>
+        <dc:identifier>DOI 10.1080/01621459.2016.1212712</dc:identifier>
+        <prism:number>519</prism:number>
+        <dc:identifier>ISSN 0162-1459</dc:identifier>
+    </bib:Journal>
+    <bib:Memo rdf:about="#item_31">
+        <rdf:value>&lt;p&gt;&lt;b&gt;Extracted Annotations (27/10/2023, 16:05:40)&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&quot;link-tracing design&quot; (&lt;a href=&quot;zotero://open-pdf/library/items/U33ZPS9U?page=2&quot;&gt;Vincent and Thompson 2017:1287&lt;/a&gt;)&lt;/p&gt;&lt;p&gt;&quot;design-based&quot; (&lt;a href=&quot;zotero://open-pdf/library/items/U33ZPS9U?page=2&quot;&gt;Vincent and Thompson 2017:1287&lt;/a&gt;)&lt;/p&gt;&lt;p&gt;&quot;inference&quot; (&lt;a href=&quot;zotero://open-pdf/library/items/U33ZPS9U?page=2&quot;&gt;Vincent and Thompson 2017:1287&lt;/a&gt;)&lt;/p&gt;&lt;p&gt;&quot;w ij&quot; (&lt;a href=&quot;zotero://open-pdf/library/items/U33ZPS9U?page=3&quot;&gt;Vincent and Thompson 2017:1288&lt;/a&gt;)&lt;/p&gt;&lt;p&gt;&quot;strength of the relationship&quot; (&lt;a href=&quot;zotero://open-pdf/library/items/U33ZPS9U?page=3&quot;&gt;Vincent and Thompson 2017:1288&lt;/a&gt;)&lt;/p&gt;&lt;p&gt;&quot;Step 0&quot; (&lt;a href=&quot;zotero://open-pdf/library/items/U33ZPS9U?page=3&quot;&gt;Vincent and Thompson 2017:1288&lt;/a&gt;)&lt;/p&gt;&lt;p&gt;&quot;Step t&quot; (&lt;a href=&quot;zotero://open-pdf/library/items/U33ZPS9U?page=3&quot;&gt;Vincent and Thompson 2017:1288&lt;/a&gt;)&lt;/p&gt;&lt;p&gt;&quot;M t&quot; (&lt;a href=&quot;zotero://open-pdf/library/items/U33ZPS9U?page=3&quot;&gt;Vincent and Thompson 2017:1288&lt;/a&gt;)&lt;/p&gt;&lt;p&gt;&quot;s k,t&quot; (&lt;a href=&quot;zotero://open-pdf/library/items/U33ZPS9U?page=3&quot;&gt;Vincent and Thompson 2017:1288&lt;/a&gt;)&lt;/p&gt;&lt;p&gt;&quot;order within samples of subsequently selected units&quot; (&lt;a href=&quot;zotero://open-pdf/library/items/U33ZPS9U?page=4&quot;&gt;Vincent and Thompson 2017:1289&lt;/a&gt;)&lt;/p&gt;&lt;p&gt;&quot;sample selection procedure&quot; (&lt;a href=&quot;zotero://open-pdf/library/items/U33ZPS9U?page=4&quot;&gt;Vincent and Thompson 2017:1289&lt;/a&gt;)&lt;/p&gt;&lt;p&gt;&quot;Specifically&quot; (&lt;a href=&quot;zotero://open-pdf/library/items/U33ZPS9U?page=4&quot;&gt;Vincent and Thompson 2017:1289&lt;/a&gt;)&lt;/p&gt;&lt;p&gt;&quot;data&quot; (&lt;a href=&quot;zotero://open-pdf/library/items/U33ZPS9U?page=4&quot;&gt;Vincent and Thompson 2017:1289&lt;/a&gt;)&lt;/p&gt;</rdf:value>
+    </bib:Memo>
+    <z:Attachment rdf:about="#item_32">
+        <z:itemType>attachment</z:itemType>
+        <dc:subject>_tablet</dc:subject>
+        <dc:title>Vincent and Thompson - 2017 - Estimating Population Size With Link-Tracing Sampling.pdf</dc:title>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://www.tandfonline.com/doi/pdf/10.1080/01621459.2016.1212712</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dcterms:dateSubmitted>2023-06-08 17:53:57</dcterms:dateSubmitted>
+        <z:linkMode>3</z:linkMode>
+        <link:type>application/pdf</link:type>
+        <dc:description>&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p id=&quot;zotfile-data&quot; style=&quot;color: #cccccc;&quot; title=&quot;{&amp;quot;lastmod&amp;quot;:1698419159000,&amp;quot;mode&amp;quot;:1,&amp;quot;location&amp;quot;:&amp;quot;[BaseFolder]/#RL/Vincent and Thompson - 2017 - Estimating Population Size With Link-Tracing Sampling.pdf&amp;quot;,&amp;quot;projectFolder&amp;quot;:&amp;quot;#RL&amp;quot;}&quot;&gt;(hidden zotfile data)&lt;/p&gt;&lt;/body&gt;</dc:description>
+    </z:Attachment>
+    <bib:Article rdf:about="#item_33">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>83</prism:volume>
+                <dc:title>Journal of Urban Health</dc:title>
+                <prism:number>3</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Abdul-Quader</foaf:surname>
+                        <foaf:givenName>A.S.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Heckathorn</foaf:surname>
+                        <foaf:givenName>D.D.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>McKnight</foaf:surname>
+                        <foaf:givenName>C.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Bramson</foaf:surname>
+                        <foaf:givenName>H.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Nemeth</foaf:surname>
+                        <foaf:givenName>C.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Sabin</foaf:surname>
+                        <foaf:givenName>K.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Gallagher</foaf:surname>
+                        <foaf:givenName>K.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Jarlais</foaf:surname>
+                        <foaf:givenName>D.C.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Effectiveness of respondent-driven sampling for recruiting drug users in New York City: findings from a pilot study</dc:title>
+        <dc:date>2006</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: 3</dc:description>
+        <bib:pages>459–76</bib:pages>
+    </bib:Article>
+    <bib:Report rdf:about="#item_34">
+        <z:itemType>report</z:itemType>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Bernhardt</foaf:surname>
+                        <foaf:givenName>A.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Milkman</foaf:surname>
+                        <foaf:givenName>R.Theodore</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                   <foaf:Person><foaf:surname>N.</foaf:surname></foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Broken laws, unprotected workers: Violations of employment and labor laws in america's cities</dc:title>
+        <dc:date>2009</dc:date>
+        <z:language>en</z:language>
+        <z:type>UCLA IRLE Report.</z:type>
+    </bib:Report>
+    <bib:Article rdf:about="#item_35">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>28</prism:volume>
+                <dc:title>IRB: Ethics &amp; Human Research</dc:title>
+                <prism:number>1</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Brown</foaf:surname>
+                        <foaf:givenName>J.S.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Schonfeld</foaf:surname>
+                        <foaf:givenName>T.L.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Gordon</foaf:surname>
+                        <foaf:givenName>B.G.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>You may have already won...”: An examination of the use of lottery payments in research</dc:title>
+        <dc:date>2006</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: 1</dc:description>
+        <bib:pages>12–16</bib:pages>
+    </bib:Article>
+    <bib:Article rdf:about="#item_36">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>48</prism:volume>
+                <dc:title>International Migration</dc:title>
+                <prism:number>4</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Brunovskis</foaf:surname>
+                        <foaf:givenName>A.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Surtees</foaf:surname>
+                        <foaf:givenName>R.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Untold stories: biases and selection effects in research with victims of trafficking for sexual exploitation</dc:title>
+        <dc:date>2010</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: 4</dc:description>
+        <bib:pages>1–37</bib:pages>
+    </bib:Article>
+    <bib:Article rdf:about="#item_37">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>45</prism:volume>
+                <dc:title>International Journal of Market Research</dc:title>
+                <prism:number>4</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Cobanoglu</foaf:surname>
+                        <foaf:givenName>C.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Cobanoglu</foaf:surname>
+                        <foaf:givenName>N.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>The effect of incentives in web surveys: application and ethical considerations</dc:title>
+        <dc:date>2003</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: 4</dc:description>
+        <bib:pages>1–13</bib:pages>
+    </bib:Article>
+    <bib:Article rdf:about="#item_38">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>99</prism:volume>
+                <dc:title>American Journal of Public Health</dc:title>
+                <prism:number>9</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>DeJong</foaf:surname>
+                        <foaf:givenName>J.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Mahfoud</foaf:surname>
+                        <foaf:givenName>Z.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Khoury</foaf:surname>
+                        <foaf:givenName>D.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Barbir</foaf:surname>
+                        <foaf:givenName>F.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Afifi</foaf:surname>
+                        <foaf:givenName>R.A.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Ethical considerations in HIV/AIDS biobehavioral surveys that use respondent-driven sampling: illustrations from Lebanon</dc:title>
+        <dc:date>2009</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: 9</dc:description>
+        <bib:pages>1562–1567</bib:pages>
+    </bib:Article>
+    <bib:Article rdf:about="#item_39">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>10</prism:volume>
+                <dc:title>Journal of Official Statistics-Stockholm</dc:title>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Frank</foaf:surname>
+                        <foaf:givenName>O.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Snijders</foaf:surname>
+                        <foaf:givenName>T.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Estimating the size of hidden populations using snowball sampling</dc:title>
+        <dc:date>1994</dc:date>
+        <z:language>en</z:language>
+        <bib:pages>53–53</bib:pages>
+    </bib:Article>
+    <bib:Article rdf:about="#item_40">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>13</prism:volume>
+                <dc:title>The European Journal of Health Economics</dc:title>
+                <prism:number>6</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Gajic</foaf:surname>
+                        <foaf:givenName>A.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Cameron</foaf:surname>
+                        <foaf:givenName>D.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Hurley</foaf:surname>
+                        <foaf:givenName>J.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>The cost-effectiveness of cash versus lottery incentives for a web-based, stated-preference community survey</dc:title>
+        <dc:date>2012</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: 6</dc:description>
+        <bib:pages>789–799</bib:pages>
+    </bib:Article>
+    <bib:Article rdf:about="#item_41">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>41</prism:volume>
+                <dc:title>Sociological Methodology</dc:title>
+                <prism:number>1</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Goodman</foaf:surname>
+                        <foaf:givenName>L.A.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Comment: On respondent-driven sampling and snowball sampling in hard-to-reach populations and snowball sampling not in hard-to-reach populations</dc:title>
+        <dc:date>2011</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: 1</dc:description>
+        <bib:pages>347–353</bib:pages>
+    </bib:Article>
+    <rdf:Description rdf:about="https://researchbriefings.files.parliament.uk/documents/SN04786/SN04786.pdf">
+        <z:itemType>document</z:itemType>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Gower</foaf:surname>
+                        <foaf:givenName>M.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dcterms:isReferencedBy rdf:resource="#item_43"/>
+        <dc:title>Calls to change overseas domestic worker visa conditions</dc:title>
+        <dc:date>2016</dc:date>
+        <z:language>en</z:language>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://researchbriefings.files.parliament.uk/documents/SN04786/SN04786.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+    </rdf:Description>
+    <bib:Memo rdf:about="#item_43">
+        <rdf:value>Briefing paper Number 4786 House of Commons Library Available at:</rdf:value>
+    </bib:Memo>
+    <bib:Article rdf:about="#item_44">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>44</prism:volume>
+                <dc:title>Social Problems</dc:title>
+                <prism:number>2</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Heckathorn</foaf:surname>
+                        <foaf:givenName>D.D.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Respondent-driven sampling: A new approach to the study of hidden populations</dc:title>
+        <dc:date>1997</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: 2</dc:description>
+        <bib:pages>174–199</bib:pages>
+    </bib:Article>
+    <bib:Article rdf:about="#item_45">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>49</prism:volume>
+                <dc:title>Social problems</dc:title>
+                <prism:number>1</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Heckathorn</foaf:surname>
+                        <foaf:givenName>D.D.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Respondent-driven sampling II: deriving valid population estimates from chain-referral samples of hidden populations</dc:title>
+        <dc:date>2002</dc:date>
+        <z:language>pt</z:language>
+        <dc:description>Number: 1</dc:description>
+        <bib:pages>11–34</bib:pages>
+    </bib:Article>
+    <bib:Article rdf:about="#item_46">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>41</prism:volume>
+                <dc:title>Sociological Methodology</dc:title>
+                <prism:number>1</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Heckathorn</foaf:surname>
+                        <foaf:givenName>D.D.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Comment: Snowball versus respondent-driven sampling</dc:title>
+        <dc:date>2011</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: 1</dc:description>
+        <bib:pages>355–366</bib:pages>
+    </bib:Article>
+    <rdf:Description rdf:about="https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-june-2023/why-do-people-come-to-the-uk-to-work">
+        <z:itemType>document</z:itemType>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Office</foaf:surname>
+                        <foaf:givenName>Home</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dcterms:isReferencedBy rdf:resource="#item_48"/>
+        <dc:title>Why do people come to the UK to work?</dc:title>
+        <dc:date>2023</dc:date>
+        <z:language>en</z:language>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-june-2023/why-do-people-come-to-the-uk-to-work</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+    </rdf:Description>
+   <bib:Memo rdf:about="#item_48"><rdf:value>Available at:</rdf:value></bib:Memo>
+    <rdf:Description rdf:about="https://www.ilo.org/global/topics/forced-labour/publications/WCMS_203832/lang--en/index.htm">
+        <z:itemType>document</z:itemType>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                   <foaf:Person><foaf:surname>I.L.O.</foaf:surname></foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dcterms:isReferencedBy rdf:resource="#item_50"/>
+        <dc:title>ILO indicators of forced labour</dc:title>
+        <dc:date>2011</dc:date>
+        <z:language>en</z:language>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://www.ilo.org/global/topics/forced-labour/publications/WCMS_203832/lang--en/index.htm</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:description>Citation Key: ILO11-indicators</dc:description>
+    </rdf:Description>
+   <bib:Memo rdf:about="#item_50"><rdf:value>Available at:</rdf:value></bib:Memo>
+    <rdf:Description rdf:about="https://www.ilo.org/dyn/normlex/en/f?p=NORMLEXPUB:12100:0::NO::P12100_ILO_CODE:C189.">
+        <z:itemType>document</z:itemType>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                   <foaf:Person><foaf:surname>I.L.O.</foaf:surname></foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dcterms:isReferencedBy rdf:resource="#item_52"/>
+        <dc:title>C189-domestic workers convention 2011</dc:title>
+        <dc:date>2011</dc:date>
+        <z:language>en</z:language>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://www.ilo.org/dyn/normlex/en/f?p=NORMLEXPUB:12100:0::NO::P12100_ILO_CODE:C189.</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+        <dc:description>Citation Key: ILO11-c189domestic</dc:description>
+    </rdf:Description>
+    <bib:Memo rdf:about="#item_52">
+       <rdf:value>No. 189). Available at: .</rdf:value>
+    </bib:Memo>
+    <bib:Article rdf:about="#item_53">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>63</prism:volume>
+                <dc:title>International Social Work</dc:title>
+                <prism:number>3</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Jordan</foaf:surname>
+                        <foaf:givenName>L.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Chui</foaf:surname>
+                        <foaf:givenName>C.H.K.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Larmar</foaf:surname>
+                        <foaf:givenName>S.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>O’Leary</foaf:surname>
+                        <foaf:givenName>P.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Overcoming methodological challenges in prevalence studies in developing contexts with vulnerable children</dc:title>
+        <dc:date>2020</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: 3</dc:description>
+        <bib:pages>371–385</bib:pages>
+    </bib:Article>
+    <rdf:Description rdf:about="http://www.kalayaan.org.uk/documents/Kalayaan%20Oxfam%20report.pdf">
+        <z:itemType>document</z:itemType>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                       <foaf:surname>Kalayaan</foaf:surname>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dcterms:isReferencedBy rdf:resource="#item_55"/>
+        <dc:title>The new bonded labour?</dc:title>
+        <dc:date>2008</dc:date>
+        <z:language>en</z:language>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>http://www.kalayaan.org.uk/documents/Kalayaan%20Oxfam%20report.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+    </rdf:Description>
+    <bib:Memo rdf:about="#item_55">
+       <rdf:value>Accessed 24 November 2023).</rdf:value>
+    </bib:Memo>
+    <bib:Article rdf:about="#item_56">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>52</prism:volume>
+                <dc:title>Research in Higher Education</dc:title>
+                <prism:number>5</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Laguilles</foaf:surname>
+                        <foaf:givenName>J.S.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Williams</foaf:surname>
+                        <foaf:givenName>E.A.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Saunders</foaf:surname>
+                        <foaf:givenName>D.B.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Can lottery incentives boost web survey response rates? Findings from four experiments</dc:title>
+        <dc:date>2011</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: 5</dc:description>
+        <bib:pages>537–553</bib:pages>
+    </bib:Article>
+    <rdf:Description rdf:about="https://lawrs.org.uk/wp-content/uploads/2023/08/Behind-closed-doors_domestic_work.pdf">
+        <z:itemType>document</z:itemType>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Service</foaf:surname>
+                        <foaf:givenName>Latin American Women’s Rights</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dcterms:isReferencedBy rdf:resource="#item_58"/>
+        <dc:title>Behind closed doors: Experiences of Latin American domestic workers in the UK</dc:title>
+        <dc:date>2023</dc:date>
+        <z:language>en</z:language>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://lawrs.org.uk/wp-content/uploads/2023/08/Behind-closed-doors_domestic_work.pdf</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+    </rdf:Description>
+   <bib:Memo rdf:about="#item_58"><rdf:value>Available at:</rdf:value></bib:Memo>
+    <bib:BookSection rdf:about="https://blogs.lse.ac.uk/politicsandpolicy/exploitation-of-migrant-domestic-workers-in-the-uk/.">
+        <z:itemType>bookSection</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Book>
+               <dc:title>British politics and policy at LSE</dc:title>
+            </bib:Book>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Mantouvalou</foaf:surname>
+                        <foaf:givenName>V.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dcterms:isReferencedBy rdf:resource="#item_60"/>
+        <dc:title>Modern slavery? The UK visa system and the exploitation of migrant domestic workers</dc:title>
+        <dc:date>2016</dc:date>
+        <z:language>en</z:language>
+        <dc:identifier>
+            <dcterms:URI>
+                <rdf:value>https://blogs.lse.ac.uk/politicsandpolicy/exploitation-of-migrant-domestic-workers-in-the-uk/.</rdf:value>
+            </dcterms:URI>
+        </dc:identifier>
+    </bib:BookSection>
+   <bib:Memo rdf:about="#item_60"><rdf:value>Available at:</rdf:value></bib:Memo>
+    <bib:Article rdf:about="#item_61">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>10</prism:volume>
+                <dc:title>International Journal of Health Geography</dc:title>
+                <prism:number>56</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>McCreesh</foaf:surname>
+                        <foaf:givenName>N.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Johnston</foaf:surname>
+                        <foaf:givenName>L.G.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Copas</foaf:surname>
+                        <foaf:givenName>A.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Evaluation of the role of location and distance in recruitment in respondent-driven sampling</dc:title>
+        <dc:date>2011</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: 56</dc:description>
+    </bib:Article>
+    <bib:Article rdf:about="#item_62">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>8</prism:volume>
+                <dc:title>PLoS ONE</dc:title>
+                <prism:number>10</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>McCreesh</foaf:surname>
+                        <foaf:givenName>N.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Copas</foaf:surname>
+                        <foaf:givenName>A.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Seeley</foaf:surname>
+                        <foaf:givenName>J.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Johnston</foaf:surname>
+                        <foaf:givenName>L.G.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Sonnenberg</foaf:surname>
+                        <foaf:givenName>P.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Hayes</foaf:surname>
+                        <foaf:givenName>R.J.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Respondent driven sampling: Determinants of recruitment and a method to improve point estimation</dc:title>
+        <dc:date>2013</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: 10</dc:description>
+    </bib:Article>
+    <bib:Article rdf:about="#item_63">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>33</prism:volume>
+                <dc:title>Demographic Research</dc:title>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Platt</foaf:surname>
+                        <foaf:givenName>L.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Luthra</foaf:surname>
+                        <foaf:givenName>R.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Frere-Smith</foaf:surname>
+                        <foaf:givenName>T.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Adapting chain referral methods to sample new migrants: Possibilities and limitations</dc:title>
+        <dc:date>2015</dc:date>
+        <z:language>en</z:language>
+        <bib:pages>665–700</bib:pages>
+    </bib:Article>
+    <bib:Article rdf:about="#item_64">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>11</prism:volume>
+                <dc:title>Qualitative research in psychology</dc:title>
+                <prism:number>1</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Robinson</foaf:surname>
+                        <foaf:givenName>O.C.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Sampling in interview-based qualitative research: A theoretical and practical guide</dc:title>
+        <dc:date>2014</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: 1</dc:description>
+        <bib:pages>25–41</bib:pages>
+    </bib:Article>
+    <bib:Article rdf:about="#item_65">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>19</prism:volume>
+                <dc:title>AIDS Behaviour</dc:title>
+                <prism:number>Supply Nr 1</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Schwitters</foaf:surname>
+                        <foaf:givenName>A.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Swaminathan</foaf:surname>
+                        <foaf:givenName>M.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Serwadda</foaf:surname>
+                        <foaf:givenName>D.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Prevalence of rape and client-initiated gender-based violence among female sex workers: Kampala, uganda</dc:title>
+        <dc:date>2012</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: Supply Nr 1</dc:description>
+        <bib:pages>68–76</bib:pages>
+    </bib:Article>
+    <bib:Article rdf:about="#item_66">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>20</prism:volume>
+                <dc:title>International Journal of Drug Policy</dc:title>
+                <prism:number>1</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Semaan</foaf:surname>
+                        <foaf:givenName>S.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Santibanez</foaf:surname>
+                        <foaf:givenName>S.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Garfein</foaf:surname>
+                        <foaf:givenName>R.S.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Heckathorn</foaf:surname>
+                        <foaf:givenName>D.D.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Jarlais</foaf:surname>
+                        <foaf:givenName>D.C.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Ethical and regulatory considerations in HIV prevention studies employing respondent-driven sampling</dc:title>
+        <dc:date>2009</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: 1</dc:description>
+        <bib:pages>14–27</bib:pages>
+    </bib:Article>
+    <bib:Article rdf:about="#item_67">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>5</prism:volume>
+                <dc:title>Methodological Innovations Online</dc:title>
+                <prism:number>2</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Semaan</foaf:surname>
+                        <foaf:givenName>S.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Time-space sampling and respondent-driven sampling with hard-to-reach populations</dc:title>
+        <dc:date>2010</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: 2</dc:description>
+        <bib:pages>60–75</bib:pages>
+    </bib:Article>
+    <bib:Article rdf:about="#item_68">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>31</prism:volume>
+                <dc:title>American journal of preventive medicine</dc:title>
+                <prism:number>5</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Singer</foaf:surname>
+                        <foaf:givenName>E.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Bossarte</foaf:surname>
+                        <foaf:givenName>R.M.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Incentives for survey participation: when are they “coercive”?</dc:title>
+        <dc:date>2006</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: 5</dc:description>
+        <bib:pages>411–418</bib:pages>
+    </bib:Article>
+    <rdf:Description rdf:about="#item_69">
+        <z:itemType>document</z:itemType>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Strauss</foaf:surname>
+                        <foaf:givenName>D.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Cocco</foaf:surname>
+                        <foaf:givenName>F.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Britain after Brexit: The surprising surge in skilled migrants</dc:title>
+        <dc:date>2023</dc:date>
+        <z:language>en</z:language>
+    </rdf:Description>
+    <rdf:Description rdf:about="#item_70">
+        <z:itemType>document</z:itemType>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Thompson</foaf:surname>
+                        <foaf:givenName>S.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dcterms:isReferencedBy rdf:resource="#item_71"/>
+        <dc:title>New estimates for network sampling</dc:title>
+        <dc:date>2020</dc:date>
+        <z:language>en</z:language>
+        <dc:description>tex.arxiv: 2002.01350</dc:description>
+    </rdf:Description>
+    <bib:Memo rdf:about="#item_71">
+       <rdf:value>arXiv preprint arXiv:2002.01350.</rdf:value>
+    </bib:Memo>
+    <bib:Article rdf:about="#item_72">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>24</prism:volume>
+                <dc:title>International Journal of Social Research Methodology</dc:title>
+                <prism:number>3</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Tyldum</foaf:surname>
+                        <foaf:givenName>G.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Surveying migrant populations with respondent-driven sampling. Experiences from surveys of east-west migration in Europe</dc:title>
+        <dc:date>2021</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: 3</dc:description>
+        <bib:pages>341–35</bib:pages>
+    </bib:Article>
+    <bib:Article rdf:about="#item_73">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>78</prism:volume>
+                <dc:title>Drug and alcohol dependence</dc:title>
+                <prism:number>2</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Wang</foaf:surname>
+                        <foaf:givenName>J.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Carlson</foaf:surname>
+                        <foaf:givenName>R.G.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Falck</foaf:surname>
+                        <foaf:givenName>R.S.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Siegal</foaf:surname>
+                        <foaf:givenName>H.A.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Rahman</foaf:surname>
+                        <foaf:givenName>A.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Li</foaf:surname>
+                        <foaf:givenName>L.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Respondent-driven sampling to recruit MDMA users: a methodological assessment</dc:title>
+        <dc:date>2005</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: 2</dc:description>
+        <bib:pages>147–157</bib:pages>
+    </bib:Article>
+    <bib:Article rdf:about="#item_74">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>37</prism:volume>
+                <dc:title>Sociological Methods &amp; Research</dc:title>
+                <prism:number>1</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Wejnert</foaf:surname>
+                        <foaf:givenName>C.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Heckathorn</foaf:surname>
+                        <foaf:givenName>D.D.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Web-based network sampling: efficiency and efficacy of respondent-driven sampling for online research</dc:title>
+        <dc:date>2008</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: 1</dc:description>
+        <bib:pages>105–134</bib:pages>
+    </bib:Article>
+    <bib:Article rdf:about="#item_75">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>58</prism:volume>
+                <dc:title>Crime, Law and Social Change</dc:title>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Zhang</foaf:surname>
+                        <foaf:givenName>S.X.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Measuring labour trafficking: a research note</dc:title>
+        <dc:date>2012</dc:date>
+        <z:language>en</z:language>
+        <bib:pages>469–482</bib:pages>
+    </bib:Article>
+    <bib:Article rdf:about="#item_76">
+        <z:itemType>journalArticle</z:itemType>
+        <dcterms:isPartOf>
+            <bib:Journal>
+                <prism:volume>14</prism:volume>
+                <dc:title>Victims &amp; Offenders</dc:title>
+                <prism:number>7</prism:number>
+            </bib:Journal>
+        </dcterms:isPartOf>
+        <bib:authors>
+            <rdf:Seq>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Zhang</foaf:surname>
+                        <foaf:givenName>S.X.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Dank</foaf:surname>
+                        <foaf:givenName>M.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Vincent</foaf:surname>
+                        <foaf:givenName>K.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Narayanan</foaf:surname>
+                        <foaf:givenName>P.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Bharadwaj</foaf:surname>
+                        <foaf:givenName>S.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+                <rdf:li>
+                    <foaf:Person>
+                        <foaf:surname>Balasubramaniam</foaf:surname>
+                        <foaf:givenName>S.M.</foaf:givenName>
+                    </foaf:Person>
+                </rdf:li>
+            </rdf:Seq>
+        </bib:authors>
+        <dc:title>Victims without a voice: Measuring worst forms of child labor in the Indian State of Bihar</dc:title>
+        <dc:date>2019</dc:date>
+        <z:language>en</z:language>
+        <dc:description>Number: 7</dc:description>
+        <bib:pages>832–858</bib:pages>
+    </bib:Article>
+    <z:Collection rdf:about="#collection_1">
+        <dc:title>CE_GNSUM_bib</dc:title>
+        <dcterms:hasPart rdf:resource="http://onlinelibrary.wiley.com/doi/abs/10.1111/rssa.12091"/>
+        <dcterms:hasPart rdf:resource="https://www.jstor.org/stable/23214188"/>
+        <dcterms:hasPart rdf:resource="https://www.annualreviews.org/doi/10.1146/annurev-statistics-031017-100704"/>
+        <dcterms:hasPart rdf:resource="https://doi.org/10.1080/01621459.2016.1212712"/>
+        <dcterms:hasPart rdf:resource="#item_33"/>
+        <dcterms:hasPart rdf:resource="#item_34"/>
+        <dcterms:hasPart rdf:resource="#item_35"/>
+        <dcterms:hasPart rdf:resource="#item_36"/>
+        <dcterms:hasPart rdf:resource="#item_37"/>
+        <dcterms:hasPart rdf:resource="#item_38"/>
+        <dcterms:hasPart rdf:resource="#item_39"/>
+        <dcterms:hasPart rdf:resource="#item_40"/>
+        <dcterms:hasPart rdf:resource="#item_41"/>
+        <dcterms:hasPart rdf:resource="https://researchbriefings.files.parliament.uk/documents/SN04786/SN04786.pdf"/>
+        <dcterms:hasPart rdf:resource="#item_44"/>
+        <dcterms:hasPart rdf:resource="#item_45"/>
+        <dcterms:hasPart rdf:resource="#item_46"/>
+        <dcterms:hasPart rdf:resource="https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-june-2023/why-do-people-come-to-the-uk-to-work"/>
+        <dcterms:hasPart rdf:resource="https://www.ilo.org/global/topics/forced-labour/publications/WCMS_203832/lang--en/index.htm"/>
+        <dcterms:hasPart rdf:resource="https://www.ilo.org/dyn/normlex/en/f?p=NORMLEXPUB:12100:0::NO::P12100_ILO_CODE:C189."/>
+        <dcterms:hasPart rdf:resource="#item_53"/>
+        <dcterms:hasPart rdf:resource="http://www.kalayaan.org.uk/documents/Kalayaan%20Oxfam%20report.pdf"/>
+        <dcterms:hasPart rdf:resource="#item_56"/>
+        <dcterms:hasPart rdf:resource="https://lawrs.org.uk/wp-content/uploads/2023/08/Behind-closed-doors_domestic_work.pdf"/>
+        <dcterms:hasPart rdf:resource="https://blogs.lse.ac.uk/politicsandpolicy/exploitation-of-migrant-domestic-workers-in-the-uk/."/>
+        <dcterms:hasPart rdf:resource="#item_61"/>
+        <dcterms:hasPart rdf:resource="#item_62"/>
+        <dcterms:hasPart rdf:resource="#item_63"/>
+        <dcterms:hasPart rdf:resource="#item_64"/>
+        <dcterms:hasPart rdf:resource="#item_65"/>
+        <dcterms:hasPart rdf:resource="#item_66"/>
+        <dcterms:hasPart rdf:resource="#item_67"/>
+        <dcterms:hasPart rdf:resource="#item_68"/>
+        <dcterms:hasPart rdf:resource="#item_69"/>
+        <dcterms:hasPart rdf:resource="#item_70"/>
+        <dcterms:hasPart rdf:resource="#item_72"/>
+        <dcterms:hasPart rdf:resource="#item_73"/>
+        <dcterms:hasPart rdf:resource="#item_74"/>
+        <dcterms:hasPart rdf:resource="#item_75"/>
+        <dcterms:hasPart rdf:resource="#item_76"/>
+    </z:Collection>
+</rdf:RDF>

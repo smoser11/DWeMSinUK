@@ -1,0 +1,1296 @@
+Received: from AS4PR06MB8518.eurprd06.prod.outlook.com (2603:10a6:20b:4e5::10)
+ by AS8PR06MB7301.eurprd06.prod.outlook.com with HTTPS; Mon, 3 Feb 2025
+ 09:08:59 +0000
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=exmail.nottingham.ac.uk;
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com (2603:10a6:20b:99::17)
+ by AS4PR06MB8518.eurprd06.prod.outlook.com (2603:10a6:20b:4e5::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8398.23; Mon, 3 Feb
+ 2025 09:08:58 +0000
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::78bf:18af:f6eb:65ba]) by AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::78bf:18af:f6eb:65ba%6]) with mapi id 15.20.8398.021; Mon, 3 Feb 2025
+ 09:08:58 +0000
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: IJOPM Call for Papers
+Thread-Topic: IJOPM Call for Papers
+Thread-Index: AQHbShxDvMy/pEArAkainibVNNsnF7MD5AgAgAEGQ5mAHJnLhIAS/WoAgAEgLDM=
+Date: Mon, 3 Feb 2025 09:08:58 +0000
+Message-ID:
+ <AM6PR06MB5941B904FC0221F9AC656036A0F52@AM6PR06MB5941.eurprd06.prod.outlook.com>
+References:
+ <AM6PR06MB5941F0BAD963CCCA16A462F3A03C2@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <EC680850-53C1-4BC2-8AC3-3EF0D2774081@nottingham.ac.uk>
+ <AM6PR06MB594102B3E6508A0785917472A0152@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <AM6PR06MB5941363DA02AE852A3895240A0E62@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <15CD16BA-CAA0-4918-A02E-E1252B04B74C@nottingham.ac.uk>
+In-Reply-To: <15CD16BA-CAA0-4918-A02E-E1252B04B74C@nottingham.ac.uk>
+Accept-Language: en-GB, en-US
+Content-Language: en-GB
+X-MS-Has-Attach: yes
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+ <AM6PR06MB5941B904FC0221F9AC656036A0F52@AM6PR06MB5941.eurprd06.prod.outlook.com>
+msip_labels:
+MIME-Version: 1.0
+X-MS-Exchange-Organization-MessageDirectionality: Originating
+X-MS-Exchange-Organization-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-Network-Message-Id:
+ 8d48094c-a5c6-4b54-9a9d-08dd4432647f
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ AM6PR06MB5941:EE_|AS4PR06MB8518:EE_|AS8PR06MB7301:EE_
+Return-Path: lizce@exmail.nottingham.ac.uk
+X-MS-Exchange-Organization-ExpirationStartTime: 03 Feb 2025 09:08:58.3871
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Office365-Filtering-Correlation-Id: 8d48094c-a5c6-4b54-9a9d-08dd4432647f
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-Microsoft-Antispam:
+ BCL:0;ARA:13230040|366016|7053199007|13003099007|8096899003|41050700001;
+X-Forefront-Antispam-Report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR06MB5941.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(7053199007)(13003099007)(8096899003)(41050700001);DIR:INT;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Feb 2025 09:08:58.1392
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8d48094c-a5c6-4b54-9a9d-08dd4432647f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: rn4aIf3dOiSxBWumnnQu0urNe/6WAfT2jyn6SoOkL3ZgOOi16lkSE7WUTcbFfpxlg8zitSzRu5vltMEgI3Bmwr4CQfXul4dKae/Mij5fTfK0Gg3F/dBQ52pxYq4UbMlH
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS4PR06MB8518
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:01.6059240
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.8398.018
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(425001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	vbJP6B2LCvxL4TuI2AODLsxx2JatYmn4Jpg5mK/LAuZ9cQSlycBu+SVC52ZTbXGMt7ql9owaVrRJhz7tuZaIAbCc+uhRgnITaJlrao2eboUUfKMSwAnXJPn1BdXx+/mkRMvoxFmgTLYVmDyDqm/7Ukp2OM2mLzs22fUpgQpYikFP/2Bcv8OqUvwdEE57QGxlZX0b4kSUEI7kIlnTqFoEJl/vB/lqOOXmQ/RV/I2Dn7dtcesNFwmpt09andN29+FVfgb/rpIlhAtGI6ALF4HhSQ0E+5tM1jFPN+U227t/22AS3GlibOuiRr0xKNTZ8sRxWnATiG4Mrvu19c1xfZvimDKYItKMgLfaWPTsnHUIqpflsNNHmib4HCDENqAXbh8rx1+4Cv5Kz9YTzw499YuBQElxmJ9UHqqCznvfp1R8ZQjlkFQjp6DubikPLKfuq1cgul7vb4C4kZh8cQApMuDTAsM5FnLwjTiUwZu+naGLF/8jOLn+k2z2qGqV2subZ+wWtzEUB+K5sUI5+2IWDf7VdTKz3bVr2mdFbl1IKG/c0N8YrEaADIQm19C4RftridRvmphETrhm1LCY6Ez3TxjWCRA7ElpKX5LasQnlkpxcLABQPA6qYhBibPafMuU056XuVS+HZTVQ8Wq3qN8h/G0VAcQrMmcKgV+syRtQYymxxVNVvY9YeQ3ddC5ANp5wOTJLgtCuR5+VrMYmd0p0XaSsZSNLN1EN2IrHdQJkcwVLwzwwzP+3AxFOxd1QZz1SI/zQXAL099D97daO6PAhJT4HvLhPN8crekxEEI51EhV8mBknf957y6auNLti0dHkHDcl
+Content-type: multipart/mixed;
+	boundary="B_3821427488_742721983"
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3821427488_742721983
+Content-type: multipart/related;
+	boundary="B_3821427488_1840801905"
+
+--B_3821427488_1840801905
+Content-type: multipart/alternative;
+	boundary="B_3821427488_953523638"
+
+
+--B_3821427488_953523638
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+Hi Scott,
+
+Lovely to hear from you. Glad to hear that you have got the marking out of =
+the way. Friday is a good day for a Teams call. Anytime except between 12-2.=
+30 or after 4pm would be good for me.
+
+Best wishes
+Caroline
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (FHEA)
+
+
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB=20
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 02 February 2025 15:55
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Subject: Re: IJOPM Call for Papers=20
+=20
+Hi Caroline!
+
+=20
+
+I am sorry for the long tardiness.  Jan was very stressful with marking, bu=
+t done now!  I am so sorry your Spring term is busy with extra teaching.  We=
+ seem to be perfectly out of sync, I am afraid (=3D my spring teaching is rath=
+er light).    I want to return to our project and finish it off.  I confess =
+I need a few days to reorient myself.  I honestly don=E2=80=99t remember where we =
+are, but I know I have (at least) two  substantial tasks regarding analysis.=
+ =20
+
+What does your weekly schedule look like?  Teams on Friday?  Or if you have=
+ any instructions for me I=E2=80=99d welcome them!
+
+=20
+
+Stay warm,
+
+Scott
+
+=20
+
+=20
+
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+Date: Tuesday 21 January 2025 at 13:59
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: IJOPM Call for Papers
+
+=20
+
+Hi Scott,
+
+=20
+
+Hope your marking is going well (if indeed this is what you are doing!)
+
+=20
+
+The business school have announced a small pot of money to support the deve=
+lopment of 4 * journal articles. This is worth a max of =C2=A32000 and must be s=
+pent by 31 July. Just flagging this in case this would help with our IJOPM a=
+nalysis...
+
+=20
+
+Further details can be found here: https://uniofnottm.sharepoint.com/sites/=
+NUBSstaffinfo/SitePages/4--Output-Publication-Boost-Small-Grants-Funding.asp=
+x
+
+=20
+
+I am just about to disappear under a tsunami of teaching - so apologies if =
+I am a bit slow to respond this term - it does not indicate a lack of intere=
+st.
+
+=20
+
+Best wishes
+
+Caroline
+
+=20
+
+=20
+
+=20
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (FHEA)
+
+=20
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB=20
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+=20
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+=20
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+=20
+
+Book time to meet with me
+From: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Sent: 03 January 2025 10:08
+To: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: IJOPM Call for Papers=20
+
+=20
+
+Hi Scott,
+
+=20
+
+A very Happy New Year to you too. I hope that you have had a great time in =
+Texas.  So glad that you think this is a good submission target for our work=
+. I know two of the guest editors - both of whom have published in the moder=
+n slavery field and one of whom (Stefan Gold) used to be at Nottingham.
+
+=20
+
+I've sketched out some answers to your first thoughts/questions below:
+
+=20
+
+What is the timeline (e.g. for submission)?
+
+=20
+
+Submissions open 1 June and close 30 September
+
+
+-What are the constraints (e.g. word count/ appendix/ referencing/ etc.)?
+
+=20
+
+Papers can be up to 12,000 words - this includes all text, references and a=
+ppendixes. Any form of Harvard referencing is acceptable. We must also allow=
+ 280 words for each figure or table. There is the option to provide 'supplem=
+entary materials' (also peer reviewed) to be hosted via an IJOPM site or in =
+a personal repository. . Full author guidelines can be found here: https://w=
+ww.emeraldgrouppublishing.com/journal/ijopm
+
+=20
+
+-- [Related] Who is the audience?  More specifically, to whom should we be =
+crafting the manuscript for? (the reviewers?  The readers?  Who are these pe=
+ople?  Sorry for my ignorance, but I know very little about this Journal/ fi=
+eld.)
+
+Initially, we obviously need to get this past the SI editorial team - and I=
+ think we stand a good chance of doing this. The main hurdle, I think, will =
+be articulating our theoretical contribution to operations and supply chain =
+management academics. The journal requires us to demonstrate both theoretica=
+l and methodological rigor and relevance. Operations management scholars use=
+ a range of quantitative, qualitative and mixed methods. They will be largel=
+y business school researchers interested in ops management theory and manage=
+rial practice. Domestic work does fit within the private service sector - bu=
+t we will need to make a case for its interest to ops management researchers=
+ and practitioners - perhaps advocating for a gendered sustainability lens? =
+I have had an earlier paper on the care sector rejected from this journal si=
+nce it was not deemed to be discipline-relevant so we will need to clearly a=
+rticulate its relevance
+
+-(SO SORRY but=E2=80=A6) what do we have yet to do? [I am fairly certain there ar=
+e at least two analyses that I have yet to perform.. I have some =E2=80=98ideas of=
+ a plan=E2=80=99 (yuk!) but do not know the specifics]
+
+From memory, you had completed the RDS and we had agreed that it would be p=
+ossible only to produce a proportional estimate of the hidden population siz=
+e (compared with the estimated number of domestic workers in the UK rather t=
+han based on NRM referrals)- which I think you were still working on. You'd =
+also mentioned sensitivity analyses. And there was the possibility of produc=
+ing a composite risk index - not sure where you were with these.
+
+=20
+
+Can we talk in late January?  Can we email in the meantime?
+
+My teaching starts w/c 28 January  - so very happy (and free-er) to email/c=
+hat before this which you are back in the UK. Let me know when you're free a=
+nd we can schedule a call.
+
+=20
+
+I'm currently working on synthesising the earlier article drafts that I had=
+ sent through to you -checking Zotero is up to date - and have worked up a c=
+ouple of introductory positioning paragraphs in response to the SI call. I'l=
+l send these through hopefully later today. Happy to continue to edit these =
+as we finalise thinks but just trying to capture some of the journey as we g=
+o - so I hope they will be useful as we finalise the article submission.
+
+=20
+
+ When I am in the UK I am almost always up for a Teams chat, if you have ti=
+me + interest.
+
+=20
+
+Just let me know when you are back in the UK and free for a chat.
+
+=20
+
+I'm really glad you're still up for this, Scott. I am fully committed to ge=
+tting this submission up and running and hope that the timeline may suit us.
+
+=20
+
+Best wishes
+
+Caroline
+
+=20
+
+=20
+
+=20
+
+=20
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (FHEA)
+
+=20
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB=20
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+=20
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+=20
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+=20
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 02 January 2025 23:31
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Subject: Re: IJOPM Call for Papers=20
+
+=20
+
+Dear Caroline,
+
+=20
+
+First, HAPPY NEW YEAR!  I hope you were able to enjoy the winter holidays a=
+nd relax some, too.
+
+=20
+
+I am sorry for not replying sooner.  This past Autumn was both the heaviest=
+ teaching and also my worst experience with admin and marking related duties=
+.  In any event, it is a new year!  Thank you SO MUCH for this email!  I loo=
+ked at International Journal of Operations & Production Management and I loo=
+ks like a *wonderful* venue for our work!
+
+I am in Texas at the moment, arriving back in the UK on Saturday  Yes, let =
+us PLEASE meet and talk and submit to this special issue.  Sadly, I will be =
+swamped with marking from Jan 6th.  But I will carve out time if need be to =
+make sure we get this to fruition.
+
+Some thoughts/ questions:
+
+=20
+
+-What is the timeline (e.g. for submission)?
+-What are the constraints (e.g. word count/ appendix/ referencing/ etc.)?
+
+-- [Related] Who is the audience?  More specifically, to whom should we be =
+crafting the manuscript for? (the reviewers?  The readers?  Who are these pe=
+ople?  Sorry for my ignorance, but I know very little about this Journal/ fi=
+eld.)
+-(SO SORRY but=E2=80=A6) what do we have yet to do? [I am fairly certain there ar=
+e at least two analyses that I have yet to perform.. I have some =E2=80=98ideas of=
+ a plan=E2=80=99 (yuk!) but do not know the specifics]
+
+Can we talk in late January?  Can we email in the meantime?  When I am in t=
+he UK I am almost always up for a Teams chat, if you have time + interest.
+
+=20
+
+Again, thank you so much for brining on your project, and for your kind pat=
+ience.  BTW: I am so sorry the Nuffield bid did not go through.  I really th=
+ought it was a good project proposal, and a great =E2=80=98team=E2=80=99.  Ah well.
+
+=20
+
+All the best,
+
+Scott
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+Date: Monday 9 December 2024 at 03:27
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+Subject: IJOPM Call for Papers
+
+=20
+
+Hi Scott,
+
+=20
+
+The call for papers that might provide a suitable outlet for our article is=
+ now out: Submission deadline 30 September 2025
+
+=20
+
+https://www.emeraldgrouppublishing.com/calls-for-papers/labour-exploitation=
+-oscm-research-combat-modern-slavery-human-trafficking-and
+
+=20
+
+Perhaps we can meet in January before the start of the spring semester to d=
+iscuss?
+
+=20
+
+Best wishes
+
+Caroline
+
+=20
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (FHEA)
+
+=20
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB=20
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+=20
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+=20
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+=20
+
+Book time to meet with me
+
+=20
+
+
+--B_3821427488_953523638
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><style t=
+ype=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bottom:0;} </st=
+yle></head><body dir=3D"ltr"><div class=3D"elementToProof" style=3D"font-family: A=
+ptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-seri=
+f; font-size: 12pt; color: rgb(0, 0, 0);">Hi Scott,</div><div class=3D"element=
+ToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService,=
+ Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br>=
+</div><div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedF=
+ont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
+olor: rgb(0, 0, 0);">Lovely to hear from you. Glad to hear that you have got=
+ the marking out of the way. Friday is a good day for a Teams call. Anytime =
+except between 12-2.30 or after 4pm would be good for me.</div><div class=3D"e=
+lementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontSe=
+rvice, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);=
+"><br></div><div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_Emb=
+eddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 1=
+2pt; color: rgb(0, 0, 0);">Best wishes</div><div class=3D"elementToProof" styl=
+e=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Hel=
+vetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">Caroline</div><di=
+v style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibr=
+i, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br></div><=
+div id=3D"Signature"><div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos=
+_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(=
+0, 0, 0);"><br></div><div style=3D"color:rgb(0, 0, 0)" dir=3D"ltr" id=3D"divtagdef=
+aultwrapper"><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Cal=
+ibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-family: Ari=
+al, sans-serif; color: rgb(0, 155, 189);"><b>Dr Caroline Emberson (preferred=
+ pronouns she/her)</b></span></p><p style=3D"margin-top: 0px; margin-bottom: 0=
+px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span sty=
+le=3D"font-family: Arial, sans-serif; color: rgb(19, 27, 87);"><b>Assistant Pr=
+ofessor in Operations Management (FHEA)</b></span></p><p style=3D"margin-top: =
+0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-s=
+ize: 12pt;"><span style=3D"font-family: Arial, sans-serif; color: rgb(19, 27, =
+87);"><b><br></b></span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; f=
+ont-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"f=
+ont-family: Arial, sans-serif; font-size: 9pt;">&nbsp;</span></p><p style=3D"m=
+argin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-se=
+rif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-siz=
+e: 9pt; color: rgb(19, 27, 87);">Nottingham University Business School OMIS/=
+ Faculty of Social Science<br>University of Nottingham</span></p><p style=3D"m=
+argin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-se=
+rif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-siz=
+e: 9pt; color: rgb(19, 27, 87);">B12,Si Yuan Building</span></p><p style=3D"ma=
+rgin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-ser=
+if; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size=
+: 9pt; color: rgb(19, 27, 87);">Jubilee Campus</span></p><p style=3D"margin-to=
+p: 0px; margin-bottom: 0px;"><span style=3D"font-family: Arial, sans-serif; fo=
+nt-size: 9pt; color: rgb(19, 27, 87);">Nottingham, NG8 1BB&nbsp;</span></p><=
+p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetic=
+a, sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif=
+; font-size: 9pt; color: rgb(19, 27, 87);">+44 (0) 115 8466631<b>&nbsp;</b><=
+/span><span style=3D"font-family: Calibri, sans-serif; font-size: 9pt; color: =
+rgb(19, 27, 87);"><b>| </b></span><span style=3D"font-family: Arial, sans-seri=
+f; font-size: 9pt;"><a href=3D"http://nottingham.ac.uk/" target=3D"_blank" id=3D"O=
+WA434eb415-cf37-82dd-4990-d66ffe2512ab" class=3D"OWAAutoLink" style=3D"margin-to=
+p: 0px; margin-bottom: 0px;">caroline.emberson@nottingham.ac.uk</a></span></=
+p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helve=
+tica, sans-serif; font-size: 12pt;"><br></p><p style=3D"margin-top: 0px; margi=
+n-bottom: 0px;"><span style=3D"font-family: Arial, sans-serif; font-size: 12px=
+;">Please note that my working days are Monday, Tuesday, Thursday and Friday=
+</span></p><p style=3D"margin-top: 0px; margin-bottom: 0px;"><span style=3D"font=
+-family: Arial, sans-serif; font-size: 12px;"><br></span></p><p style=3D"margi=
+n-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif;=
+ font-size: 12pt;"><span style=3D"font-family: Georgia, serif; font-size: 9pt;=
+ color: rgb(21, 118, 158);"><b>Follow us</b></span></p><p style=3D"margin-top:=
+ 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-=
+size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; co=
+lor: rgb(0, 0, 233);"><u><a href=3D"http://facebook.com/TheUniofNottingham" id=
+=3D"OWAf0bded36-367b-4ed4-4d56-5d83b1ccdd54" class=3D"OWAAutoLink" style=3D"color:=
+ rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Facebook.com/UniofNot=
+tingham</a></u></span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; fon=
+t-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"fon=
+t-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u><a h=
+ref=3D"http://twitter.com/UniofNottingham" id=3D"OWA7ec65617-1117-ceeb-86c8-fb5d=
+b492ee56" class=3D"OWAAutoLink" style=3D"color: rgb(0, 0, 233); margin-top: 0px;=
+ margin-bottom: 0px;">Twitter.com/UniofNottingham</a></u></span></p><p style=
+=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans=
+-serif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-=
+size: 9pt; color: rgb(0, 0, 233);"><u><a href=3D"http://youtube.com/nottmunive=
+rsity" id=3D"OWA92363d76-cd3f-61a6-f6ad-8e89b6e0ff7f" class=3D"OWAAutoLink" styl=
+e=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Youtube.com/=
+nottmuniversity</a></u></span></p><p style=3D"margin-top: 0px; margin-bottom: =
+0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span st=
+yle=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"=
+><u><a href=3D"http://instagram.com/uniofnottingham" id=3D"OWAdab0b69c-ee89-e4b5=
+-730b-a241388aae7d" class=3D"OWAAutoLink" style=3D"color: rgb(0, 0, 233); margin=
+-top: 0px; margin-bottom: 0px;">Instagram.com/uniofnottingham</a></u></span>=
+</p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Hel=
+vetica, sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-=
+serif; font-size: 9pt; color: rgb(0, 0, 233);"><u><a href=3D"http://linkedin.c=
+om/company/university-of-nottingham" id=3D"OWA62f24530-30d0-cb5b-58b7-05d98669=
+9fd6" class=3D"OWAAutoLink" style=3D"color: rgb(0, 0, 233); margin-top: 0px; mar=
+gin-bottom: 0px;">Linkedin.com/company/university-of-nottingham</a></u></spa=
+n></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, H=
+elvetica, sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, san=
+s-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u><a href=3D"http://www.four=
+square.com/uniofnottingham" id=3D"OWA00814da0-fe42-2e65-1728-fe3fd9f08d9f" cla=
+ss=3D"OWAAutoLink" style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-botto=
+m: 0px;">F</a><a href=3D"http://www.foursquare.com/uniofnottingham" id=3D"OWA794=
+7976a-9897-383e-64f0-8149e3424a1e" class=3D"OWAAutoLink" style=3D"margin-top: 0p=
+x; margin-bottom: 0px;">oursquare.com/uniofnottingham</a></u></span></p><p s=
+tyle=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, =
+sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; f=
+ont-size: 9pt; color: rgb(0, 0, 233);"><u>&nbsp;</u></span></p><br></div><ta=
+ble id=3D"pbpsiglinktable"><tbody><tr><td style=3D"width: 21.9792px; height: 26.=
+4236px;"><a href=3D"https://outlook.office.com/bookwithme/user/68c1e07fca314c1=
+a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature=
+" id=3D"OWAb077578f-cd27-d538-8bcd-ca111d92b7d0" class=3D"OWAAutoLink"><img data=
+-outlook-trace=3D"F:1|T:1" src=3D"cid:04e71426-8492-46b6-83a9-e643c81b0445"></a>=
+</td><td style=3D"width: 1.97917px; height: 26.4236px;"></td><td style=3D"width:=
+ 194.01px; height: 26.4236px;"><span style=3D"color: rgb(0, 120, 212);"><a hre=
+f=3D"https://outlook.office.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75=
+ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature" id=3D"OWA4fced9=
+53-505e-f3a5-0746-e170e2b18b8d" class=3D"OWAAutoLink" style=3D"color: rgb(0, 120=
+, 212); text-decoration: none;">Book time to meet with me</a></span></td><td=
+ style=3D"width: 1.97917px; height: 26.4236px;"></td></tr></tbody></table></di=
+v><div id=3D"appendonsend"></div><hr style=3D"display:inline-block;width:98%" ta=
+bindex=3D"-1"><div id=3D"divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-seri=
+f" style=3D"font-size:11pt" color=3D"#000000"><b>From:</b> Scott Moser (staff) &=
+lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Sent:</b> 02 February 2025 15:55=
+<br><b>To:</b> Caroline Emberson (staff) &lt;lizce@exmail.nottingham.ac.uk&g=
+t;<br><b>Subject:</b> Re: IJOPM Call for Papers</font> <div>&nbsp;</div></di=
+v><style>
+<!--
+@font-face
+	{font-family:"Cambria Math"}
+@font-face
+	{font-family:Calibri}
+@font-face
+	{font-family:Aptos}
+@font-face
+	{font-family:Georgia}
+p.x_MsoNormal, li.x_MsoNormal, div.x_MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif}
+a:link, span.x_MsoHyperlink
+	{color:blue;
+	text-decoration:underline}
+p.x_xelementtoproof, li.x_xelementtoproof, div.x_xelementtoproof
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif}
+p.x_xxmsonormal, li.x_xxmsonormal, div.x_xxmsonormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif}
+span.x_EmailStyle24
+	{font-family:"Calibri",sans-serif;
+	color:windowtext}
+.x_MsoChpDefault
+	{font-size:10.0pt}
+@page WordSection1
+	{margin:72.0pt 72.0pt 72.0pt 72.0pt}
+div.x_WordSection1
+	{}
+-->
+</style><div lang=3D"EN-GB" link=3D"blue" vlink=3D"purple"><div class=3D"x_WordSect=
+ion1"><p class=3D"x_MsoNormal"><span style=3D"">Hi Caroline!</span></p><p class=3D=
+"x_MsoNormal"><span style=3D"">&nbsp;</span></p><p class=3D"x_MsoNormal"><span s=
+tyle=3D"">I am sorry for the long tardiness.&nbsp; Jan was very stressful with=
+ marking, but done now!&nbsp; I am so sorry your Spring term is busy with ex=
+tra teaching.&nbsp; We seem to be perfectly out of sync, I am afraid (=3D my s=
+pring teaching is rather light).&nbsp;&nbsp;&nbsp; I want to return to our p=
+roject and finish it off.&nbsp; I confess I need a few days to reorient myse=
+lf.&nbsp; I honestly don=E2=80=99t remember where we are, but I know I have (at le=
+ast) two&nbsp; substantial tasks regarding analysis.&nbsp; </span></p><p cla=
+ss=3D"x_MsoNormal"><span style=3D"">What does your weekly schedule look like?&nb=
+sp; Teams on Friday?&nbsp; Or if you have any instructions for me I=E2=80=99d welc=
+ome them!</span></p><p class=3D"x_MsoNormal"><span style=3D"">&nbsp;</span></p><=
+p class=3D"x_MsoNormal"><span style=3D"">Stay warm,</span></p><p class=3D"x_MsoNor=
+mal"><span style=3D"">Scott</span></p><p class=3D"x_MsoNormal"><span style=3D"">&n=
+bsp;</span></p><p class=3D"x_MsoNormal"><span style=3D"">&nbsp;</span></p><div s=
+tyle=3D"border:none; border-top:solid #B5C4DF 1.0pt; padding:3.0pt 0cm 0cm 0cm=
+"><p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><b><span style=3D"font-siz=
+e:12.0pt; color:black">From: </span></b><span style=3D"font-size:12.0pt; color=
+:black">&quot;Caroline Emberson (staff)&quot; &lt;lizce@exmail.nottingham.ac=
+.uk&gt;<br><b>Date: </b>Tuesday 21 January 2025 at 13:59<br><b>To: </b>&quot=
+;Scott Moser (staff)&quot; &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Subj=
+ect: </b>Re: IJOPM Call for Papers</span></p></div><div><p class=3D"x_MsoNorma=
+l" style=3D"margin-left:36.0pt">&nbsp;</p></div><div><p class=3D"x_MsoNormal" st=
+yle=3D"margin-left:36.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; c=
+olor:black">Hi Scott,</span></p></div><div><p class=3D"x_MsoNormal" style=3D"mar=
+gin-left:36.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color:bla=
+ck">&nbsp;</span></p></div><div><p class=3D"x_MsoNormal" style=3D"margin-left:36=
+.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color:black">Hope yo=
+ur marking is going well (if indeed this is what you are doing!)</span></p><=
+/div><div><p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><span style=3D"fon=
+t-size:12.0pt; font-family:Aptos; color:black">&nbsp;</span></p></div><div><=
+p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><span style=3D"font-size:12.0=
+pt; font-family:Aptos; color:black">The business school have announced a sma=
+ll pot of money to support the development of 4 * journal articles. This is =
+worth a max of =C2=A32000 and must be spent by 31 July. Just flagging this in ca=
+se this would help with our IJOPM analysis...</span></p></div><div><p class=3D=
+"x_MsoNormal" style=3D"margin-left:36.0pt"><span style=3D"font-size:12.0pt; font=
+-family:Aptos; color:black">&nbsp;</span></p></div><div><p class=3D"x_MsoNorma=
+l" style=3D"margin-left:36.0pt"><span style=3D"font-size:12.0pt; font-family:Apt=
+os; color:black">Further details can be found here: <a href=3D"https://uniofno=
+ttm.sharepoint.com/sites/NUBSstaffinfo/SitePages/4--Output-Publication-Boost=
+-Small-Grants-Funding.aspx">https://uniofnottm.sharepoint.com/sites/NUBSstaf=
+finfo/SitePages/4--Output-Publication-Boost-Small-Grants-Funding.aspx</a></s=
+pan></p></div><div><p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><span s=
+tyle=3D"font-size:12.0pt; font-family:Aptos; color:black">&nbsp;</span></p></d=
+iv><div><p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><span style=3D"font-=
+size:12.0pt; font-family:Aptos; color:black">I am just about to disappear un=
+der a tsunami of teaching - so apologies if I am a bit slow to respond this =
+term - it does not indicate a lack of interest.</span></p></div><div><p clas=
+s=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><span style=3D"font-size:12.0pt; fo=
+nt-family:Aptos; color:black">&nbsp;</span></p></div><div><p class=3D"x_MsoNor=
+mal" style=3D"margin-left:36.0pt"><span style=3D"font-size:12.0pt; font-family:A=
+ptos; color:black">Best wishes</span></p></div><div><p class=3D"x_MsoNormal" s=
+tyle=3D"margin-left:36.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; =
+color:black">Caroline</span></p></div><div><p class=3D"x_MsoNormal" style=3D"mar=
+gin-left:36.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color:bla=
+ck">&nbsp;</span></p></div><div><p class=3D"x_MsoNormal" style=3D"margin-left:36=
+.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color:black">&nbsp;<=
+/span></p></div><div id=3D"x_Signature"><div><p class=3D"x_MsoNormal" style=3D"mar=
+gin-left:36.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color:bla=
+ck">&nbsp;</span></p></div><div id=3D"x_divtagdefaultwrapper"><p style=3D"margin=
+-left:36.0pt"><b><span style=3D"font-size:12.0pt; font-family:&quot;Arial&quot=
+;,sans-serif; color:#009BBD">Dr Caroline Emberson (preferred pronouns she/he=
+r)</span></b><span style=3D"font-size:12.0pt; color:black"></span></p><p style=
+=3D"margin-left:36.0pt"><b><span style=3D"font-size:12.0pt; font-family:&quot;Ar=
+ial&quot;,sans-serif; color:#131B57">Assistant Professor in Operations Manag=
+ement (FHEA)</span></b><span style=3D"font-size:12.0pt; color:black"></span></=
+p><p style=3D"margin-left:36.0pt"><span style=3D"font-size:12.0pt; color:black">=
+&nbsp;</span></p><p style=3D"margin-left:36.0pt"><span style=3D"font-size:9.0pt;=
+ font-family:&quot;Arial&quot;,sans-serif; color:black">&nbsp;</span><span s=
+tyle=3D"font-size:12.0pt; color:black"></span></p><p style=3D"margin-left:36.0pt=
+"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; co=
+lor:#131B57">Nottingham University Business School OMIS/ Faculty of Social S=
+cience<br>University of Nottingham</span><span style=3D"font-size:12.0pt; colo=
+r:black"></span></p><p style=3D"margin-left:36.0pt"><span style=3D"font-size:9.0=
+pt; font-family:&quot;Arial&quot;,sans-serif; color:#131B57">B12,Si Yuan Bui=
+lding</span><span style=3D"font-size:12.0pt; color:black"></span></p><p style=3D=
+"margin-left:36.0pt"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&q=
+uot;,sans-serif; color:#131B57">Jubilee Campus</span><span style=3D"font-size:=
+12.0pt; color:black"></span></p><p style=3D"margin-left:36.0pt"><span style=3D"f=
+ont-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#131B57">Not=
+tingham, NG8 1BB&nbsp;</span><span style=3D"color:black"></span></p><p style=3D"=
+margin-left:36.0pt"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&qu=
+ot;,sans-serif; color:#131B57">+44 (0) 115 8466631<b>&nbsp;</b></span><b><sp=
+an style=3D"font-size:9.0pt; color:#131B57">| </span></b><span style=3D"font-siz=
+e:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:black"><a href=3D"htt=
+p://nottingham.ac.uk/" target=3D"_blank">caroline.emberson@nottingham.ac.uk</a=
+></span><span style=3D"font-size:12.0pt; color:black"></span></p><p style=3D"mar=
+gin-left:36.0pt"><span style=3D"font-size:12.0pt; color:black">&nbsp;</span></=
+p><p style=3D"margin-left:36.0pt"><span style=3D"font-size:9.0pt; font-family:&q=
+uot;Arial&quot;,sans-serif; color:black">Please note that my working days ar=
+e Monday, Tuesday, Thursday and Friday</span><span style=3D"color:black"></spa=
+n></p><p style=3D"margin-left:36.0pt"><span style=3D"color:black">&nbsp;</span><=
+/p><p style=3D"margin-left:36.0pt"><b><span style=3D"font-size:9.0pt; font-famil=
+y:&quot;Georgia&quot;,serif; color:#15769E">Follow us</span></b><span style=3D=
+"font-size:12.0pt; color:black"></span></p><p style=3D"margin-left:36.0pt"><u>=
+<span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; colo=
+r:#0000E9"><a href=3D"http://facebook.com/TheUniofNottingham"><span style=3D"col=
+or:#0000E9">Facebook.com/UniofNottingham</span></a></span></u><span style=3D"f=
+ont-size:12.0pt; color:black"></span></p><p style=3D"margin-left:36.0pt"><u><s=
+pan style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:=
+#0000E9"><a href=3D"http://twitter.com/UniofNottingham"><span style=3D"color:#00=
+00E9">Twitter.com/UniofNottingham</span></a></span></u><span style=3D"font-siz=
+e:12.0pt; color:black"></span></p><p style=3D"margin-left:36.0pt"><u><span sty=
+le=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9=
+"><a href=3D"http://youtube.com/nottmuniversity"><span style=3D"color:#0000E9">Y=
+outube.com/nottmuniversity</span></a></span></u><span style=3D"font-size:12.0p=
+t; color:black"></span></p><p style=3D"margin-left:36.0pt"><u><span style=3D"fon=
+t-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9"><a hr=
+ef=3D"http://instagram.com/uniofnottingham"><span style=3D"color:#0000E9">Instag=
+ram.com/uniofnottingham</span></a></span></u><span style=3D"font-size:12.0pt; =
+color:black"></span></p><p style=3D"margin-left:36.0pt"><u><span style=3D"font-s=
+ize:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D=
+"http://linkedin.com/company/university-of-nottingham"><span style=3D"color:#0=
+000E9">Linkedin.com/company/university-of-nottingham</span></a></span></u><s=
+pan style=3D"font-size:12.0pt; color:black"></span></p><p style=3D"margin-left:3=
+6.0pt"><u><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-s=
+erif; color:#0000E9"><a href=3D"http://www.foursquare.com/uniofnottingham"><sp=
+an style=3D"color:#0000E9">F</span></a><a href=3D"http://www.foursquare.com/unio=
+fnottingham">oursquare.com/uniofnottingham</a></span></u><span style=3D"font-s=
+ize:12.0pt; color:black"></span></p><p style=3D"margin-left:36.0pt"><u><span s=
+tyle=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000=
+E9">&nbsp;</span></u><span style=3D"font-size:12.0pt; color:black"></span></p>=
+<p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><span style=3D"color:black">=
+&nbsp;</span></p></div><table class=3D"x_MsoNormalTable" border=3D"0" cellpaddin=
+g=3D"0" id=3D"x_pbpsiglinktable" style=3D"margin-left:36.0pt"><tbody><tr style=3D"he=
+ight:19.8pt"><td width=3D"22" style=3D"width:16.5pt; padding:.75pt .75pt .75pt .=
+75pt; height:19.8pt"><p class=3D"x_MsoNormal"><a href=3D"https://outlook.office.=
+com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk=
+?anonymous&amp;ep=3DbwmEmailSignature"><span style=3D"color:windowtext; text-dec=
+oration:none"><span style=3D"color:blue"><img border=3D"0" width=3D"20" height=3D"20=
+" id=3D"x__x0000_i1029" style=3D"width:.2083in; height:.2083in" data-outlook-tra=
+ce=3D"F:1|T:1" src=3D"cid:image001.png@01DB758A.DCBE3070"></span></span></a></p>=
+</td><td width=3D"2" style=3D"width:1.8pt; padding:.75pt .75pt .75pt .75pt; heig=
+ht:19.8pt"></td><td width=3D"194" style=3D"width:145.5pt; padding:.75pt .75pt .7=
+5pt .75pt; height:19.8pt"><p class=3D"x_MsoNormal"><span style=3D"color:#0078D4"=
+><a href=3D"https://outlook.office.com/bookwithme/user/68c1e07fca314c1a863a4fd=
+4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature"><span =
+style=3D"color:#0078D4; text-decoration:none">Book time to meet with me</span>=
+</a></span></p></td><td width=3D"2" style=3D"width:1.8pt; padding:.75pt .75pt .7=
+5pt .75pt; height:19.8pt"></td></tr></tbody></table></div><div class=3D"x_MsoN=
+ormal" align=3D"center" style=3D"margin-left:36.0pt; text-align:center"><hr size=
+=3D"0" width=3D"0%" align=3D"center"></div><div id=3D"x_divRplyFwdMsg"><p class=3D"x_M=
+soNormal" style=3D"margin-left:36.0pt"><b><span style=3D"color:black">From:</spa=
+n></b><span style=3D"color:black"> Caroline Emberson (staff) &lt;lizce@exmail.=
+nottingham.ac.uk&gt;<br><b>Sent:</b> 03 January 2025 10:08<br><b>To:</b> Sco=
+tt Moser (staff) &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Subject:</b> R=
+e: IJOPM Call for Papers</span> </p><div><p class=3D"x_MsoNormal" style=3D"margi=
+n-left:36.0pt">&nbsp;</p></div></div><div><div><p class=3D"x_MsoNormal" style=3D=
+"margin-left:36.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color=
+:black">Hi Scott,</span></p></div><div><p class=3D"x_MsoNormal" style=3D"margin-=
+left:36.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color:black">=
+&nbsp;</span></p></div><div><p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt=
+"><span style=3D"font-size:12.0pt; font-family:Aptos; color:black">A very Happ=
+y New Year to you too. I hope that you have had a great time in Texas.&nbsp;=
+ So glad that you think this is a good submission target for our work. I kno=
+w two of the guest editors - both of whom have published in the modern slave=
+ry field and one of whom (Stefan Gold) used to be at Nottingham.</span></p><=
+/div><div><p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><span style=3D"fon=
+t-size:12.0pt; font-family:Aptos; color:black">&nbsp;</span></p></div><div><=
+p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><span style=3D"font-size:12.0=
+pt; font-family:Aptos; color:black">I've sketched out some answers to your f=
+irst thoughts/questions below:</span></p></div><div><p class=3D"x_MsoNormal" s=
+tyle=3D"margin-left:36.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; =
+color:black">&nbsp;</span></p></div><p class=3D"x_xelementtoproof" style=3D"marg=
+in-left:36.0pt; background:white"><span style=3D"color:#242424">What is the ti=
+meline (e.g. for submission)?</span></p><p class=3D"x_xelementtoproof" style=3D"=
+margin-left:36.0pt; background:white">&nbsp;</p><p class=3D"x_xelementtoproof"=
+ style=3D"margin-left:36.0pt; background:white"><span style=3D"color:#0C64C0">Su=
+bmissions open 1 June and close 30 September</span></p><p class=3D"x_xelementt=
+oproof" style=3D"margin-left:36.0pt; background:white"><span style=3D"color:#242=
+424"><br>-What are the constraints (e.g. word count/ appendix/ referencing/ =
+etc.)?</span></p><p class=3D"x_xelementtoproof" style=3D"margin-left:36.0pt; bac=
+kground:white">&nbsp;</p><p class=3D"x_xelementtoproof" style=3D"margin-left:36.=
+0pt; background:white"><span style=3D"color:#0C64C0">Papers can be up to 12,00=
+0 words - this includes all text, references and appendixes. Any form of Har=
+vard referencing is acceptable. We must also allow 280 words for each figure=
+ or table. There is the option to provide 'supplementary materials' (also pe=
+er reviewed) to be hosted via an IJOPM site or in a personal repository. . F=
+ull author guidelines can be found here:</span><span style=3D"color:#242424"> =
+<a href=3D"https://www.emeraldgrouppublishing.com/journal/ijopm">https://www.e=
+meraldgrouppublishing.com/journal/ijopm</a></span></p><p class=3D"x_xelementto=
+proof" style=3D"margin-left:36.0pt; background:white">&nbsp;</p><p style=3D"marg=
+in-left:36.0pt; background:white"><span style=3D"color:#242424">-- [Related] W=
+ho is the audience?&nbsp; More specifically, to whom should we be crafting t=
+he manuscript for? (the reviewers?&nbsp; The readers?&nbsp; Who are these pe=
+ople?&nbsp; Sorry for my ignorance, but I know very little about this Journa=
+l/ field.)</span></p><p class=3D"x_xelementtoproof" style=3D"margin-left:36.0pt;=
+ background:white"><span style=3D"color:#0C64C0">Initially, we obviously need =
+to get this past the SI editorial team - and I think we stand a good chance =
+of doing this. The main hurdle, I think, will be articulating our theoretica=
+l contribution to operations and supply chain management academics. The jour=
+nal requires us to demonstrate both theoretical and methodological rigor and=
+ relevance. Operations management scholars use a range of quantitative, qual=
+itative and mixed methods. They will be largely business school researchers =
+interested in ops management theory and managerial practice. Domestic work d=
+oes fit within the private service sector - but we will need to make a case =
+for its interest to ops management researchers and practitioners - perhaps a=
+dvocating for a gendered sustainability lens? I have had an earlier paper on=
+ the care sector rejected from this journal since it was not deemed to be di=
+scipline-relevant so we will need to clearly articulate its relevance</span>=
+</p><p style=3D"margin-left:36.0pt; background:white"><span style=3D"color:#2424=
+24">-(SO SORRY but=E2=80=A6) what do we have yet to do? [I am fairly certain there=
+ are at least two analyses that I have yet to perform.. I have some =E2=80=98ideas=
+ of a plan=E2=80=99 (yuk!) but do not know the specifics]</span></p><p class=3D"x_xe=
+lementtoproof" style=3D"margin-left:36.0pt; background:white"><span style=3D"col=
+or:#0C64C0">From memory, you had completed the RDS and we had agreed that it=
+ would be possible only to produce a proportional estimate of the hidden pop=
+ulation size (compared with the estimated number of domestic workers in the =
+UK rather than based on NRM referrals)- which I think you were still working=
+ on. You'd also mentioned sensitivity analyses. And there was the possibilit=
+y of producing a composite risk index - not sure where you were with these.<=
+/span></p><p style=3D"margin-left:36.0pt; background:white">&nbsp;</p><p class=
+=3D"x_xelementtoproof" style=3D"margin-left:36.0pt; background:white"><span styl=
+e=3D"color:#242424">Can we talk in late January?&nbsp; Can we email in the mea=
+ntime?</span></p><p class=3D"x_xelementtoproof" style=3D"margin-left:36.0pt; bac=
+kground:white"><span style=3D"color:#0C64C0">My teaching starts w/c 28 January=
+&nbsp; - so very happy (and free-er) to email/chat before this which you are=
+ back in the UK. Let me know when you're free and we can schedule a call.</s=
+pan></p><p class=3D"x_xelementtoproof" style=3D"margin-left:36.0pt; background:w=
+hite">&nbsp;</p><p class=3D"x_xelementtoproof" style=3D"margin-left:36.0pt; back=
+ground:white"><span style=3D"color:#0C64C0">I'm currently working on synthesis=
+ing the earlier article drafts that I had sent through to you -checking Zote=
+ro is up to date - and have worked up a couple of introductory positioning p=
+aragraphs in response to the SI call. I'll send these through hopefully late=
+r today. Happy to continue to edit these as we finalise thinks but just tryi=
+ng to capture some of the journey as we go - so I hope they will be useful a=
+s we finalise the article submission.</span></p><p class=3D"x_xelementtoproof"=
+ style=3D"margin-left:36.0pt; background:white">&nbsp;</p><p class=3D"x_xelement=
+toproof" style=3D"margin-left:36.0pt; background:white"><span style=3D"color:#24=
+2424">&nbsp;When I am in the UK I am almost always up for a Teams chat, if y=
+ou have time + interest.</span></p><div><p class=3D"x_MsoNormal" style=3D"margin=
+-left:36.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color:black"=
+>&nbsp;</span></p></div><div><p class=3D"x_MsoNormal" style=3D"margin-left:36.0p=
+t"><span style=3D"font-size:12.0pt; font-family:Aptos; color:#0C64C0">Just let=
+ me know when you are back in the UK and free for a chat.</span></p></div><d=
+iv><p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><span style=3D"font-size:=
+12.0pt; font-family:Aptos; color:black">&nbsp;</span></p></div><div><p class=
+=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><span style=3D"font-size:12.0pt; fon=
+t-family:Aptos; color:#0C64C0">I'm really glad you're still up for this, Sco=
+tt. I am fully committed to getting this submission up and running and hope =
+that the timeline may suit us.</span></p></div><div><p class=3D"x_MsoNormal" s=
+tyle=3D"margin-left:36.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; =
+color:black">&nbsp;</span></p></div><div><p class=3D"x_MsoNormal" style=3D"margi=
+n-left:36.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color:black=
+">Best wishes</span></p></div><div><p class=3D"x_MsoNormal" style=3D"margin-left=
+:36.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color:black">Caro=
+line</span></p></div><div><p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt">=
+<span style=3D"font-size:12.0pt; font-family:Aptos; color:black">&nbsp;</span>=
+</p></div><div><p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><span style=
+=3D"font-size:12.0pt; font-family:Aptos; color:black">&nbsp;</span></p></div><=
+div><p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><span style=3D"font-size=
+:12.0pt; font-family:Aptos; color:black">&nbsp;</span></p></div><div id=3D"x_x=
+_Signature"><div><p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><span sty=
+le=3D"font-size:12.0pt; font-family:Aptos; color:black">&nbsp;</span></p></div=
+><div id=3D"x_x_divtagdefaultwrapper"><p style=3D"margin-left:36.0pt"><b><span s=
+tyle=3D"font-size:12.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#009=
+BBD">Dr Caroline Emberson (preferred pronouns she/her)</span></b><span style=
+=3D"font-size:12.0pt; color:black"></span></p><p style=3D"margin-left:36.0pt"><b=
+><span style=3D"font-size:12.0pt; font-family:&quot;Arial&quot;,sans-serif; co=
+lor:#131B57">Assistant Professor in Operations Management (FHEA)</span></b><=
+span style=3D"font-size:12.0pt; color:black"></span></p><p style=3D"margin-left:=
+36.0pt"><span style=3D"font-size:12.0pt; color:black">&nbsp;</span></p><p styl=
+e=3D"margin-left:36.0pt"><span style=3D"font-size:9.0pt; font-family:&quot;Arial=
+&quot;,sans-serif; color:black">&nbsp;</span><span style=3D"font-size:12.0pt; =
+color:black"></span></p><p style=3D"margin-left:36.0pt"><span style=3D"font-size=
+:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#131B57">Nottingham =
+University Business School OMIS/ Faculty of Social Science<br>University of =
+Nottingham</span><span style=3D"font-size:12.0pt; color:black"></span></p><p s=
+tyle=3D"margin-left:36.0pt"><span style=3D"font-size:9.0pt; font-family:&quot;Ar=
+ial&quot;,sans-serif; color:#131B57">B12,Si Yuan Building</span><span style=3D=
+"font-size:12.0pt; color:black"></span></p><p style=3D"margin-left:36.0pt"><sp=
+an style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#=
+131B57">Jubilee Campus</span><span style=3D"font-size:12.0pt; color:black"></s=
+pan></p><p style=3D"margin-left:36.0pt"><span style=3D"font-size:9.0pt; font-fam=
+ily:&quot;Arial&quot;,sans-serif; color:#131B57">Nottingham, NG8 1BB&nbsp;</=
+span><span style=3D"color:black"></span></p><p style=3D"margin-left:36.0pt"><spa=
+n style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#1=
+31B57">+44 (0) 115 8466631<b>&nbsp;</b></span><b><span style=3D"font-size:9.0p=
+t; color:#131B57">| </span></b><span style=3D"font-size:9.0pt; font-family:&qu=
+ot;Arial&quot;,sans-serif; color:black"><a href=3D"http://nottingham.ac.uk/" t=
+arget=3D"_blank">caroline.emberson@nottingham.ac.uk</a></span><span style=3D"fon=
+t-size:12.0pt; color:black"></span></p><p style=3D"margin-left:36.0pt"><span s=
+tyle=3D"font-size:12.0pt; color:black">&nbsp;</span></p><p style=3D"margin-left:=
+36.0pt"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-ser=
+if; color:black">Please note that my working days are Monday, Tuesday, Thurs=
+day and Friday</span><span style=3D"color:black"></span></p><p style=3D"margin-l=
+eft:36.0pt"><span style=3D"color:black">&nbsp;</span></p><p style=3D"margin-left=
+:36.0pt"><b><span style=3D"font-size:9.0pt; font-family:&quot;Georgia&quot;,se=
+rif; color:#15769E">Follow us</span></b><span style=3D"font-size:12.0pt; color=
+:black"></span></p><p style=3D"margin-left:36.0pt"><u><span style=3D"font-size:9=
+.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http=
+://facebook.com/TheUniofNottingham"><span style=3D"color:#0000E9">Facebook.com=
+/UniofNottingham</span></a></span></u><span style=3D"font-size:12.0pt; color:b=
+lack"></span></p><p style=3D"margin-left:36.0pt"><u><span style=3D"font-size:9.0=
+pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http:/=
+/twitter.com/UniofNottingham"><span style=3D"color:#0000E9">Twitter.com/UniofN=
+ottingham</span></a></span></u><span style=3D"font-size:12.0pt; color:black"><=
+/span></p><p style=3D"margin-left:36.0pt"><u><span style=3D"font-size:9.0pt; fon=
+t-family:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http://youtub=
+e.com/nottmuniversity"><span style=3D"color:#0000E9">Youtube.com/nottmuniversi=
+ty</span></a></span></u><span style=3D"font-size:12.0pt; color:black"></span><=
+/p><p style=3D"margin-left:36.0pt"><u><span style=3D"font-size:9.0pt; font-famil=
+y:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http://instagram.com=
+/uniofnottingham"><span style=3D"color:#0000E9">Instagram.com/uniofnottingham<=
+/span></a></span></u><span style=3D"font-size:12.0pt; color:black"></span></p>=
+<p style=3D"margin-left:36.0pt"><u><span style=3D"font-size:9.0pt; font-family:&=
+quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http://linkedin.com/com=
+pany/university-of-nottingham"><span style=3D"color:#0000E9">Linkedin.com/comp=
+any/university-of-nottingham</span></a></span></u><span style=3D"font-size:12.=
+0pt; color:black"></span></p><p style=3D"margin-left:36.0pt"><u><span style=3D"f=
+ont-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9"><a =
+href=3D"http://www.foursquare.com/uniofnottingham"><span style=3D"color:#0000E9"=
+>F</span></a><a href=3D"http://www.foursquare.com/uniofnottingham">oursquare.c=
+om/uniofnottingham</a></span></u><span style=3D"font-size:12.0pt; color:black"=
+></span></p><p style=3D"margin-left:36.0pt"><u><span style=3D"font-size:9.0pt; f=
+ont-family:&quot;Arial&quot;,sans-serif; color:#0000E9">&nbsp;</span></u><sp=
+an style=3D"font-size:12.0pt; color:black"></span></p><p class=3D"x_MsoNormal" s=
+tyle=3D"margin-left:36.0pt"><span style=3D"color:black">&nbsp;</span></p></div><=
+table class=3D"x_MsoNormalTable" border=3D"0" cellpadding=3D"0" id=3D"x_x_pbpsiglink=
+table" style=3D"margin-left:36.0pt"><tbody><tr style=3D"height:19.8pt"><td width=
+=3D"22" style=3D"width:16.5pt; padding:.75pt .75pt .75pt .75pt; height:19.8pt"><=
+p class=3D"x_MsoNormal"><a href=3D"https://outlook.office.com/bookwithme/user/68=
+c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmE=
+mailSignature"><span style=3D"color:windowtext; text-decoration:none"><span st=
+yle=3D"color:blue"><img border=3D"0" width=3D"20" height=3D"20" id=3D"x__x0000_i1027" =
+style=3D"width:.2083in; height:.2083in" data-outlook-trace=3D"F:1|T:1" src=3D"cid:=
+image001.png@01DB758A.DCBE3070"></span></span></a></p></td><td width=3D"2" sty=
+le=3D"width:1.8pt; padding:.75pt .75pt .75pt .75pt; height:19.8pt"></td><td wi=
+dth=3D"194" style=3D"width:145.5pt; padding:.75pt .75pt .75pt .75pt; height:19.8=
+pt"><p class=3D"x_MsoNormal"><span style=3D"color:#0078D4"><a href=3D"https://outl=
+ook.office.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.notti=
+ngham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature"><span style=3D"color:#0078D4; =
+text-decoration:none">Book time to meet with me</span></a></span></p></td><t=
+d width=3D"2" style=3D"width:1.8pt; padding:.75pt .75pt .75pt .75pt; height:19.8=
+pt"></td></tr></tbody></table></div><div class=3D"x_MsoNormal" align=3D"center" =
+style=3D"margin-left:36.0pt; text-align:center"><hr size=3D"0" width=3D"0%" align=3D=
+"center"></div><div id=3D"x_x_divRplyFwdMsg"><p class=3D"x_MsoNormal" style=3D"mar=
+gin-left:36.0pt"><b><span style=3D"color:black">From:</span></b><span style=3D"c=
+olor:black"> Scott Moser (staff) &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><=
+b>Sent:</b> 02 January 2025 23:31<br><b>To:</b> Caroline Emberson (staff) &l=
+t;lizce@exmail.nottingham.ac.uk&gt;<br><b>Subject:</b> Re: IJOPM Call for Pa=
+pers</span> </p><div><p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt">&nbsp=
+;</p></div></div><div><div><p class=3D"x_xxmsonormal" style=3D"margin-left:36.0p=
+t">Dear Caroline,</p><p class=3D"x_xxmsonormal" style=3D"margin-left:36.0pt">&nb=
+sp;</p><p class=3D"x_xxmsonormal" style=3D"margin-left:36.0pt">First, HAPPY NEW =
+YEAR!&nbsp; I hope you were able to enjoy the winter holidays and relax some=
+, too.</p><p class=3D"x_xxmsonormal" style=3D"margin-left:36.0pt">&nbsp;</p><p c=
+lass=3D"x_xxmsonormal" style=3D"margin-right:0cm; margin-bottom:12.0pt; margin-l=
+eft:36.0pt">I am sorry for not replying sooner.&nbsp; This past Autumn was b=
+oth the heaviest teaching and also my worst experience with admin and markin=
+g related duties.&nbsp; In any event, it is a new year!&nbsp; Thank you SO M=
+UCH for this email!&nbsp; I looked at <b>International Journal of Operations=
+ &amp; Production Management </b>and I looks like a *<b>wonderful</b>* venue=
+ for our work!</p><p class=3D"x_xxmsonormal" style=3D"margin-left:36.0pt">I am i=
+n Texas at the moment, arriving back in the UK on Saturday&nbsp; Yes, let us=
+ PLEASE meet and talk and submit to this special issue.&nbsp; Sadly, I will =
+be swamped with marking from Jan 6<sup>th</sup>.&nbsp; But I will carve out =
+time if need be to make sure we get this to fruition.<br><br>Some thoughts/ =
+questions:</p><p class=3D"x_xxmsonormal" style=3D"margin-left:36.0pt">&nbsp;</p>=
+<p class=3D"x_xxmsonormal" style=3D"margin-left:36.0pt">-What is the timeline (e=
+.g. for submission)?<br>-What are the constraints (e.g. word count/ appendix=
+/ referencing/ etc.)?</p><p class=3D"x_xxmsonormal" style=3D"margin-right:0cm; m=
+argin-bottom:12.0pt; margin-left:36.0pt">-- [Related] Who is the audience?&n=
+bsp; More specifically, to whom should we be crafting the manuscript for? (t=
+he reviewers?&nbsp; The readers?&nbsp; Who are these people?&nbsp; Sorry for=
+ my ignorance, but I know very little about this Journal/ field.)<br>-(SO SO=
+RRY but=E2=80=A6) what do we have yet to do? [I am fairly certain there are at lea=
+st two analyses that I have yet to perform.. I have some =E2=80=98ideas of a plan=E2=
+=80=99 (yuk!) but do not know the specifics]</p><p class=3D"x_xxmsonormal" style=3D"=
+margin-left:36.0pt">Can we talk in late January?&nbsp; Can we email in the m=
+eantime? &nbsp;When I am in the UK I am almost always up for a Teams chat, i=
+f you have time + interest.</p><p class=3D"x_xxmsonormal" style=3D"margin-left:3=
+6.0pt">&nbsp;</p><p class=3D"x_xxmsonormal" style=3D"margin-left:36.0pt">Again, =
+thank you so much for brining on your project, and for your kind patience.&n=
+bsp; BTW: I am so sorry the Nuffield bid did not go through.&nbsp; I really =
+thought it was a good project proposal, and a great =E2=80=98team=E2=80=99.&nbsp; Ah wel=
+l.</p><p class=3D"x_xxmsonormal" style=3D"margin-left:36.0pt">&nbsp;</p><p class=
+=3D"x_xxmsonormal" style=3D"margin-left:36.0pt">All the best,</p><p class=3D"x_xxm=
+sonormal" style=3D"margin-left:36.0pt">Scott</p><p class=3D"x_xxmsonormal" style=
+=3D"margin-left:36.0pt">&nbsp;</p><p class=3D"x_xxmsonormal" style=3D"margin-left:=
+36.0pt">&nbsp;</p><p class=3D"x_xxmsonormal" style=3D"margin-left:36.0pt">&nbsp;=
+</p><p class=3D"x_xxmsonormal" style=3D"margin-left:36.0pt">&nbsp;</p><p class=3D"=
+x_xxmsonormal" style=3D"margin-left:36.0pt">&nbsp;</p><div style=3D"border:none;=
+ border-top:solid #B5C4DF 1.0pt; padding:3.0pt 0cm 0cm 0cm"><p class=3D"x_xxms=
+onormal" style=3D"margin-left:72.0pt"><b><span style=3D"font-size:12.0pt; color:=
+black">From: </span></b><span style=3D"font-size:12.0pt; color:black">&quot;Ca=
+roline Emberson (staff)&quot; &lt;lizce@exmail.nottingham.ac.uk&gt;<br><b>Da=
+te: </b>Monday 9 December 2024 at 03:27<br><b>To: </b>&quot;Scott Moser (sta=
+ff)&quot; &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Subject: </b>IJOPM Ca=
+ll for Papers</span></p></div><div><p class=3D"x_xxmsonormal" style=3D"margin-le=
+ft:72.0pt">&nbsp;</p></div><div><p class=3D"x_xxmsonormal" style=3D"margin-left:=
+72.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color:black">Hi Sc=
+ott,</span></p></div><div><p class=3D"x_xxmsonormal" style=3D"margin-left:72.0pt=
+"><span style=3D"font-size:12.0pt; font-family:Aptos; color:black">&nbsp;</spa=
+n></p></div><div><p class=3D"x_xxmsonormal" style=3D"margin-left:72.0pt"><span s=
+tyle=3D"font-size:12.0pt; font-family:Aptos; color:black">The call for papers =
+that might provide a suitable outlet for our article is now out: Submission =
+deadline 30 September 2025</span></p></div><div><p class=3D"x_xxmsonormal" sty=
+le=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; co=
+lor:black">&nbsp;</span></p></div><div><p class=3D"x_xxmsonormal" style=3D"margi=
+n-left:72.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color:black=
+"><a href=3D"https://www.emeraldgrouppublishing.com/calls-for-papers/labour-ex=
+ploitation-oscm-research-combat-modern-slavery-human-trafficking-and">https:=
+//www.emeraldgrouppublishing.com/calls-for-papers/labour-exploitation-oscm-r=
+esearch-combat-modern-slavery-human-trafficking-and</a></span></p></div><div=
+><p class=3D"x_xxmsonormal" style=3D"margin-left:72.0pt"><span style=3D"font-size:=
+12.0pt; font-family:Aptos; color:black">&nbsp;</span></p></div><div><p class=
+=3D"x_xxmsonormal" style=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; f=
+ont-family:Aptos; color:black">Perhaps we can meet in January before the sta=
+rt of the spring semester to discuss?</span></p></div><div><p class=3D"x_xxmso=
+normal" style=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; font-famil=
+y:Aptos; color:black">&nbsp;</span></p></div><div><p class=3D"x_xxmsonormal" s=
+tyle=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; =
+color:black">Best wishes</span></p></div><div><p class=3D"x_xxmsonormal" style=
+=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; colo=
+r:black">Caroline</span></p></div><div id=3D"x_x_x_Signature"><div><p class=3D"x=
+_xxmsonormal" style=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; font=
+-family:Aptos; color:black">&nbsp;</span></p></div><div id=3D"x_x_x_divtagdefa=
+ultwrapper"><p style=3D"margin-left:72.0pt"><b><span style=3D"font-size:12.0pt; =
+font-family:&quot;Arial&quot;,sans-serif; color:#009BBD">Dr Caroline Emberso=
+n (preferred pronouns she/her)</span></b></p><p style=3D"margin-left:72.0pt"><=
+b><span style=3D"font-size:12.0pt; font-family:&quot;Arial&quot;,sans-serif; c=
+olor:#131B57">Assistant Professor in Operations Management (FHEA)</span></b>=
+</p><p style=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; color:black=
+">&nbsp;</span></p><p style=3D"margin-left:72.0pt"><span style=3D"font-size:9.0p=
+t; font-family:&quot;Arial&quot;,sans-serif; color:black">&nbsp;</span></p><=
+p style=3D"margin-left:72.0pt"><span style=3D"font-size:9.0pt; font-family:&quot=
+;Arial&quot;,sans-serif; color:#131B57">Nottingham University Business Schoo=
+l OMIS/ Faculty of Social Science<br>University of Nottingham</span></p><p s=
+tyle=3D"margin-left:72.0pt"><span style=3D"font-size:9.0pt; font-family:&quot;Ar=
+ial&quot;,sans-serif; color:#131B57">B12,Si Yuan Building</span></p><p style=
+=3D"margin-left:72.0pt"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&=
+quot;,sans-serif; color:#131B57">Jubilee Campus</span></p><p style=3D"margin-l=
+eft:72.0pt"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans=
+-serif; color:#131B57">Nottingham, NG8 1BB&nbsp;</span></p><p style=3D"margin-=
+left:72.0pt"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,san=
+s-serif; color:#131B57">+44 (0) 115 8466631<b>&nbsp;</b></span><b><span styl=
+e=3D"font-size:9.0pt; color:#131B57">| </span></b><span style=3D"font-size:9.0pt=
+; font-family:&quot;Arial&quot;,sans-serif; color:black"><a href=3D"http://not=
+tingham.ac.uk/" target=3D"_blank">caroline.emberson@nottingham.ac.uk</a></span=
+></p><p style=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; color:blac=
+k">&nbsp;</span></p><p style=3D"margin-left:72.0pt"><span style=3D"font-size:9.0=
+pt; font-family:&quot;Arial&quot;,sans-serif; color:black">Please note that =
+my working days are Monday, Tuesday, Thursday and Friday</span></p><p style=3D=
+"margin-left:72.0pt"><span style=3D"color:black">&nbsp;</span></p><p style=3D"ma=
+rgin-left:72.0pt"><b><span style=3D"font-size:9.0pt; font-family:&quot;Georgia=
+&quot;,serif; color:#15769E">Follow us</span></b></p><p style=3D"margin-left:7=
+2.0pt"><u><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-s=
+erif; color:#0000E9"><a href=3D"http://facebook.com/TheUniofNottingham"><span =
+style=3D"color:#0000E9">Facebook.com/UniofNottingham</span></a></span></u></p>=
+<p style=3D"margin-left:72.0pt"><u><span style=3D"font-size:9.0pt; font-family:&=
+quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http://twitter.com/Unio=
+fNottingham"><span style=3D"color:#0000E9">Twitter.com/UniofNottingham</span><=
+/a></span></u></p><p style=3D"margin-left:72.0pt"><u><span style=3D"font-size:9.=
+0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http:=
+//youtube.com/nottmuniversity"><span style=3D"color:#0000E9">Youtube.com/nottm=
+university</span></a></span></u></p><p style=3D"margin-left:72.0pt"><u><span s=
+tyle=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000=
+E9"><a href=3D"http://instagram.com/uniofnottingham"><span style=3D"color:#0000E=
+9">Instagram.com/uniofnottingham</span></a></span></u></p><p style=3D"margin-l=
+eft:72.0pt"><u><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,s=
+ans-serif; color:#0000E9"><a href=3D"http://linkedin.com/company/university-of=
+-nottingham"><span style=3D"color:#0000E9">Linkedin.com/company/university-of-=
+nottingham</span></a></span></u></p><p style=3D"margin-left:72.0pt"><u><span s=
+tyle=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000=
+E9"><a href=3D"http://www.foursquare.com/uniofnottingham"><span style=3D"color:#=
+0000E9">F</span></a><a href=3D"http://www.foursquare.com/uniofnottingham">ours=
+quare.com/uniofnottingham</a></span></u></p><p style=3D"margin-left:72.0pt"><u=
+><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; col=
+or:#0000E9">&nbsp;</span></u></p><p class=3D"x_xxmsonormal" style=3D"margin-left=
+:72.0pt"><span style=3D"color:black">&nbsp;</span></p></div><table class=3D"x_Ms=
+oNormalTable" border=3D"0" cellpadding=3D"0" id=3D"x_x_x_pbpsiglinktable" style=3D"m=
+argin-left:72.0pt"><tbody><tr><td style=3D"padding:.75pt .75pt .75pt .75pt"><p=
+ class=3D"x_xxmsonormal"><a href=3D"https://outlook.office.com/bookwithme/user/6=
+8c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3Dbwm=
+EmailSignature"><span style=3D"color:windowtext; text-decoration:none"><span s=
+tyle=3D"color:blue"><img border=3D"0" width=3D"20" height=3D"20" id=3D"x_x_x__x005f_x0=
+000_i1025" style=3D"width:.2083in; height:.2083in" data-outlook-trace=3D"F:1|T:1=
+" src=3D"cid:image002.png@01DB758A.DCBE3070"></span></span></a></p></td><td st=
+yle=3D"padding:.75pt .75pt .75pt .75pt"></td><td style=3D"padding:.75pt .75pt .7=
+5pt .75pt"><p class=3D"x_xxmsonormal"><span style=3D"color:#0078D4"><a href=3D"htt=
+ps://outlook.office.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exm=
+ail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature"><span style=3D"color:=
+#0078D4; text-decoration:none">Book time to meet with me</span></a></span></=
+p></td><td style=3D"padding:.75pt .75pt .75pt .75pt"></td></tr></tbody></table=
+><p class=3D"x_xxmsonormal" style=3D"margin-left:72.0pt">&nbsp;</p></div></div><=
+/div></div></div></div></body></html>
+
+--B_3821427488_953523638--
+
+
+--B_3821427488_1840801905
+Content-type: image/png; name="image001.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <image001.png@01DB758A.DCBE3070>
+Content-disposition: inline;
+	filename="image001.png"
+Content-transfer-encoding: base64
+
+
+iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAcpJREFU
+OE9jZAABr6aJDHqhuQwMDIxgPrHg19d3DLP91Bk+P3sD08IIN2x1hjPDy7NXiDWL4T8nM0NA
+33wGWRMPhg5NJgYGhv8gvYwMFdf/MYAMu3twP9GGISssv/qLYVdzMsP5FYthBv5nmO2pyfDz
+zVuyDEw/eJ3hxNyJDEenNSMMJMskJE2Hp9YxHJ2CZOBUM1GGz5/hAUuS+UVnXjOcXDCJygbO
+m4TqZUpcGDJjJcPzS1eoYyAvrzDD58/vGRgY/iHSYcX1/wykupBXWpghe89reEbY0RjNcGHF
+MkQsk2pgwYkXDBz84iiR16EJzmWghE26C8uv/mZgZGJBM5AZ5HXyDPRo7GMwCCuEG/jj40uG
+CRYS5LsQpNM6q4TBOLqE4emFgwxrs8NRI2WynSTD19cvSErQOBQzMhSdecvw8vophqWxngQN
+BCWTrBMvMMIPpnF7dQQjA6+UCEP23tcM//7+Zvjx8QNOQydZizFk7bvNwCepgs9iWIHKyGAY
+EcPALaQEUQwq3mBplQmi5siUBoa0bRcZhBT18Bj4n7QSWlhGmiF19xOcBh6aVEyagSCTQEEU
+Nf8Ag6CcFjyn/Pz8hmF9cQjDg8MHAaiKxp0eiZJ4AAAAAElFTkSuQmCCAA==
+--B_3821427488_1840801905
+Content-type: image/png; name="image002.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <image002.png@01DB758A.DCBE3070>
+Content-disposition: inline;
+	filename="image002.png"
+Content-transfer-encoding: base64
+
+
+iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAcpJREFU
+OE9jZAABr6aJDHqhuQwMDIxgPrHg19d3DLP91Bk+P3sD08IIN2x1hjPDy7NXiDWL4T8nM0NA
+33wGWRMPhg5NJgYGhv8gvYwMFdf/MYAMu3twP9GGISssv/qLYVdzMsP5FYthBv5nmO2pyfDz
+zVuyDEw/eJ3hxNyJDEenNSMMJMskJE2Hp9YxHJ2CZOBUM1GGz5/hAUuS+UVnXjOcXDCJygbO
+m4TqZUpcGDJjJcPzS1eoYyAvrzDD58/vGRgY/iHSYcX1/wykupBXWpghe89reEbY0RjNcGHF
+MkQsk2pgwYkXDBz84iiR16EJzmWghE26C8uv/mZgZGJBM5AZ5HXyDPRo7GMwCCuEG/jj40uG
+CRYS5LsQpNM6q4TBOLqE4emFgwxrs8NRI2WynSTD19cvSErQOBQzMhSdecvw8vophqWxngQN
+BCWTrBMvMMIPpnF7dQQjA6+UCEP23tcM//7+Zvjx8QNOQydZizFk7bvNwCepgs9iWIHKyGAY
+EcPALaQEUQwq3mBplQmi5siUBoa0bRcZhBT18Bj4n7QSWlhGmiF19xOcBh6aVEyagSCTQEEU
+Nf8Ag6CcFjyn/Pz8hmF9cQjDg8MHAaiKxp0eiZJ4AAAAAElFTkSuQmCCAAA=
+--B_3821427488_1840801905
+Content-type: image/png; name="Outlook-3xgvv5bm.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <04e71426-8492-46b6-83a9-e643c81b0445>
+Content-disposition: inline;
+	filename="Outlook-3xgvv5bm.png"
+Content-transfer-encoding: base64
+
+
+iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAcpJREFU
+OE9jZAABr6aJDHqhuQwMDIxgPrHg19d3DLP91Bk+P3sD08IIN2x1hjPDy7NXiDWL4T8nM0NA
+33wGWRMPhg5NJgYGhv8gvYwMFdf/MYAMu3twP9GGISssv/qLYVdzMsP5FYthBv5nmO2pyfDz
+zVuyDEw/eJ3hxNyJDEenNSMMJMskJE2Hp9YxHJ2CZOBUM1GGz5/hAUuS+UVnXjOcXDCJygbO
+m4TqZUpcGDJjJcPzS1eoYyAvrzDD58/vGRgY/iHSYcX1/wykupBXWpghe89reEbY0RjNcGHF
+MkQsk2pgwYkXDBz84iiR16EJzmWghE26C8uv/mZgZGJBM5AZ5HXyDPRo7GMwCCuEG/jj40uG
+CRYS5LsQpNM6q4TBOLqE4emFgwxrs8NRI2WynSTD19cvSErQOBQzMhSdecvw8vophqWxngQN
+BCWTrBMvMMIPpnF7dQQjA6+UCEP23tcM//7+Zvjx8QNOQydZizFk7bvNwCepgs9iWIHKyGAY
+EcPALaQEUQwq3mBplQmi5siUBoa0bRcZhBT18Bj4n7QSWlhGmiF19xOcBh6aVEyagSCTQEEU
+Nf8Ag6CcFjyn/Pz8hmF9cQjDg8MHAaiKxp0eiZJ4AAAAAElFTkSuQmCC
+--B_3821427488_1840801905--
+
+
+--B_3821427488_742721983--
+

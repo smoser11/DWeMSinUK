@@ -1,0 +1,809 @@
+Received: from DB8PR06MB6395.eurprd06.prod.outlook.com (2603:10a6:10:126::16)
+ by DB9PR06MB8202.eurprd06.prod.outlook.com with HTTPS; Fri, 9 Feb 2024
+ 16:54:11 +0000
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=exmail.nottingham.ac.uk;
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com (2603:10a6:20b:99::17)
+ by DB8PR06MB6395.eurprd06.prod.outlook.com (2603:10a6:10:126::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7249.39; Fri, 9 Feb
+ 2024 16:54:09 +0000
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::a9e:b85e:409e:986b]) by AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::a9e:b85e:409e:986b%7]) with mapi id 15.20.7270.025; Fri, 9 Feb 2024
+ 16:54:09 +0000
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>, Selim Yilmaz
+	<ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: DWinUK data
+Thread-Topic: DWinUK data
+Thread-Index: AQHaV5EUgUkhwkzQZke7z4jfCkpmsLD70DKsgAZuqICAAAJ4ag==
+Date: Fri, 9 Feb 2024 16:54:09 +0000
+Message-ID:
+ <AM6PR06MB59410EE650A6A99BD1758936A04B2@AM6PR06MB5941.eurprd06.prod.outlook.com>
+References:
+ <DB9PR06MB8202484C0969DA5517868C7687402@DB9PR06MB8202.eurprd06.prod.outlook.com>
+ <AM6PR06MB59418A4615D8BD4E53A68295A0472@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <5D68F445-FFD0-414F-B85D-B8646DCBFA8D@nottingham.ac.uk>
+In-Reply-To: <5D68F445-FFD0-414F-B85D-B8646DCBFA8D@nottingham.ac.uk>
+Accept-Language: en-GB, en-US
+Content-Language: en-GB
+X-MS-Has-Attach: yes
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+ <AM6PR06MB59410EE650A6A99BD1758936A04B2@AM6PR06MB5941.eurprd06.prod.outlook.com>
+msip_labels:
+MIME-Version: 1.0
+X-MS-Exchange-Organization-MessageDirectionality: Originating
+X-MS-Exchange-Organization-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-Network-Message-Id:
+ a6c74d20-f95c-452f-a9c7-08dc298fbc70
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ AM6PR06MB5941:EE_|DB8PR06MB6395:EE_|DB9PR06MB8202:EE_
+Return-Path: lizce@exmail.nottingham.ac.uk
+X-MS-Exchange-Organization-ExpirationStartTime: 09 Feb 2024 16:54:10.0343
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Office365-Filtering-Correlation-Id: a6c74d20-f95c-452f-a9c7-08dc298fbc70
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR06MB5941.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:;DIR:INT;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Feb 2024 16:54:09.7814
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-Network-Message-Id: a6c74d20-f95c-452f-a9c7-08dc298fbc70
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: /2Jpjme3w15Ozg1t4Q4bjO5BaLJKOXF4QEtbflgBjBlGcIhb7krP+0CDFVe9frAbnaJpRdtrU+LLY8MoKjy00lmVT+D6zK7BTIhjBBb+VKF9O7rfZV4q+TnVHKyj8nMA
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8PR06MB6395
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:01.4717517
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.7270.024
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(425001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	7WuehkWB88vnw03NBULcjvuA2LhT+Htk4YhfD3NrCr/m1DszCg5ETqpJbd02ZVGlo2ByHk+fULYli+AwiTGpLZiT1GnpkYQP1rpoqpGiggQlab8oFJDXeZWZ6qrzm7tA+o4ES/pD4VuyAjayW7ml9Nl4YJFq0lhLhdoskjcju3xuHl6ChJMBupbJMGcVG6xTm76Ni8tka1Wo76WoHPKgNNKR6Yw/iDssaIcxWaMca/np1TqyYixzPtmBAXyG2LtIkaed+h7GDjAV3/pcBzPWy/7JWgaScZ46D+iv6aoCUhZa6WzHAfLJ60thp/ebArQBYN4b8RX0XHqUtzvGrqIy97igh33ix4b+HrWcFPOBJDo79CXhs8Z9QLZaCemjAdQhO5FHQ7SAeplOsKhafFzJloaoto2u46ZAdKjH2Bc9sa2m6gJZhl3T3Bje7gszzqJ3tafu8HLrBtHKdWn3vDEX36umY7tzXU5uumnFM6XwurRj1FyH6fS/WzxQk1Dv17CP0OoJlMUlG6ZvfmzwbIJPFvvRgTTajpGhWB/jKY0oBbKBNtmTgbaolNvQ2BCxmrAriQFcNklAQS+bPPk0Ik3erDC9IdFu7MvEznlhiGrlHnBeECtxqMpUlBGj92oP8UW3Aiaooeh11yJCzKAzb8jU/WbrixXZIs87Yer48xDycbmQPqzqe6d1P6IhhdPQDVEf3ms1RwkfSZ+h/Y8CJtfixB82iOAW3u01DtPLPvOJ++3hJ1eFEp5Kcqh8hRf9+BIro+bmsVv/22N+Tp6d5tHariMbzu+qqrC9yysOYWlFRI4=
+Content-type: multipart/mixed;
+	boundary="B_3821516406_183479894"
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3821516406_183479894
+Content-type: multipart/related;
+	boundary="B_3821516406_1383732607"
+
+--B_3821516406_1383732607
+Content-type: multipart/alternative;
+	boundary="B_3821516406_504518914"
+
+
+--B_3821516406_504518914
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+Thanks for the prompt, Scott.
+RE: Domestic Worker population in the UK
+I've had a quick scan through the references that google thinks that I may =
+find interesting on this and have come up with what could be a useful starti=
+ng point from WIEGO https://www.wiego.org/sites/default/files/publications/f=
+ile/WIEGO_Statistical_Brief_N32_DWs%20in%20the%20World.pdf
+
+This brief summarises country statistics from the ILOSTAT database, giving =
+a headline figure for Europe of 2.5 million.
+
+Is this a database that you're familiar with, or would you like me to see i=
+f I can dig out a UK or even an England figure?
+
+Best wishes
+Caroline
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (AFHEA)
+
+
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB=20
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 09 February 2024 16:42
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz=
+ <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: DWinUK data=20
+=20
+Howdy all.=20
+
+=20
+
+I wanted to follow up on out DWinUK paper.  I feel like we are close, but I=
+ also feel like I do not want to loose the =E2=80=98momentum=E2=80=99 we have.  On my en=
+d, I think I only need the answers to my previous email to finish off the RD=
+S analysis.  I do still need to work on the NSUM analysis (more on this belo=
+w).
+
+=20
+
+  Selim: are you able to help with answers regarding the data set?  Specifi=
+cally about Q105 to Q110/ Q115?  And the two versions of the Codebook?  I re=
+ally need to comprehend the =E2=80=98referrals=E2=80=99 (=3D=E2=80=99coupons=E2=80=99) parameters and =
+data.
+
+=20
+
+Selim: at our last meeting we talked about you working on implementing the =
+=E2=80=98neighbour bootstrap.=E2=80=99  I attach the paper and the CRAN links -- < https=
+://cran.r-project.org/web/packages/Neighboot/index.html > to help you get st=
+arted.  I will work on the NSUM part.=20
+
+
+Caroline: As you know, we need a =E2=80=98prior belief=E2=80=99 about the size of the p=
+opulation from which we are sampling, e.g. the number of Domestic Workers in=
+ the UK.  I had mentioned that I noodled around and came up with a very roug=
+h estimate that of 1.74 million DW in the UK.   I confess I cannot find the =
+exact source of that guestimate. Indeed, it seems that perhaps that was an o=
+verestimate:
+https://www.ons.gov.uk/businessindustryandtrade/business/activitysizeandloc=
+ation/adhocs/14062cleaningactivitiesintheuk
+
+https://www.infomigrants.net/en/post/55107/uk-survey-of-200-migrant-domesti=
+c-workers-reveals-extent-of-employer-abuse
+
+https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentand=
+employeetypes/articles/homeworkingintheukregionalpatterns/2019to2022
+
+
+(see also the attached).
+
+=20
+
+I do hope we can move forward on this paper soon.  Please do let me know if=
+ I can help facilitate.
+
+Best,
+
+Scott
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+Date: Monday, 5 February 2024 at 14:31
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>, Selim Yilmaz <l=
+dxsy3@exmail.nottingham.ac.uk>
+Subject: Re: DWinUK data
+
+=20
+
+Hi Scott,
+
+=20
+
+Thanks for your perseverance with cleaning the data. I'm happy with DWinUK =
+either with or without the +EE. I hope that Selim may be in a position to de=
+al with your codebook and detailed coding queries?
+
+=20
+
+Best wishes
+
+Caroline
+
+=20
+
+=20
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (AFHEA)
+
+=20
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB=20
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+=20
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+=20
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+=20
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 05 February 2024 14:12
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz=
+ <ldxsy3@exmail.nottingham.ac.uk>
+Subject: DWinUK data=20
+
+=20
+
+Dear both,
+
+Thank you for a wonderful =E2=80=93 and mind-expanding =E2=80=93 meeting on Friday!  I =
+hope you have enjoyed your respective weekends.=20
+
+=20
+
+Some scattered thoughts: (1) is there an acronym I should be using in meial=
+s to refer to this paper?  I'm thinking 'DWinUK' (=3D domestic workers in the =
+UK) or perhaps with a 'experiencing exploitation' (+EE?)
+
+=20
+
+(2) What I thought would be an two-hour side project has turned into a bit =
+of a small creature, regarding the data we are using.=20
+
+I am trying to 'clean' the data, specifically adjust the 'personal network =
+size' (q13) in light of the number of referrals a person made, as we discuss=
+ed on Friday.   Turns out I have loads more questions about the data (sorry,=
+ Selim!).  To wit, please consider the attached file, `DWinUK_data.csv`, whi=
+ch is exactly the  file `Further Coding Update.xlsx` just with 'clean'variab=
+le names.  I am confused about the way the questions are recorded as variabl=
+es.  For example, I originally thought that=E2=80=8B (A) the variables q105=E2=80=8B to =
+q110=E2=80=8B contained the (up-to) five referrals (the 'coupons' in RDS language)=
+.  However, upon closer inspection, it seems that (B ) perhaps the variables=
+ q105=E2=80=8B to q115=E2=80=8B might contain the mobile numbers of referals (see ID 13,=
+ row 11 in the CSV file).  HOWEVER, however, (C)  ID 14 (row 12) seems to th=
+wart this interpretation, because this person seems to have nominated three =
+other DWs (
+
+7575744493
+7309055303
+7366528118
+in vars q105, q106, q107 respectively), but then there is also a mobile num=
+ber in q115 (mobile =3D 7823598150).  So, did this person nominate three peopl=
+e?  Or four?
+
+=20
+
+If interpretation (B ) is correct, then subjects could nominate up to 10 ot=
+hers, not five as I had been thinking.  Please help clarify.  Also also, the=
+re are two codebooks (attached) =E2=80=93 which should I be using?=20
+Thanks, I am looking forward to making headway on this.
+
+scott
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+
+--B_3821516406_504518914
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><style t=
+ype=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bottom:0;} </st=
+yle></head><body dir=3D"ltr"><div class=3D"elementToProof" style=3D"font-family: A=
+ptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-seri=
+f; font-size: 12pt; color: rgb(0, 0, 0);">Thanks for the prompt, Scott.</div=
+><div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFont, =
+Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color:=
+ rgb(0, 0, 0);">RE: Domestic Worker population in the UK</div><div class=3D"el=
+ementToProof"><span style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSF=
+ontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0=
+, 0);">I've had a quick scan through the references that google thinks that =
+I may find interesting on this and have come up with what could be a useful =
+starting point from WIEGO <a href=3D"https://www.wiego.org/sites/default/files=
+/publications/file/WIEGO_Statistical_Brief_N32_DWs%20in%20the%20World.pdf" i=
+d=3D"LPlnk705750">https://www.wiego.org/sites/default/files/publications/file/=
+WIEGO_Statistical_Brief_N32_DWs%20in%20the%20World.pdf</a></span></div><div =
+class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_=
+MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0=
+, 0, 0);"><br></div><div class=3D"elementToProof" style=3D"font-family: Aptos, A=
+ptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font=
+-size: 12pt; color: rgb(0, 0, 0);">This brief summarises country statistics =
+from the ILOSTAT database, giving a headline figure for Europe of 2.5 millio=
+n.</div><div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_Embedde=
+dFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt;=
+ color: rgb(0, 0, 0);"><br></div><div class=3D"elementToProof" style=3D"font-fam=
+ily: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, san=
+s-serif; font-size: 12pt; color: rgb(0, 0, 0);">Is this a database that you'=
+re familiar with, or would you like me to see if I can dig out a UK or even =
+an England figure?</div><div class=3D"elementToProof" style=3D"font-family: Apto=
+s, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; =
+font-size: 12pt; color: rgb(0, 0, 0);"><br></div><div class=3D"elementToProof"=
+ style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri=
+, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">Best wishes<=
+/div><div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; co=
+lor: rgb(0, 0, 0);">Caroline</div><div class=3D"elementToProof" style=3D"font-fa=
+mily: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sa=
+ns-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br></div><div id=3D"Signatur=
+e"><div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br><=
+/div><div id=3D"divtagdefaultwrapper" dir=3D"ltr" style=3D"color: rgb(0, 0, 0);"><=
+p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetic=
+a, sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif=
+; color: rgb(0, 155, 189);"><b>Dr Caroline Emberson (preferred pronouns she/=
+her)</b></span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-famil=
+y: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-famil=
+y: Arial, sans-serif; color: rgb(19, 27, 87);"><b>Assistant Professor in Ope=
+rations Management (AFHEA)</b></span></p><p style=3D"margin-top: 0px; margin-b=
+ottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><=
+span style=3D"font-family: Arial, sans-serif; color: rgb(19, 27, 87);"><b><br>=
+</b></span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: C=
+alibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-family: A=
+rial, sans-serif; font-size: 9pt;">&nbsp;</span></p><p style=3D"margin-top: 0p=
+x; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-siz=
+e: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color=
+: rgb(19, 27, 87);">Nottingham University Business School OMIS/ Faculty of S=
+ocial Science<br>University of Nottingham</span></p><p style=3D"margin-top: 0p=
+x; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-siz=
+e: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color=
+: rgb(19, 27, 87);">B12,Si Yuan Building</span></p><p style=3D"margin-top: 0px=
+; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size=
+: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color:=
+ rgb(19, 27, 87);">Jubilee Campus</span></p><p style=3D"margin-top: 0px; margi=
+n-bottom: 0px;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt;=
+ color: rgb(19, 27, 87);">Nottingham, NG8 1BB&nbsp;</span></p><p style=3D"marg=
+in-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif=
+; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: =
+9pt; color: rgb(19, 27, 87);">+44 (0) 115 8466631<b>&nbsp;</b></span><span s=
+tyle=3D"font-family: Calibri, sans-serif; font-size: 9pt; color: rgb(19, 27, 8=
+7);"><b>| </b></span><span style=3D"font-family: Arial, sans-serif; font-size:=
+ 9pt;"><a href=3D"http://nottingham.ac.uk/" target=3D"_blank" style=3D"margin-top:=
+ 0px; margin-bottom: 0px;">caroline.emberson@nottingham.ac.uk</a></span></p>=
+<p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helveti=
+ca, sans-serif; font-size: 12pt;"><br></p><p style=3D"margin-top: 0px; margin-=
+bottom: 0px;"><span style=3D"font-family: Arial, sans-serif; font-size: 12px;"=
+>Please note that my working days are Monday, Tuesday, Thursday and Friday</=
+span></p><p style=3D"margin-top: 0px; margin-bottom: 0px;"><span style=3D"font-f=
+amily: Arial, sans-serif; font-size: 12px;"><br></span></p><p style=3D"margin-=
+top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; f=
+ont-size: 12pt;"><span style=3D"font-family: Georgia, serif; font-size: 9pt; c=
+olor: rgb(21, 118, 158);"><b>Follow us</b></span></p><p style=3D"margin-top: 0=
+px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-si=
+ze: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; colo=
+r: rgb(0, 0, 233);"><u><a href=3D"http://facebook.com/TheUniofNottingham" styl=
+e=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Facebook.com=
+/UniofNottingham</a></u></span></p><p style=3D"margin-top: 0px; margin-bottom:=
+ 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span s=
+tyle=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);=
+"><u><a href=3D"http://twitter.com/UniofNottingham" style=3D"color: rgb(0, 0, 23=
+3); margin-top: 0px; margin-bottom: 0px;">Twitter.com/UniofNottingham</a></u=
+></span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Cali=
+bri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-family: Aria=
+l, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u><a href=3D"http://yo=
+utube.com/nottmuniversity" style=3D"color: rgb(0, 0, 233); margin-top: 0px; ma=
+rgin-bottom: 0px;">Youtube.com/nottmuniversity</a></u></span></p><p style=3D"m=
+argin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-se=
+rif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-siz=
+e: 9pt; color: rgb(0, 0, 233);"><u><a href=3D"http://instagram.com/uniofnottin=
+gham" style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">In=
+stagram.com/uniofnottingham</a></u></span></p><p style=3D"margin-top: 0px; mar=
+gin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12p=
+t;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(=
+0, 0, 233);"><u><a href=3D"http://linkedin.com/company/university-of-nottingha=
+m" style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Linke=
+din.com/company/university-of-nottingham</a></u></span></p><p style=3D"margin-=
+top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; f=
+ont-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt=
+; color: rgb(0, 0, 233);"><u><a href=3D"http://www.foursquare.com/uniofnotting=
+ham" style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">F</=
+a><a href=3D"http://www.foursquare.com/uniofnottingham" style=3D"margin-top: 0px=
+; margin-bottom: 0px;">oursquare.com/uniofnottingham</a></u></span></p><p st=
+yle=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, s=
+ans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; fo=
+nt-size: 9pt; color: rgb(0, 0, 233);"><u>&nbsp;</u></span></p><br></div><tab=
+le id=3D"pbpsiglinktable"><tbody><tr><td><span style=3D"font-family: Aptos, Apto=
+s_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-si=
+ze: 12pt; color: rgb(0, 0, 0);"><a href=3D"https://outlook.office.com/bookwith=
+me/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&a=
+mp;ep=3DbwmEmailSignature"><img data-outlook-trace=3D"F:1|T:1" src=3D"cid:d0856b4b=
+-4347-44c2-bfeb-a36d7d375459"></a></span></td><td></td><td><span style=3D"font=
+-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica,=
+ sans-serif; font-size: 12pt; color: rgb(0, 120, 212);"><a href=3D"https://out=
+look.office.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nott=
+ingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature" style=3D"color: rgb(0, 120, 2=
+12); text-decoration: none;">Book time to meet with me</a></span></td><td></=
+td></tr></tbody></table></div><div id=3D"appendonsend"></div><hr style=3D"displa=
+y:inline-block;width:98%" tabindex=3D"-1"><div id=3D"divRplyFwdMsg" dir=3D"ltr"><f=
+ont face=3D"Calibri, sans-serif" style=3D"font-size:11pt" color=3D"#000000"><b>Fro=
+m:</b> Scott Moser (staff) &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Sent=
+:</b> 09 February 2024 16:42<br><b>To:</b> Caroline Emberson (staff) &lt;liz=
+ce@exmail.nottingham.ac.uk&gt;; Selim Yilmaz &lt;ldxsy3@exmail.nottingham.ac=
+.uk&gt;<br><b>Subject:</b> Re: DWinUK data</font> <div>&nbsp;</div></div><st=
+yle>
+<!--
+@font-face
+	{font-family:"Cambria Math"}
+@font-face
+	{font-family:Calibri}
+@font-face
+	{font-family:Georgia}
+p.x_MsoNormal, li.x_MsoNormal, div.x_MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif}
+a:link, span.x_MsoHyperlink
+	{color:blue;
+	text-decoration:underline}
+code
+	{font-family:"Courier New"}
+span.x_EmailStyle20
+	{font-family:"Calibri",sans-serif;
+	color:windowtext}
+.x_MsoChpDefault
+	{font-size:10.0pt}
+@page WordSection1
+	{margin:72.0pt 72.0pt 72.0pt 72.0pt}
+div.x_WordSection1
+	{}
+-->
+</style><div lang=3D"EN-GB" link=3D"blue" vlink=3D"purple"><div class=3D"x_WordSect=
+ion1"><p class=3D"x_MsoNormal"><span style=3D"">Howdy all. </span></p><p class=3D"=
+x_MsoNormal"><span style=3D"">&nbsp;</span></p><p class=3D"x_MsoNormal"><span st=
+yle=3D"">I wanted to follow up on out DWinUK paper.&nbsp; I feel like we are c=
+lose, but I also feel like I do not want to loose the =E2=80=98momentum=E2=80=99 we have=
+.&nbsp; On my end, I think I only need the answers to my previous email to f=
+inish off the RDS analysis.&nbsp; I do still need to work on the NSUM analys=
+is (more on this below).</span></p><p class=3D"x_MsoNormal"><span style=3D"">&nb=
+sp;</span></p><p class=3D"x_MsoNormal"><span style=3D"">&nbsp; Selim: are you ab=
+le to help with answers regarding the data set?&nbsp; Specifically about Q10=
+5 to Q110/ Q115?&nbsp; And the two versions of the Codebook?&nbsp; I really =
+need to comprehend the =E2=80=98referrals=E2=80=99 (=3D=E2=80=99coupons=E2=80=99) parameters and data.=
+</span></p><p class=3D"x_MsoNormal"><span style=3D"">&nbsp;</span></p><p class=3D"=
+x_MsoNormal"><span style=3D"">Selim: at our last meeting we talked about you w=
+orking on implementing the =E2=80=98neighbour bootstrap.=E2=80=99&nbsp; I attach the pap=
+er and the CRAN links -- &lt;</span> <span style=3D"">https://cran.r-project.o=
+rg/web/packages/Neighboot/index.html &gt; to help you get started.&nbsp; I w=
+ill work on the NSUM part. <br><br></span></p><p class=3D"x_MsoNormal"><span s=
+tyle=3D"">Caroline: As you know, we need a =E2=80=98prior belief=E2=80=99 about the size o=
+f the population from which we are sampling, e.g. the number of Domestic Wor=
+kers in the UK.&nbsp; I had mentioned that I noodled around and came up with=
+ a very rough estimate that of 1.74 million DW in the UK.&nbsp;&nbsp; I conf=
+ess I cannot find the exact source of that guestimate. Indeed, it seems that=
+ perhaps that was an overestimate:<br><a href=3D"https://www.ons.gov.uk/busine=
+ssindustryandtrade/business/activitysizeandlocation/adhocs/14062cleaningacti=
+vitiesintheuk">https://www.ons.gov.uk/businessindustryandtrade/business/acti=
+vitysizeandlocation/adhocs/14062cleaningactivitiesintheuk</a></span></p><p c=
+lass=3D"x_MsoNormal"><span style=3D""><a href=3D"https://www.infomigrants.net/en/p=
+ost/55107/uk-survey-of-200-migrant-domestic-workers-reveals-extent-of-employ=
+er-abuse">https://www.infomigrants.net/en/post/55107/uk-survey-of-200-migran=
+t-domestic-workers-reveals-extent-of-employer-abuse</a></span></p><p class=3D"=
+x_MsoNormal"><span style=3D""><a href=3D"https://www.ons.gov.uk/employmentandlab=
+ourmarket/peopleinwork/employmentandemployeetypes/articles/homeworkingintheu=
+kregionalpatterns/2019to2022">https://www.ons.gov.uk/employmentandlabourmark=
+et/peopleinwork/employmentandemployeetypes/articles/homeworkingintheukregion=
+alpatterns/2019to2022</a></span></p><p class=3D"x_MsoNormal"><span style=3D""><b=
+r>(see also the attached).</span></p><p class=3D"x_MsoNormal"><span style=3D"">&=
+nbsp;</span></p><p class=3D"x_MsoNormal"><span style=3D"">I do hope we can move =
+forward on this paper soon.&nbsp; Please do let me know if I can help facili=
+tate.</span></p><p class=3D"x_MsoNormal"><span style=3D"">Best,</span></p><p cla=
+ss=3D"x_MsoNormal"><span style=3D"">Scott</span></p><p class=3D"x_MsoNormal"><span=
+ style=3D"">&nbsp;</span></p><p class=3D"x_MsoNormal"><span style=3D"">&nbsp;</spa=
+n></p><p class=3D"x_MsoNormal"><span style=3D"">&nbsp;</span></p><p class=3D"x_Mso=
+Normal"><span style=3D"">&nbsp;</span></p><p class=3D"x_MsoNormal"><span style=3D"=
+">&nbsp;</span></p><p class=3D"x_MsoNormal"><span style=3D"">&nbsp;</span></p><p=
+ class=3D"x_MsoNormal"><span style=3D"">&nbsp;</span></p><div style=3D"border:none=
+; border-top:solid #B5C4DF 1.0pt; padding:3.0pt 0cm 0cm 0cm"><p class=3D"x_Mso=
+Normal"><b><span style=3D"font-size:12.0pt; color:black">From: </span></b><spa=
+n style=3D"font-size:12.0pt; color:black">&quot;Caroline Emberson (staff)&quot=
+; &lt;lizce@exmail.nottingham.ac.uk&gt;<br><b>Date: </b>Monday, 5 February 2=
+024 at 14:31<br><b>To: </b>&quot;Scott Moser (staff)&quot; &lt;ldzsm2@exmail=
+.nottingham.ac.uk&gt;, Selim Yilmaz &lt;ldxsy3@exmail.nottingham.ac.uk&gt;<b=
+r><b>Subject: </b>Re: DWinUK data</span></p></div><div><p class=3D"x_MsoNormal=
+">&nbsp;</p></div><div><p class=3D"x_MsoNormal"><span style=3D"font-size:12.0pt;=
+ color:black">Hi Scott,</span></p></div><div><p class=3D"x_MsoNormal"><span st=
+yle=3D"font-size:12.0pt; color:black">&nbsp;</span></p></div><div><p class=3D"x_=
+MsoNormal"><span style=3D"font-size:12.0pt; color:black">Thanks for your perse=
+verance with cleaning the data. I'm happy with DWinUK either with or without=
+ the +EE. I hope that Selim may be in a position to deal with your codebook =
+and detailed coding queries?</span></p></div><div><p class=3D"x_MsoNormal"><sp=
+an style=3D"font-size:12.0pt; color:black">&nbsp;</span></p></div><div><p clas=
+s=3D"x_MsoNormal"><span style=3D"font-size:12.0pt; color:black">Best wishes</spa=
+n></p></div><div><p class=3D"x_MsoNormal"><span style=3D"font-size:12.0pt; color=
+:black">Caroline</span></p></div><div><p class=3D"x_MsoNormal"><span style=3D"fo=
+nt-size:12.0pt; color:black">&nbsp;</span></p></div><div id=3D"x_Signature"><d=
+iv><p class=3D"x_MsoNormal"><span style=3D"font-size:12.0pt; color:black">&nbsp;=
+</span></p></div><div id=3D"x_divtagdefaultwrapper"><p><b><span style=3D"font-si=
+ze:12.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#009BBD">Dr Carol=
+ine Emberson (preferred pronouns she/her)</span></b><span style=3D"font-size:1=
+2.0pt; color:black"></span></p><p><b><span style=3D"font-size:12.0pt; font-fam=
+ily:&quot;Arial&quot;,sans-serif; color:#131B57">Assistant Professor in Oper=
+ations Management (AFHEA)</span></b><span style=3D"font-size:12.0pt; color:bla=
+ck"></span></p><p><span style=3D"font-size:12.0pt; color:black">&nbsp;</span><=
+/p><p><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif=
+; color:black">&nbsp;</span><span style=3D"font-size:12.0pt; color:black"></sp=
+an></p><p><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-s=
+erif; color:#131B57">Nottingham University Business School OMIS/ Faculty of =
+Social Science<br>University of Nottingham</span><span style=3D"font-size:12.0=
+pt; color:black"></span></p><p><span style=3D"font-size:9.0pt; font-family:&qu=
+ot;Arial&quot;,sans-serif; color:#131B57">B12,Si Yuan Building</span><span s=
+tyle=3D"font-size:12.0pt; color:black"></span></p><p><span style=3D"font-size:9.=
+0pt; font-family:&quot;Arial&quot;,sans-serif; color:#131B57">Jubilee Campus=
+</span><span style=3D"font-size:12.0pt; color:black"></span></p><p><span style=
+=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#131B57">=
+Nottingham, NG8 1BB&nbsp;</span><span style=3D"color:black"></span></p><p><spa=
+n style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#1=
+31B57">+44 (0) 115 8466631<b>&nbsp;</b></span><b><span style=3D"font-size:9.0p=
+t; color:#131B57">| </span></b><span style=3D"font-size:9.0pt; font-family:&qu=
+ot;Arial&quot;,sans-serif; color:black"><a href=3D"http://nottingham.ac.uk/" t=
+arget=3D"_blank">caroline.emberson@nottingham.ac.uk</a></span><span style=3D"fon=
+t-size:12.0pt; color:black"></span></p><p><span style=3D"font-size:12.0pt; col=
+or:black">&nbsp;</span></p><p><span style=3D"font-size:9.0pt; font-family:&quo=
+t;Arial&quot;,sans-serif; color:black">Please note that my working days are =
+Monday, Tuesday, Thursday and Friday</span><span style=3D"color:black"></span>=
+</p><p><span style=3D"color:black">&nbsp;</span></p><p><b><span style=3D"font-si=
+ze:9.0pt; font-family:&quot;Georgia&quot;,serif; color:#15769E">Follow us</s=
+pan></b><span style=3D"font-size:12.0pt; color:black"></span></p><p><u><span s=
+tyle=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000=
+E9"><a href=3D"http://facebook.com/TheUniofNottingham"><span style=3D"color:#000=
+0E9">Facebook.com/UniofNottingham</span></a></span></u><span style=3D"font-siz=
+e:12.0pt; color:black"></span></p><p><u><span style=3D"font-size:9.0pt; font-f=
+amily:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http://twitter.c=
+om/UniofNottingham"><span style=3D"color:#0000E9">Twitter.com/UniofNottingham<=
+/span></a></span></u><span style=3D"font-size:12.0pt; color:black"></span></p>=
+<p><u><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif=
+; color:#0000E9"><a href=3D"http://youtube.com/nottmuniversity"><span style=3D"c=
+olor:#0000E9">Youtube.com/nottmuniversity</span></a></span></u><span style=3D"=
+font-size:12.0pt; color:black"></span></p><p><u><span style=3D"font-size:9.0pt=
+; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http://i=
+nstagram.com/uniofnottingham"><span style=3D"color:#0000E9">Instagram.com/unio=
+fnottingham</span></a></span></u><span style=3D"font-size:12.0pt; color:black"=
+></span></p><p><u><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot=
+;,sans-serif; color:#0000E9"><a href=3D"http://linkedin.com/company/university=
+-of-nottingham"><span style=3D"color:#0000E9">Linkedin.com/company/university-=
+of-nottingham</span></a></span></u><span style=3D"font-size:12.0pt; color:blac=
+k"></span></p><p><u><span style=3D"font-size:9.0pt; font-family:&quot;Arial&qu=
+ot;,sans-serif; color:#0000E9"><a href=3D"http://www.foursquare.com/uniofnotti=
+ngham"><span style=3D"color:#0000E9">F</span></a><a href=3D"http://www.foursquar=
+e.com/uniofnottingham">oursquare.com/uniofnottingham</a></span></u><span sty=
+le=3D"font-size:12.0pt; color:black"></span></p><p><u><span style=3D"font-size:9=
+.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9">&nbsp;</span>=
+</u><span style=3D"font-size:12.0pt; color:black"></span></p><p class=3D"x_MsoNo=
+rmal"><span style=3D"color:black">&nbsp;</span></p></div><table class=3D"x_MsoNo=
+rmalTable" border=3D"0" cellpadding=3D"0" id=3D"x_pbpsiglinktable"><tbody><tr><td =
+style=3D"padding:.75pt .75pt .75pt .75pt"><p class=3D"x_MsoNormal"><span style=3D"=
+color:black"><a href=3D"https://outlook.office.com/bookwithme/user/68c1e07fca3=
+14c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSigna=
+ture"><span style=3D"font-size:12.0pt; color:black; text-decoration:none"><spa=
+n style=3D"color:blue"><img border=3D"0" width=3D"20" height=3D"20" id=3D"x__x0000_i10=
+26" style=3D"width:.2083in; height:.2083in" data-outlook-trace=3D"F:1|T:1" src=3D"=
+cid:image001.png@01DA5B76.FE3537A0"></span></span></a></span></p></td><td st=
+yle=3D"padding:.75pt .75pt .75pt .75pt"></td><td style=3D"padding:.75pt .75pt .7=
+5pt .75pt"><p class=3D"x_MsoNormal"><span style=3D"font-size:12.0pt; color:#0078=
+D4"><a href=3D"https://outlook.office.com/bookwithme/user/68c1e07fca314c1a863a=
+4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature"><sp=
+an style=3D"color:#0078D4; text-decoration:none">Book time to meet with me</sp=
+an></a></span></p></td><td style=3D"padding:.75pt .75pt .75pt .75pt"></td></tr=
+></tbody></table></div><div class=3D"x_MsoNormal" align=3D"center" style=3D"text-a=
+lign:center"><span style=3D"color:white"><hr size=3D"2" width=3D"98%" align=3D"cente=
+r"></span></div><div id=3D"x_divRplyFwdMsg"><p class=3D"x_MsoNormal"><b><span st=
+yle=3D"color:black">From:</span></b><span style=3D"color:black"> Scott Moser (st=
+aff) &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Sent:</b> 05 February 2024=
+ 14:12<br><b>To:</b> Caroline Emberson (staff) &lt;lizce@exmail.nottingham.a=
+c.uk&gt;; Selim Yilmaz &lt;ldxsy3@exmail.nottingham.ac.uk&gt;<br><b>Subject:=
+</b> DWinUK data</span> </p><div><p class=3D"x_MsoNormal">&nbsp;</p></div></di=
+v><div><div><p class=3D"x_MsoNormal"><span style=3D"font-size:12.0pt; color:blac=
+k">Dear both,</span></p></div><div><p class=3D"x_MsoNormal"><span style=3D"font-=
+size:12.0pt; color:black">Thank you for a wonderful =E2=80=93 and mind-expanding =E2=
+=80=93 meeting on Friday!&nbsp; I hope you have enjoyed your respective weekends=
+.&nbsp;</span></p></div><div><p class=3D"x_MsoNormal"><span style=3D"font-size:1=
+2.0pt; color:black">&nbsp;</span></p></div><div><p class=3D"x_MsoNormal"><span=
+ style=3D"font-size:12.0pt; color:black">Some scattered thoughts: (1) is there=
+ an acronym I should be using in meials to refer to this paper?&nbsp; I'm th=
+inking 'DWinUK' (=3D domestic workers in the UK) or perhaps with a 'experienci=
+ng exploitation' (+EE?)</span></p></div><div><p class=3D"x_MsoNormal"><span st=
+yle=3D"font-size:12.0pt; color:black">&nbsp;</span></p></div><div><p class=3D"x_=
+MsoNormal"><span style=3D"font-size:12.0pt; color:black">(2) What I thought wo=
+uld be an two-hour side project has turned&nbsp;into a bit of a small creatu=
+re, regarding the data we are using.&nbsp;</span></p></div><div><p class=3D"x_=
+MsoNormal"><span style=3D"font-size:12.0pt; color:black">I am trying to 'clean=
+' the data, specifically adjust the 'personal network size' (q13) in light o=
+f the number of referrals a person made, as we discussed on Friday.&nbsp;&nb=
+sp; Turns out I have loads more questions about the data (sorry, Selim!).&nb=
+sp; To wit, please consider the attached file, `DWinUK_data.csv`, which is e=
+xactly the&nbsp; file `Further Coding Update.xlsx` just with 'clean'variable=
+ names.&nbsp; I am confused about the way the questions are recorded as vari=
+ables.&nbsp; For example, I originally thought <b>that</b>=E2=80=8B (A) the variab=
+les </span><code><span style=3D"font-size:10.0pt; color:black">q105</span></co=
+de><span style=3D"font-size:12.0pt; color:black">=E2=80=8B to </span><code><span sty=
+le=3D"font-size:10.0pt; color:black">q110</span></code><span style=3D"font-size:=
+12.0pt; color:black">=E2=80=8B contained the (up-to) five referrals (the 'coupons'=
+ in RDS language).&nbsp; However, upon closer inspection, it seems that (B )=
+ perhaps the variables </span><code><span style=3D"font-size:10.0pt; color:bla=
+ck">q105</span></code><span style=3D"font-size:12.0pt; color:black">=E2=80=8B to </s=
+pan><code><span style=3D"font-size:10.0pt; color:black">q115</span></code><spa=
+n style=3D"font-size:12.0pt; color:black">=E2=80=8B might contain the mobile numbers=
+ of referals (see ID 13, row 11 in the CSV file).&nbsp; HOWEVER, however, (C=
+)&nbsp; ID 14 (row 12) seems to thwart this interpretation, because this per=
+son seems to have nominated three other DWs (</span></p></div><table class=3D"=
+x_MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"260" sty=
+le=3D"width:195.0pt; border-collapse:collapse; border-spacing:0px; box-sizing:=
+border-box"><tbody><tr style=3D"height:16.0pt"><td width=3D"87" nowrap=3D"" valign=
+=3D"bottom" style=3D"width:65.0pt; border:solid #D4D4D4 1.0pt; padding:.75pt .75=
+pt .75pt .75pt; height:16.0pt"><div><p class=3D"x_MsoNormal" align=3D"right" sty=
+le=3D"text-align:right"><span style=3D"font-size:12.0pt; color:black">7575744493=
+</span></p></div></td><td width=3D"87" nowrap=3D"" valign=3D"bottom" style=3D"width:=
+65.0pt; border:solid #D4D4D4 1.0pt; border-left:none; padding:.75pt .75pt .7=
+5pt .75pt; height:16.0pt"><div><p class=3D"x_MsoNormal" align=3D"right" style=3D"t=
+ext-align:right"><span style=3D"font-size:12.0pt; color:black">7309055303</spa=
+n></p></div></td><td width=3D"87" nowrap=3D"" valign=3D"bottom" style=3D"width:65.0p=
+t; border:solid #D4D4D4 1.0pt; border-left:none; padding:.75pt .75pt .75pt .=
+75pt; height:16.0pt"><div><p class=3D"x_MsoNormal" align=3D"right" style=3D"text-a=
+lign:right"><span style=3D"font-size:12.0pt; color:black">7366528118</span></p=
+></div></td></tr></tbody></table><div><p class=3D"x_MsoNormal"><span style=3D"fo=
+nt-size:12.0pt; color:black">in vars q105, q106, q107 respectively), but the=
+n there is also a mobile number in q115 (mobile =3D 7823598150).&nbsp; So, did=
+ this person nominate three people?&nbsp; Or four?</span></p></div><div><p c=
+lass=3D"x_MsoNormal">&nbsp;</p></div><div><p class=3D"x_MsoNormal"><span style=3D"=
+font-size:12.0pt; color:black">If interpretation (B ) is correct, then subje=
+cts could nominate up to 10 others, not five as I had been thinking.&nbsp; P=
+lease help clarify.&nbsp; Also also, there are two codebooks (attached) =E2=80=93 =
+which should I be using?&nbsp;<br>Thanks, I am looking&nbsp;forward to makin=
+g headway on this.</span></p></div><div><p class=3D"x_MsoNormal"><span style=3D"=
+font-size:12.0pt; color:black">scott</span></p></div><div><p class=3D"x_MsoNor=
+mal">&nbsp;</p></div><div><p class=3D"x_MsoNormal">&nbsp;</p></div><div><p cla=
+ss=3D"x_MsoNormal">&nbsp;</p></div><div><p class=3D"x_MsoNormal">&nbsp;</p></div=
+><div><p class=3D"x_MsoNormal">&nbsp;</p></div><div><p class=3D"x_MsoNormal">&nb=
+sp;</p></div><div><p class=3D"x_MsoNormal">&nbsp;</p></div><div><p class=3D"x_Ms=
+oNormal">&nbsp;</p></div><div><p class=3D"x_MsoNormal">&nbsp;</p></div><div><p=
+ class=3D"x_MsoNormal">&nbsp;</p></div><div><p class=3D"x_MsoNormal">&nbsp;</p><=
+/div><div><p class=3D"x_MsoNormal">&nbsp;</p></div><div><p class=3D"x_MsoNormal"=
+>&nbsp;</p></div><div><p class=3D"x_MsoNormal">&nbsp;</p></div><div><p class=3D"=
+x_MsoNormal">&nbsp;</p></div><div><p class=3D"x_MsoNormal">&nbsp;</p></div></d=
+iv></div></div></body></html>
+
+--B_3821516406_504518914--
+
+
+--B_3821516406_1383732607
+Content-type: image/png; name="image001.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <image001.png@01DA5B76.FE3537A0>
+Content-disposition: inline;
+	filename="image001.png"
+Content-transfer-encoding: base64
+
+
+iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAcpJREFU
+OE9jZAABr6aJDHqhuQwMDIxgPrHg19d3DLP91Bk+P3sD08IIN2x1hjPDy7NXiDWL4T8nM0NA
+33wGWRMPhg5NJgYGhv8gvYwMFdf/MYAMu3twP9GGISssv/qLYVdzMsP5FYthBv5nmO2pyfDz
+zVuyDEw/eJ3hxNyJDEenNSMMJMskJE2Hp9YxHJ2CZOBUM1GGz5/hAUuS+UVnXjOcXDCJygbO
+m4TqZUpcGDJjJcPzS1eoYyAvrzDD58/vGRgY/iHSYcX1/wykupBXWpghe89reEbY0RjNcGHF
+MkQsk2pgwYkXDBz84iiR16EJzmWghE26C8uv/mZgZGJBM5AZ5HXyDPRo7GMwCCuEG/jj40uG
+CRYS5LsQpNM6q4TBOLqE4emFgwxrs8NRI2WynSTD19cvSErQOBQzMhSdecvw8vophqWxngQN
+BCWTrBMvMMIPpnF7dQQjA6+UCEP23tcM//7+Zvjx8QNOQydZizFk7bvNwCepgs9iWIHKyGAY
+EcPALaQEUQwq3mBplQmi5siUBoa0bRcZhBT18Bj4n7QSWlhGmiF19xOcBh6aVEyagSCTQEEU
+Nf8Ag6CcFjyn/Pz8hmF9cQjDg8MHAaiKxp0eiZJ4AAAAAElFTkSuQmCCAA==
+--B_3821516406_1383732607
+Content-type: image/png; name="Outlook-kb4tg2de.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <d0856b4b-4347-44c2-bfeb-a36d7d375459>
+Content-disposition: inline;
+	filename="Outlook-kb4tg2de.png"
+Content-transfer-encoding: base64
+
+
+iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAcpJREFU
+OE9jZAABr6aJDHqhuQwMDIxgPrHg19d3DLP91Bk+P3sD08IIN2x1hjPDy7NXiDWL4T8nM0NA
+33wGWRMPhg5NJgYGhv8gvYwMFdf/MYAMu3twP9GGISssv/qLYVdzMsP5FYthBv5nmO2pyfDz
+zVuyDEw/eJ3hxNyJDEenNSMMJMskJE2Hp9YxHJ2CZOBUM1GGz5/hAUuS+UVnXjOcXDCJygbO
+m4TqZUpcGDJjJcPzS1eoYyAvrzDD58/vGRgY/iHSYcX1/wykupBXWpghe89reEbY0RjNcGHF
+MkQsk2pgwYkXDBz84iiR16EJzmWghE26C8uv/mZgZGJBM5AZ5HXyDPRo7GMwCCuEG/jj40uG
+CRYS5LsQpNM6q4TBOLqE4emFgwxrs8NRI2WynSTD19cvSErQOBQzMhSdecvw8vophqWxngQN
+BCWTrBMvMMIPpnF7dQQjA6+UCEP23tcM//7+Zvjx8QNOQydZizFk7bvNwCepgs9iWIHKyGAY
+EcPALaQEUQwq3mBplQmi5siUBoa0bRcZhBT18Bj4n7QSWlhGmiF19xOcBh6aVEyagSCTQEEU
+Nf8Ag6CcFjyn/Pz8hmF9cQjDg8MHAaiKxp0eiZJ4AAAAAElFTkSuQmCC
+--B_3821516406_1383732607--
+
+
+--B_3821516406_183479894--
+

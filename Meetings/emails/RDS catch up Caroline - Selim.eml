@@ -1,0 +1,210 @@
+Received: from PAWPR06MB8835.eurprd06.prod.outlook.com (2603:10a6:102:388::19)
+ by DB9PR06MB8202.eurprd06.prod.outlook.com with HTTPS; Fri, 2 Feb 2024
+ 08:13:08 +0000
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com (2603:10a6:20b:99::17)
+ by PAWPR06MB8835.eurprd06.prod.outlook.com (2603:10a6:102:388::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7249.24; Fri, 2 Feb
+ 2024 08:13:07 +0000
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::a9e:b85e:409e:986b]) by AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::a9e:b85e:409e:986b%7]) with mapi id 15.20.7249.025; Fri, 2 Feb 2024
+ 08:13:07 +0000
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+To: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>, "Scott Moser (staff)"
+	<ldzsm2@exmail.nottingham.ac.uk>
+Subject: RDS catch up Caroline - Selim
+Thread-Topic: RDS catch up Caroline - Selim
+Thread-Index: AQHaVa+n2zdaG8guAEi61QxrJI6hbw==
+Date: Fri, 2 Feb 2024 08:13:07 +0000
+Message-ID:
+	<AM6PR06MB594154473FC377C669109135A0422@AM6PR06MB5941.eurprd06.prod.outlook.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-GB
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Has-Attach:
+X-MS-Exchange-Organization-Network-Message-Id:
+	652b6ddc-2a7b-4d81-cb2e-08dc23c6c9c8
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-microsoft-antispam: BCL:0;
+x-forefront-antispam-report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR06MB5941.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:;DIR:INT;
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=exmail.nottingham.ac.uk;
+x-ms-exchange-crosstenant-originalarrivaltime: 02 Feb 2024 08:13:07.5413 (UTC)
+x-ms-exchange-transport-crosstenantheadersstamped: PAWPR06MB8835
+x-ms-exchange-crosstenant-id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+x-ms-exchange-crosstenant-fromentityheader: Hosted
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 652b6ddc-2a7b-4d81-cb2e-08dc23c6c9c8
+x-ms-exchange-transport-endtoendlatency: 00:00:01.3193643
+x-ms-traffictypediagnostic:
+	AM6PR06MB5941:EE_MeetingMessage|PAWPR06MB8835:EE_MeetingMessage|DB9PR06MB8202:EE_MeetingMessage
+x-ms-exchange-crosstenant-network-message-id:
+	652b6ddc-2a7b-4d81-cb2e-08dc23c6c9c8
+x-ms-exchange-crosstenant-mailboxtype: HOSTED
+x-ms-exchange-crosstenant-userprincipalname:
+	g/th0/8xwsNDvLRTxFET+D2wtlnb6vLvhyfvelvpz8+qqVY8JdMmgGQOdXwqF8r/88c+Ymy9Vg4VNId//qUiRTq0up48hG4zUhWsn3yQFW03Q4uH4aTj5JJxzVytasVA
+x-ms-exchange-processed-by-bccfoldering: 15.20.7249.027
+x-ms-exchange-crosstenant-authsource: AM6PR06MB5941.eurprd06.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Internal
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(425001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	Kp1pY0+6JSv6YRRmSymX1sgUNVZt+tRa/c7eCFG/AAkpRFxRIsbCz3fLYgDMQPMsmpaGQlJ1nhYGqksw92u8sDo5OjrjaqTkhHq+ALy3ar2idEwPqwNBOVFD46UidscZ9dyAEbmjwvEkSyS9On1+sPYFtTu0aJ243PHGmoMQzx5bgjegxe5bN21L+i++ZNW3oCxxPN6rGO5Z//EV/xdUdKzTTPqmcbiJddZrqvux/RV65KDSeiUr+3a84vdV2loxFY2RwhfShUajdsr9dX5/mnIOcup2U4Gt7cuCuLY+DPoJRy5+0SCDLx4CGL4ms8VwJ7gH9a9GpDcdL6Yg6EB3XjT24DX50Blk46OPnXB7xPTqSzaUap1vA5Lc0o/OHWstKayv8c9KFbsExGmhva71anQdCf4iV4caTxAatJg47Wrs+dT7afUyO9Qn5dgf0eiuEEG5L4k5r469mKcjcRH1TWbde2vdwMhulaUJDjX0v8K5tcPZqd4obRiPIq7VPUt6DkWmHGonEI2nhxM0JQrltVflSLaEZvaWP5e3+VSWa/vQwNZVuKexKYCz/FR3XMF7WetOxBBVqvvQAW9abgdlvYFOuE1mNpUKkwRsR9xzeTLDVX2ZfS7cpJmrRsGn2rAH98uDRbA/krM7gfWyAW+teD5VFns8HhgrInJktsXASkuxVRHRFfLtebtA2HfQ8zrynecpw68pra2x7ZqTfBcB5JQTAuaCoO2rlZFZ30PovN6PoAb2xHhBbMIf43R3+Cm+nlxx8sm2HURqxo15XXoV5ViI3ERdOc16/RhexUA+cIHXAsdqsOe6Oga3kKfvSNBu
+Content-Type: multipart/alternative;
+	boundary="_000_AM6PR06MB594154473FC377C669109135A0422AM6PR06MB5941eurp_"
+MIME-Version: 1.0
+
+--_000_AM6PR06MB594154473FC377C669109135A0422AM6PR06MB5941eurp_
+Content-Type: text/plain; charset="us-ascii"
+
+I've extended the meeting at Scott's request - we can now all make the same time - 2 pm
+
+See you then
+________________________________________________________________________________
+Microsoft Teams meeting
+Join on your computer, mobile app or room device
+Click here to join the meeting<https://teams.microsoft.com/l/meetup-join/19%3ameeting_YTI2M2YwNzQtNGM5ZC00Mjc5LThkYzAtZTNlYmNmOTc5MzVj%40thread.v2/0?context=%7b%22Tid%22%3a%2267bda7ee-fd80-41ef-ac91-358418290a1e%22%2c%22Oid%22%3a%22fe2a727a-a7f3-4426-ab2a-6287ae4be345%22%7d>
+Meeting ID: 358 366 364 341
+Passcode: rU5LA6
+Download Teams<https://www.microsoft.com/en-us/microsoft-teams/download-app> | Join on the web<https://www.microsoft.com/microsoft-teams/join-a-meeting>
+Learn more<https://aka.ms/JoinTeamsMeeting> | Meeting options<https://teams.microsoft.com/meetingOptions/?organizerId=fe2a727a-a7f3-4426-ab2a-6287ae4be345&tenantId=67bda7ee-fd80-41ef-ac91-358418290a1e&threadId=19_meeting_YTI2M2YwNzQtNGM5ZC00Mjc5LThkYzAtZTNlYmNmOTc5MzVj@thread.v2&messageId=0&language=en-GB>
+________________________________________________________________________________
+
+--_000_AM6PR06MB594154473FC377C669109135A0422AM6PR06MB5941eurp_
+Content-Type: text/html; charset="us-ascii"
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+</head>
+<body>
+<div class="cal_5509"></div>
+<div class="cal_5509">
+<div class="elementToProof" style="font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
+I've extended the meeting at Scott's request - we can now all make the same time - 2 pm</div>
+<div class="elementToProof" style="font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
+<br>
+</div>
+<div class="elementToProof" style="font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
+See you then</div>
+<div class="elementToProof">
+<div style="width:100%"><span style="white-space: nowrap; opacity: 0.36; color: rgb(95, 95, 95);">________________________________________________________________________________</span>
+</div>
+<div class="x_me-email-text" lang="en-GB" style="font-family: &quot;Segoe UI&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; color: rgb(37, 36, 36);">
+<div style="margin-top:24px; margin-bottom:20px"><span style="font-size: 24px; color: rgb(37, 36, 36);">Microsoft Teams meeting</span>
+</div>
+<div style="margin-bottom:20px">
+<div style="margin-top:0px; margin-bottom:0px; font-weight:bold"><span style="font-size: 14px; color: rgb(37, 36, 36);">Join on your computer, mobile app or room device</span>
+</div>
+<a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_YTI2M2YwNzQtNGM5ZC00Mjc5LThkYzAtZTNlYmNmOTc5MzVj%40thread.v2/0?context=%7b%22Tid%22%3a%2267bda7ee-fd80-41ef-ac91-358418290a1e%22%2c%22Oid%22%3a%22fe2a727a-a7f3-4426-ab2a-6287ae4be345%22%7d" target="_blank" rel="noreferrer noopener" data-auth="NotApplicable" class="x_me-email-headline OWAAutoLink" style="font-size: 14px; font-family: &quot;Segoe UI Semibold&quot;, &quot;Segoe UI&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; text-decoration: underline; color: rgb(98, 100, 167);" data-loopstyle="linkonly" id="OWA3b410965-1a68-e7e7-65c4-4659f5247b47">Click
+ here to join the meeting</a> </div>
+<div style="margin-bottom:20px; margin-top:20px">
+<div style="margin-bottom:4px"><span data-tid="meeting-code" style="font-size: 14px; color: rgb(37, 36, 36);">Meeting ID:
+<span style="font-size: 16px; color: rgb(37, 36, 36);">358 366 364 341</span> </span>
+<br>
+<span style="font-size: 14px; color: rgb(37, 36, 36);">Passcode: </span><span style="font-size: 16px; color: rgb(37, 36, 36);">rU5LA6
+</span>
+<div style="font-size:14px"><a href="https://www.microsoft.com/en-us/microsoft-teams/download-app" target="_blank" rel="noreferrer noopener" data-auth="NotApplicable" class="x_me-email-link OWAAutoLink" style="font-size: 14px; text-decoration: underline; font-family: &quot;Segoe UI&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; color: rgb(98, 100, 167);" data-loopstyle="linkonly" id="OWA00682b76-cffe-8030-8185-83c6a886ae67">Download
+ Teams</a> | <a href="https://www.microsoft.com/microsoft-teams/join-a-meeting" target="_blank" rel="noreferrer noopener" data-auth="NotApplicable" class="x_me-email-link OWAAutoLink" style="font-size: 14px; text-decoration: underline; font-family: &quot;Segoe UI&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; color: rgb(98, 100, 167);" data-loopstyle="linkonly" id="OWAce846c13-d7f2-8ac8-b69c-f2aa90dba17e">
+Join on the web</a></div>
+</div>
+</div>
+<div style="margin-bottom:24px; margin-top:20px"><a href="https://aka.ms/JoinTeamsMeeting" target="_blank" rel="noreferrer noopener" data-auth="NotApplicable" class="x_me-email-link OWAAutoLink" style="font-size: 14px; text-decoration: underline; font-family: &quot;Segoe UI&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; color: rgb(98, 100, 167);" data-loopstyle="linkonly" id="OWA65f51c5b-7adf-48a6-56bd-ae5fa54d903f">Learn
+ more</a> | <a href="https://teams.microsoft.com/meetingOptions/?organizerId=fe2a727a-a7f3-4426-ab2a-6287ae4be345&amp;tenantId=67bda7ee-fd80-41ef-ac91-358418290a1e&amp;threadId=19_meeting_YTI2M2YwNzQtNGM5ZC00Mjc5LThkYzAtZTNlYmNmOTc5MzVj@thread.v2&amp;messageId=0&amp;language=en-GB" target="_blank" rel="noreferrer noopener" data-auth="NotApplicable" class="x_me-email-link OWAAutoLink" style="font-size: 14px; text-decoration: underline; font-family: &quot;Segoe UI&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; color: rgb(98, 100, 167);" data-loopstyle="linkonly" id="OWAc2345fb6-2b78-3785-3df1-44f1af72e2ae">
+Meeting options</a> </div>
+</div>
+<div style="font-size:14px; margin-bottom:4px; font-family:'Segoe UI','Helvetica Neue',Helvetica,Arial,sans-serif">
+</div>
+<div style="font-size:12px"></div>
+<div></div>
+<div style="width:100%"><span style="white-space: nowrap; opacity: 0.36; color: rgb(95, 95, 95);">________________________________________________________________________________</span>
+</div>
+</div>
+</div>
+</body>
+</html>
+
+--_000_AM6PR06MB594154473FC377C669109135A0422AM6PR06MB5941eurp_
+Content-Type: text/calendar; charset="utf-8"; method=REQUEST
+Content-Transfer-Encoding: base64
+
+QkVHSU46VkNBTEVOREFSDQpNRVRIT0Q6UkVRVUVTVA0KUFJPRElEOk1pY3Jvc29mdCBFeGNoYW5n
+ZSBTZXJ2ZXIgMjAxMA0KVkVSU0lPTjoyLjANCkJFR0lOOlZUSU1FWk9ORQ0KVFpJRDpHTVQgU3Rh
+bmRhcmQgVGltZQ0KQkVHSU46U1RBTkRBUkQNCkRUU1RBUlQ6MTYwMTAxMDFUMDIwMDAwDQpUWk9G
+RlNFVEZST006KzAxMDANClRaT0ZGU0VUVE86KzAwMDANClJSVUxFOkZSRVE9WUVBUkxZO0lOVEVS
+VkFMPTE7QllEQVk9LTFTVTtCWU1PTlRIPTEwDQpFTkQ6U1RBTkRBUkQNCkJFR0lOOkRBWUxJR0hU
+DQpEVFNUQVJUOjE2MDEwMTAxVDAxMDAwMA0KVFpPRkZTRVRGUk9NOiswMDAwDQpUWk9GRlNFVFRP
+OiswMTAwDQpSUlVMRTpGUkVRPVlFQVJMWTtJTlRFUlZBTD0xO0JZREFZPS0xU1U7QllNT05USD0z
+DQpFTkQ6REFZTElHSFQNCkVORDpWVElNRVpPTkUNCkJFR0lOOlZFVkVOVA0KT1JHQU5JWkVSO0NO
+PUNhcm9saW5lIEVtYmVyc29uIChzdGFmZik6bWFpbHRvOmxpemNlQGV4bWFpbC5ub3R0aW5naGFt
+LmFjLnVrDQpBVFRFTkRFRTtST0xFPVJFUS1QQVJUSUNJUEFOVDtQQVJUU1RBVD1ORUVEUy1BQ1RJ
+T047UlNWUD1UUlVFO0NOPVNlbGltIFlpbG0NCiBhejptYWlsdG86bGR4c3kzQGV4bWFpbC5ub3R0
+aW5naGFtLmFjLnVrDQpBVFRFTkRFRTtST0xFPVJFUS1QQVJUSUNJUEFOVDtQQVJUU1RBVD1ORUVE
+Uy1BQ1RJT047UlNWUD1UUlVFO0NOPVNjb3R0IE1vc2UNCiByIChzdGFmZik6bWFpbHRvOmxkenNt
+MkBleG1haWwubm90dGluZ2hhbS5hYy51aw0KREVTQ1JJUFRJT047TEFOR1VBR0U9ZW4tR0I6SSd2
+ZSBleHRlbmRlZCB0aGUgbWVldGluZyBhdCBTY290dCdzIHJlcXVlc3QgLSB3DQogZSBjYW4gbm93
+IGFsbCBtYWtlIHRoZSBzYW1lIHRpbWUgLSAyIHBtXG5cblNlZSB5b3UgdGhlblxuX19fX19fX19f
+X19fX19fX18NCiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19cbk1pY3Jvc29mdA0KICBUZWFtcyBtZWV0aW5nXG5Kb2luIG9uIHlv
+dXIgY29tcHV0ZXJcLCBtb2JpbGUgYXBwIG9yIHJvb20gZGV2aWNlXG5DbGljayBoDQogZXJlIHRv
+IGpvaW4gdGhlIG1lZXRpbmc8aHR0cHM6Ly90ZWFtcy5taWNyb3NvZnQuY29tL2wvbWVldHVwLWpv
+aW4vMTklM2FtZWUNCiB0aW5nX1lUSTJNMll3TnpRdE5HTTVaQzAwTWpjNUxUaGtZekF0WlRObFlt
+Tm1PVGM1TXpWaiU0MHRocmVhZC52Mi8wP2NvbnRleA0KIHQ9JTdiJTIyVGlkJTIyJTNhJTIyNjdi
+ZGE3ZWUtZmQ4MC00MWVmLWFjOTEtMzU4NDE4MjkwYTFlJTIyJTJjJTIyT2lkJTIyJTNhDQogJTIy
+ZmUyYTcyN2EtYTdmMy00NDI2LWFiMmEtNjI4N2FlNGJlMzQ1JTIyJTdkPlxuTWVldGluZyBJRDog
+MzU4IDM2NiAzNjQgMzQNCiAxXG5QYXNzY29kZTogclU1TEE2XG5Eb3dubG9hZCBUZWFtczxodHRw
+czovL3d3dy5taWNyb3NvZnQuY29tL2VuLXVzL21pY3Jvcw0KIG9mdC10ZWFtcy9kb3dubG9hZC1h
+cHA+IHwgSm9pbiBvbiB0aGUgd2ViPGh0dHBzOi8vd3d3Lm1pY3Jvc29mdC5jb20vbWljcm9zDQog
+b2Z0LXRlYW1zL2pvaW4tYS1tZWV0aW5nPlxuTGVhcm4gbW9yZTxodHRwczovL2FrYS5tcy9Kb2lu
+VGVhbXNNZWV0aW5nPiB8IE0NCiBlZXRpbmcgb3B0aW9uczxodHRwczovL3RlYW1zLm1pY3Jvc29m
+dC5jb20vbWVldGluZ09wdGlvbnMvP29yZ2FuaXplcklkPWZlMg0KIGE3MjdhLWE3ZjMtNDQyNi1h
+YjJhLTYyODdhZTRiZTM0NSZ0ZW5hbnRJZD02N2JkYTdlZS1mZDgwLTQxZWYtYWM5MS0zNTg0MTgy
+DQogOTBhMWUmdGhyZWFkSWQ9MTlfbWVldGluZ19ZVEkyTTJZd056UXROR001WkMwME1qYzVMVGhr
+WXpBdFpUTmxZbU5tT1RjNU16VmoNCiBAdGhyZWFkLnYyJm1lc3NhZ2VJZD0wJmxhbmd1YWdlPWVu
+LUdCPlxuX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KIF9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19cbg0KVUlEOjA0MDAwMDAwODIwMEUwMDA3
+NEM1QjcxMDFBODJFMDA4MDAwMDAwMDBDN0Y3MjlDOTBFNTVEQTAxMDAwMDAwMDAwMDAwMDAwDQog
+MDEwMDAwMDAwNTZGMjI3MTQ0MkJCNkY0QUI5NTNENTJCRUFCRTlCRDgNClNVTU1BUlk7TEFOR1VB
+R0U9ZW4tR0I6UkRTIGNhdGNoIHVwIENhcm9saW5lIC0gU2VsaW0NCkRUU1RBUlQ7VFpJRD1HTVQg
+U3RhbmRhcmQgVGltZToyMDI0MDIwMlQxNDAwMDANCkRURU5EO1RaSUQ9R01UIFN0YW5kYXJkIFRp
+bWU6MjAyNDAyMDJUMTUwMDAwDQpDTEFTUzpQVUJMSUMNClBSSU9SSVRZOjUNCkRUU1RBTVA6MjAy
+NDAyMDJUMDgxMzA3Wg0KVFJBTlNQOk9QQVFVRQ0KU1RBVFVTOkNPTkZJUk1FRA0KU0VRVUVOQ0U6
+MQ0KTE9DQVRJT047TEFOR1VBR0U9ZW4tR0I6TWljcm9zb2Z0IFRlYW1zIE1lZXRpbmcNClgtTUlD
+Uk9TT0ZULUNETy1BUFBULVNFUVVFTkNFOjENClgtTUlDUk9TT0ZULUNETy1PV05FUkFQUFRJRDoy
+MTIyNDUyMTY3DQpYLU1JQ1JPU09GVC1DRE8tQlVTWVNUQVRVUzpURU5UQVRJVkUNClgtTUlDUk9T
+T0ZULUNETy1JTlRFTkRFRFNUQVRVUzpCVVNZDQpYLU1JQ1JPU09GVC1DRE8tQUxMREFZRVZFTlQ6
+RkFMU0UNClgtTUlDUk9TT0ZULUNETy1JTVBPUlRBTkNFOjENClgtTUlDUk9TT0ZULUNETy1JTlNU
+VFlQRTowDQpYLU1JQ1JPU09GVC1PTkxJTkVNRUVUSU5HSU5GT1JNQVRJT046eyJPbmxpbmVNZWV0
+aW5nQ2hhbm5lbElkIjpudWxsXCwiT25saW4NCiBlTWVldGluZ1Byb3ZpZGVyIjozfQ0KWC1NSUNS
+T1NPRlQtU0tZUEVURUFNU01FRVRJTkdVUkw6aHR0cHM6Ly90ZWFtcy5taWNyb3NvZnQuY29tL2wv
+bWVldHVwLWpvaW4vDQogMTklM2FtZWV0aW5nX1lUSTJNMll3TnpRdE5HTTVaQzAwTWpjNUxUaGtZ
+ekF0WlRObFltTm1PVGM1TXpWaiU0MHRocmVhZC52Mi8NCiAwP2NvbnRleHQ9JTdiJTIyVGlkJTIy
+JTNhJTIyNjdiZGE3ZWUtZmQ4MC00MWVmLWFjOTEtMzU4NDE4MjkwYTFlJTIyJTJjJTIyTw0KIGlk
+JTIyJTNhJTIyZmUyYTcyN2EtYTdmMy00NDI2LWFiMmEtNjI4N2FlNGJlMzQ1JTIyJTdkDQpYLU1J
+Q1JPU09GVC1TQ0hFRFVMSU5HU0VSVklDRVVQREFURVVSTDpodHRwczovL2FwaS5zY2hlZHVsZXIu
+dGVhbXMubWljcm9zb2YNCiB0LmNvbS90ZWFtcy82N2JkYTdlZS1mZDgwLTQxZWYtYWM5MS0zNTg0
+MTgyOTBhMWUvZmUyYTcyN2EtYTdmMy00NDI2LWFiMmEtNg0KIDI4N2FlNGJlMzQ1LzE5X21lZXRp
+bmdfWVRJMk0yWXdOelF0TkdNNVpDMDBNamM1TFRoa1l6QXRaVE5sWW1ObU9UYzVNelZqQHRoDQog
+cmVhZC52Mi8wDQpYLU1JQ1JPU09GVC1TS1lQRVRFQU1TUFJPUEVSVElFUzp7ImNpZCI6IjE5Om1l
+ZXRpbmdfWVRJMk0yWXdOelF0TkdNNVpDMDBNamMNCiA1TFRoa1l6QXRaVE5sWW1ObU9UYzVNelZq
+QHRocmVhZC52MiJcLCJyaWQiOjBcLCJtaWQiOjBcLCJ1aWQiOm51bGxcLCJwcml2YQ0KIHRlIjp0
+cnVlXCwidHlwZSI6MH0NClgtTUlDUk9TT0ZULURPTk9URk9SV0FSRE1FRVRJTkc6RkFMU0UNClgt
+TUlDUk9TT0ZULURJU0FMTE9XLUNPVU5URVI6RkFMU0UNClgtTUlDUk9TT0ZULVJFUVVFU1RFREFU
+VEVOREFOQ0VNT0RFOkRFRkFVTFQNClgtTUlDUk9TT0ZULUlTUkVTUE9OU0VSRVFVRVNURUQ6VFJV
+RQ0KWC1NSUNST1NPRlQtTE9DQVRJT05ESVNQTEFZTkFNRTpNaWNyb3NvZnQgVGVhbXMgTWVldGlu
+Zw0KWC1NSUNST1NPRlQtTE9DQVRJT05TT1VSQ0U6Tm9uZQ0KWC1NSUNST1NPRlQtTE9DQVRJT05T
+Olt7IkRpc3BsYXlOYW1lIjoiTWljcm9zb2Z0IFRlYW1zIE1lZXRpbmciXCwiTG9jYXRpb25BDQog
+bm5vdGF0aW9uIjoiIlwsIkxvY2F0aW9uVXJpIjoiIlwsIkxvY2F0aW9uU3RyZWV0IjoiIlwsIkxv
+Y2F0aW9uQ2l0eSI6IiJcLCINCiBMb2NhdGlvblN0YXRlIjoiIlwsIkxvY2F0aW9uQ291bnRyeSI6
+IiJcLCJMb2NhdGlvblBvc3RhbENvZGUiOiIiXCwiTG9jYXRpbw0KIG5GdWxsQWRkcmVzcyI6IiJ9
+XQ0KQkVHSU46VkFMQVJNDQpERVNDUklQVElPTjpSRU1JTkRFUg0KVFJJR0dFUjtSRUxBVEVEPVNU
+QVJUOi1QVDE1TQ0KQUNUSU9OOkRJU1BMQVkNCkVORDpWQUxBUk0NCkVORDpWRVZFTlQNCkVORDpW
+Q0FMRU5EQVINCg==
+
+--_000_AM6PR06MB594154473FC377C669109135A0422AM6PR06MB5941eurp_--

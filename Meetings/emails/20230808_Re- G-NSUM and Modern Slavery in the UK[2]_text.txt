@@ -1,0 +1,430 @@
+Date: 20230808
+Subject: Re: G-NSUM and Modern Slavery in the UK
+
+Hi Scott,
+
+I have been re-reading Feehan and Salagnik (2014, 2016a) and some of the literature that they cite (e.g. McCormick et al., 2012) in the light of your queries. And this is my reading of the content in relation to the helpful points that you raise:
+
+The sample frame, F, is the set of those working in DW in the UK
+
+
+
+F refers to the frame population from which the sample is taken,  (see Feehan and Salagnik 2014 p.4; F&S 2016a) for us this could be the total number of domestic workers in the UK with access to mobile phones. 
+
+
+The way I read Figure 1, it is U that refers to the set of the total number of people in domestic work within the UK. [I have suggested that we estimate this for scale-up purposes by taking the official statistics related to the issue of ODW visas in a single year divided by two (each visa lasts for 6 months). This is likely to be an underestimation of the population size, given that there are also likely to be some British nationals in domestic work and also a grey market of indeterminate size, but it does provide us with a starting point.]
+
+
+The hidden population, H, is the set of those working in DW being exploited (experiencing MS).
+
+Yes, that is how I read it too.
+
+
+
+But what are the probe alters? 
+
+I have discussed this with my son  (a Natural Science graduate) and he interprets probe alters as the number of individuals identified in the networks of the domestic workers sampled- i.e. the alter sample goes beyond the respondents to consider the networks of those to whom they are linked.
+
+
+
+Is there a separate sample from H (e.g. using RDS/ Snowball sampling)? 
+
+If I am interpreting your question correctly, we have not yet asked the members of the Hidden population sample how many of their contacts know that they were exploited [although conceivable we could seek to extend data collection in a second phase to collect this data subject to ethical approval] For this reason, I have proposed that we carry out the basic NSUM calculation with the 2 adjustments proposed in F&S (2014) section 3 equ 24 that does not require us to have this collected this data. 
+
+
+
+Do you have _enriched_ aggregate relational data (see pg. 161 of F&S2016)?  
+
+No - not at present (see above)
+
+
+
+I don’t see how one could calculate e.g. $\hat{\bar{v_{H,F}$ (eqn 7 in F&S).  What am I missing?
+
+
+
+I don't think that we can- or that we need to -  calculate GNSUM this way  -rather we can calculate NSUM and then make the adjustments indicated in Eqn 24 ( using eqn 18, eqn 19). Do you think this would work?
+
+
+
+I have omitted the calculation of the Frame ratio (eqn 17) from the protocol I attached earlier - and F&S do not include it in Eqn 24. At the moment, I can't see how we could calculate the denominator - (average number of connections from a member of U to F  ) unless we make a series of assumptions as some form of sensitivity analysis. The way I read it, F&S omit it from eqn 24 for this reason
+
+
+
+That is, I see how one could calculate eqn. 23, but I do not see how the ‘improved version’ in eqn. 24 could be calculated.
+
+
+
+I have tried to suggest in the protocol attached earlier how I see the proposed basic scale up measure, degree ratio and true positive rate may be calculated - and would value you opinion on whether the assumptions that I'm suggesting look reasonable.
+
+ 
+
+A few thoughts:
+
+F&S2016 relate G-NSUM to NSUM via three adjustment factors (eqn 15) and who how to calculate each of the adjustment factors (see also Yang and Yang  2017), and suggest these quantities themselves are of interest (and I agree).  It would be need to include these in the bootstrap to get a more ‘rounded’ (or complete) picture of what is going on in this hidden population.  Also, doing so might help with the sensitivity analysis.
+
+
+
+I think that it is possible to calculate two of these factors (degree ratio and true positive ratio) from our data - and then to use these along with the F&S 2014 proposed basic scale up calculation to estimate the number in the hidden population (as shown in eqn 24). As mentioned above, I don't know how we could estimate the frame ratio - as by definition I don't believe we can collect any data on U - but maybe I am missing something.
+
+ 
+
+
+
+I find that  without referring back to the source literature this is all quite complicated stuff to retain. I will read and take further notes of the literature that you have indicated and wonder whether we could each sense-check the proposed protocol in the light of this further reading and come ready to discuss any amendments (or show-stoppers) that arise as a result - even if this is simply a list of questions that still need to be answered?
+
+
+
+Your email was very helpful in sense-checking my understanding - I think this may well be an iterative process. I understand that you will have less thinking time when teaching starts again in the Autumn, but perhaps Selim and I can start to draft out a possible paper for your review and comments? Perhaps we could discuss whether this approach - or some other way forward -  might work for us when we meet?
+
+
+
+Thanks for the all the work that you have done on this so far.
+
+
+
+Best wishes
+
+Caroline
+
+
+
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Nottingham Research Fellow, Rights Lab
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+ 
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+ 
+
+ 
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+
+
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 31 July 2023 11:04
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Subject: RE: G-NSUM and Modern Slavery in the UK 
+ 
+Dear Caroline,
+
+ 
+
+I’ve started to take a look at this and think I am starting to understand, but am also sure I am missing some (several) thinks.  Just so I understand:
+
+The sample frame, F, is the set of those working in DW in the UK
+
+The hidden population, H, is the set of those working in DW being exploited (experiencing MS).
+
+But what are the probe alters?  Is there a separate sample from H (e.g. using RDS/ Snowball sampling)?  
+
+Do you have _enriched_ aggregate relational data (see pg. 161 of F&S2016)?  I don’t see how one could calculate e.g. $\hat{\bar{v_{H,F}$ (eqn 7 in F&S).  What am I missing?
+
+That is, I see how one could calculate eqn. 23, but I do not see how the ‘improved version’ in eqn. 24 could be calculated.
+
+ 
+
+A few thoughts:
+
+F&S2016 relate G-NSUM to NSUM via three adjustment factors (eqn 15) and who how to calculate each of the adjustment factors (see also Yang and Yang  2017), and suggest these quantities themselves are of interest (and I agree).  It would be need to include these in the bootstrap to get a more ‘rounded’ (or complete) picture of what is going on in this hidden population.  Also, doing so might help with the sensitivity analysis.
+
+ 
+
+I found these papers helpful (and the Supplemental Appendix of F&S 2016 very dense, but very helpful as well).
+
+ 
+
+Feehan, D. M., & Salganik, M. J. (2016a). Generalizing the Network Scale-up https://doi.org/10.1177/0081175016665425Method: A New Estimator for the Size of Hidden Populations. Sociological Methodology, 46(1), 153–186. 
+
+Feehan, D. M., & Salganik, M. J. (2016b). Online appendix: Generalizing the network scale-up method. Sociological Methodology, 46(1), 153–186. https://doi.org/10.1177/0081175016665425
+
+ 
+
+Yang, X. Y., & Yang, F. (2017). Estimating Religious Populations with the Network Scale-Up Method: A Practical Alternative to Self-Report. Journal for the Scientific Study of Religion, 56(4), 703–719. https://doi.org/10.1111/jssr.12479
+
+ 
+
+Looking forward to talking further!
+
+ 
+
+Best,
+
+Scott
+
+ 
+
+ 
+
+ 
+
+From: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk> 
+Sent: Tuesday, July 25, 2023 4:16 PM
+To: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>; Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: G-NSUM and Modern Slavery in the UK
+
+ 
+
+Dear Scott,
+
+ 
+
+Thank you for your reply and for your evident enthusiasm for this project. I have made a start with a more detailed reading of the GNSUM literature and I have sketched out a protocol based upon Freehan and Salganik's (2014) paper of GNSUM procedures.  I am, however, not a highly trained statistician and your opinion would be of great value to us as we undertake an exploratory analysis, the protocol for which I attach here. I do hope that it may be possible for us to collaborate on this project - as you can probably now see clearly, your guidance and expertise would be invaluable to us. If you think there is value in an approach of these type, I wonder whether you might be free to meet  - either virtually or in person - with Selim and myself some time in mid- to late August after Selim returns from his holiday in China on the 18th? 
+
+ 
+
+Best wishes
+
+Caroline
+
+ 
+
+ 
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Nottingham Research Fellow, Rights Lab
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+ 
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+ 
+
+ 
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+ 
+
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 21 July 2023 17:29
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: G-NSUM and Modern Slavery in the UK 
+
+ 
+
+Dear Caroline (if I may),
+
+ 
+
+Thank you very much for your email.  I am very sorry for the inconvenience. and especially to bother you at busy times (I totally understand!)
+
+ 
+
+I find your project very interesting and exciting!  I am vicariously happy for you all as you engage in the analysis!
+
+ 
+
+You raise a very interesting and important issue RE: London.  Yes, I see your point.  London is SO BIG!  So if one is looking for members of any​ sub-population (doctors, domestic workers, etc. etc.) I would guess there would be more in a more highly populated area.  Then again, this is just a conjecture and could be empirically evaluated.  Just thinking aloud: for sure there are heterogeneous 'clustering' of some demographic groups by geography (above and beyond base-rates, e.g. Leicher has approximately the same percentage of non-UK born residents as London ); but I wonder if the same is true of domestic workers, victims of modern slavery, or other 'hidden groups.'  Hmm.  Possibly an interesting research project (?)  Then again, these demographic patterns almost surely match immigration patterns, I guess. 
+
+ 
+
+Thank you again for your kind reply.  And yes!  I would love to (1) stay in touch (and hopefully convince you to collaborate! ) and (2) read your draft and learn more about the results of your study.  Really interesting!
+
+ 
+
+I hope you and yours are enjoying the summer!
+
+Best,
+
+scott
+
+ 
+
+ 
+
+From: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Sent: Friday, July 21, 2023 1:36 PM
+To: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>; Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: G-NSUM and Modern Slavery in the UK 
+
+ 
+
+Dear Professor Moser,
+
+ 
+
+I must apologise for the delay in responding to your email, which arrived at a busy time. to address the questions that you posed:
+
+ 
+
+Selim and I are in the process of analysing the survey responses that we received. We hope to be in a position to use GNSUM techniques on our data and to estimate a figure for the extent of labour exploitation across the domestic worker population in the UK. This is ambitious, we know, and this is very much an exploratory undertaking to see if it can be done with the type of primary data we have collected and the available secondary data related to the wider DW population. 
+
+ 
+
+The point of contact for our survey has been primarily national DW NGOs. Specifically, we have dealt with the voice of domestic workers, and two community-based NGOs supporting respectively Filipina and Latin American workers. These tend to be based in London and so we anticipate a London bias to our sample. As Domestic workers are employed by and as individuals, in private households we have chosen to focus our initial analysis upon their employment status rather than geography.
+
+ 
+
+I would be very interested in keeping in touch with you as the 'comparative measurement project' develops - so do please keep in touch. Selim and I will be drafting our report over the next couple of weeks, with a view to developing a methodological paper in the Autumn. I hope that we may also keep you uptodate with our progress as these develop.
+
+ 
+
+Best wishes
+
+ 
+
+Caroline
+
+ 
+
+ 
+
+ 
+
+ 
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Nottingham Research Fellow, Rights Lab
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+ 
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+ 
+
+ 
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+ 
+
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 21 July 2023 12:19
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Subject: RE: G-NSUM and Modern Slavery in the UK 
+
+ 
+
+Dear Dr. Emberson and Selim,
+
+ 
+
+Sorry for the multiple emails, but in addition to my July 5th email (below), I would be very interested to know which NGOs you are working with.  Selim mentioned the necessity of partnering so as to have access to the ‘seeds’ in an RDS design.  Just curious. 
+
+ 
+
+Many thanks and hope you are enjoying the summer!
+
+ 
+
+Best,
+
+Scott
+
+ 
+
+ 
+
+From: Scott Moser (staff) 
+Sent: Wednesday, July 5, 2023 4:11 PM
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Subject: G-NSUM and Modern Slavery in the UK
+
+ 
+
+Dear Dr. Emberson and Selim,
+
+ 
+
+Thank you again for your input an participation in the workshop Zoe kindly organized for my (nascent) 'Comparative Measurements' project idea.  I am writing to ask a few things.  First, how is your G-NSUM research project going?  I am very interested in your work, and how you are finding the research + surveys + sampling from the 'hidden population.'   i don't want to step on anyone's toes, but I'd love to both know more about this project, and also pick your brains.  Where -- as in which location -- are you sampling from (and why)?  Which NGOs are you working with?   Do you have any suggestions regarding the 'right' geographic 'level' to use (e.g. council, county/borough, region)?
+
+Next, would you be interested in being involved with the 'Comparative Measurements' project?  I recognize I am still in the early stages, and that I need to flesh things out considerably.  But it would seem to me to be an ideal 'fit' for you both to be involved.  But no presure 🙂
+
+ 
+
+In any event, I hope you and yours are doing well and enjoying your summer!
+
+ 
+
+Best,
+
+scott
+
+ 
+
+ 
+
