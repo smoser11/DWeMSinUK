@@ -105,12 +105,7 @@ run_ma_estimates <- function(data,
   return(results_df)
 }
 
-# Example usage:
- ma_results <- run_ma_estimates(rd.dd, n_cores = 5, verbose = TRUE)
-# View(ma_results)
- save.image("ma_results.RData")
- save.image("./output/ma_results.RData")
- 
+
 # Function to create comparison plots
 plot_ma_results <- function(results) {
   results %>%
@@ -128,4 +123,17 @@ plot_ma_results <- function(results) {
     theme(axis.text.x = element_text(angle = 45, hjust = 1))
 }
 
+
+
+
+
+# Example usage:
+ma_results <- run_ma_estimates(rd.dd, n_cores = 5, verbose = TRUE)
+# View(ma_results)
+
+
 plot_ma_results(ma_results)
+
+save.image("ma_results.RData")
+save.image("./output/ma_results.RData")
+
