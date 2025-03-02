@@ -1,0 +1,303 @@
+I'm a fan of these things. I think they're pretty, they're pretty, they're pretty cool.
+First of all, sorry for running late. I don't know if your computer does this, but it'll just like randomly update itself every now and then.
+Oh, okay.
+And it's just like, I didn't ask you to do that. Like, why are you restarting? Stop it.
+So sorry about that. And secondly, it's very nice to see you. It's been ages. So I hope you're well and warm.
+Well, I've also got my wrap on.
+And I've got this really clever heating mat that keeps your feet warm.
+And that's quite good. Because if your feet are warm, the rest of your body doesn't feel so cold.
+I'm such a fan. And the, my mom, I think turned me on to these, but slippers in the winter, just always, always got to have the slippers.
+Cause it's, yeah, like you said, it's, it's, and she has these fancy ones that have like, kind of like, it's not fur, but it's some kind of like fluffy lining to it.
+That's quite nice. But anyway, all right. Sorry, sorry for rambling.
+Very nice. You were in America over the holiday then. Was I going home?
+I was, I was, it was a, fall was, was a, was a, it was a very difficult work, work-wise.
+And I just needed a break. So it was, it was short, but it was, I got some sun, I got some vitamin D.
+I got to see some friends.
+Oh gosh, yes.
+That was great. And then of course, January is marking hell, at least for, for us.
+And so that was miserable, but now it's February and things are much, much, much, much better.
+So how about you? Did you, did you have a nice, a nice time?
+Yeah, we had a good Christmas just at home. My mom lives nearby now.
+So she came over and we just had the family around.
+So yeah, it was pretty quiet, but pretty dark.
+I must say that that's, um, really the nights draw in and the mornings draw in and everything's, um, it's like living in, you feel a lot hibernating.
+Yeah, no, I was, I was, it's for me, it's not the, you know, the people like the bad mouth, the weather in England and the UK, but, but it's not, it's not the weather that, that gets me.
+It's, it's the dark. It's exactly like you said, it's the, it's the, I'll take the cold and the wet, but the, yeah.
+Yeah, when the sun sets at, you know, 3pm, 3.30, it's like, Jesus Christ, it's just so depressing. It's just, anyway.
+No, I could never live in Scotland. I think it's even worse up there. The days are even shorter in the wintertime.
+It's sort of, the sun sets at 2.30 in the afternoon. You barely see.
+I can't, I don't understand how there's that, not to be glib, but like, you know, like Sweden and Finland, like, I don't know how there's not more suicide rates because it would just be so depressing to have these, you know, months of darkness.
+Really, really odd. So yeah, you're absolutely right about the D3. It makes such a difference.
+So I've been taking calcium tablets, which have D3 in them for some, for another factor, but actually it's really good for your mood.
+It just changes the whole winter season. That's just having that vitamin.
+Such a good idea. I'm going to put that on my, like, in my morning routine. That's an excellent, excellent idea.
+Cause it, it, yeah, it's a, it's a, I didn't know how much it affected me until I moved here.
+And then it was like, Oh yeah. Wow. That's a, that's a real thing. So.
+Yeah, no, definitely. D3 is the answer. D3 is the answer.
+So, well, you're doing a super job with this because I felt when we had our last conversation, I did quite a lot of reading of emails and I felt I was, I'd understood what you were doing.
+And then unfortunately, since we've had a long break, I've lost that understanding. It's really frustrating.
+But, um, yeah, I, I hope to be able to pick it up again.
+I feel exactly the same way. And I'm so sorry because it's, it's, it's, it's, it's because of this. Yeah. It's because of the link.
+We're out of sync. I think that's the issue. Cause my research term is not your research term.
+Exactly. Exactly. And that's what's causing us the problems. I know. And there's this loop to try and get back into the project each time.
+I'm, I'm, I'm, I'm optimistic, cautiously optimistic maybe, but, um, because the journal deadline and I think, you know, one deadlines, I hate them, but they're essential for me.
+And two, it's, it's realistic. Like it's not, you know, if the deadline was March, I, I wouldn't be so optimistic, but, you know, I think we've actually got time to, to, to accomplish these things.
+But so speaking of which, and again, sorry for sort of spinning my wheels and I don't know.
+I mean, if we just brain dump in this conversation, that would be fine.
+But what would be ideal for me is to sort of map out next steps.
+That was my attempt at this, this, this LLM business. The, um, so a few things.
+So one, I remember, so let me, let me, let me brain dump if I, if I may, if you don't mind, if that's okay.
+So there, I, whatever, from what I remember, there's definitely technical.
+So there's, there was at least two big things on my plate.
+And one of which was very technical, sort of this coding, this package I couldn't get to work.
+And then I thought I'd have to rewrite it. And then I never did.
+And then, yeah, exactly. Yada, yada.
+And then two is the, the in-sum comparison.
+And the in-sum comparison, one is also a technical line.
+I haven't coded it up, but it had this sort of conceptual element to it.
+I think, which was, um, and please correct me if I'm wrong.
+And like I said, I'm, I'm, I'm, I'm embarrassed.
+Like I, I swear, I, I, I definitely read this literature.
+Once upon a time, I really did understand what was happening.
+I don't remember.
+I don't remember what RDS one versus the VH estimator.
+I did once upon a time, but anyway, um, but again, at the conceptual level from, from what I remember is that the, the way that RDS and in-sum work are slightly different.
+They both use social networks, but the estimator for RDS uses the referrals.
+So it uses like, who do you know?
+And in-sum uses, I think it's called egocentric information.
+So it's like, it's how many people do you know that have such and such a quality or that are named John or whatever.
+And those are slightly different.
+And the reason that that came up, I think is because the questions that asked about who, you know, were slightly different than the questions about these referrals basically.
+And I think that was what concerned about this.
+So I think in the memo or whatever I call this, or how to, how to fairly compare RDS to in-sum as estimators.
+And I think we had an idea.
+We did.
+We had a back and, but I don't remember.
+You're jogging my memory.
+And then what we did was try to match sets of questions with more or less confidence that were, there weren't, there wasn't a direct one-to-one always, but there were, there was enough similarity with it, with some of them.
+Um, do you want me to try and dig out that email?
+Please do.
+I was going to say, do we, do we have, that sounds, that sounds fantastic.
+And I do.
+It's on email somewhere.
+That's excellent.
+One of the more recent things that I sent you.
+Okay.
+So I'll, I'll dig out that email.
+Thank you.
+A million.
+And forward it again.
+That's ringing.
+Yeah.
+That's ringing.
+Yeah.
+That's ringing.
+So the idea is just so I'm clear is, is we would, would sort of make new questions from existing questions that we were, that we have some degree of confidence are comparable across RDS and in some estimators.
+Is that the right idea?
+Well, it was.
+Grouping.
+Yeah.
+We had, we did it.
+You'd asked me to batch the questions.
+So there was a, uh, how many people do you know?
+Question and, uh, whatever the other sort of format was.
+And we, I went, actually went through a list and, uh, I'm just trying to find if I can find the.
+That would be helpful.
+I didn't mean to put you on the spot whenever.
+I mean, clearly I've got other stuff to do, but.
+No.
+Okay.
+I just, just thought might be able to find it now.
+Cause it was quite a recent one.
+Excellent.
+Excellent.
+I'm glad your memory is better than mine.
+That's, um, it, that would be perfect.
+That, that email, I think would answer, uh, would address this, this particular, this conceptual concern.
+It's not, it's not the right word, but the, the fairness, the fairness question about how to fairly compare these two.
+Yeah.
+You know, you can never find things when you want them.
+I know.
+I know.
+And I hate the way that, I mean, I guess I'm not very organized, but I don't like the way that Microsoft sort of organizes my emails.
+It's always like, like, like for some reason, like if it's like sent emails are all separate, even if they're part of a thread.
+Yeah.
+It's like, why do that?
+If I found the thread, I did not just show me all the emails.
+Um, please bear with me.
+I'm going to get some hot water and some coffee in just one second.
+Yeah.
+Don't worry.
+I'll keep looking just in case it comes.
+I spot it.
+I'm beyond, concept for peki Mc Doctor.
+Okay.
+Okay.
+All the way.
+Okay.
+Let's take a look and see.
+Okay?
+Just keep the moment next, darling.
+and
+...
+sorry about that yeah no i'm still can't locate it at the moment but i know it exists good good
+that's like i said it's no no no no no rush for me i've definitely got other um stuff to do so what
+i have been managed able to do is i've i've started sort of cleaning up all of my analysis code i had
+i had it sort of in i turned out we we'd done a lot and i just never organized it so i'm i'm this
+last week i was trying to organize the the excellent work that we've done in the past um and that's
+ongoing but that's i'm making progress there and then just today or maybe yesterday it dawned on me
+that these different estimators like we were we were probably being overly cautious in this this
+this robustness idea about you know like well how robust are these size estimates to you know they
+all all these estimators rest on some assumptions and the the upside is that these two classes of
+estimators and some in rds rest on totally different well not totally totally different sets of
+assumptions but different sets of assumptions so that was a good thing and so we did that we
+threw all these estimations at it and got roughly something like 100 140 something like that i
+think um which i think is pretty can pretty seems a bit high to me but a bit but also seems in line
+with the other stuff that i've that i know of but you know this you know this literature much better than
+much better than than i do but what i've neglected entirely was i haven't described any of these
+estimators whatsoever like in in words so i paper wise i definitely need
+i think i need sort of a mini lit review of here here are the estimators that we're using site site
+site site site site and if it's over the word count we can i'm always of the opinion that it's easier to
+edit down than make more so i think i think that a third task for me is this what i'm calling a lit review
+but it's not really it's a methodological lit review basically just just to can so you know we can
+convince people that we know what we're talking about or yeah even if we don't um so those are the
+main things that come to my mind is that one what am i missing and two could you help me prioritize
+yeah well that in terms of what you might be missing and it's just something that came out on your ai plan
+we had a long discussion about this probe alters and whether or not we could use the nrm figures and
+i think you had a you emailed me which i an email i've highlighted trouble in paradise which is the
+email that says that we can't use nrm referrals so so we have had to do this discussion and we have
+previously discussed using the number of domestic workers figure as the probe alter so based on the
+number of domestic workers that each um respondent knows claims to be in their network right so i think
+just looking at your ai planet didn't seem to have picked that up that discussion thank you so that i
+i think is i do remember the answer and and those numbers came from there was a bit of guesswork if
+i remember because we were using you did awesome you were there apparently there were really good eu
+numbers and yeah there are eu numbers and again i've sent you that email but i can see that email i
+can forward it to you again if that's helpful thank you i'm sorry thank you for this this is you're far
+more organized than i am as well i found the other one as well so it's unhelpfully named four star
+journal article so i don't know how you'd find it under that title but it's now in your inbox thank
+you so much that's wonderful i'm furiously taking notes thank you okay good so that's a good that's
+good and then i do remember you're right the number that's right because we needed to we need this size
+business and so but that that's and you're talking my memory very thank you very much because that was
+one of the things that we did sensitivity to i think was you know are there 74 000 domestic workers or are
+there 190 or are there you know whatever um that's coming back to me now thank you thank you thank you
+that's excellent okay probe alters i'm putting a star next to that okay good um so i don't know about
+anything else i mean your list your ai generated list looks more very comprehensive and much more
+comprehensive than i have the ability to comment on really so i mean what are you doing great great
+thank you the only other area that i thought i could perhaps contribute is you were asking about
+the focus of the paper and whether it should be methodological or policy driven so i went back to
+the call for papers and it says they're aiming to catalyze rigorous empirical research on labor
+exploitation human trafficking and slavery so we tick that box we're definitely empirical
+that offers innovative conceptual and theoretical perspectives so perhaps we could say methodologically
+this is a different way of conceptualizing modern slavery risk because i don't know where you are with
+this indicator that we talked about but that would be conceptually innovative i think um it sort of moves
+the debate on the spectrum on from viewing modern slavery as an extreme form to sort of quantifying it
+somehow um and the other thing is they're very interested in underrepresented worker voice so i know
+we've done a survey which has its limitations but we are actually surveying domestic workers and asking
+them for their opinions which is something that doesn't always happen in the literature
+oh okay so because we're actually sampling from the the group yeah yeah so i think we could say we
+could make some sort of claim about that excellent thank you have you captured those three things
+because those might i've just been freewheeling there but yeah yeah i'm taking notes i've actually
+taking notes absolutely so i agree so one rigorous agree we can take that box i love the the conceptual
+business i think you're 100 right now from whatever you know what i'm with danza right now i wish we
+had i wish someone was like and it i wish there was a stenographer like like taking minutes towards
+because i remember i remember having what i thought was were really interesting com i i basically always
+have really interesting conversations with you and sometimes you sort of go back and forth where like
+you'll say something and i'll sort of have to mull over it for a while and then ah i see what she's
+okay got it and then i'm sure i'm not the most articulate at times and and whatnot but i i remember when i
+sort of saw what you were there was this really beautiful concept let me spill spill and see if i've got it
+right there was we we had these sort of two conceptualizations of of of experiencing modern
+slavery or whatever the phrase is i think that was the phrase we can't do when one was was very discreet
+zero or one right is that you're you're not and then the other and you get the credit for this and
+i thought this was a brilliant conceptual trick was to say well look since we're sampling from domestic
+workers we can say they're they're all exposed to some degree of risk everybody everybody
+in the population that we're sampling from and then our estimation challenge is to is to calculate
+for a particular person or i guess for the set of people for the set of domestic workers what's like
+the distribution of this exposure risk which i just thought was a very neat conceptualization
+yeah i think you spotted it that it was interesting i mean i just made the comment but anyway anyway
+well we worked together very well so so yes i think that's a great at the writing stage i think
+i think you're 100 right that we should we should play up the only five and i'm getting ahead of
+myself but the the only possible i mean i guess we could say sorry the only possible downside i could
+see is like those are those are it's almost like we're wanting to have our cake and eat it too in
+that we're saying like well look here's for the classical sampling you know some from population they have
+the trait zero one site site site and we've done that and here you go and then here's this new
+caroline idea you know or what have you of this risk indicator and this distribution which is different
+in a conceptual innovation um and we're doing that also but they're kind of at odds i mean they're kind
+of they're they're different ways of thinking about so i don't know how to i'm sure it's the framing
+or writing issue of saying you see what i mean and maybe my concern is overblown um where it's we
+can say here's here's how people have thought about this in the past that's great we've done it and by
+the way here's this new way we're thinking about this this exposure to risk and that's a contribution
+and here are the estimates using this you know compare contrast moving on i don't know it's probably
+too early to be even thinking about this yeah okay that's something yeah something to think about
+and i suppose the other question you had about whether we should be making policy recommendations
+and i think yes definitely we should be okay and i think we've got we've potentially got some i've
+i've written some in but i mean we can always revisit those when we when we get close to the actually
+finalized results but do tell to summarize if you don't mind i i remember you sending the email i
+remember reading it and i do not remember the content i'm sorry no and neither do i it's such a long
+time since i've written it but i i'm so kind of on the same page though i have to be honest with you
+there was some policy stuff in there i'm sure of it so when we get to that point yeah that's fine
+that's fine that's fine wait that's like i said it's definitely a block aside but okay excellent so then
+step two i think is um do you have suggestions advice on how to prioritize the
+the the the i guess the list plus the the probe alter uh addition that you very rightly uh added
+i don't because i don't understand these tasks sufficiently to understand which you need to do
+first so really okay that's fine yeah i'm sorry i can't no no no no like i said i'm aware the ball is
+and has been for way too long it firmly in my court and and it's it's i'm the one who's deficient in the
+so uh so so leave it with me like i said i've been i think this has been very helpful if nothing else to
+at least now i've got the tasks plopped down i'm making some progress with the code with organizing
+and this will you know i know now that my next task is to organize my tasks which is
+which believe it or not is helpful more helpful than it was at the beginning of the week because
+it was more of a like i don't remember anything so yeah this is this is this is helpful um i guess
+the only other thing is timeline the you so the the hard deadline is september something but i think we
+were shooting for july or something over the summer i believe question mark yeah let me just have a look
+at that i think it says the 25th of june oh submissions open 25th sorry submissions open the
+first of june 25 and they close at the 30th of december of september so the absolutely hard deadline
+is the 30th of september we should go before that i think if we can if if i mean the episode
+you'll change the first one really because these things slip yeah i agree so the the upside is so
+that the upstairs i think that this the stars are starting to align for us and that i'm i my teaching
+schedule is not that bad at all this term so i have time to work on this you don't which is fair and
+then well i guess the question is after at the end of this teaching term so may june will you have time
+to because writing is not my strong suit as you likely have discerned um um so i can definitely
+help with the analysis and yeah interpretation but uh yeah well as long as we could keep talking and i
+can write down what you say then i'm very happy i'm very happy to do that and vice versa so that's great
+the only problem that i have is that i've taken on some additional course curriculum development work
+for um university online nottingham so i will have some curriculum development work over the summer
+but i can make time for this i mean it's a priority for me so i think this is just just such a golden
+opportunity to get into this this uh this special issue that i've got it in my research plans this is
+what i want to do so i'll juggle things so that we can get this done okay good and like i said hopefully
+you know my my goal is that by may i'll have all they now i'll have the tables i'll have the graphs
+i'll have the mini lit review like i'll have it'll you know the the analysis will be done is what i'm
+aiming for now you know easier said than done but um but i i think like i said i think that's feasible
+and if so then that gives us enough time like you said i think we should aim for june but i mean
+we've got the summer we've got till september so i think that's a good you know yeah yeah i think
+i think i think i think it's good that there's a deadline uh and i think it's uh good that it's a
+feasible deadline and i think i've got a lot of work to do so which is fine which i i totally acknowledge
+and also i take it back a little bit we've done so much work it went one i think and then but then
+it's sort of it's lost it's been lost to me i suppose so so so things like this has been very
+very helpful to just like oh yeah i do remember that conversation thanks yeah oh yeah there's a
+novel conceptualization i completely overlooked that so um so leave it with me like i said i know
+my first task is to organize my tasks thank you very much for the probe alter edition that's spot on
+and i'll just crunch through and let you know um let you know how the analysis goes i'm just to be
+clear so 100 focusing on the analysis and then the the what i'm calling the mini lit review the like
+discussion which very likely will get edited down or cut but like i said i'm yeah a big fan no it's
+just having something to edit so yeah and there are a couple of drafts writing about that we can
+take bits of again just the the purpose of them is not to write a finished paper but just to try and
+capture where we were at the point that we were having those discussions so they may not be correct
+but perhaps they prompt further like the correct version comes out of them exactly trying to capture
+what you know isn't it and at the time that you know it before you forget it which is oddly
+frustratingly difficult at least in my case because i i i completely i don't know what you
+but for me it's always like like i always have these thoughts either when i'm brushing my teeth or
+i'm in the shower and i'm always like oh that's a good idea and i'm never at a place where i can like
+write it down you know so that's so many so many good ideas who knows if they were good ideas but
+i get so yeah i think i think i i'm happy that we both take notes and and uh and that ai can
+summarize uh notes and email threads or what have you that was that was pretty helpful so um yeah
+that's great yeah okay so my timetable i teach tuesdays and thursdays and i don't work wednesdays so
+i do have some time mondays and fridays so if it helps to have a just a brain dump or whatever
+then just let me know and we can jump on a call good let's do that and um uh mondays aren't great
+for me monday mornings are possible but not great but friday is perfect for me so that is
+good okay and and like you said that's that's a great idea to just have a brain dump or forget good
+we'll do that we'll do that and right now i will go to the coffee shop and get back to work
+because i'm excited about this i want to keep going so thank you so much it's one like i said it's
+always great chatting with you and it's been ages since we've seen you so it's very nice to see you
+as well so yeah i know i haven't seen we haven't seen us each other in reality i think since we
+started working yeah i think that's right i was writes lab stuff and geez months and months and
+i mean anyway yeah long time anyway yeah good to see you too good to see you thanks very much
+stay warm stay warm and i'll talk to you soon thank you bye bye

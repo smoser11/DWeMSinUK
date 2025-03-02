@@ -1,0 +1,183 @@
+Speaker SPEAKER_00: 2.4s -> 32.0s
+Text:  I'm a fan of these things.  I think they're pretty cool.  First of all, sorry for running late.  I don't know if you can do it, but it'll just randomly update itself every now and then.  And it'll...  Okay.  I didn't ask you to do that.  Why are you restarting?  Stop it.  So sorry about that.  And secondly, it's very nice to see.  It's been ages.  So I hope you're well and warm.  Well, I've also got my rap on.  It's that it's...
+
+Speaker SPEAKER_01: 32.0s -> 40.4s
+Text:  I've got this really clever heat in that that keeps your feet warm.  And that's quite good.  Because if you're feet are warm, the rest of your body does feel so cold.
+
+Speaker SPEAKER_00: 40.4s -> 63.5s
+Text:  I'm sad you're feeling...  My mom, I think, turned me on to these.  But slippers in the winter just always...  Oh, yeah.  Always got to have the slippers because it's...  Yeah, like you said, it's...  And she has these fancy ones that have like kind of...  It's not fur, but it's some kind of like fluffy lining to it.  It's quite nice, but anyway.  Sorry for ambling.  Sorry, Nass.  You were in America right over the holiday.
+
+Speaker SPEAKER_01: 63.5s -> 66.5s
+Text:  And you...  It was like I had home.  It was.
+
+Speaker SPEAKER_00: 66.5s -> 98.5s
+Text:  It was a...  Fall was...  It was a...  It was a very difficult work-workwise.  And I just needed a break.  So it was short, but it was...  I got some sun.  I got some vitamin D.  I got to see some friends.  Oh, and galsh, yes.  That was great.  So January is marking hell, at least for us.  And so that was Ms. Rule.  But now it's February and things are much, much, much better.  So how about you?  Did you have the nice time?  Yeah, we had a good Christmas just at home.
+
+Speaker SPEAKER_01: 98.5s -> 117.5s
+Text:  My mum lives nearby now, so she came over.  We just had the family round.  So yeah, it was pretty quiet, but pretty dark.  I must say that that's really the night's drawing.  And the morning's drawing and everything's...  Like living in a...  You feel it all to hide in 18, really?  Yeah.
+
+Speaker SPEAKER_00: 117.5s -> 138.5s
+Text:  Nope, but...  For me, it's not the...  You know, people like the bad enough, the weather, and you learn in the UK, but it's not...  It's not the weather that gets me, it's the dark.  It's exactly like he says.  It's the...  I'll take the cold and the wet, but the...  Yeah, when the sun sets at, you know, 3 p.m., 3.30, it's like Jesus.  It's just so depressing.  It's just...  Anyway.
+
+Speaker SPEAKER_01: 138.5s -> 148.5s
+Text:  No, I could never live in Scotland.  I think it's even worse up there than days that even shorter in the meantime.  It's sort of the sun sets at 2.30 in the afternoon.  I don't understand how it's possible.
+
+Speaker SPEAKER_00: 148.5s -> 159.5s
+Text:  Not to be glid, but like in like Sweden and Finland, like I don't know how there's not more suicide rates,  because it would just be so depressing to have these, you know, months of...  It would be really weird.
+
+Speaker SPEAKER_01: 159.5s -> 175.5s
+Text:  So yeah, you're absolutely right about the D3.  It makes such a difference.  So I've been taking calcium tablets, which have D3 in them for some...  For another factor, but actually it's really good for your mood.  It just changes the whole winter season.  That's just having that bitumen.  Such a good idea.
+
+Speaker SPEAKER_00: 175.5s -> 188.5s
+Text:  I'm going to put that online in my morning routine.  That's an excellent, excellent idea, because it...  Yeah, it's...  I didn't know how much it affected me until I moved here.  And then it's like, oh, yeah, wow, that's a real thing.
+
+Speaker SPEAKER_01: 189.5s -> 191.5s
+Text:  D3 is the answer.
+
+Speaker SPEAKER_00: 191.5s -> 192.5s
+Text:  D3 is the answer.
+
+Speaker SPEAKER_01: 192.5s -> 216.5s
+Text:  So, well, your Jager soup job with this, because I felt...  Well, when we had our last conversation, I did quite a lot of re-reading of emails,  and I felt I understood what you were doing.  And then, unfortunately, since we've had a long break, I've lost that understanding.  It's really frustrating.  I feel exactly the same way.
+
+Speaker SPEAKER_00: 216.5s -> 227.5s
+Text:  And I'm so sorry, because it's...  It's because of this...  Yeah, it's because of the link.  But we're out of sync, I think that's the issue, because my research term is not always such a...
+
+Speaker SPEAKER_01: 227.5s -> 235.5s
+Text:  Exactly, exactly.  And that's what's causing us the problems.  I know.  And there's this loop to try and get back into the project you shine.
+
+Speaker SPEAKER_00: 235.5s -> 381.5s
+Text:  I'm optimistic, cautiously optimistic, maybe.  Because the journal deadline, and I think one deadline...  I hate them, but they're essential for me.  And two, it's realistic.  If the deadline was March, I wouldn't be so optimistic.  But we've actually got time to accomplish these things.  So, speaking of which...  And again, sorry for sort of spinning my wheels, and I don't know.  I mean, if we just brain dump in this conversation, that would be fine.  But what would be ideal for me is to sort of map out next steps.  That was my attempt at this LM business.  So a few things.  So one, I remember...  So whatever, from what I remember, there's definitely technical...  So there's at least two big things on my play, and one of which was very technical,  sort of this coding, this package I couldn't get to work.  And then I thought I'd have to rewrite it, and then I never did.  And then, yeah, exactly, I love the idea.  And then two is the Insum comparison.  And the Insum comparison, one, as also a technical line, I haven't coded it up.  But it had this sort of conceptual element to it, I think, which was...  And please correct me if I'm wrong.  And like I said, I'm embarrassed.  Like, I swear, I definitely read this literature.  Once upon a time, I really did understand what was happening.  I don't remember.  I don't remember what RDS1 versus the VH estimator.  I did once upon a time.  But again, at the conceptual level, from what I remember is that the way that RDS and Insum work are slightly different.  They both use social networks, but the estimator for RDS uses the referrals.  So it uses the...  Yeah.  Who do you know?  And Insum uses, I think it's called, egocentric information.  So it's like, it's how many people do you know that have such and such a quality,  or that are named John, or whatever.  And those are slightly different.  And the reason that came up, I think, is because the questions that asked about  who you know were slightly different, and the questions about these referrals, basically.  And I think that was what concerned about this.  So I think in the memo, or whatever I call this,  or how to fairly compare RDS to Insum estimators.  And I think we had an idea.  We did.  We had it back in.  Are you looking by memory?
+
+Speaker SPEAKER_01: 381.5s -> 399.5s
+Text:  And then what we did was try to match sets of questions with more or less confidence.  That were...  There wasn't a direct one to one always, but there were...  There was enough similarity with some of them.  Do you want me to try and dig out that email?  Please do.  I was going to say, do we have...
+
+Speaker SPEAKER_00: 399.5s -> 406.5s
+Text:  That sounds fantastic.  And I do...  It's on emails.  That's why.  That's one of the more recent things that I sent you.
+
+Speaker SPEAKER_01: 406.5s -> 410.5s
+Text:  Okay.  So I'll dig out that email.  Thank you, Ameleon.
+
+Speaker SPEAKER_00: 410.5s -> 412.5s
+Text:  I'll forward it again.  That's really...
+
+Speaker SPEAKER_01: 412.5s -> 421.5s
+Text:  That's really...  That's really...  That's really...  Yeah, I think that's really...  Okay.  So the idea...  Just so I'm clear as we would...
+
+Speaker SPEAKER_00: 425.5s -> 434.5s
+Text:  That we have some degree of confidence are comparable across RDS and Insum estimators.  Is that the right idea?  Like...  He was...
+
+Speaker SPEAKER_01: 434.5s -> 454.5s
+Text:  Yeah.  He was matching...  I did it.  You'd ask me to batch the questions.  So there was a...  How many people do you know question?  And whatever the other sort of format was.  And we...  I went actually through a list.  And...  I'm just trying to find if I can find the...  That would be helpful.  I didn't mean to put it on a spot.
+
+Speaker SPEAKER_00: 454.5s -> 458.5s
+Text:  Whenever...  I mean, clearly I've got other sentences.  No, I just thought it might be able to find it now.
+
+Speaker SPEAKER_01: 458.5s -> 462.5s
+Text:  Because it was quite a recent one.  Excellent.  Excellent.
+
+Speaker SPEAKER_00: 462.5s -> 480.5s
+Text:  I'm glad your memory's better than mine.  Because that's...  That would be perfect.  That email, I think, would answer...  Would address this particular...  This conceptual concern.  It's not the right word.  But the fairness, the fairness question about how to...  Fairly compare these two.
+
+Speaker SPEAKER_01: 482.5s -> 486.5s
+Text:  You know, you can never find things when you want to...  I know.  I know.
+
+Speaker SPEAKER_00: 486.5s -> 512.5s
+Text:  And I hate the way that...  I mean, I guess I'm not very organized.  But I don't like the way that Microsoft sort of...  Organizes my emails.  It's always like...  Like, for some reason, like, if it's...  Like, sent emails are all separate, even if they're part of a thread.  Yeah.  It's like, why do that?  I don't know if I found the thread.  I did not just show me all the emails.  I'm...  I'm going to get some hot walks and coffee.  I took one second.  Yeah, I don't worry.
+
+Speaker SPEAKER_01: 512.5s -> 515.5s
+Text:  I'll keep looking just in case it comes...  I spot it.
+
+Speaker SPEAKER_00: 594.5s -> 729.5s
+Text:  Sorry about that.  So I hadn't sort of, in turn, we'd done a lot, and I just never organized it.  So this last week I was trying to organize the excellent work that we've done in the  past, and that's ongoing, but that's a making progress there.  And then just today or maybe yesterday, it dawned on me that these different estimators,  like we were probably being overly cautious in this real business idea about, you know,  well, how robust are these size estimates to, you know, they all, all these estimators  were on some assumptions, and the upside is that these two classes of estimators in some  in RDS, were on totally different, well, not totally totally different sets of assumptions,  but different sets of assumptions.  So that was a good thing.  And so we did that.  We threw all these estimations at it and got roughly something like a hundred and  forty something like that, I think, which I think is pretty, seems a bit high to me,  but also seems in line with the other stuff that I've, that I know of, but, you know,  this looked much better than I do.  But what I neglected entirely was, I hadn't described any of these estimates here whatsoever,  like in words, so I, paper wise, I definitely need, I think I need sort of a mini lit review  of here, here are the estimators that we're using, sites, sites, sites, sites, and if  it's over the word count, we can, I'm always, the opinion that it's easier to edit down  than make more.  So I think I need to think that a third task for me is this one, I'm calling a lit review,  but it's not really lit, it's a methodological lit review, basically, just to, you know,  we can convince people that we know what we're talking about, or, yeah, even if we don't.  So those are the main things that come to my mind, is that one, what am I missing?  And two, could you help me prioritize?
+
+Speaker SPEAKER_01: 734.6s -> 783.6s
+Text:  out on your AI plan, we had a long discussion about these pro-bolters, and whether or not  we could use the NRM figures, and I think you had a, you emailed me, which I, an email  I've highlighted, trouble in paradise, which is the email that says that we can't use NRM  referrals.  So we have had to do this discussion, and we have previously discussed using the number  of domestic workers figure as the pro-bolter.  So based on the number of domestic workers that each respondent note claims to be in their  network.  So I think just looking at your AI planet didn't seem to pick that up.  Good, good.  That discussion.  Thank you.  So that, I think, is...
+
+Speaker SPEAKER_00: 783.6s -> 796.2s
+Text:  I do remember that.  Yeah, that's it.  And those numbers came from, there was a bit of guesswork, far remember, because we were  using, you did awesome.  You were there, apparently there were really good EU numbers and specifications.  Yeah, there were EU numbers.
+
+Speaker SPEAKER_01: 796.2s -> 802.8s
+Text:  And again, I've sent you that email, but I can see that email I can forward it to you  again if that's helped.  Thank you.
+
+Speaker SPEAKER_00: 802.8s -> 807.6s
+Text:  Thank you for this.  This is your far more organized than I am as well.  And I found the other one as well.
+
+Speaker SPEAKER_01: 807.6s -> 815.8s
+Text:  So it's unhelpfully named for Star Journal article.  So I don't know how you'd find it under that title, but it's now in your inbox.
+
+Speaker SPEAKER_00: 815.8s -> 850.4s
+Text:  Thank you so much.  That's wonderful.  I'm furiously taking notes.  Thank you.  Okay, good.  So that's a good, that's good.  And then I do remember the right, the number, that's right, because we needed to, we  need this size business.  And so, but that's, you're drawing my memory, but thank you very much, because that was  one of the things that we did sensitivity to, I think, was, you know, are there 74,000  domestic workers or are there 190 or are there, you know, whatever.  That's coming back to me now.  Thank you, thank you, thank you.  That's excellent.  Okay, probaltors.  I'm putting a sternum to that.  Okay, good.  So I don't know about anything else.
+
+Speaker SPEAKER_01: 850.4s -> 935.2s
+Text:  I mean, your AI generated list looks more, more, very comprehensive and much more comprehensive  than I have the ability to comment on really.  So I mean, what have you doing?  Great, he's doing it.  Great, thank you.  Nadu.  The only other thing I think I thought I could perhaps contribute is you were asking about  the focus of the paper and whether it should be methodological or policy driven.  So I went back to the call for papers that it says they're aiming to catalyze rigorous  empirical research on labor exploitation, human trafficking in the factory.  So we take that box, we're definitely empirical that offers innovative conceptual and theoretical  perspectives.  So perhaps we could say methodologically, this is a different way of conceptualising  modern slavery risk because I don't know where you are with this indicator that we talked  about, but that would be conceptually innovative, I think.  It sort of moves the debate on the spectrum on from viewing modern slavery as an extreme  form to sort of quantifying it somehow.  And the other thing is they're very interested in underrepresented work of voice.  So I know we've done a survey which has its limitations, but we are actually surveying  domestic workers and asking them for their opinions, which is something that doesn't always  happen in the literature.
+
+Speaker SPEAKER_00: 935.2s -> 939.0s
+Text:  So we're actually sampling from the group.
+
+Speaker SPEAKER_01: 939.0s -> 951.6s
+Text:  Yeah, so I think we could make some sort of claim about that.  Thanks.  So have you captured those three things because those might have just been freewheeling  now.  Yeah, I'm taking notes.
+
+Speaker SPEAKER_00: 951.6s -> 1042.4s
+Text:  I've actually taken notes.  So one rigorous agree we can take that box.  I love the conceptual business.  I think you're 100% right now.  You know what I'm doing with Don's and Reinhardt?  I wish we had, I wish someone was like, I wish there was a stenographer like taking  a nurse course because I remember having what I thought was really interesting conversation.  I basically always have really interesting conversations with you.  And sometimes you sort of go back and forth where like you'll say something and I'll  sort of have to mull over it for a while and then, ah, I see what she's alky-gad.  And then I'm sure I'm not the most articulate at times and whatnot.  But I remember when I sort of saw what you were, there was this really beautiful concept.  Let me spill spill and see if I've got it right.  We had these sort of two conceptualizations of experiencing modern slavery or whatever  the phrase is.  I think that was the phrase we came to.  When one was, was very discreet, zero or one, right?  Is that your air or not.  And then the other, and you get the credit for this and I thought this was a brilliant conceptual  trick was to say, well, look, since we're sampling from domestic workers, we can say  they're all exposed to some degree of risk.  Everybody in the population that we're sampling from.  And then our estimation challenge is to calculate for a particular person, or I guess for the  set of people, for the set of domestic workers, what's the distribution of this exposure  risk?  Which I just thought was a very neat conceptualization.  I think, yeah.  I think you've supposedly, it was interesting.
+
+Speaker SPEAKER_01: 1042.4s -> 1049.1s
+Text:  I mean, I've just made the comment anyway.  Anyway, I think that's a great, at the writing
+
+Speaker SPEAKER_00: 1049.1s -> 1120.5s
+Text:  stage, I think you're 100% right that we should play up.  The only pie, and I'm getting ahead of myself, but the only possible, I mean, I guess we  could sit, sorry, the only possible downside I could see is like, there's almost like  we're wanting to have our cake and eat it too.  And that we're saying, well, look, here's the classical sampling, you know, some from  population.  They have the trade zero one site, site, site.  And we've done that.  And here you go.  I mean, you, Caroline, idea, you know, or what have you of this risk indicator and this  distribution, which is different in a conceptual innovation.  And we're doing that also, but they're kind of at odds.  I mean, they're kind of, they're different ways of thinking about it.  So I don't know how to, I'm just sort of framing or writing issue of saying, you see  what I mean?  And maybe my concern is overblown where it's, we can say, here's how people thought about  this in the past.  That's great.  And by the way, here's this new way we're thinking about this exposure to risk.  And that's a contribution and here are the estimates using this, you know, compare contrast  moving on.  I don't know.  It's probably too early to be even thinking about this.  Yeah.
+
+Speaker SPEAKER_01: 1120.5s -> 1139.1s
+Text:  Okay.  Yeah.  So I mean, do you think about, I suppose the other question you had about whether we  should be making policy recommendations and the thing, yes, definitely we should be.  And I think we've got, we've potentially got some, I've written something, but I mean,  we can always revisit those when we get close to the actually finalized results.
+
+Speaker SPEAKER_00: 1143.8s -> 1146.0s
+Text:  it and I do not remember the content, I'm sorry.
+
+Speaker SPEAKER_01: 1146.0s -> 1153.2s
+Text:  No, and neither do I, it's such a long time since I've written it, but I'm sorry.  I'm so happy about the same page though, okay, then be honest, if we are just...
+
+Speaker SPEAKER_00: 1153.2s -> 1158.0s
+Text:  There's some policy stuff in there, I'm sure, when we get to that point, we need to review
+
+Speaker SPEAKER_01: 1158.0s -> 1159.0s
+Text:  it.
+
+Speaker SPEAKER_00: 1159.0s -> 1243.0s
+Text:  Yeah, that's fine.  Yeah.  Yeah.  So, then, step two, I think, is, do you have suggestions, advice on how to prioritize  the, I guess the list plus the pro-baltor addition that you very rightly added?  I don't, because I don't understand these tasks sufficiently to understand which you need  No, no, no, no.  Like I said, I'm aware the ball is and has been for way too long, it firmly in my court  and it's, I'm the one who's deficient in the, so leave it with me.  Like, is it, I've been, I think this has been very helpful if nothing else to, at least  now I've got the tasks plopped down, I'm making some progress with the code, with organizing,  this will, you know, I know now that my next task is to organize my tasks, which is, it  which, believe it or not, is helpful.  More helpful than it was at the beginning of the week because it was more of a like, I  don't remember anything.  Yeah.  Yeah.  This is, this is, this is helpful.  I guess the only other thing is time line that you, so the, the hard deadline is September  or something.  I think we were shooting for July or something over the summer, I believe, question mark.
+
+Speaker SPEAKER_01: 1250.0s -> 1265.6s
+Text:  Oh, submissions open 25th.  So submissions open the first of June 25th and they close at the 30th of September.  Yeah.  So the absolutely hard deadline is the 30th of September.
+
+Speaker SPEAKER_00: 1265.6s -> 1271.1s
+Text:  We should go before that.  I think if we can, if, if, I mean, the upsides, the first one really all the ends of,
+
+Speaker SPEAKER_01: 1271.1s -> 1272.8s
+Text:  because these things slip up.
+
+Speaker SPEAKER_00: 1272.8s -> 1308.5s
+Text:  Yeah, I agree.  So the, the upside is, so the, the upside is I think that the, the stars are starting  to align for us and that I'm, my teaching schedule is not that bad at all this term.  So I have time to work on this.  You don't, which is fair.  And then we'll, I guess the question is, at the end of this teaching term, so May, June,  will you have time to, because writing is not my strong suit as you likely have discerned.  So I can definitely help with the analysis and interpretation.  Yeah.  Well, it's almost we could keep talking and I can write down what you say.
+
+Speaker SPEAKER_01: 1308.5s -> 1344.9s
+Text:  Then I'm very happy.  I'm very happy to do that.  In face for yourself.  The only problem that I have is that I take it on some additional course curriculum development  work for University Online Nottingham.  So I will have some curriculum development work over the summer.  But I can make time for this.  I mean, it's a priority for me.  So I think this is just such a good opportunity to get into this, this, this special issue that  I've got it in my research plans.  This is what I want to do.  So I'll juggle things so that we can get this done.  Okay.
+
+Speaker SPEAKER_00: 1344.9s -> 1431.2s
+Text:  And like I said, hopefully, you know, my, my goal is that by May, I'll have, all they now  I'll have the tables, I'll have the graphs, I'll have the mini lit review, like I'll have  it all, you know, the, the analysis will be done is what I'm aiming for now, you know,  easier set than done.  But I think, like I said, I think that's feasible.  And if so, then that gives us enough time.  Like you said, I think we should aim for June, but I mean, we've got the summer.  We've got to all September.  So I think that's a good, you know, yeah, I think, I think I think it's good that there's  a deadline.  And I think it's good that it's a feasible deadline.  And I think I've got a lot of work to do.  So which is fine, which I totally acknowledge.  And also, I take it back a little bit.  We've done so much work.  It went one, I think.  And then, but then it's sort of, it's been lost to me, I suppose.  So, so, so it's things like this has been very, very helpful to just like, oh, yeah,  I do remember that conversation.  Thanks.  Yeah.  Oh, yeah, there's a novel conceptualization.  I completely overlooked that.  So, so leave it with me.  Like I said, I know my first task is to organize my tasks.  Thank you very much for the probalt or addition that's spot on.  And I'll just crunch through and let you know, like, you know, how the analysis goes.  Just to be clear, so 100% focusing on the analysis and then the one calling the mini lit review,  the like discussion, which very likely will get edited down or cut.  But like I said, I'm big fan.  No, it's just having something to edit.
+
+Speaker SPEAKER_01: 1431.2s -> 1461.6s
+Text:  So yeah, and there are a couple of drafts writing about that we can take bits over.  Again, just the purpose of the is not to write a finished paper, but just to try and capture where we were.  At the point that we were having those discussions.  Yeah.  So they may not be correct, but perhaps they prompt further.  He's trying to capture what you know, isn't it?  And at the time that you know it, before you forget it.  Which is oddly, frustratingly difficult, at least in my case, because I completely,
+
+Speaker SPEAKER_00: 1461.6s -> 1487.2s
+Text:  I don't know much about you, but for me it's always like, I always have these thoughts either when I'm brushing my teeth  or I'm in the shower and I'm always like, oh, that's a good idea.  And I'm never going to put it down.  Write it down, you know?  So many, so many good ideas, who knows if they were good ideas.  So yeah, I think I think I'm happy that we both take notes and the AI can summarize notes and email threads or what have you.  That was that was pretty helpful.  So, yeah, that's great.
+
+Speaker SPEAKER_01: 1487.7s -> 1503.8s
+Text:  Okay.  My timetable I teach Tuesdays and Thursdays and I do work Wednesdays.  So I do have some time, one day and Fridays.  So if it helps to have a just a brain dump or whatever, then just let me know and we can jump on a call.
+
+Speaker SPEAKER_00: 1503.9s -> 1530.5s
+Text:  Good. Let's do that and Mondays aren't great for me.  Monday mornings are possible, but not great, but Friday is perfect for me.  So that's a great idea to just have a brain dump or forget, good.  We'll do that. We'll do that.  And right now I will go to the coffee shop and get back to work because I'm excited about this.  I want to go on.  Thank you so much.  One, it's always great chatting with you and it's been ages since we've seen you.  So it's very nice to see you as well.  So yeah, I know.
+
+Speaker SPEAKER_01: 1530.5s -> 1535.8s
+Text:  I haven't seen us each other in reality.  I think since we started working on that.
+
+Speaker SPEAKER_00: 1535.8s -> 1547.9s
+Text:  Yeah, I think that's right.  I was right's lab stuff and geez, months and months and I mean, anyway, yeah, long time.  Anyway, yeah, good to see you too.  Good to see you.  Thanks very much.  Stay warm. Stay warm.  I know.  See you soon.
+
