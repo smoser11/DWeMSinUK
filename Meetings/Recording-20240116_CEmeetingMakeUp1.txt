@@ -1,0 +1,138 @@
+Hello. Hi, Carolyn. This is Scott, obviously. I'm really sorry for missing our Monday meeting
+I've been and am in administrative duties hell Monday, Tuesday, Wednesday, and then
+I returned to marking hell. So I have done work and I wanted to try and update you and
+my typing is quite poor and my spelling is even worse. So I thought one quickly would
+just be to send you a recording. So here's a somewhat, I tried to organize my thoughts,
+but right. Here's a suit. Here's where I'm at and what I was hoping to have discussed
+with you on Monday, but again, I missed it. So I'm, I'm, I'm sorry about that. Okay.
+So, bring it up. Here we go. I think the first thing for me when approaching when
+re-approaching this, and I think I've got my head around, I've re got my, I've got my head
+re around these things. So I start with conceptualization and population, which let me call the setting.
+So the first question is what is the population? I think we have a very clear answer to that
+is domestic workers in the UK, more technically it is domestic workers in the UK that have
+a mobile phone during survey fielding. Maybe that have had a cert that have had a mobile
+phone in the calendar year proceeding the survey fielding, something like that. Okay.
+So if that's the population, which I think that we're sampling from, which I believe
+it is, and I think that's very well defined and that's fantastic. I think the target population,
+this hidden population, so to speak, are domestic workers in the UK that have a cell
+phone that have experienced exploitation or modern slavery in the past 12 months. There's
+a few ways that we can operationalize that. You and Salim, and me a little bit, but really
+it was all you, I think have come up with three very principled ways to do this. The
+first two are dichotomies. So this would be a question 36 dichotomized. This is the simply
+do you get paid less than the legal minimum wage. And question 80 also dichotomized, which
+is have you been through the national referral mechanism, or have you been referred to the
+national referral? To my mind, these are both very high bars. Like if people answer yes
+truthfully to either of those questions, I think, and I'm not a subject of that expertise
+whatsoever, but I think we can be very confident that yes, that person counts as a member of
+the hidden population. I think that's true. We also discussed and you and Salim, mainly
+you developed a continuous measure. So here the idea, I think, is conceptually different.
+So in this third idea, which I think is called, sorry, I took notes and clearly I can, this
+is like the some categories or some cut. The idea is you developed a series of indicators,
+it sounds like eight or 12 or 16. And we just sort of normalize them and said, you know,
+how many of these indicators, and actually there was a waiting to them, do you satisfied,
+and then we're going to come up with some number between zero and one that represents your
+exposure to the risk of experiencing modern slavery. So this can, if we use that as a
+measurement, as a separate measurement, as a continuous measurement of not experiencing
+modern slavery, but risk of experiencing modern slavery, that might sound like I'm splitting
+hairs, but I think both methodologically in terms of dichotomies versus continuous,
+but more importantly, I think conceptually, those are quite different, because in the latter
+case, if we're, if we claim that we're measuring risk of exposure, then, then I think the population
+is to be a little bit re, well, then the hidden population definitely needs to be redefined.
+So the V population that we're sampling premise still domestic workers in the UK that have
+a cell phone, yada, yada, yada. But in this third continuous operationalization of experiencing
+modern slavery or more formally risk, let's call it a risk index, and I've called it like
+24 different things, and I'm sorry. But in that world, we're asserting that everyone in
+the population has some value of this variable. That is to say, everyone in the population,
+domestic workers in the UK that we're sampling from, have some risk of experiencing modern
+slavery, then that risk might be zero. Okay, fine. So, but, but again, conceptually, I think
+that's important. Okay. So one, don't know if that's correct or not, but that's where I'm,
+that's one, that's where I started with. Okay. So then, so we've got the population, we've got
+the target population. So now how are we sampling? So where is this data coming from? So this, we
+sort of spent a few rounds and months on this, but I think it was productive, although perhaps not
+what you wanted to hear or I wanted to hear or whatnot. But I think where we landed was, well,
+look, what do we have? We have a convenient sample. We have an RDS sample, a respondent-driven
+survey in which the respondents are members of the population. We're sampling from domestic workers
+in the UK that have a cell phone, right? Yada, yada, yada. We're sampling from that population.
+Initially, there are seeds and then we're doing an RDS with five coupons to,
+to, to branch out, to do the, the RDS or the, the, the modified snowballs, not exactly snowballs,
+whatever. Okay. Again, these are my beliefs. So please, right, correct me if, if, if, if I'm
+wrong. Okay. So that's the data that we have to work with. So now the question is, what do we
+do with that data? I want to add one additional aspect to the, the data, the, the sample I should
+say, let me separate that from the data we're talking about in a second. In, in that functionally,
+the sample, again, none of this is criticism whatsoever, but functionally, the sample comes from
+three groups or we're sampling from three subgroups within the population of domestic
+workers in the UK that have a cell phone. Those are people from the Philippines, maybe they're here
+on a visa, maybe they just identify as Philippine, no, Filipina. Latinx, again, by self-identified
+origin, ethnicity, I don't remember the exact wording and other, and, and British born. And
+that one, British born, I think pretty sure is a, is a, is actually asked. I don't have the question
+number on, on me. So if we wanted to, we could say, okay, well, look, there's really within this
+here sample, there's three distinct clusters by say, nationality. I think we, I think we could
+assert that with veracity. It's been a long few days and it's only Tuesday. I'm sorry. Okay. So
+that these natural three subgroups or clusters, Latinx, Filipino a and, and British born, I think.
+Okay. All right. So that's the sample. So then let me, we've got, I hope you're drinking a lot of tea
+or coffee and pausing and or deleting this video. Okay. So then before I get to analysis, I want to do
+a few data issues. So, so one, do we know anything about these sizes? So do we know anything about
+estimates of the number of domestic workers in the UK? So I found two websites once
+one's official UK is nationalcareers.service.gov.uk job groups. So they sort of,
+I'm guessing it's census based, but they're, they're these job groupings. And another is from
+some organization in the UK called BICS. I've already forgotten what that stands for. But
+it looks like there's some maybe a sense of the number of domestic workers in the UK. It depends
+on how you count like these, you know, is this home cleaning? Is it daycare? Is it institutionalized?
+Is it not? And like I said, this is just a very preliminary thing. Okay. So that's one numbers.
+One A numbers. Well, actually, we could estimate the number of domestic workers in the UK from
+your very clever sample because of the RDS nature. So one of the questions in the survey is how many
+other domestic workers do you know in the UK? And then ask for some, some recruitment information.
+But just asking the how many. So basically what I'm saying is we're sampling from the population
+of domestic workers in the UK. And one of the questions is how many other people in this
+population do you know? So we can use that information to estimate the size of the population
+where the population means domestic workers in the UK. Okay. So that's another that's I'm exploring
+that currently as a possible additional source of information. By the way, that is using older,
+I'm just saying this for the record. Sorry. So that's using sort of the the
+uh, guile at all, but the early stuff. So 2010, 2011, uh, stuff that the stuff we'll talk about
+in a second. The for analysis is a bit later 2014, 2015, a bit later. Okay. So what I'm saying is
+the population, we can try and estimate the size of the number of domestic workers in the UK,
+which might be of interest for a number of reasons. For me is of interest because we need that number
+for later calculations and that can come from a few sources. I found two online, maybe they're
+valid, maybe they're not. The third is we could try and estimate that from your survey. I'm working
+on that currently, but it's giving weird answers. Like it's way too small and it's taking way too
+long to run. So whatever, I'm just saying that for the record. Okay. Now I don't remember what number
+we're up to. Analysis. Uh, so step one, let's just take it from the literature. Let's do the
+guile at all. So this is the so-called SSPS. So this is the successive sampling population size
+estimates. And uh, Krista Guile, who again, small world, we were neighbors at it in our postdoc at
+doctor comes up with this very clever way of exploiting additional information within RDS
+samples that essentially takes into account. What's really cool about it is that it uses
+when, at which wave did you appear in the sample as an additional piece of information?
+And the idea being that those with larger personal networks, so if I'm a seed and I give two recruits,
+odds are those two recruits have bigger social networks than say the other people
+that I didn't recruit. Basically, that's the idea and, and so on and so forth. Okay. So it uses this
+idea, which overcomes it. It mitigates a lot of biases that were in so-called RDA1 and RDA2,
+sorry, RDS1 and RDS2. I've also seen it called RDSA and RDSB volts, etc, etc, etc. So this SSPSC
+seems to be, as far as I can tell, pretty, pretty state of the art. Okay. So we can just take that
+from the literature. We can do estimation. There's a few hiccups, but nothing that we can't overcome.
+And we get proportions. We get proportions of the population, which currently we don't know the
+size of, but we can come up with some sensible ways of estimating it that are experiencing,
+that are in the hidden population, that are experiencing modern slavery, however defined,
+via Q36 or Q80, both dichotomized, which again, to my mind, are very sort of high bars. Like,
+if you're saying yes to either Q36 or Q80, again, dichotomized, like, there's very good,
+if you're answering honestly, there's very, very good reasons to think that
+you're a member of the hidden population, that you're a domestic worker in the UK with a cell
+phone, mobile phone, sorry, American, that is being exploited, that is, that is experiencing
+modern slavery. Okay. So we can do that. And then there's, there's some sort of very, very recent,
+most recent I found was the McLaughlin at all, 2023. I don't even know if I've sent it around.
+Sorry if I haven't. That says, yeah, yeah, that's great. But essentially, the number of people that
+I report, it's really clever. It says basically, the number, I might not know the number of people
+that I know. And so the number of people that I report shouldn't be taken too literally. Essentially,
+you should be taken, sort of what they do is they just add a measurement error components. They say,
+yeah, well, you might not actually know, you might not truthfully report the number of people that
+you know that, that are in your personal network, that are in our world, that are domestic workers
+in the UK that have such and such characteristics. Okay, so we can do all that. And I have done,
+done that. And, and the answer is really high proportions, something like 30 to 40%.
+Depending on a few, you know, which question we use, priors, which model, etc, etc. But
+pretty consistently 30 to 40%. Sorry, let me say differently.
+And concurrent with the preliminary stuff I sent, whatever it was, months ago,
+something like 30, 40% of domestic workers in the UK, if that's the population,
+we are estimating to be experiencing modern slavery again, depending on how we're defining it.
+It's one of these two dichotomous, dichotomous variables. And, and again, you know, those
+caveats, however, I will say this, I was worried about a few things. Because when I first saw that,
+I thought, wow, that's really high. I thought. So maybe there's some convergence issues,
+doesn't look like it looks like the things have converged pretty well.

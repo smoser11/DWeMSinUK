@@ -1,0 +1,303 @@
+Date: 20240304
+Subject: Re: Selim Risk Index Update
+
+This sounds fantastic work! Thank you both. I am having a think about journals and look forward to catching up next week
+
+Best wishes
+Caroline
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (AFHEA)
+
+
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB 
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 04 March 2024 11:29
+To: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>; Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Subject: Re: Selim Risk Index Update 
+ 
+Thank you!  This is massively helpful!
+
+ 
+
+I’m happy to report some SUCCESS!  I figured out the personal network size issue in the data (persons 8 and 60 were messing me up! Ha!)  I’m currently running a big batch of RDS estimation.  So far, nothing surprising – prevalence is consistently between 30 and 40 percent.  Then I’ll turn to the NSUM + RDS design estimation with neighbourhood bootstrap.
+
+ 
+
+Then I think we should return to the paper: writing and thinking about venues for publication.
+
+Selim: did the Zotero references I sent work out for you?  Were you able to use them in Caroline’s draft paper?  
+
+ 
+
+Yea!
+
+Scott
+
+ 
+
+ 
+
+ 
+
+ 
+
+From: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Date: Monday, 4 March 2024 at 10:36
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>, "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+Subject: Re: Selim Risk Index Update
+
+ 
+
+Dear Dr Moser, 
+
+ 
+
+Thank you for your email, and please do not worry, as I am happy to be helpful to you at any point. 
+
+ 
+
+Regarding your question, we informed the NGOs to select seeds as the individuals with the most 'social connections' in the community with the hope that they could trigger more referrals. They are highly likely to be active members of the NGOs. 
+
+ 
+
+Thank you, and please let me know if you have any questions. 
+
+ 
+
+With kind regards, 
+
+ 
+
+Selim Yilmaz
+
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 03 March 2024 15:57
+To: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>; Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Subject: Re: Selim Risk Index Update 
+
+ 
+
+Dear Selim,
+
+Thank you, this is excellent.
+
+ 
+
+‘Last question’ (ha! Famous last words!) How were the seeds selected?   I think it was determined by the Advocacy Groups (?). But any and all information on how the initial seeds were contacted/ determined would help me a lot.
+
+ 
+
+More soon,
+
+Scott
+
+ 
+
+ 
+
+From: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Date: Friday, 1 March 2024 at 09:33
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>, "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+Subject: Re: Selim Risk Index Update
+
+ 
+
+Dear Dr Moser, 
+
+ 
+
+Thank you for your email. 
+
+ 
+
+The sum of the risks is the 'composite_risk' variable, adding up categories 1 to 11. 
+
+ 
+
+Categories 12 and 13 are the two dichotomous indicators, they are weighted with either 0 or 1. Category 12 is 'high degree of exploitation', and category 13 is 'lower degree of exploitation'. In short, categories 12 and 13 are not part of the composite risk (see the screenshot below for more details), so they do not need to add up to 1. 
+
+ 
+
+Thank you. I hope this helps, and please let me know if anything is unclear. 
+
+ 
+
+With kind regards, 
+
+ 
+
+Selim Yilmaz
+
+ 
+
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 28 February 2024 15:11
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: Selim Risk Index Update 
+
+ 
+
+So sorry if I’m being dense, but I really do not understand the latest data from Selim, namely the file Update Selim Risk Index.csv.    First, there is no variable called ‘sum_categories’ as there is in the previous data file, `Further Coding Update.xlsx`.  That is fine, as I can easily add up the values for `Category_1`.. to 13.  **However**, the new values for these variables -- 
+
+category_1category_2category_3category_4category_5category_6category_7category_8category_9category_10category_11category_12category_13
+
+Do not make sense to me.  For example, the values for Category 12 and 13 are all either 0 or 1.  But this will make the sum greater than one in many cases.  But the whole idea was to have a separate, continuous indicator of explotation.  Should I exclude both of these categories?
+
+ 
+
+Sorry and thanks,
+
+Scott
+
+ 
+
+ 
+
+ 
+
+ 
+
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+Date: Monday, 26 February 2024 at 08:01
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>, Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: Selim Risk Index Update
+
+ 
+
+Fantastic. Thanks Selim
+
+ 
+
+ 
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (AFHEA)
+
+ 
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB 
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+ 
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+ 
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+ 
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 24 February 2024 14:16
+To: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>; Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Subject: Re: Selim Risk Index Update 
+
+ 
+
+Thank you, Selim!
+
+Scott
+
+ 
+
+ 
+
+From: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Date: Friday, 23 February 2024 at 21:24
+To: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>, "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Selim Risk Index Update
+
+ 
+
+Dear Caroline and Dr Moser,
+
+ 
+
+I hope this email finds you well.
+
+ 
+
+Please see attached the updated coding, I have corrected the weighting for all categories (including dichotomous) and created a "composite_risk" variable that measures each respondent's risk index.
+
+ 
+
+Thank you, and please let me know whether this looks right now. I am happy to make any changes if necessary.
+
+ 
+
+Have a great weekend.
+
+ 
+
+With kind regards,
+
+ 
+
+Selim Yilmaz
+

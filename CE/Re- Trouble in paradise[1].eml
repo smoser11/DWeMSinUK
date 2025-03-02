@@ -1,0 +1,990 @@
+Received: from VI2PR06MB9135.eurprd06.prod.outlook.com (2603:10a6:800:229::8)
+ by DB9PR06MB8202.eurprd06.prod.outlook.com with HTTPS; Tue, 12 Mar 2024
+ 08:56:13 +0000
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=exmail.nottingham.ac.uk;
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com (2603:10a6:20b:99::17)
+ by VI2PR06MB9135.eurprd06.prod.outlook.com (2603:10a6:800:229::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7386.16; Tue, 12 Mar
+ 2024 08:56:12 +0000
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::b883:f7bd:4abf:9b70]) by AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::b883:f7bd:4abf:9b70%5]) with mapi id 15.20.7386.016; Tue, 12 Mar 2024
+ 08:56:12 +0000
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: Trouble in paradise
+Thread-Topic: Trouble in paradise
+Thread-Index: AQHacX8C8XNrWIoJ8E69AxStfjW7mrEyPhBRgABDqHCAAAKzQIABRXAF
+Date: Tue, 12 Mar 2024 08:56:12 +0000
+Message-ID:
+ <AM6PR06MB5941727AB354469CB3280B92A02B2@AM6PR06MB5941.eurprd06.prod.outlook.com>
+References: <77C4A709-3231-4356-BD77-709319FE7AFD@nottingham.ac.uk>
+ <AM6PR06MB594123AE9B242E87274707AFA0242@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <DB9PR06MB82026C3D413AFA4F931E941087242@DB9PR06MB8202.eurprd06.prod.outlook.com>
+ <DB9PR06MB8202D529B7AB7C179E25A3DD87242@DB9PR06MB8202.eurprd06.prod.outlook.com>
+In-Reply-To:
+ <DB9PR06MB8202D529B7AB7C179E25A3DD87242@DB9PR06MB8202.eurprd06.prod.outlook.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-GB
+X-MS-Has-Attach: yes
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+ <AM6PR06MB5941727AB354469CB3280B92A02B2@AM6PR06MB5941.eurprd06.prod.outlook.com>
+msip_labels:
+MIME-Version: 1.0
+X-MS-Exchange-Organization-MessageDirectionality: Originating
+X-MS-Exchange-Organization-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-Network-Message-Id:
+ 6339fcf3-ddc1-4904-64f1-08dc4272445f
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ AM6PR06MB5941:EE_|VI2PR06MB9135:EE_|DB9PR06MB8202:EE_
+Return-Path: lizce@exmail.nottingham.ac.uk
+X-MS-Exchange-Organization-ExpirationStartTime: 12 Mar 2024 08:56:12.3417
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Office365-Filtering-Correlation-Id: 6339fcf3-ddc1-4904-64f1-08dc4272445f
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR06MB5941.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:;DIR:INT;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Mar 2024 08:56:12.0388
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6339fcf3-ddc1-4904-64f1-08dc4272445f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ZM8dGuIMdRRK/pb3EVWCu6eoSDK9zUtikGRpUORW0Vkd6I3/0PEszUVIyWT5IGTZMwOrJSe8p+CF+E41/Wf0ouPGC68p3dAAUV8ra0WfUijeQmMPJEnV0B5QUOmFxo4F
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI2PR06MB9135
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:01.1251505
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.7386.010
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(425001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	N6Vy89CTZaO+cTIkTyliN6vMMmRokcB1IQ+m141fcf8frtRwLE+8H756AJgWnnqbS0FGLtx23AaXya56jbi3QTUw0ik25NsC1T9CQv5S79cUcsAYKy9xX4m1UX0Zcue+z7qnP1SGKfVIX4HEXzDPCidYG/A3pu5tUhvFUrjHEG2mOlIBx6h0ECVeRGEhf2rFa9CKEyUcylQo2DA5Xe7LqdakueYzZLuOEm7NcDWN8Fn0JLcQCu3hOXhdoICFxMQ73Pjpk7Vc/9Hli7GTC6YcjDC6Ezso+di6Hop8VWxFFA9//4xMm9l/UZGQMtXEVta7JMmlNr1GMnojmFm0i6nJ9QK/eG51/SqvcF8kr4xXGL7j/0J+Jm7SjiQY9+CcdyLwuZ28tXqHqZbPD71CkrTCJAaPJ+QUBQgYr0lOMg8w0JauhKVq/fu6bUVRNzVKMiv/qtSyw9svz4yT/d0dpaIN2R/vCPlKtnFs7HyA7aM7kKMsyTMuCcjg08bjqkLWO3dEpDRnHeHW2DpWC5m6uN2HAGKKr9OqwYS65ASCZisVJEaS18Gkk3DnKQqMPMaEOcU73Hr0XvTQgVjdBYmgyu6ZPzFfpE9monIspJWv7ZjqDbilHjeczS3ICas9z9IAwBaaiVdb/u99wz2up7/w3x8dqg3/zmhtwe0NQ3/sLYR73ZLFdNEQyP3H6SKq4jIbVW9e9BrtBLibwrf/u3PUbY3gJ12ZSJe3nQ74W8o/IFffMtpPwACPZD0l+7KHFprKIwk2Xn84BfgYaxtRnSss09B9LtrW0Q+vTr3JhNC9bHCZbs2SCZrAUP9FhCrKyE9W6ZOn
+Content-type: multipart/mixed;
+	boundary="B_3821516406_1899556349"
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3821516406_1899556349
+Content-type: multipart/related;
+	boundary="B_3821516406_1808859950"
+
+--B_3821516406_1808859950
+Content-type: multipart/alternative;
+	boundary="B_3821516406_2127539198"
+
+
+--B_3821516406_2127539198
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+Hi Scott,
+
+We could justify the selection of themes 2 and 3 with reference to the Bell=
+agio-Harvard guidelines (https://glc.yale.edu/sites/default/files/pdf/the_be=
+llagio-_harvard_guidelines_on_the_legal_parameters_of_slavery.pdf)
+
+These guidelines define forced labour as 'all work or service which is exac=
+ted from any person with menace of any penalty (theme 3) and for which the s=
+aid person has not offered himself voluntarily (theme 2)'
+
+This would create a 'high bar' definition of forced labour. We could perhap=
+s still justify the use of the total NRM figures (which include other forms =
+of modern slavery in addition to forced labour) on conservative grounds. Som=
+e NRM statistics do attempt to split out 'labour exploitation', but I cannot=
+ find a cumulative analysis and even in recent figures there is an unhelpful=
+ 'labour and criminal exploitation' category.
+
+Is this a narrow path forward?
+
+Best wishes
+Caroline
+
+
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (AFHEA)
+
+
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB=20
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 11 March 2024 13:00
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Subject: RE: Trouble in paradise=20
+=20
+PS. I ran things through an LLM and got the following, when asking for them=
+es or topics asked in both =E2=80=98types=E2=80=99 of questions.  Themes 2 and 3 look pr=
+omising, but the question wording seems different/ more specific for questio=
+ns about individual experiences (?)  I don=E2=80=99 tknow if this is true, but if =
+so perhas we could aggregate/ combine some of the questions about individual=
+s to make them comparison to the questions about =E2=80=98how many X do you know?=E2=
+=80=9D?
+
+=20
+
+=20
+
+>>>
+
+To identify personal experiences asked about in both types of questions, we=
+ need to look for overlapping themes or specific experiences in the responde=
+nt's working conditions (first type) that are also inquired about in terms o=
+f the respondent's knowledge of other domestic workers' situations (second t=
+ype). Essentially, we're looking for topics covered in both sets of question=
+s that pertain to both the respondents themselves and their awareness of the=
+se issues among their peers.
+
+=20
+
+Considering the lists provided:
+
+=20
+
+**Shared Themes in Both Types of Questions:**
+
+=20
+
+1. **Working Conditions and Satisfaction**:=20
+
+   - First type: Questions like Q19 (job enjoyment) and Q23 (satisfaction w=
+ith working conditions).
+
+   - Second type: Q14 (knowing others dissatisfied with their working condi=
+tions) and Q35 (knowing others suffering from bad working conditions).
+
+  =20
+
+2. **Freedom and Restrictions**:
+
+   - First type: Q29 (being forced to work), Q30 (control over work times),=
+ and Q32 (feeling unable to leave work premises).
+
+   - Second type: Q33 (knowing others experiencing restrictions on their fr=
+eedom).
+
+=20
+
+3. **Abuse and Mistreatment**:
+
+   - First type: Q44 (experiencing abuse, harassment, or physical violence)=
+, Q45 (forced, deceived, or threatened into poor working conditions), Q47 (e=
+mployer intimidation or threats), and Q48 (verbal abuse from employer).
+
+   - Second type: Q49 (knowing others who have experienced the use of threa=
+t or force).
+
+=20
+
+4. **Health and Safety**:
+
+   - First type: Q72 (feeling that the working environment is safe and heal=
+thy) and Q73 (access to medical care).
+
+   - Second type: Q68 (knowing others suffering from mental ill health), Q7=
+4 (knowing others who do not have access to medical care), and Q77 (knowing =
+others suffering from bad environmental conditions).
+
+=20
+
+5. **Document Access and Legal Rights**:
+
+   - First type: Q70 (employer or agent withholding travel and identity doc=
+umentation).
+
+   - Second type: Q71 (knowing others who do not have access to their own t=
+ravel and identity documents).
+
+=20
+
+These themes represent areas where the survey seeks to understand not only =
+the personal experiences of the respondents concerning their working conditi=
+ons, freedom, abuse, health, and legal rights but also their awareness of si=
+milar issues faced by other domestic workers they know.=20
+
+=20
+
+=20
+
+From: Scott Moser (staff)=20
+Sent: Monday, March 11, 2024 12:49 PM
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Subject: RE: Trouble in paradise
+
+=20
+
+Thank you again for the interesting meeting today!
+
+=20
+
+Here are the =E2=80=98how many people do you know?=E2=80=99 questions and I found (not =
+guaranteed to be complete):
+
+=20
+Q13: 2f_howmany_population: Asks if the respondent personally knows other d=
+omestic workers in the UK and requests a numerical value of how many, based =
+on contacts in their mobile phone.
+Q14: 2g_howmany_dissatisfied: Inquires whether the respondent knows any dom=
+estic workers who are dissatisfied with their current working conditions, al=
+so asking for a numerical value.
+Q21: 4c: Questions if the respondent personally knows other domestic worker=
+s who do not have good relations with their employers, asking for a numerica=
+l value.
+Q25: 4g: Asks if the respondent personally knows other domestic workers who=
+ do not enjoy their work, with a response in numerical value.
+Q33: 5a5: Inquires whether the respondent knows other domestic workers expe=
+riencing restrictions on their freedom, requesting a numerical value.
+Q35: 5a7: Asks if the respondent personally knows other domestic workers su=
+ffering from bad working conditions, with a response in numerical value.
+Q43: 5b8: Asks if the respondent personally knows other domestic workers wh=
+o have experienced problems with debt or pay, requesting a numerical value.
+Q49: 5c6: Inquires if the respondent personally knows other domestic worker=
+s who have experienced the use of threat or force, with a response in numeri=
+cal value.
+Q68: 5e4: Questions whether the respondent personally knows other domestic =
+workers suffering from mental ill health, requesting a numerical value.
+Q71: 5f3: Asks if the respondent knows other domestic workers who do not ha=
+ve access to their own travel and identity documents, with a response in num=
+erical value.
+Q74: 5f6: Inquires if the respondent personally knows other domestic worker=
+s who do not have access to medical care, with a response in numerical value=
+.
+Q77: 5f9: Questions whether the respondent personally knows other domestic =
+workers who suffer from bad environmental conditions, with a response in num=
+erical value.
+Q79: 5f11: Asks if the respondent knows other domestic workers who do not k=
+now where to go for help, with a response in numerical value.
+Q83: 5f16: Inquires if the respondent personally knows other domestic worke=
+rs who have suffered from severe forms of labor exploitation without using t=
+he NRM, with a response in numerical value.
+Q84: 5f15: Questions if the respondent personally knows other domestic work=
+ers who went through the NRM system, with a numerical value response.
+=20
+
+=20
+
+From: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>=20
+Sent: Monday, March 11, 2024 8:47 AM
+To: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: Trouble in paradise
+
+=20
+
+I am free to meeting today or tomorrow any time except today between 1-4.30=
+pm
+
+=20
+
+Best wishes
+
+Caroline
+
+=20
+
+=20
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (AFHEA)
+
+=20
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB=20
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+=20
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+=20
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+=20
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 08 March 2024 17:35
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz=
+ <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Trouble in paradise=20
+
+=20
+
+Dear  Both,=20
+
+I did a bit of a deep dive (again!) into the F&S 2016 (?) paper and looked =
+at the data and codebook again.  I=E2=80=99m sorry I didn=E2=80=99t do so before our mee=
+ting today b/c/ it would have been much better to discuss the following inst=
+ead of an email.   Sorry for the bother, but could we meet on Teams very bri=
+efly early next week to have a short chat?    Here are some of the issues:
+
+The questions for =E2=80=98how many people in H (=3Dthe hidden population)=E2=80=99 =E2=80=93 e=
+.g.  Q33. 5a5 , Q33. 5a7, Q49. 5c6=20
+
+Q64. 5d11=20
+
+Q83. 5f16=20
+
+Q88. 5f16=20
+
+Q89. 5f15=20
+
+  -- don=E2=80=99t exactly match up with q36 and q80 that we use in the RDS estim=
+ation.
+
+=20
+
+Worse, the =E2=80=98known population=E2=80=99 method we discussed (using =E2=80=9CQ89. 5f15: =
+Do you know personally of any other domes=EF=BF=BDc workers who went through the N=
+RM system? If so, how many? Numerical value =E2=80=9C) has TONS of missing values =
+in the data-set, which makes it unusable for us.  We could try the number of=
+ DW in the UK, but we only have a vague idea of the size of this population.=
+ =20
+
+=20
+
+Basically, we need a way of estimating the average number of DWs people in =
+the sample know.  Weirdly, I think I need to _exclude_ those that we think a=
+re in H (the exact opposite as the RDS technique). =20
+
+=20
+
+Oh, and I continue to have questions about the codebook and how variables a=
+re named in the data set.  For example, the codebook only goes up to Q90, bu=
+t the excel data contains over 100 question varables.
+
+=20
+
+Sorry and thanks,
+
+Scott
+
+=20
+
+=20
+
+
+--B_3821516406_2127539198
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><style t=
+ype=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bottom:0;} </st=
+yle></head><body dir=3D"ltr"><div class=3D"elementToProof" style=3D"font-family: A=
+ptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-seri=
+f; font-size: 12pt; color: rgb(0, 0, 0);">Hi Scott,</div><div class=3D"element=
+ToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService,=
+ Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br>=
+</div><div class=3D"elementToProof"><span style=3D"font-family: Aptos, Aptos_Emb=
+eddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 1=
+2pt; color: rgb(0, 0, 0);">We could justify the selection of themes 2 and 3 =
+with reference to the Bellagio-Harvard guidelines (<a href=3D"https://glc.yale=
+.edu/sites/default/files/pdf/the_bellagio-_harvard_guidelines_on_the_legal_p=
+arameters_of_slavery.pdf" id=3D"LPlnk114019" class=3D"OWAAutoLink" data-loopstyl=
+e=3D"linkonly">https://glc.yale.edu/sites/default/files/pdf/the_bellagio-_harv=
+ard_guidelines_on_the_legal_parameters_of_slavery.pdf</a>)</span></div><div =
+class=3D"elementToProof"><span style=3D"font-family: Aptos, Aptos_EmbeddedFont, =
+Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color:=
+ rgb(0, 0, 0);"><br></span></div><div class=3D"elementToProof"><span style=3D"fo=
+nt-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetic=
+a, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">These guidelines defin=
+e forced labour as 'all work or service which is exacted from any person wit=
+h menace of any penalty (theme 3) and for which the said person has not offe=
+red himself voluntarily (theme 2)'</span></div><div class=3D"elementToProof"><=
+span style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Cal=
+ibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br></sp=
+an></div><div class=3D"elementToProof"><span style=3D"font-family: Aptos, Aptos_=
+EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size=
+: 12pt; color: rgb(0, 0, 0);">This would create a 'high bar' definition of f=
+orced labour. We could perhaps still justify the use of the total NRM figure=
+s (which include other forms of modern slavery in addition to forced labour)=
+ on conservative grounds. Some NRM statistics do attempt to split out 'labou=
+r exploitation', but I cannot find a cumulative analysis and even in recent =
+figures there is an unhelpful 'labour and criminal exploitation' category.</=
+span></div><div class=3D"elementToProof"><span style=3D"font-family: Aptos, Apto=
+s_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-si=
+ze: 12pt; color: rgb(0, 0, 0);"><br></span></div><div class=3D"elementToProof"=
+><span style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, C=
+alibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">Is thi=
+s a narrow path forward?</span></div><div class=3D"elementToProof"><span style=
+=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helv=
+etica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br></span></div><=
+div class=3D"elementToProof"><span style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; co=
+lor: rgb(0, 0, 0);">Best wishes</span></div><div class=3D"elementToProof"><spa=
+n style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibr=
+i, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">Caroline</s=
+pan></div><div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_Embed=
+dedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12p=
+t; color: rgb(0, 0, 0);"><br></div><div class=3D"elementToProof" style=3D"font-f=
+amily: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, s=
+ans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br></div><div style=3D"font=
+-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica,=
+ sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br></div><p style=3D"dire=
+ction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helve=
+tica, sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-se=
+rif; color: rgb(0, 155, 189);"><b>Dr Caroline Emberson (preferred pronouns s=
+he/her)</b></span></p><p style=3D"direction: ltr; margin-top: 0px; margin-bott=
+om: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><spa=
+n style=3D"font-family: Arial, sans-serif; color: rgb(19, 27, 87);"><b>Assista=
+nt Professor in Operations Management (AFHEA)</b></span></p><p style=3D"direct=
+ion: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helveti=
+ca, sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-seri=
+f; color: rgb(19, 27, 87);"><b><br></b></span></p><p style=3D"direction: ltr; =
+margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-s=
+erif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-si=
+ze: 9pt; color: rgb(0, 0, 0);">&nbsp;</span></p><p style=3D"direction: ltr; ma=
+rgin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-ser=
+if; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size=
+: 9pt; color: rgb(19, 27, 87);">Nottingham University Business School OMIS/ =
+Faculty of Social Science<br>University of Nottingham</span></p><p style=3D"di=
+rection: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Hel=
+vetica, sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-=
+serif; font-size: 9pt; color: rgb(19, 27, 87);">B12,Si Yuan Building</span><=
+/p><p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-famil=
+y: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-famil=
+y: Arial, sans-serif; font-size: 9pt; color: rgb(19, 27, 87);">Jubilee Campu=
+s</span></p><p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px;">=
+<span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(19, =
+27, 87);">Nottingham, NG8 1BB&nbsp;</span></p><p style=3D"direction: ltr; marg=
+in-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif=
+; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: =
+9pt; color: rgb(19, 27, 87);">+44 (0) 115 8466631<b>&nbsp;</b></span><span s=
+tyle=3D"font-family: Calibri, sans-serif; font-size: 9pt; color: rgb(19, 27, 8=
+7);"><b>| </b></span><span style=3D"font-family: Arial, sans-serif; font-size:=
+ 9pt; color: rgb(0, 0, 0);"><a href=3D"http://nottingham.ac.uk/" target=3D"_blan=
+k" id=3D"OWAaced160d-ad94-904e-936c-8fc32dd56ffb" class=3D"OWAAutoLink" data-loo=
+pstyle=3D"linkonly" style=3D"margin-top: 0px; margin-bottom: 0px;">caroline.embe=
+rson@nottingham.ac.uk</a></span></p><p style=3D"direction: ltr; margin-top: 0p=
+x; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-siz=
+e: 12pt;"><span style=3D"color: rgb(0, 0, 0);"><br></span></p><p style=3D"direct=
+ion: ltr; margin-top: 0px; margin-bottom: 0px;"><span style=3D"font-family: Ar=
+ial, sans-serif; font-size: 12px; color: rgb(0, 0, 0);">Please note that my =
+working days are Monday, Tuesday, Thursday and Friday</span></p><p style=3D"di=
+rection: ltr; margin-top: 0px; margin-bottom: 0px;"><span style=3D"font-family=
+: Arial, sans-serif; font-size: 12px; color: rgb(0, 0, 0);"><br></span></p><=
+p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: C=
+alibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-family: G=
+eorgia, serif; font-size: 9pt; color: rgb(21, 118, 158);"><b>Follow us</b></=
+span></p><p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font=
+-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font=
+-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u><a hr=
+ef=3D"http://facebook.com/TheUniofNottingham" id=3D"OWA6f7ac584-300b-c586-f4be-2=
+3c96bda6145" class=3D"OWAAutoLink" data-loopstyle=3D"linkonly" style=3D"color: rgb=
+(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Facebook.com/UniofNotting=
+ham</a></u></span></p><p style=3D"direction: ltr; margin-top: 0px; margin-bott=
+om: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><spa=
+n style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 23=
+3);"><u><a href=3D"http://twitter.com/UniofNottingham" id=3D"OWAc78906f9-c03a-72=
+0b-d480-8d4dae96dce2" class=3D"OWAAutoLink" data-loopstyle=3D"linkonly" style=3D"c=
+olor: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Twitter.com/Unio=
+fNottingham</a></u></span></p><p style=3D"direction: ltr; margin-top: 0px; mar=
+gin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12p=
+t;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(=
+0, 0, 233);"><u><a href=3D"http://youtube.com/nottmuniversity" id=3D"OWA6e918a1a=
+-9016-9acf-1340-3cbe4925675e" class=3D"OWAAutoLink" data-loopstyle=3D"linkonly" =
+style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Youtube.=
+com/nottmuniversity</a></u></span></p><p style=3D"direction: ltr; margin-top: =
+0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-s=
+ize: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; col=
+or: rgb(0, 0, 233);"><u><a href=3D"http://instagram.com/uniofnottingham" id=3D"O=
+WAfc5659bb-a259-d6e0-e92d-2af9a7ad4f1a" class=3D"OWAAutoLink" data-loopstyle=3D"=
+linkonly" style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;=
+">Instagram.com/uniofnottingham</a></u></span></p><p style=3D"direction: ltr; =
+margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-s=
+erif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-si=
+ze: 9pt; color: rgb(0, 0, 233);"><u><a href=3D"http://linkedin.com/company/uni=
+versity-of-nottingham" id=3D"OWA58035448-863a-ceea-20bd-4cb6f5f53b4f" class=3D"O=
+WAAutoLink" data-loopstyle=3D"linkonly" style=3D"color: rgb(0, 0, 233); margin-t=
+op: 0px; margin-bottom: 0px;">Linkedin.com/company/university-of-nottingham<=
+/a></u></span></p><p style=3D"direction: ltr; margin-top: 0px; margin-bottom: =
+0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span st=
+yle=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"=
+><u><a href=3D"http://www.foursquare.com/uniofnottingham" id=3D"OWA895fd65d-d6c2=
+-2b96-41c6-8aaf990d3d14" class=3D"OWAAutoLink" data-loopstyle=3D"linkonly" style=
+=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">F</a><a href=3D=
+"http://www.foursquare.com/uniofnottingham" id=3D"OWAf6b7cc9c-86fc-1d61-477f-b=
+e743bc882ed" class=3D"OWAAutoLink" data-loopstyle=3D"linkonly" style=3D"margin-top=
+: 0px; margin-bottom: 0px;">oursquare.com/uniofnottingham</a></u></span></p>=
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: =
+Calibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-family: =
+Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u>&nbsp;</u></sp=
+an></p><div style=3D"direction: ltr;"><span style=3D"color: rgb(0, 0, 0);"><br><=
+/span></div><table id=3D"pbpsiglinktable"><tbody><tr><td><span style=3D"font-fam=
+ily: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, san=
+s-serif; font-size: 12pt; color: rgb(0, 0, 0);"><a href=3D"https://outlook.off=
+ice.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.a=
+c.uk?anonymous&amp;ep=3DbwmEmailSignature" id=3D"OWAae4e054a-f0d4-1a7b-61d1-9996=
+7eea937a" class=3D"OWAAutoLink" data-loopstyle=3D"linkonly"><img data-outlook-tr=
+ace=3D"F:1|T:1" src=3D"cid:ffad55bd-5bfc-4a5d-9e88-99a18949f1b9"></a></span></td=
+><td></td><td><span style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSF=
+ontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 1=
+20, 212);"><a href=3D"https://outlook.office.com/bookwithme/user/68c1e07fca314=
+c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignatu=
+re" id=3D"OWAb57f4231-3bc1-d39b-a736-50134c1629f7" class=3D"OWAAutoLink" data-lo=
+opstyle=3D"linkonly" style=3D"color: rgb(0, 120, 212); text-decoration: none;">B=
+ook time to meet with me</a></span></td><td></td></tr></tbody></table><div i=
+d=3D"appendonsend"></div><hr style=3D"display:inline-block;width:98%" tabindex=3D"=
+-1"><div id=3D"divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" style=
+=3D"font-size:11pt" color=3D"#000000"><b>From:</b> Scott Moser (staff) &lt;ldzsm=
+2@exmail.nottingham.ac.uk&gt;<br><b>Sent:</b> 11 March 2024 13:00<br><b>To:<=
+/b> Caroline Emberson (staff) &lt;lizce@exmail.nottingham.ac.uk&gt;<br><b>Su=
+bject:</b> RE: Trouble in paradise</font> <div>&nbsp;</div></div><style>
+<!--
+@font-face
+	{font-family:Helvetica}
+@font-face
+	{font-family:"Cambria Math"}
+@font-face
+	{font-family:Calibri}
+@font-face
+	{font-family:Aptos}
+@font-face
+	{font-family:Georgia}
+@font-face
+	{font-family:Tahoma}
+p.x_MsoNormal, li.x_MsoNormal, div.x_MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Aptos",sans-serif}
+a:link, span.x_MsoHyperlink
+	{color:blue;
+	text-decoration:underline}
+p.x_xmsonormal, li.x_xmsonormal, div.x_xmsonormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif}
+span.x_EmailStyle22
+	{font-family:"Aptos",sans-serif;
+	color:windowtext}
+.x_MsoChpDefault
+	{font-size:10.0pt}
+@page WordSection1
+	{margin:72.0pt 72.0pt 72.0pt 72.0pt}
+div.x_WordSection1
+	{}
+ol
+	{margin-bottom:0cm}
+ul
+	{margin-bottom:0cm}
+-->
+</style><div lang=3D"EN-GB" link=3D"blue" vlink=3D"purple" style=3D"word-wrap:break=
+-word"><div class=3D"x_WordSection1"><p class=3D"x_MsoNormal"><span style=3D"font-=
+size:11.0pt">PS. I ran things through an LLM and got the following, when ask=
+ing for themes or topics asked in both =E2=80=98types=E2=80=99 of questions.&nbsp; Theme=
+s 2 and 3 look promising, but the question wording seems different/ more spe=
+cific for questions about individual experiences (?)&nbsp; I don=E2=80=99 tknow if=
+ this is true, but if so perhas we could aggregate/ combine some of the ques=
+tions about individuals to make them comparison to the questions about =E2=80=98ho=
+w many X do you know?=E2=80=9D?</span></p><p class=3D"x_MsoNormal"><span style=3D"font=
+-size:11.0pt">&nbsp;</span></p><p class=3D"x_MsoNormal"><span style=3D"font-size=
+:11.0pt">&nbsp;</span></p><p class=3D"x_MsoNormal"><span style=3D"font-size:11.0=
+pt">&gt;&gt;&gt;<br><br>To identify personal experiences asked about in both=
+ types of questions, we need to look for overlapping themes or specific expe=
+riences in the respondent's working conditions (first type) that are also in=
+quired about in terms of the respondent's knowledge of other domestic worker=
+s' situations (second type). Essentially, we're looking for topics covered i=
+n both sets of questions that pertain to both the respondents themselves and=
+ their awareness of these issues among their peers.</span></p><p class=3D"x_Ms=
+oNormal"><span style=3D"font-size:11.0pt">&nbsp;</span></p><p class=3D"x_MsoNorm=
+al"><span style=3D"font-size:11.0pt">Considering the lists provided:</span></p=
+><p class=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">&nbsp;</span></p><p c=
+lass=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">**Shared Themes in Both Ty=
+pes of Questions:**</span></p><p class=3D"x_MsoNormal"><span style=3D"font-size:=
+11.0pt">&nbsp;</span></p><p class=3D"x_MsoNormal"><span style=3D"font-size:11.0p=
+t">1. **Working Conditions and Satisfaction**: </span></p><p class=3D"x_MsoNor=
+mal"><span style=3D"font-size:11.0pt">&nbsp;&nbsp;&nbsp;- First type: Question=
+s like Q19 (job enjoyment) and Q23 (satisfaction with working conditions).</=
+span></p><p class=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">&nbsp;&nbsp; =
+- Second type: Q14 (knowing others dissatisfied with their working condition=
+s) and Q35 (knowing others suffering from bad working conditions).</span></p=
+><p class=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">&nbsp;&nbsp; </span><=
+/p><p class=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">2. **Freedom and Re=
+strictions**:</span></p><p class=3D"x_MsoNormal"><span style=3D"font-size:11.0pt=
+">&nbsp;&nbsp; - First type: Q29 (being forced to work), Q30 (control over w=
+ork times), and Q32 (feeling unable to leave work premises).</span></p><p cl=
+ass=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">&nbsp;&nbsp; - Second type:=
+ Q33 (knowing others experiencing restrictions on their freedom).</span></p>=
+<p class=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">&nbsp;</span></p><p cl=
+ass=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">3. **Abuse and Mistreatment=
+**:</span></p><p class=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">&nbsp;&n=
+bsp; - First type: Q44 (experiencing abuse, harassment, or physical violence=
+), Q45 (forced, deceived, or threatened into poor working conditions), Q47 (=
+employer intimidation or threats), and Q48 (verbal abuse from employer).</sp=
+an></p><p class=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">&nbsp;&nbsp; - =
+Second type: Q49 (knowing others who have experienced the use of threat or f=
+orce).</span></p><p class=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">&nbsp=
+;</span></p><p class=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">4. **Healt=
+h and Safety**:</span></p><p class=3D"x_MsoNormal"><span style=3D"font-size:11.0=
+pt">&nbsp;&nbsp; - First type: Q72 (feeling that the working environment is =
+safe and healthy) and Q73 (access to medical care).</span></p><p class=3D"x_Ms=
+oNormal"><span style=3D"font-size:11.0pt">&nbsp;&nbsp; - Second type: Q68 (kno=
+wing others suffering from mental ill health), Q74 (knowing others who do no=
+t have access to medical care), and Q77 (knowing others suffering from bad e=
+nvironmental conditions).</span></p><p class=3D"x_MsoNormal"><span style=3D"font=
+-size:11.0pt">&nbsp;</span></p><p class=3D"x_MsoNormal"><span style=3D"font-size=
+:11.0pt">5. **Document Access and Legal Rights**:</span></p><p class=3D"x_MsoN=
+ormal"><span style=3D"font-size:11.0pt">&nbsp;&nbsp; - First type: Q70 (employ=
+er or agent withholding travel and identity documentation).</span></p><p cla=
+ss=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">&nbsp;&nbsp; - Second type: =
+Q71 (knowing others who do not have access to their own travel and identity =
+documents).</span></p><p class=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">=
+&nbsp;</span></p><p class=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">These=
+ themes represent areas where the survey seeks to understand not only the pe=
+rsonal experiences of the respondents concerning their working conditions, f=
+reedom, abuse, health, and legal rights but also their awareness of similar =
+issues faced by other domestic workers they know. </span></p><p class=3D"x_Mso=
+Normal"><span style=3D"font-size:11.0pt">&nbsp;</span></p><p class=3D"x_MsoNorma=
+l"><span style=3D"font-size:11.0pt">&nbsp;</span></p><div style=3D"border:none; =
+border-left:solid blue 1.5pt; padding:0cm 0cm 0cm 4.0pt"><div><div style=3D"bo=
+rder:none; border-top:solid #E1E1E1 1.0pt; padding:3.0pt 0cm 0cm 0cm"><p cla=
+ss=3D"x_MsoNormal"><b><span lang=3D"EN-US" style=3D"font-size:11.0pt; font-family:=
+&quot;Calibri&quot;,sans-serif">From:</span></b><span lang=3D"EN-US" style=3D"fo=
+nt-size:11.0pt; font-family:&quot;Calibri&quot;,sans-serif"> Scott Moser (st=
+aff) <br><b>Sent:</b> Monday, March 11, 2024 12:49 PM<br><b>To:</b> Caroline=
+ Emberson (staff) &lt;lizce@exmail.nottingham.ac.uk&gt;<br><b>Subject:</b> R=
+E: Trouble in paradise</span></p></div></div><p class=3D"x_MsoNormal">&nbsp;</=
+p><p class=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">Thank you again for =
+the interesting meeting today!</span></p><p class=3D"x_MsoNormal"><span style=3D=
+"font-size:11.0pt">&nbsp;</span></p><p class=3D"x_MsoNormal"><span style=3D"font=
+-size:11.0pt">Here are the =E2=80=98how many people do you know?=E2=80=99 questions and =
+I found (not guaranteed to be complete):</span></p><p class=3D"x_MsoNormal"><s=
+pan style=3D"font-size:11.0pt">&nbsp;</span></p><ol start=3D"1" type=3D"1"><li cla=
+ss=3D"x_MsoNormal" style=3D"color:#839496; background:#002B36"><b><span style=3D"f=
+ont-family:&quot;Helvetica&quot;,sans-serif; color:#DBE0E1">Q13: 2f_howmany_=
+population</span></b><span style=3D"font-family:&quot;Helvetica&quot;,sans-ser=
+if">: Asks if the respondent personally knows other domestic workers in the =
+UK and requests a numerical value of how many, based on contacts in their mo=
+bile phone.</span></li><li class=3D"x_MsoNormal" style=3D"color:#839496; backgro=
+und:#002B36"><b><span style=3D"font-family:&quot;Helvetica&quot;,sans-serif; c=
+olor:#DBE0E1">Q14: 2g_howmany_dissatisfied</span></b><span style=3D"font-famil=
+y:&quot;Helvetica&quot;,sans-serif">: Inquires whether the respondent knows =
+any domestic workers who are dissatisfied with their current working conditi=
+ons, also asking for a numerical value.</span></li><li class=3D"x_MsoNormal" s=
+tyle=3D"color:#839496; background:#002B36"><b><span style=3D"font-family:&quot;H=
+elvetica&quot;,sans-serif; color:#DBE0E1">Q21: 4c</span></b><span style=3D"fon=
+t-family:&quot;Helvetica&quot;,sans-serif">: Questions if the respondent per=
+sonally knows other domestic workers who do not have good relations with the=
+ir employers, asking for a numerical value.</span></li><li class=3D"x_MsoNorma=
+l" style=3D"color:#839496; background:#002B36"><b><span style=3D"font-family:&qu=
+ot;Helvetica&quot;,sans-serif; color:#DBE0E1">Q25: 4g</span></b><span style=3D=
+"font-family:&quot;Helvetica&quot;,sans-serif">: Asks if the respondent pers=
+onally knows other domestic workers who do not enjoy their work, with a resp=
+onse in numerical value.</span></li><li class=3D"x_MsoNormal" style=3D"color:#83=
+9496; background:#002B36"><b><span style=3D"font-family:&quot;Helvetica&quot;,=
+sans-serif; color:#DBE0E1">Q33: 5a5</span></b><span style=3D"font-family:&quot=
+;Helvetica&quot;,sans-serif">: Inquires whether the respondent knows other d=
+omestic workers experiencing restrictions on their freedom, requesting a num=
+erical value.</span></li><li class=3D"x_MsoNormal" style=3D"color:#839496; backg=
+round:#002B36"><b><span style=3D"font-family:&quot;Helvetica&quot;,sans-serif;=
+ color:#DBE0E1">Q35: 5a7</span></b><span style=3D"font-family:&quot;Helvetica&=
+quot;,sans-serif">: Asks if the respondent personally knows other domestic w=
+orkers suffering from bad working conditions, with a response in numerical v=
+alue.</span></li><li class=3D"x_MsoNormal" style=3D"color:#839496; background:#0=
+02B36"><b><span style=3D"font-family:&quot;Helvetica&quot;,sans-serif; color:#=
+DBE0E1">Q43: 5b8</span></b><span style=3D"font-family:&quot;Helvetica&quot;,sa=
+ns-serif">: Asks if the respondent personally knows other domestic workers w=
+ho have experienced problems with debt or pay, requesting a numerical value.=
+</span></li><li class=3D"x_MsoNormal" style=3D"color:#839496; background:#002B36=
+"><b><span style=3D"font-family:&quot;Helvetica&quot;,sans-serif; color:#DBE0E=
+1">Q49: 5c6</span></b><span style=3D"font-family:&quot;Helvetica&quot;,sans-se=
+rif">: Inquires if the respondent personally knows other domestic workers wh=
+o have experienced the use of threat or force, with a response in numerical =
+value.</span></li><li class=3D"x_MsoNormal" style=3D"color:#839496; background:#=
+002B36"><b><span style=3D"font-family:&quot;Helvetica&quot;,sans-serif; color:=
+#DBE0E1">Q68: 5e4</span></b><span style=3D"font-family:&quot;Helvetica&quot;,s=
+ans-serif">: Questions whether the respondent personally knows other domesti=
+c workers suffering from mental ill health, requesting a numerical value.</s=
+pan></li><li class=3D"x_MsoNormal" style=3D"color:#839496; background:#002B36"><=
+b><span style=3D"font-family:&quot;Helvetica&quot;,sans-serif; color:#DBE0E1">=
+Q71: 5f3</span></b><span style=3D"font-family:&quot;Helvetica&quot;,sans-serif=
+">: Asks if the respondent knows other domestic workers who do not have acce=
+ss to their own travel and identity documents, with a response in numerical =
+value.</span></li><li class=3D"x_MsoNormal" style=3D"color:#839496; background:#=
+002B36"><b><span style=3D"font-family:&quot;Helvetica&quot;,sans-serif; color:=
+#DBE0E1">Q74: 5f6</span></b><span style=3D"font-family:&quot;Helvetica&quot;,s=
+ans-serif">: Inquires if the respondent personally knows other domestic work=
+ers who do not have access to medical care, with a response in numerical val=
+ue.</span></li><li class=3D"x_MsoNormal" style=3D"color:#839496; background:#002=
+B36"><b><span style=3D"font-family:&quot;Helvetica&quot;,sans-serif; color:#DB=
+E0E1">Q77: 5f9</span></b><span style=3D"font-family:&quot;Helvetica&quot;,sans=
+-serif">: Questions whether the respondent personally knows other domestic w=
+orkers who suffer from bad environmental conditions, with a response in nume=
+rical value.</span></li><li class=3D"x_MsoNormal" style=3D"color:#839496; backgr=
+ound:#002B36"><b><span style=3D"font-family:&quot;Helvetica&quot;,sans-serif; =
+color:#DBE0E1">Q79: 5f11</span></b><span style=3D"font-family:&quot;Helvetica&=
+quot;,sans-serif">: Asks if the respondent knows other domestic workers who =
+do not know where to go for help, with a response in numerical value.</span>=
+</li><li class=3D"x_MsoNormal" style=3D"color:#839496; background:#002B36"><b><s=
+pan style=3D"font-family:&quot;Helvetica&quot;,sans-serif; color:#DBE0E1">Q83:=
+ 5f16</span></b><span style=3D"font-family:&quot;Helvetica&quot;,sans-serif">:=
+ Inquires if the respondent personally knows other domestic workers who have=
+ suffered from severe forms of labor exploitation without using the NRM, wit=
+h a response in numerical value.</span></li><li class=3D"x_MsoNormal" style=3D"c=
+olor:#839496; background:#002B36"><b><span style=3D"font-family:&quot;Helvetic=
+a&quot;,sans-serif; color:#DBE0E1">Q84: 5f15</span></b><span style=3D"font-fam=
+ily:&quot;Helvetica&quot;,sans-serif">: Questions if the respondent personal=
+ly knows other domestic workers who went through the NRM system, with a nume=
+rical value response.</span></li></ol><p class=3D"x_MsoNormal"><span style=3D"fo=
+nt-size:11.0pt">&nbsp;</span></p><p class=3D"x_MsoNormal"><span style=3D"font-si=
+ze:11.0pt">&nbsp;</span></p><div style=3D"border:none; border-left:solid blue =
+1.5pt; padding:0cm 0cm 0cm 4.0pt"><div><div style=3D"border:none; border-top:s=
+olid #E1E1E1 1.0pt; padding:3.0pt 0cm 0cm 0cm"><p class=3D"x_MsoNormal"><b><sp=
+an lang=3D"EN-US" style=3D"font-size:11.0pt; font-family:&quot;Calibri&quot;,san=
+s-serif">From:</span></b><span lang=3D"EN-US" style=3D"font-size:11.0pt; font-fa=
+mily:&quot;Calibri&quot;,sans-serif"> Caroline Emberson (staff) &lt;<a href=3D=
+"mailto:lizce@exmail.nottingham.ac.uk">lizce@exmail.nottingham.ac.uk</a>&gt;=
+ <br><b>Sent:</b> Monday, March 11, 2024 8:47 AM<br><b>To:</b> Scott Moser (=
+staff) &lt;<a href=3D"mailto:ldzsm2@exmail.nottingham.ac.uk">ldzsm2@exmail.not=
+tingham.ac.uk</a>&gt;<br><b>Subject:</b> Re: Trouble in paradise</span></p><=
+/div></div><p class=3D"x_MsoNormal">&nbsp;</p><div><p class=3D"x_MsoNormal"><spa=
+n style=3D"color:black">I am free to meeting today or tomorrow any time except=
+ today between 1-4.30pm</span></p></div><div><p class=3D"x_MsoNormal"><span st=
+yle=3D"color:black">&nbsp;</span></p></div><div><p class=3D"x_MsoNormal"><span s=
+tyle=3D"color:black">Best wishes</span></p></div><div><p class=3D"x_MsoNormal"><=
+span style=3D"color:black">Caroline</span></p></div><div><p class=3D"x_MsoNormal=
+"><span style=3D"color:black">&nbsp;</span></p></div><div id=3D"x_Signature"><di=
+v><p class=3D"x_MsoNormal"><span style=3D"color:black">&nbsp;</span></p></div><d=
+iv id=3D"x_divtagdefaultwrapper"><p><b><span style=3D"font-family:&quot;Arial&qu=
+ot;,sans-serif; color:#009BBD">Dr Caroline Emberson (preferred pronouns she/=
+her)</span></b><span style=3D"font-family:&quot;Calibri&quot;,sans-serif; colo=
+r:black"></span></p><p><b><span style=3D"font-family:&quot;Arial&quot;,sans-se=
+rif; color:#131B57">Assistant Professor in Operations Management (AFHEA)</sp=
+an></b><span style=3D"font-family:&quot;Calibri&quot;,sans-serif; color:black"=
+></span></p><p><span style=3D"font-family:&quot;Calibri&quot;,sans-serif; colo=
+r:black">&nbsp;</span></p><p><span style=3D"font-size:9.0pt; font-family:&quot=
+;Arial&quot;,sans-serif; color:black">&nbsp;</span><span style=3D"font-family:=
+&quot;Calibri&quot;,sans-serif; color:black"></span></p><p><span style=3D"font=
+-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#131B57">Nottin=
+gham University Business School OMIS/ Faculty of Social Science<br>Universit=
+y of Nottingham</span><span style=3D"font-family:&quot;Calibri&quot;,sans-seri=
+f; color:black"></span></p><p><span style=3D"font-size:9.0pt; font-family:&quo=
+t;Arial&quot;,sans-serif; color:#131B57">B12,Si Yuan Building</span><span st=
+yle=3D"font-family:&quot;Calibri&quot;,sans-serif; color:black"></span></p><p>=
+<span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; colo=
+r:#131B57">Jubilee Campus</span><span style=3D"font-family:&quot;Calibri&quot;=
+,sans-serif; color:black"></span></p><p><span style=3D"font-size:9.0pt; font-f=
+amily:&quot;Arial&quot;,sans-serif; color:#131B57">Nottingham, NG8 1BB&nbsp;=
+</span><span style=3D"color:black"></span></p><p><span style=3D"font-size:9.0pt;=
+ font-family:&quot;Arial&quot;,sans-serif; color:#131B57">+44 (0) 115 846663=
+1<b>&nbsp;</b></span><b><span style=3D"font-size:9.0pt; font-family:&quot;Cali=
+bri&quot;,sans-serif; color:#131B57">| </span></b><span style=3D"font-size:9.0=
+pt; font-family:&quot;Arial&quot;,sans-serif; color:black"><a href=3D"http://n=
+ottingham.ac.uk/" target=3D"_blank">caroline.emberson@nottingham.ac.uk</a></sp=
+an><span style=3D"font-family:&quot;Calibri&quot;,sans-serif; color:black"></s=
+pan></p><p><span style=3D"font-family:&quot;Calibri&quot;,sans-serif; color:bl=
+ack">&nbsp;</span></p><p><span style=3D"font-size:9.0pt; font-family:&quot;Ari=
+al&quot;,sans-serif; color:black">Please note that my working days are Monda=
+y, Tuesday, Thursday and Friday</span><span style=3D"color:black"></span></p><=
+p><span style=3D"color:black">&nbsp;</span></p><p><b><span style=3D"font-size:9.=
+0pt; font-family:&quot;Georgia&quot;,serif; color:#15769E">Follow us</span><=
+/b><span style=3D"font-family:&quot;Calibri&quot;,sans-serif; color:black"></s=
+pan></p><p><u><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sa=
+ns-serif; color:#0000E9"><a href=3D"http://facebook.com/TheUniofNottingham"><s=
+pan style=3D"color:#0000E9">Facebook.com/UniofNottingham</span></a></span></u>=
+<span style=3D"font-family:&quot;Calibri&quot;,sans-serif; color:black"></span=
+></p><p><u><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-=
+serif; color:#0000E9"><a href=3D"http://twitter.com/UniofNottingham"><span sty=
+le=3D"color:#0000E9">Twitter.com/UniofNottingham</span></a></span></u><span st=
+yle=3D"font-family:&quot;Calibri&quot;,sans-serif; color:black"></span></p><p>=
+<u><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; c=
+olor:#0000E9"><a href=3D"http://youtube.com/nottmuniversity"><span style=3D"colo=
+r:#0000E9">Youtube.com/nottmuniversity</span></a></span></u><span style=3D"fon=
+t-family:&quot;Calibri&quot;,sans-serif; color:black"></span></p><p><u><span=
+ style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#00=
+00E9"><a href=3D"http://instagram.com/uniofnottingham"><span style=3D"color:#000=
+0E9">Instagram.com/uniofnottingham</span></a></span></u><span style=3D"font-fa=
+mily:&quot;Calibri&quot;,sans-serif; color:black"></span></p><p><u><span sty=
+le=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9=
+"><a href=3D"http://linkedin.com/company/university-of-nottingham"><span style=
+=3D"color:#0000E9">Linkedin.com/company/university-of-nottingham</span></a></s=
+pan></u><span style=3D"font-family:&quot;Calibri&quot;,sans-serif; color:black=
+"></span></p><p><u><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quo=
+t;,sans-serif; color:#0000E9"><a href=3D"http://www.foursquare.com/uniofnottin=
+gham"><span style=3D"color:#0000E9">F</span></a><a href=3D"http://www.foursquare=
+.com/uniofnottingham">oursquare.com/uniofnottingham</a></span></u><span styl=
+e=3D"font-family:&quot;Calibri&quot;,sans-serif; color:black"></span></p><p><u=
+><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; col=
+or:#0000E9">&nbsp;</span></u><span style=3D"font-family:&quot;Calibri&quot;,sa=
+ns-serif; color:black"></span></p><p class=3D"x_MsoNormal"><span style=3D"color:=
+black">&nbsp;</span></p></div><table class=3D"x_MsoNormalTable" border=3D"0" cel=
+lspacing=3D"3" cellpadding=3D"0" id=3D"x_pbpsiglinktable"><tbody><tr><td style=3D"pa=
+dding:.75pt .75pt .75pt .75pt"><p class=3D"x_MsoNormal"><a href=3D"https://outlo=
+ok.office.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottin=
+gham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature"><span style=3D"text-decoration:=
+none"><img border=3D"0" width=3D"20" height=3D"20" id=3D"x_Picture_x0020_1" style=3D"w=
+idth:.2083in; height:.2083in" data-outlook-trace=3D"F:1|T:1" src=3D"cid:image001=
+.png@01DA73B4.0A4B8580"></span></a></p></td><td style=3D"padding:.75pt .75pt .=
+75pt .75pt"></td><td style=3D"padding:.75pt .75pt .75pt .75pt"><p class=3D"x_Mso=
+Normal"><span style=3D"color:#0078D4"><a href=3D"https://outlook.office.com/book=
+withme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymo=
+us&amp;ep=3DbwmEmailSignature"><span style=3D"color:#0078D4; text-decoration:non=
+e">Book time to meet with me</span></a></span></p></td><td style=3D"padding:.7=
+5pt .75pt .75pt .75pt"></td></tr></tbody></table></div><div class=3D"x_MsoNorm=
+al" align=3D"center" style=3D"text-align:center"><hr size=3D"2" width=3D"98%" align=3D=
+"center"></div><div id=3D"x_divRplyFwdMsg"><p class=3D"x_MsoNormal"><b><span sty=
+le=3D"font-size:11.0pt; font-family:&quot;Calibri&quot;,sans-serif; color:blac=
+k">From:</span></b><span style=3D"font-size:11.0pt; font-family:&quot;Calibri&=
+quot;,sans-serif; color:black"> Scott Moser (staff) &lt;<a href=3D"mailto:ldzs=
+m2@exmail.nottingham.ac.uk">ldzsm2@exmail.nottingham.ac.uk</a>&gt;<br><b>Sen=
+t:</b> 08 March 2024 17:35<br><b>To:</b> Caroline Emberson (staff) &lt;<a hr=
+ef=3D"mailto:lizce@exmail.nottingham.ac.uk">lizce@exmail.nottingham.ac.uk</a>&=
+gt;; Selim Yilmaz &lt;<a href=3D"mailto:ldxsy3@exmail.nottingham.ac.uk">ldxsy3=
+@exmail.nottingham.ac.uk</a>&gt;<br><b>Subject:</b> Trouble in paradise</spa=
+n> </p><div><p class=3D"x_MsoNormal">&nbsp;</p></div></div><div><div><p class=3D=
+"x_xmsonormal"><span lang=3D"EN-US" style=3D"font-size:11.0pt">Dear&nbsp; Both, =
+</span></p><p class=3D"x_xmsonormal"><span lang=3D"EN-US" style=3D"font-size:11.0p=
+t">I did a bit of a deep dive (again!) into the F&amp;S 2016 (?) paper and l=
+ooked at the data and codebook again.&nbsp; I=E2=80=99m sorry I didn=E2=80=99t do so bef=
+ore our meeting today b/c/ it would have been much better to discuss the fol=
+lowing instead of an email. &nbsp;&nbsp;Sorry for the bother, but could we m=
+eet on Teams very briefly early next week to have a short chat?&nbsp;&nbsp;&=
+nbsp; Here are some of the issues:</span></p><p><span lang=3D"EN-US">The quest=
+ions for =E2=80=98how many people in H (=3Dthe hidden population)=E2=80=99 =E2=80=93 e.g.&nbsp; =
+</span><i>Q33. 5a5 , Q33. 5a7, Q49. 5c6 </i></p><p><i>Q64. 5d11 </i></p><p><=
+i>Q83. 5f16 </i></p><p><i>Q88. 5f16 </i></p><p><i>Q89. 5f15 </i></p><p class=
+=3D"x_xmsonormal"><span lang=3D"EN-US" style=3D"font-size:11.0pt">&nbsp;&nbsp;-- d=
+on=E2=80=99t exactly match up with q36 and q80 that we use in the RDS estimation.<=
+/span></p><p class=3D"x_xmsonormal"><span lang=3D"EN-US" style=3D"font-size:11.0pt=
+">&nbsp;</span></p><p><span lang=3D"EN-US">Worse, the =E2=80=98known population=E2=80=99 m=
+ethod we discussed (using =E2=80=9C</span><i>Q89. 5f15</i>: Do you know personally=
+ of any other domes<span style=3D"font-family:&quot;Tahoma&quot;,sans-serif">=EF=
+=BF=BD</span>c workers who went through the NRM system? If so, how many? Numeric=
+al value =E2=80=9C) has TONS of missing values in the data-set, which makes it unu=
+sable for us.&nbsp; We could try the number of DW in the UK, but we only hav=
+e a vague idea of the size of this population.&nbsp; </p><p>&nbsp;</p><p>Bas=
+ically, we need a way of estimating the average number of DWs people in the =
+sample know.&nbsp; Weirdly, I think I need to _<i>exclude</i>_ those that we=
+ think are in H (the exact opposite as the RDS technique).&nbsp; </p><p>&nbs=
+p;</p><p>Oh, and I continue to have questions about the codebook and how var=
+iables are named in the data set.&nbsp; For example, the codebook only goes =
+up to Q90, but the excel data contains over 100 question varables.</p><p>&nb=
+sp;</p><p>Sorry and thanks,</p><p>Scott</p><p>&nbsp;</p><p class=3D"x_xmsonorm=
+al"><span lang=3D"EN-US" style=3D"font-size:11.0pt">&nbsp;</span></p></div></div=
+></div></div></div></div></body></html>
+
+--B_3821516406_2127539198--
+
+
+--B_3821516406_1808859950
+Content-type: image/png; name="image001.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <image001.png@01DA73B4.0A4B8580>
+Content-disposition: inline;
+	filename="image001.png"
+Content-transfer-encoding: base64
+
+
+iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAcpJREFU
+OE9jZAABr6aJDHqhuQwMDIxgPrHg19d3DLP91Bk+P3sD08IIN2x1hjPDy7NXiDWL4T8nM0NA
+33wGWRMPhg5NJgYGhv8gvYwMFdf/MYAMu3twP9GGISssv/qLYVdzMsP5FYthBv5nmO2pyfDz
+zVuyDEw/eJ3hxNyJDEenNSMMJMskJE2Hp9YxHJ2CZOBUM1GGz5/hAUuS+UVnXjOcXDCJygbO
+m4TqZUpcGDJjJcPzS1eoYyAvrzDD58/vGRgY/iHSYcX1/wykupBXWpghe89reEbY0RjNcGHF
+MkQsk2pgwYkXDBz84iiR16EJzmWghE26C8uv/mZgZGJBM5AZ5HXyDPRo7GMwCCuEG/jj40uG
+CRYS5LsQpNM6q4TBOLqE4emFgwxrs8NRI2WynSTD19cvSErQOBQzMhSdecvw8vophqWxngQN
+BCWTrBMvMMIPpnF7dQQjA6+UCEP23tcM//7+Zvjx8QNOQydZizFk7bvNwCepgs9iWIHKyGAY
+EcPALaQEUQwq3mBplQmi5siUBoa0bRcZhBT18Bj4n7QSWlhGmiF19xOcBh6aVEyagSCTQEEU
+Nf8Ag6CcFjyn/Pz8hmF9cQjDg8MHAaiKxp0eiZJ4AAAAAElFTkSuQmCC
+--B_3821516406_1808859950
+Content-type: image/png; name="Outlook-uwzb1qwy.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <ffad55bd-5bfc-4a5d-9e88-99a18949f1b9>
+Content-disposition: inline;
+	filename="Outlook-uwzb1qwy.png"
+Content-transfer-encoding: base64
+
+
+iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAcpJREFU
+OE9jZAABr6aJDHqhuQwMDIxgPrHg19d3DLP91Bk+P3sD08IIN2x1hjPDy7NXiDWL4T8nM0NA
+33wGWRMPhg5NJgYGhv8gvYwMFdf/MYAMu3twP9GGISssv/qLYVdzMsP5FYthBv5nmO2pyfDz
+zVuyDEw/eJ3hxNyJDEenNSMMJMskJE2Hp9YxHJ2CZOBUM1GGz5/hAUuS+UVnXjOcXDCJygbO
+m4TqZUpcGDJjJcPzS1eoYyAvrzDD58/vGRgY/iHSYcX1/wykupBXWpghe89reEbY0RjNcGHF
+MkQsk2pgwYkXDBz84iiR16EJzmWghE26C8uv/mZgZGJBM5AZ5HXyDPRo7GMwCCuEG/jj40uG
+CRYS5LsQpNM6q4TBOLqE4emFgwxrs8NRI2WynSTD19cvSErQOBQzMhSdecvw8vophqWxngQN
+BCWTrBMvMMIPpnF7dQQjA6+UCEP23tcM//7+Zvjx8QNOQydZizFk7bvNwCepgs9iWIHKyGAY
+EcPALaQEUQwq3mBplQmi5siUBoa0bRcZhBT18Bj4n7QSWlhGmiF19xOcBh6aVEyagSCTQEEU
+Nf8Ag6CcFjyn/Pz8hmF9cQjDg8MHAaiKxp0eiZJ4AAAAAElFTkSuQmCC
+--B_3821516406_1808859950--
+
+
+--B_3821516406_1899556349--
+

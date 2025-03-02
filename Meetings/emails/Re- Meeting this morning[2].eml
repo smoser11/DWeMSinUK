@@ -1,0 +1,478 @@
+Received: from DUZPR06MB8623.eurprd06.prod.outlook.com (2603:10a6:10:4d2::13)
+ by DB9PR06MB8202.eurprd06.prod.outlook.com with HTTPS; Mon, 15 Jan 2024
+ 11:30:06 +0000
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=exmail.nottingham.ac.uk;
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com (2603:10a6:20b:99::17)
+ by DUZPR06MB8623.eurprd06.prod.outlook.com (2603:10a6:10:4d2::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7181.19; Mon, 15 Jan
+ 2024 11:30:04 +0000
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::8dbd:59f0:841b:ed83]) by AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::8dbd:59f0:841b:ed83%6]) with mapi id 15.20.7181.022; Mon, 15 Jan 2024
+ 11:30:04 +0000
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: Meeting this morning
+Thread-Topic: Meeting this morning
+Thread-Index: AQHaR6JMVhNO3z/WikuM3WgsJ/vPurDavCMggAAAwtU=
+Date: Mon, 15 Jan 2024 11:30:04 +0000
+Message-ID:
+ <AM6PR06MB59415ECF0136830C5448B031A06C2@AM6PR06MB5941.eurprd06.prod.outlook.com>
+References:
+ <AM6PR06MB594149F9B82D7DFB002B93A5A06C2@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <DB9PR06MB8202B44D9398AA1B9FB355CA876C2@DB9PR06MB8202.eurprd06.prod.outlook.com>
+In-Reply-To:
+ <DB9PR06MB8202B44D9398AA1B9FB355CA876C2@DB9PR06MB8202.eurprd06.prod.outlook.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-GB
+X-MS-Has-Attach: yes
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+ <AM6PR06MB59415ECF0136830C5448B031A06C2@AM6PR06MB5941.eurprd06.prod.outlook.com>
+msip_labels:
+MIME-Version: 1.0
+X-MS-Exchange-Organization-MessageDirectionality: Originating
+X-MS-Exchange-Organization-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-Network-Message-Id:
+ 2ca4db0f-f1fc-4f22-8bdf-08dc15bd5203
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ AM6PR06MB5941:EE_|DUZPR06MB8623:EE_|DB9PR06MB8202:EE_
+Return-Path: lizce@exmail.nottingham.ac.uk
+X-MS-Exchange-Organization-ExpirationStartTime: 15 Jan 2024 11:30:05.0747
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Office365-Filtering-Correlation-Id: 2ca4db0f-f1fc-4f22-8bdf-08dc15bd5203
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR06MB5941.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:;DIR:INT;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jan 2024 11:30:04.8648
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2ca4db0f-f1fc-4f22-8bdf-08dc15bd5203
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: C7PCq4BBk8iX0bHrWcgu+9gFv59AIEHuz2aiUPqW69ENciCSYGAk4Al7rpl//90QwzgOngU5ct50K7BJvWJ/KresNqfYUCs9F7+hftNZuWyHxePDXqhBmb3ov/TQmlNH
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DUZPR06MB8623
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:01.5776399
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.7181.022
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(425001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	0Q8S1SFjohEtOEALF0IcGuEzfjLL7fBKcNoiCSOxPgnndVrFKx/ABC90Xd76WQ+VtspGScDvaKlw6mqYU+gMFytRpKYfMVOtTk9xLcQd+Ubb+SBjzBuBv/qv+KX0Nat/TM3Odxzpz6F+yETJQYPKC2/XMu5aROohQUQpC5kzpQiweA4FJhrk9zZ6ee8+H8S5lAdqXnA9ZGmjpafC7BNIM3qmiQckaAGX+KGP0Ic8GeGI7kmDnqds1Y4mTlsxil9BOaM2vrEjxCoKgy4Myve1i6GDQfsU6d35wZySNEamh9L2KeLbyCMk+7tZIgNwqDSIfIiGrwPXmJjhwlzNE8qulNdwU7zTzB5P47wEZUjjtUcfuEmw9vRrWldC9PO1o74QVtCxAIcvegtK20ohPPK8EfY5jWpeTD59aQv3ln9mdyUv4tX3e7O5jyYUAQUb4vKhYFLijoZluAQuz4OpKtNjFeSAU6PEMDzNfBlyQeUtF3rm8k9N0F/Y5z5u4wHUdOKYsFeY1ZDDjU7cnNUaX4yEv6NiOnF9owajHfG9DHZtnsqz2+V5SVHfKBy46FfusHGP0u9T1cuhK3f8GknlvjvuHYWFI0DKKApH6rRJvVH32kEYPviqFM39Gq9Yd8gCE4hSeMw/5H7Gvma2Gtu08tzpuWclfCosvMDent0ZfTkfMupzOpeYBOU/rVmG10x+Y9W+Wma3zk6g4p3p39oc+B0UMcVzzMRz0hTuAlVPq9gSvGECAMAyL34EIYz+mYbyZ5fCM6wBwajqSaQspN96Oc8xa8ujITk9Fbf7xLHkge7c+T8wyS7v9JB+EWojvqmL7EZ5jTyGDipLed4Y9mBEW017Iw==
+Content-type: multipart/mixed;
+	boundary="B_3808391796_511344451"
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3808391796_511344451
+Content-type: multipart/related;
+	boundary="B_3808391796_964868662"
+
+--B_3808391796_964868662
+Content-type: multipart/alternative;
+	boundary="B_3808391796_788106258"
+
+
+--B_3808391796_788106258
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+Do you want to reschedule a meeting for either the 25th or 26th Jan? That w=
+ay Selim can join us too?
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (AFHEA)
+
+
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB=20
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 15 January 2024 11:27
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Subject: Re: Meeting this morning=20
+=20
+Oh no! Entirely my fault!  I worked on this all weekend and then missed our=
+ meeting.  I=E2=80=99m very sorry.  I have material for you.  More soon,Scott
+
+Get Outlook for iOS
+From: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Sent: Monday, January 15, 2024 11:02:14 AM
+To: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Meeting this morning=20
+=20
+Hi Scott,
+
+Are you free to meet now?
+
+Best wishes
+Caroline
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (AFHEA)
+
+
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB=20
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+Book time to meet with me
+
+
+--B_3808391796_788106258
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><style t=
+ype=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bottom:0;} </st=
+yle></head><body dir=3D"ltr"><div class=3D"elementToProof" style=3D"font-family: A=
+ptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-seri=
+f; font-size: 12pt; color: rgb(0, 0, 0);">Do you want to reschedule a meetin=
+g for either the 25<sup>th</sup>&nbsp;or 26<sup>th</sup>&nbsp;Jan? That way =
+Selim can join us too?</div><div class=3D"elementToProof" style=3D"font-family: =
+Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-ser=
+if; font-size: 12pt; color: rgb(0, 0, 0);"><br></div><div id=3D"Signature"><di=
+v style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibr=
+i, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br></div><=
+div id=3D"divtagdefaultwrapper" dir=3D"ltr" style=3D"color: rgb(0, 0, 0);"><p styl=
+e=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, san=
+s-serif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; colo=
+r: rgb(0, 155, 189);"><b>Dr Caroline Emberson (preferred pronouns she/her)</=
+b></span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Cal=
+ibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-family: Ari=
+al, sans-serif; color: rgb(19, 27, 87);"><b>Assistant Professor in Operation=
+s Management (AFHEA)</b></span></p><p style=3D"margin-top: 0px; margin-bottom:=
+ 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span s=
+tyle=3D"font-family: Arial, sans-serif; color: rgb(19, 27, 87);"><b><br></b></=
+span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri=
+, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, =
+sans-serif; font-size: 9pt;">&nbsp;</span></p><p style=3D"margin-top: 0px; mar=
+gin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12p=
+t;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(=
+19, 27, 87);">Nottingham University Business School OMIS/ Faculty of Social =
+Science<br>University of Nottingham</span></p><p style=3D"margin-top: 0px; mar=
+gin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12p=
+t;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(=
+19, 27, 87);">B12,Si Yuan Building</span></p><p style=3D"margin-top: 0px; marg=
+in-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt=
+;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(1=
+9, 27, 87);">Jubilee Campus</span></p><p style=3D"margin-top: 0px; margin-bott=
+om: 0px;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color=
+: rgb(19, 27, 87);">Nottingham, NG8 1BB&nbsp;</span></p><p style=3D"margin-top=
+: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font=
+-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; c=
+olor: rgb(19, 27, 87);">+44 (0) 115 8466631<b>&nbsp;</b></span><span style=3D"=
+font-family: Calibri, sans-serif; font-size: 9pt; color: rgb(19, 27, 87);"><=
+b>| </b></span><span style=3D"font-family: Arial, sans-serif; font-size: 9pt;"=
+><a href=3D"http://nottingham.ac.uk/" target=3D"_blank" style=3D"margin-top: 0px; =
+margin-bottom: 0px;">caroline.emberson@nottingham.ac.uk</a></span></p><p sty=
+le=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sa=
+ns-serif; font-size: 12pt;"><br></p><p style=3D"margin-top: 0px; margin-bottom=
+: 0px;"><span style=3D"font-family: Arial, sans-serif; font-size: 12px;">Pleas=
+e note that my working days are Monday, Tuesday, Thursday and Friday</span><=
+/p><p style=3D"margin-top: 0px; margin-bottom: 0px;"><span style=3D"font-family:=
+ Arial, sans-serif; font-size: 12px;"><br></span></p><p style=3D"margin-top: 0=
+px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-si=
+ze: 12pt;"><span style=3D"font-family: Georgia, serif; font-size: 9pt; color: =
+rgb(21, 118, 158);"><b>Follow us</b></span></p><p style=3D"margin-top: 0px; ma=
+rgin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12=
+pt;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb=
+(0, 0, 233);"><u><a href=3D"http://facebook.com/TheUniofNottingham" style=3D"col=
+or: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Facebook.com/Uniof=
+Nottingham</a></u></span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; =
+font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"=
+font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u><=
+a href=3D"http://twitter.com/UniofNottingham" style=3D"color: rgb(0, 0, 233); ma=
+rgin-top: 0px; margin-bottom: 0px;">Twitter.com/UniofNottingham</a></u></spa=
+n></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, H=
+elvetica, sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, san=
+s-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u><a href=3D"http://youtube.=
+com/nottmuniversity" style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-b=
+ottom: 0px;">Youtube.com/nottmuniversity</a></u></span></p><p style=3D"margin-=
+top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; f=
+ont-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt=
+; color: rgb(0, 0, 233);"><u><a href=3D"http://instagram.com/uniofnottingham" =
+style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Instagra=
+m.com/uniofnottingham</a></u></span></p><p style=3D"margin-top: 0px; margin-bo=
+ttom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><s=
+pan style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, =
+233);"><u><a href=3D"http://linkedin.com/company/university-of-nottingham" sty=
+le=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Linkedin.co=
+m/company/university-of-nottingham</a></u></span></p><p style=3D"margin-top: 0=
+px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-si=
+ze: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; colo=
+r: rgb(0, 0, 233);"><u><a href=3D"http://www.foursquare.com/uniofnottingham" s=
+tyle=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">F</a><a h=
+ref=3D"http://www.foursquare.com/uniofnottingham" style=3D"margin-top: 0px; marg=
+in-bottom: 0px;">oursquare.com/uniofnottingham</a></u></span></p><p style=3D"m=
+argin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-se=
+rif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-siz=
+e: 9pt; color: rgb(0, 0, 233);"><u>&nbsp;</u></span></p><br></div><table id=3D=
+"pbpsiglinktable"><tbody><tr><td><span style=3D"font-family: Aptos, Aptos_Embe=
+ddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12=
+pt; color: rgb(0, 0, 0);"><a href=3D"https://outlook.office.com/bookwithme/use=
+r/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3D=
+bwmEmailSignature"><img data-outlook-trace=3D"F:1|T:1" src=3D"cid:bc663b6b-e6c6-=
+4672-90a1-d4ac211c27a9"></a></span></td><td></td><td><span style=3D"font-famil=
+y: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-=
+serif; font-size: 12pt; color: rgb(0, 120, 212);"><a href=3D"https://outlook.o=
+ffice.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham=
+.ac.uk?anonymous&amp;ep=3DbwmEmailSignature" style=3D"color: rgb(0, 120, 212); t=
+ext-decoration: none;">Book time to meet with me</a></span></td><td></td></t=
+r></tbody></table></div><div id=3D"appendonsend"></div><hr style=3D"display:inli=
+ne-block;width:98%" tabindex=3D"-1"><div id=3D"divRplyFwdMsg" dir=3D"ltr"><font fa=
+ce=3D"Calibri, sans-serif" style=3D"font-size:11pt" color=3D"#000000"><b>From:</b>=
+ Scott Moser (staff) &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Sent:</b> =
+15 January 2024 11:27<br><b>To:</b> Caroline Emberson (staff) &lt;lizce@exma=
+il.nottingham.ac.uk&gt;<br><b>Subject:</b> Re: Meeting this morning</font> <=
+div>&nbsp;</div></div><div><div><div dir=3D"ltr">Oh no! Entirely my fault! &nb=
+sp;I worked on this all weekend and then missed our meeting. &nbsp;I=E2=80=99m ver=
+y sorry. &nbsp;I have material for you. &nbsp;More soon,Scott<span></span></=
+div></div><div id=3D"x_ms-outlook-mobile-signature"><div><br></div>Get <a href=
+=3D"https://aka.ms/o0ukef">Outlook for iOS</a></div><hr tabindex=3D"-1" style=3D"d=
+isplay:inline-block; width:98%"><div id=3D"x_divRplyFwdMsg" dir=3D"ltr"><font fa=
+ce=3D"Calibri, sans-serif" color=3D"#000000" style=3D"font-size:11pt"><b>From:</b>=
+ Caroline Emberson (staff) &lt;lizce@exmail.nottingham.ac.uk&gt;<br><b>Sent:=
+</b> Monday, January 15, 2024 11:02:14 AM<br><b>To:</b> Scott Moser (staff) =
+&lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Subject:</b> Meeting this morni=
+ng</font> <div>&nbsp;</div></div><style type=3D"text/css" style=3D"display:none"=
+>
+<!--
+p
+	{margin-top:0;
+	margin-bottom:0}
+-->
+</style><div dir=3D"ltr"><div class=3D"x_x_elementToProof" style=3D"font-family:A=
+ptos,Aptos_EmbeddedFont,Aptos_MSFontService,Calibri,Helvetica,sans-serif; fo=
+nt-size:12pt; color:rgb(0,0,0)">Hi Scott,</div><div class=3D"x_x_elementToProo=
+f" style=3D"font-family:Aptos,Aptos_EmbeddedFont,Aptos_MSFontService,Calibri,H=
+elvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)"><br></div><div class=3D=
+"x_x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFont,Aptos_MSFon=
+tService,Calibri,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)">Are=
+ you free to meet now?</div><div class=3D"x_x_elementToProof" style=3D"font-fami=
+ly:Aptos,Aptos_EmbeddedFont,Aptos_MSFontService,Calibri,Helvetica,sans-serif=
+; font-size:12pt; color:rgb(0,0,0)"><br></div><div class=3D"x_x_elementToProof=
+" style=3D"font-family:Aptos,Aptos_EmbeddedFont,Aptos_MSFontService,Calibri,He=
+lvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)">Best wishes</div><div =
+class=3D"x_x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFont,Aptos=
+_MSFontService,Calibri,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0=
+)">Caroline</div><div class=3D"x_x_elementToProof"><div style=3D"font-family:Apt=
+os,Aptos_EmbeddedFont,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font=
+-size:12pt; color:rgb(0,0,0)"><br></div><div id=3D"x_x_Signature"><div><div st=
+yle=3D"font-family:Aptos,Aptos_EmbeddedFont,Aptos_MSFontService,Calibri,Helvet=
+ica,sans-serif; font-size:12pt; color:rgb(0,0,0)"><br></div><div id=3D"x_x_div=
+tagdefaultwrapper" dir=3D"ltr" style=3D"color:rgb(0,0,0)"><p style=3D"margin-top:0=
+px; margin-bottom:0px; font-family:Calibri,Helvetica,sans-serif; font-size:1=
+2pt"><span style=3D"font-family:Arial,sans-serif; color:rgb(0,155,189)"><b>Dr =
+Caroline Emberson (preferred pronouns she/her)</b></span></p><p style=3D"margi=
+n-top:0px; margin-bottom:0px; font-family:Calibri,Helvetica,sans-serif; font=
+-size:12pt"><span style=3D"font-family:Arial,sans-serif; color:rgb(19,27,87)">=
+<b>Assistant Professor in Operations Management (AFHEA)</b></span></p><p sty=
+le=3D"margin-top:0px; margin-bottom:0px; font-family:Calibri,Helvetica,sans-se=
+rif; font-size:12pt"><span style=3D"font-family:Arial,sans-serif; color:rgb(19=
+,27,87)"><b><br></b></span></p><p style=3D"margin-top:0px; margin-bottom:0px; =
+font-family:Calibri,Helvetica,sans-serif; font-size:12pt"><span style=3D"font-=
+family:Arial,sans-serif; font-size:9pt">&nbsp;</span></p><p style=3D"margin-to=
+p:0px; margin-bottom:0px; font-family:Calibri,Helvetica,sans-serif; font-siz=
+e:12pt"><span style=3D"font-family:Arial,sans-serif; font-size:9pt; color:rgb(=
+19,27,87)">Nottingham University Business School OMIS/ Faculty of Social Sci=
+ence<br>University of Nottingham</span></p><p style=3D"margin-top:0px; margin-=
+bottom:0px; font-family:Calibri,Helvetica,sans-serif; font-size:12pt"><span =
+style=3D"font-family:Arial,sans-serif; font-size:9pt; color:rgb(19,27,87)">B12=
+,Si Yuan Building</span></p><p style=3D"margin-top:0px; margin-bottom:0px; fon=
+t-family:Calibri,Helvetica,sans-serif; font-size:12pt"><span style=3D"font-fam=
+ily:Arial,sans-serif; font-size:9pt; color:rgb(19,27,87)">Jubilee Campus</sp=
+an></p><p style=3D"margin-top:0px; margin-bottom:0px"><span style=3D"font-family=
+:Arial,sans-serif; font-size:9pt; color:rgb(19,27,87)">Nottingham, NG8 1BB&n=
+bsp;</span></p><p style=3D"margin-top:0px; margin-bottom:0px; font-family:Cali=
+bri,Helvetica,sans-serif; font-size:12pt"><span style=3D"font-family:Arial,san=
+s-serif; font-size:9pt; color:rgb(19,27,87)">+44 (0) 115 8466631<b>&nbsp;</b=
+></span><span style=3D"font-family:Calibri,sans-serif; font-size:9pt; color:rg=
+b(19,27,87)"><b>| </b></span><span style=3D"font-family:Arial,sans-serif; font=
+-size:9pt"><a href=3D"http://nottingham.ac.uk/" target=3D"_blank" style=3D"margin-=
+top:0px; margin-bottom:0px">caroline.emberson@nottingham.ac.uk</a></span></p=
+><p style=3D"margin-top:0px; margin-bottom:0px; font-family:Calibri,Helvetica,=
+sans-serif; font-size:12pt"><br></p><p style=3D"margin-top:0px; margin-bottom:=
+0px"><span style=3D"font-family:Arial,sans-serif; font-size:12px">Please note =
+that my working days are Monday, Tuesday, Thursday and Friday</span></p><p s=
+tyle=3D"margin-top:0px; margin-bottom:0px"><span style=3D"font-family:Arial,sans=
+-serif; font-size:12px"><br></span></p><p style=3D"margin-top:0px; margin-bott=
+om:0px; font-family:Calibri,Helvetica,sans-serif; font-size:12pt"><span styl=
+e=3D"font-family:Georgia,serif; font-size:9pt; color:rgb(21,118,158)"><b>Follo=
+w us</b></span></p><p style=3D"margin-top:0px; margin-bottom:0px; font-family:=
+Calibri,Helvetica,sans-serif; font-size:12pt"><span style=3D"font-family:Arial=
+,sans-serif; font-size:9pt; color:rgb(0,0,233)"><u><a href=3D"http://facebook.=
+com/TheUniofNottingham" style=3D"color:rgb(0,0,233); margin-top:0px; margin-bo=
+ttom:0px">Facebook.com/UniofNottingham</a></u></span></p><p style=3D"margin-to=
+p:0px; margin-bottom:0px; font-family:Calibri,Helvetica,sans-serif; font-siz=
+e:12pt"><span style=3D"font-family:Arial,sans-serif; font-size:9pt; color:rgb(=
+0,0,233)"><u><a href=3D"http://twitter.com/UniofNottingham" style=3D"color:rgb(0=
+,0,233); margin-top:0px; margin-bottom:0px">Twitter.com/UniofNottingham</a><=
+/u></span></p><p style=3D"margin-top:0px; margin-bottom:0px; font-family:Calib=
+ri,Helvetica,sans-serif; font-size:12pt"><span style=3D"font-family:Arial,sans=
+-serif; font-size:9pt; color:rgb(0,0,233)"><u><a href=3D"http://youtube.com/no=
+ttmuniversity" style=3D"color:rgb(0,0,233); margin-top:0px; margin-bottom:0px"=
+>Youtube.com/nottmuniversity</a></u></span></p><p style=3D"margin-top:0px; mar=
+gin-bottom:0px; font-family:Calibri,Helvetica,sans-serif; font-size:12pt"><s=
+pan style=3D"font-family:Arial,sans-serif; font-size:9pt; color:rgb(0,0,233)">=
+<u><a href=3D"http://instagram.com/uniofnottingham" style=3D"color:rgb(0,0,233);=
+ margin-top:0px; margin-bottom:0px">Instagram.com/uniofnottingham</a></u></s=
+pan></p><p style=3D"margin-top:0px; margin-bottom:0px; font-family:Calibri,Hel=
+vetica,sans-serif; font-size:12pt"><span style=3D"font-family:Arial,sans-serif=
+; font-size:9pt; color:rgb(0,0,233)"><u><a href=3D"http://linkedin.com/company=
+/university-of-nottingham" style=3D"color:rgb(0,0,233); margin-top:0px; margin=
+-bottom:0px">Linkedin.com/company/university-of-nottingham</a></u></span></p=
+><p style=3D"margin-top:0px; margin-bottom:0px; font-family:Calibri,Helvetica,=
+sans-serif; font-size:12pt"><span style=3D"font-family:Arial,sans-serif; font-=
+size:9pt; color:rgb(0,0,233)"><u><a href=3D"http://www.foursquare.com/uniofnot=
+tingham" style=3D"color:rgb(0,0,233); margin-top:0px; margin-bottom:0px">F</a>=
+<a href=3D"http://www.foursquare.com/uniofnottingham" style=3D"margin-top:0px; m=
+argin-bottom:0px">oursquare.com/uniofnottingham</a></u></span></p><p style=3D"=
+margin-top:0px; margin-bottom:0px; font-family:Calibri,Helvetica,sans-serif;=
+ font-size:12pt"><span style=3D"font-family:Arial,sans-serif; font-size:9pt; c=
+olor:rgb(0,0,233)"><u>&nbsp;</u></span></p><br></div><table id=3D"x_x_pbpsigli=
+nktable"><tbody><tr><td><span style=3D"font-family:Aptos,Aptos_EmbeddedFont,Ap=
+tos_MSFontService,Calibri,Helvetica,sans-serif; font-size:12pt; color:rgb(0,=
+0,0)"><a href=3D"https://outlook.office.com/bookwithme/user/68c1e07fca314c1a86=
+3a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature"><=
+img data-outlook-trace=3D"F:2|T:2" src=3D"cid:c94a3bf2-ec4c-4f63-8b08-731fadfa0c=
+ff"></a></span></td><td></td><td><span style=3D"font-family:Aptos,Aptos_Embedd=
+edFont,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:12pt; col=
+or:rgb(0,120,212)"><a href=3D"https://outlook.office.com/bookwithme/user/68c1e=
+07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmai=
+lSignature" style=3D"color:rgb(0,120,212); text-decoration:none">Book time to =
+meet with me</a></span></td><td></td></tr></tbody></table></div></div></div>=
+</div></div></body></html>
+
+--B_3808391796_788106258--
+
+
+--B_3808391796_964868662
+Content-type: image/png; name="Outlook-yigknbub.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <c94a3bf2-ec4c-4f63-8b08-731fadfa0cff>
+Content-disposition: inline;
+	filename="Outlook-yigknbub.png"
+Content-transfer-encoding: base64
+
+
+iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAcpJREFU
+OE9jZAABr6aJDHqhuQwMDIxgPrHg19d3DLP91Bk+P3sD08IIN2x1hjPDy7NXiDWL4T8nM0NA
+33wGWRMPhg5NJgYGhv8gvYwMFdf/MYAMu3twP9GGISssv/qLYVdzMsP5FYthBv5nmO2pyfDz
+zVuyDEw/eJ3hxNyJDEenNSMMJMskJE2Hp9YxHJ2CZOBUM1GGz5/hAUuS+UVnXjOcXDCJygbO
+m4TqZUpcGDJjJcPzS1eoYyAvrzDD58/vGRgY/iHSYcX1/wykupBXWpghe89reEbY0RjNcGHF
+MkQsk2pgwYkXDBz84iiR16EJzmWghE26C8uv/mZgZGJBM5AZ5HXyDPRo7GMwCCuEG/jj40uG
+CRYS5LsQpNM6q4TBOLqE4emFgwxrs8NRI2WynSTD19cvSErQOBQzMhSdecvw8vophqWxngQN
+BCWTrBMvMMIPpnF7dQQjA6+UCEP23tcM//7+Zvjx8QNOQydZizFk7bvNwCepgs9iWIHKyGAY
+EcPALaQEUQwq3mBplQmi5siUBoa0bRcZhBT18Bj4n7QSWlhGmiF19xOcBh6aVEyagSCTQEEU
+Nf8Ag6CcFjyn/Pz8hmF9cQjDg8MHAaiKxp0eiZJ4AAAAAElFTkSuQmCC
+--B_3808391796_964868662
+Content-type: image/png; name="Outlook-tg22rgxh.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <bc663b6b-e6c6-4672-90a1-d4ac211c27a9>
+Content-disposition: inline;
+	filename="Outlook-tg22rgxh.png"
+Content-transfer-encoding: base64
+
+
+iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAcpJREFU
+OE9jZAABr6aJDHqhuQwMDIxgPrHg19d3DLP91Bk+P3sD08IIN2x1hjPDy7NXiDWL4T8nM0NA
+33wGWRMPhg5NJgYGhv8gvYwMFdf/MYAMu3twP9GGISssv/qLYVdzMsP5FYthBv5nmO2pyfDz
+zVuyDEw/eJ3hxNyJDEenNSMMJMskJE2Hp9YxHJ2CZOBUM1GGz5/hAUuS+UVnXjOcXDCJygbO
+m4TqZUpcGDJjJcPzS1eoYyAvrzDD58/vGRgY/iHSYcX1/wykupBXWpghe89reEbY0RjNcGHF
+MkQsk2pgwYkXDBz84iiR16EJzmWghE26C8uv/mZgZGJBM5AZ5HXyDPRo7GMwCCuEG/jj40uG
+CRYS5LsQpNM6q4TBOLqE4emFgwxrs8NRI2WynSTD19cvSErQOBQzMhSdecvw8vophqWxngQN
+BCWTrBMvMMIPpnF7dQQjA6+UCEP23tcM//7+Zvjx8QNOQydZizFk7bvNwCepgs9iWIHKyGAY
+EcPALaQEUQwq3mBplQmi5siUBoa0bRcZhBT18Bj4n7QSWlhGmiF19xOcBh6aVEyagSCTQEEU
+Nf8Ag6CcFjyn/Pz8hmF9cQjDg8MHAaiKxp0eiZJ4AAAAAElFTkSuQmCC
+--B_3808391796_964868662--
+
+
+--B_3808391796_511344451--
+

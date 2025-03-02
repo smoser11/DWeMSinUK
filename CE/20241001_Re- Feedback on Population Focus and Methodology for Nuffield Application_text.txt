@@ -1,0 +1,109 @@
+Date: 20241001
+Subject: Re: Feedback on Population Focus and Methodology for Nuffield Application
+
+Hi Scott,
+
+I know that I am coming late to the party - and that you have already discussed many of these points with Todd and Zoe.
+
+My starting point for the earlier research I did with Selim was how to address exploitation among domestic workers in the UK to encourage policy development in this area (e.g. the removal of tied visa). I hope (still) that we can generate an prevalence estimator to focus policy attention on the scale of exploitation. So, I was coming at this from a real world problem, rather than selecting a setting to accommodate the use of a method or set of methods. 
+
+You do ask for my opinion specifically on the use of hybrid methods for accessing hard to reach populations such as domestic workers. I would advocate this. Findings from our earlier study  suggest that, in the UK at least, domestic worker's networks are unusually sparse when compared to those of other groups for whom RDS methods have been used (for example: intravenous drug users). We managed to reach nearly 100 domestic workers using RDS and, in so doing, were then able to gather scale-up data  - although in hindsight we could have asked those identified as members of the hidden population a further set of questions to also enable G-NSUM calculations to be performed - following NORC's suggested approach I would therefore advocate a raft of composite methods to provide maximum flexibility and potential data.
+
+Best wishes
+Caroline
+
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (FHEA)
+
+
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB 
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 25 September 2024 19:40
+To: Zoe Trodd (staff) <aazzt@exmail.nottingham.ac.uk>; Todd Landman (staff) <brztl1@exmail.nottingham.ac.uk>; Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Cc: Nick Wright (staff) <lbznw@exmail.nottingham.ac.uk>
+Subject: Feedback on Population Focus and Methodology for Nuffield Application 
+ 
+Dear Todd, Zoe, and Caroline,
+
+ 
+
+Thank you again for all your help with the Nuffield project. As we’re finalizing the feasibility study, I wanted to get your feedback on a few concerns I’ve been reflecting on regarding the population focus and methodology, and how best to proceed.
+
+ 
+
+1. Reconsidering Domestic Workers as the Hidden Population
+
+Initially, we focused on Domestic Workers (DW) experiencing modern slavery, but I’m starting to wonder if this is the right choice for the feasibility study. DWs, by nature, are often isolated and less aware of their own exploitation, which could make NSUM less effective due to transmission and awareness biases.
+
+ 
+
+That said, perhaps these very challenges are what make DWs a valuable population to study—demonstrating the limitations of NSUM in this context could be an important finding in itself. I’m curious if you think we should stick with DWs or consider other populations (e.g., agricultural workers) where alternative methods like Time-Location Sampling (TLS) might be more feasible.
+
+ 
+
+2. NSUM Limitations and Potential Hybrid Approaches
+
+Related to the population question, I’m concerned about NSUM’s reliance on network awareness in the case of DWs. Should we consider incorporating a hybrid methodology that includes both NSUM and more direct methods, like Respondent-Driven Sampling (RDS) or G-NSUM, to mitigate this? Caroline, I’d especially value your thoughts on whether this hybrid approach could work with DWs or if we should focus on another population where NSUM might be more effective.
+
+ 
+
+3. Applicability of TLS for Different Populations
+
+I’ve also been thinking about the practicality of Time-Location Sampling (TLS) for DWs. It seems TLS would be more straightforward for hidden populations like agricultural workers, where location-based sampling is more feasible. Do you think we should incorporate TLS for DWs, or focus on another group where it’s more applicable?
+
+ 
+
+4. Sampling Strategy and Survey Firms
+
+Lastly, as we refine the sampling strategy, I’m considering whether to contract out survey work or manage it internally with the postdoc team. Zoe’s suggestion to frame this as a feasibility study seems to align well with our budget, but I think we need to dig deeper into the sampling logistics and the role survey firms could play. Any thoughts on how best to balance our internal resources with external survey expertise?
+
+ 
+
+I’d greatly appreciate your input on these points and how you think we should proceed. I’m happy to discuss further whenever it’s convenient for you.
+
+ 
+
+Best regards,
+
+Scott
+

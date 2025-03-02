@@ -1,0 +1,60 @@
+Date: 20230925
+Subject: Updated protocol
+
+Hi Scott and Selim,
+
+Thank you for the work that you have done on this over the weekend, Scott - and for sending me another link your annotations of the protocol document. I've now had another look at this and added further annotations to your observations. I hope that what is now described here may allow Selim to calculate point estimates for two respondent samples: a) all valid responses from domestic workers working in the UK (which we then compare to the most recent overall ODW visa numbers: noting the provisos about the visa categories that we have already discussed) and b) a sub-sample of filipino- only respondents (for which using an ODW visa estimate may be more realistic of the actual situation. These are described further in the shared document: Exploratory protocol based upon Feehan and Salganik (2016)SJM - CE.docx
+
+I have also now included the probe alter calculation based upon the number of NRM referrals suggested by Scott - although I am not yet clear what further calculations we use this for.
+
+So, what I think is happening now: Scott - teaching permitting, you are guiding Selim on data cleansing and bootstrapping the variance estimation (can this also be done for the two different samples, a and b)?
+
+While Selim and I will work through point estimates for samples a) and b). Selim, if you can take a look at the revised attachment, we can discuss any issues in our routine meeting before the BEP team meeting tomorrow.
+
+I hope that I have accurately reflected our earlier discussions here now.
+
+Best wishes
+Caroline
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Nottingham Research Fellow, Rights Lab
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+ 
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+ 
+
+ 
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+
+

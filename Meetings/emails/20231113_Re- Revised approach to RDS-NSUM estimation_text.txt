@@ -1,0 +1,461 @@
+Date: 20231113
+Subject: Re: Revised approach to RDS/NSUM estimation
+
+These are really interesting findings, Scott. I agree that this figure seems high at first hearing - though there is grey literature that indicates exploitation problems are likely.
+
+Thanks for you work on this - it is very useful to have these indications as I prepare a draft for us.
+
+Best wishes
+Caroline
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+ 
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 10 November 2023 18:26
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: Revised approach to RDS/NSUM estimation 
+ 
+Dear All,
+
+Just a quick update before I have to 'shelve' this for a while.^[I am sorry -- I Truely would like to work on this much more, but I have 4 hours of lecture and 4 hours of seminar next week and I am embarrassed to say I am not prepared for them at this moment.]
+
+I have started to play with the estimates and I an say the following, bearing in mind that all of this is very preliminary​🙁
+
+1.The proportion estimates come in at between 30-40% of the sample frame falling into the category of 'experiencing MS' (depending on how we operationalize this e.g. Q36 or Q80).  These figures are surprisingly stable to different parameters (e.g. 'priors') in the model. 
+1a.I find these estimates really, really high.  Am I mistaken?  What do you all think?  On my end, if these are even close to accurate then there is a massive​ issue in DW employment in the UK (perhaps this is already known and I am just ignorant.  Or wrong!)
+2.Regarding the distribution of the 'risk index': it turns out I did find a hack to get a (crude) estimate of the distribution of Risk Index (RI) scores from the model:
+Gile's SS Estimate for sum_categories_cut
+               Estimate           95% Interval Design Effect Std. Error     N
+(0.0892,0.178]  0.20497 ( 0.059217,  0.350729)         3.289     0.0744    16
+(0.178,0.268]   0.09514 ( 0.003607,  0.186681)         2.455     0.0467     7
+(0.268,0.357]   0.10646 (-0.007195,  0.220113)         3.426     0.0580     9
+(0.357,0.446]   0.09460 ( 0.034016,  0.155180)         1.081     0.0309    11
+(0.446,0.535]   0.11913 ( 0.050401,  0.187867)         1.136     0.0351    15
+(0.535,0.624]   0.03239 (-0.039588,  0.104372)         4.170     0.0367     7
+(0.624,0.713]   0.07484 (-0.016064,  0.165735)         3.011     0.0464     6
+(0.713,0.803]   0.05399 ( 0.009435,  0.098536)         0.980     0.0227     7
+(0.803,0.892]   0.03322 ( 0.005935,  0.060509)         0.585     0.0139     4
+
+it looks to me like the distribution 'peaks' at about 1/4+(or maybe 1/3-ish?)  to about 1/2+ on our 0-1 scale.  (Sorry for not providing an visualization, which would  be much preferred!)
+
+
+3.My hunch is that these results are due to the sample.  In particular a lack of sufficient 'waves' to reach RW equilibrium'.   I have not performed any diagnostic tests, so please take these preliminary results as 'tentative' at best!
+
+
+I'm afraid I must 'park' this for the time being.
+
+SELIM: 
+1.do you know Git and GitHub?  I want to set up a GitHub for this project so we can share code/ results but I simply don't have time.  Can you set it up? I am more than happy to share code.
+2.Can you double check that I am correctly using / interpreting the rows in your xlsx file in light of the formatting that is used in the RDS CRAN package?  That is, if you run the following:
+```
+install.packages("RDS")
+library(RDS)
+?as.rds.data.frame
+```
+And please take a look at the recruiter.id​ argument to make sure it corresponds correctly with how your have
+
+
+Ok, I want to sleep, but I have to write lecture slides.  Hope to talk soon!
+scott
+
+From: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Sent: Friday, November 10, 2023 5:06 PM
+To: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>; Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: Revised approach to RDS/NSUM estimation 
+ 
+Selim is probably best placed to answer this one. From memory, I think we provided the ability to list up to 10 contacts - but Selim chose a more limited number when he sent out subsequent wave requests. Selim, could you please confirm the exact procedure you used?
+
+Best wishes
+Caroline
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+ 
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 10 November 2023 16:40
+To: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>; Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Subject: Re: Revised approach to RDS/NSUM estimation 
+ 
+Sorry, one more thing: how many 'coupons' was each respondant given?  Or rather, what is the maximal number of people a single person could 'recurit' in the study?
+
+Thanks!
+scott
+
+From: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Sent: Friday, November 10, 2023 4:15 PM
+To: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>; Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Subject: Re: Revised approach to RDS/NSUM estimation 
+ 
+Dear Dr Moser, 
+
+Thank you for your email. 
+
+Please see the updated codebook (November version). I have also made adjustments to the further coding (attached). 
+
+In terms of the variable naming, please try to ignore the ones with alphabets (e.g. 2b, 5f12...), as they were used when we designed the questions. The variables of Q1, Q2, Q3... are the clarified variable names that we are using now. I hope this is helpful. 
+
+Thank you, and please let me know if you have any questions. 
+
+With kind regards, 
+
+Selim Yilmaz
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 10 November 2023 14:12
+To: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>; Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Subject: RE: Revised approach to RDS/NSUM estimation 
+ 
+Thanks all!  I’m working on this and have a few questions that need answers.
+
+From Caroline’s word doc, I see that Category 13 is based on “80: 5f12”.  But in Selim’s xlsx file, there is only the variable “Q80”.  Further, this variable has values like 2 and 5 and zero.  What variable corresponds to which?  
+
+Also, I will need a codebook to do the scale up.  Is there a consistent variable naming and question numbering?  With a codebook, please?
+
+ 
+
+Best,
+
+Scott
+
+ 
+
+ 
+
+From: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk> 
+Sent: Friday, November 10, 2023 1:45 PM
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Cc: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: Revised approach to RDS/NSUM estimation
+
+ 
+
+Dear Caroline and Dr Moser, 
+
+ 
+
+I hope this email finds you well. 
+
+ 
+
+Please see attached the updated further coding with adjusted Category_13 and Sum_categories. 
+
+ 
+
+Thank you. 
+
+ 
+
+With kind regards, 
+
+ 
+
+Selim Yilmaz
+
+From: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Sent: 10 November 2023 09:18
+To: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Cc: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: Revised approach to RDS/NSUM estimation 
+
+ 
+
+Excellent. Thanks Selim. We can discuss further when we meet at lunchtime.
+
+ 
+
+Best wishes
+
+Caroline
+
+ 
+
+ 
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+ 
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+ 
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+ 
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+ 
+
+Book time to meet with me
+From: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Sent: 10 November 2023 00:28
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Cc: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: Revised approach to RDS/NSUM estimation 
+
+ 
+
+Dear Caroline and Dr Moser,
+
+ 
+
+I hope this email finds you well.
+
+ 
+
+Please see attached the tasks for further coding. I created 13 new columns for each category of exploitation, one new column for the sum of exploitation weight (Sum_categories), and another column for whether or not there is any type of exploitation (Whether_exploitation). This coding has shown that all respondents face some level of exploitation, and the number of sample is still the same (n=97).
+
+ 
+
+Please let me know if there is anything else.
+
+ 
+
+Thank you.
+
+ 
+
+With kind regards,
+
+ 
+
+Selim Yilmaz
+
+From: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Sent: 06 November 2023 09:26
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Cc: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: Revised approach to RDS/NSUM estimation 
+
+ 
+
+Dear Caroline,
+
+ 
+
+Thank you for updating me.
+
+ 
+
+I will work on the coding as you explained, and be in touch with you if I have any questions. If you do not hear from me, I will update my progress in the meeting on Friday.
+
+
+Thank you, and have a good week.
+
+ 
+
+With kind regards,
+
+ 
+
+Selim Yilmaz
+
+From: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Sent: 03 November 2023 14:32
+To: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Cc: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Revised approach to RDS/NSUM estimation 
+
+ 
+
+Hi Selim,
+
+ 
+
+I hope you enjoyed your trip to Turkey. Following Scott's observation that we have collected RDS data on the frame population rather than focusing on the hidden population, we have discussed some possible ways forward and agreed that we trim our data to include only those respondents who identify that their circumstances could be considered abusive - taking the widest possible spectrum of abuse (i.e. including behaviours such as verbal abuse and all other indicators of exploitation). Since 82% of our sample reported verbal abuse, we are hoping that this approach means that we can keep a high proportion of our respondents in our analysis
+
+ 
+
+This approach - and the generation of a risk index - requires some elaboration and further coding of our data set. 
+
+ 
+
+That being the case, would you be able and willing to carry out the following tasks?
+
+ 
+
+Insert a new column for each of the 13 possible risk categories identified (as indicated in the attachment to this email) and, where the respondent indicates that they have experienced each particular form of abuse, assign the weight indicated  into the cell (0 would indicate that that respondent did not report any abuse of that type)
+Insert a 'sum' risk category column - which then sums all the weighted risks for each of the 13 abuse categories to give an index value between 0 (no abuse of any kind) and 1( all forms of abuse reported)
+Insert one further new column indicating for each respondent whether they report any type of exploitation (broadly defined) coded 0 for no abuse reported and 1 for any  type of abuse reported. (Again, you can use the questions that indicate abuse found in the attached document). It would be useful if you could then let us know how many respondents this leaves in our sample.
+If this makes sense to you, do you think that you can press ahead with this coding send through the updated data set to me and Scott? 
+
+ 
+
+If anything here is unclear - or you would like to discuss the weightings I've assigned (which are indeed somewhat subjective) and you'd like a quick chat with me first we can schedule a call next week. 
+
+ 
+
+If you're available, Scott has already sent through a meeting invitation for us all meet again next Friday - for an update on progress/ agree our next steps.
+
+ 
+
+Best wishes
+
+Caroline
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+ 
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+ 
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+ 
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+ 
+
+Book time to meet with me
+ 
+

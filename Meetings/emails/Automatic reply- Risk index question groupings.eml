@@ -1,0 +1,116 @@
+Received: from VI1PR06MB8903.eurprd06.prod.outlook.com (2603:10a6:800:1e2::15)
+ by DB9PR06MB8202.eurprd06.prod.outlook.com with HTTPS; Fri, 22 Sep 2023
+ 19:18:38 +0000
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=exmail.nottingham.ac.uk;
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com (2603:10a6:20b:99::17)
+ by VI1PR06MB8903.eurprd06.prod.outlook.com (2603:10a6:800:1e2::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6792.27; Fri, 22 Sep
+ 2023 19:18:37 +0000
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com ([::1]) by
+ AM6PR06MB5941.eurprd06.prod.outlook.com ([fe80::d2c9:5b27:fde9:2719%4]) with
+ Microsoft SMTP Server id 15.20.6813.017; Fri, 22 Sep 2023 19:18:37 +0000
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Automatic reply: Risk index question groupings
+Thread-Topic: Risk index question groupings
+Thread-Index: AQHZ6ukWw3g2NTWiv0CCLNEMWvfWKbAnPTRJgAAAJss=
+References:
+ <AM6PR06MB5941DE6CA4C99794C53C2722A0FAA@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <DB9PR06MB8202735B1F73346C6E764C5F87FFA@DB9PR06MB8202.eurprd06.prod.outlook.com>
+In-Reply-To:
+ <DB9PR06MB8202735B1F73346C6E764C5F87FFA@DB9PR06MB8202.eurprd06.prod.outlook.com>
+X-MS-Has-Attach:
+X-Auto-Response-Suppress: All
+X-MS-Exchange-Organization-SCL: 1
+X-MS-Exchange-Inbox-Rules-Loop: lizce@exmail.nottingham.ac.uk
+X-MS-TNEF-Correlator: ce2f8a33-131c-4c86-abc8-7e44978ed25c
+MIME-Version: 1.0
+Date: Fri, 22 Sep 2023 19:18:37 +0000
+X-MS-Exchange-Organization-MessageDirectionality: Originating
+X-MS-Exchange-Organization-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 03
+Message-Id:
+ <bd5a0b9664fe42e9adc26d79f0960a01@AM6PR06MB5941.eurprd06.prod.outlook.com>
+X-MS-Exchange-Organization-Network-Message-Id:
+ c63f4666-b370-43bc-d820-08dbbba0b8e3
+X-MS-Exchange-Parent-Message-Id:
+ <DB9PR06MB8202735B1F73346C6E764C5F87FFA@DB9PR06MB8202.eurprd06.prod.outlook.com>
+Auto-Submitted: auto-generated
+X-MS-Exchange-Generated-Message-Source: Mailbox Rules Agent
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ AM6PR06MB5941:EE_|VI1PR06MB8903:EE_|DB9PR06MB8202:EE_
+Return-Path: <>
+X-MS-Exchange-Organization-ExpirationStartTime: 22 Sep 2023 19:18:37.8426
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Office365-Filtering-Correlation-Id: c63f4666-b370-43bc-d820-08dbbba0b8e3
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR06MB5941.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:;DIR:INT;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Sep 2023 19:18:37.4002
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-Network-Message-Id: c63f4666-b370-43bc-d820-08dbbba0b8e3
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR06MB8903
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:00.9369428
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.6813.014
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(425001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	DfMal8Aku5qJqiBbG72vSs6nmUOgqBoRFC/eLvsOra53b3/dGFARZzQjp+d0tYRSJP4eBJ9hsvTVvqdDvyBntWqAmGXNJx5oqprmRtFzWX7fgpYoi8+xX0mx/OUwuqIhxopmGc9vg85DtL6km+ImbkyLpGYpMlwpFa5Ksce2xhxBWTOwcfnIsH5sP4r0K6J4l/rYfOZ2eN2fBJy0D7+KUuwKDtcNzVrc2g2ZoMohOoJjcCgzfv/czeWqQ417/nwWdTZhe/xhbNpQsXvUHBXHVC45bi53XYivcC+dJzk9Rr4toWhDWI53fCziOqUNNZv22m5BJJWr5XfnWHYn673lVUQiOe6D+MjAfutlQaIoETzO4eOAFxaCttx36AshaglZpvQMFNELIa4nTixDui86QFOO+o+0zSNAMWMcgyJz2EK6Z2UQ8Stbu1LQWw56E6zSgyqN7Tiq0pjzBm8Jzm63ZfU8yp0t9ykvXFeRCD9Ci4I59/Ww1gJ2BVMwAQ2FWKr27Gv78AOfuzmvz8bJxHtWzIogvDhMDUbBPyioW13HShnXcNp3XezLDf/oBQ5sW7O0mGi+8/h+jU5ru29V9jDO6rgF/Lc6X0wxd89pMwG81Oo0+so870v7Hnd7/SgOT55P2FlAhRAizBXEb7ZYL4FIPWghPd/2omNGKatPAq+sLk0Dpuhz40ZJW+JgilOnSTnTLFy/4xRN6byjH4yycFSIkqy7wKf1+wBSmUen7p+DC/9o1MvPgsvOj4ACs0LxqwHL
+Content-type: multipart/alternative;
+	boundary="B_3808391796_1759128760"
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3808391796_1759128760
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: 7bit
+
+I am currently on annual leave, returning to the office on Monday 25th September and shall read your email upon my return.
+
+Best wishes
+Caroline
+
+
+
+Caroline
+
+
+--B_3808391796_1759128760
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"></head><=
+body><div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:1=
+2pt; color:rgb(0,0,0)">I am currently on annual leave, returning to the offi=
+ce on Monday 25<span><sup>th</sup>&nbsp;September and shall read your email =
+upon my return.</span></div><div style=3D"font-family:Calibri,Arial,Helvetica,=
+sans-serif; font-size:12pt; color:rgb(0,0,0)"><span><br></span></div><div st=
+yle=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12pt; color:r=
+gb(0,0,0)">Best wishes</div><div style=3D"font-family:Calibri,Arial,Helvetica,=
+sans-serif; font-size:12pt; color:rgb(0,0,0)">Caroline</div><div style=3D"font=
+-family:Calibri,Arial,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)=
+"></div><div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-siz=
+e:12pt; color:rgb(0,0,0)"></div><div style=3D"font-family:Calibri,Arial,Helvet=
+ica,sans-serif; font-size:12pt; color:rgb(0,0,0)"></div><div style=3D"font-fam=
+ily:Calibri,Arial,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)"></=
+div><div></div><div></div><div><br></div><div></div><div></div><div></div><d=
+iv></div><div></div><div></div><br><br>Caroline<br></body></html>
+
+--B_3808391796_1759128760--
+

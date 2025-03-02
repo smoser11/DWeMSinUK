@@ -1,0 +1,499 @@
+Hi everyone, I'm sorry I'm running late, the perpetual IT problems. How are you all doing?
+It's good to see you. It just seems such a long time since we've met. I was saying to
+Celine, have I seen you since Christmas and I haven't done what we met at the beginning of
+December I think last time? That's right. Gosh, doesn't the time fly? It sure does. In fact,
+I never know when it's too late to say this, but happy new year, happy 2024.
+I hope it's off to a good start, but now even January is gone, so yeah, time really is flying,
+but hopefully y'all are enjoying 2024 as it is. It's pretty busy. It seems that way.
+So this is your heavy teaching term, is that right? Yeah, that's right. We were just talking
+about teaching, weren't we? I'm still stuck with, I just can't, marking just never seems to end.
+It's just forever. I know and eat cakes, which you are very kind to suggest to Celine, but
+yeah, I just keep thinking like, okay, once I get this done, then I can do x or y and it
+never ends, but anyway. I'm so, so glad we found time for this. Thank you so much everyone.
+I confess, I haven't, I tried to prepare a little bit, but I don't exactly, thank you for your memo
+or agenda, Caroline, let me pull it up. Yeah, I thought that just might help us sort of try
+and cover off the main things that you discussed in your videos, which were great, by the way.
+Really good idea to sort of capture it, capture your thinking about particular stage.
+The honest truth is, I'm so bad at typing and spelling that I just figure my
+healer recording is often just much more efficient. But thank you for taking the
+time to be in and summarize. I think that's exactly right. What do you think?
+I think it's great. I'm so pleased that you think we're still in with a shot with this
+data. I think it's just fantastic what you're doing and whatever support I can give you,
+and well, I can't speak for Celine, but let him speak for himself. But yeah, I think it's
+really, really interesting how you're thinking about it, how you're conceptualizing the data
+and these new approaches that you've suggested, I think it's fantastic.
+It's all from, it's all thanks to you all. I mean, I wouldn't, I wouldn't be anywhere near
+this project, we're not for you all. So thank you. So am I right in thinking about this though?
+So the population are domestic workers in the UK, and then the hidden population are those
+that are experiencing modern slavery. Pardon me one second, just realize my back leg. Give me one
+second to not look like a monster. I'm sorry about that. I'm very sorry. And that the hidden
+population are domestic workers in the UK that are experiencing modern slavery and we can catch
+that out in one of three different ways, I think. So dichotomously, which again, I think, and
+Carolyn, you get credit for this, the two questions I don't remember at the top of my head,
+it was like 36 and 80 or something. They're very, in my opinion, they're very high bar.
+And so I think that's great. And then there's this kind of risk index that we put together,
+which could be like another. So help me out. So if we use this continuous risk index,
+then isn't the population that we're sampling from or I guess what I'm trying to say is
+are we making an assumption that everyone in the population is
+has some degree to exposure of risk of experiencing modern slavery?
+Yeah, this is interesting because the two indicators and I've picked up your question
+number. So I hope they are correct. Selim will be able to check for us. But there are two
+the way that exploitation is currently conceptualized is on a spectrum. And at one end, you have
+minor infringements such as the national living wage, which would be the question 36. Are you
+paid sufficiently? And then at the extreme exploitation end, you'd have modern slavery
+question 80. So we've got two discreet markers on that scale. So I wouldn't equate
+failure to pay the national living wage with modern slavery. I don't think we can say that
+conceptually, but it is a form of exploitation and modern slavery is the most extreme form of
+exploitation. And then so we've got those two that you've sort of very cleverly identified as
+dichotomous variables, you're either a modern slave or you're not. And if you're either paid
+illegally or you're not. And then we've got this risk index, which is a more the gray area in
+between, which is the this composite variable. Does that help? Perfect. It helps a ton. No,
+thank you for and this is again, this is why it's so awesome to work with you all. But
+so I even my language was wrong. It's actually be thinking about exploitation. And modern slavery
+is one extreme form of exploitation. But really, that there's this spectrum, and that that's
+enormously helpful that that helps me in thinking about the. Yeah, okay, that's really great. So
+then in that case, okay, so then the, the, the, the population is still domestic workers in the UK.
+I'm just thinking aloud, sorry for that domestic workers in the UK. And then we're the hidden
+population are exploited workers with then exploited domestic workers in the UK, where
+that exploit measuring that exploitation, we do in three different ways. One is this sort of
+minimal one is maximal and one is this, like you said, the gray area. I love that. I think that's
+I didn't even, I didn't really, I didn't, Caroline, okay, good. Okay, so in that case, the, so, so,
+so the, I guess one thing I can say, and I think I said the videos, I am surprised at how much more
+confident I am in the estimates from way back when currently they seem, I'm willing to put my name
+to them. I mean, they seem quite real. They're, they're, they're, in my opinion, they're shockingly
+high. They're, they're very consistently depending on a bunch of model parameters, but sort of 30%
+is a conservative estimate. So there's something like 30 to 40%. So, so the interpretation there is
+again, depending on how we think about and measure exploitation, 30 to 40% of domestic
+workers in the UK are experiencing some form of exploitation. And in fact, I can even tell you
+the, the maximal one I was just looking at it is, so was it, it's question 80 is the, is the more
+extreme one. Yeah, 30.7% is the estimate with a pretty reasonable estimate of uncertainty.
+So I think this will make our message much more, it sort of tones it down a bit if we talk about
+exploitation. If we talked about 30, 40% in modern slavery, that's very dramatic. Yes. And we'll be
+a front page of the Guardian, which we don't necessarily want to be that dramatic. So I think
+if we talk about labor exposition, it just tones it down slightly. And we're acknowledging that
+modern slavery is an extreme form, but it's not the sole focus of the topic. So hopefully that
+makes you feel a bit more comfortable about the size of the problem as well. It does. And, and
+like I said, thank you. I'm so glad. And I don't know, I feel kind of foolish actually, because
+like the more we talk, the more I realize, Oh, actually, I'm not, I haven't actually been thinking.
+Anyway, so like this modern slavery versus exploitation business is, yeah, now these
+results make a lot of sense. I mean, they're really, really high, but they're consistent. And if you,
+so for example, if you look at the estimated proportion that are experiencing this extreme
+form of slavery, it's 12% less than the estimated proportion of those experiencing the mildest form
+of exploitation, which logically makes perfect sense. And the intervals makes some sense.
+That's good. So that's sort of sanity. So I suppose that on what we, what I have done when I put
+the composite together was mixed up these fair, the dichotomous and the continuous variable. So
+we need to separate that out now, obviously. So we have another stab at that. So you, did you follow
+that? The logic that Scott sent through about this difference between, because I've mixed up
+labor exploitation, question 30, whatever it is, with the other risk indicators of forced labor,
+I put it as a weighting at 0.3. And actually, we can't do that. Well, I can't do that.
+Because it that'll affect the composite variable calculation. So it won't be accurate the way
+I've currently specified it. I don't know which document or email you're referring to.
+I know there's been the email video record from Dr. Mauser, and you have responded to it
+just before this meeting. So you sent me an email before this meeting. Right. You know,
+this was really sort of what came out of Scott's earlier. I can't remember when we discussed it.
+Let me revise the composite measures and send those through to you. Well, send them through to
+both of you, but particularly to Selim, because we'll need to recalculate those composite values
+based on the understanding that we've mixed up a dichotomous variable with a continuous
+risk indication variable. If you sent me the document or whatever, I should
+just recalculate it. I can do that. No problem. Brilliant. I'm sorry it's extra work because
+it means going back and redoing something that we'd already asked you to do. That's part of the
+work. It's much clearer now. I think we're sort of learning as we go up. It's heuristic.
+But so hang on, Caroline. I think I'm about to have a second mental breakthrough for the day.
+So I understand the composite measure that we made is like this weighted sum of these various
+indicators, but I missed why you think it... What's wrong with it? Because I've included
+question 36, and I've given it a slightly heavier weighting, but I've included it
+within the composite risk. I see. So I think I wasn't very happy when I did it, and I think
+it's probably better if we split it out. And then we've got this clarity about
+these two, the question 36 and the question 80, are clearly illegal activities, but at
+different ends of the scale. And the other risk factors provide a composite picture,
+which could be indicative of forced labour. It's much cleaner if we do it that way.
+Okay. I think I see now. So it's not necessarily the case that... I think, again, thank you so
+much. So I was originally thinking, okay, exploitation is on a spectrum. We have these
+two kind of endpoints, question 36 and question 80, and that the composite measure would sort of be
+in between these two endpoints. But if I'm understanding you, that's not really the
+right way to think about it. We have... So, okay, that's one way to interpret. Here's a
+second way to interpret. Yes, exploitation is on a continuum, and here we have indicators for the
+endpoints. And then separately, we have this continuous indicator, which doesn't necessarily
+fit in between these two endpoints. Maybe it does, maybe it doesn't, but it's not the case that...
+Does that make sense? It's not the case... Yeah, I think that's more accurate, it's separate.
+I think it's separate. Again, thank you so much. Seriously, that was a second...
+In the last 15 minutes, you've given me two... Okay, that's very helpful. And actually, that
+will help me in interpreting the... I was a bit uncertain how to interpret the estimate of the
+continuous indicator, but this discussion helps me a lot in understanding what those results are
+saying relative to the dichotomous measures. So, thank you. So, that was clear to me from
+your discussion about this difference between dichotomous variables and a continuous one.
+So, I think if you're happy with that approach, I think that sort of moves this forward, although
+it means redoing a bit of work. Perfect, and also just to be totally clear, I wasn't aware
+that's what I was saying. So, really, you get credit for that, Caroline, completely. That's
+really... No, no, that's awesome. Okay, so that's a huge clarification. I do have... And I don't want
+to hijack the conversation at all. I have sort of a big, I guess, two medium-sized questions,
+and then some really kind of obnoxious, small, but technical questions, if I may.
+Yeah, go ahead, go ahead. So, the... Okay, I guess maybe... Okay, let me do the small ones first.
+So, right. So, the don't know is the data stuff is fine. There's one nagging data
+issue that I still have, and it's this business about zeros. So, some people... I don't remember,
+I think I said 17 or something, a handful of people report knowing zero domestic workers in the UK.
+So, the reporting that their network size is zero. Now, some of these are clearly an error,
+because then when it comes to the referral question, can you give us the cell phone of a
+domestic worker in the UK? They provide one. So, some people who say, I know zero people in the
+UK, then provide a cell phone of a domestic worker in the UK. So, clearly, those people are wrong.
+So, I'm comfortable sort of finding them and turning their zeros into at least one. Again,
+that's conservative, because we know that they've reported at least one. So, one... Okay, so that's
+one issue. And then two, there's still some extra zeros. Some people who say, no, I know zero people
+in... Sorry, I know zero domestic workers in the UK, and I've reported zero. And I don't exactly
+know why, but those zeros are messing up the estimators. The estimators can't handle... I'm
+guessing it's like a divide by zero problem or something like that, where... So, the question is,
+what to do with the true zeros? Two options. One is we just sort of
+gin it up and say, let's just add one for everybody, which isn't really...
+I mean, it solves a problem technically, but it's really, really sketchy. Or two,
+remove the true zeros. So, what to do with the true zeros is one question. And then the easier
+question is, what do we think about turning the wrong zeros into ones? Are we comfortable with
+that? Again, we're talking about a handful of people, but with a sample size of 97,
+a handful of people is not true. So, does that make sense? The two questions make sense?
+Are my... Yes, no, it does make sense. I mean, I'm tempted to say, take them out. I don't know what
+that does to the... That seems... Because anything else is a fudge, isn't it? Exactly, exactly. So,
+what I have been doing is just adding one to everybody and just saying... But I completely
+agree with you that what it does is it does increase our uncertainty. And I think it increases it
+a bit. I don't remember exactly, but I agree with you that that's the most principled. Are we okay
+turning the zeros into ones for people who do the nominate or make a referral? Or should we...
+Are we turning them into the number that they nominate? Yeah, exactly. So, if they nominated
+two people, we turn them into twos. And then one, if they nominate one, is that how we're doing it?
+Exactly. That's how we could do it, which I... Yeah, we can do it. I'm comfortable with that
+myself if you all are. Yeah, I think if we take out the ones that are through zeros,
+I don't know what the implications of that has for how we're sampling. But I mean, if we just say
+that's what we've done, it's a limitation of the estimating technique, really, isn't it?
+Yes, that's right. It's not a data limitation. It's not a data limitation. It's an estimation.
+You're 100% right. Yeah, it's a limitation of the estimation. That's right. Sorry.
+Yeah, so I think we can probably just say that.
+So it's... And so we've got two things that we're doing then. So we're taking out
+the true... The ones that really are zeros. And for the ones that do nominate,
+we're then increasing their... We're correcting the data. Yes, exactly.
+To reflect that they do know...
+They do have other people in there. They do have other domestic workers in their networks.
+Yes, exactly. And I think that's conservative. But I have to say, what I mean is I think...
+What we're doing is we're saying, well, we don't know this person's degree size. We know that it's an
+error. And so we're assigning it a value that's the smallest possible size it could be. If you've
+nominated two people, given two cell phone numbers, we know that you know at least two...
+Maybe you know more that you just haven't nominated. So by changing the zero to a two in that case,
+I think what we're doing is we're underestimating that person's network size, which I think is
+conservative. What I mean is I think that won't inflate our estimates. I think. I should double
+check that though. But if it's... I'm almost sure it is. But anyway, that should be my homework.
+But if so, then I think that's perfectly fine. Because we're kind of shooting ourselves in
+the foot really. So whatever we find is gonna be... Yeah, I think it's gonna be fine. So
+because the degree size... Yeah. So there's sort of two-part solutions to that problem.
+So we take out the true ones, and then we
+modify the data to reflect the actual sample size for the others.
+Those both sound reasonable to me. Selim, does that sound okay?
+I have the similar suggestion that you have made. Based on the number or the amount of people they
+have provided the phone numbers. So we could take the amount of the phone numbers they have provided,
+although they have reported in the earlier question that they don't know any other domestic
+workers in the UK. So modifying it should make it consistent with the other existing
+survey findings. Good. Excellent. Great. Thank you. Okay. Now that's what that is. Excellent.
+So, let's see. In increasing order of easiness.
+Yeah. Increasing order of easiness. Okay, I'll save this. So what do we want to see? But that's at
+the end. Domestic worker size. So I went back and double-checked, and it's true.
+The thing that we're estimating is a proportion. But to do that, one of the inputs... So we have
+this R data, and we have a bunch of parameters, and all that's great. One of the inputs that's
+required for the estimators that I'm currently using, not for the INSOM estimator, but for the
+RDS estimators, is a guess, is a prior belief on the size of the population that we're sampling from.
+So what that means is, ideally, we would know how many domestic workers there are in the UK
+with a cell phone. So we know the number, the size of the population that we're sampling from.
+And of course, not necessarily the number of those experiencing exploitation.
+This doesn't have to be a hard and fast number. It can be like, well, here's my best guess,
+or here's a ranger, or whatever, whatever. But we need that number. And I've been looking,
+I thought it would be easy to find a labor statistic site or something. And I haven't come
+up with a great number, or one that I'm super happy with. My best guess is something like 1.7 million,
+which sounds a bit high. But then again, there's a lot of people in the UK. Anyway,
+so if you have suggestions on where to get reliable information on the number of domestic
+workers in the UK in the period that you all were sampling, that would be great.
+What I've been doing is just making up numbers. And I've been making up numbers and increasing
+them by orders of magnitude. So suppose there's 10,000. Suppose there's 100,000. Suppose there's
+a million, and seeing how, just as a very crude way to see how those inputs affect the outputs.
+And the good news is they seem to affect the outputs not very much. So this is great news,
+actually. This means our estimates are relatively insensitive to the prior knowledge, namely the
+number of domestic workers in the UK. That said, at some point, we'll need to settle on a number
+that we'll use. And of course, we'll say see appendix for robustness. But for the stuff that
+we report, I'll need a number. Does anyone have any thoughts on where to find information on that?
+Well, the only thing that we've suggested in the past, which may not be very helpful,
+is the overseas domestic worker visa numbers. Because that is a fixed statistic that
+ought to relate to how many visas for a six month period, because they last for six months,
+and then they expire, and people have to go home, in theory. And I can't remember off the top of
+my head what that number was, but I think it was around 76,000. It sounds about right. Yeah, yeah.
+So if we, I mean, that's my best stab at an official statistic. I don't know if you've come
+across anything. We have adopted to the most recent publishing from, I think it was also in
+Guardian, and it also referred Guardian of Times, that news article, and it also referred to the
+Government UK page. So they regularly published that. So yeah, it was about 70 or 80,000, I think.
+So I don't know how satisfactory that is. I haven't, I'm not familiar with the web pages
+you mentioned that you looked at. So if it's possible to send me the link, I could have a look
+and see if I can, if that sort of turns into any more robust ideas. But at the moment,
+the only thing I can suggest, which doesn't help us for the non British, sorry, for the British
+Nationals, but. Yeah, a bit. I mean, it's fine. The good news is like the quality of results are
+really, really robust, again, surprisingly robust. So, you know, we can see, here's a number that we
+can use and we can give a site to and say, clearly, this is an underestimate. Again, C appendix B for
+sensitivity analysis. Yeah, I'm perfectly fine with that. I'm perfectly fine with that because the
+results are again, qualitatively are really consistent. So I'm fine with that. So, so no,
+thank you for that. Thank you for that. Okay, I've got two more on one, what at least one I think
+is a bit is a bit tricky. So I've been as to so I you can identify three groups, three subgroups
+here, at least I'm sure you all could probably identify more. Those by ethnicity, so those coming
+from the Philippines. Those are easy to identify. Those that come from some Spanish speaking countries,
+like Bolivia, Colombia, but also Spain, and UK nationals who aren't one of these who aren't in the
+first two categories. The question is, do we want to do anything with that information in the
+following sense? In fact, Caroline, you suggested we could perform estimation separately, like
+completely separately, like, like, just use this group data, just use this data, just use this
+data and get three different sets. The UK people, I mean, it's really small. So the main interest
+is on the, now, so for the Philippines, I'm pretty comfortable with that. I wanted to get your thoughts
+on, well, so the general question is, do we want to do anything with that information? Here are
+some things we could do. Split them up into three groups, perform analyses separately, but especially
+between the two non-UK national groups. Question mark. If so, how comfortable are we group, the
+Philippine one, the Philippine group subgroup seems pretty very straightforward, very justified to me.
+Are we okay lumping Ecuadorians with Bolivians with Spanish, you know, sort of putting all
+Spanish people coming from Spanish speaking countries together? When I say together, I mean in
+the same subgroup, to which we will perform our estimation. What do you think?
+I don't know what sensitivities we might be, and the thing that comes to mind is Burt,
+if I'm not Burt, and his class, have you ever read a paper by Cyril Burt about,
+it's highly controversial, racist science, and actually he lumped people together and measured
+their brain size and then concluded that people in certain racial groups had smaller brains.
+I remember this, yeah. And there's been a huge critique, obviously, of this paper,
+and it was depicted as racist science because of the assumptions that he made when he grouped
+people. And I don't know what the sensitivities are about grouping Ecuadorians and Spanish people
+into some sort of larger category. And I don't know whether that any, if we did that it would,
+I don't know either. Stand the test of time, or whether we might be called out in the future for
+some sort of atrocity that we don't even know we're committing. Okay. So I don't know about that.
+I want, is there value in doing the Filipino grouping to me as far as I can predict sounds safer?
+Yeah. And is it, does it show any distinction, any distinct differences from taking the,
+I don't know. I tell you to take your point. Thank you. It's a very good, I hadn't even thought
+about the sort of test of time aspect. That's a really, really good point. My one reason for
+doing, my reason for doing this is twofold. One is just very, very technical because the
+estimators that I'm using have this underlying assumption that truly in the world the social
+network is connected, which means that there's some path between the Ecuadorian in our sample
+and the Filipino in our sample. Somebody, this person knows somebody who knows somebody who
+knows somebody who knows this person. Fine. We don't have to make that assumption,
+but it makes my life a lot easier. I think there's reasons to challenge that assumption,
+namely by language, for example, you might think that this, that a group of
+Philippine domestic workers are, are separate, are separated from
+maybe, and maybe that's the racist of me to say in the first place, but
+I'm not suggesting we're being racist. I'm just using that as an example, but I think
+Bert did when he realized he was making a racist assumption when he did it. I think we just have
+to be careful that we might not understand the assumptions we're making. I think that's
+right. So what I'm hearing from you is maybe just don't subgroup. Well, the second reason I was,
+I raised this, I wanted to separate this is because, because of these, in my opinion,
+relatively large estimated proportions, I was curious about heterogeneity, right? Like where,
+where are these big numbers coming from, basically? So that was sort of a more substantive
+motivation. And to answer your question, Caroline, I don't know. I haven't actually performed,
+I haven't done the estimation by subgroup. So I don't even know if there's anything interesting
+there. So maybe I should do that first. This might be moot, I guess is,
+I don't know the answer to your question. But what I'm hearing is like, play it safe and don't,
+maybe it's not such a good idea. Maybe we just leave, we leave the analysis at the,
+using the entire sample all at once and just state the assumptions and move on.
+I don't know. It's tempting. It's tempting to have a look at it. I mean, particularly for me,
+for the Filipino group, because we've got quite a large, two thirds of the group is Filipino. So
+could we somehow test the distinction between the Filipino group and the broader sample?
+Yeah, yeah, absolutely. Yeah.
+That strikes me as being a sort of safe test. Initially, dip our toe in the water
+with hopefully out and not offending anybody by, by means that we know that we don't understand.
+And like I said, that's actually, on my end, that's a much easier data task,
+because identifying that subgroup is just easier.
+Nicely, clearly delineated.
+Yeah. So thank you. I'll do that and include that in my next, like I said, I haven't,
+I just haven't done that analysis. But yeah, I'll do that. Okay, that sounds great.
+Okay, so the last hard question is, what do we want to present? What do you want me to make tables?
+Do you want me to make pictures? Do you want me to make p values? Like what, what do we want to,
+from the results, what do we want to show? And how do we want to show it? I don't know if I'm
+being clear. I'm probably being overly vague, aren't I? So we'll have.
+Thank you. No, I think it's a really, really reasonable question. It's just one I don't think
+that I know the answer to. So I suppose it's tied into where we think this might be publishable.
+And how technical a journal that is, and whether it's a journal that would
+require that sort of technical detail, or if we were publishing in a more lay journal,
+for want of a better way of putting it, whether that would be a turn off because they just,
+it depends, I suppose, who's going to review it? And what are they going to expect to see?
+Because we talked about various journal articles, sorry, journal at which we talked
+about the Journal of Modern Slavery, where I'm sure that I don't think it would be going,
+well, I may not be right, then it might be going to statistical experts
+in whatever technique we finally land on. So, because there is quite a lot of
+prevalence estimation within the modern slavery literature, so there will be people who do have
+statistical understanding. But I think you'd also mentioned was it POS, PLS? And really,
+I don't know anything about what their readership would expect. They're pretty technical. So modern
+slavery you're saying is a pretty technical, or at least they have technical competences?
+Well, I think there is increasing interest in prevalence within the modern slavery literature.
+There are recognised practitioners, I'm thinking of Clifford Zines at Nork,
+they do a lot of prevalence estimation, they work in the modern slavery field,
+so I would say if you're suggesting reviewers, it's that research group that potentially
+I'd identify as being a potential reviewer. No, I'm taking notes, thank you. Okay, so
+to make my life easy, it sounds like I'll start with just text, you know, point estimates,
+confidence intervals, whatever. Personally, I'm very, very visual, so I think pictures are
+easier to interpret for me than words, but it's also more work on my part. So it sounds like
+I'll start with point estimates, confidence intervals, so the plain James, so to speak,
+but vanilla I should say, ways of presentation, and then we can tweak from if we need to,
+when we get closer to submission. Is that what I'm hearing? Is that sound right?
+Yeah, I think I don't think I can add anything particularly helpful
+to this conversation, other than just trying to tailor it to whatever outlet we go for.
+Yeah, I do like diagrams, and I think Celine's already added a sort of representation of the
+network. So something along those lines really helps to make the hard statistics more understandable.
+So yeah, I agree with you that diagrams have great explanatory power.
+Mm-hmm. Yeah, okay, okay, I'll, good, but that's not good. So I'll sort of, well,
+I'll start and then, like I said, we can revisit this when we get closer to submission, but just,
+no, that's helpful for me, that's very, very helpful for me. I think those are all my questions.
+Let me double check, please. Oh, and you're right, I do, I haven't, there's this third
+protractor, I'm getting increasingly excited by or about that I haven't done, which is this
+combining the RDS with the, yeah, your 0.7, Caroline, exactly. Everything I've done and
+we've talked about is very off the shelf, which is fine. I'm not at all, I mean, these are,
+this is absolutely proper, but there is this, initially way back when I started talking about
+this, you had this very cool idea to do in some estimation and talked and thought and Scott
+thought some more and read some more and confused himself and, but yeah, there is,
+there definitely is this way to combine the two. I haven't done it, it will be manual, but I'm,
+I'm very excited by it, about it, mainly for the comparison, because, you know, all of these RDS
+techniques are giving relatively the same, you know, 30, 40% depending on XYZ, whatever.
+But there are all this class of estimators are all giving similar, but in my opinion,
+really high estimates and really curious to see how this sort of, you know, this outsider,
+this outsider in some method would, would, would compare. It's also cool because there's
+a sense in which it's, it's, it's using more information that you already have in your sample,
+which I think is, I'm always a huge fan of, of that, you know, using all the data that you can.
+So I haven't done that. I don't know what your thoughts on, like, is that,
+should I make that a priority? Is that, is the, is the RDS enough? Do you have any thoughts?
+It sounds really exciting. I mean, it's, you've got the time to do it, but she's always,
+we don't, we never have time to do anything. But if you want, if you find there is time,
+then it sounds really exciting and really interesting. And that is where we started
+this journey, trying to work out how to do nuisance. So to try and, if we, if we can,
+if our data can say anything along those lines, that would be really exciting.
+Yeah, I agree. And even if I'm, again, it depends on where we're going, but it's,
+it's not like the Journal of the American Statistical Association. I mean, it's not,
+what I'm trying to say is there is a, there is a methodological innovation here. It's not
+huge. It's sort of taking this paper and taking this paper and recognizing that
+they have the same D and I can use that, I can put them together. But I haven't seen it done.
+And I think it's, I think it's a very cool idea to, to, to combine these two. And like,
+like you said, Gerlain, like since, since, I mean, the information's there, it's sitting in our
+Excel file, right? Like, why not? Okay. So if we're going to do that then, I might ask one
+piece of help from Celine or whoever. And that's to code up the bootstrapping
+procedure. So I can do the estimator, but we'll need to estimate the uncertainty.
+And we know how to do that. It's with the paper that actually you
+summarize and included, Gerlain, and your bootstrapping doc.
+But we'll have to, we'll have to write that up in R. Can you do that,
+Celine? Or is that not something you're comfortable with?
+I can start looking into it.
+Okay. That'd be great.
+And then I will update you.
+Wonderful. The,
+Oh, that's a song.
+I'll email you both with the, let me make notes here, bootstrap.
+It, there's a lot already written. You've got a good head start in that, like, there's,
+the paper is pretty readable. They have some supplementary information. They have some R code
+already. So you, you're not starting from scratch, but it would, you will need,
+well, we will need at some point to implement this for this particular method.
+It would be a big help to me if I could do the estimation part and you could work on the
+bootstrap part and then poof, and then press publish.
+Can you, can you shout this paper again?
+Yeah, absolutely. I'll share the paper and the, the supplemental information.
+There is bootstrap. I'm just making notes to myself, but yeah, that's absolutely fine.
+And I'm glad to hear that you're excited about the insum too,
+Caroline. That, that's invigorating. That's, that, that, that, that helps, that helps me.
+I like, I like that.
+Yeah, that sounds really good.
+I think, I think there's one thing we have missed from your,
+from that list and your video. I don't think we've talked about number two,
+which was,
+Yes.
+How, how we, how we've dealt with the don't knows in the data at the moment.
+Good point.
+And we perhaps need to, to code them slightly differently.
+Perhaps as missing. I think that was your suggestion.
+Yes. And so I've, I, and please do not take any offense whatsoever.
+Slim, your, your, your, your recoding is, is absolutely, you know, invaluable.
+But I did change it a little bit in that, I think, and please correct me if I'm wrong,
+but I think you had been coding.
+So, so, so the issue is there's, there's, there's these different categories that one can answer,
+of course. And almost always one of the answers is don't know or not,
+don't prefer, prefer not to say or what have you.
+And slim, you had been coding those replies as an absence of exploitation, however measured
+in whatever type of exploitation. And I've recoded those as just missing.
+So you just take those observations out. Again, that's a bit conservative because that,
+because by, wait, is it? No, it's anti-conservative. So the absence of, yeah. So, right, my bad.
+That's anti-conservative because by removing the, by taking, okay, two options. People who say
+don't know are not experiencing exploitation. People who say don't know are not in our analysis.
+Here's Salim's initial way. Here's what I, what I'm suggesting. Now that I'm thinking about it,
+I think my suggested way is, is, is anti-conservative because
+relatively speaking, it'll look like there's more people in exploitation
+using my method than Salim's method. Hmm. Interesting. Caroline, thanks for bringing
+this up. I had, I missed this. Yes. So the question is, what do we want to do with the
+don't knows? That's exactly right. Okay. I'm just following what you're saying about
+if you take them out. I think that's right. And it makes things look
+worse. Yeah, worse, worse, worse, right, right. I think that's right. Because they had been coded
+as not experiencing exploitation. Exactly. Yeah, which is not really what we want to do. I suppose
+by nature, I would be more conservative.
+So we don't want, given that we've already got 30 to 40 percent of the population.
+Yeah. We don't want to make it, make it look even worse. Yeah. So we could say that. We could say,
+we're, here's what we're calling the don't knows. And by the way, that's conservative because
+yeah, we're, because really we're making a judgment call. We just as easily could say, well,
+no, actually the don't knows are experiencing exploitation. I mean, it's arbitrary, right?
+Like how, how, how, so in, in putting it in the not experiencing
+exploitation, counting them as not experiencing exploitation. Yeah, I agree with you, Caroline.
+It's, it's making our, yeah, it's conservative because then our estimated proportion of those
+experiencing, yeah, the estimate proportion would be small. Yeah, yeah. Yeah. Okay. My apologies,
+Celine. I did, I, you had it right all along. My bad. My bad. No, it's really useful clarification
+that so we could, and we just sort of being clear about what we're doing, but it's good that we
+don't have to recode it. So yeah, no, that's great. I think we're airing on the side of caution. So
+that seems to me the right way to, to be airing. Agreed. Brilliant. Thank you. I've been trying
+to type up what we've agreed just on the same email. The only one I haven't got anything against
+is six. What did we say? Oh, the six is just a statement, really.
+You would just, the current method you've been using for analysis and what it does.
+Yeah. So I finally sort of wrapped my head around these RDS math, sort of in, in, in a way that I
+should have ages ago. And I sort of, I see what they're all, they're all, they're all doing the
+same thing. And they're all just making a little bit of adjustments differently. And so what I'm
+thinking of doing is saying, you know, when we review the literature, like, okay, here's,
+here's all these various RDS methods. And yeah, they all have different assumptions.
+And we're going to do all of them, but in the appendix. And here's the one that we're going to
+pick to present, because in fact, actually the one, I found one even better than the SS,
+RDS, or RDSSS, called the Model Assisted, I like it better at least. But the point is we have all
+these sort of related methods, these RDS methods. And my thinking is to just pick one for presentation
+in the main text, and then say, you know, see appendix, whatever, for, for comparison. And
+the, the estimates really are quite different. And, but again, for us, the numbers are virtually
+identical, weirdly. So, yeah, I know, right? Yeah, yeah, yeah. I think that means something
+about robustness, I think. That's my, that's not rigorous, but that's sort of my, my thinking is
+that, or it could mean something else. And it could mean that that whole debate in the prevalence
+literature is, is wrinkles on wrinkles on wrinkles, you know, is, is doesn't really matter. It could,
+it could mean that the differences in the assumptions and the way that the different weights
+are calculated doesn't really matter very much is what it could mean. I don't know. Yeah. Yeah.
+But regarding point six, is that, is that, are we cool with me simply picking one for
+presentation purposes? And then, you know, here's the Boltzmann-Hoff estimator, and here's the
+Geil SS estimator, and here's the model assisted estimator, blah, blah, blah, blah, blah, blah,
+or, or should we, or alternatively, I guess we could just pick one and just justify it as
+strongly as, as we can. I don't know. What do you think? Yeah. Yeah. I think we have to
+have a reason for picking the one that we picked, but that's up to us. I'm happy to be guided by you
+on that. That's very polite and very clever of you. They think that's very good, Caroline.
+Well, the reason I'm, I'm a little bit hemming and hawing is that there's, there's basically two
+that I think are sort of the clear. Yeah, exactly. And, and I don't really have a strong preference
+on either. So that's, that's more homework for me, I suppose. The
+Yeah. Yeah. Well, the homework bit is the justification, right? And like, I've got to pick
+one. And so, right, so two are easy to justify with one of the two. I mean, again, at the end
+of the day, subjectively doesn't, it's not going to matter because the all, but, but you're 100%
+right. Like we got to pick one to use in the main text to show the results of, you know,
+to do the bootstraps for them, whatever. So that's a, yeah, that's, that's,
+all right. That's on me. That's on me. Very good. Very good. Thank you for bringing that up, Caroline.
+Again, thank you for bringing that up. It's just brought up really great points. So thanks.
+Right. I think we're there. Brilliant. It's really exciting. This is a lovely conversation to have
+on a Friday. We should do it more often. I'd love to. Yeah.
+Is it sensible to try and put a provisional meeting date in the diary, just in case
+it keeps us sort of at least talking about when we can meet, even if we find nearer to the time
+that we can't. And our Friday is generally okay for everybody. I can generally do a Friday.
+Selim, you're nodding. Scott, this afternoon. It would have to be
+definitely after one, likely. So this time is fine. Two is totally fine. But yeah, Friday after one.
+So if I pop another date in a month's time,
+or sooner, sooner, yeah. Okay. Then sort of three weeks, two weeks.
+Selim, how much time do you have to, okay. Yeah. Anything's good for me. Well,
+once I finish marking, anything's good with me, which should happen this weekend. So,
+yeah, I'll have time this term. So whenever, it's fine for me.
+All right, Selim, what did you say? Two or three weeks, which one would you like?
+The 16th of February. Okay. Again, two p.m. or before noon, or before noon time.
+It's okay. Two p.m. Yeah. Yeah. Let's put that in and we'll see what happens when we get there.
+And we can always jiggle it about a bit if we need to. But yeah, that's super.
+So for my tasks, before we end the conversation, I will do that coding up for the bootstrapping.
+And Dr. Moser, you said you would share that paper with me and some information for what I should do
+and how I do it. And Caroline, you mentioned earlier something about checking or rechecking
+the composite measures. Yes. Yeah, recalculating the composite measure. I'll send you a one
+page of what I think now ought to be in it. Okay, this will be helpful. Yeah. So I'll try and do
+that as soon as I can, which probably means I have to try and do it this afternoon. And then we'll,
+yeah. And then, yeah, if you can just recalculate a risk variable two, if we keep the original,
+but we'll try another column with a revised composite and then we haven't lost anything.
+But I think at the moment it's wrong as it stands for how we're conceptualizing the data.
+Brilliant. Thanks, everyone. It's really nice to see you all and happy 2024. So all right,
+we'll email and talk soon. Yeah, I'll send out the points of the note that I made so we've all
+got a copy. Brilliant. Thanks, everyone. Thank you. Thank you. Bye.
+Thank you.

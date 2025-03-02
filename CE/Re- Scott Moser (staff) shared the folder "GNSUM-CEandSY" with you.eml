@@ -1,0 +1,1205 @@
+Received: from AS8PR06MB7654.eurprd06.prod.outlook.com (2603:10a6:20b:31d::15)
+ by DB9PR06MB8202.eurprd06.prod.outlook.com with HTTPS; Tue, 22 Aug 2023
+ 14:02:04 +0000
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=exmail.nottingham.ac.uk;
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com (2603:10a6:20b:99::17)
+ by AS8PR06MB7654.eurprd06.prod.outlook.com (2603:10a6:20b:31d::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6699.24; Tue, 22 Aug
+ 2023 14:02:03 +0000
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::9f62:b24d:f392:b254]) by AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::9f62:b24d:f392:b254%6]) with mapi id 15.20.6699.022; Tue, 22 Aug 2023
+ 14:02:03 +0000
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>, Selim Yilmaz
+	<ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: Scott Moser (staff) shared the folder "GNSUM-CEandSY" with you
+Thread-Topic: Scott Moser (staff) shared the folder "GNSUM-CEandSY" with you
+Thread-Index: AQHZ0igpjAmtKOeySUOpvAHziwF/EK/zRYQzgAEbqziAAEJ36oAAQS0ggAFbl6w=
+Date: Tue, 22 Aug 2023 14:02:03 +0000
+Message-ID:
+ <AM6PR06MB59415023A01503C6E50268CEA01FA@AM6PR06MB5941.eurprd06.prod.outlook.com>
+References:
+ <odspmicro-Share-03d1d1a0-30cb-7000-2020-6b87b9f472cd-6b3be004-6713-43b9-9b14-1a0437f414bd-effd8f97-f446-4e38-bf99-60aa0b540e76-SendEmail-PreprocessPayload@5697CF738AC3>
+ <DB9PR06MB8202AAC1C7B8C606C16151618719A@DB9PR06MB8202.eurprd06.prod.outlook.com>
+ <AM6PR06MB594141AC69FBE195F2C57E11A01EA@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <VI1PR06MB64315FBF122D23E7812FF1FA901EA@VI1PR06MB6431.eurprd06.prod.outlook.com>
+ <DB9PR06MB82024F1B62D2ED07FE4BD2AF871EA@DB9PR06MB8202.eurprd06.prod.outlook.com>
+In-Reply-To:
+ <DB9PR06MB82024F1B62D2ED07FE4BD2AF871EA@DB9PR06MB8202.eurprd06.prod.outlook.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-GB
+X-MS-Has-Attach: yes
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+ <AM6PR06MB59415023A01503C6E50268CEA01FA@AM6PR06MB5941.eurprd06.prod.outlook.com>
+msip_labels:
+MIME-Version: 1.0
+X-MS-Exchange-Organization-MessageDirectionality: Originating
+X-MS-Exchange-Organization-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-Network-Message-Id:
+ 254057a9-d627-4036-baee-08dba3185d08
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ AM6PR06MB5941:EE_|AS8PR06MB7654:EE_|DB9PR06MB8202:EE_
+Return-Path: lizce@exmail.nottingham.ac.uk
+X-MS-Exchange-Organization-ExpirationStartTime: 22 Aug 2023 14:02:04.0264
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Office365-Filtering-Correlation-Id: 254057a9-d627-4036-baee-08dba3185d08
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR06MB5941.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:;DIR:INT;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Aug 2023 14:02:03.8293
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-Network-Message-Id: 254057a9-d627-4036-baee-08dba3185d08
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: QNjKyxfGNxcqHpu9GTUxhk27JoJwLk1+RJHd3IY42DCKoBw3l0tZwoFZ5CYDJj0igYH/yelrHtbEbRU7WpHmDMCz2xsObJh8eggB+afMv0N74oXDZUzxCouoDO8UVhF5
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR06MB7654
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:01.0308896
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.6699.022
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(425001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	aN+xY4mWOHBt4cXeuFt1lm5Y5VfjzhUnSudcyBo4GsqlQHCwDsoM5oCMrcbvcBqv0GS/cnFdh5SVr8fEjhyWngcrbtmZJNPC3GeuLQAiQKP1VwqktstywIBwRY01D2EgcegQa/5jZmTK59DQ7MZKkr0m+ZNoUGOXyOf5sjnUama/cZdvMkvzOleU9KYqg1FUnWb7KqFWdrEJTGx79jSARm6r/Yxv58AjNP2r8YyaMHDrQcH0zdF5edRqP3s6rhrk1jezyGz1NJDOv+Zxa0heRXiqaECDVdFmBdGAhC2rED+XLJhfSXGREfA9nkHjo9331HEJE6OvLn0OUKBIDyDy/q1bwLDElKMLErzDCByeWBICmVT5CZwBgVi46O2RzUkLHYrdMtL+lG5q1UVnvlmGn0S5TW0hBpCzuXpU/BgyuvVprS64NTuiHkY0Sy3HRT/YP5nKmqfC4xKjCPmqESq2uVFzgf1c5DZ7ugbCPA4v4dQpwk0i2RxQTAXJzONFgtaVMMLGcHXYjUD6enqwiiNEausmhl6YBdoMgiUHQ3wFLJNRv5U9KwttHZaRm5ULVfQ6wBsCWl9FnQwhrOc9nfRtfFM9UYmjFWr2V/jL/IGixlgcJc/KbeAR93rjgxUSHPkifB5LyOWtaFrXrQKWzEeFGfqoJT1i/3UJ4sV2/gBPYfcaZfOWyjkUqwN99h55W+cwGBZf1eOzRHCX8f+rkJ091PQvdRkmxo2xacW3XAcOfAjlm8RwDNKw8EGAMVewM8HaVYfiBooZZfU8vpZj9COD9353pvLljPmvH0udLcAD6rvyiEzOByOvnz3s4bKjmjPspqZm7DW/y/Bxigkx1QCZHQ==
+Content-type: multipart/mixed;
+	boundary="B_3821516406_1493482455"
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3821516406_1493482455
+Content-type: multipart/related;
+	boundary="B_3821516406_1586622782"
+
+--B_3821516406_1586622782
+Content-type: multipart/alternative;
+	boundary="B_3821516406_322845656"
+
+
+--B_3821516406_322845656
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+Dear Scott,
+
+Thanks for sparing us your valuable time this morning. I have made some not=
+es and pointers based on our discussion. Selim and I will commence with the =
+data cleaning and a suggested operationalisation of the 'how many do I know =
+in Hn' questions and hope to come back to you presently.
+
+
+I note from your comments that,
+Equation 23 v equation 24 of F&S 2016 are primarily of interest to us
+in essence, what we have is best presented as a convenience sample of peopl=
+e from the UK who have been employed as a domestic worker who have a cell ph=
+one number and have been employed in domestic work in the past 12 months
+There may be some data problems in the way that that questions that have th=
+e potential to skew the data e.g.'How many x do you know' has been specified=
+ to refer only to those with cell phones (this was done to reduce the risk o=
+f recall error)
+There may be some definitional issues - related to the multiple ways in whi=
+ch labour exploitation has been operationalised (it may be possible to group=
+ these questions to provide different lens e.g.  forced labour v less severe=
+ forms of labour abuse which could be interesting, with different robustness=
+ levels)
+More substantive issues may exist in relation to the size of the social net=
+work
+Given the data, it is not possible to calculate a frame ratio (although one=
+ approach suggested by F&S would suggest that this is not needed) or, due to=
+ the lack of enriched aggregated data, the true positive rate (although I mu=
+st admit that I still need to look at this again to understand this problem)=
+=20
+There is only one probe alter for domestic workers- 5-20 are more common
+Positively
+Bootstrapping is the way to go - which you can help us with=20
+We have the average degree from the hidden group to the frame so the data e=
+xists to calculate the degree ratio - to 95 CI  - can cite those who say thi=
+s is of interest  - what is needed now is a justification for the practical =
+usefulness of this adjustment factor
+The data is richer than is common for SU studies, with the option to explor=
+e multiple forms of H
+These can be run through with robust sensitivity checks - which you can hel=
+p us with too
+F&S 2016 identify 5 different GNSUM estimates - which one to choose is an i=
+nteresting question
+Micro household sampling is nice
+F and U and clear and coherent
+Data cleaning
+Separation of text and numbers e.g. Q1 of 2 seems to have both
+Logical inconsistencies e.g. Q85 and Q86 - Q86 must be no larger than Q85 (=
+follow logic to maximise data)
+Phone numbers entered where count expected (need to be converted
+Remove or explain apparent repetition e.g. Q83 and Q88
+I hope that I have covered all the substantive issues that we covered. Enjo=
+y your holiday
+
+Best wishes
+Caroline
+
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Nottingham Research Fellow, Rights Lab
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+=20
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+=20
+
+=20
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 21 August 2023 16:34
+To: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>; Caroline Emberson (staff=
+) <lizce@exmail.nottingham.ac.uk>
+Subject: RE: Scott Moser (staff) shared the folder "GNSUM-CEandSY" with you=
+=20
+=20
+Dear Caroline and Selim,
+
+=20
+
+Many thanks for this.  I=E2=80=99ve been (re-)reading up on this today and think =
+I have my head around it.  Attached are just a few thoughts, questions.  I=E2=80=
+=99ll have many for (of both!) tomorrow.  My main question at this point is ab=
+out sampling. Are there sampling weights?  What were the Primary Sampling Un=
+its (PSU)?
+
+=20
+
+Looking forward to chatting,
+
+Scott
+
+=20
+
+=20
+
+From: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>=20
+Sent: Monday, August 21, 2023 1:10 PM
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Scott Moser =
+(staff) <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: Scott Moser (staff) shared the folder "GNSUM-CEandSY" with you
+
+=20
+
+Dear Dr Moser and Caroline,=20
+
+=20
+
+Thank you for your email.=20
+
+=20
+
+In preparation for the meeting tomorrow, I am attaching the sample data and=
+ codebook as I cannot upload them to the OneDrive folder that Dr Moser share=
+d. I hope this will facilitate the discussion on GNSUM analysis.=20
+
+=20
+
+I look forward to meeting you both.=20
+
+=20
+
+Thank you.=20
+
+=20
+
+With kind regards,=20
+
+=20
+
+Selim Yilmaz
+
+From: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Sent: 21 August 2023 08:42
+To: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>; Selim Yilmaz <ldx=
+sy3@exmail.nottingham.ac.uk>
+Subject: Re: Scott Moser (staff) shared the folder "GNSUM-CEandSY" with you=
+=20
+
+=20
+
+Hi Scott,
+
+=20
+
+Tuesday at 11 is fine for me. I have edited the meeting link accordingly. I=
+ think your outlook may be automatically declining new invitations, so do pl=
+ease let me know if you need be to forward the link to you some other way.
+
+=20
+
+Selim, could you please export the data from our JISC survey so that Scott =
+can take a look?
+
+=20
+
+Thanks again for accommodating us, Scott. I really appreciate it
+
+=20
+
+Best wishes
+
+Caroline
+
+=20
+
+=20
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Nottingham Research Fellow, Rights Lab
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+=20
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+=20
+
+=20
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+=20
+
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 20 August 2023 15:48
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz=
+ <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: Scott Moser (staff) shared the folder "GNSUM-CEandSY" with you=
+=20
+
+=20
+
+Sp sorry, but I=E2=80=99ve been  ill the past few days and as a result not s Le t=
+o properly prepare for our meeting, scheduled for tomorrow, Monday.
+
+Can I please ask that we postpone it until Tuesday at the same time? Or at =
+some point later this week?
+
+Recognize this is =E2=80=9Ceating into=E2=80=9C my vacation time but I am willing to ma=
+ke such accommodations.
+
+Thank you
+
+=20
+
+=20
+
+Get Outlook for iOS
+
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: Saturday, August 19, 2023 12:03:11 AM
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz=
+ <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Scott Moser (staff) shared the folder "GNSUM-CEandSY" with you=20
+
+=20
+
+Scott Moser (staff) shared a folder with you=20
+Did this get to yous.. sorry. I hat MS products.
+, and the don=E2=80=99t make sense nor work well.=20
+GNSUM-CEandSY=20
+This link only works for the direct recipients of this message.=20
+Open
+
+=20
+
+Privacy Statement=20
+
+
+--B_3821516406_322845656
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><style t=
+ype=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bottom:0;} </st=
+yle></head><body dir=3D"ltr"><div style=3D"font-family: Calibri, Arial, Helvetic=
+a, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof"=
+>Dear Scott,</div><div style=3D"font-family: Calibri, Arial, Helvetica, sans-s=
+erif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof"><br></di=
+v><div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size:=
+ 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof">Thanks for sparing us yo=
+ur valuable time this morning. I have made some notes and pointers based on =
+our discussion. Selim and I will commence with the data cleaning and a sugge=
+sted operationalisation of the 'how many do I know in Hn' questions and hope=
+ to come back to you presently.</div><div style=3D"font-family: Calibri, Arial=
+, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"eleme=
+ntToProof"><br></div><div style=3D"font-family: Calibri, Arial, Helvetica, san=
+s-serif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof"><br><=
+/div><div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-si=
+ze: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof">I note from your comm=
+ents that,</div><div style=3D"font-family: Calibri, Arial, Helvetica, sans-ser=
+if; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof"><ul data-e=
+diting-info=3D"{&quot;orderedStyleType&quot;:1,&quot;unorderedStyleType&quot;:=
+1}"><li style=3D"list-style-type: disc;"><span>Equation 23 v equation 24 of F&=
+amp;S 2016 are primarily of interest to us</span></li></ul></div><div style=3D=
+"font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 12pt; color:=
+ rgb(0, 0, 0);" class=3D"elementToProof"><ul data-editing-info=3D"{&quot;ordered=
+StyleType&quot;:1,&quot;unorderedStyleType&quot;:1}"><li style=3D"list-style-t=
+ype: disc;"><span>in essence, what we have is best presented as a convenienc=
+e sample of people from the UK who have been employed as a domestic worker w=
+ho have a cell phone number and have been employed in domestic work in the p=
+ast 12 months</span></li><li style=3D"list-style-type: disc;"><span>There may =
+be some data problems in the way that that questions that have the potential=
+ to skew the data e.g.'How many x do you know' has been specified to refer o=
+nly to those with cell phones (this was done to reduce the risk of recall er=
+ror)</span></li><li style=3D"list-style-type: disc;"><span>There may be some d=
+efinitional issues - related to the multiple ways in which labour exploitati=
+on has been operationalised (it may be possible to group these questions to =
+provide different lens e.g.&nbsp; forced labour v less severe forms of labou=
+r abuse which could be interesting, with different robustness levels)</span>=
+</li><li style=3D"list-style-type: disc;"><span>More substantive issues may ex=
+ist in relation to the size of the social network</span></li><li style=3D"list=
+-style-type: disc;"><span>Given the data, it is not possible to calculate a =
+frame ratio (although one approach suggested by F&amp;S would suggest that t=
+his is not needed) or, due to the lack of enriched aggregated data, the true=
+ positive rate (although I must admit that I still need to look at this agai=
+n to understand this problem)&nbsp;</span></li><li style=3D"list-style-type: d=
+isc;"><span>There is only one probe alter for domestic workers- 5-20 are mor=
+e common</span></li></ul><div>Positively</div><div><ul data-editing-info=3D"{&=
+quot;orderedStyleType&quot;:1,&quot;unorderedStyleType&quot;:1}"><li style=3D"=
+list-style-type: disc;"><span>Bootstrapping is the way to go - which you can=
+ help us with&nbsp;</span></li><li style=3D"list-style-type: disc;"><span>We h=
+ave the average degree from the hidden group to the frame so the data exists=
+ to calculate the degree ratio - to 95 CI&nbsp; - can cite those who say thi=
+s is of interest&nbsp; - what is needed now is a justification for the pract=
+ical usefulness of this adjustment factor</span></li><li style=3D"list-style-t=
+ype: disc;">The data is richer than is common for SU studies, with the optio=
+n to explore multiple forms of H</li><li style=3D"list-style-type: disc;">Thes=
+e can be run through with robust sensitivity checks - which you can help us =
+with too</li><li style=3D"list-style-type: disc;">F&amp;S 2016 identify 5 diff=
+erent GNSUM estimates - which one to choose is an interesting question</li><=
+li style=3D"list-style-type: disc;">Micro household sampling is nice</li><li s=
+tyle=3D"list-style-type: disc;">F and U and clear and coherent</li></ul><div><=
+span></span><span></span><span></span><span></span><span></span><span></span=
+><span></span></div></div></div><div style=3D"font-family: Calibri, Arial, Hel=
+vetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToP=
+roof"><br></div><div style=3D"font-family: Calibri, Arial, Helvetica, sans-ser=
+if; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof">Data clean=
+ing</div><div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; fon=
+t-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof"><ul data-editing-=
+info=3D"{&quot;orderedStyleType&quot;:1,&quot;unorderedStyleType&quot;:1}"><li=
+ style=3D"list-style-type: disc;">Separation of text and numbers e.g. Q1 of 2 =
+seems to have both</li><li style=3D"font-family: Calibri, Arial, Helvetica, sa=
+ns-serif; font-size: 12pt; list-style-type: disc; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">Logical inconsistencies e.g. Q85 and Q86 - Q86 must be no=
+ larger than Q85 (follow logic to maximise data)</li><li style=3D"font-family:=
+ Calibri, Arial, Helvetica, sans-serif; font-size: 12pt; list-style-type: di=
+sc; color: rgb(0, 0, 0);" class=3D"elementToProof">Phone numbers entered where=
+ count expected (need to be converted</li><li style=3D"font-family: Calibri, A=
+rial, Helvetica, sans-serif; font-size: 12pt; list-style-type: disc; color: =
+rgb(0, 0, 0);" class=3D"elementToProof">Remove or explain apparent repetition =
+e.g. Q83 and Q88</li></ul><div>I hope that I have covered all the substantiv=
+e issues that we covered. Enjoy your holiday</div><div><br></div><div>Best w=
+ishes</div><div>Caroline</div></div><div style=3D"font-family: Calibri, Arial,=
+ Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elemen=
+tToProof"></div><div style=3D"font-family: Calibri, Arial, Helvetica, sans-ser=
+if; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof"><br></div>=
+<div class=3D"elementToProof"><div style=3D"font-family: Calibri, Arial, Helveti=
+ca, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br></div><div id=3D"Si=
+gnature"><div><div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif=
+; font-size: 12pt; color: rgb(0, 0, 0);"><br></div><div></div><div id=3D"divta=
+gdefaultwrapper" dir=3D"ltr" style=3D"font-size: 12pt; font-family: Calibri, Hel=
+vetica, sans-serif; color: rgb(0, 0, 0);"><p style=3D"margin-top:0px; margin-b=
+ottom:0px; margin-top:0; margin-bottom:0"></p><p class=3D"MsoNormal" style=3D"ma=
+rgin-top:0px; margin-bottom:0px"><font face=3D"Arial, sans-serif" style=3D"color=
+: rgb(0, 155, 189);"><b>Dr Caroline Emberson (preferred pronouns she/her)</b=
+></font></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px"><=
+font face=3D"Arial, sans-serif" style=3D"color: rgb(19, 27, 87);"><b>Nottingham =
+Research Fellow, Rights Lab</b></font></p><p class=3D"MsoNormal" style=3D"margin=
+-top:0px; margin-bottom:0px"><span style=3D"font-size:9.0pt; font-family:&quot=
+;Arial&quot;,sans-serif">&nbsp;</span></p><p class=3D"MsoNormal" style=3D"margin=
+-top:0px; margin-bottom:0px"><span style=3D"font-size: 9pt; font-family: Arial=
+, sans-serif; color: rgb(19, 27, 87);">Nottingham University Business School=
+ OMIS/ Faculty of Social Science<br>University of Nottingham</span><sub><spa=
+n style=3D"font-size:11.0pt; font-family:&quot;Arial&quot;,sans-serif"></span>=
+</sub></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px"><sp=
+an style=3D"font-size: 9pt; font-family: Arial, sans-serif; color: rgb(19, 27,=
+ 87);">A20, Highfield House</span></p><p class=3D"MsoNormal" style=3D"margin-top=
+:0px; margin-bottom:0px"><span style=3D"font-size: 9pt; font-family: Arial, sa=
+ns-serif; color: rgb(19, 27, 87);">University Park</span><sub><span style=3D"f=
+ont-size:11.0pt; font-family:&quot;Arial&quot;,sans-serif"></span></sub></p>=
+<p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px"><span style=3D"=
+font-size: 9pt; font-family: Arial, sans-serif; color: rgb(19, 27, 87);">Not=
+tingham, NG7 2RD</span></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margi=
+n-bottom:0px"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sa=
+ns-serif">&nbsp;</span></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margi=
+n-bottom:0px"><span style=3D"font-size: 9pt; font-family: Arial, sans-serif; c=
+olor: rgb(19, 27, 87);">+44 (0) 115 8283072<b>&nbsp;</b></span><b><span styl=
+e=3D"font-size: 9pt; font-family: Calibri, sans-serif; color: rgb(19, 27, 87);=
+">| </span></b><span class=3D"MsoHyperlink"><span style=3D"font-size:9.0pt; font=
+-family:&quot;Arial&quot;,sans-serif"><a href=3D"http://nottingham.ac.uk/" tar=
+get=3D"_blank" id=3D"OWA6b8a7df4-d882-c548-865e-c7dffd164c7d" class=3D"OWAAutoLink=
+">caroline.emberson@nottingham.ac.uk</a></span></span><span style=3D"font-size=
+:11.0pt; font-family:&quot;Arial&quot;,sans-serif"></span></p><p class=3D"MsoN=
+ormal" style=3D"margin-top:0px; margin-bottom:0px"><span style=3D"font-size: 9pt=
+; font-family: Arial, sans-serif; color: black;">&nbsp;</span></p><p class=3D"=
+MsoNormal" style=3D"margin-top:0px; margin-bottom:0px"><a href=3D"https://www.no=
+ttingham.ac.uk/servicesforbusiness" id=3D"OWA0ea4bf26-05fa-5f6d-fb3f-8639372de=
+755" class=3D"OWAAutoLink"><span style=3D"font-size: 11pt; font-family: Arial, s=
+ans-serif; text-decoration: none; color: black;"></span></a><span style=3D"fon=
+t-size: 11pt; font-family: Arial, sans-serif; color: black;"></span></p><p c=
+lass=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px"><span style=3D"font=
+-size: 9pt; font-family: Arial, sans-serif; color: black;">&nbsp;</span></p>=
+<p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px; text-autospac=
+e:none"><b><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Georgia, s=
+erif; color: rgb(21, 118, 158);">Follow us</span></b><span lang=3D"EN-US" styl=
+e=3D"font-size: 9pt; font-family: Calibri, sans-serif; color: rgb(25, 25, 25);=
+"></span></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px; =
+text-autospace:none"><u style=3D""><span lang=3D"EN-US" style=3D"font-size: 9pt; f=
+ont-family: Arial, sans-serif; color: rgb(0, 0, 233);"><a href=3D"http://faceb=
+ook.com/TheUniofNottingham" id=3D"OWAa089b8eb-a516-9282-517e-3fd928e42c70" cla=
+ss=3D"OWAAutoLink"><span style=3D"color: rgb(0, 0, 233);">Facebook.com/UniofNott=
+ingham</span></a></span></u><span lang=3D"EN-US" style=3D"font-size: 9pt; font-f=
+amily: Arial, sans-serif; color: rgb(25, 25, 25);"></span></p><p class=3D"MsoN=
+ormal" style=3D"margin-top:0px; margin-bottom:0px; text-autospace:none"><u sty=
+le=3D""><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Arial, sans-ser=
+if; color: rgb(0, 0, 233);"><a href=3D"http://twitter.com/UniofNottingham" id=3D=
+"OWA959233d4-25e0-26bc-8193-a413e5e80c11" class=3D"OWAAutoLink"><span style=3D"c=
+olor: rgb(0, 0, 233);">Twitter.com/UniofNottingham</span></a></span></u><spa=
+n lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Arial, sans-serif; color:=
+ rgb(25, 25, 25);"></span></p><p class=3D"MsoNormal" style=3D"margin-top:0px; ma=
+rgin-bottom:0px; text-autospace:none"><u style=3D""><span lang=3D"EN-US" style=3D"=
+font-size: 9pt; font-family: Arial, sans-serif; color: rgb(0, 0, 233);"><a h=
+ref=3D"http://youtube.com/nottmuniversity" id=3D"OWA57723449-85b8-6338-8c82-da5c=
+8c2897dc" class=3D"OWAAutoLink"><span style=3D"color: rgb(0, 0, 233);">Youtube.c=
+om/nottmuniversity</span></a></span></u><span lang=3D"EN-US" style=3D"font-size:=
+ 9pt; font-family: Arial, sans-serif; color: rgb(25, 25, 25);"></span></p><p=
+ class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px; text-autospace:=
+none"><u style=3D""><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Ari=
+al, sans-serif; color: rgb(0, 0, 233);"><a href=3D"http://instagram.com/uniofn=
+ottingham" id=3D"OWA365dfb46-782b-0b6d-3cc3-8054390e826d" class=3D"OWAAutoLink">=
+<span style=3D"color: rgb(0, 0, 233);">Instagram.com/uniofnottingham</span></a=
+></span></u><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Arial, sa=
+ns-serif; color: rgb(25, 25, 25);"></span></p><p class=3D"MsoNormal" style=3D"ma=
+rgin-top:0px; margin-bottom:0px"><u style=3D""><span lang=3D"EN-US" style=3D"font-=
+size: 9pt; font-family: Arial, sans-serif; color: rgb(0, 0, 233);"><a href=3D"=
+http://linkedin.com/company/university-of-nottingham" id=3D"OWAba4e3bdb-2727-7=
+cf9-fae6-2d0fc9baf27a" class=3D"OWAAutoLink"><span style=3D"color: rgb(0, 0, 233=
+);">Linkedin.com/company/university-of-nottingham</span></a></span></u></p><=
+p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px"><u style=3D""><s=
+pan lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Arial, sans-serif; colo=
+r: rgb(0, 0, 233);"><a href=3D"http://www.foursquare.com/uniofnottingham" id=3D"=
+OWAd6a62f0a-3042-0726-071b-fb397a1f5da6" class=3D"OWAAutoLink"><span style=3D"co=
+lor: rgb(0, 0, 233);">F</span>oursquare.com/uniofnottingham</a></span></u></=
+p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px"><u style=3D""=
+><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Arial, sans-serif; c=
+olor: rgb(0, 0, 233);"><span style=3D"text-decoration:none">&nbsp;</span></spa=
+n></u></p><br><p style=3D"margin-top:0px; margin-bottom:0px"></p></div></div><=
+/div></div><div id=3D"appendonsend"></div><hr style=3D"display:inline-block;widt=
+h:98%" tabindex=3D"-1"><div id=3D"divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, =
+sans-serif" style=3D"font-size:11pt" color=3D"#000000"><b>From:</b> Scott Moser =
+(staff) &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Sent:</b> 21 August 202=
+3 16:34<br><b>To:</b> Selim Yilmaz &lt;ldxsy3@exmail.nottingham.ac.uk&gt;; C=
+aroline Emberson (staff) &lt;lizce@exmail.nottingham.ac.uk&gt;<br><b>Subject=
+:</b> RE: Scott Moser (staff) shared the folder &quot;GNSUM-CEandSY&quot; wi=
+th you</font> <div>&nbsp;</div></div><style>
+<!--
+@font-face
+	{font-family:"Cambria Math"}
+@font-face
+	{font-family:Calibri}
+@font-face
+	{font-family:Georgia}
+@font-face
+	{font-family:Aptos}
+p.x_MsoNormal, li.x_MsoNormal, div.x_MsoNormal
+	{margin:0cm;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif}
+a:link, span.x_MsoHyperlink
+	{color:blue;
+	text-decoration:underline}
+span.x_MsoSmartlink
+	{color:blue;
+	background:#F3F2F1;
+	text-decoration:underline}
+span.x_contentpasted0
+	{}
+p.x_xmsonormal, li.x_xmsonormal, div.x_xmsonormal
+	{margin:0cm;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif}
+span.x_xmsohyperlink
+	{}
+span.x_EmailStyle23
+	{font-family:"Calibri",sans-serif;
+	color:windowtext}
+.x_MsoChpDefault
+	{font-size:10.0pt}
+@page WordSection1
+	{margin:72.0pt 72.0pt 72.0pt 72.0pt}
+div.x_WordSection1
+	{}
+-->
+</style><div lang=3D"EN-GB" link=3D"blue" vlink=3D"purple" style=3D"word-wrap:break=
+-word"><div class=3D"x_WordSection1"><p class=3D"x_MsoNormal"><span style=3D"">Dea=
+r Caroline and Selim,</span></p><p class=3D"x_MsoNormal"><span style=3D"">&nbsp;=
+</span></p><p class=3D"x_MsoNormal"><span style=3D"">Many thanks for this.&nbsp;=
+ I=E2=80=99ve been (re-)reading up on this today and think I have my head around i=
+t.&nbsp; Attached are just a few thoughts, questions.&nbsp; I=E2=80=99ll have many=
+ for (of both!) tomorrow.&nbsp; My main question at this point is about samp=
+ling. Are there sampling weights?&nbsp; What were the Primary Sampling Units=
+ (PSU)?</span></p><p class=3D"x_MsoNormal"><span style=3D"">&nbsp;</span></p><p =
+class=3D"x_MsoNormal"><span style=3D"">Looking forward to chatting,</span></p><p=
+ class=3D"x_MsoNormal"><span style=3D"">Scott</span></p><p class=3D"x_MsoNormal"><=
+span style=3D"">&nbsp;</span></p><p class=3D"x_MsoNormal"><span style=3D"">&nbsp;<=
+/span></p><div style=3D"border:none; border-left:solid blue 1.5pt; padding:0cm=
+ 0cm 0cm 4.0pt"><div><div style=3D"border:none; border-top:solid #E1E1E1 1.0pt=
+; padding:3.0pt 0cm 0cm 0cm"><p class=3D"x_MsoNormal"><b><span lang=3D"EN-US">Fr=
+om:</span></b><span lang=3D"EN-US"> Selim Yilmaz &lt;ldxsy3@exmail.nottingham.=
+ac.uk&gt; <br><b>Sent:</b> Monday, August 21, 2023 1:10 PM<br><b>To:</b> Car=
+oline Emberson (staff) &lt;lizce@exmail.nottingham.ac.uk&gt;; Scott Moser (s=
+taff) &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Subject:</b> Re: Scott Mo=
+ser (staff) shared the folder &quot;GNSUM-CEandSY&quot; with you</span></p><=
+/div></div><p class=3D"x_MsoNormal">&nbsp;</p><div><p class=3D"x_MsoNormal"><spa=
+n class=3D"x_contentpasted0"><span style=3D"font-size:12.0pt; font-family:&quot;=
+Aptos&quot;,sans-serif; color:black">Dear Dr Moser and Caroline, </span></sp=
+an><span style=3D"font-size:12.0pt; font-family:&quot;Aptos&quot;,sans-serif; =
+color:black"></span></p></div><div><div><p class=3D"x_MsoNormal"><span style=3D"=
+font-size:12.0pt; font-family:&quot;Aptos&quot;,sans-serif; color:black">&nb=
+sp;</span></p></div><div><p class=3D"x_MsoNormal"><span style=3D"font-size:12.0p=
+t; font-family:&quot;Aptos&quot;,sans-serif; color:black">Thank you for your=
+ email. </span></p></div><div><p class=3D"x_MsoNormal"><span style=3D"font-size:=
+12.0pt; font-family:&quot;Aptos&quot;,sans-serif; color:black">&nbsp;</span>=
+</p></div><div><p class=3D"x_MsoNormal"><span style=3D"font-size:12.0pt; font-fa=
+mily:&quot;Aptos&quot;,sans-serif; color:black">In preparation for the meeti=
+ng tomorrow, I am attaching the sample data and codebook as I cannot upload =
+them to the OneDrive folder that Dr Moser shared. I hope this will facilitat=
+e the discussion on GNSUM analysis. </span></p></div><div><p class=3D"x_MsoNor=
+mal"><span style=3D"font-size:12.0pt; font-family:&quot;Aptos&quot;,sans-serif=
+; color:black">&nbsp;</span></p></div><div><p class=3D"x_MsoNormal"><span styl=
+e=3D"font-size:12.0pt; font-family:&quot;Aptos&quot;,sans-serif; color:black">=
+I look forward to meeting you both. </span></p></div><div><p class=3D"x_MsoNor=
+mal"><span style=3D"font-size:12.0pt; font-family:&quot;Aptos&quot;,sans-serif=
+; color:black">&nbsp;</span></p></div><div><p class=3D"x_MsoNormal"><span styl=
+e=3D"font-size:12.0pt; font-family:&quot;Aptos&quot;,sans-serif; color:black">=
+Thank you. </span></p></div><div><p class=3D"x_MsoNormal"><span style=3D"font-si=
+ze:12.0pt; font-family:&quot;Aptos&quot;,sans-serif; color:black">&nbsp;</sp=
+an></p></div><div><p class=3D"x_MsoNormal"><span style=3D"font-size:12.0pt; font=
+-family:&quot;Aptos&quot;,sans-serif; color:black">With kind regards, </span=
+></p></div><div><p class=3D"x_MsoNormal"><span style=3D"font-size:12.0pt; font-f=
+amily:&quot;Aptos&quot;,sans-serif; color:black">&nbsp;</span></p></div><p c=
+lass=3D"x_MsoNormal"><span class=3D"x_contentpasted0"><span style=3D"font-size:12.=
+0pt; font-family:&quot;Aptos&quot;,sans-serif; color:black">Selim Yilmaz</sp=
+an></span><span style=3D"font-size:12.0pt; font-family:&quot;Aptos&quot;,sans-=
+serif; color:black"></span></p></div><div class=3D"x_MsoNormal" align=3D"center"=
+ style=3D"text-align:center"><hr size=3D"2" width=3D"98%" align=3D"center"></div><di=
+v id=3D"x_divRplyFwdMsg"><p class=3D"x_MsoNormal"><b><span style=3D"color:black">F=
+rom:</span></b><span style=3D"color:black"> Caroline Emberson (staff) &lt;<a h=
+ref=3D"mailto:lizce@exmail.nottingham.ac.uk">lizce@exmail.nottingham.ac.uk</a>=
+&gt;<br><b>Sent:</b> 21 August 2023 08:42<br><b>To:</b> Scott Moser (staff) =
+&lt;<a href=3D"mailto:ldzsm2@exmail.nottingham.ac.uk">ldzsm2@exmail.nottingham=
+.ac.uk</a>&gt;; Selim Yilmaz &lt;<a href=3D"mailto:ldxsy3@exmail.nottingham.ac=
+.uk">ldxsy3@exmail.nottingham.ac.uk</a>&gt;<br><b>Subject:</b> Re: Scott Mos=
+er (staff) shared the folder &quot;GNSUM-CEandSY&quot; with you</span> </p><=
+div><p class=3D"x_MsoNormal">&nbsp;</p></div></div><div><div><p class=3D"x_MsoNo=
+rmal"><span style=3D"font-size:12.0pt; color:black">Hi Scott,</span></p></div>=
+<div><p class=3D"x_MsoNormal"><span style=3D"font-size:12.0pt; color:black">&nbs=
+p;</span></p></div><div><p class=3D"x_MsoNormal"><span style=3D"font-size:12.0pt=
+; color:black">Tuesday at 11 is fine for me. I have edited the meeting link =
+accordingly. I think your outlook may be automatically declining new invitat=
+ions, so do please let me know if you need be to forward the link to you som=
+e other way.</span></p></div><div><p class=3D"x_MsoNormal"><span style=3D"font-s=
+ize:12.0pt; color:black">&nbsp;</span></p></div><div><p class=3D"x_MsoNormal">=
+<span style=3D"font-size:12.0pt; color:black">Selim, could you please export t=
+he data from our JISC survey so that Scott can take a look?</span></p></div>=
+<div><p class=3D"x_MsoNormal"><span style=3D"font-size:12.0pt; color:black">&nbs=
+p;</span></p></div><div><p class=3D"x_MsoNormal"><span style=3D"font-size:12.0pt=
+; color:black">Thanks again for accommodating us, Scott. I really appreciate=
+ it</span></p></div><div><p class=3D"x_MsoNormal"><span style=3D"font-size:12.0p=
+t; color:black">&nbsp;</span></p></div><div><p class=3D"x_MsoNormal"><span sty=
+le=3D"font-size:12.0pt; color:black">Best wishes</span></p></div><div><p class=
+=3D"x_MsoNormal"><span style=3D"font-size:12.0pt; color:black">Caroline</span></=
+p></div><div><div><p class=3D"x_MsoNormal"><span style=3D"font-size:12.0pt; colo=
+r:black">&nbsp;</span></p></div><div id=3D"x_x_Signature"><div><div><p class=3D"=
+x_MsoNormal"><span style=3D"font-size:12.0pt; color:black">&nbsp;</span></p></=
+div><div id=3D"x_x_divtagdefaultwrapper"><p class=3D"x_xmsonormal"><b><span styl=
+e=3D"font-size:12.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#009BBD=
+">Dr Caroline Emberson (preferred pronouns she/her)</span></b><span style=3D"f=
+ont-size:12.0pt; color:black"></span></p><p class=3D"x_xmsonormal"><b><span st=
+yle=3D"font-size:12.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#131B=
+57">Nottingham Research Fellow, Rights Lab</span></b><span style=3D"font-size:=
+12.0pt; color:black"></span></p><p class=3D"x_xmsonormal"><span style=3D"font-si=
+ze:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:black">&nbsp;</spa=
+n><span style=3D"font-size:12.0pt; color:black"></span></p><p class=3D"x_xmsonor=
+mal"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif;=
+ color:#131B57">Nottingham University Business School OMIS/ Faculty of Socia=
+l Science<br>University of Nottingham</span><span style=3D"font-size:12.0pt; c=
+olor:black"></span></p><p class=3D"x_xmsonormal"><span style=3D"font-size:9.0pt;=
+ font-family:&quot;Arial&quot;,sans-serif; color:#131B57">A20, Highfield Hou=
+se</span><span style=3D"font-size:12.0pt; color:black"></span></p><p class=3D"x_=
+xmsonormal"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans=
+-serif; color:#131B57">University Park</span><span style=3D"font-size:12.0pt; =
+color:black"></span></p><p class=3D"x_xmsonormal"><span style=3D"font-size:9.0pt=
+; font-family:&quot;Arial&quot;,sans-serif; color:#131B57">Nottingham, NG7 2=
+RD</span><span style=3D"font-size:12.0pt; color:black"></span></p><p class=3D"x_=
+xmsonormal"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans=
+-serif; color:black">&nbsp;</span><span style=3D"font-size:12.0pt; color:black=
+"></span></p><p class=3D"x_xmsonormal"><span style=3D"font-size:9.0pt; font-fami=
+ly:&quot;Arial&quot;,sans-serif; color:#131B57">+44 (0) 115 8283072<b>&nbsp;=
+</b></span><b><span style=3D"font-size:9.0pt; color:#131B57">| </span></b><spa=
+n class=3D"x_xmsohyperlink"><span style=3D"font-size:9.0pt; font-family:&quot;Ar=
+ial&quot;,sans-serif; color:black"><a href=3D"http://nottingham.ac.uk/">caroli=
+ne.emberson@nottingham.ac.uk</a></span></span><span style=3D"font-size:12.0pt;=
+ color:black"></span></p><p class=3D"x_xmsonormal"><span style=3D"font-size:9.0p=
+t; font-family:&quot;Arial&quot;,sans-serif; color:black">&nbsp;</span><span=
+ style=3D"font-size:12.0pt; color:black"></span></p><p class=3D"x_xmsonormal"><s=
+pan style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:=
+black">&nbsp;</span><span style=3D"font-size:12.0pt; color:black"></span></p><=
+p class=3D"x_xmsonormal" style=3D"text-autospace:none"><b><span lang=3D"EN-US" sty=
+le=3D"font-size:9.0pt; font-family:&quot;Georgia&quot;,serif; color:#15769E">F=
+ollow us</span></b><span style=3D"font-size:12.0pt; color:black"></span></p><p=
+ class=3D"x_xmsonormal" style=3D"text-autospace:none"><u><span lang=3D"EN-US" styl=
+e=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9"=
+><a href=3D"http://facebook.com/TheUniofNottingham"><span style=3D"color:#0000E9=
+">Facebook.com/UniofNottingham</span></a></span></u><span style=3D"font-size:1=
+2.0pt; color:black"></span></p><p class=3D"x_xmsonormal" style=3D"text-autospace=
+:none"><u><span lang=3D"EN-US" style=3D"font-size:9.0pt; font-family:&quot;Arial=
+&quot;,sans-serif; color:#0000E9"><a href=3D"http://twitter.com/UniofNottingha=
+m"><span style=3D"color:#0000E9">Twitter.com/UniofNottingham</span></a></span>=
+</u><span style=3D"font-size:12.0pt; color:black"></span></p><p class=3D"x_xmson=
+ormal" style=3D"text-autospace:none"><u><span lang=3D"EN-US" style=3D"font-size:9.=
+0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http:=
+//youtube.com/nottmuniversity"><span style=3D"color:#0000E9">Youtube.com/nottm=
+university</span></a></span></u><span style=3D"font-size:12.0pt; color:black">=
+</span></p><p class=3D"x_xmsonormal" style=3D"text-autospace:none"><u><span lang=
+=3D"EN-US" style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; c=
+olor:#0000E9"><a href=3D"http://instagram.com/uniofnottingham"><span style=3D"co=
+lor:#0000E9">Instagram.com/uniofnottingham</span></a></span></u><span style=3D=
+"font-size:12.0pt; color:black"></span></p><p class=3D"x_xmsonormal"><u><span =
+lang=3D"EN-US" style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-seri=
+f; color:#0000E9"><a href=3D"http://linkedin.com/company/university-of-notting=
+ham"><span style=3D"color:#0000E9">Linkedin.com/company/university-of-nottingh=
+am</span></a></span></u><span style=3D"font-size:12.0pt; color:black"></span><=
+/p><p class=3D"x_xmsonormal"><u><span lang=3D"EN-US" style=3D"font-size:9.0pt; fon=
+t-family:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http://www.fo=
+ursquare.com/uniofnottingham"><span style=3D"color:#0000E9">F</span>oursquare.=
+com/uniofnottingham</a></span></u><span style=3D"font-size:12.0pt; color:black=
+"></span></p><p class=3D"x_xmsonormal"><span lang=3D"EN-US" style=3D"font-size:9.0=
+pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9">&nbsp;</span><s=
+pan style=3D"font-size:12.0pt; color:black"></span></p><p class=3D"x_MsoNormal">=
+<span style=3D"font-size:12.0pt; color:black">&nbsp;</span></p></div></div></d=
+iv></div><div class=3D"x_MsoNormal" align=3D"center" style=3D"text-align:center"><=
+hr size=3D"2" width=3D"98%" align=3D"center"></div><div id=3D"x_x_divRplyFwdMsg"><p =
+class=3D"x_MsoNormal"><b><span style=3D"color:black">From:</span></b><span style=
+=3D"color:black"> Scott Moser (staff) &lt;<a href=3D"mailto:ldzsm2@exmail.nottin=
+gham.ac.uk">ldzsm2@exmail.nottingham.ac.uk</a>&gt;<br><b>Sent:</b> 20 August=
+ 2023 15:48<br><b>To:</b> Caroline Emberson (staff) &lt;<a href=3D"mailto:lizc=
+e@exmail.nottingham.ac.uk">lizce@exmail.nottingham.ac.uk</a>&gt;; Selim Yilm=
+az &lt;<a href=3D"mailto:ldxsy3@exmail.nottingham.ac.uk">ldxsy3@exmail.notting=
+ham.ac.uk</a>&gt;<br><b>Subject:</b> Re: Scott Moser (staff) shared the fold=
+er &quot;GNSUM-CEandSY&quot; with you</span> </p><div><p class=3D"x_MsoNormal"=
+>&nbsp;</p></div></div><div><div><div><div><div><p class=3D"x_MsoNormal">Sp so=
+rry, but I=E2=80=99ve been &nbsp;ill the past few days and as a result not s Le to=
+ properly prepare for our meeting, scheduled for tomorrow, Monday.</p></div>=
+<div><p class=3D"x_MsoNormal">Can I please ask that we postpone it until Tuesd=
+ay at the same time? Or at some point later this week?</p></div><div><p clas=
+s=3D"x_MsoNormal">Recognize this is =E2=80=9Ceating into=E2=80=9C my vacation time but I a=
+m willing to make such accommodations.</p></div><div><p class=3D"x_MsoNormal">=
+Thank you</p></div><div><p class=3D"x_MsoNormal">&nbsp;</p></div></div></div><=
+div id=3D"x_x_x_ms-outlook-mobile-signature"><div><p class=3D"x_MsoNormal">&nbsp=
+;</p></div><p class=3D"x_MsoNormal">Get <a href=3D"https://aka.ms/o0ukef">Outloo=
+k for iOS</a></p></div></div><div class=3D"x_MsoNormal" align=3D"center" style=3D"=
+text-align:center"><hr size=3D"2" width=3D"98%" align=3D"center"></div><div id=3D"x_=
+x_x_divRplyFwdMsg"><p class=3D"x_MsoNormal"><b><span style=3D"color:black">From:=
+</span></b><span style=3D"color:black"> Scott Moser (staff) &lt;<a href=3D"mailt=
+o:ldzsm2@exmail.nottingham.ac.uk">ldzsm2@exmail.nottingham.ac.uk</a>&gt;<br>=
+<b>Sent:</b> Saturday, August 19, 2023 12:03:11 AM<br><b>To:</b> Caroline Em=
+berson (staff) &lt;<a href=3D"mailto:lizce@exmail.nottingham.ac.uk">lizce@exma=
+il.nottingham.ac.uk</a>&gt;; Selim Yilmaz &lt;<a href=3D"mailto:ldxsy3@exmail.=
+nottingham.ac.uk">ldxsy3@exmail.nottingham.ac.uk</a>&gt;<br><b>Subject:</b> =
+Scott Moser (staff) shared the folder &quot;GNSUM-CEandSY&quot; with you</sp=
+an> </p><div><p class=3D"x_MsoNormal">&nbsp;</p></div></div><div><div align=3D"c=
+enter"><table class=3D"x_MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpaddin=
+g=3D"0" style=3D"max-width:480.0pt; background:white; border:solid #C8C8C8 1.0pt=
+; border-radius:8px; overflow:hidden"><tbody><tr><td style=3D"border:none; pad=
+ding:27.0pt 27.0pt 0cm 27.0pt"><p class=3D"x_MsoNormal" align=3D"center" style=3D"=
+text-align:center"><span style=3D"color:black"><img border=3D"0" width=3D"40" heig=
+ht=3D"40" id=3D"x_Picture_x0020_4" alt=3D"Share image" style=3D"width:.4166in; heigh=
+t:.4166in" data-outlook-trace=3D"F:1|T:1" src=3D"cid:image001.png@01D9D44D.4BDDD=
+5E0"></span></p></td></tr><tr><td style=3D"border:none; padding:15.0pt 27.0pt =
+27.0pt 27.0pt"><p align=3D"center" style=3D"text-align:center; line-height:24.0p=
+t"><b><span style=3D"font-size:18.0pt; color:#323130">Scott Moser (staff) shar=
+ed a folder with you </span></b></p></td></tr><tr><td style=3D"border:none; bo=
+rder-top:solid #DEDEDE 1.0pt; background:#F8F8F8; padding:30.0pt 15.0pt 21.0=
+pt 15.0pt"><p align=3D"center" style=3D"text-align:center"><span style=3D"font-siz=
+e:12.0pt; color:#323130">Did this get to yous.. sorry. I hat MS products.<br=
+>, and the don=E2=80=99t make sense nor work well. </span></p></td></tr><tr><td st=
+yle=3D"border:none; background:#F8F8F8; padding:0cm 0cm 0cm 0cm"><div align=3D"c=
+enter"><table class=3D"x_MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpaddin=
+g=3D"0" width=3D"100%" style=3D"width:100.0%; background:white"><tbody><tr><td sty=
+le=3D"border:solid #D2D2D2 1.0pt; border-right:none; padding:15.0pt 3.0pt 15.0=
+pt 15.0pt"><p class=3D"x_MsoNormal" align=3D"center" style=3D"text-align:center"><=
+span style=3D"color:black"><img border=3D"0" width=3D"32" height=3D"32" id=3D"x_Pictur=
+e_x0020_5" alt=3D"icon" style=3D"width:.3333in; height:.3333in" data-outlook-tra=
+ce=3D"F:1|T:1" src=3D"cid:image002.png@01D9D44D.4BDDD5E0"></span></p></td><td st=
+yle=3D"border:solid #D2D2D2 1.0pt; border-left:none; padding:15.0pt 15.0pt 15.=
+0pt 3.0pt"><p class=3D"x_MsoNormal" style=3D"word-break:break-all"><span style=3D"=
+font-size:12.0pt; color:black">GNSUM-CEandSY </span><span style=3D"font-size:1=
+2.0pt"></span></p></td></tr></tbody></table></div></td></tr><tr><td style=3D"b=
+order:none; background:#F8F8F8; padding:0cm 0cm 0cm 0cm"><div align=3D"center"=
+><table class=3D"x_MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" =
+width=3D"0"><tbody><tr style=3D"height:15.0pt"><td style=3D"padding:18.0pt 3.0pt 1=
+5.0pt 0cm; height:15.0pt"><p class=3D"x_MsoNormal" align=3D"center" style=3D"text-=
+align:center"><img border=3D"0" width=3D"20" height=3D"20" id=3D"x_Picture_x0020_6" =
+alt=3D"permission globe icon" style=3D"width:.2083in; height:.2083in" data-outlo=
+ok-trace=3D"F:1|T:1" src=3D"cid:image003.png@01D9D44D.4BDDD5E0"></p></td><td sty=
+le=3D"padding:15.0pt 0cm 15.0pt 0cm; height:15.0pt"><p class=3D"x_MsoNormal"><sp=
+an style=3D"font-size:9.0pt; color:#323130">This link only works for the direc=
+t recipients of this message. </span></p></td></tr></tbody></table></div></t=
+d></tr><tr style=3D"height:30.0pt"><td style=3D"border:none; background:#F8F8F8;=
+ padding:0cm 0cm 24.0pt 0cm; height:30.0pt"><p class=3D"x_MsoNormal" align=3D"ce=
+nter" style=3D"text-align:center"><span style=3D"color:black"><a href=3D"https://u=
+niofnottm-my.sharepoint.com/:f:/g/personal/scott_moser_nottingham_ac_uk/EuoH=
+H2x0SexMm3WaUf4DerkBHyERRBXbrZqFFolQbny_Rw?e=3D5%3a03GJbM&amp;at=3D9"><span clas=
+s=3D"x_MsoSmartlink"><span style=3D"font-size:12.0pt; border:solid #0078D4 3.0pt=
+; padding:0cm">Open</span></span></a></span></p></td></tr></tbody></table></=
+div><p class=3D"x_MsoNormal" align=3D"center" style=3D"text-align:center; backgrou=
+nd:#F2F2F2"><span style=3D"display:none">&nbsp;</span></p><div align=3D"center">=
+<table class=3D"x_MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" s=
+tyle=3D"max-width:480.0pt; overflow:hidden"><tbody><tr style=3D"height:13.5pt"><=
+td valign=3D"top" style=3D"padding:12.0pt 12.0pt 3.0pt 12.0pt; height:13.5pt"><p=
+ class=3D"x_MsoNormal"><img border=3D"0" width=3D"84" height=3D"18" id=3D"x_Picture_x0=
+020_7" alt=3D"Microsoft logo" style=3D"width:.875in; height:.1916in" data-outloo=
+k-trace=3D"F:1|T:1" src=3D"cid:image004.png@01D9D44D.4BDDD5E0"></p></td><td widt=
+h=3D"76" colspan=3D"2" valign=3D"top" style=3D"width:57.0pt; padding:12.0pt 12.0pt 3=
+.0pt 12.0pt; height:13.5pt; overflow:hidden"><p class=3D"x_MsoNormal" align=3D"r=
+ight" style=3D"text-align:right"><img border=3D"0" width=3D"48" height=3D"18" id=3D"x_=
+Picture_x0020_8" style=3D"width:.5in; height:.1916in" data-outlook-trace=3D"F:1|=
+T:1" src=3D"cid:image005.png@01D9D44D.4BDDD5E0"></p></td></tr><tr style=3D"heigh=
+t:13.5pt"><td width=3D"50%" style=3D"width:50.0%; padding:3.0pt 12.0pt 3.0pt 12.=
+0pt; height:13.5pt"><p class=3D"x_MsoNormal" style=3D"line-height:13.5pt"><span =
+style=3D"font-size:9.0pt; color:#605E5C"><a href=3D"https://privacy.microsoft.co=
+m/privacystatement/"><span style=3D"color:#605E5C">Privacy Statement </span></=
+a></span></p></td><td style=3D"padding:0cm 0cm 0cm 0cm; height:13.5pt"></td><t=
+d style=3D"padding:0cm 0cm 0cm 0cm; height:13.5pt"></td></tr></tbody></table><=
+/div><p class=3D"x_MsoNormal" style=3D"background:#F2F2F2"><span style=3D"color:bl=
+ack"><img border=3D"0" width=3D"1" height=3D"1" id=3D"x__x0000_i1028" style=3D"width:.=
+0083in; height:.0083in" src=3D"https://uksouthr-notifyp.svc.ms/api/v2/tracking=
+/method/View?mi=3DBVW-xPrHi0Gt7VOzMo88KA"></span></p></div></div></div></div><=
+/div></div></body></html>
+
+--B_3821516406_322845656--
+
+
+--B_3821516406_1586622782
+Content-type: image/png; name="image001.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <image001.png@01D9D44D.4BDDD5E0>
+Content-disposition: inline;
+	filename="image001.png"
+Content-transfer-encoding: base64
+
+
+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
+mKVOAAAAAElFTkSuQmCC
+--B_3821516406_1586622782
+Content-type: image/png; name="image002.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <image002.png@01D9D44D.4BDDD5E0>
+Content-disposition: inline;
+	filename="image002.png"
+Content-transfer-encoding: base64
+
+
+iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAGXRFWHRTb2Z0d2FyZQBBZG9i
+ZSBJbWFnZVJlYWR5ccllPAAAAdJJREFUeNrs3KtOA0EUxvFvW9hQBDThIjbhIsGQgOERsLUY
+AsFi1vAQmL4BtxdoLY5HwIFAVBBCMK1ooC20y4TUMgECndnp/5dsVhQxnK9nzowACQAAAAAA
+AAAAAAhZZPswu1LFvKrmWXWwtrp5LqKdz/f4BTAsfs2DNZ6bEA5CDaBg+azqyRr3zZfhbKw6
+wPzCZfNqerbWIDuhkKO1BtkJthmQebrmoDohfwEsHUrlbal9I/Xbvte3YZ40Wr+sh7AF5a34
+Gh7fa9ntXiX/AeSv+N86UU54v/TitJTs5rn4sl1k/Q4gnpdWjqSpJM/Ft/IvgNKyNDknzW5J
+M5tmk4yDLb49gI1TtysbdKTek9R9MEey91AvwpYAmteCywCijOq4nQER1XEbAB3gNgDqPxIF
+SkAABAAvj6EUx/EQZgqzBREACICbMLgJswWBAAgADGE6ACM8BdEBdAABgCFMB8DREKY4bEFs
+QaAD6ABwE6YDwDGUIQy2IDoAdADHUNABzACwBbEFgQ5gBuA/t6AG5fkzjR93wMt9Kx10+rV4
+oaR4sUQJf6H3/Kq3VldRMUq/+hnr30I+Hq+5/NfFoXzz0+Tkrk4pAAAAAAAAAAAAMJ4+BBgA
+AkV2Pp6aOvYAAAAASUVORK5CYII=
+--B_3821516406_1586622782
+Content-type: image/png; name="image003.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <image003.png@01D9D44D.4BDDD5E0>
+Content-disposition: inline;
+	filename="image003.png"
+Content-transfer-encoding: base64
+
+
+iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTw
+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAfqSURBVHgBzVpPTBxVGP9ma21Nutsl
+6aHZte1wglPByBqrTQQ8qBehsRBNIVK9CAfhVEykgaZ4sD242wPooX8UPBg1sr3Qmri0hxpT
+NpFSE+HElJZVkxK3Sy+QdMfv93beMAszs7OztPWXDPN25s2b3/fe9+99g0JbAFVVw0SPWomU
+Oj5U0vV6vhw2DgmNSNdIUWa4zUfgusagCqGQTxRI5/t4iNeYcCP5wwwziFciTNkCmMR16iVj
+hoPBIDXEYhRriFE0GqWa2lpxDQewsrJCS0tL4jw/N0fT6WlKT0+L3xYml1iQU+UKUpYAqrp/
+yEo8xqS7u3tMwuViKpWiieSEOJvQ86e0xXtDXsfwJADPOut1/iduQrepqbmZ+vs/oUgkQluB
+TCZDoyMjlGRhDLCtBJq8rEZJAVR1XxfpyhfcDEdYPYZPDwt1eRyYn5+n3t6PKcPqxsiSoh/X
+tLsTbs9sc7tZUBlBfmdHRyedOXuWqquryS8w08COHTts7+/Zs4daWlppbXWNZmdnd/L8vhve
+HVSyD3LXnMZU3MnTINrdPT1C1/0AxntyYIBnd840WqgexmtpbXV8boRV6svRkcIPF7vYZk9+
+XyvP/Gil5OfY43R2HCNNWxCzfvBgHYVCIVpYWKCpqRQt8Yo0sz3ZAQ5C53OaPRbHjsZw1W4t
+m31wi0oJUDBYmuTmzkpnvqf7I1peXiaoX+LcOWpvb6c2PjDzKRYArhQ6EHOwqSIhiFiIqu+y
+DGufwKan9PwU/w3jpX7JA8lkUug8dPpEf3+Rm4UKXbhwUVwbHxsrjgcb0MOTCC7gZHhCchRA
+6D2f4G0w+5VAzC6R4zgQAuoD8tNGXydgDHBi1Kv7nx+03guskxeqI24m4glfgcmKTGbJJOqE
+SESQcl0BAFxOs/sWUAJ9nAyYOZZlBfKCPJYckbVSBIMhcZau0w5LhpBRDwER9tBUMPgw5Xf1
+yutCAGP2u9CuVHUkjJfR2Ng3tvdh5JfZTjC7XicM0V/AsgrGCjxqxF/o5FalB52dnYLct+Pj
+NCr9uQHo/IcfHBftDqOfF4BbQ4PwWOYqiECmHtj/O5/q44lzjn7ZDxAHQBQ6DpK1PNM5IyMF
+3m5poeHhz8oZ0iK8fk27c7cpINSHyeMFW0keSFu8i/Q2kry8tlTIezyj1sx8lUao0TMF9VEc
+g4kd8OIx9t+Ipiu5nNgDvMhL28IzGi24u6JUAH5cqCffy3F/JG1QK6TREOg8xwT5XCnIvUch
+BQ+1bAuHw+9z6+W2tnY6WFdXcgCoRXvbUfr1xg1avn9fCANPg2iJQTH4lclJSiTigjDIIfKi
+jZcjYcMsQihEWUwCnkMfpyRvI/DeG/x+3glqbMSKyPFrPXgCLLfUaRC4cvVnmr39hzjD/UIQ
+3B8fHxP9EW3dxkWUhbfCc/IZL4jI1VJIDbAUKtpePAGWHeThapEeSI+F8+nhYSGUXBEI5MWj
+SSNGSuEVtTU1RkuphxtVi6RygfTbTjkSBJMTAXvwAqHTbD9ScE/PhEKyGQ5YB3KDsUtyVQkR
+lGoK9yMejRKIvRQrCMEG7gUWrvBC3iClzpXIW2ReU04uhRXt7iZfwApkrS92ggz5cHtph+wR
+Ro6dl/Q4XjF98yYlJyZKcpCw9vMsAADDBAYGPt0UgKSHAsrdR1y+nKSTJweKgpwbLO/WnhGl
+PvZE8O+lvEZHRwfHgT+FMb/15hsiFYhySgzjS6V+EZOAa14N2C/WJ1tnAVCvpHUjLYXm5tdF
+4MEgEGQjYg2Pp+RihblSOs1AgFuICIikyAzdYE0PRH7e1Cx0HcKkWCiMAVXI/JVxVSPkRFbh
+5Y4McSaSXPdeiC22z6cNGwwoM4qoder5f0EEEdXJ+CR5t+IWiAgBeDVPnOh3nBAYLPqVAqK8
+HV595VBBjZS16kI6rR6YQoUZod+OGIwGOg/hvv/hR1dbgT20HX1HvGDyylXbJA19rE4AewbY
+EIS2bm7sEkysdB9X7xgz2p3FF4xApl/D340bDwl5XWyuSxg67h8rVBEEMac+ICePYHCXuI4g
+ab1uB7N+Ksry5o4skOA/WaiAXX4+PzcvzjBgL+g0VCdlrTpvAcBtvZK9dh1/hQBcBM5Kic6c
++XzTgyI4sbv0ut2EqqGvrExsFUwN0fVLmva3hqZZGzWMeYGbYSdbeJqQ+xABNl4pgJnMWVcB
+kdZrWH8SABfDcFE5HJLkgaLaKBdPr4fDu1v5gb2rq6t0+PBh+j8gHo+LHSBhnhfvHrHe21Tc
+DVc9d5Uvd91Gfd6l8PqkgPhz8cJ5NFlD1g5lsw+LirubBECHcFXoH1a01lLV48eNom8Eiv6e
+pmV+29jH9vtANpub4Xo8mo1PS4gNHziGtDv3vrLr5/iJSdiDRYjcSo7quGrhtXLgFzBY6Lyh
+NgXyi/dOOfX38pEPX2suEj7ysW9H9a52C4q/dhC5FHtAY28Mr9jHVvu12zMeP7Pu5eLvs/jw
+oeI3cn5km9Ey9r1uQIRFALV8L+Yv+GtHrO7SCeV+6B7kHHxI/kY6jYKUn5IkVAXBCd+H02lz
+i5pllYm7qcxG+PhXA16N/PZB3sl1yWuyNAJDh3rt4t9Ry74YZCVhpNpQFZC2BEtBnAIPExxP
+s+XwqeCfPVgQ2t7I9oEydz35AmfBOh8+iEv4FsAKU5g81VEgUG9U+1RLl6w4sP/O5zXspLhA
+k/RL2or/ACLq7mby0h8AAAAAAElFTkSuQmCC
+--B_3821516406_1586622782
+Content-type: image/png; name="image004.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <image004.png@01D9D44D.4BDDD5E0>
+Content-disposition: inline;
+	filename="image004.png"
+Content-transfer-encoding: base64
+
+
+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
+RK5CYII=
+--B_3821516406_1586622782
+Content-type: image/png; name="image005.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <image005.png@01D9D44D.4BDDD5E0>
+Content-disposition: inline;
+	filename="image005.png"
+Content-transfer-encoding: base64
+
+
+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
+/wIMAGfkdGwfXNevAAAAAElFTkSuQmCC
+--B_3821516406_1586622782--
+
+
+--B_3821516406_1493482455--
+

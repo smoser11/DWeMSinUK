@@ -1,0 +1,772 @@
+Received: from AM7PR06MB6375.eurprd06.prod.outlook.com (2603:10a6:20b:120::17)
+ by DB9PR06MB8202.eurprd06.prod.outlook.com with HTTPS; Mon, 23 Oct 2023
+ 15:27:13 +0000
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=exmail.nottingham.ac.uk;
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com (2603:10a6:20b:99::17)
+ by AM7PR06MB6375.eurprd06.prod.outlook.com (2603:10a6:20b:120::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6907.33; Mon, 23 Oct
+ 2023 15:27:13 +0000
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::9deb:2d00:57f6:68bf]) by AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::9deb:2d00:57f6:68bf%4]) with mapi id 15.20.6907.030; Mon, 23 Oct 2023
+ 15:27:12 +0000
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>, Selim Yilmaz
+	<ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: GNSUM meeting notes 20-10-2023
+Thread-Topic: GNSUM meeting notes 20-10-2023
+Thread-Index: AQHaA0+l1c9Nku7YkUKbJQSSuG4mKbBUVFB/gAMjMvA=
+Date: Mon, 23 Oct 2023 15:27:12 +0000
+Message-ID:
+ <AM6PR06MB59412621B883006683DE99C5A0D8A@AM6PR06MB5941.eurprd06.prod.outlook.com>
+References:
+ <AM6PR06MB59419A4718888328D706BFB1A0DBA@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <DB9PR06MB820258F808BF9938350BF23887DAA@DB9PR06MB8202.eurprd06.prod.outlook.com>
+In-Reply-To:
+ <DB9PR06MB820258F808BF9938350BF23887DAA@DB9PR06MB8202.eurprd06.prod.outlook.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-GB
+X-MS-Has-Attach:
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+ <AM6PR06MB59412621B883006683DE99C5A0D8A@AM6PR06MB5941.eurprd06.prod.outlook.com>
+msip_labels:
+MIME-Version: 1.0
+X-MS-Exchange-Organization-MessageDirectionality: Originating
+X-MS-Exchange-Organization-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-Network-Message-Id:
+ 79f02f6d-1eb4-4512-c1fa-08dbd3dc87d1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ AM6PR06MB5941:EE_|AM7PR06MB6375:EE_|DB9PR06MB8202:EE_
+Return-Path: lizce@exmail.nottingham.ac.uk
+X-MS-Exchange-Organization-ExpirationStartTime: 23 Oct 2023 15:27:13.0407
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Office365-Filtering-Correlation-Id: 79f02f6d-1eb4-4512-c1fa-08dbd3dc87d1
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR06MB5941.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:;DIR:INT;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Oct 2023 15:27:12.7445
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-Network-Message-Id: 79f02f6d-1eb4-4512-c1fa-08dbd3dc87d1
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 7ZZnK5d5ZHcwFQ0WBVBVkT0zUV0n4HkwOPp0l4hqW4MxByaS1Rzn1Brb6ddFvVqbrzMQ0zIoyWQkUDupHedEk2e4pyY4SlLuyr8ew+dxI9dh7hWXnvhMjpZ3mxiF/1WK
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM7PR06MB6375
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:00.9834618
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.6907.032
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(425001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	ZEAphxxQDuOqgJmAQdy9XbUbWHbWhGY4AiDB2lLMZM01pvCLqzIFjTlIrqXl8Do9yOhgxtIdw99vseg5Z6khRWlHBUG3aN1TA6stJLT+lkd2McLWKDWesbD+KkFXHb5X3gFvV6+eox/LvwZJJY9Kk/0Vw+OGSOqyi5JUFmHzPo/PIU21z8NkIIXJfszQ+QafKU8vDMnIkJPNrgSLzoBehRnSU8C4FAKB5siq+k2fqhDkneKxMpJCajH3CmoMnmbDLJ+6PPInTejikzWkPSjtPlf4T2g/GrxZFJurpRQlxQQ+cStliZIg6a01qZBVbyZVB5O4Gw4UiivD6bPLnHKimBkASrJ1hk2i3fBTEefFsJO0ujwgoi14FRqFbovEAO/WXQFyfz6Kr4+Cis6o2Kfr6FBm4ct47E9Qw6wT9bVa8cgnu4Ja6T41duW2MWyUTJHLHUP8z385/6PV1MwI9K2MXjN1wd+gpOWUWVY6KsAWB8KJBJqtjiER/fwZItQpeW6SA9CFKVSXYWe+OhJbZm11sA44M5QvcsYO2YMVvC7n8+SNBQn7GsiuBpHdU0lL2p2eVZyEE6mZ8J9jbi/j1w8BojiArhbiTyOwS/tpOxZfNh6JSWF3vOYLYLMqszwWnLzVYxFz5/+yZmIbjT5HR377FpBQvbSlxly7/5UBxDavsIfDltb+KB/GtGXJeILPKeASDIGvQDlc8ef5CQ5l3tian+Xb5bxS9O31s/0fyMwHPaC0PyntZ4EkSx0XUgM88VDRjDETzdTbSsOqLtDameEpKRT9XotKAtefnap3zVszErBjaUqyLJyf1dIrgA9vuET62A5rJpy+Cq1nI66XH87ftA==
+Content-type: multipart/alternative;
+	boundary="B_3821516406_1991901530"
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3821516406_1991901530
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+Hi Scott,
+
+Firstly, I shall be eternally grateful to you for persisting with this. I g=
+reatly appreciate your insight. This project does not stand or fall by the u=
+se of a particular statistical technique which, if I understand your email c=
+orrectly, is fortunate since our attempts to  use Feehan and Salganik's prot=
+ocol seems to force us into making statistical assumptions about the relatio=
+nship between our sample and its frame that we cannot justify.
+
+I am sorry that I am not so familiar with the terminology that you have use=
+d, so I am not able to comment with any confidence  whether 'we think/ can a=
+rgue that $s_F$ is representative of $F$.' If you are able to clarify this, =
+then we can perhaps direct Selim with more confidence.=20
+
+ As far as I am concerned the big prize is a statistical viable population =
+estimate - by a means that our data will support.
+
+However, I am very pleased that you do seem to indicate that we might be ab=
+le to proceed with a RDS/NSUM approach - this would seem to be very good new=
+s-  although I do recognise that in doing this, we would have to live with t=
+he drawbacks of the NSUM which again makes certain problematic assumptions (=
+as detailed by Feehan and Salganik 2016). I also am glad that you think we d=
+o have ARD - if not enriched ARD.
+
+The 'stop- start' process does not make this any easier as it is difficult =
+to keep the technical detail of these procedures in one's head. Do you think=
+ that we could perhaps arrange an in-person Friday session (1/2 or full day?=
+) for us to try and work through this between us - or, might another approac=
+h suit you better?
+
+Unfortunately, I am in Portsmouth for a workshop this Friday, but I could c=
+lear my diary on 3 November if you think trying to work this through in a lo=
+nger in-person session might be more efficient?
+
+Best wishes
+Caroline
+
+=20
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+=20
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 21 October 2023 17:52
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz=
+ <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: GNSUM meeting notes 20-10-2023=20
+=20
+Many thanks to all.  I'm afraid I write with some bad news.  But not as bad=
+ as I had earlier thought.  I have spend the afternoon (re-)wrapping my head=
+ around things, and reflecting on our meeting yesterday.  Today my approach =
+was to (1) look for replication studies using NSUM/ GNSUM (2) look at the li=
+terature citing the original F&G 2016 paper and (3) start to look into alter=
+native estimators, specifically look into papers that user RDS and NSUM to e=
+stimate the size of hidden populations.
+
+
+
+### The bad news ###
+
+I understand the Exploratory Protocol to be the steps to arrive at the esti=
+mate for the size of the hidden population using eqn. 23 of F&S (2016).  The=
+ 'innovation' of what they call the 'modified basic scale-up estimator'  is =
+two fold:  First they use the average degree size of everyone in F to everyo=
+ne in F (this makes sense);  then they use the size of the sample frame ($N_=
+F$) rather than the total population size ($N$ in eqn. 22).  Specifically, i=
+n the right-most fraction.  That is the issue we discussed yesterday regardi=
+ng the order in which the divisions were taken.  But technically speaking, t=
+hat is incorrect.  I've tried to 'slice' this quantity in a number of ways, =
+but I think we need the size of the sample frame, $N_F$, in any event.  And =
+I really hope I am wrong!
+
+To wit, the denominator of the right-most fraction of eqn. 23 involves _the=
+ size of the frame, F_.  Which we do not have.  Actually, it is worse than t=
+hat, because we definitely to not have $\hat{d}_{F,F}$.  Now, I _think_ -- b=
+ut do not know -- that what the Protocol it trying to do is to estimate thes=
+e quantities from the sample ($s_F$).  I don't know if that is OK or not.  I=
+ would be more convinced if we knew s_F was a representative sample from F. =
+ But I think this issue was discussed yesterday.
+
+Alternatively, we can try to estimate the average degree from F to F (calle=
+d $\hat{d}_{F,F}$) using the formula in the bottom-center 'orb' of Figure 4.=
+  This is the 'known population scale-up' I was talking about yesterday.  I =
+tried to dig deeper: $N_{\mathcal{A}}$ is the total size of all the 'probe a=
+lter' groups (aka 'pivot groups' or PG).  For use, we have one: the size of =
+those that have gone through the NRM.  From page 161, this group (for us, in=
+ general _these_ groups) must belong to the sample frame, F.  So:
+1.If we are going to use the known group-size to calculate the average pers=
+onal degree size, then I think we need to assume that everyone that has gone=
+ through the NRM is part of the sample frame.  Is this true?  I very much do=
+ubt it, but again, I really hope I am wrong!
+2.In the application(s) of GNSUM I've seen, specifically the following
+Jing, L., Qu, C., Yu, H., Wang, T., & Cui, Y. (2014). Estimating the sizes =
+of populations at high risk for HIV: A comparison study. PloS One, 9(4), e95=
+601. https://doi.org/10.1371/journal.pone.0095601
+they take a random sample from the population (frame in our case) and an RD=
+S/ Vincent link tracing sample from the hidden population.  I understand we =
+dont' have the latter, but I don't think we have the former, either (?).
+2a.  I *think * have some replication materials from some NSUM/ GNSUM publi=
+shed studies.   Perhaps even the Jing et al.  I have simply forgotten since =
+I last looked at this in depth in the spring.
+
+I looked for any paper using their 'modified basic scale-up estimator' (eqn=
+ 23) but I couldn't find any. =F0=9F=99=81
+
+
+### Now for the not-so bad news ###
+
+If we think/ can argue that $s_F$ is representative of $F$, then I could se=
+e a case for the approach that Selim is currently coding up being useful.
+
+
+### Now for the good news ###
+
+The structure of the data is exactly a "RDS with ARD data collected from th=
+e sample frame of DW in the UK who have a mobile phone."  And there are load=
+s of papers that deal with this type of data:
+
+[RDS and measurements of a 'hidden population' papers]
+
+I am only peripherally knowledgeable about RDS and inference.  And not at a=
+ll about NSUM and RDS.  but it is out there, and we can try them out (?)
+
+
+---
+
+On my end, the 'start and stop' of research is _really_ inefficient.  And h=
+as shown to introduce errors.  So, my preference is to get this done asap, i=
+f we are going to get it done that is.
+
+I hope we can chat further. =20
+Best,
+scott
+
+
+
+
+
+
+From: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Sent: Friday, October 20, 2023 1:22 PM
+To: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>; Scott Moser (staff) <ldz=
+sm2@exmail.nottingham.ac.uk>
+Subject: GNSUM meeting notes 20-10-2023=20
+=20
+Thanks for moving us on, Scott. Here is the record of what we discussed whi=
+ch I shall attempt to synthesis into the beginnings of a draft over the next=
+ week or so.
+
+Best wishes
+Caroline
+
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Nottingham Research Fellow, Rights Lab
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+=20
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+=20
+
+=20
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+Book time to meet with me
+
+
+--B_3821516406_1991901530
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><style t=
+ype=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bottom:0;} </st=
+yle></head><body dir=3D"ltr"><div style=3D"font-family: Aptos, Aptos_EmbeddedFon=
+t, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; col=
+or: rgb(0, 0, 0);" class=3D"elementToProof">Hi Scott,</div><div style=3D"font-fa=
+mily: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sa=
+ns-serif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof"><br>=
+</div><div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontServic=
+e, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" cl=
+ass=3D"elementToProof">Firstly, I shall be eternally grateful to you for persi=
+sting with this. I greatly appreciate your insight. This project does not st=
+and or fall by the use of a particular statistical technique which, if I und=
+erstand your email correctly, is fortunate since our attempts to&nbsp; use F=
+eehan and Salganik's protocol seems to force us into making statistical assu=
+mptions about the relationship between our sample and its frame that we cann=
+ot justify.</div><div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_M=
+SFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0,=
+ 0, 0);" class=3D"elementToProof"><br></div><div style=3D"font-family: Aptos, Ap=
+tos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-=
+size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof"><span style=3D"font-s=
+ize:12pt;margin:0px"><span style=3D"margin:0px" class=3D"ContentPasted0">I am so=
+rry that I am not so familiar with the terminology that you have used, so I =
+am not able to comment with any confidence&nbsp; whether '<span class=3D"Conte=
+ntPasted0" style=3D"font-family: Calibri, Arial, Helvetica, sans-serif, serif,=
+ EmojiFont; margin: 0px; display: inline !important; background-color: rgb(2=
+55, 255, 255);">we think/ can argue that $s_F$ is representative of $F$.' If=
+ you are able to clarify this, then we can perhaps direct Selim with more co=
+nfidence.&nbsp;</span></span></span></div><div style=3D"font-family: Aptos, Ap=
+tos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-=
+size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof"><div style=3D"font-si=
+ze:12pt;margin:0px"><span style=3D"margin:0px"><span class=3D"ContentPasted0" st=
+yle=3D"font-family: Calibri, Arial, Helvetica, sans-serif, serif, EmojiFont; m=
+argin: 0px; display: inline !important; background-color: rgb(255, 255, 255)=
+;"><br class=3D"ContentPasted0"></span></span></div></div><div style=3D"font-fam=
+ily: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, san=
+s-serif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof"><span=
+ style=3D"font-size:12pt;margin:0px"><span style=3D"margin:0px"><span class=3D"Con=
+tentPasted0" style=3D"font-family: Calibri, Arial, Helvetica, sans-serif, seri=
+f, EmojiFont; margin: 0px; display: inline !important; background-color: rgb=
+(255, 255, 255);">&nbsp;As f</span></span><span style=3D"margin:0px" class=3D"Co=
+ntentPasted0">ar as I am concerned the big prize is a statistical viable pop=
+ulation estimate - by a means that our data will support.</span></span><br><=
+/div><div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService=
+, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" cla=
+ss=3D"elementToProof"><br></div><div style=3D"font-family: Aptos, Aptos_Embedded=
+Font, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; =
+color: rgb(0, 0, 0);" class=3D"elementToProof">However, I am very pleased that=
+ you do seem to indicate that we might be able to proceed with a RDS/NSUM ap=
+proach - this would seem to be very good news-&nbsp; although I do recognise=
+ that in doing this, we would have to live with the drawbacks of the NSUM wh=
+ich again makes certain problematic assumptions (as detailed by Feehan and S=
+alganik 2016). I also am glad that you think we do have ARD - if not enriche=
+d ARD.</div><div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFont=
+Service, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0=
+);" class=3D"elementToProof"><br></div><div style=3D"font-family: Aptos, Aptos_E=
+mbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size:=
+ 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof">The 'stop- start' proces=
+s does not make this any easier as it is difficult to keep the technical det=
+ail of these procedures in one's head. Do you think that we could perhaps ar=
+range an<span>&nbsp;in-person Friday session (1/2 or full day?) for us to tr=
+y and work through this between us - or, might another approach suit you bet=
+ter?</span></div><div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_M=
+SFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0,=
+ 0, 0);" class=3D"elementToProof"><br></div><div style=3D"font-family: Aptos, Ap=
+tos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-=
+size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof"><span>Unfortunately=
+, I am in Portsmouth for a workshop this Friday, but I could clear my diary =
+on 3 November if you think trying to work this through in a longer in-person=
+ session might be more efficient?</span></div><div style=3D"font-family: Aptos=
+, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; f=
+ont-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof"><span><br></spa=
+n></div><div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontServ=
+ice, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" =
+class=3D"elementToProof"><span>Best wishes</span></div><div style=3D"font-family=
+: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-s=
+erif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof"><span>Ca=
+roline</span></div><div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos=
+_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(=
+0, 0, 0);" class=3D"elementToProof"><span><br></span></div><div style=3D"font-fa=
+mily: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sa=
+ns-serif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof"><spa=
+n>&nbsp;</span></div><div class=3D"elementToProof"><div style=3D"font-family: Ap=
+tos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif=
+; font-size: 12pt; color: rgb(0, 0, 0);"><br></div><div id=3D"Signature"><div>=
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Cal=
+ibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br></di=
+v><div></div><div id=3D"divtagdefaultwrapper" dir=3D"ltr" style=3D"color: rgb(0, 0=
+, 0);"><p style=3D"font-family: Calibri, Helvetica, sans-serif; font-size: 12p=
+t; margin-top: 0px; margin-bottom: 0px;"></p><p class=3D"MsoNormal" style=3D"fon=
+t-family: Calibri, Helvetica, sans-serif; font-size: 12pt; margin-top: 0px; =
+margin-bottom: 0px;"><font face=3D"Arial, sans-serif" style=3D"color: rgb(0, 155=
+, 189);"><b>Dr Caroline Emberson (preferred pronouns she/her)</b></font></p>=
+<p class=3D"MsoNormal" style=3D"font-family: Calibri, Helvetica, sans-serif; fon=
+t-size: 12pt; margin-top: 0px; margin-bottom: 0px;"><font face=3D"Arial, sans-=
+serif" style=3D"color: rgb(19, 27, 87);"><b>Assistant Professor</b></font></p>=
+<p class=3D"MsoNormal" style=3D"font-family: Calibri, Helvetica, sans-serif; fon=
+t-size: 12pt; margin-top: 0px; margin-bottom: 0px;"><span style=3D"font-size:9=
+.0pt; font-family:&quot;Arial&quot;,sans-serif">&nbsp;</span></p><p class=3D"M=
+soNormal" style=3D"font-family: Calibri, Helvetica, sans-serif; font-size: 12p=
+t; margin-top: 0px; margin-bottom: 0px;"><span style=3D"font-size: 9pt; font-f=
+amily: Arial, sans-serif; color: rgb(19, 27, 87);">Nottingham University Bus=
+iness School OMIS/ Faculty of Social Science<br>University of Nottingham</sp=
+an><sub><span style=3D"font-size:11.0pt; font-family:&quot;Arial&quot;,sans-se=
+rif"></span></sub></p><p class=3D"MsoNormal" style=3D"font-family: Calibri, Helv=
+etica, sans-serif; font-size: 12pt; margin-top: 0px; margin-bottom: 0px;"><s=
+pan style=3D"font-size: 9pt; font-family: Arial, sans-serif; color: rgb(19, 27=
+, 87);">A20, Highfield House</span></p><p class=3D"MsoNormal" style=3D"font-fami=
+ly: Calibri, Helvetica, sans-serif; font-size: 12pt; margin-top: 0px; margin=
+-bottom: 0px;"><span style=3D"font-size: 9pt; font-family: Arial, sans-serif; =
+color: rgb(19, 27, 87);">University Park</span><sub><span style=3D"font-size:1=
+1.0pt; font-family:&quot;Arial&quot;,sans-serif"></span></sub></p><p class=3D"=
+MsoNormal" style=3D"font-family: Calibri, Helvetica, sans-serif; font-size: 12=
+pt; margin-top: 0px; margin-bottom: 0px;"><span style=3D"font-size: 9pt; font-=
+family: Arial, sans-serif; color: rgb(19, 27, 87);">Nottingham, NG7 2RD</spa=
+n></p><p class=3D"MsoNormal" style=3D"font-family: Calibri, Helvetica, sans-seri=
+f; font-size: 12pt; margin-top: 0px; margin-bottom: 0px;"><span style=3D"font-=
+size:9.0pt; font-family:&quot;Arial&quot;,sans-serif">&nbsp;</span></p><p cl=
+ass=3D"MsoNormal" style=3D"font-family: Calibri, Helvetica, sans-serif; font-siz=
+e: 12pt; margin-top: 0px; margin-bottom: 0px;"><span style=3D"font-size: 9pt; =
+font-family: Arial, sans-serif; color: rgb(19, 27, 87);">+44 (0) 115 8283072=
+<b>&nbsp;</b></span><b><span style=3D"font-size: 9pt; font-family: Calibri, sa=
+ns-serif; color: rgb(19, 27, 87);">| </span></b><span class=3D"MsoHyperlink"><=
+span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif"><a hr=
+ef=3D"http://nottingham.ac.uk/" target=3D"_blank">caroline.emberson@nottingham.a=
+c.uk</a></span></span><span style=3D"font-size:11.0pt; font-family:&quot;Arial=
+&quot;,sans-serif"></span></p><p class=3D"MsoNormal" style=3D"font-family: Calib=
+ri, Helvetica, sans-serif; font-size: 12pt; margin-top: 0px; margin-bottom: =
+0px;"><br></p><p class=3D"MsoNormal" style=3D"margin-top: 0px; margin-bottom: 0p=
+x;"><font face=3D"Arial, sans-serif"><span style=3D"font-size: 12px;">Please not=
+e that my working days are Monday, Tuesday, Thursday and Friday</span></font=
+></p><p class=3D"MsoNormal" style=3D"margin-top: 0px; margin-bottom: 0px;"><font=
+ face=3D"Arial, sans-serif"><span style=3D"font-size: 12px;"><br></span></font><=
+/p><p class=3D"MsoNormal" style=3D"font-family: Calibri, Helvetica, sans-serif; =
+font-size: 12pt; margin-top: 0px; margin-bottom: 0px;"><b><span lang=3D"EN-US"=
+ style=3D"font-size: 9pt; font-family: Georgia, serif; color: rgb(21, 118, 158=
+);">Follow us</span></b><span lang=3D"EN-US" style=3D"font-size: 9pt; font-famil=
+y: Calibri, sans-serif; color: rgb(25, 25, 25);"></span></p><p class=3D"MsoNor=
+mal" style=3D"font-family: Calibri, Helvetica, sans-serif; font-size: 12pt; ma=
+rgin-top: 0px; margin-bottom: 0px;"><u style=3D""><span lang=3D"EN-US" style=3D"fo=
+nt-size: 9pt; font-family: Arial, sans-serif; color: rgb(0, 0, 233);"><a hre=
+f=3D"http://facebook.com/TheUniofNottingham"><span style=3D"color: rgb(0, 0, 233=
+);">Facebook.com/UniofNottingham</span></a></span></u><span lang=3D"EN-US" sty=
+le=3D"font-size: 9pt; font-family: Arial, sans-serif; color: rgb(25, 25, 25);"=
+></span></p><p class=3D"MsoNormal" style=3D"font-family: Calibri, Helvetica, san=
+s-serif; font-size: 12pt; margin-top: 0px; margin-bottom: 0px;"><u style=3D"">=
+<span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Arial, sans-serif; co=
+lor: rgb(0, 0, 233);"><a href=3D"http://twitter.com/UniofNottingham"><span sty=
+le=3D"color: rgb(0, 0, 233);">Twitter.com/UniofNottingham</span></a></span></u=
+><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Arial, sans-serif; c=
+olor: rgb(25, 25, 25);"></span></p><p class=3D"MsoNormal" style=3D"font-family: =
+Calibri, Helvetica, sans-serif; font-size: 12pt; margin-top: 0px; margin-bot=
+tom: 0px;"><u style=3D""><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family=
+: Arial, sans-serif; color: rgb(0, 0, 233);"><a href=3D"http://youtube.com/not=
+tmuniversity"><span style=3D"color: rgb(0, 0, 233);">Youtube.com/nottmuniversi=
+ty</span></a></span></u><span lang=3D"EN-US" style=3D"font-size: 9pt; font-famil=
+y: Arial, sans-serif; color: rgb(25, 25, 25);"></span></p><p class=3D"MsoNorma=
+l" style=3D"font-family: Calibri, Helvetica, sans-serif; font-size: 12pt; marg=
+in-top: 0px; margin-bottom: 0px;"><u style=3D""><span lang=3D"EN-US" style=3D"font=
+-size: 9pt; font-family: Arial, sans-serif; color: rgb(0, 0, 233);"><a href=3D=
+"http://instagram.com/uniofnottingham"><span style=3D"color: rgb(0, 0, 233);">=
+Instagram.com/uniofnottingham</span></a></span></u><span lang=3D"EN-US" style=3D=
+"font-size: 9pt; font-family: Arial, sans-serif; color: rgb(25, 25, 25);"></=
+span></p><p class=3D"MsoNormal" style=3D"font-family: Calibri, Helvetica, sans-s=
+erif; font-size: 12pt; margin-top: 0px; margin-bottom: 0px;"><u style=3D""><sp=
+an lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Arial, sans-serif; color=
+: rgb(0, 0, 233);"><a href=3D"http://linkedin.com/company/university-of-nottin=
+gham"><span style=3D"color: rgb(0, 0, 233);">Linkedin.com/company/university-o=
+f-nottingham</span></a></span></u></p><p class=3D"MsoNormal" style=3D"font-famil=
+y: Calibri, Helvetica, sans-serif; font-size: 12pt; margin-top: 0px; margin-=
+bottom: 0px;"><u style=3D""><span lang=3D"EN-US" style=3D"font-size: 9pt; font-fam=
+ily: Arial, sans-serif; color: rgb(0, 0, 233);"><a href=3D"http://www.foursqua=
+re.com/uniofnottingham"><span style=3D"color: rgb(0, 0, 233);">F</span>oursqua=
+re.com/uniofnottingham</a></span></u></p><p class=3D"MsoNormal" style=3D"font-fa=
+mily: Calibri, Helvetica, sans-serif; font-size: 12pt; margin-top: 0px; marg=
+in-bottom: 0px;"><u style=3D""><span lang=3D"EN-US" style=3D"font-size: 9pt; font-=
+family: Arial, sans-serif; color: rgb(0, 0, 233);"><span style=3D"text-decorat=
+ion:none">&nbsp;</span></span></u></p><br><p style=3D"font-family: Calibri, He=
+lvetica, sans-serif; font-size: 12pt; margin-top: 0px; margin-bottom: 0px;">=
+</p></div><table id=3D"pbpsiglinktable"><tbody><tr><td><a href=3D"https://outloo=
+k.office.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.notting=
+ham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature"><img src=3D"https://res-h3.publi=
+c.cdn.office.net/assets/bookwithme/misc/CalendarPerson20px.png"></a></td><td=
+></td><td><a href=3D"https://outlook.office.com/bookwithme/user/68c1e07fca314c=
+1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignatur=
+e" style=3D"text-decoration: none; color: rgb(0, 120, 212);">Book time to meet=
+ with me</a></td><td><table></table></td></tr></tbody></table></div></div></=
+div><div id=3D"appendonsend"></div><hr style=3D"display:inline-block;width:98%" =
+tabindex=3D"-1"><div id=3D"divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-se=
+rif" style=3D"font-size:11pt" color=3D"#000000"><b>From:</b> Scott Moser (staff)=
+ &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Sent:</b> 21 October 2023 17:5=
+2<br><b>To:</b> Caroline Emberson (staff) &lt;lizce@exmail.nottingham.ac.uk&=
+gt;; Selim Yilmaz &lt;ldxsy3@exmail.nottingham.ac.uk&gt;<br><b>Subject:</b> =
+Re: GNSUM meeting notes 20-10-2023</font> <div>&nbsp;</div></div><style type=
+=3D"text/css" style=3D"display:none">
+<!--
+p
+	{margin-top:0;
+	margin-bottom:0}
+-->
+</style><div dir=3D"ltr"><div class=3D"x_elementToProof" style=3D"font-family:Cal=
+ibri,Arial,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)">Many than=
+ks to all.&nbsp; I'm afraid I write with some bad news.&nbsp; But not as bad=
+ as I had earlier thought.&nbsp; I have spend the afternoon (re-)wrapping my=
+ head around things, and reflecting on our meeting yesterday.&nbsp; Today my=
+ approach was to (1) look for replication studies using NSUM/ GNSUM (2) look=
+ at the literature citing the original F&amp;G 2016 paper and (3) start to l=
+ook into alternative estimators, specifically look into papers that user RDS=
+ and NSUM to estimate the size of hidden populations.</div><div class=3D"x_ele=
+mentToProof" style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-siz=
+e:12pt; color:rgb(0,0,0)"><br></div><div class=3D"x_elementToProof" style=3D"fon=
+t-family:Calibri,Arial,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0=
+)"><br></div><div class=3D"x_elementToProof" style=3D"font-family:Calibri,Arial,=
+Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)"><br></div><div class=
+=3D"x_elementToProof" style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; f=
+ont-size:12pt; color:rgb(0,0,0)">### The bad news ###</div><div class=3D"x_ele=
+mentToProof" style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-siz=
+e:12pt; color:rgb(0,0,0)"><br></div><div class=3D"x_elementToProof" style=3D"fon=
+t-family:Calibri,Arial,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0=
+)">I understand the Exploratory Protocol to be the steps to arrive at the es=
+timate for the size of the hidden population using eqn. 23 of F&amp;S (2016)=
+.&nbsp; The 'innovation' of what they call the 'modified basic scale-up esti=
+mator'&nbsp; is two fold:&nbsp; First they use the average degree size of ev=
+eryone in F to everyone in F (this makes sense);&nbsp; then they use the siz=
+e of the sample frame ($N_F$) rather than the total population size ($N$ in =
+eqn. 22).&nbsp; Specifically, in the right-most fraction.&nbsp; That is the =
+issue we discussed yesterday regarding the order in which the divisions were=
+ taken.&nbsp; But technically speaking, that is incorrect.&nbsp; I've tried =
+to 'slice' this quantity in a number of ways, but I think we need the size o=
+f the sample frame, $N_F$, in any event.&nbsp; And I really hope I am wrong!=
+</div><div class=3D"x_elementToProof" style=3D"font-family:Calibri,Arial,Helveti=
+ca,sans-serif; font-size:12pt; color:rgb(0,0,0)"><br></div><div class=3D"x_ele=
+mentToProof" style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-siz=
+e:12pt; color:rgb(0,0,0)">To wit, the denominator of the right-most fraction=
+ of eqn. 23 involves _the size of the frame, F_.&nbsp; Which we do not have.=
+&nbsp; Actually, it is worse than that, because we definitely to not have $\=
+hat{d}_{F,F}$.&nbsp; Now, I _think_ -- but do not know -- that what the Prot=
+ocol it trying to do is to estimate these quantities from the sample ($s_F$)=
+.&nbsp; I don't know if that is OK or not.&nbsp; I would be more convinced i=
+f we knew s_F was a representative sample from F.&nbsp; But I think this iss=
+ue was discussed yesterday.</div><div class=3D"x_elementToProof" style=3D"font-f=
+amily:Calibri,Arial,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)">=
+<br></div><div class=3D"x_elementToProof" style=3D"font-family:Calibri,Arial,Hel=
+vetica,sans-serif; font-size:12pt; color:rgb(0,0,0)">Alternatively, we can t=
+ry to estimate the average degree from F to F (called $\hat{d}_{F,F}$) using=
+ the formula in the bottom-center 'orb' of Figure 4.&nbsp; This is the 'know=
+n population scale-up' I was talking&nbsp;about yesterday.&nbsp; I tried to =
+dig deeper: $N_{\mathcal{A}}$ is the total size of all the 'probe alter' gro=
+ups (aka 'pivot groups' or PG).&nbsp; For use, we have one: the size of thos=
+e that have gone through the NRM.&nbsp; From page 161, this group (for us, i=
+n general _these_ groups) must belong to the sample frame, F.&nbsp; So:</div=
+><div class=3D"x_elementToProof" style=3D"font-family:Calibri,Arial,Helvetica,sa=
+ns-serif; font-size:12pt; color:rgb(0,0,0)">1.If we are going to use the kno=
+wn group-size to calculate the average personal degree size, then I think we=
+ need to assume that everyone that has gone through the NRM is part of the s=
+ample frame.&nbsp; Is this true?&nbsp; I very much doubt it, but again, I re=
+ally hope I am wrong!</div><div class=3D"x_elementToProof" style=3D"font-family:=
+Calibri,Arial,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)">2.In t=
+he application(s) of GNSUM I've seen, specifically the following</div><div c=
+lass=3D"x_elementToProof" style=3D"font-family:Calibri,Arial,Helvetica,sans-seri=
+f; font-size:12pt; color:rgb(0,0,0)">Jing, L., Qu, C., Yu, H., Wang, T., &am=
+p; Cui, Y. (2014). Estimating the sizes of populations at high risk for HIV:=
+ A comparison study. <i>PloS One</i>, <i>9</i>(4), e95601. <a href=3D"https://=
+doi.org/10.1371/journal.pone.0095601" id=3D"OWA5d89b3c3-1fca-6c42-64d0-910e67a=
+64fb2" class=3D"x_OWAAutoLink" data-auth=3D"NotApplicable" data-loopstyle=3D"linko=
+nly">https://doi.org/10.1371/journal.pone.0095601</a></div><div class=3D"x_ele=
+mentToProof" style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-siz=
+e:12pt; color:rgb(0,0,0)">they take a random sample from the population (fra=
+me in our case) and an RDS/ Vincent link tracing sample from the hidden popu=
+lation.&nbsp; I understand we dont' have the latter, but I don't think we ha=
+ve the former, either (?).</div><div class=3D"x_elementToProof" style=3D"font-fa=
+mily:Calibri,Arial,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)">2=
+a.&nbsp; I *think * have some replication materials from some NSUM/ GNSUM pu=
+blished studies.&nbsp;&nbsp; Perhaps even the Jing et al.&nbsp; I have simpl=
+y forgotten since I last looked at this in depth in the spring.</div><div cl=
+ass=3D"x_elementToProof" style=3D"font-family:Calibri,Arial,Helvetica,sans-serif=
+; font-size:12pt; color:rgb(0,0,0)"><br></div><div class=3D"x_elementToProof" =
+style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12pt; color=
+:rgb(0,0,0)">I looked for any paper using their 'modified basic scale-up est=
+imator' (eqn 23) but I couldn't find any. =F0=9F=99=81</div><div class=3D"x_elementToP=
+roof" style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12pt;=
+ color:rgb(0,0,0)"><br></div><div class=3D"x_elementToProof" style=3D"font-famil=
+y:Calibri,Arial,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)"><br>=
+</div><div class=3D"x_elementToProof" style=3D"font-family:Calibri,Arial,Helveti=
+ca,sans-serif; font-size:12pt; color:rgb(0,0,0)">### Now for the not-so bad =
+news ###</div><div class=3D"x_elementToProof" style=3D"font-family:Calibri,Arial=
+,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)"><br></div><div clas=
+s=3D"x_elementToProof" style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; =
+font-size:12pt; color:rgb(0,0,0)">If we think/ can argue that $s_F$ is repre=
+sentative of $F$, then I could see a case for the approach that Selim is cur=
+rently coding up being useful.</div><div class=3D"x_elementToProof" style=3D"fon=
+t-family:Calibri,Arial,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0=
+)"><br></div><div class=3D"x_elementToProof" style=3D"font-family:Calibri,Arial,=
+Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)"><br></div><div class=
+=3D"x_elementToProof" style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; f=
+ont-size:12pt; color:rgb(0,0,0)">### Now for the good news ###</div><div cla=
+ss=3D"x_elementToProof" style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;=
+ font-size:12pt; color:rgb(0,0,0)"><br></div><div class=3D"x_elementToProof" s=
+tyle=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12pt; color:=
+rgb(0,0,0)">The structure of the data is exactly a &quot;RDS with ARD data c=
+ollected from the sample frame of DW in the UK who have a mobile phone.&quot=
+;&nbsp; And there are loads of papers that deal with this type of data:</div=
+><div class=3D"x_elementToProof" style=3D"font-family:Calibri,Arial,Helvetica,sa=
+ns-serif; font-size:12pt; color:rgb(0,0,0)"><br></div><div class=3D"x_elementT=
+oProof" style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12p=
+t; color:rgb(0,0,0)">[RDS and measurements of a 'hidden population' papers]<=
+/div><div class=3D"x_elementToProof" style=3D"font-family:Calibri,Arial,Helvetic=
+a,sans-serif; font-size:12pt; color:rgb(0,0,0)"><br></div><div class=3D"x_elem=
+entToProof" style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size=
+:12pt; color:rgb(0,0,0)">I am only peripherally knowledgeable&nbsp;about RDS=
+ and inference.&nbsp; And not at all about NSUM and RDS.&nbsp; but it is out=
+ there, and we can try them out (?)</div><div class=3D"x_elementToProof" style=
+=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12pt; color:rgb(=
+0,0,0)"><br></div><div class=3D"x_elementToProof" style=3D"font-family:Calibri,A=
+rial,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)"><br></div><div =
+class=3D"x_elementToProof" style=3D"font-family:Calibri,Arial,Helvetica,sans-ser=
+if; font-size:12pt; color:rgb(0,0,0)">---</div><div class=3D"x_elementToProof"=
+ style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12pt; colo=
+r:rgb(0,0,0)"><br></div><div class=3D"x_elementToProof" style=3D"font-family:Cal=
+ibri,Arial,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)">On my end=
+, the 'start and stop' of research is _really_ inefficient.&nbsp; And has sh=
+own to introduce errors.&nbsp; So, my preference is to get this done asap, i=
+f we are going to get it done that is.</div><div class=3D"x_elementToProof" st=
+yle=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12pt; color:r=
+gb(0,0,0)"><br></div><div class=3D"x_elementToProof" style=3D"font-family:Calibr=
+i,Arial,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)">I hope we ca=
+n chat further.&nbsp; <br></div><div class=3D"x_elementToProof" style=3D"font-fa=
+mily:Calibri,Arial,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)">B=
+est,</div><div class=3D"x_elementToProof" style=3D"font-family:Calibri,Arial,Hel=
+vetica,sans-serif; font-size:12pt; color:rgb(0,0,0)">scott</div><div class=3D"=
+x_elementToProof" style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; fon=
+t-size:12pt; color:rgb(0,0,0)"><br></div><div class=3D"x_elementToProof" style=
+=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12pt; color:rgb(=
+0,0,0)"><br></div><div class=3D"x_elementToProof" style=3D"font-family:Calibri,A=
+rial,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)"><br></div><div =
+class=3D"x_elementToProof" style=3D"font-family:Calibri,Arial,Helvetica,sans-ser=
+if; font-size:12pt; color:rgb(0,0,0)"><br></div><div class=3D"x_elementToProof=
+" style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; font-size:12pt; col=
+or:rgb(0,0,0)"><br></div><div class=3D"x_elementToProof" style=3D"font-family:Ca=
+libri,Arial,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)"><br></di=
+v><div id=3D"x_appendonsend"></div><hr style=3D"display:inline-block; width:98%"=
+><div id=3D"x_divRplyFwdMsg" dir=3D"ltr"><span style=3D"font-family:Calibri,sans-s=
+erif; font-size:11pt; color:rgb(0,0,0)"><b>From:</b>&nbsp;Caroline Emberson =
+(staff) &lt;lizce@exmail.nottingham.ac.uk&gt;<br><b>Sent:</b>&nbsp;Friday, O=
+ctober 20, 2023 1:22 PM<br><b>To:</b>&nbsp;Selim Yilmaz &lt;ldxsy3@exmail.no=
+ttingham.ac.uk&gt;; Scott Moser (staff) &lt;ldzsm2@exmail.nottingham.ac.uk&g=
+t;<br><b>Subject:</b>&nbsp;GNSUM meeting notes 20-10-2023</span> <div>&nbsp;=
+</div></div><div style=3D"direction:ltr; font-family:Aptos,Aptos_EmbeddedFont,=
+Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:12pt; color:rgb(=
+0,0,0)">Thanks for moving us on, Scott. Here is the record of what we discus=
+sed which I shall attempt to synthesis into the beginnings of a draft over t=
+he next week or so.</div><div style=3D"direction:ltr; font-family:Aptos,Aptos_=
+EmbeddedFont,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:12p=
+t; color:rgb(0,0,0)"><br></div><div style=3D"direction:ltr; font-family:Aptos,=
+Aptos_EmbeddedFont,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-si=
+ze:12pt; color:rgb(0,0,0)">Best wishes</div><div style=3D"direction:ltr; font-=
+family:Aptos,Aptos_EmbeddedFont,Aptos_MSFontService,Calibri,Helvetica,sans-s=
+erif; font-size:12pt; color:rgb(0,0,0)">Caroline</div><div style=3D"direction:=
+ltr; font-family:Aptos,Aptos_EmbeddedFont,Aptos_MSFontService,Calibri,Helvet=
+ica,sans-serif; font-size:12pt; color:rgb(0,0,0)"><br></div><div style=3D"dire=
+ction:ltr; font-family:Aptos,Aptos_EmbeddedFont,Aptos_MSFontService,Calibri,=
+Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)"><br></div><div id=3D"x=
+_x_Signature"><div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif; fo=
+nt-size:12pt; color:rgb(0,0,0)"><br></div><div id=3D"x_x_divtagdefaultwrapper"=
+ dir=3D"ltr" style=3D"font-size:12pt; font-family:Calibri,Helvetica,sans-serif; =
+color:rgb(0,0,0)"><p style=3D"margin-top:0px; margin-bottom:0px"><span style=3D"=
+font-family:Arial,sans-serif; color:rgb(0,155,189)"><b>Dr Caroline Emberson =
+(preferred pronouns she/her)</b></span></p><p style=3D"margin-top:0px; margin-=
+bottom:0px"><span style=3D"font-family:Arial,sans-serif; color:rgb(19,27,87)">=
+<b>Nottingham Research Fellow, Rights Lab</b></span></p><p style=3D"margin-top=
+:0px; margin-bottom:0px"><span style=3D"font-family:&quot;Arial&quot;,sans-ser=
+if; font-size:9pt">&nbsp;</span></p><p style=3D"margin-top:0px; margin-bottom:=
+0px"><span style=3D"font-family:Arial,sans-serif; font-size:9pt; color:rgb(19,=
+27,87)">Nottingham University Business School OMIS/ Faculty of Social Scienc=
+e<br>University of Nottingham</span></p><p style=3D"margin-top:0px; margin-bot=
+tom:0px"><span style=3D"font-family:Arial,sans-serif; font-size:9pt; color:rgb=
+(19,27,87)">A20, Highfield House</span></p><p style=3D"margin-top:0px; margin-=
+bottom:0px"><span style=3D"font-family:Arial,sans-serif; font-size:9pt; color:=
+rgb(19,27,87)">University Park</span></p><p style=3D"margin-top:0px; margin-bo=
+ttom:0px"><span style=3D"font-family:Arial,sans-serif; font-size:9pt; color:rg=
+b(19,27,87)">Nottingham, NG7 2RD</span></p><p style=3D"margin-top:0px; margin-=
+bottom:0px"><span style=3D"font-family:&quot;Arial&quot;,sans-serif; font-size=
+:9pt">&nbsp;</span></p><p style=3D"margin-top:0px; margin-bottom:0px"><span st=
+yle=3D"font-family:Arial,sans-serif; font-size:9pt; color:rgb(19,27,87)">+44 (=
+0) 115 8283072<b>&nbsp;</b></span><span style=3D"font-family:Calibri,sans-seri=
+f; font-size:9pt; color:rgb(19,27,87)"><b>| </b></span><span style=3D"font-fam=
+ily:&quot;Arial&quot;,sans-serif; font-size:9pt"><a href=3D"http://nottingham.=
+ac.uk/" id=3D"OWA4b09d264-0192-abed-65b1-a9915c606ed4" class=3D"x_OWAAutoLink" d=
+ata-auth=3D"NotApplicable" data-loopstyle=3D"linkonly" style=3D"margin-top:0px; ma=
+rgin-bottom:0px">caroline.emberson@nottingham.ac.uk</a></span></p><p style=3D"=
+margin-top:0px; margin-bottom:0px"><span style=3D"font-family:Arial,sans-serif=
+; font-size:9pt; color:black">&nbsp;</span></p><p style=3D"margin-top:0px; mar=
+gin-bottom:0px"><span style=3D"font-family:Arial,sans-serif; font-size:9pt; co=
+lor:black">&nbsp;</span></p><p style=3D"margin-top:0px; margin-bottom:0px"><sp=
+an style=3D"font-family:Georgia,serif; font-size:9pt; color:rgb(21,118,158)"><=
+b>Follow us</b></span></p><p style=3D"margin-top:0px; margin-bottom:0px"><span=
+ style=3D"font-family:Arial,sans-serif; font-size:9pt; color:rgb(0,0,233)"><u>=
+<a href=3D"http://facebook.com/TheUniofNottingham" id=3D"OWA9f3c85c8-81b6-329a-0=
+534-a3c21cf0f7ce" class=3D"x_OWAAutoLink" data-auth=3D"NotApplicable" data-loops=
+tyle=3D"linkonly" style=3D"margin-top:0px; margin-bottom:0px; color:rgb(0,0,233)=
+">Facebook.com/UniofNottingham</a></u></span></p><p style=3D"margin-top:0px; m=
+argin-bottom:0px"><span style=3D"font-family:Arial,sans-serif; font-size:9pt; =
+color:rgb(0,0,233)"><u><a href=3D"http://twitter.com/UniofNottingham" id=3D"OWA9=
+e6eeadc-2bad-6cc5-70c8-9b38b46a4145" class=3D"x_OWAAutoLink" data-auth=3D"NotApp=
+licable" data-loopstyle=3D"linkonly" style=3D"margin-top:0px; margin-bottom:0px;=
+ color:rgb(0,0,233)">Twitter.com/UniofNottingham</a></u></span></p><p style=3D=
+"margin-top:0px; margin-bottom:0px"><span style=3D"font-family:Arial,sans-seri=
+f; font-size:9pt; color:rgb(0,0,233)"><u><a href=3D"http://youtube.com/nottmun=
+iversity" id=3D"OWA55a8d3d6-0e52-c07e-f244-701c586a3644" class=3D"x_OWAAutoLink"=
+ data-auth=3D"NotApplicable" data-loopstyle=3D"linkonly" style=3D"margin-top:0px; =
+margin-bottom:0px; color:rgb(0,0,233)">Youtube.com/nottmuniversity</a></u></=
+span></p><p style=3D"margin-top:0px; margin-bottom:0px"><span style=3D"font-fami=
+ly:Arial,sans-serif; font-size:9pt; color:rgb(0,0,233)"><u><a href=3D"http://i=
+nstagram.com/uniofnottingham" id=3D"OWAb0dc0a82-676b-a807-5606-a4c05fffbc76" c=
+lass=3D"x_OWAAutoLink" data-auth=3D"NotApplicable" data-loopstyle=3D"linkonly" sty=
+le=3D"margin-top:0px; margin-bottom:0px; color:rgb(0,0,233)">Instagram.com/uni=
+ofnottingham</a></u></span></p><p style=3D"margin-top:0px; margin-bottom:0px">=
+<span style=3D"font-family:Arial,sans-serif; font-size:9pt; color:rgb(0,0,233)=
+"><u><a href=3D"http://linkedin.com/company/university-of-nottingham" id=3D"OWAd=
+3ebfb73-b998-5a24-64e5-70958cc46b8b" class=3D"x_OWAAutoLink" data-auth=3D"NotApp=
+licable" data-loopstyle=3D"linkonly" style=3D"margin-top:0px; margin-bottom:0px;=
+ color:rgb(0,0,233)">Linkedin.com/company/university-of-nottingham</a></u></=
+span></p><p style=3D"margin-top:0px; margin-bottom:0px"><span style=3D"font-fami=
+ly:Arial,sans-serif; font-size:9pt; color:rgb(0,0,233)"><u><a href=3D"http://w=
+ww.foursquare.com/uniofnottingham" id=3D"OWAb7f3dbfe-d04d-bd54-cc78-009c85469d=
+9d" class=3D"x_OWAAutoLink" data-auth=3D"NotApplicable" data-loopstyle=3D"linkonly=
+" style=3D"margin-top:0px; margin-bottom:0px; color:rgb(0,0,233)">F</a><a href=
+=3D"http://www.foursquare.com/uniofnottingham" id=3D"OWA86aef070-0c31-9a61-b222-=
+4abc38c99b10" class=3D"x_OWAAutoLink" data-auth=3D"NotApplicable" data-loopstyle=
+=3D"linkonly" style=3D"margin-top:0px; margin-bottom:0px">oursquare.com/uniofnot=
+tingham</a></u></span></p><p style=3D"margin-top:0px; margin-bottom:0px"><span=
+ style=3D"font-family:Arial,sans-serif; font-size:9pt; color:rgb(0,0,233)"><u>=
+&nbsp;</u></span></p><br></div><table id=3D"x_x_pbpsiglinktable"><tbody><tr><t=
+d><a href=3D"https://outlook.office.com/bookwithme/user/68c1e07fca314c1a863a4f=
+d4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature" data-=
+auth=3D"NotApplicable" data-loopstyle=3D"linkonly" id=3D"OWAe1e4dd30-0646-bdde-115=
+6-8f8dbef317e7" class=3D"x_OWAAutoLink"><img src=3D"https://res-h3.public.cdn.of=
+fice.net/assets/bookwithme/misc/CalendarPerson20px.png"></a></td><td></td><t=
+d><span style=3D"color:rgb(0,120,212)"><a href=3D"https://outlook.office.com/boo=
+kwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonym=
+ous&amp;ep=3DbwmEmailSignature" data-auth=3D"NotApplicable" data-loopstyle=3D"link=
+only" id=3D"OWA8cd59496-fad6-c595-b094-6a980e1937e1" class=3D"x_OWAAutoLink" sty=
+le=3D"text-decoration:none; color:rgb(0,120,212)">Book time to meet with me</a=
+></span></td><td></td></tr></tbody></table></div></div></body></html>
+
+--B_3821516406_1991901530--
+

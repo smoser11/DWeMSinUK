@@ -1,0 +1,1270 @@
+Received: from AM7PR06MB6390.eurprd06.prod.outlook.com (2603:10a6:20b:11d::17)
+ by DB9PR06MB8202.eurprd06.prod.outlook.com with HTTPS; Mon, 7 Aug 2023
+ 06:57:08 +0000
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=exmail.nottingham.ac.uk;
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com (2603:10a6:20b:99::17)
+ by AM7PR06MB6390.eurprd06.prod.outlook.com (2603:10a6:20b:11d::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6652.26; Mon, 7 Aug
+ 2023 06:57:07 +0000
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::22ae:99e7:e1f7:1f88]) by AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::22ae:99e7:e1f7:1f88%5]) with mapi id 15.20.6652.026; Mon, 7 Aug 2023
+ 06:57:07 +0000
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>, Selim Yilmaz
+	<ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: G-NSUM and Modern Slavery in the UK
+Thread-Topic: G-NSUM and Modern Slavery in the UK
+Thread-Index:
+ AQHZr1Fqr05xollwm0Se4mfyYk0EjK/EKxaQgAASliKAAD5tvoAGNwf8gALbyCKAAAPwkIAACEGwgAqyG1mAA4/M4IACu9v8
+Date: Mon, 7 Aug 2023 06:57:07 +0000
+Message-ID:
+ <AM6PR06MB59417D34EE54FEF1D75AA898A00CA@AM6PR06MB5941.eurprd06.prod.outlook.com>
+References:
+ <DB9PR06MB82028D1B9808B724D5BF4BCA872FA@DB9PR06MB8202.eurprd06.prod.outlook.com>
+ <DB9PR06MB82024B9556038D17A2800AED873FA@DB9PR06MB8202.eurprd06.prod.outlook.com>
+ <AM6PR06MB59415C8186A69C0D0DD6EBB3A03FA@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <DB9PR06MB8202681B939DF97F6C6682C8873FA@DB9PR06MB8202.eurprd06.prod.outlook.com>
+ <AM0PR06MB5937E508D481A6982BE8E118A003A@AM0PR06MB5937.eurprd06.prod.outlook.com>
+ <DB9PR06MB8202A28F5871E757ABC97EDB8701A@DB9PR06MB8202.eurprd06.prod.outlook.com>
+ <AM6PR06MB594176143B92C1812CB2F000A001A@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <DB9PR06MB8202AB7416116B696093824D8701A@DB9PR06MB8202.eurprd06.prod.outlook.com>
+ <VI1PR06MB6431665E24DF4CAF4F74F7D19008A@VI1PR06MB6431.eurprd06.prod.outlook.com>
+ <DB9PR06MB8202F85A15342177983EA699870EA@DB9PR06MB8202.eurprd06.prod.outlook.com>
+In-Reply-To:
+ <DB9PR06MB8202F85A15342177983EA699870EA@DB9PR06MB8202.eurprd06.prod.outlook.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-GB
+X-MS-Has-Attach:
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+ <AM6PR06MB59417D34EE54FEF1D75AA898A00CA@AM6PR06MB5941.eurprd06.prod.outlook.com>
+msip_labels:
+MIME-Version: 1.0
+X-MS-Exchange-Organization-MessageDirectionality: Originating
+X-MS-Exchange-Organization-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-Network-Message-Id:
+ 59636376-4bb7-41d9-d12c-08db971383fb
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ AM6PR06MB5941:EE_|AM7PR06MB6390:EE_|DB9PR06MB8202:EE_
+Return-Path: lizce@exmail.nottingham.ac.uk
+X-MS-Exchange-Organization-ExpirationStartTime: 07 Aug 2023 06:57:07.9600
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Office365-Filtering-Correlation-Id: 59636376-4bb7-41d9-d12c-08db971383fb
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR06MB5941.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:;DIR:INT;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Aug 2023 06:57:07.7022
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-Network-Message-Id: 59636376-4bb7-41d9-d12c-08db971383fb
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ktp6ch+Crx/3jB6BO6HS33rd/N0HCMXT/+jkVVdxjNC7WMXC66m0EQJ9BwEdywLg/+GNCwOa2y0R7EMus7tHdUX2O/knS2y60hWsM6hAjmHTZQ55nAhtLu/Fd5IRcnQT
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM7PR06MB6390
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:00.9826869
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.6652.026
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(425001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	PZTanugLul678qxOE67jIBzrh9NT7cq3406S+bhmH6XMzngi1itZHcj2MeooD5oZqEnCfmSN1/MXhCvgLjIiUEUJW9OkS9YgsDI+J3xMlO8p/5JZoGkJ6gshQ2n8ulOpQmoHcI+IFlilc7SZ61b0JQdRMhz5zh1zYybUp5pq3np/nxGPLs2xl0y/JihipjvWVYsfzRYjtugQiQqky/SkmMf2/567F+bhSafC92dbR0sBSDsvR1p4mIRGtEu64NHihoWQi+PXF+dimm69tm4uL9EgASulXbnwpqXvLaN5fs6BD+K1C+vUClMCSUKOnbbtx2Cjalq+r0+alwAp5XL/ZZC5h9mbqP0JEIxz8Ar2cDEJhJWXSj251ukGguGetxp0fYsBtdAfuLgdRWANP2ez9OzFLpGvAi9ypXuI027Jpr4cGnW0oNDdGrP0FEeNRRqSv93MBJ2pFFzKLws5xBCUEOocw/07tjsscLUM1oyLs3IS2WEl4e6i8K6urOUEMDaABiR9UJ1AeTn9rCQADZJgBK/90WwNcBVsWV7gOYGZ3Dnpkdfl7ViPv9TqqDDPV8uqhakMdfpeyxixBN4sNDTi/z3f8dXqVqVrjhr5Rr0rGYcKRdZyLsQQvZkNxsndoHs5tNeHOMhP97Sq09bzpOvE9xfkeOqVAHqaCLMocqtfQEUBLBKJ92YUtmrGJhoqUUpKYwzTip84ZVmqAkWCz4efFyXktv8s4x0JD4b+eL/ckRNFX/KYaparJZsTTZYMuteRizR8hHZzN/V1Emp40iQ9SIziHHwgX/koRSah2pgPDINN1JEBGLULwJ1/Sf7jskhIcfi0/HYpenGL2WULLrLSaQ==
+Content-type: multipart/alternative;
+	boundary="B_3821516406_798265049"
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3821516406_798265049
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+Hi Scott and Selim,
+
+I am free to meet on Monday 21st  before 1.30 or after 4pm . Scott, would y=
+ou like to suggest a convenient time and whether you would prefer to meet in=
+ person or remotely that day?
+
+As I understand it, the probe alters are the total of other DWs known to th=
+e sample respondents (i.e. in our survey, the number of DW contacts on their=
+ mobile phones). Thank you for these additional literature suggestions, Scot=
+t. I shall aim to have a look at these before we meet. Selim, could you plea=
+se take a look at these too?
+
+Best wishes
+Caroline
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Nottingham Research Fellow, Rights Lab
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+=20
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+=20
+
+=20
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 05 August 2023 14:09
+To: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>; Caroline Emberson (staff=
+) <lizce@exmail.nottingham.ac.uk>
+Subject: RE: G-NSUM and Modern Slavery in the UK=20
+=20
+Thanks for this, Selim.  The 21rst is the latest I can meet.  I=E2=80=99m free fr=
+om the 14th-21rst only.  Sorry.  If we are to meet on the 21rst, and if this=
+ will be our last meeting b4 teaching starts (I hope not!  But lets be reali=
+stic=E2=80=A6)  then may I please ask for how I/ we can prepare for this meeting s=
+o as to be most effective?
+
+=20
+
+Take care and stay cool,
+
+Scott
+
+=20
+
+=20
+
+From: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>=20
+Sent: Thursday, August 3, 2023 7:47 AM
+To: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>; Caroline Emberson=
+ (staff) <lizce@exmail.nottingham.ac.uk>
+Subject: Re: G-NSUM and Modern Slavery in the UK
+
+=20
+
+Dear Dr Moser,=20
+
+=20
+
+Thank you for your email.=20
+
+=20
+
+We could meet anytime on the 21st or 22nd of August at the Rights Lab. Plea=
+se let me know what works best for you, day and time wise. I will be free on=
+ these days. @Caroline Emberson (staff) I assume this would work for you?
+
+=20
+
+Thank you.=20
+
+=20
+
+With kind regards,=20
+
+=20
+
+Selim Yilmaz
+
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 27 July 2023 12:25
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz=
+ <ldxsy3@exmail.nottingham.ac.uk>
+Subject: RE: G-NSUM and Modern Slavery in the UK=20
+
+=20
+
+Not at all!  You are very kind to think of me =E2=80=93 thank you!
+
+=20
+
+=20
+
+Selim: can you ping me when you get back and know your schedule?  August, b=
+ut after the 18th is a very good time for me.  Lets pin something down after=
+ you get back?  I hope you are enjoying your travels!
+
+=20
+
+Best,
+
+Scott
+
+=20
+
+=20
+
+From: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>=20
+Sent: Thursday, July 27, 2023 11:56 AM
+To: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>; Selim Yilmaz <ldx=
+sy3@exmail.nottingham.ac.uk>
+Subject: Re: G-NSUM and Modern Slavery in the UK
+
+=20
+
+=20
+
+Thank you so much Scott. That is great news. Just let Selim and I know when=
+ would suit you. Thank you again for your support - we need you!
+
+=20
+
+Best wishes
+
+Caroline
+
+=20
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Nottingham Research Fellow, Rights Lab
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+=20
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+=20
+
+=20
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+=20
+
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 27 July 2023 11:42
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz=
+ <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: G-NSUM and Modern Slavery in the UK=20
+
+=20
+
+Dear Caroline,
+
+=20
+
+Oh wow!  This is wonderful.  Thank you so much for thinking of me!  Yes, I =
+would love to talk/ collaborate/ learn more about your research!  Late Augus=
+t is perfect for me.
+
+I=E2=80=99ll need some time to digest the materials you sent, but I look forward =
+to doing so.
+
+=20
+
+Best,
+
+Scott
+
+=20
+
+=20
+
+Get Outlook for iOS
+
+From: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Sent: Tuesday, July 25, 2023 4:16:29 PM
+To: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>; Selim Yilmaz <ldx=
+sy3@exmail.nottingham.ac.uk>
+Subject: Re: G-NSUM and Modern Slavery in the UK=20
+
+=20
+
+Dear Scott,
+
+=20
+
+Thank you for your reply and for your evident enthusiasm for this project. =
+I have made a start with a more detailed reading of the GNSUM literature and=
+ I have sketched out a protocol based upon Freehan and Salganik's (2014) pap=
+er of GNSUM procedures.  I am, however, not a highly trained statistician an=
+d your opinion would be of great value to us as we undertake an exploratory =
+analysis, the protocol for which I attach here. I do hope that it may be pos=
+sible for us to collaborate on this project - as you can probably now see cl=
+early, your guidance and expertise would be invaluable to us. If you think t=
+here is value in an approach of these type, I wonder whether you might be fr=
+ee to meet  - either virtually or in person - with Selim and myself some tim=
+e in mid- to late August after Selim returns from his holiday in China on th=
+e 18th?=20
+
+=20
+
+Best wishes
+
+Caroline
+
+=20
+
+=20
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Nottingham Research Fellow, Rights Lab
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+=20
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+=20
+
+=20
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+=20
+
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 21 July 2023 17:29
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz=
+ <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: G-NSUM and Modern Slavery in the UK=20
+
+=20
+
+Dear Caroline (if I may),
+
+=20
+
+Thank you very much for your email.  I am very sorry for the inconvenience.=
+ and especially to bother you at busy times (I totally understand!)
+
+=20
+
+I find your project very interesting and exciting!  I am vicariously happy =
+for you all as you engage in the analysis!
+
+=20
+
+You raise a very interesting and important issue RE: London.  Yes, I see yo=
+ur point.  London is SO BIG!  So if one is looking for members of any=E2=80=8B sub=
+-population (doctors, domestic workers, etc. etc.) I would guess there would=
+ be more in a more highly populated area.  Then again, this is just a conjec=
+ture and could be empirically evaluated.  Just thinking aloud: for sure ther=
+e are heterogeneous 'clustering' of some demographic groups by geography (ab=
+ove and beyond base-rates, e.g. Leicher has approximately the same percentag=
+e of non-UK born residents as London ); but I wonder if the same is true of =
+domestic workers, victims of modern slavery, or other 'hidden groups.'  Hmm.=
+  Possibly an interesting research project (?)  Then again, these demographi=
+c patterns almost surely match immigration patterns, I guess.=20
+
+=20
+
+Thank you again for your kind reply.  And yes!  I would love to (1) stay in=
+ touch (and hopefully convince you to collaborate! ) and (2) read your draft=
+ and learn more about the results of your study.  Really interesting!
+
+=20
+
+I hope you and yours are enjoying the summer!
+
+Best,
+
+scott
+
+=20
+
+=20
+
+From: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Sent: Friday, July 21, 2023 1:36 PM
+To: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>; Selim Yilmaz <ldx=
+sy3@exmail.nottingham.ac.uk>
+Subject: Re: G-NSUM and Modern Slavery in the UK=20
+
+=20
+
+Dear Professor Moser,
+
+=20
+
+I must apologise for the delay in responding to your email, which arrived a=
+t a busy time. to address the questions that you posed:
+
+=20
+
+Selim and I are in the process of analysing the survey responses that we re=
+ceived. We hope to be in a position to use GNSUM techniques on our data and =
+to estimate a figure for the extent of labour exploitation across the domest=
+ic worker population in the UK. This is ambitious, we know, and this is very=
+ much an exploratory undertaking to see if it can be done with the type of p=
+rimary data we have collected and the available secondary data related to th=
+e wider DW population.=20
+
+=20
+
+The point of contact for our survey has been primarily national DW NGOs. Sp=
+ecifically, we have dealt with the voice of domestic workers, and two commun=
+ity-based NGOs supporting respectively Filipina and Latin American workers. =
+These tend to be based in London and so we anticipate a London bias to our s=
+ample. As Domestic workers are employed by and as individuals, in private ho=
+useholds we have chosen to focus our initial analysis upon their employment =
+status rather than geography.
+
+=20
+
+I would be very interested in keeping in touch with you as the 'comparative=
+ measurement project' develops - so do please keep in touch. Selim and I wil=
+l be drafting our report over the next couple of weeks, with a view to devel=
+oping a methodological paper in the Autumn. I hope that we may also keep you=
+ uptodate with our progress as these develop.
+
+=20
+
+Best wishes
+
+=20
+
+Caroline
+
+=20
+
+=20
+
+=20
+
+=20
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Nottingham Research Fellow, Rights Lab
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+=20
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+=20
+
+=20
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+=20
+
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 21 July 2023 12:19
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz=
+ <ldxsy3@exmail.nottingham.ac.uk>
+Subject: RE: G-NSUM and Modern Slavery in the UK=20
+
+=20
+
+Dear Dr. Emberson and Selim,
+
+=20
+
+Sorry for the multiple emails, but in addition to my July 5th email (below)=
+, I would be very interested to know which NGOs you are working with.  Selim=
+ mentioned the necessity of partnering so as to have access to the =E2=80=98seeds=E2=
+=80=99 in an RDS design.  Just curious.=20
+
+=20
+
+Many thanks and hope you are enjoying the summer!
+
+=20
+
+Best,
+
+Scott
+
+=20
+
+=20
+
+From: Scott Moser (staff)=20
+Sent: Wednesday, July 5, 2023 4:11 PM
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz=
+ <ldxsy3@exmail.nottingham.ac.uk>
+Subject: G-NSUM and Modern Slavery in the UK
+
+=20
+
+Dear Dr. Emberson and Selim,
+
+=20
+
+Thank you again for your input an participation in the workshop Zoe kindly =
+organized for my (nascent) 'Comparative Measurements' project idea.  I am wr=
+iting to ask a few things.  First, how is your G-NSUM research project going=
+?  I am very interested in your work, and how you are finding the research +=
+ surveys + sampling from the 'hidden population.'   i don't want to step on =
+anyone's toes, but I'd love to both know more about this project, and also p=
+ick your brains.  Where -- as in which location -- are you sampling from (an=
+d why)?  Which NGOs are you working with?   Do you have any suggestions rega=
+rding the 'right' geographic 'level' to use (e.g. council, county/borough, r=
+egion)?
+
+Next, would you be interested in being involved with the 'Comparative Measu=
+rements' project?  I recognize I am still in the early stages, and that I ne=
+ed to flesh things out considerably.  But it would seem to me to be an ideal=
+ 'fit' for you both to be involved.  But no presure =F0=9F=99=82
+
+=20
+
+In any event, I hope you and yours are doing well and enjoying your summer!
+
+=20
+
+Best,
+
+scott
+
+=20
+
+=20
+
+
+--B_3821516406_798265049
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><style t=
+ype=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bottom:0;} </st=
+yle></head><body dir=3D"ltr"><div style=3D"font-family: Calibri, Arial, Helvetic=
+a, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof"=
+>Hi Scott and Selim,</div><div style=3D"font-family: Calibri, Arial, Helvetica=
+, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof">=
+<br></div><div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; fo=
+nt-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof">I am free to mee=
+t on Monday 21<span><sup>st</sup>&nbsp;</span>&nbsp;before 1.30 or after 4pm=
+ . Scott, would you like to suggest a convenient time and whether you would =
+prefer to meet in person or remotely that day?</div><div style=3D"font-family:=
+ Calibri, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0)=
+;" class=3D"elementToProof"><br></div><div style=3D"font-family: Calibri, Arial,=
+ Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elemen=
+tToProof">As I understand it, the probe alters are the total of other DWs kn=
+own to the sample respondents (i.e. in our survey, the number of DW contacts=
+ on their mobile phones). Thank you for these additional literature suggesti=
+ons, Scott. I shall aim to have a look at these before we meet. Selim, could=
+ you please take a look at these too?</div><div style=3D"font-family: Calibri,=
+ Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D=
+"elementToProof"><br></div><div style=3D"font-family: Calibri, Arial, Helvetic=
+a, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof"=
+>Best wishes</div><div style=3D"font-family: Calibri, Arial, Helvetica, sans-s=
+erif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof">Caroline=
+</div><div class=3D"elementToProof"><div style=3D"font-family: Calibri, Arial, H=
+elvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br></div><div =
+id=3D"Signature"><div><div style=3D"font-family: Calibri, Arial, Helvetica, sans=
+-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br></div><div></div><div id=3D=
+"divtagdefaultwrapper" dir=3D"ltr" style=3D"font-size: 12pt; font-family: Calibr=
+i, Helvetica, sans-serif; color: rgb(0, 0, 0);"><p style=3D"margin-top:0px; ma=
+rgin-bottom:0px; margin-top:0; margin-bottom:0"></p><p class=3D"MsoNormal" sty=
+le=3D"margin-top:0px; margin-bottom:0px"><font face=3D"Arial, sans-serif" style=3D=
+"color: rgb(0, 155, 189);"><b>Dr Caroline Emberson (preferred pronouns she/h=
+er)</b></font></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:=
+0px"><font face=3D"Arial, sans-serif" style=3D"color: rgb(19, 27, 87);"><b>Notti=
+ngham Research Fellow, Rights Lab</b></font></p><p class=3D"MsoNormal" style=3D"=
+margin-top:0px; margin-bottom:0px"><span style=3D"font-size:9.0pt; font-family=
+:&quot;Arial&quot;,sans-serif">&nbsp;</span></p><p class=3D"MsoNormal" style=3D"=
+margin-top:0px; margin-bottom:0px"><span style=3D"font-size: 9pt; font-family:=
+ Arial, sans-serif; color: rgb(19, 27, 87);">Nottingham University Business =
+School OMIS/ Faculty of Social Science<br>University of Nottingham</span><su=
+b><span style=3D"font-size:11.0pt; font-family:&quot;Arial&quot;,sans-serif"><=
+/span></sub></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0p=
+x"><span style=3D"font-size: 9pt; font-family: Arial, sans-serif; color: rgb(1=
+9, 27, 87);">A20, Highfield House</span></p><p class=3D"MsoNormal" style=3D"marg=
+in-top:0px; margin-bottom:0px"><span style=3D"font-size: 9pt; font-family: Ari=
+al, sans-serif; color: rgb(19, 27, 87);">University Park</span><sub><span st=
+yle=3D"font-size:11.0pt; font-family:&quot;Arial&quot;,sans-serif"></span></su=
+b></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px"><span s=
+tyle=3D"font-size: 9pt; font-family: Arial, sans-serif; color: rgb(19, 27, 87)=
+;">Nottingham, NG7 2RD</span></p><p class=3D"MsoNormal" style=3D"margin-top:0px;=
+ margin-bottom:0px"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&qu=
+ot;,sans-serif">&nbsp;</span></p><p class=3D"MsoNormal" style=3D"margin-top:0px;=
+ margin-bottom:0px"><span style=3D"font-size: 9pt; font-family: Arial, sans-se=
+rif; color: rgb(19, 27, 87);">+44 (0) 115 8283072<b>&nbsp;</b></span><b><spa=
+n style=3D"font-size: 9pt; font-family: Calibri, sans-serif; color: rgb(19, 27=
+, 87);">| </span></b><span class=3D"MsoHyperlink"><span style=3D"font-size:9.0pt=
+; font-family:&quot;Arial&quot;,sans-serif"><a href=3D"http://nottingham.ac.uk=
+/" target=3D"_blank">caroline.emberson@nottingham.ac.uk</a></span></span><span=
+ style=3D"font-size:11.0pt; font-family:&quot;Arial&quot;,sans-serif"></span><=
+/p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px"><span styl=
+e=3D"font-size: 9pt; font-family: Arial, sans-serif; color: black;">&nbsp;</sp=
+an></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px"><a hre=
+f=3D"https://www.nottingham.ac.uk/servicesforbusiness"><span style=3D"font-size:=
+ 11pt; font-family: Arial, sans-serif; text-decoration: none; color: black;"=
+></span></a><span style=3D"font-size: 11pt; font-family: Arial, sans-serif; co=
+lor: black;"></span></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-b=
+ottom:0px"><span style=3D"font-size: 9pt; font-family: Arial, sans-serif; colo=
+r: black;">&nbsp;</span></p><p class=3D"MsoNormal" style=3D"margin-top:0px; marg=
+in-bottom:0px; text-autospace:none"><b><span lang=3D"EN-US" style=3D"font-size: =
+9pt; font-family: Georgia, serif; color: rgb(21, 118, 158);">Follow us</span=
+></b><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Calibri, sans-se=
+rif; color: rgb(25, 25, 25);"></span></p><p class=3D"MsoNormal" style=3D"margin-=
+top:0px; margin-bottom:0px; text-autospace:none"><u style=3D""><span lang=3D"EN-=
+US" style=3D"font-size: 9pt; font-family: Arial, sans-serif; color: rgb(0, 0, =
+233);"><a href=3D"http://facebook.com/TheUniofNottingham"><span style=3D"color: =
+rgb(0, 0, 233);">Facebook.com/UniofNottingham</span></a></span></u><span lan=
+g=3D"EN-US" style=3D"font-size: 9pt; font-family: Arial, sans-serif; color: rgb(=
+25, 25, 25);"></span></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-=
+bottom:0px; text-autospace:none"><u style=3D""><span lang=3D"EN-US" style=3D"font-=
+size: 9pt; font-family: Arial, sans-serif; color: rgb(0, 0, 233);"><a href=3D"=
+http://twitter.com/UniofNottingham"><span style=3D"color: rgb(0, 0, 233);">Twi=
+tter.com/UniofNottingham</span></a></span></u><span lang=3D"EN-US" style=3D"font=
+-size: 9pt; font-family: Arial, sans-serif; color: rgb(25, 25, 25);"></span>=
+</p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px; text-auto=
+space:none"><u style=3D""><span lang=3D"EN-US" style=3D"font-size: 9pt; font-famil=
+y: Arial, sans-serif; color: rgb(0, 0, 233);"><a href=3D"http://youtube.com/no=
+ttmuniversity"><span style=3D"color: rgb(0, 0, 233);">Youtube.com/nottmunivers=
+ity</span></a></span></u><span lang=3D"EN-US" style=3D"font-size: 9pt; font-fami=
+ly: Arial, sans-serif; color: rgb(25, 25, 25);"></span></p><p class=3D"MsoNorm=
+al" style=3D"margin-top:0px; margin-bottom:0px; text-autospace:none"><u style=3D=
+""><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Arial, sans-serif;=
+ color: rgb(0, 0, 233);"><a href=3D"http://instagram.com/uniofnottingham"><spa=
+n style=3D"color: rgb(0, 0, 233);">Instagram.com/uniofnottingham</span></a></s=
+pan></u><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Arial, sans-s=
+erif; color: rgb(25, 25, 25);"></span></p><p class=3D"MsoNormal" style=3D"margin=
+-top:0px; margin-bottom:0px"><u style=3D""><span lang=3D"EN-US" style=3D"font-size=
+: 9pt; font-family: Arial, sans-serif; color: rgb(0, 0, 233);"><a href=3D"http=
+://linkedin.com/company/university-of-nottingham"><span style=3D"color: rgb(0,=
+ 0, 233);">Linkedin.com/company/university-of-nottingham</span></a></span></=
+u></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px"><u styl=
+e=3D""><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Arial, sans-seri=
+f; color: rgb(0, 0, 233);"><a href=3D"http://www.foursquare.com/uniofnottingha=
+m"><span style=3D"color: rgb(0, 0, 233);">F</span>oursquare.com/uniofnottingha=
+m</a></span></u></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-botto=
+m:0px"><u style=3D""><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Ar=
+ial, sans-serif; color: rgb(0, 0, 233);"><span style=3D"text-decoration:none">=
+&nbsp;</span></span></u></p><br><p style=3D"margin-top:0px; margin-bottom:0px"=
+></p></div></div></div></div><div id=3D"appendonsend"></div><hr style=3D"display=
+:inline-block;width:98%" tabindex=3D"-1"><div id=3D"divRplyFwdMsg" dir=3D"ltr"><fo=
+nt face=3D"Calibri, sans-serif" style=3D"font-size:11pt" color=3D"#000000"><b>From=
+:</b> Scott Moser (staff) &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Sent:=
+</b> 05 August 2023 14:09<br><b>To:</b> Selim Yilmaz &lt;ldxsy3@exmail.notti=
+ngham.ac.uk&gt;; Caroline Emberson (staff) &lt;lizce@exmail.nottingham.ac.uk=
+&gt;<br><b>Subject:</b> RE: G-NSUM and Modern Slavery in the UK</font> <div>=
+&nbsp;</div></div><style>
+<!--
+@font-face
+	{font-family:"Cambria Math"}
+@font-face
+	{font-family:Calibri}
+@font-face
+	{font-family:"Segoe UI Emoji"}
+@font-face
+	{font-family:Aptos}
+@font-face
+	{font-family:Georgia}
+p.x_MsoNormal, li.x_MsoNormal, div.x_MsoNormal
+	{margin:0cm;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif}
+a:link, span.x_MsoHyperlink
+	{color:blue;
+	text-decoration:underline}
+p.x_xmsonormal, li.x_xmsonormal, div.x_xmsonormal
+	{margin:0cm;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif}
+p.x_xxxmsonormal, li.x_xxxmsonormal, div.x_xxxmsonormal
+	{margin:0cm;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif}
+p.x_xxxxxmsonormal, li.x_xxxxxmsonormal, div.x_xxxxxmsonormal
+	{margin:0cm;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif}
+p.x_xxxxxxmsonormal, li.x_xxxxxxmsonormal, div.x_xxxxxxmsonormal
+	{margin:0cm;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif}
+span.x_xmsohyperlink
+	{color:blue;
+	text-decoration:underline}
+span.x_xxxcontentpasted1
+	{}
+span.x_xxxcontentpasted0
+	{}
+span.x_xxxmsohyperlink
+	{}
+span.x_xxxxxmsohyperlink
+	{}
+span.x_EmailStyle32
+	{font-family:"Calibri",sans-serif;
+	color:windowtext}
+.x_MsoChpDefault
+	{font-size:10.0pt}
+@page WordSection1
+	{margin:72.0pt 72.0pt 72.0pt 72.0pt}
+div.x_WordSection1
+	{}
+-->
+</style><div lang=3D"EN-GB" link=3D"blue" vlink=3D"purple" style=3D"word-wrap:break=
+-word"><div class=3D"x_WordSection1"><p class=3D"x_MsoNormal"><span style=3D"">Tha=
+nks for this, Selim.&nbsp; The 21rst is the latest I can meet.&nbsp; I=E2=80=99m f=
+ree from the 14<sup>th</sup>-21rst only.&nbsp; Sorry.&nbsp; If we are to mee=
+t on the 21rst, and if this will be our last meeting b4 teaching starts (I h=
+ope not!&nbsp; But lets be realistic=E2=80=A6)&nbsp; then may I please ask for how=
+ I/ we can prepare for this meeting so as to be most effective?</span></p><p=
+ class=3D"x_MsoNormal"><span style=3D"">&nbsp;</span></p><p class=3D"x_MsoNormal">=
+<span style=3D"">Take care and stay cool,</span></p><p class=3D"x_MsoNormal"><sp=
+an style=3D"">Scott</span></p><p class=3D"x_MsoNormal"><span style=3D"">&nbsp;</sp=
+an></p><p class=3D"x_MsoNormal"><span style=3D"">&nbsp;</span></p><div style=3D"bo=
+rder:none; border-left:solid blue 1.5pt; padding:0cm 0cm 0cm 4.0pt"><div><di=
+v style=3D"border:none; border-top:solid #E1E1E1 1.0pt; padding:3.0pt 0cm 0cm =
+0cm"><p class=3D"x_MsoNormal"><b><span lang=3D"EN-US">From:</span></b><span lang=
+=3D"EN-US"> Selim Yilmaz &lt;ldxsy3@exmail.nottingham.ac.uk&gt; <br><b>Sent:</=
+b> Thursday, August 3, 2023 7:47 AM<br><b>To:</b> Scott Moser (staff) &lt;ld=
+zsm2@exmail.nottingham.ac.uk&gt;; Caroline Emberson (staff) &lt;lizce@exmail=
+.nottingham.ac.uk&gt;<br><b>Subject:</b> Re: G-NSUM and Modern Slavery in th=
+e UK</span></p></div></div><p class=3D"x_MsoNormal">&nbsp;</p><div><p class=3D"x=
+_MsoNormal"><span style=3D"font-size:12.0pt; font-family:&quot;Aptos&quot;,san=
+s-serif; color:black">Dear Dr Moser,&nbsp;</span></p></div><div><p class=3D"x_=
+MsoNormal"><span style=3D"font-size:12.0pt; font-family:&quot;Aptos&quot;,sans=
+-serif; color:black">&nbsp;</span></p></div><div><p class=3D"x_MsoNormal"><spa=
+n style=3D"font-size:12.0pt; font-family:&quot;Aptos&quot;,sans-serif; color:b=
+lack">Thank you for your email.&nbsp;</span></p></div><div><p class=3D"x_MsoNo=
+rmal"><span style=3D"font-size:12.0pt; font-family:&quot;Aptos&quot;,sans-seri=
+f; color:black">&nbsp;</span></p></div><div><p class=3D"x_MsoNormal"><span sty=
+le=3D"font-size:12.0pt; font-family:&quot;Aptos&quot;,sans-serif; color:black"=
+>We could meet anytime on the 21<sup>st</sup>&nbsp;or 22<sup>nd</sup>&nbsp;o=
+f August at the Rights Lab. Please let me know what works best for you, day =
+and time wise. I will be free on these days. <a id=3D"OWAAM131320" href=3D"mailt=
+o:lizce@exmail.nottingham.ac.uk"><span style=3D"font-family:&quot;Aptos&quot;,=
+sans-serif; text-decoration:none">@Caroline Emberson (staff)</span></a>&nbsp=
+;I assume this would work for you?</span></p></div><div><p class=3D"x_MsoNorma=
+l"><span style=3D"font-size:12.0pt; font-family:&quot;Aptos&quot;,sans-serif; =
+color:black">&nbsp;</span></p></div><div><p class=3D"x_MsoNormal"><span style=3D=
+"font-size:12.0pt; font-family:&quot;Aptos&quot;,sans-serif; color:black">Th=
+ank you.&nbsp;</span></p></div><div><p class=3D"x_MsoNormal"><span style=3D"font=
+-size:12.0pt; font-family:&quot;Aptos&quot;,sans-serif; color:black">&nbsp;<=
+/span></p></div><div><p class=3D"x_MsoNormal"><span style=3D"font-size:12.0pt; f=
+ont-family:&quot;Aptos&quot;,sans-serif; color:black">With kind regards,&nbs=
+p;</span></p></div><div><p class=3D"x_MsoNormal"><span style=3D"font-size:12.0pt=
+; font-family:&quot;Aptos&quot;,sans-serif; color:black">&nbsp;</span></p></=
+div><div><p class=3D"x_MsoNormal"><span style=3D"font-size:12.0pt; font-family:&=
+quot;Aptos&quot;,sans-serif; color:black">Selim Yilmaz</span></p></div><div =
+class=3D"x_MsoNormal" align=3D"center" style=3D"text-align:center"><hr size=3D"2" wi=
+dth=3D"98%" align=3D"center"></div><div id=3D"x_divRplyFwdMsg"><p class=3D"x_MsoNorm=
+al"><b><span style=3D"color:black">From:</span></b><span style=3D"color:black"> =
+Scott Moser (staff) &lt;<a href=3D"mailto:ldzsm2@exmail.nottingham.ac.uk">ldzs=
+m2@exmail.nottingham.ac.uk</a>&gt;<br><b>Sent:</b> 27 July 2023 12:25<br><b>=
+To:</b> Caroline Emberson (staff) &lt;<a href=3D"mailto:lizce@exmail.nottingha=
+m.ac.uk">lizce@exmail.nottingham.ac.uk</a>&gt;; Selim Yilmaz &lt;<a href=3D"ma=
+ilto:ldxsy3@exmail.nottingham.ac.uk">ldxsy3@exmail.nottingham.ac.uk</a>&gt;<=
+br><b>Subject:</b> RE: G-NSUM and Modern Slavery in the UK</span> </p><div><=
+p class=3D"x_MsoNormal">&nbsp;</p></div></div><div><div><p class=3D"x_xmsonormal=
+">Not at all!&nbsp; You are very kind to think of me =E2=80=93 thank you!</p><p cl=
+ass=3D"x_xmsonormal">&nbsp;</p><p class=3D"x_xmsonormal">&nbsp;</p><p class=3D"x_x=
+msonormal">Selim: can you ping me when you get back and know your schedule?&=
+nbsp; August, but after the 18<sup>th</sup> is a very good time for me.&nbsp=
+; Lets pin something down after you get back?&nbsp; I hope you are enjoying =
+your travels!</p><p class=3D"x_xmsonormal">&nbsp;</p><p class=3D"x_xmsonormal">B=
+est,</p><p class=3D"x_xmsonormal">Scott</p><p class=3D"x_xmsonormal">&nbsp;</p><=
+p class=3D"x_xmsonormal">&nbsp;</p><div style=3D"border:none; border-left:solid =
+blue 1.5pt; padding:0cm 0cm 0cm 4.0pt"><div><div style=3D"border:none; border-=
+top:solid #E1E1E1 1.0pt; padding:3.0pt 0cm 0cm 0cm"><p class=3D"x_xmsonormal">=
+<b><span lang=3D"EN-US">From:</span></b><span lang=3D"EN-US"> Caroline Emberson =
+(staff) &lt;<a href=3D"mailto:lizce@exmail.nottingham.ac.uk">lizce@exmail.nott=
+ingham.ac.uk</a>&gt; <br><b>Sent:</b> Thursday, July 27, 2023 11:56 AM<br><b=
+>To:</b> Scott Moser (staff) &lt;<a href=3D"mailto:ldzsm2@exmail.nottingham.ac=
+.uk">ldzsm2@exmail.nottingham.ac.uk</a>&gt;; Selim Yilmaz &lt;<a href=3D"mailt=
+o:ldxsy3@exmail.nottingham.ac.uk">ldxsy3@exmail.nottingham.ac.uk</a>&gt;<br>=
+<b>Subject:</b> Re: G-NSUM and Modern Slavery in the UK</span></p></div></di=
+v><p class=3D"x_xmsonormal">&nbsp;</p><div><p class=3D"x_xmsonormal"><span style=
+=3D"font-size:12.0pt; color:black">&nbsp;</span></p></div><div><div><p class=3D"=
+x_xmsonormal"><span style=3D"font-size:12.0pt; color:black">Thank you so much =
+Scott. That is great news. Just let Selim and I know when would suit you. Th=
+ank you again for your support - we need you!</span></p></div><div><p class=3D=
+"x_xmsonormal"><span style=3D"font-size:12.0pt; color:black">&nbsp;</span></p>=
+</div><div><p class=3D"x_xmsonormal"><span style=3D"font-size:12.0pt; color:blac=
+k">Best wishes</span></p></div><div><p class=3D"x_xmsonormal"><span style=3D"fon=
+t-size:12.0pt; color:black">Caroline</span></p></div><div id=3D"x_x_Signature"=
+><div><div><p class=3D"x_xmsonormal"><span style=3D"font-size:12.0pt; color:blac=
+k">&nbsp;</span></p></div><div id=3D"x_x_divtagdefaultwrapper"><p class=3D"x_xms=
+onormal"><b><span style=3D"font-size:12.0pt; font-family:&quot;Arial&quot;,san=
+s-serif; color:#009BBD">Dr Caroline Emberson (preferred pronouns she/her)</s=
+pan></b></p><p class=3D"x_xmsonormal"><b><span style=3D"font-size:12.0pt; font-f=
+amily:&quot;Arial&quot;,sans-serif; color:#131B57">Nottingham Research Fello=
+w, Rights Lab</span></b></p><p class=3D"x_xmsonormal"><span style=3D"font-size:9=
+.0pt; font-family:&quot;Arial&quot;,sans-serif; color:black">&nbsp;</span></=
+p><p class=3D"x_xmsonormal"><span style=3D"font-size:9.0pt; font-family:&quot;Ar=
+ial&quot;,sans-serif; color:#131B57">Nottingham University Business School O=
+MIS/ Faculty of Social Science<br>University of Nottingham</span></p><p clas=
+s=3D"x_xmsonormal"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;=
+,sans-serif; color:#131B57">A20, Highfield House</span></p><p class=3D"x_xmson=
+ormal"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-seri=
+f; color:#131B57">University Park</span></p><p class=3D"x_xmsonormal"><span st=
+yle=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#131B5=
+7">Nottingham, NG7 2RD</span></p><p class=3D"x_xmsonormal"><span style=3D"font-s=
+ize:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:black">&nbsp;</sp=
+an></p><p class=3D"x_xmsonormal"><span style=3D"font-size:9.0pt; font-family:&qu=
+ot;Arial&quot;,sans-serif; color:#131B57">+44 (0) 115 8283072<b>&nbsp;</b></=
+span><b><span style=3D"font-size:9.0pt; color:#131B57">| </span></b><span clas=
+s=3D"x_xmsohyperlink"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&qu=
+ot;,sans-serif; color:black; text-decoration:none"><a href=3D"http://nottingha=
+m.ac.uk/" target=3D"_blank">caroline.emberson@nottingham.ac.uk</a></span></spa=
+n></p><p class=3D"x_xmsonormal"><span style=3D"font-size:9.0pt; font-family:&quo=
+t;Arial&quot;,sans-serif; color:black">&nbsp;</span></p><p class=3D"x_xmsonorm=
+al"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; =
+color:black">&nbsp;</span></p><p class=3D"x_xmsonormal" style=3D"text-autospace:=
+none"><b><span lang=3D"EN-US" style=3D"font-size:9.0pt; font-family:&quot;Georgi=
+a&quot;,serif; color:#15769E">Follow us</span></b></p><p class=3D"x_xmsonormal=
+" style=3D"text-autospace:none"><u><span lang=3D"EN-US" style=3D"font-size:9.0pt; =
+font-family:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http://fac=
+ebook.com/TheUniofNottingham"><span style=3D"color:#0000E9">Facebook.com/Uniof=
+Nottingham</span></a></span></u></p><p class=3D"x_xmsonormal" style=3D"text-auto=
+space:none"><u><span lang=3D"EN-US" style=3D"font-size:9.0pt; font-family:&quot;=
+Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http://twitter.com/UniofNott=
+ingham"><span style=3D"color:#0000E9">Twitter.com/UniofNottingham</span></a></=
+span></u></p><p class=3D"x_xmsonormal" style=3D"text-autospace:none"><u><span la=
+ng=3D"EN-US" style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif;=
+ color:#0000E9"><a href=3D"http://youtube.com/nottmuniversity"><span style=3D"co=
+lor:#0000E9">Youtube.com/nottmuniversity</span></a></span></u></p><p class=3D"=
+x_xmsonormal" style=3D"text-autospace:none"><u><span lang=3D"EN-US" style=3D"font-=
+size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=
+=3D"http://instagram.com/uniofnottingham"><span style=3D"color:#0000E9">Instagra=
+m.com/uniofnottingham</span></a></span></u></p><p class=3D"x_xmsonormal"><u><s=
+pan lang=3D"EN-US" style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-=
+serif; color:#0000E9"><a href=3D"http://linkedin.com/company/university-of-not=
+tingham"><span style=3D"color:#0000E9">Linkedin.com/company/university-of-nott=
+ingham</span></a></span></u></p><p class=3D"x_xmsonormal"><u><span lang=3D"EN-US=
+" style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0=
+000E9"><a href=3D"http://www.foursquare.com/uniofnottingham"><span style=3D"colo=
+r:#0000E9">F</span>oursquare.com/uniofnottingham</a></span></u></p><p class=3D=
+"x_xmsonormal"><span lang=3D"EN-US" style=3D"font-size:9.0pt; font-family:&quot;=
+Arial&quot;,sans-serif; color:#0000E9">&nbsp;</span></p><p class=3D"x_xmsonorm=
+al"><span style=3D"font-size:12.0pt; color:black">&nbsp;</span></p></div></div=
+></div></div><div class=3D"x_MsoNormal" align=3D"center" style=3D"text-align:cente=
+r"><hr size=3D"2" width=3D"98%" align=3D"center"></div><div id=3D"x_x_divRplyFwdMsg"=
+><p class=3D"x_xmsonormal"><b><span style=3D"color:black">From:</span></b><span =
+style=3D"color:black"> Scott Moser (staff) &lt;<a href=3D"mailto:ldzsm2@exmail.n=
+ottingham.ac.uk">ldzsm2@exmail.nottingham.ac.uk</a>&gt;<br><b>Sent:</b> 27 J=
+uly 2023 11:42<br><b>To:</b> Caroline Emberson (staff) &lt;<a href=3D"mailto:l=
+izce@exmail.nottingham.ac.uk">lizce@exmail.nottingham.ac.uk</a>&gt;; Selim Y=
+ilmaz &lt;<a href=3D"mailto:ldxsy3@exmail.nottingham.ac.uk">ldxsy3@exmail.nott=
+ingham.ac.uk</a>&gt;<br><b>Subject:</b> Re: G-NSUM and Modern Slavery in the=
+ UK</span> </p><div><p class=3D"x_xmsonormal">&nbsp;</p></div></div><div><div>=
+<div><div><div><p class=3D"x_xmsonormal">Dear Caroline,</p></div><div><p class=
+=3D"x_xmsonormal">&nbsp;</p></div><div><p class=3D"x_xmsonormal">Oh wow! &nbsp;T=
+his is wonderful. &nbsp;Thank you so much for thinking of me! &nbsp;Yes, I w=
+ould love to talk/ collaborate/ learn more about your research! &nbsp;Late A=
+ugust is perfect for me.</p></div><div><p class=3D"x_xmsonormal">I=E2=80=99ll need s=
+ome time to digest the materials you sent, but I look forward to doing so.</=
+p></div><div><p class=3D"x_xmsonormal">&nbsp;</p></div><div><p class=3D"x_xmsono=
+rmal">Best,</p></div><div><p class=3D"x_xmsonormal">Scott</p></div><div><p cla=
+ss=3D"x_xmsonormal">&nbsp;</p></div></div></div><div id=3D"x_x_x_ms-outlook-mobi=
+le-signature"><div><p class=3D"x_xmsonormal">&nbsp;</p></div><p class=3D"x_xmson=
+ormal">Get <a href=3D"https://aka.ms/o0ukef">Outlook for iOS</a></p></div></di=
+v><div class=3D"x_MsoNormal" align=3D"center" style=3D"text-align:center"><hr size=
+=3D"2" width=3D"98%" align=3D"center"></div><div id=3D"x_x_x_divRplyFwdMsg"><p class=
+=3D"x_xmsonormal"><b><span style=3D"color:black">From:</span></b><span style=3D"co=
+lor:black"> Caroline Emberson (staff) &lt;<a href=3D"mailto:lizce@exmail.notti=
+ngham.ac.uk">lizce@exmail.nottingham.ac.uk</a>&gt;<br><b>Sent:</b> Tuesday, =
+July 25, 2023 4:16:29 PM<br><b>To:</b> Scott Moser (staff) &lt;<a href=3D"mail=
+to:ldzsm2@exmail.nottingham.ac.uk">ldzsm2@exmail.nottingham.ac.uk</a>&gt;; S=
+elim Yilmaz &lt;<a href=3D"mailto:ldxsy3@exmail.nottingham.ac.uk">ldxsy3@exmai=
+l.nottingham.ac.uk</a>&gt;<br><b>Subject:</b> Re: G-NSUM and Modern Slavery =
+in the UK</span> </p><div><p class=3D"x_xmsonormal">&nbsp;</p></div></div><div=
+><div><p class=3D"x_xmsonormal"><span style=3D"font-size:12.0pt; color:black">De=
+ar Scott,</span></p></div><div><p class=3D"x_xmsonormal"><span style=3D"font-siz=
+e:12.0pt; color:black">&nbsp;</span></p></div><div><p class=3D"x_xmsonormal"><=
+span style=3D"font-size:12.0pt; color:black">Thank you for your reply and for =
+your evident enthusiasm for this project. I have made a start with a more de=
+tailed reading of the GNSUM literature and&nbsp;I have sketched out a protoc=
+ol based upon Freehan and Salganik's (2014) paper of GNSUM procedures.&nbsp;=
+ I am, however, not a highly trained statistician and your opinion would be =
+of great value to us as we undertake an exploratory analysis, the protocol f=
+or which I attach here.&nbsp;<span class=3D"x_xxxcontentpasted1"><span style=3D"=
+background:white">I do hope that it may be possible for us to collaborate on=
+ this project - as you can probably now see clearly, your guidance and exper=
+tise would be invaluable to us.</span></span><span class=3D"x_xxxcontentpasted=
+0"><span style=3D"background:white">&nbsp;If you think there is value in an ap=
+proach of these type,&nbsp;I wonder whether you might be free to meet&nbsp; =
+- either virtually or in person - with Selim and myself some time in mid- to=
+ late August after Selim returns from his holiday in China on the 18th?&nbsp=
+;</span></span></span></p></div><div><p class=3D"x_xmsonormal"><span style=3D"fo=
+nt-size:12.0pt; color:black">&nbsp;</span></p></div><div><p class=3D"x_xmsonor=
+mal"><span style=3D"font-size:12.0pt; color:black">Best wishes</span></p></div=
+><div><p class=3D"x_xmsonormal"><span style=3D"font-size:12.0pt; color:black">Ca=
+roline</span></p></div><div><div><p class=3D"x_xmsonormal"><span style=3D"font-s=
+ize:12.0pt; color:black">&nbsp;</span></p></div><div id=3D"x_x_x_x_Signature">=
+<div><div><p class=3D"x_xmsonormal"><span style=3D"font-size:12.0pt; color:black=
+">&nbsp;</span></p></div><div id=3D"x_x_x_x_divtagdefaultwrapper"><p class=3D"x_=
+xxxmsonormal"><b><span style=3D"font-size:12.0pt; font-family:&quot;Arial&quot=
+;,sans-serif; color:#009BBD">Dr Caroline Emberson (preferred pronouns she/he=
+r)</span></b></p><p class=3D"x_xxxmsonormal"><b><span style=3D"font-size:12.0pt;=
+ font-family:&quot;Arial&quot;,sans-serif; color:#131B57">Nottingham Researc=
+h Fellow, Rights Lab</span></b></p><p class=3D"x_xxxmsonormal"><span style=3D"fo=
+nt-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:black">&nbsp;=
+</span></p><p class=3D"x_xxxmsonormal"><span style=3D"font-size:9.0pt; font-fami=
+ly:&quot;Arial&quot;,sans-serif; color:#131B57">Nottingham University Busine=
+ss School OMIS/ Faculty of Social Science<br>University of Nottingham</span>=
+</p><p class=3D"x_xxxmsonormal"><span style=3D"font-size:9.0pt; font-family:&quo=
+t;Arial&quot;,sans-serif; color:#131B57">A20, Highfield House</span></p><p c=
+lass=3D"x_xxxmsonormal"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&=
+quot;,sans-serif; color:#131B57">University Park</span></p><p class=3D"x_xxxms=
+onormal"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-se=
+rif; color:#131B57">Nottingham, NG7 2RD</span></p><p class=3D"x_xxxmsonormal">=
+<span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; colo=
+r:black">&nbsp;</span></p><p class=3D"x_xxxmsonormal"><span style=3D"font-size:9=
+.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#131B57">+44 (0) 115 8=
+283072<b>&nbsp;</b></span><b><span style=3D"font-size:9.0pt; color:#131B57">| =
+</span></b><span class=3D"x_xxxmsohyperlink"><span style=3D"font-size:9.0pt; fon=
+t-family:&quot;Arial&quot;,sans-serif; color:black"><a href=3D"http://nottingh=
+am.ac.uk/" target=3D"_blank">caroline.emberson@nottingham.ac.uk</a></span></sp=
+an></p><p class=3D"x_xxxmsonormal"><span style=3D"font-size:9.0pt; font-family:&=
+quot;Arial&quot;,sans-serif; color:black">&nbsp;</span></p><p class=3D"x_xxxms=
+onormal"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-se=
+rif; color:black">&nbsp;</span></p><p class=3D"x_xxxmsonormal" style=3D"text-aut=
+ospace:none"><b><span lang=3D"EN-US" style=3D"font-size:9.0pt; font-family:&quot=
+;Georgia&quot;,serif; color:#15769E">Follow us</span></b></p><p class=3D"x_xxx=
+msonormal" style=3D"text-autospace:none"><u><span lang=3D"EN-US" style=3D"font-siz=
+e:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"h=
+ttp://facebook.com/TheUniofNottingham"><span style=3D"color:#0000E9">Facebook.=
+com/UniofNottingham</span></a></span></u></p><p class=3D"x_xxxmsonormal" style=
+=3D"text-autospace:none"><u><span lang=3D"EN-US" style=3D"font-size:9.0pt; font-fa=
+mily:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http://twitter.co=
+m/UniofNottingham"><span style=3D"color:#0000E9">Twitter.com/UniofNottingham</=
+span></a></span></u></p><p class=3D"x_xxxmsonormal" style=3D"text-autospace:none=
+"><u><span lang=3D"EN-US" style=3D"font-size:9.0pt; font-family:&quot;Arial&quot=
+;,sans-serif; color:#0000E9"><a href=3D"http://youtube.com/nottmuniversity"><s=
+pan style=3D"color:#0000E9">Youtube.com/nottmuniversity</span></a></span></u><=
+/p><p class=3D"x_xxxmsonormal" style=3D"text-autospace:none"><u><span lang=3D"EN-U=
+S" style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#=
+0000E9"><a href=3D"http://instagram.com/uniofnottingham"><span style=3D"color:#0=
+000E9">Instagram.com/uniofnottingham</span></a></span></u></p><p class=3D"x_xx=
+xmsonormal"><u><span lang=3D"EN-US" style=3D"font-size:9.0pt; font-family:&quot;=
+Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http://linkedin.com/company/=
+university-of-nottingham"><span style=3D"color:#0000E9">Linkedin.com/company/u=
+niversity-of-nottingham</span></a></span></u></p><p class=3D"x_xxxmsonormal"><=
+u><span lang=3D"EN-US" style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,s=
+ans-serif; color:#0000E9"><a href=3D"http://www.foursquare.com/uniofnottingham=
+"><span style=3D"color:#0000E9">F</span>oursquare.com/uniofnottingham</a></spa=
+n></u></p><p class=3D"x_xxxmsonormal"><span lang=3D"EN-US" style=3D"font-size:9.0p=
+t; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9">&nbsp;</span></p=
+><p class=3D"x_xmsonormal"><span style=3D"font-size:12.0pt; color:black">&nbsp;<=
+/span></p></div></div></div></div><div class=3D"x_MsoNormal" align=3D"center" st=
+yle=3D"text-align:center"><hr size=3D"2" width=3D"98%" align=3D"center"></div><div i=
+d=3D"x_x_x_x_divRplyFwdMsg"><p class=3D"x_xmsonormal"><b><span style=3D"color:blac=
+k">From:</span></b><span style=3D"color:black"> Scott Moser (staff) &lt;<a hre=
+f=3D"mailto:ldzsm2@exmail.nottingham.ac.uk">ldzsm2@exmail.nottingham.ac.uk</a>=
+&gt;<br><b>Sent:</b> 21 July 2023 17:29<br><b>To:</b> Caroline Emberson (sta=
+ff) &lt;<a href=3D"mailto:lizce@exmail.nottingham.ac.uk">lizce@exmail.nottingh=
+am.ac.uk</a>&gt;; Selim Yilmaz &lt;<a href=3D"mailto:ldxsy3@exmail.nottingham.=
+ac.uk">ldxsy3@exmail.nottingham.ac.uk</a>&gt;<br><b>Subject:</b> Re: G-NSUM =
+and Modern Slavery in the UK</span> </p><div><p class=3D"x_xmsonormal">&nbsp;<=
+/p></div></div><div><div><p class=3D"x_xmsonormal"><span style=3D"font-size:12.0=
+pt; color:black">Dear Caroline (if I may),</span></p></div><div><p class=3D"x_=
+xmsonormal"><span style=3D"font-size:12.0pt; color:black">&nbsp;</span></p></d=
+iv><div><p class=3D"x_xmsonormal"><span style=3D"font-size:12.0pt; color:black">=
+Thank you very much&nbsp;for your email.&nbsp; I am very sorry for&nbsp;the =
+inconvenience. and especially to bother you at busy times (I totally&nbsp;un=
+derstand!)</span></p></div><div><p class=3D"x_xmsonormal"><span style=3D"font-si=
+ze:12.0pt; color:black">&nbsp;</span></p></div><div><p class=3D"x_xmsonormal">=
+<span style=3D"font-size:12.0pt; color:black">I find your project very interes=
+ting and exciting!&nbsp; I am vicariously happy for you all as you engage in=
+ the analysis!</span></p></div><div><p class=3D"x_xmsonormal"><span style=3D"fon=
+t-size:12.0pt; color:black">&nbsp;</span></p></div><div><p class=3D"x_xmsonorm=
+al"><span style=3D"font-size:12.0pt; color:black">You raise a very interesting=
+ and important issue RE: London.&nbsp; Yes, I see your point.&nbsp; London i=
+s SO BIG!&nbsp; So if one is looking for members of <b>any</b>=E2=80=8B sub-popula=
+tion (doctors, domestic workers, etc. etc.) I would guess there would be mor=
+e in a more highly populated area.&nbsp; Then again, this is just a conjectu=
+re and could be empirically evaluated.&nbsp; Just thinking aloud: for sure t=
+here are heterogeneous 'clustering' of some demographic groups by geography =
+(above and beyond base-rates, e.g. Leicher has approximately the same percen=
+tage of <a href=3D"https://www.ons.gov.uk/peoplepopulationandcommunity/populat=
+ionandmigration/internationalmigration/bulletins/ukpopulationbycountryofbirt=
+handnationality/yearendingjune2021#non-uk-populations-regional-comparisons" =
+title=3D"https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigr=
+ation/internationalmigration/bulletins/ukpopulationbycountryofbirthandnation=
+ality/yearendingjune2021#non-uk-populations-regional-comparisons">non-UK bor=
+n residents as London</a> ); but I wonder if the same is true of domestic wo=
+rkers, victims of modern slavery, or other 'hidden groups.'&nbsp; Hmm.&nbsp;=
+ Possibly an interesting research project (?)&nbsp; Then again, these demogr=
+aphic patterns almost surely match immigration patterns, I guess. </span></p=
+></div><div><p class=3D"x_xmsonormal"><span style=3D"font-size:12.0pt; color:bla=
+ck">&nbsp;</span></p></div><div><p class=3D"x_xmsonormal"><span style=3D"font-si=
+ze:12.0pt; color:black">Thank you again&nbsp;for your kind reply.&nbsp; And =
+yes!&nbsp; I would love to (1) stay in touch (and hopefully convince you to =
+collaborate! ) and (2) read your draft and learn more about the results of y=
+our study.&nbsp; Really interesting!</span></p></div><div><p class=3D"x_xmsono=
+rmal"><span style=3D"font-size:12.0pt; color:black">&nbsp;</span></p></div><di=
+v><p class=3D"x_xmsonormal"><span style=3D"font-size:12.0pt; color:black">I hope=
+ you and yours are enjoying the summer!</span></p></div><div><p class=3D"x_xms=
+onormal"><span style=3D"font-size:12.0pt; color:black">Best,</span></p></div><=
+div><p class=3D"x_xmsonormal"><span style=3D"font-size:12.0pt; color:black">scot=
+t</span></p></div><div><p class=3D"x_xmsonormal"><span style=3D"font-size:12.0pt=
+; color:black">&nbsp;</span></p></div><div><p class=3D"x_xmsonormal"><span sty=
+le=3D"font-size:12.0pt; color:black">&nbsp;</span></p></div><div class=3D"x_MsoN=
+ormal" align=3D"center" style=3D"text-align:center"><hr size=3D"2" width=3D"98%" ali=
+gn=3D"center"></div><div id=3D"x_x_x_x_x_divRplyFwdMsg"><p class=3D"x_xmsonormal">=
+<b><span style=3D"color:black">From:</span></b><span style=3D"color:black"> Caro=
+line Emberson (staff) &lt;<a href=3D"mailto:lizce@exmail.nottingham.ac.uk">liz=
+ce@exmail.nottingham.ac.uk</a>&gt;<br><b>Sent:</b> Friday, July 21, 2023 1:3=
+6 PM<br><b>To:</b> Scott Moser (staff) &lt;<a href=3D"mailto:ldzsm2@exmail.not=
+tingham.ac.uk">ldzsm2@exmail.nottingham.ac.uk</a>&gt;; Selim Yilmaz &lt;<a h=
+ref=3D"mailto:ldxsy3@exmail.nottingham.ac.uk">ldxsy3@exmail.nottingham.ac.uk</=
+a>&gt;<br><b>Subject:</b> Re: G-NSUM and Modern Slavery in the UK</span> </p=
+><div><p class=3D"x_xmsonormal">&nbsp;</p></div></div><div><div><p class=3D"x_xm=
+sonormal"><span style=3D"font-size:12.0pt; color:black">Dear Professor Moser,<=
+/span></p></div><div><p class=3D"x_xmsonormal"><span style=3D"font-size:12.0pt; =
+color:black">&nbsp;</span></p></div><div><p class=3D"x_xmsonormal"><span style=
+=3D"font-size:12.0pt; color:black">I must apologise for the delay in respondin=
+g to your email, which arrived at a busy time. to address the questions that=
+ you posed:</span></p></div><div><p class=3D"x_xmsonormal"><span style=3D"font-s=
+ize:12.0pt; color:black">&nbsp;</span></p></div><div><p class=3D"x_xmsonormal"=
+><span style=3D"font-size:12.0pt; color:black">Selim and I are in the process =
+of analysing the survey responses that we received. We hope to be in a posit=
+ion to use GNSUM techniques on our data and to estimate a figure for the ext=
+ent of labour exploitation across the domestic worker population in the UK. =
+This is ambitious, we know, and this is very much an exploratory undertaking=
+ to see if it can be done with the type of primary data we have collected an=
+d the available secondary data related to the wider DW population.&nbsp;</sp=
+an></p></div><div><p class=3D"x_xmsonormal"><span style=3D"font-size:12.0pt; col=
+or:black">&nbsp;</span></p></div><div><p class=3D"x_xmsonormal"><span style=3D"f=
+ont-size:12.0pt; color:black">The point of contact for our survey has been p=
+rimarily national DW NGOs. Specifically, we have dealt with the voice of dom=
+estic workers, and two community-based NGOs supporting respectively Filipina=
+ and Latin American workers. These tend to be based in London and so we anti=
+cipate a London bias to our sample. As Domestic workers are employed by and =
+as individuals, in private households we have chosen to focus our initial an=
+alysis upon their employment status rather than geography.</span></p></div><=
+div><p class=3D"x_xmsonormal"><span style=3D"font-size:12.0pt; color:black">&nbs=
+p;</span></p></div><div><p class=3D"x_xmsonormal"><span style=3D"font-size:12.0p=
+t; color:black">I would be very interested in keeping in touch with you as t=
+he 'comparative measurement project' develops - so do please keep in touch. =
+Selim and I will be drafting our report over the next couple of weeks, with =
+a view to developing a methodological paper in the Autumn. I hope that we ma=
+y also keep you uptodate with our progress as these develop.</span></p></div=
+><div><p class=3D"x_xmsonormal"><span style=3D"font-size:12.0pt; color:black">&n=
+bsp;</span></p></div><div><p class=3D"x_xmsonormal"><span style=3D"font-size:12.=
+0pt; color:black">Best wishes</span></p></div><div><p class=3D"x_xmsonormal"><=
+span style=3D"font-size:12.0pt; color:black">&nbsp;</span></p></div><div><p cl=
+ass=3D"x_xmsonormal"><span style=3D"font-size:12.0pt; color:black">Caroline</spa=
+n></p></div><div><p class=3D"x_xmsonormal"><span style=3D"font-size:12.0pt; colo=
+r:black">&nbsp;</span></p></div><div><p class=3D"x_xmsonormal"><span style=3D"fo=
+nt-size:12.0pt; color:black">&nbsp;</span></p></div><div><div><p class=3D"x_xm=
+sonormal"><span style=3D"font-size:12.0pt; color:black">&nbsp;</span></p></div=
+><div id=3D"x_x_x_x_x_x_Signature"><div><div><p class=3D"x_xmsonormal"><span sty=
+le=3D"font-size:12.0pt; color:black">&nbsp;</span></p></div><div id=3D"x_x_x_x_x=
+_x_divtagdefaultwrapper"><p class=3D"x_xxxxxmsonormal"><b><span style=3D"font-si=
+ze:12.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#009BBD">Dr Carol=
+ine Emberson (preferred pronouns she/her)</span></b></p><p class=3D"x_xxxxxmso=
+normal"><b><span style=3D"font-size:12.0pt; font-family:&quot;Arial&quot;,sans=
+-serif; color:#131B57">Nottingham Research Fellow, Rights Lab</span></b></p>=
+<p class=3D"x_xxxxxmsonormal"><span style=3D"font-size:9.0pt; font-family:&quot;=
+Arial&quot;,sans-serif; color:black">&nbsp;</span></p><p class=3D"x_xxxxxmsono=
+rmal"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif=
+; color:#131B57">Nottingham University Business School OMIS/ Faculty of Soci=
+al Science<br>University of Nottingham</span></p><p class=3D"x_xxxxxmsonormal"=
+><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; col=
+or:#131B57">A20, Highfield House</span></p><p class=3D"x_xxxxxmsonormal"><span=
+ style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#13=
+1B57">University Park</span></p><p class=3D"x_xxxxxmsonormal"><span style=3D"fon=
+t-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#131B57">Notti=
+ngham, NG7 2RD</span></p><p class=3D"x_xxxxxmsonormal"><span style=3D"font-size:=
+9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:black">&nbsp;</span><=
+/p><p class=3D"x_xxxxxmsonormal"><span style=3D"font-size:9.0pt; font-family:&qu=
+ot;Arial&quot;,sans-serif; color:#131B57">+44 (0) 115 8283072<b>&nbsp;</b></=
+span><b><span style=3D"font-size:9.0pt; color:#131B57">| </span></b><span clas=
+s=3D"x_xxxxxmsohyperlink"><span style=3D"font-size:9.0pt; font-family:&quot;Aria=
+l&quot;,sans-serif; color:black"><a href=3D"http://nottingham.ac.uk/" target=3D"=
+_blank">caroline.emberson@nottingham.ac.uk</a></span></span></p><p class=3D"x_=
+xxxxxmsonormal"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,=
+sans-serif; color:black">&nbsp;</span></p><p class=3D"x_xxxxxmsonormal"><span =
+style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:blac=
+k">&nbsp;</span></p><p class=3D"x_xxxxxmsonormal" style=3D"text-autospace:none">=
+<b><span lang=3D"EN-US" style=3D"font-size:9.0pt; font-family:&quot;Georgia&quot=
+;,serif; color:#15769E">Follow us</span></b></p><p class=3D"x_xxxxxmsonormal" =
+style=3D"text-autospace:none"><u><span lang=3D"EN-US" style=3D"font-size:9.0pt; fo=
+nt-family:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http://faceb=
+ook.com/TheUniofNottingham"><span style=3D"color:#0000E9">Facebook.com/UniofNo=
+ttingham</span></a></span></u></p><p class=3D"x_xxxxxmsonormal" style=3D"text-au=
+tospace:none"><u><span lang=3D"EN-US" style=3D"font-size:9.0pt; font-family:&quo=
+t;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http://twitter.com/UniofNo=
+ttingham"><span style=3D"color:#0000E9">Twitter.com/UniofNottingham</span></a>=
+</span></u></p><p class=3D"x_xxxxxmsonormal" style=3D"text-autospace:none"><u><s=
+pan lang=3D"EN-US" style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-=
+serif; color:#0000E9"><a href=3D"http://youtube.com/nottmuniversity"><span sty=
+le=3D"color:#0000E9">Youtube.com/nottmuniversity</span></a></span></u></p><p c=
+lass=3D"x_xxxxxmsonormal" style=3D"text-autospace:none"><u><span lang=3D"EN-US" st=
+yle=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E=
+9"><a href=3D"http://instagram.com/uniofnottingham"><span style=3D"color:#0000E9=
+">Instagram.com/uniofnottingham</span></a></span></u></p><p class=3D"x_xxxxxms=
+onormal"><u><span lang=3D"EN-US" style=3D"font-size:9.0pt; font-family:&quot;Ari=
+al&quot;,sans-serif; color:#0000E9"><a href=3D"http://linkedin.com/company/uni=
+versity-of-nottingham"><span style=3D"color:#0000E9">Linkedin.com/company/univ=
+ersity-of-nottingham</span></a></span></u></p><p class=3D"x_xxxxxmsonormal"><u=
+><span lang=3D"EN-US" style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sa=
+ns-serif; color:#0000E9"><a href=3D"http://www.foursquare.com/uniofnottingham"=
+><span style=3D"color:#0000E9">F</span>oursquare.com/uniofnottingham</a></span=
+></u></p><p class=3D"x_xxxxxmsonormal"><span lang=3D"EN-US" style=3D"font-size:9.0=
+pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9">&nbsp;</span></=
+p><p class=3D"x_xmsonormal"><span style=3D"font-size:12.0pt; color:black">&nbsp;=
+</span></p></div></div></div></div><div class=3D"x_MsoNormal" align=3D"center" s=
+tyle=3D"text-align:center"><hr size=3D"2" width=3D"98%" align=3D"center"></div><div =
+id=3D"x_x_x_x_x_x_divRplyFwdMsg"><p class=3D"x_xmsonormal"><b><span style=3D"color=
+:black">From:</span></b><span style=3D"color:black"> Scott Moser (staff) &lt;<=
+a href=3D"mailto:ldzsm2@exmail.nottingham.ac.uk">ldzsm2@exmail.nottingham.ac.u=
+k</a>&gt;<br><b>Sent:</b> 21 July 2023 12:19<br><b>To:</b> Caroline Emberson=
+ (staff) &lt;<a href=3D"mailto:lizce@exmail.nottingham.ac.uk">lizce@exmail.not=
+tingham.ac.uk</a>&gt;; Selim Yilmaz &lt;<a href=3D"mailto:ldxsy3@exmail.nottin=
+gham.ac.uk">ldxsy3@exmail.nottingham.ac.uk</a>&gt;<br><b>Subject:</b> RE: G-=
+NSUM and Modern Slavery in the UK</span> </p><div><p class=3D"x_xmsonormal">&n=
+bsp;</p></div></div><div><div><p class=3D"x_xxxxxxmsonormal">Dear Dr. Emberson=
+ and Selim,</p><p class=3D"x_xxxxxxmsonormal">&nbsp;</p><p class=3D"x_xxxxxxmson=
+ormal">Sorry for the multiple emails, but in addition to my July 5<sup>th</s=
+up> email (below), I would be very interested to know which NGOs you are wor=
+king with.&nbsp; Selim mentioned the necessity of partnering so as to have a=
+ccess to the =E2=80=98seeds=E2=80=99 in an RDS design.&nbsp; Just curious. </p><p class=3D=
+"x_xxxxxxmsonormal">&nbsp;</p><p class=3D"x_xxxxxxmsonormal">Many thanks and h=
+ope you are enjoying the summer!</p><p class=3D"x_xxxxxxmsonormal">&nbsp;</p><=
+p class=3D"x_xxxxxxmsonormal">Best,</p><p class=3D"x_xxxxxxmsonormal">Scott</p><=
+p class=3D"x_xxxxxxmsonormal">&nbsp;</p><p class=3D"x_xxxxxxmsonormal">&nbsp;</p=
+><div style=3D"border:none; border-left:solid blue 1.5pt; padding:0cm 0cm 0cm =
+4.0pt"><div><div style=3D"border:none; border-top:solid #E1E1E1 1.0pt; padding=
+:3.0pt 0cm 0cm 0cm"><p class=3D"x_xxxxxxmsonormal"><b><span lang=3D"EN-US">From:=
+</span></b><span lang=3D"EN-US"> Scott Moser (staff) <br><b>Sent:</b> Wednesda=
+y, July 5, 2023 4:11 PM<br><b>To:</b> Caroline Emberson (staff) &lt;<a href=3D=
+"mailto:lizce@exmail.nottingham.ac.uk">lizce@exmail.nottingham.ac.uk</a>&gt;=
+; Selim Yilmaz &lt;<a href=3D"mailto:ldxsy3@exmail.nottingham.ac.uk">ldxsy3@ex=
+mail.nottingham.ac.uk</a>&gt;<br><b>Subject:</b> G-NSUM and Modern Slavery i=
+n the UK</span></p></div></div><p class=3D"x_xxxxxxmsonormal">&nbsp;</p><div><=
+p class=3D"x_xxxxxxmsonormal"><span style=3D"font-size:12.0pt; color:black">Dear=
+ Dr. Emberson and Selim,</span></p></div><div><p class=3D"x_xxxxxxmsonormal"><=
+span style=3D"font-size:12.0pt; color:black">&nbsp;</span></p></div><div><p cl=
+ass=3D"x_xxxxxxmsonormal"><span style=3D"font-size:12.0pt; color:black">Thank yo=
+u again for your input an participation in the workshop Zoe kindly organized=
+ for my (nascent) 'Comparative Measurements' project idea.&nbsp; I am writin=
+g to ask a few things.&nbsp; First, how is your G-NSUM research project goin=
+g?&nbsp; I am very interested in your work, and how you are finding the rese=
+arch + surveys + sampling from the 'hidden population.' &nbsp; i don't want =
+to step on anyone's toes, but I'd love to both know more about this project,=
+ and also pick your brains.&nbsp; Where -- as in which location -- are you s=
+ampling from (and why)?&nbsp; Which NGOs are you working with?&nbsp;&nbsp; D=
+o you have any suggestions regarding the 'right' geographic 'level' to use (=
+e.g. council, county/borough, region)?</span></p></div><div><p class=3D"x_xxxx=
+xxmsonormal"><span style=3D"font-size:12.0pt; color:black">Next, would you be =
+interested&nbsp;in being involved with the 'Comparative Measurements' projec=
+t?&nbsp; I recognize I am still in the early stages, and that I need to fles=
+h things out considerably.&nbsp; But it would seem to me to be an ideal 'fit=
+' for you both to be involved.&nbsp; But no presure </span><span style=3D"font=
+-size:12.0pt; font-family:&quot;Segoe UI Emoji&quot;,sans-serif; color:black=
+">&#128578;</span></p></div><div><p class=3D"x_xxxxxxmsonormal"><span style=3D"f=
+ont-size:12.0pt; color:black">&nbsp;</span></p></div><div><p class=3D"x_xxxxxx=
+msonormal"><span style=3D"font-size:12.0pt; color:black">In any event, I hope =
+you and yours are doing&nbsp;well and enjoying&nbsp;your summer!</span></p><=
+/div><div><p class=3D"x_xxxxxxmsonormal"><span style=3D"font-size:12.0pt; color:=
+black">&nbsp;</span></p></div><div><p class=3D"x_xxxxxxmsonormal"><span style=3D=
+"font-size:12.0pt; color:black">Best,</span></p></div><div><p class=3D"x_xxxxx=
+xmsonormal"><span style=3D"font-size:12.0pt; color:black">scott</span></p></di=
+v><div><p class=3D"x_xxxxxxmsonormal"><span style=3D"font-size:12.0pt; color:bla=
+ck">&nbsp;</span></p></div><div><p class=3D"x_xxxxxxmsonormal"><span style=3D"fo=
+nt-size:12.0pt; color:black">&nbsp;</span></p></div></div></div></div></div>=
+</div></div></div></div></div></div></div></div></div></body></html>
+
+--B_3821516406_798265049--
+

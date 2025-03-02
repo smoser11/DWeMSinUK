@@ -1,0 +1,416 @@
+start	end	text
+0	29000	I'm sorry, I'm late, I'm trying to do too much today and I'm just doing some admin.
+29000	36000	Yeah, maybe I might have overreacted a little bit.
+36000	39000	The weekend was productive but I'm still stuck.
+39000	51000	There's three things and the biggest is the question.
+51000	59000	We have three indicators at the individual level of you experience exploitation.
+59000	67000	There's this Q36, 80, and this very cool category index that you and Selim cooked up.
+67000	68000	That's great.
+68000	78000	We can use those variables to estimate prevalence of exploitation based on survey response,
+78000	85000	based on individuals working in domestic labor in the UK in the last year.
+85000	89000	That's these RDS methods, which we can do.
+89000	90000	That's great.
+90000	99000	That technique, that class of estimation, basically the whole trick is they're taking the sample as the sample
+99000	104000	and then the difficulties that RDS tries to fix up is the non-random sampling.
+104000	108000	It does it in several really creative ways and super-duper and we can do all that.
+108000	109000	Awesome.
+109000	110000	Great.
+110000	111000	Then I turn to insum.
+111000	115000	The strategy behind insum is much different.
+115000	121000	The information that insum uses isn't have you experienced exploitation.
+121000	126000	It's how many people do you know that have experienced exploitation?
+126000	133000	In that setting, what's really important is the number of people respondents know.
+133000	141000	It's not very important if a respondent is in the hidden population or not, has experienced
+141000	144000	exploitation or not, but it's important.
+144000	150000	The two things are how many people do you know, period, and that turns out that's hard to estimate,
+150000	151000	but there's ways.
+151000	155000	The one that I like is called the known population method.
+155000	158000	Then two, how many people do you know in the hidden population?
+158000	160000	A few things.
+160000	163000	First, thank you very much for making the time to talk with me.
+163000	164000	I appreciate it.
+164000	166000	I'm sorry for being a little bit spastic.
+166000	170000	I think both of our work weeks are turning hellish.
+170000	172000	Anyway, I appreciate it.
+172000	173000	A few issues here.
+173000	182000	One is, can we measure the same notion of exploitation using these two methods?
+182000	186000	I'm afraid, on Friday, my answer was no.
+186000	189000	I don't think we can because of the questions that are asked.
+189000	194000	The first type asks questions about, and there's only this morning that I had the clarity.
+194000	198000	There's different types of questions in the survey, but for this discussion, there's two
+198000	199000	relevant types.
+199000	208000	One is about your own experience at work, and the other is people you know.
+208000	210000	What we need is some overlap.
+210000	215000	We need there to be something that some, well, let me put it differently.
+215000	220000	If we want to use the two methods in the same paper and say that we're studying exploitation
+220000	223000	in a consistent way, then we need some sort of overlap.
+223000	225000	I'm having trouble finding that.
+225000	233000	The only one I've found so far is NRM, natural referral mechanisms.
+233000	238000	We know if a member has been referred, if a respondent's been referred, and we know how
+238000	242000	many they know in that population.
+242000	244000	Now, things get even weirder.
+244000	250000	One, hopefully there's more overlap because if that's the only one, that's a very, very
+250000	252000	clean measure of exploitation.
+252000	256000	We certainly, it's a high bar.
+256000	260000	You've picked it as one of the endpoints on the individual level, and I think all that's
+260000	263000	great, but then things get even weirder.
+263000	266000	One, I hope that there's more overlap than just that.
+266000	267000	For a number of reasons.
+267000	268000	One, it's a very, very high bar.
+268000	274000	Two, we're sort of using that group to do, it's wearing lots of hats because we're using
+274000	279000	it as the known population method, but then it's just pretty weird because we're saying
+279000	286000	like, okay, we're going to use this group to estimate individuals' degrees, the networks,
+286000	290000	how many people they know, but then we're also going to use it to try to estimate the
+290000	292000	hidden population.
+292000	293000	Wait a second.
+293000	295000	It can't be both, right?
+295000	299000	I mean, if we know, so what I'm trying to say is like, it gets back to this notion of
+299000	303000	like, what are we measuring?
+303000	307000	What notion of exploitation is being estimated in the insum?
+307000	314000	And that becomes especially problematic if the only overlap we have, hopefully it makes
+314000	318000	sense when I say overlap, is the number of referrals.
+318000	324000	So I very well could be wrong, and just this morning I pulled out, I think I identified
+324000	328000	questions of the first type and questions of the second type, and I haven't compared them,
+328000	332000	but hopefully I'm wrong and there is more overlap.
+332000	337000	But wait, it gets even weirder because it's kind of cool.
+337000	342000	If we can get both of these methods to work in the same paper, it's actually pretty methodologically
+342000	349000	cool because the, so in the first method, the RDS methods, you're looking for people in this
+349000	350000	hidden population, right?
+350000	354000	You're trying to identify them, and then you're doing some correction because of non-random
+354000	355000	sampling.
+355000	359000	And that's where the degree, that's where the social network comes in, is that it's just
+359000	363000	used for this kind of selection waiting issue.
+363000	368000	And again, I'm way glossing over people, really smart people who work on this.
+368000	372000	And in the insum method, it's really kind of intuitive.
+372000	373000	It's the exact opposite.
+373000	376000	You actually don't want members of the hidden population.
+376000	380000	You want people who know members of the hidden population.
+380000	385000	So for kind of technical reasons, it turns out you need to exclude if you found someone
+385000	391000	in the hidden population using the, using the particular type of insum that I've instantiated,
+391000	394000	and there are others that we could use that don't suffer from this problem.
+394000	400000	But if we use the one, the modified one from the Fihann and Solnick, then you actually need
+400000	405000	to exclude members from the hidden population when doing your calculations in the insum method.
+405000	410000	And the reason is because basically you just want, you want, you need to know the size
+410000	413000	of the frame minus the size of the hidden population.
+413000	416000	It's just kind of, it's annoying if you ask me, but fine.
+416000	419000	Okay, so here's where the hard part comes in.
+419000	422000	We have these different ways of indicating if you're in the hidden population.
+422000	423000	So I'll just take the two.
+423000	426000	So this is a Q80 and Q36.
+426000	428000	So get this.
+428000	430000	Okay, so we're up to speed.
+430000	435000	We're doing insum where we need to exclude members from the hidden population and then
+435000	443000	we need to know how many people in the sample, sorry, how many people in the hidden population
+443000	448000	are known to an individual respondent.
+448000	450000	Okay, I'm going to first cup of coffee.
+450000	458000	So depending on how we define members of the hidden population, like Q80 or Q36,
+458000	461000	we run into estimation problems in that.
+461000	463000	So for example, so here's the details.
+463000	464000	So say we use the high bar.
+464000	467000	So say we say, okay, we have a sample of individuals.
+467000	472000	We're going to say an individual, an individual in our sample is being exploited.
+472000	476000	If they say yes to the NRM, if they've been personally individually referred.
+476000	477000	Okay, so fine.
+477000	482000	So that means we need to find all those people and take them out and then do our.
+483000	488000	So if we use that method, then who's left?
+488000	493000	None of them know anyone in the hidden population.
+493000	495000	Zero is all around.
+495000	496000	Okay.
+496000	498000	So it just won't work.
+498000	499000	It just won't work.
+499000	503000	So if we use a Q36, then that's it.
+503000	509000	And that sort of gave me pause because what that means is no one who hasn't been referred
+509000	514000	is anyone who has been referred, which I mean, it's not implausible.
+514000	520000	And especially given the small numbers, it's, it's, it's even more not implausible.
+520000	523000	It's even less, it's even more plausible, I guess.
+523000	524000	But it's weird.
+524000	525000	Do you see what I mean?
+525000	526000	It's basically perfect separation.
+526000	530000	If you've been referred to the natural referral mechanism, then you might know other people that have.
+530000	533000	And if you haven't, you don't know anybody who has.
+533000	537000	And so as a result, we can't, we can't use that notion or things.
+537000	538000	Matthews breaks down.
+538000	547000	If we use Q80 as our notion of being in the hidden population and we do this removal business and we do in some things break.
+547000	551000	So we'd have to use other notions of, which is Z36, which is fine.
+551000	552000	We can do that.
+552000	553000	And that, that, that works.
+553000	554000	And that goes through.
+554000	555000	Excuse me.
+555000	556000	Sorry.
+556000	558000	I'm going to get way too excited about this stuff.
+558000	559000	No, that's okay.
+559000	562000	So just so I can reflect on what you're telling me.
+562000	582000	So to conduct a sensible new some, you need to have members of one of these bars who know other members who experiencing this, but are not themselves experiencing exploitation.
+582000	583000	I'm not sure I've got that.
+583000	584000	Yes, yes, yes.
+584000	585000	That's exactly right.
+585000	586000	Right.
+586000	590000	And for question 80, that doesn't apply.
+590000	593000	So we don't, we get a sample of zero effectively.
+593000	594000	Exactly.
+594000	602000	But for question 36, there are some people who aren't experiencing low level exploitation, but do know other people who are.
+602000	606000	So they can be used to do the new some.
+606000	607000	Is that what you're saying?
+607000	608000	Exactly right.
+608000	609000	Exactly right.
+609000	610000	Right.
+610000	611000	Exactly right.
+611000	612000	And then go ahead.
+612000	617000	All this gets fixed if we can find more overlap in these in the question.
+617000	619000	And like I say, I haven't.
+619000	631000	Not only this morning, I sort of tried to identify, I think, and thanks to you, you have that document that is a great start of individual indicators of individual exploitation.
+631000	641000	So that's like, you know, so that's basically what we're trying to do this morning is create one of those, but for the people, you know, questions.
+641000	648000	And then we'll have to see if there's overlap and hopefully there is.
+648000	653000	Because if not, we run into all these weird things that I hopefully I have not clearly articulated.
+653000	657000	But some of the weird things are technical, like we can't use Q80.
+657000	673000	Some of them are more conceptual, like if we're using number of referrals as both the known, if we're using that to both estimate individual degree sizes and in some, but then we're also using it as.
+673000	679000	As the hidden population, then it just things just get really, I mean, just at a conceptual level, it just sort of breaks down.
+679000	683000	Like what do you mean, like either you know the size or you don't.
+683000	689000	And I guess I mean, there's ways around that, like we could say, well, hang on, in some is open to more than just domestic workers.
+689000	694000	So, you know, we could, there's sort of conceptual tricks, I think we can play to sort of get out of that.
+694000	699000	But it just, it just gets, it doesn't not really, not really.
+699000	703000	But, but you know, things, I mean, at a technical level, I can get things to work.
+703000	714000	And then sort of good news and then a little bit of bad news, but with a thought that I don't know how clever it is, but I was light bulb popped on.
+714000	718000	So the good news, so the yes, so I get, I get estimates.
+718000	724000	And they're very consistent with at least sort of what I understand to be received wisdom.
+724000	731000	So like from the, the, the West Midlands police stuff.
+731000	734000	And of course, I'd be method has drawbacks and what.
+734000	742000	So the number that I think that I hear getting kicked around is like 100,000, very, very rough, you know, but, but something like that.
+742000	747000	And I'm getting, I think a conservative would be 120,000.
+747000	754000	And so that's, and it's, and that's sort of, you know, and that's, I find that believable.
+754000	756000	And, and the estimates now.
+756000	765000	So the bad news, unlike in the RDS, which had was pretty robust to like all these dials that you could tweak, not, not so in, in some.
+765000	774000	So what really matters is, is the size of an individual's degree now or so the social network information.
+774000	777000	And I was thinking about it, I was wondering, like, so why is that really important?
+777000	789000	So, so functioning, what that means is that if we change the, so if we use domestic workers in the UK as the known population, and if we say, okay, we're claiming that we know that there are 980,000 such workers.
+789000	791000	Great, that's a number we can use it.
+791000	793000	Chug, chug, chug, we get answers.
+793000	797000	If you say, well, no, actually there's only 50,000.
+797000	800000	Chug, chug, chug, you get way different numbers.
+800000	803000	And I was thinking, like, why is it, why are they so different in these two methods?
+803000	807000	Because it's the exact opposite over here with the, I hope this makes sense.
+807000	809000	In the RDS one.
+809000	812000	And it dawned on me, I was rather pleased with this.
+812000	815000	So, I mean, there's something interesting methodologically going on here.
+815000	820000	And the reason is, is because the degree network is playing at much different roles in the two estimation methods.
+820000	827000	So in the RDS, it's just being used just to, to fix up the sampling weights, to fix up the non-randomness.
+827000	836000	But in, but in, in some, the degree, the size of an individual's degree network is, is, is what, is what the scaling up is based on.
+836000	839000	So it's, it's really important to get that, to get that right.
+839000	844000	So I think that's sort of an interesting and unfortunate for us, not the logical.
+844000	848000	So what that means is that we really need to pin down these numbers.
+848000	854000	So just to give you an idea, so if I do the same sort of, you know, and by the way, I'm talking several orders of magnitude here.
+854000	859000	Say there's only 10,000 people in, in domestic work.
+859000	860000	Say there's 100,000.
+860000	864000	Say there's a million, you know, I mean, so there's a way different numbers.
+864000	882000	But the estimates using in some range from mid teens, 16,000 to 160,000, depending on basically the size of the known, of the known groups.
+882000	886000	So I'm sorry for rambling at you, but those are the most important thing.
+886000	894000	And the thing that, that is, well, I don't know if it's the most important thing, but the thing that would help us tremendously is this overlap issue is, is, is there a question?
+894000	907000	Is there a way of, of implementing a notion of exploitation that for which we have good questions, both at the individual, are you experiencing notion X of exploitation?
+907000	914000	And how many people do you know are experiencing notion X of exploitation?
+914000	920000	So we've got some, some possible candidates for those based on the risk index.
+920000	927000	But yeah, that would obviously take a bit of work to go through each one and see whether or not any of those hold up.
+927000	936000	Yeah, I can show you if you've got time, I can share screen to show you the what the, so like I said, I was just sort of, oh, no, no.
+936000	937000	I got one question.
+937000	938000	Sure.
+938000	939000	Please.
+939000	940000	Sorry.
+940000	948000	With question 80, we had a defined population of those people who had the, we knew the population for the NRM community.
+948000	960000	Does that mean if we use question 36 that we need to have a population estimate for those people who have not received the national minimum wage?
+960000	965000	For the comparability to work, yes.
+965000	968000	Because we don't have that yet, do we?
+968000	969000	No, no, I don't think so.
+969000	973000	But there's other individual questions, like the ones on your risk index, right?
+973000	974000	Yeah.
+974000	977000	And, and, and, you know, I've only, let me try to share screen.
+977000	979000	I've only just sit this morning.
+979000	989000	I think I found 15 questions that it's kind of, for me, it was fortunate because in the code book, they all say things like, if so, how many, like there's easy,
+989000	995000	I'm sorry, give me a second to, where did this thing go?
+995000	997000	Here it is.
+997000	1000000	Hopefully you can see, I guess it's kind of ugly.
+1000000	1001000	Sorry about that.
+1001000	1003000	Let me see if I can make it prettier.
+1003000	1014000	Probably not.
+1014000	1016000	And everything just disappeared.
+1016000	1020000	Lovely.
+1020000	1025000	I suppose your question, your discussion about the difference in the sensitivity analysis.
+1025000	1030000	Worst case, we could just indicate that fact.
+1030000	1031000	Exactly.
+1031000	1035000	The two different methods result in very different sensitivities.
+1035000	1036000	Yeah.
+1036000	1037000	That's right.
+1037000	1043000	And I mean, to think, you know, the thing, I think we've always sort of just, you know, triangulating, I think, you know, I think they're personally,
+1043000	1045000	I think you and I are in the same page with us.
+1045000	1052000	I think we awesome to include, to write a paper that uses both of these techniques would be, I think we really strong.
+1052000	1055000	They are getting sort of qualitatively slightly different.
+1055000	1072000	So if we use the RDS, the estimates are, you know, something like 30 to 40%, which if we think there's about a million, you know, that gives about twice, at least twice as many domestic workers experience
+1072000	1080000	exploitation using the RDS methods as opposed to 300 to 400,000 compared to 120 to 160,000.
+1080000	1085000	So, you know, those are pretty big differences, but they're the same order of magnitude.
+1085000	1095000	And currently we don't really have, currently that's not really a fair comparison because the notion of exploitation is different using in the two methods.
+1095000	1101000	We have the Q30 Q80 over here and I guess we have the QQ80 over there too.
+1101000	1111000	Here's what I found, here's what I've identified as, yeah, so what, there's 15, yeah, as sort of, I don't know what I call them group questions.
+1111000	1122000	So, you know, 13 for sure we've used dissatisfied, you know, do not have good relations, you know, these aren't really, you see what I'm saying, right?
+1122000	1123000	Yeah.
+1123000	1137000	And now there are some, so there's some that are sort of exactly spot on, like, so threat of force, I believe, is asked to both.
+1137000	1138000	That's a good one, yeah.
+1138000	1139000	So that, that's a good one.
+1139000	1145000	And there's one that was just, so, yeah.
+1146000	1164000	So I guess to take, if you do not know where to, yeah, so there's, whoops, 33, so severe forms of labor exploitation without using NRM, we, you know, odd one.
+1164000	1173000	I thought there was one that was in order to help suffer bad environmental conditions, access to medical care.
+1173000	1176000	Maybe travel documents.
+1176000	1177000	Maybe.
+1177000	1178000	Yeah, that's another good one.
+1178000	1179000	A threat of force.
+1179000	1181000	So it's called slavery.
+1181000	1182000	Yeah, right.
+1182000	1188000	So I guess, I guess the takeaway is, you know, like bad working conditions that doesn't sound to me.
+1188000	1191000	I defer to you, but it's like, I don't know.
+1191000	1192000	Restrictions on freedom.
+1192000	1197000	I don't know if we have that at the individual level, but that's a possibility, I think.
+1197000	1200000	Okay, I'm going to stop sharing with you.
+1200000	1202000	So that's sort of hot off the presses.
+1203000	1207000	Oops, sorry, let me, but not everything.
+1207000	1208000	Not everything.
+1208000	1221000	And I guess sort of the, as I'm hearing myself talk, I guess one of the takeaways is, I'm so sorry about this, but given what we're finding when attempting to use the in some estimation technique, we might need to go back.
+1221000	1228000	It's looking like we need to go back and rethink and redo the RDS analysis with.
+1228000	1237000	Yeah, I see what you're saying, because we haven't got that comparator that strong comparator that with question 80 it just doesn't exist in this method.
+1237000	1239000	So, yeah.
+1239000	1242000	So it's worth.
+1242000	1252000	I suppose, from what you're saying it sounds like it's worth redoing it because this comparison is quite interesting methodologically.
+1252000	1262000	Also, I think we can say something about the nature of estimation using these two different techniques, even if our data doesn't enable us to.
+1262000	1272000	Well, our data says this is complicated and we can probably make some methodological recommendations for other people researching in this area.
+1272000	1275000	That's a great silver lining, Caroline.
+1275000	1276000	Yeah, no, that's right.
+1276000	1277000	So right.
+1277000	1278000	So what have we learned, right?
+1278000	1280000	Like going forward, how would you.
+1280000	1281000	What would we do differently?
+1281000	1286000	What would we advise people to, I mean, because this hasn't been tied before, I don't think.
+1286000	1296000	So this is, I mean, this is if we were doing it was starting and we wouldn't do it like this week, we do something different so we can say what we would do differently.
+1296000	1297000	It's a really good idea.
+1297000	1298000	It's a really good idea.
+1298000	1301000	Yeah, no, I think that's that's an excellent, that's an excellent idea.
+1302000	1311000	I think sort of most immediately and sadly, most immediately is going to be at least two weeks for me because of teaching, but the overlap issue.
+1311000	1317000	Like if we can find those questions that that would that would I think that's sort of the next step, I think.
+1317000	1318000	Okay.
+1318000	1326000	But what do you say after hearing me ramble for what do you think what should we do next?
+1326000	1327000	Sorry.
+1327000	1328000	Yeah.
+1328000	1344000	So I'm wondering those questions that we indicated on the risk indices are those the ones that you've pulled out that you're looking at in more detail now or these are the specific and some questions that asked about the difference in the population in population.
+1344000	1345000	Sorry.
+1345000	1346000	Sorry.
+1346000	1351000	Asked about the number of people that you knew the second this is a slightly different list.
+1351000	1352000	Exactly.
+1352000	1362000	And we have your list with individual educators we have what I think is my list with the how many people do you know. And so now we just need to see what the overlap is.
+1362000	1365000	I meant to email it to you right right as soon as I can.
+1365000	1371000	And that would be looking for strong and some questions really.
+1372000	1383000	We're looking we're looking for indicators of exploitation that are asked about the individual and about people the individual respondent knows.
+1383000	1398000	And I didn't really fully appreciate that those were, I just kind of figured and that's my my apologies I was an assumption on my part that there was kind of a like a symmetry there that like that those questions were the same which they are and that's fine.
+1399000	1400000	Yeah.
+1400000	1401000	Okay.
+1401000	1406000	But but I mean it's not it's not all gloom and doom I mean I think you know I did.
+1406000	1412000	Worst case scenario I think we're going to have to re operationalize.
+1412000	1413000	Exploitation.
+1413000	1425000	So, you know, verbally abused, maybe, or threat force, you know, threat of force or something like that, or not access to travel, whatever I don't know.
+1426000	1429000	I think worst case scenario we're going to have to.
+1429000	1445000	Well, again, all this is if we want to use these two methods in the same paper and and claim that we're estimating, you know, some something called exploitation in a coherent manner, which I think we do I think we all want that I think that's kind of the goal of the paper so.
+1445000	1447000	So, yeah.
+1447000	1450000	Does that make sense I'm so sorry for rambling at your Caroline.
+1450000	1451000	So it does make sense.
+1451000	1454000	I'm just trying to work out which is the best way forward.
+1454000	1466000	For me, I think it's the fact more time it would be that they would be looking at the questions with comparing the the individual indicators to the how many people do you know that.
+1466000	1479000	That's up for you know that have trade X, where trade X could be bad working environment, no access to your travel documents, been verbally harassed at work, etc, etc.
+1479000	1486000	Or could be have been referred to the National Referral Mechanism is also a perfectly fine indicator.
+1486000	1494000	Right now it's the only that's the only one that I'm that I know of and for all the reasons we've talked about it's somewhat problematic.
+1494000	1500000	It's a bit weird at the at the moment, like I said if we can find more and it's overlapped and things get things get better.
+1500000	1506000	Alternatively, or I guess concurrently if we had more known group sizes that would help.
+1506000	1517000	So if we knew the number of well domestic workers obviously but if we knew the well like you said so if we knew the number of domestic workers getting paid below the minimum wage that would that would be a big help.
+1517000	1520000	Of course, we don't and we likely can't know that number.
+1520000	1522000	I don't think we can find it.
+1522000	1523000	No, I don't think so either.
+1523000	1525000	I don't think we can estimate it even.
+1525000	1526000	No.
+1526000	1528000	Very convincingly.
+1528000	1533000	So that's sort of I don't see how we go down that track any further.
+1533000	1535000	Yeah, I agree.
+1535000	1537000	And you know more about this than I do so.
+1537000	1540000	So I guess to end on some on some slightly positive news is the.
+1540000	1549000	So I was rereading the Feehan and Solnick and they you know they have been modified the estimate that you picked and you're right is a great one.
+1549000	1552000	And they get these recommendations that's what we're using.
+1552000	1568000	And then the next line the next equation is they say well you know what would be even better is if you know they have these adjustment factors that they and so they say well even better as if you could you know you sort of include these adjustment factors and then just be upfront about what
+1568000	1581000	values you're choosing and I always thought that was kind of a dead end because we just you know you just don't because of the weird game of contacts like we just visibility basically is what is what we don't have that.
+1581000	1592000	But I was thinking you know it's very ad hoc but they're weirdly using so the main things there are transmission error and homophily.
+1592000	1599000	Which I don't remember what that what that is and weirdly you you get estimates for those from RDS methods.
+1599000	1604000	So it's very ad hoc and there's no statistical principle underlying it but we could.
+1604000	1620000	There are principle values that we could use in and again just be very upfront and say you know here's the range and here's the sensitivity but from these other estimation techniques we have a pretty good belief that the homophily level is 8.1.
+1620000	1629000	So we can plug that in which again I haven't seen done anywhere and maybe because it's a bad idea but it's it's also kind of cool because of this.
+1629000	1636000	Like you said like it's people don't I was shocked to when I started when we way back when I was.
+1636000	1647000	Yeah I don't think anyone's written on as far as I can tell this is this is not people don't do the two at once and and so I think that's very cool if we can get to work.
+1648000	1656000	But I think that the fact that people don't this idea of the sort of isolated community of people in the nrm who don't know other people.
+1656000	1659000	That's quite an interesting finding in itself.
+1659000	1660000	Yeah.
+1660000	1661000	Yeah.
+1661000	1680000	So if we do know more than reveal that and sort of stop at that point and say we weren't able to pursue the new some estimation further because this was an isolated community that's an interesting finding.
+1680000	1694000	And also we could then make recommendations about future studies that did want to combine these methods and say these these are the things that would need to be considered in survey design going forward.
+1695000	1696000	I agree.
+1696000	1699000	And another not to be too rare and well to be random I guess the.
+1700000	1703000	So I mean there's there's kind of a positive power.
+1703000	1720000	I don't know if it's positive or maybe depending on political scientists I'm always sort of thinking like policy homework not always but you use ideas but so if the nrm has seventy four thousand or referrals and that and again nrm is bigger than just domestic workers.
+1720000	1723000	But if we take that as as given.
+1723000	1733000	And if we believe that let's say I think one in my opinion one twenty is a conservative estimate 120,000 from them so far again very very preliminary.
+1733000	1737000	And that tells you something about the effectiveness of the nrm.
+1737000	1746000	You know, again, you have to adjust for the fact that nrm is everybody so it's domestic workers plus everybody else and our estimates is just domestic workers but.
+1746000	1754000	I mean I think that would you could say something about like okay well we have now at least we have a way of thinking about how effective is the nrm.
+1755000	1757000	Again in a very sort of.
+1758000	1773000	With lots of caveats and but I mean so if you if you had a guess at the proportion of everyone experiencing exploitation in the UK you had if you had an idea of what fraction of that set is occupied by domestic workers.
+1774000	1781000	Then hot dog you could say a bunch about about basically the capture of nrm.
+1782000	1792000	I don't know if we have principled estimates of that quantity of that proportion but but you get the idea right I mean even if you could sort of say something loosely.
+1792000	1795000	I hadn't thought about that but that's also kind of a nice like.
+1796000	1803000	Yeah things things aren't as gloom and doom as I thought they were on Friday so so one sorry for that and two thank you and your harm's around me think look at it right.
+1804000	1814000	Worst case scenario we write up what we have when we say and here's what we would do differently and you know please learn from our experience and for future research.
+1815000	1821000	Anyway that's the update that's where I was at I was hoping that you had sort of a oh you're the other questions but.
+1822000	1832000	No I'm afraid I can't but I can go through the end some questions and identify which are the strongest ones from a exploitation point of view.
+1833000	1838000	Probably try and do that tomorrow that'd be very helpful and send that across to you.
+1839000	1840000	Thank you that would be great.
+1841000	1854000	They are I mean I agree with the ones you put pulled out about coercion and retaining travel documents those are the ones that have the closest link to exploitation so if we find a number of those that have this satisfactory overlap.
+1855000	1856000	Big help big help.
+1857000	1861000	I mean could we say that we are demonstrating how the technique could be used.
+1862000	1863000	You're very good at this.
+1864000	1870000	I like I come with you in bad news you're like no no no no here's here's here's the reframe you just say I like that a lot I like that a lot you're very good at this.
+1871000	1873000	Sorry I'm sorry.
+1874000	1888000	I'm a mess but I'm given that our data is imperfect but that we but that it we are proving that this can be used if you can and there are improvements that you can make to the data collection.
+1889000	1902000	I think that's exactly right I mean it could be not something to say like a proof of concept but maybe more like you know the people haven't maybe more methodological than we thought people haven't combined these two.
+1903000	1912000	And there's lots of reasons why like way different sampling design assumptions but here's an attempt maybe it's wacky maybe it's maybe it's not.
+1912000	1923000	There's some there's some possible benefits or at least some discussion about the role of the social network in the two that wax philosophic about.
+1924000	1929000	Yes and and then say well so we tried it and here's what happened and here's here's what you would do going further.
+1930000	1931000	I mean I do think it's it's a powerful.
+1932000	1937000	It's I mean this is me waxing philosophic but it's.
+1940000	1950000	It just feels and this is really imprecise but it just feels like a more efficient way to use information and surveys because in this.
+1951000	1952000	The combining.
+1954000	1956000	Because in the one hand like if you.
+1958000	1964000	Because if you happen to find somebody in a hidden population then you definitely want their network and you definitely want their referrals.
+1965000	1969000	Okay but and RDS does that but but RDS sort of.
+1971000	1973000	It doesn't fully use the if.
+1975000	1976000	I'm doing really bad.
+1976000	1977000	Here's what I'm trying to say.
+1979000	1987000	In RDS methods then that's the personal networks of those in the hidden population and those not in the hidden population is it doesn't matter.
+1988000	2001000	That information isn't taken into account and that feels weird to me because in some is a great way of taking advantage of the of the difference in those in those networks so that's what I mean when I say it feels like sort of.
+2002000	2006000	Information it feels like one of the benefits of combining them if we can is that we're sort of.
+2007000	2015000	Using information we're using more information that's in the survey already that people aren't using currently at least this is the best of my knowledge.
+2017000	2025000	I've had too much coffee you can tell because I am just rambling at you I really like science I really like working with you Caroline so thank you for much for letting me.
+2026000	2037000	Well we I think it's fantastic what you're doing so we just need well what's practical to do with the data and I know we wouldn't start from here if we were starting again but this is where we are.
+2038000	2051000	It's yeah I think I'm hoping that with your help we can make a contribution from this absolutely no I think so I'll have a look at the questions tomorrow and do my best to pick out what I feel are the strongest ones.
+2052000	2063000	And let you have that and if somehow you can capture what has been useful from the discussion today and yeah.
+2064000	2067000	I'll do my best that way for how I might write it up.
+2068000	2070000	Sounds great sounds great and it's it's it's yeah so sorry.
+2070000	2080000	Sorry if I overreacted on Friday it's definitely not there's definitely a way forward so anyway thanks for thanks for this thanks for the timeliness I'll email you.
+2081000	2091000	Yeah it'd be great to get your your take on the the the how many people do you know questions and we'll go forward when we when our teaching schedules permit.
+2092000	2096000	Yes yeah I'm sorry I've got a really horrible two weeks.
+2096000	2103000	Yeah likewise likewise yeah I can get you the questions tomorrow and then yeah.
+2104000	2107000	If it if if this way till April so be it.
+2108000	2110000	I mean you know yeah you can do what you can do so.
+2111000	2123000	It's just the stop start I know when you're trying it's difficult to keep in your head I know because I've read the Felix and Salmanic paper a couple of times so you just have to start again and reread it to remind yourself what is what they say.
+2123000	2125000	But yeah I agree.
+2126000	2130000	Yeah unfortunately okay well good to catch up with you Scott.
+2131000	2142000	Yeah you as well and again thank you so much for your your your flexibility really really appreciate the meeting I'll set short short short short short notice so good luck with teaching Caroline and yeah we'll be in touch.
+2143000	2144000	Yeah okay thank you.
+2153000	2154000	Thank you.

@@ -1,0 +1,256 @@
+Received: from PR3PR06MB7161.eurprd06.prod.outlook.com (2603:10a6:102:86::15)
+ by DB9PR06MB8202.eurprd06.prod.outlook.com with HTTPS; Tue, 29 Aug 2023
+ 09:47:27 +0000
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=exmail.nottingham.ac.uk;
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com (2603:10a6:20b:99::17)
+ by PR3PR06MB7161.eurprd06.prod.outlook.com (2603:10a6:102:86::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6699.34; Tue, 29 Aug
+ 2023 09:47:26 +0000
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::9f62:b24d:f392:b254]) by AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::9f62:b24d:f392:b254%7]) with mapi id 15.20.6699.035; Tue, 29 Aug 2023
+ 09:47:26 +0000
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+CC: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: Post of Possible interest (PoPI)
+Thread-Topic: Post of Possible interest (PoPI)
+Thread-Index: AQHZ2cCSryBZ3GlDyU61jd/8hQGyX7ABByvI
+Date: Tue, 29 Aug 2023 09:47:26 +0000
+Message-ID:
+ <AM6PR06MB5941DFE2B0A2D1A727265E24A0E7A@AM6PR06MB5941.eurprd06.prod.outlook.com>
+References:
+ <DB9PR06MB8202354CF75EF3C85D96E6B787E0A@DB9PR06MB8202.eurprd06.prod.outlook.com>
+In-Reply-To:
+ <DB9PR06MB8202354CF75EF3C85D96E6B787E0A@DB9PR06MB8202.eurprd06.prod.outlook.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-GB
+X-MS-Has-Attach:
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+ <AM6PR06MB5941DFE2B0A2D1A727265E24A0E7A@AM6PR06MB5941.eurprd06.prod.outlook.com>
+msip_labels:
+MIME-Version: 1.0
+X-MS-Exchange-Organization-MessageDirectionality: Originating
+X-MS-Exchange-Organization-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-Network-Message-Id:
+ ed9af9a5-cfa4-4406-bb2b-08dba874f3b4
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ AM6PR06MB5941:EE_|PR3PR06MB7161:EE_|DB9PR06MB8202:EE_
+Return-Path: lizce@exmail.nottingham.ac.uk
+X-MS-Exchange-Organization-ExpirationStartTime: 29 Aug 2023 09:47:26.4764
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Office365-Filtering-Correlation-Id: ed9af9a5-cfa4-4406-bb2b-08dba874f3b4
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR06MB5941.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:;DIR:INT;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Aug 2023 09:47:26.1314
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-Network-Message-Id: ed9af9a5-cfa4-4406-bb2b-08dba874f3b4
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: YioEZEnttpy6DwuNRl8vJKb93yJKrohhqSFuuEpRRAB/57h4bL3nPU+w91GnAhPIpp88B840iWa5litKycU3zmCzCioMFvuy2evlXtt60CNXwMgAsaI81LQxV9MfoTBA
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PR3PR06MB7161
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:00.9338062
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.6699.032
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(425001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	4JSUg7RLtt6H5oUtAnjAolk3WTNMDWFDYbfpECy2OQAr/yxiQ+Xh3uYoDRrSHyLlukYBdQWAjKRe8l23ZOM4vUQMJ3xqBMJxRy8MIniO1QfwqHOPm8MTAyuwWx8I963XUuu3GeUvVE95nZlV2abGFDmGVNJ0CsxU8zPSR1a4WhUKs/gD0TtZNbxa0EZzo+yw0e4IVppvVil+7OSXMffStr3J80qx2pl+uLJLRpv6sstbAK7GlSEJYVetUq6XJ4Srrl+/Lrq0xWZ/Md/ZxQxXaooUAX0SbbQnxyfIHu61Oy6PdY7837LH1owIwWhWHhTUV49XvkcXPRMVY0Q8n8fsXUaZBeC4gjbdWFCYwy1HGI4PGo10KnsxlAuVY0pL41jW0KmuEBLAsrNHV1Sfg81PZ3OzrfOiJ0PHLo3LHnaCoc61Fhff1yjcglWWTJ3VQeI4SXtiGSTNDC3nQ2hHp+V//Iw5jzYBTZ9Rl6satEbMm0L06C1sQ2S1sKHrTqBuHxkR9ilDSfFvj5VYTqjJxDaOMMkcnupUHxLEPP4mwzNSIH/bR5+hL2n+jEOCGLH7grjdP0AtDQJWbUvutjVdHWj42kWEArqRwpxW0+qJI5EO0UMM0oaP2stAQKDTqqQxOdOH1nBKyV1I+GWod86gGO48ukWYFAPX4gNN9KntsyQLQi966GQPTfsDlBm3IITBelDkiHuTaOHNsg2tHwqoKxMEdxE+1VbLgSbnB6XMTxJ29WACnZWBVp1I/mUYQ7NPQTxgnN+YwkCLC81uCEXjeqaJIDRRBqOv//wk23FhJCTdbUjG64lt9QBh5BXvIXxBOByB9bdaIKMIm9Psb+rvMwDOMA==
+Content-type: multipart/alternative;
+	boundary="B_3821516406_411672104"
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3821516406_411672104
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: 7bit
+
+Thanks Scott. This clip features one of the NGO contacts with whom we have been working and gives a glimpse of the grim reality of the situation facing some domestic workers in the UK. 
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Nottingham Research Fellow, Rights Lab
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+ 
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+ 
+
+ 
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 28 August 2023 16:05
+To: Zoe Trodd (staff) <aazzt@exmail.nottingham.ac.uk>; Todd Landman (staff) <brztl1@exmail.nottingham.ac.uk>; Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Subject: Post of Possible interest (PoPI) 
+ 
+
+Terrible, but thought it might be if interest to you.
+
+https://youtu.be/pvrPH29O8wk?si=Ptl-wJOw60ysJZxm
+
+
+
+
+Get Outlook for iOS
+
+
+--B_3821516406_411672104
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><style t=
+ype=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bottom:0;} </st=
+yle></head><body dir=3D"ltr"><div style=3D"font-family: Calibri, Arial, Helvetic=
+a, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof"=
+>Thanks Scott. This clip features one of the NGO contacts with whom we have =
+been working and gives a glimpse of the grim reality of the situation facing=
+ some domestic workers in the UK.&nbsp;</div><div class=3D"elementToProof"><di=
+v style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 12pt=
+; color: rgb(0, 0, 0);"><br></div><div id=3D"Signature"><div><div style=3D"font-=
+family: Calibri, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0=
+, 0, 0);"><br></div><div></div><div id=3D"divtagdefaultwrapper" dir=3D"ltr" styl=
+e=3D"font-size: 12pt; font-family: Calibri, Helvetica, sans-serif; color: rgb(=
+0, 0, 0);"><p style=3D"margin-top:0px; margin-bottom:0px; margin-top:0; margin=
+-bottom:0"></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px=
+"><font face=3D"Arial, sans-serif" style=3D"color: rgb(0, 155, 189);"><b>Dr Caro=
+line Emberson (preferred pronouns she/her)</b></font></p><p class=3D"MsoNormal=
+" style=3D"margin-top:0px; margin-bottom:0px"><font face=3D"Arial, sans-serif" s=
+tyle=3D"color: rgb(19, 27, 87);"><b>Nottingham Research Fellow, Rights Lab</b>=
+</font></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px"><s=
+pan style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif">&nbsp;=
+</span></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px"><s=
+pan style=3D"font-size: 9pt; font-family: Arial, sans-serif; color: rgb(19, 27=
+, 87);">Nottingham University Business School OMIS/ Faculty of Social Scienc=
+e<br>University of Nottingham</span><sub><span style=3D"font-size:11.0pt; font=
+-family:&quot;Arial&quot;,sans-serif"></span></sub></p><p class=3D"MsoNormal" =
+style=3D"margin-top:0px; margin-bottom:0px"><span style=3D"font-size: 9pt; font-=
+family: Arial, sans-serif; color: rgb(19, 27, 87);">A20, Highfield House</sp=
+an></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px"><span =
+style=3D"font-size: 9pt; font-family: Arial, sans-serif; color: rgb(19, 27, 87=
+);">University Park</span><sub><span style=3D"font-size:11.0pt; font-family:&q=
+uot;Arial&quot;,sans-serif"></span></sub></p><p class=3D"MsoNormal" style=3D"mar=
+gin-top:0px; margin-bottom:0px"><span style=3D"font-size: 9pt; font-family: Ar=
+ial, sans-serif; color: rgb(19, 27, 87);">Nottingham, NG7 2RD</span></p><p c=
+lass=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px"><span style=3D"font=
+-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif">&nbsp;</span></p><p c=
+lass=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px"><span style=3D"font=
+-size: 9pt; font-family: Arial, sans-serif; color: rgb(19, 27, 87);">+44 (0)=
+ 115 8283072<b>&nbsp;</b></span><b><span style=3D"font-size: 9pt; font-family:=
+ Calibri, sans-serif; color: rgb(19, 27, 87);">| </span></b><span class=3D"Mso=
+Hyperlink"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-=
+serif"><a href=3D"http://nottingham.ac.uk/" target=3D"_blank">caroline.emberson@=
+nottingham.ac.uk</a></span></span><span style=3D"font-size:11.0pt; font-family=
+:&quot;Arial&quot;,sans-serif"></span></p><p class=3D"MsoNormal" style=3D"margin=
+-top:0px; margin-bottom:0px"><span style=3D"font-size: 9pt; font-family: Arial=
+, sans-serif; color: black;">&nbsp;</span></p><p class=3D"MsoNormal" style=3D"ma=
+rgin-top:0px; margin-bottom:0px"><a href=3D"https://www.nottingham.ac.uk/servi=
+cesforbusiness"><span style=3D"font-size: 11pt; font-family: Arial, sans-serif=
+; text-decoration: none; color: black;"></span></a><span style=3D"font-size: 1=
+1pt; font-family: Arial, sans-serif; color: black;"></span></p><p class=3D"Mso=
+Normal" style=3D"margin-top:0px; margin-bottom:0px"><span style=3D"font-size: 9p=
+t; font-family: Arial, sans-serif; color: black;">&nbsp;</span></p><p class=3D=
+"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px; text-autospace:none"><=
+b><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Georgia, serif; col=
+or: rgb(21, 118, 158);">Follow us</span></b><span lang=3D"EN-US" style=3D"font-s=
+ize: 9pt; font-family: Calibri, sans-serif; color: rgb(25, 25, 25);"></span>=
+</p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px; text-auto=
+space:none"><u style=3D""><span lang=3D"EN-US" style=3D"font-size: 9pt; font-famil=
+y: Arial, sans-serif; color: rgb(0, 0, 233);"><a href=3D"http://facebook.com/T=
+heUniofNottingham"><span style=3D"color: rgb(0, 0, 233);">Facebook.com/UniofNo=
+ttingham</span></a></span></u><span lang=3D"EN-US" style=3D"font-size: 9pt; font=
+-family: Arial, sans-serif; color: rgb(25, 25, 25);"></span></p><p class=3D"Ms=
+oNormal" style=3D"margin-top:0px; margin-bottom:0px; text-autospace:none"><u s=
+tyle=3D""><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Arial, sans-s=
+erif; color: rgb(0, 0, 233);"><a href=3D"http://twitter.com/UniofNottingham"><=
+span style=3D"color: rgb(0, 0, 233);">Twitter.com/UniofNottingham</span></a></=
+span></u><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Arial, sans-=
+serif; color: rgb(25, 25, 25);"></span></p><p class=3D"MsoNormal" style=3D"margi=
+n-top:0px; margin-bottom:0px; text-autospace:none"><u style=3D""><span lang=3D"E=
+N-US" style=3D"font-size: 9pt; font-family: Arial, sans-serif; color: rgb(0, 0=
+, 233);"><a href=3D"http://youtube.com/nottmuniversity"><span style=3D"color: rg=
+b(0, 0, 233);">Youtube.com/nottmuniversity</span></a></span></u><span lang=3D"=
+EN-US" style=3D"font-size: 9pt; font-family: Arial, sans-serif; color: rgb(25,=
+ 25, 25);"></span></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bot=
+tom:0px; text-autospace:none"><u style=3D""><span lang=3D"EN-US" style=3D"font-siz=
+e: 9pt; font-family: Arial, sans-serif; color: rgb(0, 0, 233);"><a href=3D"htt=
+p://instagram.com/uniofnottingham"><span style=3D"color: rgb(0, 0, 233);">Inst=
+agram.com/uniofnottingham</span></a></span></u><span lang=3D"EN-US" style=3D"fon=
+t-size: 9pt; font-family: Arial, sans-serif; color: rgb(25, 25, 25);"></span=
+></p><p class=3D"MsoNormal" style=3D"margin-top:0px; margin-bottom:0px"><u style=
+=3D""><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Arial, sans-serif=
+; color: rgb(0, 0, 233);"><a href=3D"http://linkedin.com/company/university-of=
+-nottingham"><span style=3D"color: rgb(0, 0, 233);">Linkedin.com/company/unive=
+rsity-of-nottingham</span></a></span></u></p><p class=3D"MsoNormal" style=3D"mar=
+gin-top:0px; margin-bottom:0px"><u style=3D""><span lang=3D"EN-US" style=3D"font-s=
+ize: 9pt; font-family: Arial, sans-serif; color: rgb(0, 0, 233);"><a href=3D"h=
+ttp://www.foursquare.com/uniofnottingham"><span style=3D"color: rgb(0, 0, 233)=
+;">F</span>oursquare.com/uniofnottingham</a></span></u></p><p class=3D"MsoNorm=
+al" style=3D"margin-top:0px; margin-bottom:0px"><u style=3D""><span lang=3D"EN-US"=
+ style=3D"font-size: 9pt; font-family: Arial, sans-serif; color: rgb(0, 0, 233=
+);"><span style=3D"text-decoration:none">&nbsp;</span></span></u></p><br><p st=
+yle=3D"margin-top:0px; margin-bottom:0px"></p></div></div></div></div><div id=3D=
+"appendonsend"></div><hr style=3D"display:inline-block;width:98%" tabindex=3D"-1=
+"><div id=3D"divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" style=3D"=
+font-size:11pt" color=3D"#000000"><b>From:</b> Scott Moser (staff) &lt;ldzsm2@=
+exmail.nottingham.ac.uk&gt;<br><b>Sent:</b> 28 August 2023 16:05<br><b>To:</=
+b> Zoe Trodd (staff) &lt;aazzt@exmail.nottingham.ac.uk&gt;; Todd Landman (st=
+aff) &lt;brztl1@exmail.nottingham.ac.uk&gt;; Caroline Emberson (staff) &lt;l=
+izce@exmail.nottingham.ac.uk&gt;<br><b>Subject:</b> Post of Possible interes=
+t (PoPI)</font> <div>&nbsp;</div></div><div><div dir=3D"ltr"><div style=3D""></d=
+iv><div style=3D""><div><br></div><div id=3D"x_ms-outlook-mobile-signature"><div=
+>Terrible, but thought it might be if interest to you.</div><div dir=3D"ltr"><=
+br></div><div dir=3D"ltr"><a rel=3D"noreferrer noopener" href=3D"https://youtu.be/=
+pvrPH29O8wk?si=3DPtl-wJOw60ysJZxm">https://youtu.be/pvrPH29O8wk?si=3DPtl-wJOw60y=
+sJZxm</a><br></div><div dir=3D"ltr"><br></div><div dir=3D"ltr"><br></div><div di=
+r=3D"ltr"><br></div><div dir=3D"ltr"><br></div>Get <a href=3D"https://aka.ms/o0uke=
+f" style=3D"">Outlook for iOS</a></div></div></div></div></body></html>
+
+--B_3821516406_411672104--
+

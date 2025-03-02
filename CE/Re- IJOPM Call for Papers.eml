@@ -1,0 +1,2536 @@
+Received: from DB8PR06MB6362.eurprd06.prod.outlook.com (2603:10a6:10:12c::19)
+ by AS8PR06MB7301.eurprd06.prod.outlook.com with HTTPS; Mon, 3 Feb 2025
+ 11:57:00 +0000
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=exmail.nottingham.ac.uk;
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com (2603:10a6:20b:99::17)
+ by DB8PR06MB6362.eurprd06.prod.outlook.com (2603:10a6:10:12c::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8398.24; Mon, 3 Feb
+ 2025 11:56:58 +0000
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::78bf:18af:f6eb:65ba]) by AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::78bf:18af:f6eb:65ba%6]) with mapi id 15.20.8398.021; Mon, 3 Feb 2025
+ 11:56:58 +0000
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: IJOPM Call for Papers
+Thread-Topic: IJOPM Call for Papers
+Thread-Index:
+ AQHbShxDvMy/pEArAkainibVNNsnF7MD5AgAgAEGQ5mAHJnLhIAS/WoAgAEgLDOAACo4gIAABF7y
+Date: Mon, 3 Feb 2025 11:56:58 +0000
+Message-ID:
+ <AM6PR06MB59419CFC77302BC3371D35FEA0F52@AM6PR06MB5941.eurprd06.prod.outlook.com>
+References:
+ <AM6PR06MB5941F0BAD963CCCA16A462F3A03C2@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <EC680850-53C1-4BC2-8AC3-3EF0D2774081@nottingham.ac.uk>
+ <AM6PR06MB594102B3E6508A0785917472A0152@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <AM6PR06MB5941363DA02AE852A3895240A0E62@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <15CD16BA-CAA0-4918-A02E-E1252B04B74C@nottingham.ac.uk>
+ <AM6PR06MB5941B904FC0221F9AC656036A0F52@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <8CB78FE2-3389-4584-9F22-01647E3758BA@nottingham.ac.uk>
+In-Reply-To: <8CB78FE2-3389-4584-9F22-01647E3758BA@nottingham.ac.uk>
+Accept-Language: en-GB, en-US
+Content-Language: en-GB
+X-MS-Has-Attach: yes
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+ <AM6PR06MB59419CFC77302BC3371D35FEA0F52@AM6PR06MB5941.eurprd06.prod.outlook.com>
+msip_labels:
+MIME-Version: 1.0
+X-MS-Exchange-Organization-MessageDirectionality: Originating
+X-MS-Exchange-Organization-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-Network-Message-Id:
+ 6659d7ea-3436-4517-e376-08dd4449dcb2
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ AM6PR06MB5941:EE_|DB8PR06MB6362:EE_|AS8PR06MB7301:EE_
+Return-Path: lizce@exmail.nottingham.ac.uk
+X-MS-Exchange-Organization-ExpirationStartTime: 03 Feb 2025 11:56:58.6464
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Office365-Filtering-Correlation-Id: 6659d7ea-3436-4517-e376-08dd4449dcb2
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-Microsoft-Antispam:
+ BCL:0;ARA:13230040|366016|8096899003|7053199007|13003099007|41050700001;
+X-Forefront-Antispam-Report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR06MB5941.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(8096899003)(7053199007)(13003099007)(41050700001);DIR:INT;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Feb 2025 11:56:58.2347
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6659d7ea-3436-4517-e376-08dd4449dcb2
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: k/Vaq0V+zf9If0+Wl8yfE7TsE62mcmcOnqtCujlJIJr5+DmvI2sokz5HMJNdxaPZoE9z+bGx04XDrQXCe2xvqFSgcse8HvXaPWjSJGrcOjQUDd7rJWT7tXPyn/3A8dqN
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8PR06MB6362
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:02.2495876
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.8398.018
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(4955320)(920097)(425001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	NDq/w2kQHn6dmob7vkydNEjqJUVtpBU2o2bSFv2rbZDNY3nRGLO4CgnjhF/8SiWEAWyQaXEQBZ/ONl7y3WFvEwAn26erY8ssBmHyJ1Z+gyHcRN2jOGdWEfHRI5pFhGA66JAknOlEu2DY1g+rhV0AUIwuvNJew7mz/K6i4sfcuCpSorNW7F4CapaA9VIKQIXJeFd9huz33/XzJ0bljTeaHjHKyydkOI4tHJyKtB9jXipnpqyzXAdirTqTEvDVvndXBdQxc1+Ca3/NyNe7hvbgGQEEWlPd1G7O7NlYbKVIcL4HhqefXaUpE/ftY4SxeGuHW2ddeFXwDSprJe5lKu9TSBEeU7sRzTJnw9Kq011mKEat95iXdo6oliSSWaL89sQhHhYkMHLaL43sPquRJQh0+vXGzEApFmqy0FB7divs5t9GJW6zJOEEZiB8gDOnljFsj+tKWRLZ5Io6sp0KiBNBYxIchT7+D5MAky5V5mMw0zHtLsz6eRIDjv/PGGzp1+K9hO5pwJqWzHx5WKzjJS6ZQREGWhkq8EPe8s84LlojFnoVwdzVFF4D5iRD/X1zxDBBoFA9AaRCzABFojb6TvaQyCIiNpejVrnjyGbLojeBx/WK+uD1QEF2JHtNJKwa6NeZeP6GDMnNQIj5GSrt4DwnUkmaiKe5Q1i66AbPd9zvY7Lt0bi6SuQoyrgT+3DH7T2NgzWqE3pTFtOeM+vv0RvmidoelkfaliQ+HJB61jaMoiyjlboFgnl5qv3/CEAb7mWB7Gblrn+4weI8BNkWlzYkx8LUmxkAugAHHbry3XTj2JwyWFZfUQZ4d9d/k2r0I4GW
+Content-type: multipart/mixed;
+	boundary="B_3821516406_879856624"
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3821516406_879856624
+Content-type: multipart/related;
+	boundary="B_3821516406_1773918984"
+
+--B_3821516406_1773918984
+Content-type: multipart/alternative;
+	boundary="B_3821516406_1493568493"
+
+
+--B_3821516406_1493568493
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+
+Hi Scott,
+
+I can do 12 - 12.45 on Friday - I'll send through a link. Not sure that I a=
+m in a position to give you instructions but I've attached some notes that I=
+ made based on a trawl through our earlier email conversations in case these=
+ are helpful as a memory jogger.
+
+Best wishes
+Caroline
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (FHEA)
+
+
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB=20
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 03 February 2025 11:37
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Subject: Re: IJOPM Call for Papers=20
+=20
+Hi Caroline!  Thanks very much for this and especially your speedy reply!  =
+I need to get organized and catch back up.  If you have any suggestions/ ins=
+tructions Please do send them my way.
+
+How about noon on Friday for a Teams chat?
+
+=20
+
+Best,
+
+Scott
+
+=20
+
+=20
+
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+Date: Monday 3 February 2025 at 09:09
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: IJOPM Call for Papers
+
+=20
+
+Hi Scott,
+
+=20
+
+Lovely to hear from you. Glad to hear that you have got the marking out of =
+the way. Friday is a good day for a Teams call. Anytime except between 12-2.=
+30 or after 4pm would be good for me.
+
+=20
+
+Best wishes
+
+Caroline
+
+=20
+
+=20
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (FHEA)
+
+=20
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB=20
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+=20
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+=20
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+=20
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 02 February 2025 15:55
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Subject: Re: IJOPM Call for Papers=20
+
+=20
+
+Hi Caroline!
+
+=20
+
+I am sorry for the long tardiness.  Jan was very stressful with marking, bu=
+t done now!  I am so sorry your Spring term is busy with extra teaching.  We=
+ seem to be perfectly out of sync, I am afraid (=3D my spring teaching is rath=
+er light).    I want to return to our project and finish it off.  I confess =
+I need a few days to reorient myself.  I honestly don=E2=80=99t remember where we =
+are, but I know I have (at least) two  substantial tasks regarding analysis.=
+ =20
+
+What does your weekly schedule look like?  Teams on Friday?  Or if you have=
+ any instructions for me I=E2=80=99d welcome them!
+
+=20
+
+Stay warm,
+
+Scott
+
+=20
+
+=20
+
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+Date: Tuesday 21 January 2025 at 13:59
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: IJOPM Call for Papers
+
+=20
+
+Hi Scott,
+
+=20
+
+Hope your marking is going well (if indeed this is what you are doing!)
+
+=20
+
+The business school have announced a small pot of money to support the deve=
+lopment of 4 * journal articles. This is worth a max of =C2=A32000 and must be s=
+pent by 31 July. Just flagging this in case this would help with our IJOPM a=
+nalysis...
+
+=20
+
+Further details can be found here: https://uniofnottm.sharepoint.com/sites/=
+NUBSstaffinfo/SitePages/4--Output-Publication-Boost-Small-Grants-Funding.asp=
+x
+
+=20
+
+I am just about to disappear under a tsunami of teaching - so apologies if =
+I am a bit slow to respond this term - it does not indicate a lack of intere=
+st.
+
+=20
+
+Best wishes
+
+Caroline
+
+=20
+
+=20
+
+=20
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (FHEA)
+
+=20
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB=20
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+=20
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+=20
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+=20
+
+Book time to meet with me
+From: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Sent: 03 January 2025 10:08
+To: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: IJOPM Call for Papers=20
+
+=20
+
+Hi Scott,
+
+=20
+
+A very Happy New Year to you too. I hope that you have had a great time in =
+Texas.  So glad that you think this is a good submission target for our work=
+. I know two of the guest editors - both of whom have published in the moder=
+n slavery field and one of whom (Stefan Gold) used to be at Nottingham.
+
+=20
+
+I've sketched out some answers to your first thoughts/questions below:
+
+=20
+
+What is the timeline (e.g. for submission)?
+
+=20
+
+Submissions open 1 June and close 30 September
+
+
+-What are the constraints (e.g. word count/ appendix/ referencing/ etc.)?
+
+=20
+
+Papers can be up to 12,000 words - this includes all text, references and a=
+ppendixes. Any form of Harvard referencing is acceptable. We must also allow=
+ 280 words for each figure or table. There is the option to provide 'supplem=
+entary materials' (also peer reviewed) to be hosted via an IJOPM site or in =
+a personal repository. . Full author guidelines can be found here: https://w=
+ww.emeraldgrouppublishing.com/journal/ijopm
+
+=20
+
+-- [Related] Who is the audience?  More specifically, to whom should we be =
+crafting the manuscript for? (the reviewers?  The readers?  Who are these pe=
+ople?  Sorry for my ignorance, but I know very little about this Journal/ fi=
+eld.)
+
+Initially, we obviously need to get this past the SI editorial team - and I=
+ think we stand a good chance of doing this. The main hurdle, I think, will =
+be articulating our theoretical contribution to operations and supply chain =
+management academics. The journal requires us to demonstrate both theoretica=
+l and methodological rigor and relevance. Operations management scholars use=
+ a range of quantitative, qualitative and mixed methods. They will be largel=
+y business school researchers interested in ops management theory and manage=
+rial practice. Domestic work does fit within the private service sector - bu=
+t we will need to make a case for its interest to ops management researchers=
+ and practitioners - perhaps advocating for a gendered sustainability lens? =
+I have had an earlier paper on the care sector rejected from this journal si=
+nce it was not deemed to be discipline-relevant so we will need to clearly a=
+rticulate its relevance
+
+-(SO SORRY but=E2=80=A6) what do we have yet to do? [I am fairly certain there ar=
+e at least two analyses that I have yet to perform.. I have some =E2=80=98ideas of=
+ a plan=E2=80=99 (yuk!) but do not know the specifics]
+
+From memory, you had completed the RDS and we had agreed that it would be p=
+ossible only to produce a proportional estimate of the hidden population siz=
+e (compared with the estimated number of domestic workers in the UK rather t=
+han based on NRM referrals)- which I think you were still working on. You'd =
+also mentioned sensitivity analyses. And there was the possibility of produc=
+ing a composite risk index - not sure where you were with these.
+
+=20
+
+Can we talk in late January?  Can we email in the meantime?
+
+My teaching starts w/c 28 January  - so very happy (and free-er) to email/c=
+hat before this which you are back in the UK. Let me know when you're free a=
+nd we can schedule a call.
+
+=20
+
+I'm currently working on synthesising the earlier article drafts that I had=
+ sent through to you -checking Zotero is up to date - and have worked up a c=
+ouple of introductory positioning paragraphs in response to the SI call. I'l=
+l send these through hopefully later today. Happy to continue to edit these =
+as we finalise thinks but just trying to capture some of the journey as we g=
+o - so I hope they will be useful as we finalise the article submission.
+
+=20
+
+ When I am in the UK I am almost always up for a Teams chat, if you have ti=
+me + interest.
+
+=20
+
+Just let me know when you are back in the UK and free for a chat.
+
+=20
+
+I'm really glad you're still up for this, Scott. I am fully committed to ge=
+tting this submission up and running and hope that the timeline may suit us.
+
+=20
+
+Best wishes
+
+Caroline
+
+=20
+
+=20
+
+=20
+
+=20
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (FHEA)
+
+=20
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB=20
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+=20
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+=20
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+=20
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 02 January 2025 23:31
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Subject: Re: IJOPM Call for Papers=20
+
+=20
+
+Dear Caroline,
+
+=20
+
+First, HAPPY NEW YEAR!  I hope you were able to enjoy the winter holidays a=
+nd relax some, too.
+
+=20
+
+I am sorry for not replying sooner.  This past Autumn was both the heaviest=
+ teaching and also my worst experience with admin and marking related duties=
+.  In any event, it is a new year!  Thank you SO MUCH for this email!  I loo=
+ked at International Journal of Operations & Production Management and I loo=
+ks like a *wonderful* venue for our work!
+
+I am in Texas at the moment, arriving back in the UK on Saturday  Yes, let =
+us PLEASE meet and talk and submit to this special issue.  Sadly, I will be =
+swamped with marking from Jan 6th.  But I will carve out time if need be to =
+make sure we get this to fruition.
+
+Some thoughts/ questions:
+
+=20
+
+-What is the timeline (e.g. for submission)?
+-What are the constraints (e.g. word count/ appendix/ referencing/ etc.)?
+
+-- [Related] Who is the audience?  More specifically, to whom should we be =
+crafting the manuscript for? (the reviewers?  The readers?  Who are these pe=
+ople?  Sorry for my ignorance, but I know very little about this Journal/ fi=
+eld.)
+-(SO SORRY but=E2=80=A6) what do we have yet to do? [I am fairly certain there ar=
+e at least two analyses that I have yet to perform.. I have some =E2=80=98ideas of=
+ a plan=E2=80=99 (yuk!) but do not know the specifics]
+
+Can we talk in late January?  Can we email in the meantime?  When I am in t=
+he UK I am almost always up for a Teams chat, if you have time + interest.
+
+=20
+
+Again, thank you so much for brining on your project, and for your kind pat=
+ience.  BTW: I am so sorry the Nuffield bid did not go through.  I really th=
+ought it was a good project proposal, and a great =E2=80=98team=E2=80=99.  Ah well.
+
+=20
+
+All the best,
+
+Scott
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+Date: Monday 9 December 2024 at 03:27
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+Subject: IJOPM Call for Papers
+
+=20
+
+Hi Scott,
+
+=20
+
+The call for papers that might provide a suitable outlet for our article is=
+ now out: Submission deadline 30 September 2025
+
+=20
+
+https://www.emeraldgrouppublishing.com/calls-for-papers/labour-exploitation=
+-oscm-research-combat-modern-slavery-human-trafficking-and
+
+=20
+
+Perhaps we can meet in January before the start of the spring semester to d=
+iscuss?
+
+=20
+
+Best wishes
+
+Caroline
+
+=20
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (FHEA)
+
+=20
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB=20
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+=20
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+=20
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+=20
+
+Book time to meet with me
+
+=20
+
+
+--B_3821516406_1493568493
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><style t=
+ype=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bottom:0;} </st=
+yle></head><body dir=3D"ltr"><div class=3D"elementToProof" style=3D"font-family: A=
+ptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-seri=
+f; font-size: 12pt; color: rgb(0, 0, 0);"><br></div><div class=3D"elementToPro=
+of" style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Cali=
+bri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">Hi Scott,=
+</div><div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedF=
+ont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; c=
+olor: rgb(0, 0, 0);"><br></div><div class=3D"elementToProof" style=3D"font-famil=
+y: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-=
+serif; font-size: 12pt; color: rgb(0, 0, 0);">I can do 12 - 12.45 on Friday =
+- I'll send through a link. Not sure that I am in a position to give you ins=
+tructions but I've attached some notes that I made based on a trawl through =
+our earlier email conversations in case these are helpful as a memory jogger=
+.</div><div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_Embedded=
+Font, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; =
+color: rgb(0, 0, 0);"><br></div><div class=3D"elementToProof" style=3D"font-fami=
+ly: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans=
+-serif; font-size: 12pt; color: rgb(0, 0, 0);">Best wishes</div><div class=3D"=
+elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontS=
+ervice, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0)=
+;">Caroline</div><div class=3D"elementToProof" style=3D"font-family: Aptos, Apto=
+s_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-si=
+ze: 12pt; color: rgb(0, 0, 0);"><br></div><div id=3D"Signature" class=3D"element=
+ToProof"><div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontSer=
+vice, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"=
+><br></div><div id=3D"divtagdefaultwrapper" dir=3D"ltr" style=3D"color:rgb(0, 0, 0=
+)"><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helv=
+etica, sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-s=
+erif; color: rgb(0, 155, 189);"><b>Dr Caroline Emberson (preferred pronouns =
+she/her)</b></span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-f=
+amily: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-f=
+amily: Arial, sans-serif; color: rgb(19, 27, 87);"><b>Assistant Professor in=
+ Operations Management (FHEA)</b></span></p><p style=3D"margin-top: 0px; margi=
+n-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;=
+"><span style=3D"font-family: Arial, sans-serif; color: rgb(19, 27, 87);"><b><=
+br></b></span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family=
+: Calibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-family=
+: Arial, sans-serif; font-size: 9pt;">&nbsp;</span></p><p style=3D"margin-top:=
+ 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-=
+size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; co=
+lor: rgb(19, 27, 87);">Nottingham University Business School OMIS/ Faculty o=
+f Social Science<br>University of Nottingham</span></p><p style=3D"margin-top:=
+ 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-=
+size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; co=
+lor: rgb(19, 27, 87);">B12,Si Yuan Building</span></p><p style=3D"margin-top: =
+0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-s=
+ize: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; col=
+or: rgb(19, 27, 87);">Jubilee Campus</span></p><p style=3D"margin-top: 0px; ma=
+rgin-bottom: 0px;"><span style=3D"font-family: Arial, sans-serif; font-size: 9=
+pt; color: rgb(19, 27, 87);">Nottingham, NG8 1BB&nbsp;</span></p><p style=3D"m=
+argin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-se=
+rif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-siz=
+e: 9pt; color: rgb(19, 27, 87);">+44 (0) 115 8466631<b>&nbsp;</b></span><spa=
+n style=3D"font-family: Calibri, sans-serif; font-size: 9pt; color: rgb(19, 27=
+, 87);"><b>| </b></span><span style=3D"font-family: Arial, sans-serif; font-si=
+ze: 9pt;"><a href=3D"http://nottingham.ac.uk/" target=3D"_blank" style=3D"margin-t=
+op: 0px; margin-bottom: 0px;">caroline.emberson@nottingham.ac.uk</a></span><=
+/p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helv=
+etica, sans-serif; font-size: 12pt;"><br></p><p style=3D"margin-top: 0px; marg=
+in-bottom: 0px;"><span style=3D"font-family: Arial, sans-serif; font-size: 12p=
+x;">Please note that my working days are Monday, Tuesday, Thursday and Frida=
+y</span></p><p style=3D"margin-top: 0px; margin-bottom: 0px;"><span style=3D"fon=
+t-family: Arial, sans-serif; font-size: 12px;"><br></span></p><p style=3D"marg=
+in-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif=
+; font-size: 12pt;"><span style=3D"font-family: Georgia, serif; font-size: 9pt=
+; color: rgb(21, 118, 158);"><b>Follow us</b></span></p><p style=3D"margin-top=
+: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font=
+-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; c=
+olor: rgb(0, 0, 233);"><u><a href=3D"http://facebook.com/TheUniofNottingham" s=
+tyle=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Facebook.=
+com/UniofNottingham</a></u></span></p><p style=3D"margin-top: 0px; margin-bott=
+om: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;"><spa=
+n style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 23=
+3);"><u><a href=3D"http://twitter.com/UniofNottingham" style=3D"color: rgb(0, 0,=
+ 233); margin-top: 0px; margin-bottom: 0px;">Twitter.com/UniofNottingham</a>=
+</u></span></p><p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: C=
+alibri, Helvetica, sans-serif; font-size: 12pt;"><span style=3D"font-family: A=
+rial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u><a href=3D"http:/=
+/youtube.com/nottmuniversity" style=3D"color: rgb(0, 0, 233); margin-top: 0px;=
+ margin-bottom: 0px;">Youtube.com/nottmuniversity</a></u></span></p><p style=
+=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans=
+-serif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-=
+size: 9pt; color: rgb(0, 0, 233);"><u><a href=3D"http://instagram.com/uniofnot=
+tingham" style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;"=
+>Instagram.com/uniofnottingham</a></u></span></p><p style=3D"margin-top: 0px; =
+margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: =
+12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: r=
+gb(0, 0, 233);"><u><a href=3D"http://linkedin.com/company/university-of-nottin=
+gham" style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">Li=
+nkedin.com/company/university-of-nottingham</a></u></span></p><p style=3D"marg=
+in-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif=
+; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif; font-size: =
+9pt; color: rgb(0, 0, 233);"><u><a href=3D"http://www.foursquare.com/uniofnott=
+ingham" style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;">=
+F</a><a href=3D"http://www.foursquare.com/uniofnottingham" style=3D"margin-top: =
+0px; margin-bottom: 0px;">oursquare.com/uniofnottingham</a></u></span></p><p=
+ style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica=
+, sans-serif; font-size: 12pt;"><span style=3D"font-family: Arial, sans-serif;=
+ font-size: 9pt; color: rgb(0, 0, 233);"><u>&nbsp;</u></span></p><br></div><=
+table id=3D"pbpsiglinktable"><tbody><tr><td style=3D"width: 21.9792px; height: 2=
+6.4236px;"><a href=3D"https://outlook.office.com/bookwithme/user/68c1e07fca314=
+c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignatu=
+re"><img data-outlook-trace=3D"F:1|T:1" src=3D"cid:0c8960f0-0c25-4775-9777-e27fd=
+d2ff13f"></a></td><td style=3D"width: 1.97917px; height: 26.4236px;"></td><td =
+style=3D"width: 194.01px; height: 26.4236px;"><span style=3D"color: rgb(0, 120, =
+212);"><a href=3D"https://outlook.office.com/bookwithme/user/68c1e07fca314c1a8=
+63a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature" =
+style=3D"color: rgb(0, 120, 212); text-decoration: none;">Book time to meet wi=
+th me</a></span></td><td style=3D"width: 1.97917px; height: 26.4236px;"></td><=
+/tr></tbody></table></div><div id=3D"appendonsend"></div><hr style=3D"display:in=
+line-block;width:98%" tabindex=3D"-1"><div id=3D"divRplyFwdMsg" dir=3D"ltr"><font =
+face=3D"Calibri, sans-serif" style=3D"font-size:11pt" color=3D"#000000"><b>From:</=
+b> Scott Moser (staff) &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Sent:</b=
+> 03 February 2025 11:37<br><b>To:</b> Caroline Emberson (staff) &lt;lizce@e=
+xmail.nottingham.ac.uk&gt;<br><b>Subject:</b> Re: IJOPM Call for Papers</fon=
+t> <div>&nbsp;</div></div><style>
+<!--
+@font-face
+	{font-family:"Cambria Math"}
+@font-face
+	{font-family:Calibri}
+@font-face
+	{font-family:Georgia}
+@font-face
+	{font-family:Aptos}
+p.x_MsoNormal, li.x_MsoNormal, div.x_MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif}
+a:link, span.x_MsoHyperlink
+	{color:blue;
+	text-decoration:underline}
+p.x_xmsonormal, li.x_xmsonormal, div.x_xmsonormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif}
+p.x_xxelementtoproof, li.x_xxelementtoproof, div.x_xxelementtoproof
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif}
+p.x_xxxmsonormal, li.x_xxxmsonormal, div.x_xxxmsonormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif}
+span.x_EmailStyle25
+	{font-family:"Calibri",sans-serif;
+	color:windowtext}
+.x_MsoChpDefault
+	{font-size:10.0pt}
+@page WordSection1
+	{margin:72.0pt 72.0pt 72.0pt 72.0pt}
+div.x_WordSection1
+	{}
+-->
+</style><div lang=3D"EN-GB" link=3D"blue" vlink=3D"purple"><div class=3D"x_WordSect=
+ion1"><p class=3D"x_MsoNormal"><span style=3D"">Hi Caroline!&nbsp; Thanks very m=
+uch for this and especially your speedy reply!&nbsp; I need to get organized=
+ and catch back up.&nbsp; If you have any suggestions/ instructions Please d=
+o send them my way.</span></p><p class=3D"x_MsoNormal"><span style=3D"">How abou=
+t noon on Friday for a Teams chat?</span></p><p class=3D"x_MsoNormal"><span st=
+yle=3D"">&nbsp;</span></p><p class=3D"x_MsoNormal"><span style=3D"">Best,</span></=
+p><p class=3D"x_MsoNormal"><span style=3D"">Scott</span></p><p class=3D"x_MsoNorma=
+l"><span style=3D"">&nbsp;</span></p><p class=3D"x_MsoNormal"><span style=3D"">&nb=
+sp;</span></p><div style=3D"border:none; border-top:solid #B5C4DF 1.0pt; paddi=
+ng:3.0pt 0cm 0cm 0cm"><p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><b><=
+span style=3D"font-size:12.0pt; color:black">From: </span></b><span style=3D"fon=
+t-size:12.0pt; color:black">&quot;Caroline Emberson (staff)&quot; &lt;lizce@=
+exmail.nottingham.ac.uk&gt;<br><b>Date: </b>Monday 3 February 2025 at 09:09<=
+br><b>To: </b>&quot;Scott Moser (staff)&quot; &lt;ldzsm2@exmail.nottingham.a=
+c.uk&gt;<br><b>Subject: </b>Re: IJOPM Call for Papers</span></p></div><div><=
+p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt">&nbsp;</p></div><div><p cla=
+ss=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><span style=3D"font-size:12.0pt; c=
+olor:black">Hi Scott,</span></p></div><div><p class=3D"x_MsoNormal" style=3D"mar=
+gin-left:36.0pt"><span style=3D"font-size:12.0pt; color:black">&nbsp;</span></=
+p></div><div><p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><span style=3D"=
+font-size:12.0pt; color:black">Lovely to hear from you. Glad to hear that yo=
+u have got the marking out of the way. Friday is a good day for a Teams call=
+. Anytime except between 12-2.30 or after 4pm would be good for me.</span></=
+p></div><div><p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><span style=3D"=
+font-size:12.0pt; color:black">&nbsp;</span></p></div><div><p class=3D"x_MsoNo=
+rmal" style=3D"margin-left:36.0pt"><span style=3D"font-size:12.0pt; color:black"=
+>Best wishes</span></p></div><div><p class=3D"x_MsoNormal" style=3D"margin-left:=
+36.0pt"><span style=3D"font-size:12.0pt; color:black">Caroline</span></p></div=
+><div><p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><span style=3D"font-si=
+ze:12.0pt; color:black">&nbsp;</span></p></div><div id=3D"x_Signature"><div><p=
+ class=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><span style=3D"font-size:12.0p=
+t; color:black">&nbsp;</span></p></div><div id=3D"x_divtagdefaultwrapper"><p s=
+tyle=3D"margin-left:36.0pt"><b><span style=3D"font-size:12.0pt; font-family:&quo=
+t;Arial&quot;,sans-serif; color:#009BBD">Dr Caroline Emberson (preferred pro=
+nouns she/her)</span></b><span style=3D"font-size:12.0pt; color:black"></span>=
+</p><p style=3D"margin-left:36.0pt"><b><span style=3D"font-size:12.0pt; font-fam=
+ily:&quot;Arial&quot;,sans-serif; color:#131B57">Assistant Professor in Oper=
+ations Management (FHEA)</span></b><span style=3D"font-size:12.0pt; color:blac=
+k"></span></p><p style=3D"margin-left:36.0pt"><span style=3D"font-size:12.0pt; c=
+olor:black">&nbsp;</span></p><p style=3D"margin-left:36.0pt"><span style=3D"font=
+-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:black">&nbsp;</=
+span><span style=3D"font-size:12.0pt; color:black"></span></p><p style=3D"margin=
+-left:36.0pt"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sa=
+ns-serif; color:#131B57">Nottingham University Business School OMIS/ Faculty=
+ of Social Science<br>University of Nottingham</span><span style=3D"font-size:=
+12.0pt; color:black"></span></p><p style=3D"margin-left:36.0pt"><span style=3D"f=
+ont-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#131B57">B12=
+,Si Yuan Building</span><span style=3D"font-size:12.0pt; color:black"></span><=
+/p><p style=3D"margin-left:36.0pt"><span style=3D"font-size:9.0pt; font-family:&=
+quot;Arial&quot;,sans-serif; color:#131B57">Jubilee Campus</span><span style=
+=3D"font-size:12.0pt; color:black"></span></p><p style=3D"margin-left:36.0pt"><s=
+pan style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:=
+#131B57">Nottingham, NG8 1BB&nbsp;</span><span style=3D"color:black"></span></=
+p><p style=3D"margin-left:36.0pt"><span style=3D"font-size:9.0pt; font-family:&q=
+uot;Arial&quot;,sans-serif; color:#131B57">+44 (0) 115 8466631<b>&nbsp;</b><=
+/span><b><span style=3D"font-size:9.0pt; color:#131B57">| </span></b><span sty=
+le=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:black">=
+<a href=3D"http://nottingham.ac.uk/" target=3D"_blank">caroline.emberson@notting=
+ham.ac.uk</a></span><span style=3D"font-size:12.0pt; color:black"></span></p><=
+p style=3D"margin-left:36.0pt"><span style=3D"font-size:12.0pt; color:black">&nb=
+sp;</span></p><p style=3D"margin-left:36.0pt"><span style=3D"font-size:9.0pt; fo=
+nt-family:&quot;Arial&quot;,sans-serif; color:black">Please note that my wor=
+king days are Monday, Tuesday, Thursday and Friday</span><span style=3D"color:=
+black"></span></p><p style=3D"margin-left:36.0pt"><span style=3D"color:black">&n=
+bsp;</span></p><p style=3D"margin-left:36.0pt"><b><span style=3D"font-size:9.0pt=
+; font-family:&quot;Georgia&quot;,serif; color:#15769E">Follow us</span></b>=
+<span style=3D"font-size:12.0pt; color:black"></span></p><p style=3D"margin-left=
+:36.0pt"><u><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans=
+-serif; color:#0000E9"><a href=3D"http://facebook.com/TheUniofNottingham"><spa=
+n style=3D"color:#0000E9">Facebook.com/UniofNottingham</span></a></span></u><s=
+pan style=3D"font-size:12.0pt; color:black"></span></p><p style=3D"margin-left:3=
+6.0pt"><u><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-s=
+erif; color:#0000E9"><a href=3D"http://twitter.com/UniofNottingham"><span styl=
+e=3D"color:#0000E9">Twitter.com/UniofNottingham</span></a></span></u><span sty=
+le=3D"font-size:12.0pt; color:black"></span></p><p style=3D"margin-left:36.0pt">=
+<u><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; c=
+olor:#0000E9"><a href=3D"http://youtube.com/nottmuniversity"><span style=3D"colo=
+r:#0000E9">Youtube.com/nottmuniversity</span></a></span></u><span style=3D"fon=
+t-size:12.0pt; color:black"></span></p><p style=3D"margin-left:36.0pt"><u><spa=
+n style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0=
+000E9"><a href=3D"http://instagram.com/uniofnottingham"><span style=3D"color:#00=
+00E9">Instagram.com/uniofnottingham</span></a></span></u><span style=3D"font-s=
+ize:12.0pt; color:black"></span></p><p style=3D"margin-left:36.0pt"><u><span s=
+tyle=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000=
+E9"><a href=3D"http://linkedin.com/company/university-of-nottingham"><span sty=
+le=3D"color:#0000E9">Linkedin.com/company/university-of-nottingham</span></a><=
+/span></u><span style=3D"font-size:12.0pt; color:black"></span></p><p style=3D"m=
+argin-left:36.0pt"><u><span style=3D"font-size:9.0pt; font-family:&quot;Arial&=
+quot;,sans-serif; color:#0000E9"><a href=3D"http://www.foursquare.com/uniofnot=
+tingham"><span style=3D"color:#0000E9">F</span></a><a href=3D"http://www.foursqu=
+are.com/uniofnottingham">oursquare.com/uniofnottingham</a></span></u><span s=
+tyle=3D"font-size:12.0pt; color:black"></span></p><p style=3D"margin-left:36.0pt=
+"><u><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif;=
+ color:#0000E9">&nbsp;</span></u><span style=3D"font-size:12.0pt; color:black"=
+></span></p><p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><span style=3D"c=
+olor:black">&nbsp;</span></p></div><table class=3D"x_MsoNormalTable" border=3D"0=
+" cellpadding=3D"0" id=3D"x_pbpsiglinktable" style=3D"margin-left:36.0pt"><tbody><=
+tr style=3D"height:19.8pt"><td width=3D"22" style=3D"width:16.5pt; padding:.75pt .=
+75pt .75pt .75pt; height:19.8pt"><p class=3D"x_MsoNormal"><a href=3D"https://out=
+look.office.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nott=
+ingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature"><span style=3D"color:windowte=
+xt; text-decoration:none"><span style=3D"color:blue"><img border=3D"0" width=3D"20=
+" height=3D"20" id=3D"x__x0000_i1031" style=3D"width:.2083in; height:.2083in" data=
+-outlook-trace=3D"F:1|T:1" src=3D"cid:image001.png@01DB7630.0E86E1B0"></span></s=
+pan></a></p></td><td width=3D"2" style=3D"width:1.8pt; padding:.75pt .75pt .75pt=
+ .75pt; height:19.8pt"></td><td width=3D"194" style=3D"width:145.5pt; padding:.7=
+5pt .75pt .75pt .75pt; height:19.8pt"><p class=3D"x_MsoNormal"><span style=3D"co=
+lor:#0078D4"><a href=3D"https://outlook.office.com/bookwithme/user/68c1e07fca3=
+14c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSigna=
+ture"><span style=3D"color:#0078D4; text-decoration:none">Book time to meet wi=
+th me</span></a></span></p></td><td width=3D"2" style=3D"width:1.8pt; padding:.7=
+5pt .75pt .75pt .75pt; height:19.8pt"></td></tr></tbody></table></div><div c=
+lass=3D"x_MsoNormal" align=3D"center" style=3D"margin-left:36.0pt; text-align:cent=
+er"><span style=3D"color:white"><hr size=3D"0" width=3D"0%" align=3D"center"></span>=
+</div><div id=3D"x_divRplyFwdMsg"><p class=3D"x_MsoNormal" style=3D"margin-left:36=
+.0pt"><b><span style=3D"color:black">From:</span></b><span style=3D"color:black"=
+> Scott Moser (staff) &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Sent:</b>=
+ 02 February 2025 15:55<br><b>To:</b> Caroline Emberson (staff) &lt;lizce@ex=
+mail.nottingham.ac.uk&gt;<br><b>Subject:</b> Re: IJOPM Call for Papers</span=
+> </p><div><p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt">&nbsp;</p></div=
+></div><div><div><p class=3D"x_xmsonormal" style=3D"margin-left:36.0pt">Hi Carol=
+ine!</p><p class=3D"x_xmsonormal" style=3D"margin-left:36.0pt">&nbsp;</p><p clas=
+s=3D"x_xmsonormal" style=3D"margin-left:36.0pt">I am sorry for the long tardines=
+s.&nbsp; Jan was very stressful with marking, but done now!&nbsp; I am so so=
+rry your Spring term is busy with extra teaching.&nbsp; We seem to be perfec=
+tly out of sync, I am afraid (=3D my spring teaching is rather light).&nbsp;&n=
+bsp;&nbsp; I want to return to our project and finish it off.&nbsp; I confes=
+s I need a few days to reorient myself.&nbsp; I honestly don=E2=80=99t remember wh=
+ere we are, but I know I have (at least) two&nbsp; substantial tasks regardi=
+ng analysis.&nbsp; </p><p class=3D"x_xmsonormal" style=3D"margin-left:36.0pt">Wh=
+at does your weekly schedule look like?&nbsp; Teams on Friday?&nbsp; Or if y=
+ou have any instructions for me I=E2=80=99d welcome them!</p><p class=3D"x_xmsonorma=
+l" style=3D"margin-left:36.0pt">&nbsp;</p><p class=3D"x_xmsonormal" style=3D"margi=
+n-left:36.0pt">Stay warm,</p><p class=3D"x_xmsonormal" style=3D"margin-left:36.0=
+pt">Scott</p><p class=3D"x_xmsonormal" style=3D"margin-left:36.0pt">&nbsp;</p><p=
+ class=3D"x_xmsonormal" style=3D"margin-left:36.0pt">&nbsp;</p><div style=3D"borde=
+r:none; border-top:solid #B5C4DF 1.0pt; padding:3.0pt 0cm 0cm 0cm"><p class=3D=
+"x_xmsonormal" style=3D"margin-left:72.0pt"><b><span style=3D"font-size:12.0pt; =
+color:black">From: </span></b><span style=3D"font-size:12.0pt; color:black">&q=
+uot;Caroline Emberson (staff)&quot; &lt;lizce@exmail.nottingham.ac.uk&gt;<br=
+><b>Date: </b>Tuesday 21 January 2025 at 13:59<br><b>To: </b>&quot;Scott Mos=
+er (staff)&quot; &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Subject: </b>R=
+e: IJOPM Call for Papers</span></p></div><div><p class=3D"x_xmsonormal" style=3D=
+"margin-left:72.0pt">&nbsp;</p></div><div><p class=3D"x_xmsonormal" style=3D"mar=
+gin-left:72.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color:bla=
+ck">Hi Scott,</span></p></div><div><p class=3D"x_xmsonormal" style=3D"margin-lef=
+t:72.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color:black">&nb=
+sp;</span></p></div><div><p class=3D"x_xmsonormal" style=3D"margin-left:72.0pt">=
+<span style=3D"font-size:12.0pt; font-family:Aptos; color:black">Hope your mar=
+king is going well (if indeed this is what you are doing!)</span></p></div><=
+div><p class=3D"x_xmsonormal" style=3D"margin-left:72.0pt"><span style=3D"font-siz=
+e:12.0pt; font-family:Aptos; color:black">&nbsp;</span></p></div><div><p cla=
+ss=3D"x_xmsonormal" style=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; =
+font-family:Aptos; color:black">The business school have announced a small p=
+ot of money to support the development of 4 * journal articles. This is wort=
+h a max of =C2=A32000 and must be spent by 31 July. Just flagging this in case t=
+his would help with our IJOPM analysis...</span></p></div><div><p class=3D"x_x=
+msonormal" style=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; font-fa=
+mily:Aptos; color:black">&nbsp;</span></p></div><div><p class=3D"x_xmsonormal"=
+ style=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos=
+; color:black">Further details can be found here: <a href=3D"https://uniofnott=
+m.sharepoint.com/sites/NUBSstaffinfo/SitePages/4--Output-Publication-Boost-S=
+mall-Grants-Funding.aspx">https://uniofnottm.sharepoint.com/sites/NUBSstaffi=
+nfo/SitePages/4--Output-Publication-Boost-Small-Grants-Funding.aspx</a></spa=
+n></p></div><div><p class=3D"x_xmsonormal" style=3D"margin-left:72.0pt"><span st=
+yle=3D"font-size:12.0pt; font-family:Aptos; color:black">&nbsp;</span></p></di=
+v><div><p class=3D"x_xmsonormal" style=3D"margin-left:72.0pt"><span style=3D"font-=
+size:12.0pt; font-family:Aptos; color:black">I am just about to disappear un=
+der a tsunami of teaching - so apologies if I am a bit slow to respond this =
+term - it does not indicate a lack of interest.</span></p></div><div><p clas=
+s=3D"x_xmsonormal" style=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; f=
+ont-family:Aptos; color:black">&nbsp;</span></p></div><div><p class=3D"x_xmson=
+ormal" style=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; font-family=
+:Aptos; color:black">Best wishes</span></p></div><div><p class=3D"x_xmsonormal=
+" style=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; font-family:Apto=
+s; color:black">Caroline</span></p></div><div><p class=3D"x_xmsonormal" style=3D=
+"margin-left:72.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color=
+:black">&nbsp;</span></p></div><div><p class=3D"x_xmsonormal" style=3D"margin-le=
+ft:72.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color:black">&n=
+bsp;</span></p></div><div id=3D"x_x_Signature"><div><p class=3D"x_xmsonormal" st=
+yle=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; c=
+olor:black">&nbsp;</span></p></div><div id=3D"x_x_divtagdefaultwrapper"><p sty=
+le=3D"margin-left:72.0pt"><b><span style=3D"font-size:12.0pt; font-family:&quot;=
+Arial&quot;,sans-serif; color:#009BBD">Dr Caroline Emberson (preferred prono=
+uns she/her)</span></b></p><p style=3D"margin-left:72.0pt"><b><span style=3D"fon=
+t-size:12.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#131B57">Assi=
+stant Professor in Operations Management (FHEA)</span></b></p><p style=3D"marg=
+in-left:72.0pt"><span style=3D"font-size:12.0pt; color:black">&nbsp;</span></p=
+><p style=3D"margin-left:72.0pt"><span style=3D"font-size:9.0pt; font-family:&qu=
+ot;Arial&quot;,sans-serif; color:black">&nbsp;</span></p><p style=3D"margin-le=
+ft:72.0pt"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-=
+serif; color:#131B57">Nottingham University Business School OMIS/ Faculty of=
+ Social Science<br>University of Nottingham</span></p><p style=3D"margin-left:=
+72.0pt"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-ser=
+if; color:#131B57">B12,Si Yuan Building</span></p><p style=3D"margin-left:72.0=
+pt"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; =
+color:#131B57">Jubilee Campus</span></p><p style=3D"margin-left:72.0pt"><span =
+style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#131=
+B57">Nottingham, NG8 1BB&nbsp;</span></p><p style=3D"margin-left:72.0pt"><span=
+ style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#13=
+1B57">+44 (0) 115 8466631<b>&nbsp;</b></span><b><span style=3D"font-size:9.0pt=
+; color:#131B57">| </span></b><span style=3D"font-size:9.0pt; font-family:&quo=
+t;Arial&quot;,sans-serif; color:black"><a href=3D"http://nottingham.ac.uk/" ta=
+rget=3D"_blank">caroline.emberson@nottingham.ac.uk</a></span></p><p style=3D"mar=
+gin-left:72.0pt"><span style=3D"font-size:12.0pt; color:black">&nbsp;</span></=
+p><p style=3D"margin-left:72.0pt"><span style=3D"font-size:9.0pt; font-family:&q=
+uot;Arial&quot;,sans-serif; color:black">Please note that my working days ar=
+e Monday, Tuesday, Thursday and Friday</span></p><p style=3D"margin-left:72.0p=
+t"><span style=3D"color:black">&nbsp;</span></p><p style=3D"margin-left:72.0pt">=
+<b><span style=3D"font-size:9.0pt; font-family:&quot;Georgia&quot;,serif; colo=
+r:#15769E">Follow us</span></b></p><p style=3D"margin-left:72.0pt"><u><span st=
+yle=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E=
+9"><a href=3D"http://facebook.com/TheUniofNottingham"><span style=3D"color:#0000=
+E9">Facebook.com/UniofNottingham</span></a></span></u></p><p style=3D"margin-l=
+eft:72.0pt"><u><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,s=
+ans-serif; color:#0000E9"><a href=3D"http://twitter.com/UniofNottingham"><span=
+ style=3D"color:#0000E9">Twitter.com/UniofNottingham</span></a></span></u></p>=
+<p style=3D"margin-left:72.0pt"><u><span style=3D"font-size:9.0pt; font-family:&=
+quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http://youtube.com/nott=
+muniversity"><span style=3D"color:#0000E9">Youtube.com/nottmuniversity</span><=
+/a></span></u></p><p style=3D"margin-left:72.0pt"><u><span style=3D"font-size:9.=
+0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http:=
+//instagram.com/uniofnottingham"><span style=3D"color:#0000E9">Instagram.com/u=
+niofnottingham</span></a></span></u></p><p style=3D"margin-left:72.0pt"><u><sp=
+an style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#=
+0000E9"><a href=3D"http://linkedin.com/company/university-of-nottingham"><span=
+ style=3D"color:#0000E9">Linkedin.com/company/university-of-nottingham</span><=
+/a></span></u></p><p style=3D"margin-left:72.0pt"><u><span style=3D"font-size:9.=
+0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http:=
+//www.foursquare.com/uniofnottingham"><span style=3D"color:#0000E9">F</span></=
+a><a href=3D"http://www.foursquare.com/uniofnottingham">oursquare.com/uniofnot=
+tingham</a></span></u></p><p style=3D"margin-left:72.0pt"><u><span style=3D"font=
+-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9">&nbsp;=
+</span></u></p><p class=3D"x_xmsonormal" style=3D"margin-left:72.0pt"><span styl=
+e=3D"color:black">&nbsp;</span></p></div><table class=3D"x_MsoNormalTable" borde=
+r=3D"0" cellpadding=3D"0" id=3D"x_x_pbpsiglinktable" style=3D"margin-left:72.0pt"><t=
+body><tr style=3D"height:19.8pt"><td width=3D"22" style=3D"width:16.5pt; padding:.=
+75pt .75pt .75pt .75pt; height:19.8pt"><p class=3D"x_xmsonormal"><a href=3D"http=
+s://outlook.office.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exma=
+il.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature"><span style=3D"color:w=
+indowtext; text-decoration:none"><span style=3D"color:blue"><img border=3D"0" wi=
+dth=3D"20" height=3D"20" id=3D"x_x__x005f_x0000_i1029" style=3D"width:.2083in; heigh=
+t:.2083in" data-outlook-trace=3D"F:1|T:1" src=3D"cid:image002.png@01DB7630.0E86E=
+1B0"></span></span></a></p></td><td width=3D"2" style=3D"width:1.8pt; padding:.7=
+5pt .75pt .75pt .75pt; height:19.8pt"></td><td width=3D"194" style=3D"width:145.=
+5pt; padding:.75pt .75pt .75pt .75pt; height:19.8pt"><p class=3D"x_xmsonormal"=
+><span style=3D"color:#0078D4"><a href=3D"https://outlook.office.com/bookwithme/=
+user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;=
+ep=3DbwmEmailSignature"><span style=3D"color:#0078D4; text-decoration:none">Book=
+ time to meet with me</span></a></span></p></td><td width=3D"2" style=3D"width:1=
+.8pt; padding:.75pt .75pt .75pt .75pt; height:19.8pt"></td></tr></tbody></ta=
+ble></div><div style=3D"margin-left:36.0pt"><div class=3D"x_MsoNormal" align=3D"ce=
+nter" style=3D"margin-left:36.0pt; text-align:center"><span style=3D"color:white=
+"><hr size=3D"0" width=3D"0%" align=3D"center"></span></div></div><div id=3D"x_x_div=
+RplyFwdMsg"><p class=3D"x_xmsonormal" style=3D"margin-left:72.0pt"><b><span styl=
+e=3D"color:black">From:</span></b><span style=3D"color:black"> Caroline Emberson=
+ (staff) &lt;lizce@exmail.nottingham.ac.uk&gt;<br><b>Sent:</b> 03 January 20=
+25 10:08<br><b>To:</b> Scott Moser (staff) &lt;ldzsm2@exmail.nottingham.ac.u=
+k&gt;<br><b>Subject:</b> Re: IJOPM Call for Papers</span> </p><div><p class=3D=
+"x_xmsonormal" style=3D"margin-left:72.0pt">&nbsp;</p></div></div><div><div><p=
+ class=3D"x_xmsonormal" style=3D"margin-left:72.0pt"><span style=3D"font-size:12.0=
+pt; font-family:Aptos; color:black">Hi Scott,</span></p></div><div><p class=3D=
+"x_xmsonormal" style=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; fon=
+t-family:Aptos; color:black">&nbsp;</span></p></div><div><p class=3D"x_xmsonor=
+mal" style=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; font-family:A=
+ptos; color:black">A very Happy New Year to you too. I hope that you have ha=
+d a great time in Texas.&nbsp; So glad that you think this is a good submiss=
+ion target for our work. I know two of the guest editors - both of whom have=
+ published in the modern slavery field and one of whom (Stefan Gold) used to=
+ be at Nottingham.</span></p></div><div><p class=3D"x_xmsonormal" style=3D"margi=
+n-left:72.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color:black=
+">&nbsp;</span></p></div><div><p class=3D"x_xmsonormal" style=3D"margin-left:72.=
+0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color:black">I've ske=
+tched out some answers to your first thoughts/questions below:</span></p></d=
+iv><div><p class=3D"x_xmsonormal" style=3D"margin-left:72.0pt"><span style=3D"font=
+-size:12.0pt; font-family:Aptos; color:black">&nbsp;</span></p></div><p clas=
+s=3D"x_xxelementtoproof" style=3D"margin-left:72.0pt; background:white"><span st=
+yle=3D"color:#242424">What is the timeline (e.g. for submission)?</span></p><p=
+ class=3D"x_xxelementtoproof" style=3D"margin-left:72.0pt; background:white"><sp=
+an style=3D"color:black">&nbsp;</span></p><p class=3D"x_xxelementtoproof" style=3D=
+"margin-left:72.0pt; background:white"><span style=3D"color:#0C64C0">Submissio=
+ns open 1 June and close 30 September</span></p><p class=3D"x_xxelementtoproof=
+" style=3D"margin-left:72.0pt; background:white"><span style=3D"color:#242424"><=
+br>-What are the constraints (e.g. word count/ appendix/ referencing/ etc.)?=
+</span></p><p class=3D"x_xxelementtoproof" style=3D"margin-left:72.0pt; backgrou=
+nd:white"><span style=3D"color:black">&nbsp;</span></p><p class=3D"x_xxelementto=
+proof" style=3D"margin-left:72.0pt; background:white"><span style=3D"color:#0C64=
+C0">Papers can be up to 12,000 words - this includes all text, references an=
+d appendixes. Any form of Harvard referencing is acceptable. We must also al=
+low 280 words for each figure or table. There is the option to provide 'supp=
+lementary materials' (also peer reviewed) to be hosted via an IJOPM site or =
+in a personal repository. . Full author guidelines can be found here:</span>=
+<span style=3D"color:#242424"> <a href=3D"https://www.emeraldgrouppublishing.com=
+/journal/ijopm">https://www.emeraldgrouppublishing.com/journal/ijopm</a></sp=
+an></p><p class=3D"x_xxelementtoproof" style=3D"margin-left:72.0pt; background:w=
+hite"><span style=3D"color:black">&nbsp;</span></p><p style=3D"margin-left:72.0p=
+t; background:white"><span style=3D"color:#242424">-- [Related] Who is the aud=
+ience?&nbsp; More specifically, to whom should we be crafting the manuscript=
+ for? (the reviewers?&nbsp; The readers?&nbsp; Who are these people?&nbsp; S=
+orry for my ignorance, but I know very little about this Journal/ field.)</s=
+pan></p><p class=3D"x_xxelementtoproof" style=3D"margin-left:72.0pt; background:=
+white"><span style=3D"color:#0C64C0">Initially, we obviously need to get this =
+past the SI editorial team - and I think we stand a good chance of doing thi=
+s. The main hurdle, I think, will be articulating our theoretical contributi=
+on to operations and supply chain management academics. The journal requires=
+ us to demonstrate both theoretical and methodological rigor and relevance. =
+Operations management scholars use a range of quantitative, qualitative and =
+mixed methods. They will be largely business school researchers interested i=
+n ops management theory and managerial practice. Domestic work does fit with=
+in the private service sector - but we will need to make a case for its inte=
+rest to ops management researchers and practitioners - perhaps advocating fo=
+r a gendered sustainability lens? I have had an earlier paper on the care se=
+ctor rejected from this journal since it was not deemed to be discipline-rel=
+evant so we will need to clearly articulate its relevance</span></p><p style=
+=3D"margin-left:72.0pt; background:white"><span style=3D"color:#242424">-(SO SOR=
+RY but=E2=80=A6) what do we have yet to do? [I am fairly certain there are at leas=
+t two analyses that I have yet to perform.. I have some =E2=80=98ideas of a plan=E2=80=
+=99 (yuk!) but do not know the specifics]</span></p><p class=3D"x_xxelementtopro=
+of" style=3D"margin-left:72.0pt; background:white"><span style=3D"color:#0C64C0"=
+>From memory, you had completed the RDS and we had agreed that it would be p=
+ossible only to produce a proportional estimate of the hidden population siz=
+e (compared with the estimated number of domestic workers in the UK rather t=
+han based on NRM referrals)- which I think you were still working on. You'd =
+also mentioned sensitivity analyses. And there was the possibility of produc=
+ing a composite risk index - not sure where you were with these.</span></p><=
+p style=3D"margin-left:72.0pt; background:white"><span style=3D"color:black">&nb=
+sp;</span></p><p class=3D"x_xxelementtoproof" style=3D"margin-left:72.0pt; backg=
+round:white"><span style=3D"color:#242424">Can we talk in late January?&nbsp; =
+Can we email in the meantime?</span></p><p class=3D"x_xxelementtoproof" style=3D=
+"margin-left:72.0pt; background:white"><span style=3D"color:#0C64C0">My teachi=
+ng starts w/c 28 January&nbsp; - so very happy (and free-er) to email/chat b=
+efore this which you are back in the UK. Let me know when you're free and we=
+ can schedule a call.</span></p><p class=3D"x_xxelementtoproof" style=3D"margin-=
+left:72.0pt; background:white"><span style=3D"color:black">&nbsp;</span></p><p=
+ class=3D"x_xxelementtoproof" style=3D"margin-left:72.0pt; background:white"><sp=
+an style=3D"color:#0C64C0">I'm currently working on synthesising the earlier a=
+rticle drafts that I had sent through to you -checking Zotero is up to date =
+- and have worked up a couple of introductory positioning paragraphs in resp=
+onse to the SI call. I'll send these through hopefully later today. Happy to=
+ continue to edit these as we finalise thinks but just trying to capture som=
+e of the journey as we go - so I hope they will be useful as we finalise the=
+ article submission.</span></p><p class=3D"x_xxelementtoproof" style=3D"margin-l=
+eft:72.0pt; background:white"><span style=3D"color:black">&nbsp;</span></p><p =
+class=3D"x_xxelementtoproof" style=3D"margin-left:72.0pt; background:white"><spa=
+n style=3D"color:#242424">&nbsp;When I am in the UK I am almost always up for =
+a Teams chat, if you have time + interest.</span></p><div><p class=3D"x_xmsono=
+rmal" style=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; font-family:=
+Aptos; color:black">&nbsp;</span></p></div><div><p class=3D"x_xmsonormal" styl=
+e=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; col=
+or:#0C64C0">Just let me know when you are back in the UK and free for a chat=
+.</span></p></div><div><p class=3D"x_xmsonormal" style=3D"margin-left:72.0pt"><s=
+pan style=3D"font-size:12.0pt; font-family:Aptos; color:black">&nbsp;</span></=
+p></div><div><p class=3D"x_xmsonormal" style=3D"margin-left:72.0pt"><span style=3D=
+"font-size:12.0pt; font-family:Aptos; color:#0C64C0">I'm really glad you're =
+still up for this, Scott. I am fully committed to getting this submission up=
+ and running and hope that the timeline may suit us.</span></p></div><div><p=
+ class=3D"x_xmsonormal" style=3D"margin-left:72.0pt"><span style=3D"font-size:12.0=
+pt; font-family:Aptos; color:black">&nbsp;</span></p></div><div><p class=3D"x_=
+xmsonormal" style=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; font-f=
+amily:Aptos; color:black">Best wishes</span></p></div><div><p class=3D"x_xmson=
+ormal" style=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; font-family=
+:Aptos; color:black">Caroline</span></p></div><div><p class=3D"x_xmsonormal" s=
+tyle=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; =
+color:black">&nbsp;</span></p></div><div><p class=3D"x_xmsonormal" style=3D"marg=
+in-left:72.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color:blac=
+k">&nbsp;</span></p></div><div><p class=3D"x_xmsonormal" style=3D"margin-left:72=
+.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color:black">&nbsp;<=
+/span></p></div><div id=3D"x_x_x_Signature"><div><p class=3D"x_xmsonormal" style=
+=3D"margin-left:72.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; colo=
+r:black">&nbsp;</span></p></div><div id=3D"x_x_x_divtagdefaultwrapper"><p styl=
+e=3D"margin-left:72.0pt"><b><span style=3D"font-size:12.0pt; font-family:&quot;A=
+rial&quot;,sans-serif; color:#009BBD">Dr Caroline Emberson (preferred pronou=
+ns she/her)</span></b></p><p style=3D"margin-left:72.0pt"><b><span style=3D"font=
+-size:12.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#131B57">Assis=
+tant Professor in Operations Management (FHEA)</span></b></p><p style=3D"margi=
+n-left:72.0pt"><span style=3D"font-size:12.0pt; color:black">&nbsp;</span></p>=
+<p style=3D"margin-left:72.0pt"><span style=3D"font-size:9.0pt; font-family:&quo=
+t;Arial&quot;,sans-serif; color:black">&nbsp;</span></p><p style=3D"margin-lef=
+t:72.0pt"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-s=
+erif; color:#131B57">Nottingham University Business School OMIS/ Faculty of =
+Social Science<br>University of Nottingham</span></p><p style=3D"margin-left:7=
+2.0pt"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-seri=
+f; color:#131B57">B12,Si Yuan Building</span></p><p style=3D"margin-left:72.0p=
+t"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; c=
+olor:#131B57">Jubilee Campus</span></p><p style=3D"margin-left:72.0pt"><span s=
+tyle=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#131B=
+57">Nottingham, NG8 1BB&nbsp;</span></p><p style=3D"margin-left:72.0pt"><span =
+style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#131=
+B57">+44 (0) 115 8466631<b>&nbsp;</b></span><b><span style=3D"font-size:9.0pt;=
+ color:#131B57">| </span></b><span style=3D"font-size:9.0pt; font-family:&quot=
+;Arial&quot;,sans-serif; color:black"><a href=3D"http://nottingham.ac.uk/" tar=
+get=3D"_blank">caroline.emberson@nottingham.ac.uk</a></span></p><p style=3D"marg=
+in-left:72.0pt"><span style=3D"font-size:12.0pt; color:black">&nbsp;</span></p=
+><p style=3D"margin-left:72.0pt"><span style=3D"font-size:9.0pt; font-family:&qu=
+ot;Arial&quot;,sans-serif; color:black">Please note that my working days are=
+ Monday, Tuesday, Thursday and Friday</span></p><p style=3D"margin-left:72.0pt=
+"><span style=3D"color:black">&nbsp;</span></p><p style=3D"margin-left:72.0pt"><=
+b><span style=3D"font-size:9.0pt; font-family:&quot;Georgia&quot;,serif; color=
+:#15769E">Follow us</span></b></p><p style=3D"margin-left:72.0pt"><u><span sty=
+le=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9=
+"><a href=3D"http://facebook.com/TheUniofNottingham"><span style=3D"color:#0000E=
+9">Facebook.com/UniofNottingham</span></a></span></u></p><p style=3D"margin-le=
+ft:72.0pt"><u><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sa=
+ns-serif; color:#0000E9"><a href=3D"http://twitter.com/UniofNottingham"><span =
+style=3D"color:#0000E9">Twitter.com/UniofNottingham</span></a></span></u></p><=
+p style=3D"margin-left:72.0pt"><u><span style=3D"font-size:9.0pt; font-family:&q=
+uot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http://youtube.com/nottm=
+university"><span style=3D"color:#0000E9">Youtube.com/nottmuniversity</span></=
+a></span></u></p><p style=3D"margin-left:72.0pt"><u><span style=3D"font-size:9.0=
+pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http:/=
+/instagram.com/uniofnottingham"><span style=3D"color:#0000E9">Instagram.com/un=
+iofnottingham</span></a></span></u></p><p style=3D"margin-left:72.0pt"><u><spa=
+n style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0=
+000E9"><a href=3D"http://linkedin.com/company/university-of-nottingham"><span =
+style=3D"color:#0000E9">Linkedin.com/company/university-of-nottingham</span></=
+a></span></u></p><p style=3D"margin-left:72.0pt"><u><span style=3D"font-size:9.0=
+pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http:/=
+/www.foursquare.com/uniofnottingham"><span style=3D"color:#0000E9">F</span></a=
+><a href=3D"http://www.foursquare.com/uniofnottingham">oursquare.com/uniofnott=
+ingham</a></span></u></p><p style=3D"margin-left:72.0pt"><u><span style=3D"font-=
+size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9">&nbsp;<=
+/span></u></p><p class=3D"x_xmsonormal" style=3D"margin-left:72.0pt"><span style=
+=3D"color:black">&nbsp;</span></p></div><table class=3D"x_MsoNormalTable" border=
+=3D"0" cellpadding=3D"0" id=3D"x_x_x_pbpsiglinktable" style=3D"margin-left:72.0pt"><=
+tbody><tr style=3D"height:19.8pt"><td width=3D"22" style=3D"width:16.5pt; padding:=
+.75pt .75pt .75pt .75pt; height:19.8pt"><p class=3D"x_xmsonormal"><a href=3D"htt=
+ps://outlook.office.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exm=
+ail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature"><span style=3D"color:=
+windowtext; text-decoration:none"><span style=3D"color:blue"><img border=3D"0" w=
+idth=3D"20" height=3D"20" id=3D"x_x__x005f_x0000_i1027" style=3D"width:.2083in; heig=
+ht:.2083in" data-outlook-trace=3D"F:1|T:1" src=3D"cid:image002.png@01DB7630.0E86=
+E1B0"></span></span></a></p></td><td width=3D"2" style=3D"width:1.8pt; padding:.=
+75pt .75pt .75pt .75pt; height:19.8pt"></td><td width=3D"194" style=3D"width:145=
+.5pt; padding:.75pt .75pt .75pt .75pt; height:19.8pt"><p class=3D"x_xmsonormal=
+"><span style=3D"color:#0078D4"><a href=3D"https://outlook.office.com/bookwithme=
+/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp=
+;ep=3DbwmEmailSignature"><span style=3D"color:#0078D4; text-decoration:none">Boo=
+k time to meet with me</span></a></span></p></td><td width=3D"2" style=3D"width:=
+1.8pt; padding:.75pt .75pt .75pt .75pt; height:19.8pt"></td></tr></tbody></t=
+able></div><div style=3D"margin-left:36.0pt"><div class=3D"x_MsoNormal" align=3D"c=
+enter" style=3D"margin-left:36.0pt; text-align:center"><span style=3D"color:whit=
+e"><hr size=3D"0" width=3D"0%" align=3D"center"></span></div></div><div id=3D"x_x_x_=
+divRplyFwdMsg"><p class=3D"x_xmsonormal" style=3D"margin-left:72.0pt"><b><span s=
+tyle=3D"color:black">From:</span></b><span style=3D"color:black"> Scott Moser (s=
+taff) &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Sent:</b> 02 January 2025=
+ 23:31<br><b>To:</b> Caroline Emberson (staff) &lt;lizce@exmail.nottingham.a=
+c.uk&gt;<br><b>Subject:</b> Re: IJOPM Call for Papers</span> </p><div><p cla=
+ss=3D"x_xmsonormal" style=3D"margin-left:72.0pt">&nbsp;</p></div></div><div><div=
+><p class=3D"x_xxxmsonormal" style=3D"margin-left:72.0pt">Dear Caroline,</p><p c=
+lass=3D"x_xxxmsonormal" style=3D"margin-left:72.0pt">&nbsp;</p><p class=3D"x_xxxms=
+onormal" style=3D"margin-left:72.0pt">First, HAPPY NEW YEAR!&nbsp; I hope you =
+were able to enjoy the winter holidays and relax some, too.</p><p class=3D"x_x=
+xxmsonormal" style=3D"margin-left:72.0pt">&nbsp;</p><p class=3D"x_xxxmsonormal" =
+style=3D"margin-right:0cm; margin-bottom:12.0pt; margin-left:72.0pt">I am sorr=
+y for not replying sooner.&nbsp; This past Autumn was both the heaviest teac=
+hing and also my worst experience with admin and marking related duties.&nbs=
+p; In any event, it is a new year!&nbsp; Thank you SO MUCH for this email!&n=
+bsp; I looked at <b>International Journal of Operations &amp; Production Man=
+agement </b>and I looks like a *<b>wonderful</b>* venue for our work!</p><p =
+class=3D"x_xxxmsonormal" style=3D"margin-left:72.0pt">I am in Texas at the momen=
+t, arriving back in the UK on Saturday&nbsp; Yes, let us PLEASE meet and tal=
+k and submit to this special issue.&nbsp; Sadly, I will be swamped with mark=
+ing from Jan 6<sup>th</sup>.&nbsp; But I will carve out time if need be to m=
+ake sure we get this to fruition.<br><br>Some thoughts/ questions:</p><p cla=
+ss=3D"x_xxxmsonormal" style=3D"margin-left:72.0pt">&nbsp;</p><p class=3D"x_xxxmson=
+ormal" style=3D"margin-left:72.0pt">-What is the timeline (e.g. for submission=
+)?<br>-What are the constraints (e.g. word count/ appendix/ referencing/ etc=
+.)?</p><p class=3D"x_xxxmsonormal" style=3D"margin-right:0cm; margin-bottom:12.0=
+pt; margin-left:72.0pt">-- [Related] Who is the audience?&nbsp; More specifi=
+cally, to whom should we be crafting the manuscript for? (the reviewers?&nbs=
+p; The readers?&nbsp; Who are these people?&nbsp; Sorry for my ignorance, bu=
+t I know very little about this Journal/ field.)<br>-(SO SORRY but=E2=80=A6) what =
+do we have yet to do? [I am fairly certain there are at least two analyses t=
+hat I have yet to perform.. I have some =E2=80=98ideas of a plan=E2=80=99 (yuk!) but do =
+not know the specifics]</p><p class=3D"x_xxxmsonormal" style=3D"margin-left:72.0=
+pt">Can we talk in late January?&nbsp; Can we email in the meantime? &nbsp;W=
+hen I am in the UK I am almost always up for a Teams chat, if you have time =
++ interest.</p><p class=3D"x_xxxmsonormal" style=3D"margin-left:72.0pt">&nbsp;</=
+p><p class=3D"x_xxxmsonormal" style=3D"margin-left:72.0pt">Again, thank you so m=
+uch for brining on your project, and for your kind patience.&nbsp; BTW: I am=
+ so sorry the Nuffield bid did not go through.&nbsp; I really thought it was=
+ a good project proposal, and a great =E2=80=98team=E2=80=99.&nbsp; Ah well.</p><p class=
+=3D"x_xxxmsonormal" style=3D"margin-left:72.0pt">&nbsp;</p><p class=3D"x_xxxmsonor=
+mal" style=3D"margin-left:72.0pt">All the best,</p><p class=3D"x_xxxmsonormal" s=
+tyle=3D"margin-left:72.0pt">Scott</p><p class=3D"x_xxxmsonormal" style=3D"margin-l=
+eft:72.0pt">&nbsp;</p><p class=3D"x_xxxmsonormal" style=3D"margin-left:72.0pt">&=
+nbsp;</p><p class=3D"x_xxxmsonormal" style=3D"margin-left:72.0pt">&nbsp;</p><p c=
+lass=3D"x_xxxmsonormal" style=3D"margin-left:72.0pt">&nbsp;</p><p class=3D"x_xxxms=
+onormal" style=3D"margin-left:72.0pt">&nbsp;</p><div style=3D"border:none; borde=
+r-top:solid #B5C4DF 1.0pt; padding:3.0pt 0cm 0cm 0cm"><p class=3D"x_xxxmsonorm=
+al" style=3D"margin-left:108.0pt"><b><span style=3D"font-size:12.0pt; color:blac=
+k">From: </span></b><span style=3D"font-size:12.0pt; color:black">&quot;Caroli=
+ne Emberson (staff)&quot; &lt;lizce@exmail.nottingham.ac.uk&gt;<br><b>Date: =
+</b>Monday 9 December 2024 at 03:27<br><b>To: </b>&quot;Scott Moser (staff)&=
+quot; &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Subject: </b>IJOPM Call f=
+or Papers</span></p></div><div><p class=3D"x_xxxmsonormal" style=3D"margin-left:=
+108.0pt">&nbsp;</p></div><div><p class=3D"x_xxxmsonormal" style=3D"margin-left:1=
+08.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color:black">Hi Sc=
+ott,</span></p></div><div><p class=3D"x_xxxmsonormal" style=3D"margin-left:108.0=
+pt"><span style=3D"font-size:12.0pt; font-family:Aptos; color:black">&nbsp;</s=
+pan></p></div><div><p class=3D"x_xxxmsonormal" style=3D"margin-left:108.0pt"><sp=
+an style=3D"font-size:12.0pt; font-family:Aptos; color:black">The call for pap=
+ers that might provide a suitable outlet for our article is now out: Submiss=
+ion deadline 30 September 2025</span></p></div><div><p class=3D"x_xxxmsonormal=
+" style=3D"margin-left:108.0pt"><span style=3D"font-size:12.0pt; font-family:Apt=
+os; color:black">&nbsp;</span></p></div><div><p class=3D"x_xxxmsonormal" style=
+=3D"margin-left:108.0pt"><span style=3D"font-size:12.0pt; font-family:Aptos; col=
+or:black"><a href=3D"https://www.emeraldgrouppublishing.com/calls-for-papers/l=
+abour-exploitation-oscm-research-combat-modern-slavery-human-trafficking-and=
+">https://www.emeraldgrouppublishing.com/calls-for-papers/labour-exploitatio=
+n-oscm-research-combat-modern-slavery-human-trafficking-and</a></span></p></=
+div><div><p class=3D"x_xxxmsonormal" style=3D"margin-left:108.0pt"><span style=3D"=
+font-size:12.0pt; font-family:Aptos; color:black">&nbsp;</span></p></div><di=
+v><p class=3D"x_xxxmsonormal" style=3D"margin-left:108.0pt"><span style=3D"font-si=
+ze:12.0pt; font-family:Aptos; color:black">Perhaps we can meet in January be=
+fore the start of the spring semester to discuss?</span></p></div><div><p cl=
+ass=3D"x_xxxmsonormal" style=3D"margin-left:108.0pt"><span style=3D"font-size:12.0=
+pt; font-family:Aptos; color:black">&nbsp;</span></p></div><div><p class=3D"x_=
+xxxmsonormal" style=3D"margin-left:108.0pt"><span style=3D"font-size:12.0pt; fon=
+t-family:Aptos; color:black">Best wishes</span></p></div><div><p class=3D"x_xx=
+xmsonormal" style=3D"margin-left:108.0pt"><span style=3D"font-size:12.0pt; font-=
+family:Aptos; color:black">Caroline</span></p></div><div id=3D"x_x_x_x_Signatu=
+re"><div><p class=3D"x_xxxmsonormal" style=3D"margin-left:108.0pt"><span style=3D"=
+font-size:12.0pt; font-family:Aptos; color:black">&nbsp;</span></p></div><di=
+v id=3D"x_x_x_x_divtagdefaultwrapper"><p style=3D"margin-left:108.0pt"><b><span =
+style=3D"font-size:12.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#00=
+9BBD">Dr Caroline Emberson (preferred pronouns she/her)</span></b></p><p sty=
+le=3D"margin-left:108.0pt"><b><span style=3D"font-size:12.0pt; font-family:&quot=
+;Arial&quot;,sans-serif; color:#131B57">Assistant Professor in Operations Ma=
+nagement (FHEA)</span></b></p><p style=3D"margin-left:108.0pt"><span style=3D"fo=
+nt-size:12.0pt; color:black">&nbsp;</span></p><p style=3D"margin-left:108.0pt"=
+><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; col=
+or:black">&nbsp;</span></p><p style=3D"margin-left:108.0pt"><span style=3D"font-=
+size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#131B57">Notting=
+ham University Business School OMIS/ Faculty of Social Science<br>University=
+ of Nottingham</span></p><p style=3D"margin-left:108.0pt"><span style=3D"font-si=
+ze:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#131B57">B12,Si Yu=
+an Building</span></p><p style=3D"margin-left:108.0pt"><span style=3D"font-size:=
+9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#131B57">Jubilee Camp=
+us</span></p><p style=3D"margin-left:108.0pt"><span style=3D"font-size:9.0pt; fo=
+nt-family:&quot;Arial&quot;,sans-serif; color:#131B57">Nottingham, NG8 1BB&n=
+bsp;</span></p><p style=3D"margin-left:108.0pt"><span style=3D"font-size:9.0pt; =
+font-family:&quot;Arial&quot;,sans-serif; color:#131B57">+44 (0) 115 8466631=
+<b>&nbsp;</b></span><b><span style=3D"font-size:9.0pt; color:#131B57">| </span=
+></b><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif;=
+ color:black"><a href=3D"http://nottingham.ac.uk/" target=3D"_blank">caroline.em=
+berson@nottingham.ac.uk</a></span></p><p style=3D"margin-left:108.0pt"><span s=
+tyle=3D"font-size:12.0pt; color:black">&nbsp;</span></p><p style=3D"margin-left:=
+108.0pt"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-se=
+rif; color:black">Please note that my working days are Monday, Tuesday, Thur=
+sday and Friday</span></p><p style=3D"margin-left:108.0pt"><span style=3D"color:=
+black">&nbsp;</span></p><p style=3D"margin-left:108.0pt"><b><span style=3D"font-=
+size:9.0pt; font-family:&quot;Georgia&quot;,serif; color:#15769E">Follow us<=
+/span></b></p><p style=3D"margin-left:108.0pt"><u><span style=3D"font-size:9.0pt=
+; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http://f=
+acebook.com/TheUniofNottingham"><span style=3D"color:#0000E9">Facebook.com/Uni=
+ofNottingham</span></a></span></u></p><p style=3D"margin-left:108.0pt"><u><spa=
+n style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0=
+000E9"><a href=3D"http://twitter.com/UniofNottingham"><span style=3D"color:#0000=
+E9">Twitter.com/UniofNottingham</span></a></span></u></p><p style=3D"margin-le=
+ft:108.0pt"><u><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,s=
+ans-serif; color:#0000E9"><a href=3D"http://youtube.com/nottmuniversity"><span=
+ style=3D"color:#0000E9">Youtube.com/nottmuniversity</span></a></span></u></p>=
+<p style=3D"margin-left:108.0pt"><u><span style=3D"font-size:9.0pt; font-family:=
+&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http://instagram.com/u=
+niofnottingham"><span style=3D"color:#0000E9">Instagram.com/uniofnottingham</s=
+pan></a></span></u></p><p style=3D"margin-left:108.0pt"><u><span style=3D"font-s=
+ize:9.0pt; font-family:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D=
+"http://linkedin.com/company/university-of-nottingham"><span style=3D"color:#0=
+000E9">Linkedin.com/company/university-of-nottingham</span></a></span></u></=
+p><p style=3D"margin-left:108.0pt"><u><span style=3D"font-size:9.0pt; font-famil=
+y:&quot;Arial&quot;,sans-serif; color:#0000E9"><a href=3D"http://www.foursquar=
+e.com/uniofnottingham"><span style=3D"color:#0000E9">F</span></a><a href=3D"http=
+://www.foursquare.com/uniofnottingham">oursquare.com/uniofnottingham</a></sp=
+an></u></p><p style=3D"margin-left:108.0pt"><u><span style=3D"font-size:9.0pt; f=
+ont-family:&quot;Arial&quot;,sans-serif; color:#0000E9">&nbsp;</span></u></p=
+><p class=3D"x_xxxmsonormal" style=3D"margin-left:108.0pt"><span style=3D"color:bl=
+ack">&nbsp;</span></p></div><table class=3D"x_MsoNormalTable" border=3D"0" cellp=
+adding=3D"0" id=3D"x_x_x_x_pbpsiglinktable" style=3D"margin-left:108.0pt"><tbody><=
+tr><td style=3D"padding:.75pt .75pt .75pt .75pt"><p class=3D"x_xxxmsonormal"><a =
+href=3D"https://outlook.office.com/bookwithme/user/68c1e07fca314c1a863a4fd4283=
+d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature"><span styl=
+e=3D"color:windowtext; text-decoration:none"><span style=3D"color:blue"><img bor=
+der=3D"0" width=3D"20" height=3D"20" id=3D"x_x_x_x__x005f_x0000_i1025" style=3D"width:=
+.2083in; height:.2083in" data-outlook-trace=3D"F:1|T:1" src=3D"cid:image003.png@=
+01DB7630.0E86E1B0"></span></span></a></p></td><td style=3D"padding:.75pt .75pt=
+ .75pt .75pt"></td><td style=3D"padding:.75pt .75pt .75pt .75pt"><p class=3D"x_x=
+xxmsonormal"><span style=3D"color:#0078D4"><a href=3D"https://outlook.office.com=
+/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?an=
+onymous&amp;ep=3DbwmEmailSignature"><span style=3D"color:#0078D4; text-decoratio=
+n:none">Book time to meet with me</span></a></span></p></td><td style=3D"paddi=
+ng:.75pt .75pt .75pt .75pt"></td></tr></tbody></table><p class=3D"x_xxxmsonorm=
+al" style=3D"margin-left:108.0pt"><span style=3D"color:white">&nbsp;</span></p><=
+/div></div></div></div></div></div></div></div></body></html>
+
+--B_3821516406_1493568493--
+
+
+--B_3821516406_1773918984
+Content-type: image/png; name="image001.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <image001.png@01DB7630.0E86E1B0>
+Content-disposition: inline;
+	filename="image001.png"
+Content-transfer-encoding: base64
+
+
+iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAcpJREFU
+OE9jZAABr6aJDHqhuQwMDIxgPrHg19d3DLP91Bk+P3sD08IIN2x1hjPDy7NXiDWL4T8nM0NA
+33wGWRMPhg5NJgYGhv8gvYwMFdf/MYAMu3twP9GGISssv/qLYVdzMsP5FYthBv5nmO2pyfDz
+zVuyDEw/eJ3hxNyJDEenNSMMJMskJE2Hp9YxHJ2CZOBUM1GGz5/hAUuS+UVnXjOcXDCJygbO
+m4TqZUpcGDJjJcPzS1eoYyAvrzDD58/vGRgY/iHSYcX1/wykupBXWpghe89reEbY0RjNcGHF
+MkQsk2pgwYkXDBz84iiR16EJzmWghE26C8uv/mZgZGJBM5AZ5HXyDPRo7GMwCCuEG/jj40uG
+CRYS5LsQpNM6q4TBOLqE4emFgwxrs8NRI2WynSTD19cvSErQOBQzMhSdecvw8vophqWxngQN
+BCWTrBMvMMIPpnF7dQQjA6+UCEP23tcM//7+Zvjx8QNOQydZizFk7bvNwCepgs9iWIHKyGAY
+EcPALaQEUQwq3mBplQmi5siUBoa0bRcZhBT18Bj4n7QSWlhGmiF19xOcBh6aVEyagSCTQEEU
+Nf8Ag6CcFjyn/Pz8hmF9cQjDg8MHAaiKxp0eiZJ4AAAAAElFTkSuQmCCAA==
+--B_3821516406_1773918984
+Content-type: image/png; name="image002.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <image002.png@01DB7630.0E86E1B0>
+Content-disposition: inline;
+	filename="image002.png"
+Content-transfer-encoding: base64
+
+
+iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAcpJREFU
+OE9jZAABr6aJDHqhuQwMDIxgPrHg19d3DLP91Bk+P3sD08IIN2x1hjPDy7NXiDWL4T8nM0NA
+33wGWRMPhg5NJgYGhv8gvYwMFdf/MYAMu3twP9GGISssv/qLYVdzMsP5FYthBv5nmO2pyfDz
+zVuyDEw/eJ3hxNyJDEenNSMMJMskJE2Hp9YxHJ2CZOBUM1GGz5/hAUuS+UVnXjOcXDCJygbO
+m4TqZUpcGDJjJcPzS1eoYyAvrzDD58/vGRgY/iHSYcX1/wykupBXWpghe89reEbY0RjNcGHF
+MkQsk2pgwYkXDBz84iiR16EJzmWghE26C8uv/mZgZGJBM5AZ5HXyDPRo7GMwCCuEG/jj40uG
+CRYS5LsQpNM6q4TBOLqE4emFgwxrs8NRI2WynSTD19cvSErQOBQzMhSdecvw8vophqWxngQN
+BCWTrBMvMMIPpnF7dQQjA6+UCEP23tcM//7+Zvjx8QNOQydZizFk7bvNwCepgs9iWIHKyGAY
+EcPALaQEUQwq3mBplQmi5siUBoa0bRcZhBT18Bj4n7QSWlhGmiF19xOcBh6aVEyagSCTQEEU
+Nf8Ag6CcFjyn/Pz8hmF9cQjDg8MHAaiKxp0eiZJ4AAAAAElFTkSuQmCCAAA=
+--B_3821516406_1773918984
+Content-type: image/png; name="image003.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <image003.png@01DB7630.0E86E1B0>
+Content-disposition: inline;
+	filename="image003.png"
+Content-transfer-encoding: base64
+
+
+iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAcpJREFU
+OE9jZAABr6aJDHqhuQwMDIxgPrHg19d3DLP91Bk+P3sD08IIN2x1hjPDy7NXiDWL4T8nM0NA
+33wGWRMPhg5NJgYGhv8gvYwMFdf/MYAMu3twP9GGISssv/qLYVdzMsP5FYthBv5nmO2pyfDz
+zVuyDEw/eJ3hxNyJDEenNSMMJMskJE2Hp9YxHJ2CZOBUM1GGz5/hAUuS+UVnXjOcXDCJygbO
+m4TqZUpcGDJjJcPzS1eoYyAvrzDD58/vGRgY/iHSYcX1/wykupBXWpghe89reEbY0RjNcGHF
+MkQsk2pgwYkXDBz84iiR16EJzmWghE26C8uv/mZgZGJBM5AZ5HXyDPRo7GMwCCuEG/jj40uG
+CRYS5LsQpNM6q4TBOLqE4emFgwxrs8NRI2WynSTD19cvSErQOBQzMhSdecvw8vophqWxngQN
+BCWTrBMvMMIPpnF7dQQjA6+UCEP23tcM//7+Zvjx8QNOQydZizFk7bvNwCepgs9iWIHKyGAY
+EcPALaQEUQwq3mBplQmi5siUBoa0bRcZhBT18Bj4n7QSWlhGmiF19xOcBh6aVEyagSCTQEEU
+Nf8Ag6CcFjyn/Pz8hmF9cQjDg8MHAaiKxp0eiZJ4AAAAAElFTkSuQmCCAAAA
+--B_3821516406_1773918984
+Content-type: image/png; name="Outlook-ie5uvije.png";
+ x-mac-creator="4F50494D";
+ x-mac-type="504E4766"
+Content-ID: <0c8960f0-0c25-4775-9777-e27fdd2ff13f>
+Content-disposition: inline;
+	filename="Outlook-ie5uvije.png"
+Content-transfer-encoding: base64
+
+
+iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAcpJREFU
+OE9jZAABr6aJDHqhuQwMDIxgPrHg19d3DLP91Bk+P3sD08IIN2x1hjPDy7NXiDWL4T8nM0NA
+33wGWRMPhg5NJgYGhv8gvYwMFdf/MYAMu3twP9GGISssv/qLYVdzMsP5FYthBv5nmO2pyfDz
+zVuyDEw/eJ3hxNyJDEenNSMMJMskJE2Hp9YxHJ2CZOBUM1GGz5/hAUuS+UVnXjOcXDCJygbO
+m4TqZUpcGDJjJcPzS1eoYyAvrzDD58/vGRgY/iHSYcX1/wykupBXWpghe89reEbY0RjNcGHF
+MkQsk2pgwYkXDBz84iiR16EJzmWghE26C8uv/mZgZGJBM5AZ5HXyDPRo7GMwCCuEG/jj40uG
+CRYS5LsQpNM6q4TBOLqE4emFgwxrs8NRI2WynSTD19cvSErQOBQzMhSdecvw8vophqWxngQN
+BCWTrBMvMMIPpnF7dQQjA6+UCEP23tcM//7+Zvjx8QNOQydZizFk7bvNwCepgs9iWIHKyGAY
+EcPALaQEUQwq3mBplQmi5siUBoa0bRcZhBT18Bj4n7QSWlhGmiF19xOcBh6aVEyagSCTQEEU
+Nf8Ag6CcFjyn/Pz8hmF9cQjDg8MHAaiKxp0eiZJ4AAAAAElFTkSuQmCC
+--B_3821516406_1773918984--
+
+
+--B_3821516406_879856624
+Content-type: application/vnd.openxmlformats-officedocument.wordprocessingml.document; name="Consolidated emails RDS GNSUM.docx";
+ x-mac-creator="4F50494D"
+Content-disposition: attachment;
+	filename="Consolidated emails RDS GNSUM.docx"
+Content-transfer-encoding: base64
+
+UEsDBBQABgAIAAAAIQBpER3UbwEAAM8FAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIo
+oAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC0lMtuwjAQRfeV+g+Rt1Vi6KKqKgKLPpYt
+UukHGHsSrPol27z+vmMCUYWAqAU2keKZe+8ZJ/ZgtNIqW4AP0pqS9IseycBwK6SpS/I1ecsf
+SRYiM4Ipa6AkawhkNLy9GUzWDkKGahNKMovRPVEa+Aw0C4V1YLBSWa9ZxFdfU8f4N6uB3vd6
+D5RbE8HEPCYPMhy8QMXmKmavK1xuSJypSfbc9KWokkid9GmdHlR4UGFPwpxTkrOIdbowYo8r
+3zIVqNz0hJl04Q4bjiSkyvGAre4DN9NLAdmY+fjONHbRpfWCCsvnGpXFaZsDnLaqJIdWn9yc
+txxCwK+kVdFWNJNmx3+UI8S1gnB5isa3Ox5iRME1ALbOnQhLmH5ejeKXeSdIhbkTNlVweYzW
+uhMi4pmF5tk/m2NjcyoSO8feuoB3gP/H2Lsjm9Q5DuzAR3n6r2sT0frs+SDdBgLEX7P5PESr
+z45vbA6E0811PPwBAAD//wMAUEsDBBQABgAIAAAAIQCZVX4F/gAAAOECAAALAAgCX3JlbHMv
+LnJlbHMgogQCKKAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArJJNSwMxEIbvgv8hzL07
+2yoi0t1eROhNZP0BQzL7gZsPkqm2/94oii7UtYceM3nnyTND1pu9HdUrxzR4V8GyKEGx094M
+rqvguXlY3IJKQs7Q6B1XcOAEm/ryYv3EI0luSv0QksoUlyroRcIdYtI9W0qFD+zyTeujJcnH
+2GEg/UId46osbzD+ZkA9YaqtqSBuzRWo5hD4FLZv20Hzvdc7y06OPIG8F3aGzSLE3B9lyNOo
+hmLHUoHx+jGXE1IIRUYDHjdanW7097RoWciQEGofed7nIzEntDzniqaJH5s3Hw2ar/KczfU5
+bfQuibf/rOcz862Ek49ZvwMAAP//AwBQSwMEFAAGAAgAAAAhABHDkJGlRwAAxVABABEAAAB3
+b3JkL2RvY3VtZW50LnhtbOx97Y7cRtbe/wC5B2LwJitF3TMkm/01uxqjP6WxPZKskay1NwuD
+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
+wicFoUPq2usf//hH+fnPf16+853vlCMd6Uj1RfFHPvKRFz5vM2/48pe/XP7973+Xs5zlLMWY
+89r5CPzrX/+qsuaPgADcyRl568pQX2/8xjV2764iLzsLPTJq3Ic//OF3ShO/+93vyne/+91y
+whOesJzgBCfYVOL3ta99rbAVZzzjGXfa+HYKaPnQRCARSAQSgUQgEdilCOwWhI8DN8XB3dlI
+fuMb3yhPfvKTy/vf//7ys5/9rBz1qEctpz71qcttbnObcpnLXKaStaGLo4Y0Hf3oRy+nPOUp
+dziKHO4HPehB5dGPfnQlka573ete5T73uU917LfKdexjH7twdn/xi1+Uvfbaa6t0a9v247//
+/W95+ctfXl72speVL37xi+Wvf/1r2XvvvcsFL3jBcqc73amc6lSnGiXefv/jH/+4/u74xz9+
+OdaxjnUoHfr9739ffvSjH9Xn9n2/u4FLf2BGRm984xvXMa36ov8PeMADyrWvfe3y0Ic+tBzz
+mMdcdRODzzvFKU5Rvve975VvfvObdf63gk3ctMFnQ4lAIpAIJAKJQCKwNAJbnvD95S9/Kb/9
+7W/LcY973FFCtTQCM354oxvdqLzhDW8oxzjGMaqT/NOf/rRm5mRiHvOYx5Tb3e52g5H39773
+veVKV7pSOfnJT14++tGPVrLo4sxz4mVxbnazm1UiKIt2/etfvxzucIeb0bude2sQPuNFIPLa
+uQgILlz2spetsi9A4PrhD39YkLR99tmnvOUtbymnPe1pB53+z3/+8+Vyl7tclc8znelMVW5P
+drKTHeL+hz3sYeWRj3xkucMd7lDufve7l6Md7Wg7d1A7+enf//73y0UucpEajHnb295WLnrR
+i65ch4LwXeta1yrw2xWEj2wINCXh28kClY9PBBKBRCARSAS2CQJbnvDd+973Lo9//ONrFuzO
+d77zLs16vfrVry5HOMIRyiUvecnaD+WdMnFPecpTKhlVcqXMq+96z3veU6585SsfivA9+9nP
+Lne84x1rhvDFL37xLie1Q3KdhG9zNR6xe9GLXlQufelLV8KnnFOG+LrXvW756le/Wu5617uW
++973vjVj3Hd98IMfLPvvv3/51a9+Vb+mRzLHLamToXrUox5Vbn/725d73OMeuz3h+9vf/lau
+c53r1Ez0c57znENk0lc1e0n4VoVkPicRSAQSgUQgEUgENguBpQmf8in7ZZSOiTTLRtlf5DPf
++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
+NaQSXIShulsA2emnGbd9P/G4
+7TEqcqNg5ORG6a0rN0SXwD7xr7Hq2TFBU5dXPT0B4r4eRPeK
+nL+vhMnbN2449X+p660cOKU5D1pxRv1vXDWijLsde4cbN0TvuOOG6B2A3BC9IpHTHBWS3Ci9
+Y5MboneQckOgoxXsEXDRCtrjohW094lWEMUnWg0YBbgheg8H3BBooUIItFAHjBTcECihAnMv
+oUIUtFAhBFqoEAItVDgAwwkV2uOECu19hApRfIQKUdBChRBooUIItFAhBFqoEAItVM+xvdPc
+S6gQBS1UCIEWKoRAC1WPFwcIFdrjhArtfYQKUXyEClHQQoUQaKFCCLRQIQRaqBACLVQIgRIq
+MPcSKkRBCxVCoIUKIdBCNa8a+gsV2uOECu19hApRfIQKUdBChRBooUIItFAhBFqoEAItVAiB
+Eiow9xIqREELFUKghQoh0ELVNwsHCBXa44QK7X2EClF8hApR0EKFEGihQgi0UCEEWqgQAi1U
+CIESKjD3EipEQQsVQqCFCiG6/NPeonQ9Zn+Iz3o6n9jvf+vKVupT/VXuOtSoP1RZKzdW/3cR
+LoW4D1pfPBzp+UY/kHiaxEKnqB231eu4+pEI1I3P36663/Cpow/86JJ9F0LfMwXg476WIKcy
+7nL5uiWY5I27PL1uCUad467oW7cE3eC4K+hqXZYPpcjuCBh3hZma8aHDvCta18xhE3fF6Joh
+bOGuyFwzhA3cFY9rhseBCs6b1sc922lSPV8KELrcsYZw4kbockvIVRmOoTD6kuZG6MueG6Ev
+jW4EFJ9OGDyxbig0w24oP6qhzLBU+wvVjYClGiJ4UQ1g/KmGUN5UQyg/qmFgxFINEbBU+wdn
+N4IX1QDGn2oI5U01hPKjGnZlWKohApZqiIClemCH7ITxpxpCeVMNofyohoM7LNUQAUs1RMBS
+DRG8qAYw/lRDKG+qIZQf1WCWjKYaImCphghYqiGCF9UAxp9qCOVNNYTqolpnURpUoxiumeMG
+YTVDXIdcM8QF55qhx2ypZu05W6oheM6WIFcl57jZUp00N0Jf9twIfWl0I6D4dMLgiXVDoRl2
+Q/lRjZsttVHtL1Q3ApZq3GzJSTVuttRJNW621Ek1brbkpho3W2qjGjdbaqPaPzi7Ebyoxs2W
+OqnGzZY6qcbNltxU42ZLbVTjZkttVONmS21UD+yQnTD+VONmS51U42ZLbqpxs6U2qnGzpTaq
+cbOlNqpxsyUn1bjZUifVuNlSJ9W42ZKbatxsqY1q3GypjWrcbKmNatxsyUk1brbUSTVuttRJ
+NW629F6axASfgLpZsKwI6L4X94bl84IN/zjh5zTjuUi+8iigvdR3qKvcf2gsf6Ww9WqB8vxC
+tpn6AnrtdaXIfAHWAuoT30bVMlXKWNUksKuH2d26wvZ2rSlRG24pqgK394oPAfx6cStdwpTJ
+q/pNtQYoPFUfRmzZrxyi3F8WczVnmTm6dtXyHCvG9bU8vMzyOCoPHxy8OhmNX78yZ9nFy+45
+X36Q5et9akPyw3O9tV7XbKq+KSZbYGQWNrPLnJ1a1Qrz1aZ3X5OqJEudLaNzkTn2R8cic+rg
+a7tPHW+sM9ewXK8zp3ZfVuvMhUrlVb2uxycT7Rv6ZB0BzveY1v96t3ooRQJdXhuE9bJ05c3m
++rJ0Zl9twTgf5zlyOo8NQTTOc9TDedayNOc1RPnE7mXXzdvqXmVk+M7ca2TJrruX2TfQvUZO
+97KPe9C41+g7ca+yyR3utc2JduEqR3bk1lggU+8b6Cpjp6vY53toXGX8zF3ltO4pZdiHnqLl
+Q+8psfn/ytRuqN8M9Ihjp0fY57ZoPOL4+/AIrZLnFzsG+oBZArbNB+wslsYHJs/cB8Z1H3C6
+gJbFToPC8Zn6t+kQatWltTvcxmo13wvN10BvOHF6g81I0HjDyXfhDWWDP2VA2DH/p07+7aiE
+hv/TZ8r/Nsa1CHaq/6MT9a8P/68oxohnTv4tKzT8n/1N+S+b+CkVT894KBubhfbD7I48ml1g
+qfpCkF5eadMXHKswOXi0yTFAnLuihUrfdlRSp3c7M34mA+z0rN6uVUwTw6388TZVnvWg3KKq
+afSNGSh5/IonyXtmzhZL96kJnyl9yKOHB/oDnBvHp2YtCad9pm86OAH2m5Uxm92OYVaXjM3b
+MM4Eq8qstzS3fjVraEv3dNpwlcumuVEnbNavkTzdrKU9GBwG64CzEcFaHd8Vt0qXdsUsdxT6
+f54UTalJabooPSKi1Cbm+nZD3z/DQ1KVSIZNVtHF8IiIYZsIpWf4r5rx19kaki1EsmUSey62
+xkRs2Vzk82Fr1xk7JCsmueZi5ZiIFZsP/H40RM6DSXC5eJgQ8WBzcn8LddCnLpCUmCyTi5IT
+IkpsYuyZSuMvJ8GkelwknBKRYHvBv4UunniCv50Sk31xUXJGRIlt+Weqi13l1cwXMTbb2uxt
+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
+--B_3821516406_879856624--
+

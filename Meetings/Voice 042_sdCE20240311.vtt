@@ -1,0 +1,1247 @@
+WEBVTT
+
+00:00.000 --> 00:29.000
+I'm sorry, I'm late, I'm trying to do too much today and I'm just doing some admin.
+
+00:29.000 --> 00:36.000
+Yeah, maybe I might have overreacted a little bit.
+
+00:36.000 --> 00:39.000
+The weekend was productive but I'm still stuck.
+
+00:39.000 --> 00:51.000
+There's three things and the biggest is the question.
+
+00:51.000 --> 00:59.000
+We have three indicators at the individual level of you experience exploitation.
+
+00:59.000 --> 01:07.000
+There's this Q36, 80, and this very cool category index that you and Selim cooked up.
+
+01:07.000 --> 01:08.000
+That's great.
+
+01:08.000 --> 01:18.000
+We can use those variables to estimate prevalence of exploitation based on survey response,
+
+01:18.000 --> 01:25.000
+based on individuals working in domestic labor in the UK in the last year.
+
+01:25.000 --> 01:29.000
+That's these RDS methods, which we can do.
+
+01:29.000 --> 01:30.000
+That's great.
+
+01:30.000 --> 01:39.000
+That technique, that class of estimation, basically the whole trick is they're taking the sample as the sample
+
+01:39.000 --> 01:44.000
+and then the difficulties that RDS tries to fix up is the non-random sampling.
+
+01:44.000 --> 01:48.000
+It does it in several really creative ways and super-duper and we can do all that.
+
+01:48.000 --> 01:49.000
+Awesome.
+
+01:49.000 --> 01:50.000
+Great.
+
+01:50.000 --> 01:51.000
+Then I turn to insum.
+
+01:51.000 --> 01:55.000
+The strategy behind insum is much different.
+
+01:55.000 --> 02:01.000
+The information that insum uses isn't have you experienced exploitation.
+
+02:01.000 --> 02:06.000
+It's how many people do you know that have experienced exploitation?
+
+02:06.000 --> 02:13.000
+In that setting, what's really important is the number of people respondents know.
+
+02:13.000 --> 02:21.000
+It's not very important if a respondent is in the hidden population or not, has experienced
+
+02:21.000 --> 02:24.000
+exploitation or not, but it's important.
+
+02:24.000 --> 02:30.000
+The two things are how many people do you know, period, and that turns out that's hard to estimate,
+
+02:30.000 --> 02:31.000
+but there's ways.
+
+02:31.000 --> 02:35.000
+The one that I like is called the known population method.
+
+02:35.000 --> 02:38.000
+Then two, how many people do you know in the hidden population?
+
+02:38.000 --> 02:40.000
+A few things.
+
+02:40.000 --> 02:43.000
+First, thank you very much for making the time to talk with me.
+
+02:43.000 --> 02:44.000
+I appreciate it.
+
+02:44.000 --> 02:46.000
+I'm sorry for being a little bit spastic.
+
+02:46.000 --> 02:50.000
+I think both of our work weeks are turning hellish.
+
+02:50.000 --> 02:52.000
+Anyway, I appreciate it.
+
+02:52.000 --> 02:53.000
+A few issues here.
+
+02:53.000 --> 03:02.000
+One is, can we measure the same notion of exploitation using these two methods?
+
+03:02.000 --> 03:06.000
+I'm afraid, on Friday, my answer was no.
+
+03:06.000 --> 03:09.000
+I don't think we can because of the questions that are asked.
+
+03:09.000 --> 03:14.000
+The first type asks questions about, and there's only this morning that I had the clarity.
+
+03:14.000 --> 03:18.000
+There's different types of questions in the survey, but for this discussion, there's two
+
+03:18.000 --> 03:19.000
+relevant types.
+
+03:19.000 --> 03:28.000
+One is about your own experience at work, and the other is people you know.
+
+03:28.000 --> 03:30.000
+What we need is some overlap.
+
+03:30.000 --> 03:35.000
+We need there to be something that some, well, let me put it differently.
+
+03:35.000 --> 03:40.000
+If we want to use the two methods in the same paper and say that we're studying exploitation
+
+03:40.000 --> 03:43.000
+in a consistent way, then we need some sort of overlap.
+
+03:43.000 --> 03:45.000
+I'm having trouble finding that.
+
+03:45.000 --> 03:53.000
+The only one I've found so far is NRM, natural referral mechanisms.
+
+03:53.000 --> 03:58.000
+We know if a member has been referred, if a respondent's been referred, and we know how
+
+03:58.000 --> 04:02.000
+many they know in that population.
+
+04:02.000 --> 04:04.000
+Now, things get even weirder.
+
+04:04.000 --> 04:10.000
+One, hopefully there's more overlap because if that's the only one, that's a very, very
+
+04:10.000 --> 04:12.000
+clean measure of exploitation.
+
+04:12.000 --> 04:16.000
+We certainly, it's a high bar.
+
+04:16.000 --> 04:20.000
+You've picked it as one of the endpoints on the individual level, and I think all that's
+
+04:20.000 --> 04:23.000
+great, but then things get even weirder.
+
+04:23.000 --> 04:26.000
+One, I hope that there's more overlap than just that.
+
+04:26.000 --> 04:27.000
+For a number of reasons.
+
+04:27.000 --> 04:28.000
+One, it's a very, very high bar.
+
+04:28.000 --> 04:34.000
+Two, we're sort of using that group to do, it's wearing lots of hats because we're using
+
+04:34.000 --> 04:39.000
+it as the known population method, but then it's just pretty weird because we're saying
+
+04:39.000 --> 04:46.000
+like, okay, we're going to use this group to estimate individuals' degrees, the networks,
+
+04:46.000 --> 04:50.000
+how many people they know, but then we're also going to use it to try to estimate the
+
+04:50.000 --> 04:52.000
+hidden population.
+
+04:52.000 --> 04:53.000
+Wait a second.
+
+04:53.000 --> 04:55.000
+It can't be both, right?
+
+04:55.000 --> 04:59.000
+I mean, if we know, so what I'm trying to say is like, it gets back to this notion of
+
+04:59.000 --> 05:03.000
+like, what are we measuring?
+
+05:03.000 --> 05:07.000
+What notion of exploitation is being estimated in the insum?
+
+05:07.000 --> 05:14.000
+And that becomes especially problematic if the only overlap we have, hopefully it makes
+
+05:14.000 --> 05:18.000
+sense when I say overlap, is the number of referrals.
+
+05:18.000 --> 05:24.000
+So I very well could be wrong, and just this morning I pulled out, I think I identified
+
+05:24.000 --> 05:28.000
+questions of the first type and questions of the second type, and I haven't compared them,
+
+05:28.000 --> 05:32.000
+but hopefully I'm wrong and there is more overlap.
+
+05:32.000 --> 05:37.000
+But wait, it gets even weirder because it's kind of cool.
+
+05:37.000 --> 05:42.000
+If we can get both of these methods to work in the same paper, it's actually pretty methodologically
+
+05:42.000 --> 05:49.000
+cool because the, so in the first method, the RDS methods, you're looking for people in this
+
+05:49.000 --> 05:50.000
+hidden population, right?
+
+05:50.000 --> 05:54.000
+You're trying to identify them, and then you're doing some correction because of non-random
+
+05:54.000 --> 05:55.000
+sampling.
+
+05:55.000 --> 05:59.000
+And that's where the degree, that's where the social network comes in, is that it's just
+
+05:59.000 --> 06:03.000
+used for this kind of selection waiting issue.
+
+06:03.000 --> 06:08.000
+And again, I'm way glossing over people, really smart people who work on this.
+
+06:08.000 --> 06:12.000
+And in the insum method, it's really kind of intuitive.
+
+06:12.000 --> 06:13.000
+It's the exact opposite.
+
+06:13.000 --> 06:16.000
+You actually don't want members of the hidden population.
+
+06:16.000 --> 06:20.000
+You want people who know members of the hidden population.
+
+06:20.000 --> 06:25.000
+So for kind of technical reasons, it turns out you need to exclude if you found someone
+
+06:25.000 --> 06:31.000
+in the hidden population using the, using the particular type of insum that I've instantiated,
+
+06:31.000 --> 06:34.000
+and there are others that we could use that don't suffer from this problem.
+
+06:34.000 --> 06:40.000
+But if we use the one, the modified one from the Fihann and Solnick, then you actually need
+
+06:40.000 --> 06:45.000
+to exclude members from the hidden population when doing your calculations in the insum method.
+
+06:45.000 --> 06:50.000
+And the reason is because basically you just want, you want, you need to know the size
+
+06:50.000 --> 06:53.000
+of the frame minus the size of the hidden population.
+
+06:53.000 --> 06:56.000
+It's just kind of, it's annoying if you ask me, but fine.
+
+06:56.000 --> 06:59.000
+Okay, so here's where the hard part comes in.
+
+06:59.000 --> 07:02.000
+We have these different ways of indicating if you're in the hidden population.
+
+07:02.000 --> 07:03.000
+So I'll just take the two.
+
+07:03.000 --> 07:06.000
+So this is a Q80 and Q36.
+
+07:06.000 --> 07:08.000
+So get this.
+
+07:08.000 --> 07:10.000
+Okay, so we're up to speed.
+
+07:10.000 --> 07:15.000
+We're doing insum where we need to exclude members from the hidden population and then
+
+07:15.000 --> 07:23.000
+we need to know how many people in the sample, sorry, how many people in the hidden population
+
+07:23.000 --> 07:28.000
+are known to an individual respondent.
+
+07:28.000 --> 07:30.000
+Okay, I'm going to first cup of coffee.
+
+07:30.000 --> 07:38.000
+So depending on how we define members of the hidden population, like Q80 or Q36,
+
+07:38.000 --> 07:41.000
+we run into estimation problems in that.
+
+07:41.000 --> 07:43.000
+So for example, so here's the details.
+
+07:43.000 --> 07:44.000
+So say we use the high bar.
+
+07:44.000 --> 07:47.000
+So say we say, okay, we have a sample of individuals.
+
+07:47.000 --> 07:52.000
+We're going to say an individual, an individual in our sample is being exploited.
+
+07:52.000 --> 07:56.000
+If they say yes to the NRM, if they've been personally individually referred.
+
+07:56.000 --> 07:57.000
+Okay, so fine.
+
+07:57.000 --> 08:02.000
+So that means we need to find all those people and take them out and then do our.
+
+08:03.000 --> 08:08.000
+So if we use that method, then who's left?
+
+08:08.000 --> 08:13.000
+None of them know anyone in the hidden population.
+
+08:13.000 --> 08:15.000
+Zero is all around.
+
+08:15.000 --> 08:16.000
+Okay.
+
+08:16.000 --> 08:18.000
+So it just won't work.
+
+08:18.000 --> 08:19.000
+It just won't work.
+
+08:19.000 --> 08:23.000
+So if we use a Q36, then that's it.
+
+08:23.000 --> 08:29.000
+And that sort of gave me pause because what that means is no one who hasn't been referred
+
+08:29.000 --> 08:34.000
+is anyone who has been referred, which I mean, it's not implausible.
+
+08:34.000 --> 08:40.000
+And especially given the small numbers, it's, it's, it's even more not implausible.
+
+08:40.000 --> 08:43.000
+It's even less, it's even more plausible, I guess.
+
+08:43.000 --> 08:44.000
+But it's weird.
+
+08:44.000 --> 08:45.000
+Do you see what I mean?
+
+08:45.000 --> 08:46.000
+It's basically perfect separation.
+
+08:46.000 --> 08:50.000
+If you've been referred to the natural referral mechanism, then you might know other people that have.
+
+08:50.000 --> 08:53.000
+And if you haven't, you don't know anybody who has.
+
+08:53.000 --> 08:57.000
+And so as a result, we can't, we can't use that notion or things.
+
+08:57.000 --> 08:58.000
+Matthews breaks down.
+
+08:58.000 --> 09:07.000
+If we use Q80 as our notion of being in the hidden population and we do this removal business and we do in some things break.
+
+09:07.000 --> 09:11.000
+So we'd have to use other notions of, which is Z36, which is fine.
+
+09:11.000 --> 09:12.000
+We can do that.
+
+09:12.000 --> 09:13.000
+And that, that, that works.
+
+09:13.000 --> 09:14.000
+And that goes through.
+
+09:14.000 --> 09:15.000
+Excuse me.
+
+09:15.000 --> 09:16.000
+Sorry.
+
+09:16.000 --> 09:18.000
+I'm going to get way too excited about this stuff.
+
+09:18.000 --> 09:19.000
+No, that's okay.
+
+09:19.000 --> 09:22.000
+So just so I can reflect on what you're telling me.
+
+09:22.000 --> 09:42.000
+So to conduct a sensible new some, you need to have members of one of these bars who know other members who experiencing this, but are not themselves experiencing exploitation.
+
+09:42.000 --> 09:43.000
+I'm not sure I've got that.
+
+09:43.000 --> 09:44.000
+Yes, yes, yes.
+
+09:44.000 --> 09:45.000
+That's exactly right.
+
+09:45.000 --> 09:46.000
+Right.
+
+09:46.000 --> 09:50.000
+And for question 80, that doesn't apply.
+
+09:50.000 --> 09:53.000
+So we don't, we get a sample of zero effectively.
+
+09:53.000 --> 09:54.000
+Exactly.
+
+09:54.000 --> 10:02.000
+But for question 36, there are some people who aren't experiencing low level exploitation, but do know other people who are.
+
+10:02.000 --> 10:06.000
+So they can be used to do the new some.
+
+10:06.000 --> 10:07.000
+Is that what you're saying?
+
+10:07.000 --> 10:08.000
+Exactly right.
+
+10:08.000 --> 10:09.000
+Exactly right.
+
+10:09.000 --> 10:10.000
+Right.
+
+10:10.000 --> 10:11.000
+Exactly right.
+
+10:11.000 --> 10:12.000
+And then go ahead.
+
+10:12.000 --> 10:17.000
+All this gets fixed if we can find more overlap in these in the question.
+
+10:17.000 --> 10:19.000
+And like I say, I haven't.
+
+10:19.000 --> 10:31.000
+Not only this morning, I sort of tried to identify, I think, and thanks to you, you have that document that is a great start of individual indicators of individual exploitation.
+
+10:31.000 --> 10:41.000
+So that's like, you know, so that's basically what we're trying to do this morning is create one of those, but for the people, you know, questions.
+
+10:41.000 --> 10:48.000
+And then we'll have to see if there's overlap and hopefully there is.
+
+10:48.000 --> 10:53.000
+Because if not, we run into all these weird things that I hopefully I have not clearly articulated.
+
+10:53.000 --> 10:57.000
+But some of the weird things are technical, like we can't use Q80.
+
+10:57.000 --> 11:13.000
+Some of them are more conceptual, like if we're using number of referrals as both the known, if we're using that to both estimate individual degree sizes and in some, but then we're also using it as.
+
+11:13.000 --> 11:19.000
+As the hidden population, then it just things just get really, I mean, just at a conceptual level, it just sort of breaks down.
+
+11:19.000 --> 11:23.000
+Like what do you mean, like either you know the size or you don't.
+
+11:23.000 --> 11:29.000
+And I guess I mean, there's ways around that, like we could say, well, hang on, in some is open to more than just domestic workers.
+
+11:29.000 --> 11:34.000
+So, you know, we could, there's sort of conceptual tricks, I think we can play to sort of get out of that.
+
+11:34.000 --> 11:39.000
+But it just, it just gets, it doesn't not really, not really.
+
+11:39.000 --> 11:43.000
+But, but you know, things, I mean, at a technical level, I can get things to work.
+
+11:43.000 --> 11:54.000
+And then sort of good news and then a little bit of bad news, but with a thought that I don't know how clever it is, but I was light bulb popped on.
+
+11:54.000 --> 11:58.000
+So the good news, so the yes, so I get, I get estimates.
+
+11:58.000 --> 12:04.000
+And they're very consistent with at least sort of what I understand to be received wisdom.
+
+12:04.000 --> 12:11.000
+So like from the, the, the West Midlands police stuff.
+
+12:11.000 --> 12:14.000
+And of course, I'd be method has drawbacks and what.
+
+12:14.000 --> 12:22.000
+So the number that I think that I hear getting kicked around is like 100,000, very, very rough, you know, but, but something like that.
+
+12:22.000 --> 12:27.000
+And I'm getting, I think a conservative would be 120,000.
+
+12:27.000 --> 12:34.000
+And so that's, and it's, and that's sort of, you know, and that's, I find that believable.
+
+12:34.000 --> 12:36.000
+And, and the estimates now.
+
+12:36.000 --> 12:45.000
+So the bad news, unlike in the RDS, which had was pretty robust to like all these dials that you could tweak, not, not so in, in some.
+
+12:45.000 --> 12:54.000
+So what really matters is, is the size of an individual's degree now or so the social network information.
+
+12:54.000 --> 12:57.000
+And I was thinking about it, I was wondering, like, so why is that really important?
+
+12:57.000 --> 13:09.000
+So, so functioning, what that means is that if we change the, so if we use domestic workers in the UK as the known population, and if we say, okay, we're claiming that we know that there are 980,000 such workers.
+
+13:09.000 --> 13:11.000
+Great, that's a number we can use it.
+
+13:11.000 --> 13:13.000
+Chug, chug, chug, we get answers.
+
+13:13.000 --> 13:17.000
+If you say, well, no, actually there's only 50,000.
+
+13:17.000 --> 13:20.000
+Chug, chug, chug, you get way different numbers.
+
+13:20.000 --> 13:23.000
+And I was thinking, like, why is it, why are they so different in these two methods?
+
+13:23.000 --> 13:27.000
+Because it's the exact opposite over here with the, I hope this makes sense.
+
+13:27.000 --> 13:29.000
+In the RDS one.
+
+13:29.000 --> 13:32.000
+And it dawned on me, I was rather pleased with this.
+
+13:32.000 --> 13:35.000
+So, I mean, there's something interesting methodologically going on here.
+
+13:35.000 --> 13:40.000
+And the reason is, is because the degree network is playing at much different roles in the two estimation methods.
+
+13:40.000 --> 13:47.000
+So in the RDS, it's just being used just to, to fix up the sampling weights, to fix up the non-randomness.
+
+13:47.000 --> 13:56.000
+But in, but in, in some, the degree, the size of an individual's degree network is, is, is what, is what the scaling up is based on.
+
+13:56.000 --> 13:59.000
+So it's, it's really important to get that, to get that right.
+
+13:59.000 --> 14:04.000
+So I think that's sort of an interesting and unfortunate for us, not the logical.
+
+14:04.000 --> 14:08.000
+So what that means is that we really need to pin down these numbers.
+
+14:08.000 --> 14:14.000
+So just to give you an idea, so if I do the same sort of, you know, and by the way, I'm talking several orders of magnitude here.
+
+14:14.000 --> 14:19.000
+Say there's only 10,000 people in, in domestic work.
+
+14:19.000 --> 14:20.000
+Say there's 100,000.
+
+14:20.000 --> 14:24.000
+Say there's a million, you know, I mean, so there's a way different numbers.
+
+14:24.000 --> 14:42.000
+But the estimates using in some range from mid teens, 16,000 to 160,000, depending on basically the size of the known, of the known groups.
+
+14:42.000 --> 14:46.000
+So I'm sorry for rambling at you, but those are the most important thing.
+
+14:46.000 --> 14:54.000
+And the thing that, that is, well, I don't know if it's the most important thing, but the thing that would help us tremendously is this overlap issue is, is, is there a question?
+
+14:54.000 --> 15:07.000
+Is there a way of, of implementing a notion of exploitation that for which we have good questions, both at the individual, are you experiencing notion X of exploitation?
+
+15:07.000 --> 15:14.000
+And how many people do you know are experiencing notion X of exploitation?
+
+15:14.000 --> 15:20.000
+So we've got some, some possible candidates for those based on the risk index.
+
+15:20.000 --> 15:27.000
+But yeah, that would obviously take a bit of work to go through each one and see whether or not any of those hold up.
+
+15:27.000 --> 15:36.000
+Yeah, I can show you if you've got time, I can share screen to show you the what the, so like I said, I was just sort of, oh, no, no.
+
+15:36.000 --> 15:37.000
+I got one question.
+
+15:37.000 --> 15:38.000
+Sure.
+
+15:38.000 --> 15:39.000
+Please.
+
+15:39.000 --> 15:40.000
+Sorry.
+
+15:40.000 --> 15:48.000
+With question 80, we had a defined population of those people who had the, we knew the population for the NRM community.
+
+15:48.000 --> 16:00.000
+Does that mean if we use question 36 that we need to have a population estimate for those people who have not received the national minimum wage?
+
+16:00.000 --> 16:05.000
+For the comparability to work, yes.
+
+16:05.000 --> 16:08.000
+Because we don't have that yet, do we?
+
+16:08.000 --> 16:09.000
+No, no, I don't think so.
+
+16:09.000 --> 16:13.000
+But there's other individual questions, like the ones on your risk index, right?
+
+16:13.000 --> 16:14.000
+Yeah.
+
+16:14.000 --> 16:17.000
+And, and, and, you know, I've only, let me try to share screen.
+
+16:17.000 --> 16:19.000
+I've only just sit this morning.
+
+16:19.000 --> 16:29.000
+I think I found 15 questions that it's kind of, for me, it was fortunate because in the code book, they all say things like, if so, how many, like there's easy,
+
+16:29.000 --> 16:35.000
+I'm sorry, give me a second to, where did this thing go?
+
+16:35.000 --> 16:37.000
+Here it is.
+
+16:37.000 --> 16:40.000
+Hopefully you can see, I guess it's kind of ugly.
+
+16:40.000 --> 16:41.000
+Sorry about that.
+
+16:41.000 --> 16:43.000
+Let me see if I can make it prettier.
+
+16:43.000 --> 16:54.000
+Probably not.
+
+16:54.000 --> 16:56.000
+And everything just disappeared.
+
+16:56.000 --> 17:00.000
+Lovely.
+
+17:00.000 --> 17:05.000
+I suppose your question, your discussion about the difference in the sensitivity analysis.
+
+17:05.000 --> 17:10.000
+Worst case, we could just indicate that fact.
+
+17:10.000 --> 17:11.000
+Exactly.
+
+17:11.000 --> 17:15.000
+The two different methods result in very different sensitivities.
+
+17:15.000 --> 17:16.000
+Yeah.
+
+17:16.000 --> 17:17.000
+That's right.
+
+17:17.000 --> 17:23.000
+And I mean, to think, you know, the thing, I think we've always sort of just, you know, triangulating, I think, you know, I think they're personally,
+
+17:23.000 --> 17:25.000
+I think you and I are in the same page with us.
+
+17:25.000 --> 17:32.000
+I think we awesome to include, to write a paper that uses both of these techniques would be, I think we really strong.
+
+17:32.000 --> 17:35.000
+They are getting sort of qualitatively slightly different.
+
+17:35.000 --> 17:52.000
+So if we use the RDS, the estimates are, you know, something like 30 to 40%, which if we think there's about a million, you know, that gives about twice, at least twice as many domestic workers experience
+
+17:52.000 --> 18:00.000
+exploitation using the RDS methods as opposed to 300 to 400,000 compared to 120 to 160,000.
+
+18:00.000 --> 18:05.000
+So, you know, those are pretty big differences, but they're the same order of magnitude.
+
+18:05.000 --> 18:15.000
+And currently we don't really have, currently that's not really a fair comparison because the notion of exploitation is different using in the two methods.
+
+18:15.000 --> 18:21.000
+We have the Q30 Q80 over here and I guess we have the QQ80 over there too.
+
+18:21.000 --> 18:31.000
+Here's what I found, here's what I've identified as, yeah, so what, there's 15, yeah, as sort of, I don't know what I call them group questions.
+
+18:31.000 --> 18:42.000
+So, you know, 13 for sure we've used dissatisfied, you know, do not have good relations, you know, these aren't really, you see what I'm saying, right?
+
+18:42.000 --> 18:43.000
+Yeah.
+
+18:43.000 --> 18:57.000
+And now there are some, so there's some that are sort of exactly spot on, like, so threat of force, I believe, is asked to both.
+
+18:57.000 --> 18:58.000
+That's a good one, yeah.
+
+18:58.000 --> 18:59.000
+So that, that's a good one.
+
+18:59.000 --> 19:05.000
+And there's one that was just, so, yeah.
+
+19:06.000 --> 19:24.000
+So I guess to take, if you do not know where to, yeah, so there's, whoops, 33, so severe forms of labor exploitation without using NRM, we, you know, odd one.
+
+19:24.000 --> 19:33.000
+I thought there was one that was in order to help suffer bad environmental conditions, access to medical care.
+
+19:33.000 --> 19:36.000
+Maybe travel documents.
+
+19:36.000 --> 19:37.000
+Maybe.
+
+19:37.000 --> 19:38.000
+Yeah, that's another good one.
+
+19:38.000 --> 19:39.000
+A threat of force.
+
+19:39.000 --> 19:41.000
+So it's called slavery.
+
+19:41.000 --> 19:42.000
+Yeah, right.
+
+19:42.000 --> 19:48.000
+So I guess, I guess the takeaway is, you know, like bad working conditions that doesn't sound to me.
+
+19:48.000 --> 19:51.000
+I defer to you, but it's like, I don't know.
+
+19:51.000 --> 19:52.000
+Restrictions on freedom.
+
+19:52.000 --> 19:57.000
+I don't know if we have that at the individual level, but that's a possibility, I think.
+
+19:57.000 --> 20:00.000
+Okay, I'm going to stop sharing with you.
+
+20:00.000 --> 20:02.000
+So that's sort of hot off the presses.
+
+20:03.000 --> 20:07.000
+Oops, sorry, let me, but not everything.
+
+20:07.000 --> 20:08.000
+Not everything.
+
+20:08.000 --> 20:21.000
+And I guess sort of the, as I'm hearing myself talk, I guess one of the takeaways is, I'm so sorry about this, but given what we're finding when attempting to use the in some estimation technique, we might need to go back.
+
+20:21.000 --> 20:28.000
+It's looking like we need to go back and rethink and redo the RDS analysis with.
+
+20:28.000 --> 20:37.000
+Yeah, I see what you're saying, because we haven't got that comparator that strong comparator that with question 80 it just doesn't exist in this method.
+
+20:37.000 --> 20:39.000
+So, yeah.
+
+20:39.000 --> 20:42.000
+So it's worth.
+
+20:42.000 --> 20:52.000
+I suppose, from what you're saying it sounds like it's worth redoing it because this comparison is quite interesting methodologically.
+
+20:52.000 --> 21:02.000
+Also, I think we can say something about the nature of estimation using these two different techniques, even if our data doesn't enable us to.
+
+21:02.000 --> 21:12.000
+Well, our data says this is complicated and we can probably make some methodological recommendations for other people researching in this area.
+
+21:12.000 --> 21:15.000
+That's a great silver lining, Caroline.
+
+21:15.000 --> 21:16.000
+Yeah, no, that's right.
+
+21:16.000 --> 21:17.000
+So right.
+
+21:17.000 --> 21:18.000
+So what have we learned, right?
+
+21:18.000 --> 21:20.000
+Like going forward, how would you.
+
+21:20.000 --> 21:21.000
+What would we do differently?
+
+21:21.000 --> 21:26.000
+What would we advise people to, I mean, because this hasn't been tied before, I don't think.
+
+21:26.000 --> 21:36.000
+So this is, I mean, this is if we were doing it was starting and we wouldn't do it like this week, we do something different so we can say what we would do differently.
+
+21:36.000 --> 21:37.000
+It's a really good idea.
+
+21:37.000 --> 21:38.000
+It's a really good idea.
+
+21:38.000 --> 21:41.000
+Yeah, no, I think that's that's an excellent, that's an excellent idea.
+
+21:42.000 --> 21:51.000
+I think sort of most immediately and sadly, most immediately is going to be at least two weeks for me because of teaching, but the overlap issue.
+
+21:51.000 --> 21:57.000
+Like if we can find those questions that that would that would I think that's sort of the next step, I think.
+
+21:57.000 --> 21:58.000
+Okay.
+
+21:58.000 --> 22:06.000
+But what do you say after hearing me ramble for what do you think what should we do next?
+
+22:06.000 --> 22:07.000
+Sorry.
+
+22:07.000 --> 22:08.000
+Yeah.
+
+22:08.000 --> 22:24.000
+So I'm wondering those questions that we indicated on the risk indices are those the ones that you've pulled out that you're looking at in more detail now or these are the specific and some questions that asked about the difference in the population in population.
+
+22:24.000 --> 22:25.000
+Sorry.
+
+22:25.000 --> 22:26.000
+Sorry.
+
+22:26.000 --> 22:31.000
+Asked about the number of people that you knew the second this is a slightly different list.
+
+22:31.000 --> 22:32.000
+Exactly.
+
+22:32.000 --> 22:42.000
+And we have your list with individual educators we have what I think is my list with the how many people do you know. And so now we just need to see what the overlap is.
+
+22:42.000 --> 22:45.000
+I meant to email it to you right right as soon as I can.
+
+22:45.000 --> 22:51.000
+And that would be looking for strong and some questions really.
+
+22:52.000 --> 23:03.000
+We're looking we're looking for indicators of exploitation that are asked about the individual and about people the individual respondent knows.
+
+23:03.000 --> 23:18.000
+And I didn't really fully appreciate that those were, I just kind of figured and that's my my apologies I was an assumption on my part that there was kind of a like a symmetry there that like that those questions were the same which they are and that's fine.
+
+23:19.000 --> 23:20.000
+Yeah.
+
+23:20.000 --> 23:21.000
+Okay.
+
+23:21.000 --> 23:26.000
+But but I mean it's not it's not all gloom and doom I mean I think you know I did.
+
+23:26.000 --> 23:32.000
+Worst case scenario I think we're going to have to re operationalize.
+
+23:32.000 --> 23:33.000
+Exploitation.
+
+23:33.000 --> 23:45.000
+So, you know, verbally abused, maybe, or threat force, you know, threat of force or something like that, or not access to travel, whatever I don't know.
+
+23:46.000 --> 23:49.000
+I think worst case scenario we're going to have to.
+
+23:49.000 --> 24:05.000
+Well, again, all this is if we want to use these two methods in the same paper and and claim that we're estimating, you know, some something called exploitation in a coherent manner, which I think we do I think we all want that I think that's kind of the goal of the paper so.
+
+24:05.000 --> 24:07.000
+So, yeah.
+
+24:07.000 --> 24:10.000
+Does that make sense I'm so sorry for rambling at your Caroline.
+
+24:10.000 --> 24:11.000
+So it does make sense.
+
+24:11.000 --> 24:14.000
+I'm just trying to work out which is the best way forward.
+
+24:14.000 --> 24:26.000
+For me, I think it's the fact more time it would be that they would be looking at the questions with comparing the the individual indicators to the how many people do you know that.
+
+24:26.000 --> 24:39.000
+That's up for you know that have trade X, where trade X could be bad working environment, no access to your travel documents, been verbally harassed at work, etc, etc.
+
+24:39.000 --> 24:46.000
+Or could be have been referred to the National Referral Mechanism is also a perfectly fine indicator.
+
+24:46.000 --> 24:54.000
+Right now it's the only that's the only one that I'm that I know of and for all the reasons we've talked about it's somewhat problematic.
+
+24:54.000 --> 25:00.000
+It's a bit weird at the at the moment, like I said if we can find more and it's overlapped and things get things get better.
+
+25:00.000 --> 25:06.000
+Alternatively, or I guess concurrently if we had more known group sizes that would help.
+
+25:06.000 --> 25:17.000
+So if we knew the number of well domestic workers obviously but if we knew the well like you said so if we knew the number of domestic workers getting paid below the minimum wage that would that would be a big help.
+
+25:17.000 --> 25:20.000
+Of course, we don't and we likely can't know that number.
+
+25:20.000 --> 25:22.000
+I don't think we can find it.
+
+25:22.000 --> 25:23.000
+No, I don't think so either.
+
+25:23.000 --> 25:25.000
+I don't think we can estimate it even.
+
+25:25.000 --> 25:26.000
+No.
+
+25:26.000 --> 25:28.000
+Very convincingly.
+
+25:28.000 --> 25:33.000
+So that's sort of I don't see how we go down that track any further.
+
+25:33.000 --> 25:35.000
+Yeah, I agree.
+
+25:35.000 --> 25:37.000
+And you know more about this than I do so.
+
+25:37.000 --> 25:40.000
+So I guess to end on some on some slightly positive news is the.
+
+25:40.000 --> 25:49.000
+So I was rereading the Feehan and Solnick and they you know they have been modified the estimate that you picked and you're right is a great one.
+
+25:49.000 --> 25:52.000
+And they get these recommendations that's what we're using.
+
+25:52.000 --> 26:08.000
+And then the next line the next equation is they say well you know what would be even better is if you know they have these adjustment factors that they and so they say well even better as if you could you know you sort of include these adjustment factors and then just be upfront about what
+
+26:08.000 --> 26:21.000
+values you're choosing and I always thought that was kind of a dead end because we just you know you just don't because of the weird game of contacts like we just visibility basically is what is what we don't have that.
+
+26:21.000 --> 26:32.000
+But I was thinking you know it's very ad hoc but they're weirdly using so the main things there are transmission error and homophily.
+
+26:32.000 --> 26:39.000
+Which I don't remember what that what that is and weirdly you you get estimates for those from RDS methods.
+
+26:39.000 --> 26:44.000
+So it's very ad hoc and there's no statistical principle underlying it but we could.
+
+26:44.000 --> 27:00.000
+There are principle values that we could use in and again just be very upfront and say you know here's the range and here's the sensitivity but from these other estimation techniques we have a pretty good belief that the homophily level is 8.1.
+
+27:00.000 --> 27:09.000
+So we can plug that in which again I haven't seen done anywhere and maybe because it's a bad idea but it's it's also kind of cool because of this.
+
+27:09.000 --> 27:16.000
+Like you said like it's people don't I was shocked to when I started when we way back when I was.
+
+27:16.000 --> 27:27.000
+Yeah I don't think anyone's written on as far as I can tell this is this is not people don't do the two at once and and so I think that's very cool if we can get to work.
+
+27:28.000 --> 27:36.000
+But I think that the fact that people don't this idea of the sort of isolated community of people in the nrm who don't know other people.
+
+27:36.000 --> 27:39.000
+That's quite an interesting finding in itself.
+
+27:39.000 --> 27:40.000
+Yeah.
+
+27:40.000 --> 27:41.000
+Yeah.
+
+27:41.000 --> 28:00.000
+So if we do know more than reveal that and sort of stop at that point and say we weren't able to pursue the new some estimation further because this was an isolated community that's an interesting finding.
+
+28:00.000 --> 28:14.000
+And also we could then make recommendations about future studies that did want to combine these methods and say these these are the things that would need to be considered in survey design going forward.
+
+28:15.000 --> 28:16.000
+I agree.
+
+28:16.000 --> 28:19.000
+And another not to be too rare and well to be random I guess the.
+
+28:20.000 --> 28:23.000
+So I mean there's there's kind of a positive power.
+
+28:23.000 --> 28:40.000
+I don't know if it's positive or maybe depending on political scientists I'm always sort of thinking like policy homework not always but you use ideas but so if the nrm has seventy four thousand or referrals and that and again nrm is bigger than just domestic workers.
+
+28:40.000 --> 28:43.000
+But if we take that as as given.
+
+28:43.000 --> 28:53.000
+And if we believe that let's say I think one in my opinion one twenty is a conservative estimate 120,000 from them so far again very very preliminary.
+
+28:53.000 --> 28:57.000
+And that tells you something about the effectiveness of the nrm.
+
+28:57.000 --> 29:06.000
+You know, again, you have to adjust for the fact that nrm is everybody so it's domestic workers plus everybody else and our estimates is just domestic workers but.
+
+29:06.000 --> 29:14.000
+I mean I think that would you could say something about like okay well we have now at least we have a way of thinking about how effective is the nrm.
+
+29:15.000 --> 29:17.000
+Again in a very sort of.
+
+29:18.000 --> 29:33.000
+With lots of caveats and but I mean so if you if you had a guess at the proportion of everyone experiencing exploitation in the UK you had if you had an idea of what fraction of that set is occupied by domestic workers.
+
+29:34.000 --> 29:41.000
+Then hot dog you could say a bunch about about basically the capture of nrm.
+
+29:42.000 --> 29:52.000
+I don't know if we have principled estimates of that quantity of that proportion but but you get the idea right I mean even if you could sort of say something loosely.
+
+29:52.000 --> 29:55.000
+I hadn't thought about that but that's also kind of a nice like.
+
+29:56.000 --> 30:03.000
+Yeah things things aren't as gloom and doom as I thought they were on Friday so so one sorry for that and two thank you and your harm's around me think look at it right.
+
+30:04.000 --> 30:14.000
+Worst case scenario we write up what we have when we say and here's what we would do differently and you know please learn from our experience and for future research.
+
+30:15.000 --> 30:21.000
+Anyway that's the update that's where I was at I was hoping that you had sort of a oh you're the other questions but.
+
+30:22.000 --> 30:32.000
+No I'm afraid I can't but I can go through the end some questions and identify which are the strongest ones from a exploitation point of view.
+
+30:33.000 --> 30:38.000
+Probably try and do that tomorrow that'd be very helpful and send that across to you.
+
+30:39.000 --> 30:40.000
+Thank you that would be great.
+
+30:41.000 --> 30:54.000
+They are I mean I agree with the ones you put pulled out about coercion and retaining travel documents those are the ones that have the closest link to exploitation so if we find a number of those that have this satisfactory overlap.
+
+30:55.000 --> 30:56.000
+Big help big help.
+
+30:57.000 --> 31:01.000
+I mean could we say that we are demonstrating how the technique could be used.
+
+31:02.000 --> 31:03.000
+You're very good at this.
+
+31:04.000 --> 31:10.000
+I like I come with you in bad news you're like no no no no here's here's here's the reframe you just say I like that a lot I like that a lot you're very good at this.
+
+31:11.000 --> 31:13.000
+Sorry I'm sorry.
+
+31:14.000 --> 31:28.000
+I'm a mess but I'm given that our data is imperfect but that we but that it we are proving that this can be used if you can and there are improvements that you can make to the data collection.
+
+31:29.000 --> 31:42.000
+I think that's exactly right I mean it could be not something to say like a proof of concept but maybe more like you know the people haven't maybe more methodological than we thought people haven't combined these two.
+
+31:43.000 --> 31:52.000
+And there's lots of reasons why like way different sampling design assumptions but here's an attempt maybe it's wacky maybe it's maybe it's not.
+
+31:52.000 --> 32:03.000
+There's some there's some possible benefits or at least some discussion about the role of the social network in the two that wax philosophic about.
+
+32:04.000 --> 32:09.000
+Yes and and then say well so we tried it and here's what happened and here's here's what you would do going further.
+
+32:10.000 --> 32:11.000
+I mean I do think it's it's a powerful.
+
+32:12.000 --> 32:17.000
+It's I mean this is me waxing philosophic but it's.
+
+32:20.000 --> 32:30.000
+It just feels and this is really imprecise but it just feels like a more efficient way to use information and surveys because in this.
+
+32:31.000 --> 32:32.000
+The combining.
+
+32:34.000 --> 32:36.000
+Because in the one hand like if you.
+
+32:38.000 --> 32:44.000
+Because if you happen to find somebody in a hidden population then you definitely want their network and you definitely want their referrals.
+
+32:45.000 --> 32:49.000
+Okay but and RDS does that but but RDS sort of.
+
+32:51.000 --> 32:53.000
+It doesn't fully use the if.
+
+32:55.000 --> 32:56.000
+I'm doing really bad.
+
+32:56.000 --> 32:57.000
+Here's what I'm trying to say.
+
+32:59.000 --> 33:07.000
+In RDS methods then that's the personal networks of those in the hidden population and those not in the hidden population is it doesn't matter.
+
+33:08.000 --> 33:21.000
+That information isn't taken into account and that feels weird to me because in some is a great way of taking advantage of the of the difference in those in those networks so that's what I mean when I say it feels like sort of.
+
+33:22.000 --> 33:26.000
+Information it feels like one of the benefits of combining them if we can is that we're sort of.
+
+33:27.000 --> 33:35.000
+Using information we're using more information that's in the survey already that people aren't using currently at least this is the best of my knowledge.
+
+33:37.000 --> 33:45.000
+I've had too much coffee you can tell because I am just rambling at you I really like science I really like working with you Caroline so thank you for much for letting me.
+
+33:46.000 --> 33:57.000
+Well we I think it's fantastic what you're doing so we just need well what's practical to do with the data and I know we wouldn't start from here if we were starting again but this is where we are.
+
+33:58.000 --> 34:11.000
+It's yeah I think I'm hoping that with your help we can make a contribution from this absolutely no I think so I'll have a look at the questions tomorrow and do my best to pick out what I feel are the strongest ones.
+
+34:12.000 --> 34:23.000
+And let you have that and if somehow you can capture what has been useful from the discussion today and yeah.
+
+34:24.000 --> 34:27.000
+I'll do my best that way for how I might write it up.
+
+34:28.000 --> 34:30.000
+Sounds great sounds great and it's it's it's yeah so sorry.
+
+34:30.000 --> 34:40.000
+Sorry if I overreacted on Friday it's definitely not there's definitely a way forward so anyway thanks for thanks for this thanks for the timeliness I'll email you.
+
+34:41.000 --> 34:51.000
+Yeah it'd be great to get your your take on the the the how many people do you know questions and we'll go forward when we when our teaching schedules permit.
+
+34:52.000 --> 34:56.000
+Yes yeah I'm sorry I've got a really horrible two weeks.
+
+34:56.000 --> 35:03.000
+Yeah likewise likewise yeah I can get you the questions tomorrow and then yeah.
+
+35:04.000 --> 35:07.000
+If it if if this way till April so be it.
+
+35:08.000 --> 35:10.000
+I mean you know yeah you can do what you can do so.
+
+35:11.000 --> 35:23.000
+It's just the stop start I know when you're trying it's difficult to keep in your head I know because I've read the Felix and Salmanic paper a couple of times so you just have to start again and reread it to remind yourself what is what they say.
+
+35:23.000 --> 35:25.000
+But yeah I agree.
+
+35:26.000 --> 35:30.000
+Yeah unfortunately okay well good to catch up with you Scott.
+
+35:31.000 --> 35:42.000
+Yeah you as well and again thank you so much for your your your flexibility really really appreciate the meeting I'll set short short short short short notice so good luck with teaching Caroline and yeah we'll be in touch.
+
+35:43.000 --> 35:44.000
+Yeah okay thank you.
+
+35:53.000 --> 35:54.000
+Thank you.
+

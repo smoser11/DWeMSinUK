@@ -1,0 +1,94 @@
+Date: 20240311
+Subject: Re: Trouble in paradise
+
+I am free to meeting today or tomorrow any time except today between 1-4.30pm
+
+Best wishes
+Caroline
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (AFHEA)
+
+
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB 
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 08 March 2024 17:35
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Trouble in paradise 
+ 
+Dear  Both, 
+
+I did a bit of a deep dive (again!) into the F&S 2016 (?) paper and looked at the data and codebook again.  I’m sorry I didn’t do so before our meeting today b/c/ it would have been much better to discuss the following instead of an email.   Sorry for the bother, but could we meet on Teams very briefly early next week to have a short chat?    Here are some of the issues:
+
+The questions for ‘how many people in H (=the hidden population)’ – e.g.  Q33. 5a5 , Q33. 5a7, Q49. 5c6 
+
+Q64. 5d11 
+
+Q83. 5f16 
+
+Q88. 5f16 
+
+Q89. 5f15 
+
+  -- don’t exactly match up with q36 and q80 that we use in the RDS estimation.
+
+ 
+
+Worse, the ‘known population’ method we discussed (using “Q89. 5f15: Do you know personally of any other domes�c workers who went through the NRM system? If so, how many? Numerical value “) has TONS of missing values in the data-set, which makes it unusable for us.  We could try the number of DW in the UK, but we only have a vague idea of the size of this population.  
+
+ 
+
+Basically, we need a way of estimating the average number of DWs people in the sample know.  Weirdly, I think I need to _exclude_ those that we think are in H (the exact opposite as the RDS technique).  
+
+ 
+
+Oh, and I continue to have questions about the codebook and how variables are named in the data set.  For example, the codebook only goes up to Q90, but the excel data contains over 100 question varables.
+
+ 
+
+Sorry and thanks,
+
+Scott
+
+ 
+
+ 
+

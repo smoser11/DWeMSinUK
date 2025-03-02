@@ -1,0 +1,1589 @@
+Received: from AM0PR06MB6561.eurprd06.prod.outlook.com (2603:10a6:208:198::11)
+ by AM9PR06MB8193.eurprd06.prod.outlook.com with HTTPS; Mon, 30 Oct 2023
+ 12:27:13 +0000
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=exmail.nottingham.ac.uk;
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com (2603:10a6:20b:99::17)
+ by AM0PR06MB6561.eurprd06.prod.outlook.com (2603:10a6:208:198::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6907.33; Mon, 30 Oct
+ 2023 12:27:12 +0000
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::9deb:2d00:57f6:68bf]) by AM6PR06MB5941.eurprd06.prod.outlook.com
+ ([fe80::9deb:2d00:57f6:68bf%5]) with mapi id 15.20.6933.024; Mon, 30 Oct 2023
+ 12:27:12 +0000
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+CC: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: GNSUM meeting notes 20-10-2023
+Thread-Topic: GNSUM meeting notes 20-10-2023
+Thread-Index:
+ AQHaA0+l1c9Nku7YkUKbJQSSuG4mKbBUVFB/gAMjMvCAAbqW+IACqNmPgAIKLwCAA0x88oAA/vbsgAAXai+AAAoCwg==
+Date: Mon, 30 Oct 2023 12:27:12 +0000
+Message-ID:
+ <AM6PR06MB5941FB5BABE93E2AB5BE0C81A0A1A@AM6PR06MB5941.eurprd06.prod.outlook.com>
+References:
+ <AM6PR06MB59419A4718888328D706BFB1A0DBA@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <DB9PR06MB820258F808BF9938350BF23887DAA@DB9PR06MB8202.eurprd06.prod.outlook.com>
+ <AM6PR06MB59412621B883006683DE99C5A0D8A@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <DB9PR06MB82029B75F09446C200FF789987DFA@DB9PR06MB8202.eurprd06.prod.outlook.com>
+ <AM6PR06MB59411F6B14C810A13915C864A0DDA@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <04774657-0ECA-4477-9730-5A390224B4EA@nottingham.ac.uk>
+ <AM9PR06MB81935FDD591BAA3C7CA07DEF87A2A@AM9PR06MB8193.eurprd06.prod.outlook.com>
+ <AM6PR06MB594196976CA3623DC0CE1A2BA0A1A@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <AM9PR06MB81934112B30131B3C74910C387A1A@AM9PR06MB8193.eurprd06.prod.outlook.com>
+In-Reply-To:
+ <AM9PR06MB81934112B30131B3C74910C387A1A@AM9PR06MB8193.eurprd06.prod.outlook.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-GB
+X-MS-Has-Attach:
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+ <AM6PR06MB5941FB5BABE93E2AB5BE0C81A0A1A@AM6PR06MB5941.eurprd06.prod.outlook.com>
+msip_labels:
+MIME-Version: 1.0
+X-MS-Exchange-Organization-MessageDirectionality: Originating
+X-MS-Exchange-Organization-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-Network-Message-Id:
+ 01c4a114-a42e-40e8-f107-08dbd9438b22
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ AM6PR06MB5941:EE_|AM0PR06MB6561:EE_|AM9PR06MB8193:EE_
+Return-Path: lizce@exmail.nottingham.ac.uk
+X-MS-Exchange-Organization-ExpirationStartTime: 30 Oct 2023 12:27:12.4646
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Office365-Filtering-Correlation-Id: 01c4a114-a42e-40e8-f107-08dbd9438b22
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR06MB5941.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:;DIR:INT;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Oct 2023 12:27:12.2841
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-Network-Message-Id: 01c4a114-a42e-40e8-f107-08dbd9438b22
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 8fA+brCIuOkTJOaAn8ek3tq3JMQ7oTRix73jExeFaBWTjpJ3oxLYY0BDfsEQ8k2H5Nz2TPQwE8KuGVrpt83nuQjvMb3/9z/96iNWBpdOVsGqYpC5FifqaaECxpkNeRX9
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR06MB6561
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:00.9317682
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.6933.019
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(425001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	581hBaR5gksz6PewNs5N50JeDi2mvsONcBp7YEODlcN0FomceXxpejerXRhPokz3A2pFoQvpmKHPRJgaSonV2NcjbRq4sGMNv/+7Pg0ILuC4Ads+ddHAz0Ylw57/LzyOl0ppkg3VJEamdi0m//7nzH2HLppXAQEoRWL8SoB4o6bq31Q8S4oh5Cpjyc6NMUFKn2gwcV1H0/uhL/FjGnpDmeWo/Rfg2fJTZ9N4TqvZpQ2aqLRiU4yYZ0KTIfgjsldU66oiSB2OYgpBovYeL2zvLTCEEiR3YXPOQSMmHZ1OqAS+FzOrSRBTGpT5jriZ7FNHXVNFPD4MjW7FEwszomc2wjGTH6hBmq3qnoHjXhmiyzPCSiInMtwmDE5E1+cUXR9C45pNKjUQdOKy+0So+8JeJGSdRaQUxUtlTGKcy+tEgRrA1KGcO7bxi767AIVSEW4dRORIoN6BMBMprEsLd7jxZnW8CWHddIUyXDaPO0Vd5ZyZryDfzRh7kTtX8N9PBzDsLd337Uga7PV9CL0LMuUyZObSIwMKfDxwpDpxkxevGHxnoCZteDHvpDiIu0ONxoZ2uIkIOZIhY7vG00aTErmqEsoSQVJkn5NjzF18TMPLpff4zwvv98RZp6PQU5jFWfErzlolpw56azGozqj/UqchRziSAzA7VqL2mKXYuEFWo4AKR2BswqNicOLuqwRFdFYF3UgwYO3ADGCzyFiyGBev5UNSYzVzS1u0nio8XdZ7DOhCymSJmS/hYuJbCU1AvhmLV206rNRFiyW9FG46fFwtB/N75nsf1Q5awUBF/9KJF1/wQ2nDITr/tJU1N6jgXPKLnLyc1P2+m5dliFevGKmICg==
+Content-type: multipart/alternative;
+	boundary="B_3821516406_848493247"
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3821516406_848493247
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+I'm free between now and 2pm. Selim are you able to join us if we jump on a=
+ call at 1pm?
+
+Caroline
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+=20
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 30 October 2023 11:51
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Cc: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: GNSUM meeting notes 20-10-2023=20
+=20
+Howabout a quick chat today?  I'm busy from 2pm on, but can Teams anytime b=
+/t noon and about 1:30pm.  Does that work for you?
+
+From: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Sent: Monday, October 30, 2023 10:27 AM
+To: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Cc: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: GNSUM meeting notes 20-10-2023=20
+=20
+Hi Scott,
+
+I'm free anytime today or this Friday for a video catch up - just let me kn=
+ow when would suit you.
+
+Best wishes
+Caroline
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+=20
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 29 October 2023 19:18
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Cc: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: GNSUM meeting notes 20-10-2023=20
+=20
+Oof,  I have not been able to send the email I had intended.  I spend Frida=
+y afternoon on this project and made some progress.  But am not in a positio=
+n to write it up to you all.  Perhaps a video chat?  Or a video message next=
+ week?
+
+In short: your data is very interesting.  And I think presents new and exci=
+ting methodological challenges/ opportunities. Lets talk. =20
+scott
+ps. I'm sorry for whatever nonsense I have already espouced, and for whatev=
+er nonsense I will (surely) espose in the future!
+
+
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: Saturday, October 28, 2023 10:57 AM
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Cc: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: GNSUM meeting notes 20-10-2023=20
+=20
+Dear Caroline,
+
+=20
+
+I=E2=80=99ve spent the afternoon reading and thinking about prevalence estimation=
+.  I have thoughts and comments, but I also need to reply to your emails.  L=
+et me do the second first. =20
+
+I=E2=80=99m sorry, but I simply cannot stand MS Outlook. So my replies are in the=
+ attached =E2=80=98memo.=E2=80=99 =20
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+Date: Thursday, 26 October 2023 at 10:47
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: GNSUM meeting notes 20-10-2023
+
+=20
+
+No problem Scott. I have looked again at the GFEMS recommendations and a NS=
+UM and RDS combination is advocated here too. I shall make some time to dig =
+into the literature that Blazek & Feehan and Kysia et al. cite in article 4 =
+and article 6 respectively of the recent GFEMS methodological briefing - whi=
+ch can be found here: https://www.gfems.org/wp-content/uploads/2021/10/Revis=
+ed_GFEMS_MethodologiesBooklet.pdf and see if I can start to build this into =
+our draft.
+
+=20
+
+Best wishes
+
+Caroline
+
+=20
+
+=20
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+=20
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+=20
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+=20
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+=20
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 24 October 2023 18:06
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz=
+ <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: GNSUM meeting notes 20-10-2023=20
+
+=20
+
+Hi Caroline,
+
+=20
+
+You are far too kind!  Thank you for your kind understanding and esp. your =
+patience.  I'm slammed with teaching/ admin until Friday.  I'll write more a=
+s soon as I can.
+
+Enjoy your travels!
+
+More soon,
+
+scott
+
+=20
+
+From: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Sent: Monday, October 23, 2023 4:27 PM
+To: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>; Selim Yilmaz <ldx=
+sy3@exmail.nottingham.ac.uk>
+Subject: Re: GNSUM meeting notes 20-10-2023=20
+
+=20
+
+Hi Scott,
+
+=20
+
+Firstly, I shall be eternally grateful to you for persisting with this. I g=
+reatly appreciate your insight. This project does not stand or fall by the u=
+se of a particular statistical technique which, if I understand your email c=
+orrectly, is fortunate since our attempts to  use Feehan and Salganik's prot=
+ocol seems to force us into making statistical assumptions about the relatio=
+nship between our sample and its frame that we cannot justify.
+
+=20
+
+I am sorry that I am not so familiar with the terminology that you have use=
+d, so I am not able to comment with any confidence  whether 'we think/ can a=
+rgue that $s_F$ is representative of $F$.' If you are able to clarify this, =
+then we can perhaps direct Selim with more confidence.=20
+
+
+
+ As far as I am concerned the big prize is a statistical viable population =
+estimate - by a means that our data will support.
+
+=20
+
+However, I am very pleased that you do seem to indicate that we might be ab=
+le to proceed with a RDS/NSUM approach - this would seem to be very good new=
+s-  although I do recognise that in doing this, we would have to live with t=
+he drawbacks of the NSUM which again makes certain problematic assumptions (=
+as detailed by Feehan and Salganik 2016). I also am glad that you think we d=
+o have ARD - if not enriched ARD.
+
+=20
+
+The 'stop- start' process does not make this any easier as it is difficult =
+to keep the technical detail of these procedures in one's head. Do you think=
+ that we could perhaps arrange an in-person Friday session (1/2 or full day?=
+) for us to try and work through this between us - or, might another approac=
+h suit you better?
+
+=20
+
+Unfortunately, I am in Portsmouth for a workshop this Friday, but I could c=
+lear my diary on 3 November if you think trying to work this through in a lo=
+nger in-person session might be more efficient?
+
+=20
+
+Best wishes
+
+Caroline
+
+=20
+
+=20
+
+=20
+
+=20
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+=20
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+=20
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+=20
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+=20
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 21 October 2023 17:52
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz=
+ <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Re: GNSUM meeting notes 20-10-2023=20
+
+=20
+
+Many thanks to all.  I'm afraid I write with some bad news.  But not as bad=
+ as I had earlier thought.  I have spend the afternoon (re-)wrapping my head=
+ around things, and reflecting on our meeting yesterday.  Today my approach =
+was to (1) look for replication studies using NSUM/ GNSUM (2) look at the li=
+terature citing the original F&G 2016 paper and (3) start to look into alter=
+native estimators, specifically look into papers that user RDS and NSUM to e=
+stimate the size of hidden populations.
+
+=20
+
+=20
+
+=20
+
+### The bad news ###
+
+=20
+
+I understand the Exploratory Protocol to be the steps to arrive at the esti=
+mate for the size of the hidden population using eqn. 23 of F&S (2016).  The=
+ 'innovation' of what they call the 'modified basic scale-up estimator'  is =
+two fold:  First they use the average degree size of everyone in F to everyo=
+ne in F (this makes sense);  then they use the size of the sample frame ($N_=
+F$) rather than the total population size ($N$ in eqn. 22).  Specifically, i=
+n the right-most fraction.  That is the issue we discussed yesterday regardi=
+ng the order in which the divisions were taken.  But technically speaking, t=
+hat is incorrect.  I've tried to 'slice' this quantity in a number of ways, =
+but I think we need the size of the sample frame, $N_F$, in any event.  And =
+I really hope I am wrong!
+
+=20
+
+To wit, the denominator of the right-most fraction of eqn. 23 involves _the=
+ size of the frame, F_.  Which we do not have.  Actually, it is worse than t=
+hat, because we definitely to not have $\hat{d}_{F,F}$.  Now, I _think_ -- b=
+ut do not know -- that what the Protocol it trying to do is to estimate thes=
+e quantities from the sample ($s_F$).  I don't know if that is OK or not.  I=
+ would be more convinced if we knew s_F was a representative sample from F. =
+ But I think this issue was discussed yesterday.
+
+=20
+
+Alternatively, we can try to estimate the average degree from F to F (calle=
+d $\hat{d}_{F,F}$) using the formula in the bottom-center 'orb' of Figure 4.=
+  This is the 'known population scale-up' I was talking about yesterday.  I =
+tried to dig deeper: $N_{\mathcal{A}}$ is the total size of all the 'probe a=
+lter' groups (aka 'pivot groups' or PG).  For use, we have one: the size of =
+those that have gone through the NRM.  From page 161, this group (for us, in=
+ general _these_ groups) must belong to the sample frame, F.  So:
+
+1.If we are going to use the known group-size to calculate the average pers=
+onal degree size, then I think we need to assume that everyone that has gone=
+ through the NRM is part of the sample frame.  Is this true?  I very much do=
+ubt it, but again, I really hope I am wrong!
+
+2.In the application(s) of GNSUM I've seen, specifically the following
+
+Jing, L., Qu, C., Yu, H., Wang, T., & Cui, Y. (2014). Estimating the sizes =
+of populations at high risk for HIV: A comparison study. PloS One, 9(4), e95=
+601. https://doi.org/10.1371/journal.pone.0095601
+
+they take a random sample from the population (frame in our case) and an RD=
+S/ Vincent link tracing sample from the hidden population.  I understand we =
+dont' have the latter, but I don't think we have the former, either (?).
+
+2a.  I *think * have some replication materials from some NSUM/ GNSUM publi=
+shed studies.   Perhaps even the Jing et al.  I have simply forgotten since =
+I last looked at this in depth in the spring.
+
+=20
+
+I looked for any paper using their 'modified basic scale-up estimator' (eqn=
+ 23) but I couldn't find any. =F0=9F=99=81
+
+=20
+
+=20
+
+### Now for the not-so bad news ###
+
+=20
+
+If we think/ can argue that $s_F$ is representative of $F$, then I could se=
+e a case for the approach that Selim is currently coding up being useful.
+
+=20
+
+=20
+
+### Now for the good news ###
+
+=20
+
+The structure of the data is exactly a "RDS with ARD data collected from th=
+e sample frame of DW in the UK who have a mobile phone."  And there are load=
+s of papers that deal with this type of data:
+
+=20
+
+[RDS and measurements of a 'hidden population' papers]
+
+=20
+
+I am only peripherally knowledgeable about RDS and inference.  And not at a=
+ll about NSUM and RDS.  but it is out there, and we can try them out (?)
+
+=20
+
+=20
+
+---
+
+=20
+
+On my end, the 'start and stop' of research is _really_ inefficient.  And h=
+as shown to introduce errors.  So, my preference is to get this done asap, i=
+f we are going to get it done that is.
+
+=20
+
+I hope we can chat further. =20
+
+Best,
+
+scott
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+From: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Sent: Friday, October 20, 2023 1:22 PM
+To: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>; Scott Moser (staff) <ldz=
+sm2@exmail.nottingham.ac.uk>
+Subject: GNSUM meeting notes 20-10-2023=20
+
+=20
+
+Thanks for moving us on, Scott. Here is the record of what we discussed whi=
+ch I shall attempt to synthesis into the beginnings of a draft over the next=
+ week or so.
+
+=20
+
+Best wishes
+
+Caroline
+
+=20
+
+=20
+
+=20
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Nottingham Research Fellow, Rights Lab
+
+=20
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+=20
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+=20
+
+=20
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+=20
+
+=20
+
+Book time to meet with me
+
+=20
+
+
+--B_3821516406_848493247
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><style t=
+ype=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bottom:0;} </st=
+yle></head><body dir=3D"ltr"><div style=3D"font-family: Aptos, Aptos_EmbeddedFon=
+t, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; col=
+or: rgb(0, 0, 0);" class=3D"elementToProof">I'm free between now and 2pm. Seli=
+m are you able to join us if we jump on a call at 1pm?</div><div style=3D"font=
+-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica,=
+ sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class=3D"elementToProof"><=
+br></div><div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontSer=
+vice, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"=
+ class=3D"elementToProof">Caroline</div><div class=3D"elementToProof"><div style=
+=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helv=
+etica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br></div><div id=3D=
+"Signature"><div><div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_M=
+SFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0,=
+ 0, 0);"><br></div><div></div><div id=3D"divtagdefaultwrapper" dir=3D"ltr" style=
+=3D"color: rgb(0, 0, 0);"><p style=3D"font-family: Calibri, Helvetica, sans-seri=
+f; font-size: 12pt; margin-top: 0px; margin-bottom: 0px;"></p><p class=3D"MsoN=
+ormal" style=3D"font-family: Calibri, Helvetica, sans-serif; font-size: 12pt; =
+margin-top: 0px; margin-bottom: 0px;"><font face=3D"Arial, sans-serif" style=3D"=
+color: rgb(0, 155, 189);"><b>Dr Caroline Emberson (preferred pronouns she/he=
+r)</b></font></p><p class=3D"MsoNormal" style=3D"font-family: Calibri, Helvetica=
+, sans-serif; font-size: 12pt; margin-top: 0px; margin-bottom: 0px;"><font f=
+ace=3D"Arial, sans-serif" style=3D"color: rgb(19, 27, 87);"><b>Assistant Profess=
+or</b></font></p><p class=3D"MsoNormal" style=3D"font-family: Calibri, Helvetica=
+, sans-serif; font-size: 12pt; margin-top: 0px; margin-bottom: 0px;"><span s=
+tyle=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif">&nbsp;</spa=
+n></p><p class=3D"MsoNormal" style=3D"font-family: Calibri, Helvetica, sans-seri=
+f; font-size: 12pt; margin-top: 0px; margin-bottom: 0px;"><span style=3D"font-=
+size: 9pt; font-family: Arial, sans-serif; color: rgb(19, 27, 87);">Nottingh=
+am University Business School OMIS/ Faculty of Social Science<br>University =
+of Nottingham</span><sub><span style=3D"font-size:11.0pt; font-family:&quot;Ar=
+ial&quot;,sans-serif"></span></sub></p><p class=3D"MsoNormal" style=3D"font-fami=
+ly: Calibri, Helvetica, sans-serif; font-size: 12pt; margin-top: 0px; margin=
+-bottom: 0px;"><span style=3D"font-size: 9pt; font-family: Arial, sans-serif; =
+color: rgb(19, 27, 87);">A20, Highfield House</span></p><p class=3D"MsoNormal"=
+ style=3D"font-family: Calibri, Helvetica, sans-serif; font-size: 12pt; margin=
+-top: 0px; margin-bottom: 0px;"><span style=3D"font-size: 9pt; font-family: Ar=
+ial, sans-serif; color: rgb(19, 27, 87);">University Park</span><sub><span s=
+tyle=3D"font-size:11.0pt; font-family:&quot;Arial&quot;,sans-serif"></span></s=
+ub></p><p class=3D"MsoNormal" style=3D"font-family: Calibri, Helvetica, sans-ser=
+if; font-size: 12pt; margin-top: 0px; margin-bottom: 0px;"><span style=3D"font=
+-size: 9pt; font-family: Arial, sans-serif; color: rgb(19, 27, 87);">Notting=
+ham, NG7 2RD</span></p><p class=3D"MsoNormal" style=3D"font-family: Calibri, Hel=
+vetica, sans-serif; font-size: 12pt; margin-top: 0px; margin-bottom: 0px;"><=
+span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif">&nbsp=
+;</span></p><p class=3D"MsoNormal" style=3D"font-family: Calibri, Helvetica, san=
+s-serif; font-size: 12pt; margin-top: 0px; margin-bottom: 0px;"><span style=3D=
+"font-size: 9pt; font-family: Arial, sans-serif; color: rgb(19, 27, 87);">+4=
+4 (0) 115 8283072<b>&nbsp;</b></span><b><span style=3D"font-size: 9pt; font-fa=
+mily: Calibri, sans-serif; color: rgb(19, 27, 87);">| </span></b><span class=
+=3D"MsoHyperlink"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,=
+sans-serif"><a href=3D"http://nottingham.ac.uk/" target=3D"_blank">caroline.embe=
+rson@nottingham.ac.uk</a></span></span><span style=3D"font-size:11.0pt; font-f=
+amily:&quot;Arial&quot;,sans-serif"></span></p><p class=3D"MsoNormal" style=3D"f=
+ont-family: Calibri, Helvetica, sans-serif; font-size: 12pt; margin-top: 0px=
+; margin-bottom: 0px;"><br></p><p class=3D"MsoNormal" style=3D"margin-top: 0px; =
+margin-bottom: 0px;"><font face=3D"Arial, sans-serif"><span style=3D"font-size: =
+12px;">Please note that my working days are Monday, Tuesday, Thursday and Fr=
+iday</span></font></p><p class=3D"MsoNormal" style=3D"margin-top: 0px; margin-bo=
+ttom: 0px;"><font face=3D"Arial, sans-serif"><span style=3D"font-size: 12px;"><b=
+r></span></font></p><p class=3D"MsoNormal" style=3D"font-family: Calibri, Helvet=
+ica, sans-serif; font-size: 12pt; margin-top: 0px; margin-bottom: 0px;"><b><=
+span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Georgia, serif; color:=
+ rgb(21, 118, 158);">Follow us</span></b><span lang=3D"EN-US" style=3D"font-size=
+: 9pt; font-family: Calibri, sans-serif; color: rgb(25, 25, 25);"></span></p=
+><p class=3D"MsoNormal" style=3D"font-family: Calibri, Helvetica, sans-serif; fo=
+nt-size: 12pt; margin-top: 0px; margin-bottom: 0px;"><u style=3D""><span lang=3D=
+"EN-US" style=3D"font-size: 9pt; font-family: Arial, sans-serif; color: rgb(0,=
+ 0, 233);"><a href=3D"http://facebook.com/TheUniofNottingham"><span style=3D"col=
+or: rgb(0, 0, 233);">Facebook.com/UniofNottingham</span></a></span></u><span=
+ lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Arial, sans-serif; color: =
+rgb(25, 25, 25);"></span></p><p class=3D"MsoNormal" style=3D"font-family: Calibr=
+i, Helvetica, sans-serif; font-size: 12pt; margin-top: 0px; margin-bottom: 0=
+px;"><u style=3D""><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Aria=
+l, sans-serif; color: rgb(0, 0, 233);"><a href=3D"http://twitter.com/UniofNott=
+ingham"><span style=3D"color: rgb(0, 0, 233);">Twitter.com/UniofNottingham</sp=
+an></a></span></u><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Ari=
+al, sans-serif; color: rgb(25, 25, 25);"></span></p><p class=3D"MsoNormal" sty=
+le=3D"font-family: Calibri, Helvetica, sans-serif; font-size: 12pt; margin-top=
+: 0px; margin-bottom: 0px;"><u style=3D""><span lang=3D"EN-US" style=3D"font-size:=
+ 9pt; font-family: Arial, sans-serif; color: rgb(0, 0, 233);"><a href=3D"http:=
+//youtube.com/nottmuniversity"><span style=3D"color: rgb(0, 0, 233);">Youtube.=
+com/nottmuniversity</span></a></span></u><span lang=3D"EN-US" style=3D"font-size=
+: 9pt; font-family: Arial, sans-serif; color: rgb(25, 25, 25);"></span></p><=
+p class=3D"MsoNormal" style=3D"font-family: Calibri, Helvetica, sans-serif; font=
+-size: 12pt; margin-top: 0px; margin-bottom: 0px;"><u style=3D""><span lang=3D"E=
+N-US" style=3D"font-size: 9pt; font-family: Arial, sans-serif; color: rgb(0, 0=
+, 233);"><a href=3D"http://instagram.com/uniofnottingham"><span style=3D"color: =
+rgb(0, 0, 233);">Instagram.com/uniofnottingham</span></a></span></u><span la=
+ng=3D"EN-US" style=3D"font-size: 9pt; font-family: Arial, sans-serif; color: rgb=
+(25, 25, 25);"></span></p><p class=3D"MsoNormal" style=3D"font-family: Calibri, =
+Helvetica, sans-serif; font-size: 12pt; margin-top: 0px; margin-bottom: 0px;=
+"><u style=3D""><span lang=3D"EN-US" style=3D"font-size: 9pt; font-family: Arial, =
+sans-serif; color: rgb(0, 0, 233);"><a href=3D"http://linkedin.com/company/uni=
+versity-of-nottingham"><span style=3D"color: rgb(0, 0, 233);">Linkedin.com/com=
+pany/university-of-nottingham</span></a></span></u></p><p class=3D"MsoNormal" =
+style=3D"font-family: Calibri, Helvetica, sans-serif; font-size: 12pt; margin-=
+top: 0px; margin-bottom: 0px;"><u style=3D""><span lang=3D"EN-US" style=3D"font-si=
+ze: 9pt; font-family: Arial, sans-serif; color: rgb(0, 0, 233);"><a href=3D"ht=
+tp://www.foursquare.com/uniofnottingham"><span style=3D"color: rgb(0, 0, 233);=
+">F</span>oursquare.com/uniofnottingham</a></span></u></p><p class=3D"MsoNorma=
+l" style=3D"font-family: Calibri, Helvetica, sans-serif; font-size: 12pt; marg=
+in-top: 0px; margin-bottom: 0px;"><u style=3D""><span lang=3D"EN-US" style=3D"font=
+-size: 9pt; font-family: Arial, sans-serif; color: rgb(0, 0, 233);"><span st=
+yle=3D"text-decoration:none">&nbsp;</span></span></u></p><br><p style=3D"font-fa=
+mily: Calibri, Helvetica, sans-serif; font-size: 12pt; margin-top: 0px; marg=
+in-bottom: 0px;"></p></div><table id=3D"pbpsiglinktable"><tbody><tr><td><a hre=
+f=3D"https://outlook.office.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75=
+ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature"><img src=3D"htt=
+ps://res-h3.public.cdn.office.net/assets/bookwithme/misc/CalendarPerson20px.=
+png"></a></td><td></td><td><a href=3D"https://outlook.office.com/bookwithme/us=
+er/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=
+=3DbwmEmailSignature" style=3D"text-decoration: none; color: rgb(0, 120, 212);">=
+Book time to meet with me</a></td><td><table></table></td></tr></tbody></tab=
+le></div></div></div><div id=3D"appendonsend"></div><hr style=3D"display:inline-=
+block;width:98%" tabindex=3D"-1"><div id=3D"divRplyFwdMsg" dir=3D"ltr"><font face=3D=
+"Calibri, sans-serif" style=3D"font-size:11pt" color=3D"#000000"><b>From:</b> Sc=
+ott Moser (staff) &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Sent:</b> 30 =
+October 2023 11:51<br><b>To:</b> Caroline Emberson (staff) &lt;lizce@exmail.=
+nottingham.ac.uk&gt;<br><b>Cc:</b> Selim Yilmaz &lt;ldxsy3@exmail.nottingham=
+.ac.uk&gt;<br><b>Subject:</b> Re: GNSUM meeting notes 20-10-2023</font> <div=
+>&nbsp;</div></div><style type=3D"text/css" style=3D"display:none">
+<!--
+p
+	{margin-top:0;
+	margin-bottom:0}
+-->
+</style><div dir=3D"ltr"><div class=3D"x_elementToProof" style=3D"font-family:Apt=
+os,Aptos_EmbeddedFont,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font=
+-size:12pt; color:rgb(0,0,0)">Howabout a quick chat today?&nbsp; I'm busy fr=
+om 2pm on, but can Teams anytime b/t noon and about 1:30pm.&nbsp; Does that =
+work for you?</div><div class=3D"x_elementToProof" style=3D"font-family:Aptos,Ap=
+tos_EmbeddedFont,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size=
+:12pt; color:rgb(0,0,0)"><br></div><div id=3D"x_appendonsend"></div><hr tabind=
+ex=3D"-1" style=3D"display:inline-block; width:98%"><div id=3D"x_divRplyFwdMsg" di=
+r=3D"ltr"><font face=3D"Calibri, sans-serif" color=3D"#000000" style=3D"font-size:11=
+pt"><b>From:</b> Caroline Emberson (staff) &lt;lizce@exmail.nottingham.ac.uk=
+&gt;<br><b>Sent:</b> Monday, October 30, 2023 10:27 AM<br><b>To:</b> Scott M=
+oser (staff) &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Cc:</b> Selim Yilm=
+az &lt;ldxsy3@exmail.nottingham.ac.uk&gt;<br><b>Subject:</b> Re: GNSUM meeti=
+ng notes 20-10-2023</font> <div>&nbsp;</div></div><style type=3D"text/css" sty=
+le=3D"display:none">
+<!--
+p
+	{margin-top:0;
+	margin-bottom:0}
+-->
+</style><div dir=3D"ltr"><div class=3D"x_x_elementToProof" style=3D"font-family:A=
+ptos,Aptos_EmbeddedFont,Aptos_MSFontService,Calibri,Helvetica,sans-serif; fo=
+nt-size:12pt; color:rgb(0,0,0)">Hi Scott,</div><div class=3D"x_x_elementToProo=
+f" style=3D"font-family:Aptos,Aptos_EmbeddedFont,Aptos_MSFontService,Calibri,H=
+elvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)"><br></div><div class=3D=
+"x_x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFont,Aptos_MSFon=
+tService,Calibri,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)">I'm=
+ free anytime today or this Friday for a video catch up - just let me know w=
+hen would suit you.</div><div class=3D"x_x_elementToProof" style=3D"font-family:=
+Aptos,Aptos_EmbeddedFont,Aptos_MSFontService,Calibri,Helvetica,sans-serif; f=
+ont-size:12pt; color:rgb(0,0,0)"><br></div><div class=3D"x_x_elementToProof" s=
+tyle=3D"font-family:Aptos,Aptos_EmbeddedFont,Aptos_MSFontService,Calibri,Helve=
+tica,sans-serif; font-size:12pt; color:rgb(0,0,0)">Best wishes</div><div cla=
+ss=3D"x_x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFont,Aptos_MS=
+FontService,Calibri,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)">=
+Caroline</div><div class=3D"x_x_elementToProof"><div style=3D"font-family:Aptos,=
+Aptos_EmbeddedFont,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-si=
+ze:12pt; color:rgb(0,0,0)"><br></div><div id=3D"x_x_Signature"><div><div style=
+=3D"font-family:Aptos,Aptos_EmbeddedFont,Aptos_MSFontService,Calibri,Helvetica=
+,sans-serif; font-size:12pt; color:rgb(0,0,0)"><br></div><div></div><div id=3D=
+"x_x_divtagdefaultwrapper" dir=3D"ltr" style=3D"color:rgb(0,0,0)"><p style=3D"font=
+-family:Calibri,Helvetica,sans-serif; font-size:12pt; margin-top:0px; margin=
+-bottom:0px"></p><p class=3D"x_x_MsoNormal" style=3D"font-family:Calibri,Helveti=
+ca,sans-serif; font-size:12pt; margin-top:0px; margin-bottom:0px"><font face=
+=3D"Arial, sans-serif" style=3D"color:rgb(0,155,189)"><b>Dr Caroline Emberson (p=
+referred pronouns she/her)</b></font></p><p class=3D"x_x_MsoNormal" style=3D"fon=
+t-family:Calibri,Helvetica,sans-serif; font-size:12pt; margin-top:0px; margi=
+n-bottom:0px"><font face=3D"Arial, sans-serif" style=3D"color:rgb(19,27,87)"><b>=
+Assistant Professor</b></font></p><p class=3D"x_x_MsoNormal" style=3D"font-famil=
+y:Calibri,Helvetica,sans-serif; font-size:12pt; margin-top:0px; margin-botto=
+m:0px"><span style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-seri=
+f">&nbsp;</span></p><p class=3D"x_x_MsoNormal" style=3D"font-family:Calibri,Helv=
+etica,sans-serif; font-size:12pt; margin-top:0px; margin-bottom:0px"><span s=
+tyle=3D"font-size:9pt; font-family:Arial,sans-serif; color:rgb(19,27,87)">Nott=
+ingham University Business School OMIS/ Faculty of Social Science<br>Univers=
+ity of Nottingham</span><sub><span style=3D"font-size:11.0pt; font-family:&quo=
+t;Arial&quot;,sans-serif"></span></sub></p><p class=3D"x_x_MsoNormal" style=3D"f=
+ont-family:Calibri,Helvetica,sans-serif; font-size:12pt; margin-top:0px; mar=
+gin-bottom:0px"><span style=3D"font-size:9pt; font-family:Arial,sans-serif; co=
+lor:rgb(19,27,87)">A20, Highfield House</span></p><p class=3D"x_x_MsoNormal" s=
+tyle=3D"font-family:Calibri,Helvetica,sans-serif; font-size:12pt; margin-top:0=
+px; margin-bottom:0px"><span style=3D"font-size:9pt; font-family:Arial,sans-se=
+rif; color:rgb(19,27,87)">University Park</span><sub><span style=3D"font-size:=
+11.0pt; font-family:&quot;Arial&quot;,sans-serif"></span></sub></p><p class=3D=
+"x_x_MsoNormal" style=3D"font-family:Calibri,Helvetica,sans-serif; font-size:1=
+2pt; margin-top:0px; margin-bottom:0px"><span style=3D"font-size:9pt; font-fam=
+ily:Arial,sans-serif; color:rgb(19,27,87)">Nottingham, NG7 2RD</span></p><p =
+class=3D"x_x_MsoNormal" style=3D"font-family:Calibri,Helvetica,sans-serif; font-=
+size:12pt; margin-top:0px; margin-bottom:0px"><span style=3D"font-size:9.0pt; =
+font-family:&quot;Arial&quot;,sans-serif">&nbsp;</span></p><p class=3D"x_x_Mso=
+Normal" style=3D"font-family:Calibri,Helvetica,sans-serif; font-size:12pt; mar=
+gin-top:0px; margin-bottom:0px"><span style=3D"font-size:9pt; font-family:Aria=
+l,sans-serif; color:rgb(19,27,87)">+44 (0) 115 8283072<b>&nbsp;</b></span><b=
+><span style=3D"font-size:9pt; font-family:Calibri,sans-serif; color:rgb(19,27=
+,87)">| </span></b><span class=3D"x_x_MsoHyperlink"><span style=3D"font-size:9.0=
+pt; font-family:&quot;Arial&quot;,sans-serif"><a href=3D"http://nottingham.ac.=
+uk/" target=3D"_blank">caroline.emberson@nottingham.ac.uk</a></span></span><sp=
+an style=3D"font-size:11.0pt; font-family:&quot;Arial&quot;,sans-serif"></span=
+></p><p class=3D"x_x_MsoNormal" style=3D"font-family:Calibri,Helvetica,sans-seri=
+f; font-size:12pt; margin-top:0px; margin-bottom:0px"><br></p><p class=3D"x_x_=
+MsoNormal" style=3D"margin-top:0px; margin-bottom:0px"><font face=3D"Arial, sans=
+-serif"><span style=3D"font-size:12px">Please note that my working days are Mo=
+nday, Tuesday, Thursday and Friday</span></font></p><p class=3D"x_x_MsoNormal"=
+ style=3D"margin-top:0px; margin-bottom:0px"><font face=3D"Arial, sans-serif"><s=
+pan style=3D"font-size:12px"><br></span></font></p><p class=3D"x_x_MsoNormal" st=
+yle=3D"font-family:Calibri,Helvetica,sans-serif; font-size:12pt; margin-top:0p=
+x; margin-bottom:0px"><b><span lang=3D"EN-US" style=3D"font-size:9pt; font-famil=
+y:Georgia,serif; color:rgb(21,118,158)">Follow us</span></b><span lang=3D"EN-U=
+S" style=3D"font-size:9pt; font-family:Calibri,sans-serif; color:rgb(25,25,25)=
+"></span></p><p class=3D"x_x_MsoNormal" style=3D"font-family:Calibri,Helvetica,s=
+ans-serif; font-size:12pt; margin-top:0px; margin-bottom:0px"><u style=3D""><s=
+pan lang=3D"EN-US" style=3D"font-size:9pt; font-family:Arial,sans-serif; color:r=
+gb(0,0,233)"><a href=3D"http://facebook.com/TheUniofNottingham"><span style=3D"c=
+olor:rgb(0,0,233)">Facebook.com/UniofNottingham</span></a></span></u><span l=
+ang=3D"EN-US" style=3D"font-size:9pt; font-family:Arial,sans-serif; color:rgb(25=
+,25,25)"></span></p><p class=3D"x_x_MsoNormal" style=3D"font-family:Calibri,Helv=
+etica,sans-serif; font-size:12pt; margin-top:0px; margin-bottom:0px"><u styl=
+e=3D""><span lang=3D"EN-US" style=3D"font-size:9pt; font-family:Arial,sans-serif; =
+color:rgb(0,0,233)"><a href=3D"http://twitter.com/UniofNottingham"><span style=
+=3D"color:rgb(0,0,233)">Twitter.com/UniofNottingham</span></a></span></u><span=
+ lang=3D"EN-US" style=3D"font-size:9pt; font-family:Arial,sans-serif; color:rgb(=
+25,25,25)"></span></p><p class=3D"x_x_MsoNormal" style=3D"font-family:Calibri,He=
+lvetica,sans-serif; font-size:12pt; margin-top:0px; margin-bottom:0px"><u st=
+yle=3D""><span lang=3D"EN-US" style=3D"font-size:9pt; font-family:Arial,sans-serif=
+; color:rgb(0,0,233)"><a href=3D"http://youtube.com/nottmuniversity"><span sty=
+le=3D"color:rgb(0,0,233)">Youtube.com/nottmuniversity</span></a></span></u><sp=
+an lang=3D"EN-US" style=3D"font-size:9pt; font-family:Arial,sans-serif; color:rg=
+b(25,25,25)"></span></p><p class=3D"x_x_MsoNormal" style=3D"font-family:Calibri,=
+Helvetica,sans-serif; font-size:12pt; margin-top:0px; margin-bottom:0px"><u =
+style=3D""><span lang=3D"EN-US" style=3D"font-size:9pt; font-family:Arial,sans-ser=
+if; color:rgb(0,0,233)"><a href=3D"http://instagram.com/uniofnottingham"><span=
+ style=3D"color:rgb(0,0,233)">Instagram.com/uniofnottingham</span></a></span><=
+/u><span lang=3D"EN-US" style=3D"font-size:9pt; font-family:Arial,sans-serif; co=
+lor:rgb(25,25,25)"></span></p><p class=3D"x_x_MsoNormal" style=3D"font-family:Ca=
+libri,Helvetica,sans-serif; font-size:12pt; margin-top:0px; margin-bottom:0p=
+x"><u style=3D""><span lang=3D"EN-US" style=3D"font-size:9pt; font-family:Arial,sa=
+ns-serif; color:rgb(0,0,233)"><a href=3D"http://linkedin.com/company/universit=
+y-of-nottingham"><span style=3D"color:rgb(0,0,233)">Linkedin.com/company/unive=
+rsity-of-nottingham</span></a></span></u></p><p class=3D"x_x_MsoNormal" style=3D=
+"font-family:Calibri,Helvetica,sans-serif; font-size:12pt; margin-top:0px; m=
+argin-bottom:0px"><u style=3D""><span lang=3D"EN-US" style=3D"font-size:9pt; font-=
+family:Arial,sans-serif; color:rgb(0,0,233)"><a href=3D"http://www.foursquare.=
+com/uniofnottingham"><span style=3D"color:rgb(0,0,233)">F</span>oursquare.com/=
+uniofnottingham</a></span></u></p><p class=3D"x_x_MsoNormal" style=3D"font-famil=
+y:Calibri,Helvetica,sans-serif; font-size:12pt; margin-top:0px; margin-botto=
+m:0px"><u style=3D""><span lang=3D"EN-US" style=3D"font-size:9pt; font-family:Aria=
+l,sans-serif; color:rgb(0,0,233)"><span style=3D"text-decoration:none">&nbsp;<=
+/span></span></u></p><br><p style=3D"font-family:Calibri,Helvetica,sans-serif;=
+ font-size:12pt; margin-top:0px; margin-bottom:0px"></p></div><table id=3D"x_x=
+_pbpsiglinktable"><tbody><tr><td><a href=3D"https://outlook.office.com/bookwit=
+hme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&=
+amp;ep=3DbwmEmailSignature"><img src=3D"https://res-h3.public.cdn.office.net/ass=
+ets/bookwithme/misc/CalendarPerson20px.png"></a></td><td></td><td><a href=3D"h=
+ttps://outlook.office.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@e=
+xmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature" style=3D"text-decor=
+ation:none; color:rgb(0,120,212)">Book time to meet with me</a></td><td><tab=
+le></table></td></tr></tbody></table></div></div></div><div id=3D"x_x_appendon=
+send"></div><hr tabindex=3D"-1" style=3D"display:inline-block; width:98%"><div i=
+d=3D"x_x_divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" color=3D"#000=
+000" style=3D"font-size:11pt"><b>From:</b> Scott Moser (staff) &lt;ldzsm2@exma=
+il.nottingham.ac.uk&gt;<br><b>Sent:</b> 29 October 2023 19:18<br><b>To:</b> =
+Caroline Emberson (staff) &lt;lizce@exmail.nottingham.ac.uk&gt;<br><b>Cc:</b=
+> Selim Yilmaz &lt;ldxsy3@exmail.nottingham.ac.uk&gt;<br><b>Subject:</b> Re:=
+ GNSUM meeting notes 20-10-2023</font> <div>&nbsp;</div></div><style type=3D"t=
+ext/css" style=3D"display:none">
+<!--
+p
+	{margin-top:0;
+	margin-bottom:0}
+-->
+</style><div dir=3D"ltr"><div class=3D"x_x_x_elementToProof" style=3D"font-family=
+:Aptos,Aptos_EmbeddedFont,Aptos_MSFontService,Calibri,Helvetica,sans-serif; =
+font-size:12pt; color:rgb(0,0,0)">Oof,&nbsp; I have not been able to send th=
+e email I had intended.&nbsp; I spend Friday afternoon on this project and m=
+ade some progress.&nbsp; But am not in a position to write it up to you all.=
+&nbsp; Perhaps a video chat?&nbsp; Or a video message next week?</div><div c=
+lass=3D"x_x_x_elementToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFont,Apto=
+s_MSFontService,Calibri,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,=
+0)"><br></div><div class=3D"x_x_x_elementToProof" style=3D"font-family:Aptos,Apt=
+os_EmbeddedFont,Aptos_MSFontService,Calibri,Helvetica,sans-serif; font-size:=
+12pt; color:rgb(0,0,0)">In short: your data is very interesting.&nbsp; And I=
+ think presents new and exciting methodological challenges/ opportunities. L=
+ets talk.&nbsp; <br></div><div class=3D"x_x_x_elementToProof" style=3D"font-fami=
+ly:Aptos,Aptos_EmbeddedFont,Aptos_MSFontService,Calibri,Helvetica,sans-serif=
+; font-size:12pt; color:rgb(0,0,0)">scott</div><div class=3D"x_x_x_elementToPr=
+oof" style=3D"font-family:Aptos,Aptos_EmbeddedFont,Aptos_MSFontService,Calibri=
+,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)">ps. I'm sorry for w=
+hatever nonsense I have already espouced, and for whatever nonsense I will (=
+surely) espose in the future!</div><div class=3D"x_x_x_elementToProof" style=3D"=
+font-family:Aptos,Aptos_EmbeddedFont,Aptos_MSFontService,Calibri,Helvetica,s=
+ans-serif; font-size:12pt; color:rgb(0,0,0)"><br></div><div class=3D"x_x_x_ele=
+mentToProof" style=3D"font-family:Aptos,Aptos_EmbeddedFont,Aptos_MSFontService=
+,Calibri,Helvetica,sans-serif; font-size:12pt; color:rgb(0,0,0)"><br></div><=
+div id=3D"x_x_x_appendonsend"></div><hr tabindex=3D"-1" style=3D"display:inline-bl=
+ock; width:98%"><div id=3D"x_x_x_divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri,=
+ sans-serif" color=3D"#000000" style=3D"font-size:11pt"><b>From:</b> Scott Moser=
+ (staff) &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Sent:</b> Saturday, Oc=
+tober 28, 2023 10:57 AM<br><b>To:</b> Caroline Emberson (staff) &lt;lizce@ex=
+mail.nottingham.ac.uk&gt;<br><b>Cc:</b> Selim Yilmaz &lt;ldxsy3@exmail.notti=
+ngham.ac.uk&gt;<br><b>Subject:</b> Re: GNSUM meeting notes 20-10-2023</font>=
+ <div>&nbsp;</div></div><div><div class=3D"x_x_x_x_WordSection1" dir=3D"ltr"><p =
+class=3D"x_x_x_x_MsoNormal"><span style=3D"">Dear Caroline,</span></p><p class=3D"=
+x_x_x_x_MsoNormal"><span style=3D"">&nbsp;</span></p><p class=3D"x_x_x_x_MsoNorm=
+al"><span style=3D"">I=E2=80=99ve spent the afternoon reading and thinking about pre=
+valence estimation.<span style=3D"">&nbsp; </span>I have thoughts and comments=
+, but I also need to reply to your emails.<span style=3D"">&nbsp; </span>Let m=
+e do the second first.<span style=3D"">&nbsp; </span></span></p><p class=3D"x_x_=
+x_x_MsoNormal"><span style=3D"">I=E2=80=99m sorry, but I simply cannot stand MS Outl=
+ook. So my replies are in the attached =E2=80=98memo.=E2=80=99<span style=3D"">&nbsp; </sp=
+an></span></p><p class=3D"x_x_x_x_MsoNormal"><span style=3D"">&nbsp;</span></p><=
+p class=3D"x_x_x_x_MsoNormal"><span style=3D"">&nbsp;</span></p><p class=3D"x_x_x_=
+x_MsoNormal"><span style=3D"">&nbsp;</span></p><p class=3D"x_x_x_x_MsoNormal"><s=
+pan style=3D"">&nbsp;</span></p><p class=3D"x_x_x_x_MsoNormal"><span style=3D"">&n=
+bsp;</span></p><p class=3D"x_x_x_x_MsoNormal"><span style=3D"">&nbsp;</span></p>=
+<p class=3D"x_x_x_x_MsoNormal"><span style=3D"">&nbsp;</span></p><div style=3D"bor=
+der:none; border-top:solid #B5C4DF 1.0pt; padding:3.0pt 0cm 0cm 0cm"><p clas=
+s=3D"x_x_x_x_MsoNormal"><a name=3D"x_x_x_x__MailOriginal"><b><span style=3D"font-s=
+ize:12pt; color:black">From: </span></b></a><span style=3D""><span style=3D"font=
+-size:12pt; color:black">&quot;Caroline Emberson (staff)&quot; &lt;lizce@exm=
+ail.nottingham.ac.uk&gt;<br><b>Date: </b>Thursday, 26 October 2023 at 10:47<=
+br><b>To: </b>&quot;Scott Moser (staff)&quot; &lt;ldzsm2@exmail.nottingham.a=
+c.uk&gt;<br><b>Subject: </b>Re: GNSUM meeting notes 20-10-2023</span></span>=
+</p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"">&n=
+bsp;</span></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""=
+><span style=3D"font-size:12pt; color:black">No problem Scott. I have looked a=
+gain at the GFEMS recommendations and a NSUM and RDS combination is advocate=
+d here too. I shall make some time to dig into the literature that Blazek &a=
+mp; Feehan and Kysia et al. cite in article 4 and article 6 respectively of =
+the recent GFEMS methodological briefing - which can be found here:&nbsp;</s=
+pan></span><a href=3D"https://www.gfems.org/wp-content/uploads/2021/10/Revised=
+_GFEMS_MethodologiesBooklet.pdf"><span style=3D""><span style=3D"font-size:12.0p=
+t">https://www.gfems.org/wp-content/uploads/2021/10/Revised_GFEMS_Methodolog=
+iesBooklet.pdf</span></span><span style=3D""></span></a><span style=3D""><span s=
+tyle=3D"font-size:12pt; color:black">&nbsp;and see if I can start to build thi=
+s into our draft.</span></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><=
+span style=3D""><span style=3D"font-size:12pt; color:black">&nbsp;</span></span>=
+</p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font=
+-size:12pt; color:black">Best wishes</span></span></p></div><div><p class=3D"x=
+_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt; color:black">C=
+aroline</span></span></p></div><div><div><p class=3D"x_x_x_x_MsoNormal"><span =
+style=3D""><span style=3D"font-size:12pt; color:black">&nbsp;</span></span></p><=
+/div><div id=3D"x_x_x_x_Signature"><div><div><p class=3D"x_x_x_x_MsoNormal"><spa=
+n style=3D""><span style=3D"font-size:12pt; color:black">&nbsp;</span></span></p=
+></div><div id=3D"x_x_x_x_divtagdefaultwrapper"><p class=3D"x_x_x_x_MsoNormal"><=
+span style=3D""><b><span style=3D"font-size:12pt; font-family:Arial,sans-serif; =
+color:rgb(0,155,189)">Dr Caroline Emberson (preferred pronouns she/her)</spa=
+n></b></span><span style=3D""><span style=3D"font-size:12pt; color:black"></span=
+></span></p><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><b><span style=3D"font=
+-size:12pt; font-family:Arial,sans-serif; color:rgb(19,27,87)">Assistant Pro=
+fessor</span></b></span><span style=3D""><span style=3D"font-size:12pt; color:bl=
+ack"></span></span></p><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span sty=
+le=3D"font-size:9pt; font-family:Arial,sans-serif; color:black">&nbsp;</span><=
+/span><span style=3D""><span style=3D"font-size:12pt; color:black"></span></span=
+></p><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:9pt;=
+ font-family:Arial,sans-serif; color:rgb(19,27,87)">Nottingham University Bu=
+siness School OMIS/ Faculty of Social Science<br>University of Nottingham</s=
+pan></span><span style=3D""><span style=3D"font-size:12pt; color:black"></span><=
+/span></p><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size=
+:9pt; font-family:Arial,sans-serif; color:rgb(19,27,87)">A20, Highfield Hous=
+e</span></span><span style=3D""><span style=3D"font-size:12pt; color:black"></sp=
+an></span></p><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-=
+size:9pt; font-family:Arial,sans-serif; color:rgb(19,27,87)">University Park=
+</span></span><span style=3D""><span style=3D"font-size:12pt; color:black"></spa=
+n></span></p><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-s=
+ize:9pt; font-family:Arial,sans-serif; color:rgb(19,27,87)">Nottingham, NG7 =
+2RD</span></span><span style=3D""><span style=3D"font-size:12pt; color:black"></=
+span></span></p><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"fon=
+t-size:9pt; font-family:Arial,sans-serif; color:black">&nbsp;</span></span><=
+span style=3D""><span style=3D"font-size:12pt; color:black"></span></span></p><p=
+ class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:9pt; font-f=
+amily:Arial,sans-serif; color:rgb(19,27,87)">+44 (0) 115 8283072<b>&nbsp;</b=
+></span></span><span style=3D""><b><span style=3D"font-size:9pt; color:rgb(19,27=
+,87)">| </span></b></span><span style=3D""></span><a href=3D"http://nottingham.a=
+c.uk/" target=3D"_blank"><span style=3D""><span style=3D"font-size:9.0pt; font-fam=
+ily:&quot;Arial&quot;,sans-serif">caroline.emberson@nottingham.ac.uk</span><=
+/span><span style=3D""></span></a><span style=3D""><span style=3D"font-size:12pt; =
+color:black"></span></span></p><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><=
+span style=3D"font-size:12pt; color:black">&nbsp;</span></span></p><p class=3D"x=
+_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:9pt; font-family:Ari=
+al,sans-serif; color:black">Please note that my working days are Monday, Tue=
+sday, Thursday and Friday</span><span style=3D"color:black"></span></span></p>=
+<p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"color:black">&nbsp;=
+</span></span></p><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><b><span lang=3D=
+"EN-US" style=3D"font-size:9pt; font-family:Georgia,serif; color:rgb(21,118,15=
+8)">Follow us</span></b></span><span style=3D""><span style=3D"font-size:12pt; c=
+olor:black"></span></span></p><p class=3D"x_x_x_x_MsoNormal"><span style=3D""></=
+span><a href=3D"http://facebook.com/TheUniofNottingham"><span style=3D""><span l=
+ang=3D"EN-US" style=3D"font-size:9pt; font-family:Arial,sans-serif; color:rgb(0,=
+0,233)">Facebook.com/UniofNottingham</span></span></a><span style=3D""><span s=
+tyle=3D"font-size:12pt; color:black"></span></span></p><p class=3D"x_x_x_x_MsoNo=
+rmal"><span style=3D""></span><a href=3D"http://twitter.com/UniofNottingham"><sp=
+an style=3D""><span lang=3D"EN-US" style=3D"font-size:9pt; font-family:Arial,sans-=
+serif; color:rgb(0,0,233)">Twitter.com/UniofNottingham</span></span></a><spa=
+n style=3D""><span style=3D"font-size:12pt; color:black"></span></span></p><p cl=
+ass=3D"x_x_x_x_MsoNormal"><span style=3D""></span><a href=3D"http://youtube.com/no=
+ttmuniversity"><span style=3D""><span lang=3D"EN-US" style=3D"font-size:9pt; font-=
+family:Arial,sans-serif; color:rgb(0,0,233)">Youtube.com/nottmuniversity</sp=
+an></span></a><span style=3D""><span style=3D"font-size:12pt; color:black"></spa=
+n></span></p><p class=3D"x_x_x_x_MsoNormal"><span style=3D""></span><a href=3D"htt=
+p://instagram.com/uniofnottingham"><span style=3D""><span lang=3D"EN-US" style=3D"=
+font-size:9pt; font-family:Arial,sans-serif; color:rgb(0,0,233)">Instagram.c=
+om/uniofnottingham</span></span></a><span style=3D""><span style=3D"font-size:12=
+pt; color:black"></span></span></p><p class=3D"x_x_x_x_MsoNormal"><span style=3D=
+""></span><a href=3D"http://linkedin.com/company/university-of-nottingham"><sp=
+an style=3D""><span lang=3D"EN-US" style=3D"font-size:9pt; font-family:Arial,sans-=
+serif; color:rgb(0,0,233)">Linkedin.com/company/university-of-nottingham</sp=
+an></span></a><span style=3D""><span style=3D"font-size:12pt; color:black"></spa=
+n></span></p><p class=3D"x_x_x_x_MsoNormal"><span style=3D""></span><a href=3D"htt=
+p://www.foursquare.com/uniofnottingham"><span style=3D""><span lang=3D"EN-US" st=
+yle=3D"font-size:9pt; font-family:Arial,sans-serif; color:rgb(0,0,233)">F</spa=
+n></span><span style=3D""><span lang=3D"EN-US" style=3D"font-size:9.0pt; font-fami=
+ly:&quot;Arial&quot;,sans-serif">oursquare.com/uniofnottingham</span></span>=
+<span style=3D""></span></a><span style=3D""><span style=3D"font-size:12pt; color:=
+black"></span></span></p><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span l=
+ang=3D"EN-US" style=3D"font-size:9pt; font-family:Arial,sans-serif; color:rgb(0,=
+0,233)">&nbsp;</span></span><span style=3D""><span style=3D"font-size:12pt; colo=
+r:black"></span></span></p><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span=
+ style=3D"color:black">&nbsp;</span></span></p></div><span style=3D""></span><sp=
+an style=3D""></span><span style=3D""></span><span style=3D""></span><table class=3D=
+"x_x_x_x_MsoNormalTable" border=3D"0" cellpadding=3D"0" id=3D"x_x_x_x_pbpsiglinkta=
+ble" style=3D""><tbody><tr style=3D""><td style=3D"padding:.75pt .75pt .75pt .75pt=
+"><p class=3D"x_x_x_x_MsoNormal"><span style=3D""></span><a href=3D"https://outloo=
+k.office.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.notting=
+ham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature"><span style=3D""><span style=3D"te=
+xt-decoration:none; color:windowtext"><span style=3D""><span style=3D"border:1pt=
+ solid windowtext; padding:0cm; color:blue"><span style=3D""><img border=3D"0" w=
+idth=3D"32" height=3D"32" id=3D"x_x_x_x__x0000_i1031" alt=3D"Image removed by sender=
+." data-outlook-trace=3D"F:0|T:4" src=3D"cid:~WRD0000.jpg"></span></span></span>=
+</span></span></a><span style=3D""><span style=3D""></span></span></p></td><td s=
+tyle=3D"padding:.75pt .75pt .75pt .75pt"><span style=3D""></span></td><td style=3D=
+"padding:.75pt .75pt .75pt .75pt"><p class=3D"x_x_x_x_MsoNormal"><span style=3D"=
+"></span><a href=3D"https://outlook.office.com/bookwithme/user/68c1e07fca314c1=
+a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature=
+"><span style=3D""><span style=3D"color:rgb(0,120,212)">Book time to meet with m=
+e</span></span><span style=3D""></span></a><span style=3D""><span style=3D""></spa=
+n></span></p></td><td style=3D"padding:.75pt .75pt .75pt .75pt"><span style=3D""=
+></span><table class=3D"x_x_x_x_MsoNormalTable" border=3D"0" cellpadding=3D"0" sty=
+le=3D""><tbody><tr style=3D""><td style=3D"padding:.75pt .75pt .75pt .75pt"><span =
+style=3D""></span></td></tr></tbody></table><span style=3D""></span></td></tr></=
+tbody></table></div></div></div><div class=3D"x_x_x_x_MsoNormal" align=3D"center=
+" style=3D"text-align:center"><span style=3D""><span style=3D"color:white"><hr siz=
+e=3D"0" width=3D"98%" align=3D"center"></span></span></div><div id=3D"x_x_x_x_divRpl=
+yFwdMsg"><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><b><span style=3D"color:b=
+lack">From:</span></b></span><span style=3D""><span style=3D"color:black"> Scott=
+ Moser (staff) &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Sent:</b> 24 Oct=
+ober 2023 18:06<br><b>To:</b> Caroline Emberson (staff) &lt;lizce@exmail.not=
+tingham.ac.uk&gt;; Selim Yilmaz &lt;ldxsy3@exmail.nottingham.ac.uk&gt;<br><b=
+>Subject:</b> Re: GNSUM meeting notes 20-10-2023</span></span><span style=3D""=
+><span style=3D""> </span></span></p><div><p class=3D"x_x_x_x_MsoNormal"><span s=
+tyle=3D""><span style=3D"">&nbsp;</span></span></p></div></div><div><div><p clas=
+s=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt; color:blac=
+k">Hi Caroline,</span></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><sp=
+an style=3D""><span style=3D"font-size:12pt; color:black">&nbsp;</span></span></=
+p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-s=
+ize:12pt; color:black">You are far too kind!&nbsp; Thank you for your kind u=
+nderstanding and esp. your patience.&nbsp; I'm slammed with teaching/ admin =
+until Friday.&nbsp; I'll write more as soon as I can.</span></span></p></div=
+><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12p=
+t; color:black">Enjoy your travels!</span></span></p></div><div><p class=3D"x_=
+x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt; color:black">Mo=
+re soon,</span></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span styl=
+e=3D""><span style=3D"font-size:12pt; color:black">scott</span></span></p></div>=
+<div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt=
+; color:black">&nbsp;</span></span></p></div><div class=3D"x_x_x_x_MsoNormal" =
+align=3D"center" style=3D"text-align:center"><span style=3D""><span style=3D""><hr s=
+ize=3D"0" width=3D"98%" align=3D"center"></span></span></div><div id=3D"x_x_x_x_x_di=
+vRplyFwdMsg"><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><b><span style=3D"col=
+or:black">From:</span></b></span><span style=3D""><span style=3D"color:black"> C=
+aroline Emberson (staff) &lt;lizce@exmail.nottingham.ac.uk&gt;<br><b>Sent:</=
+b> Monday, October 23, 2023 4:27 PM<br><b>To:</b> Scott Moser (staff) &lt;ld=
+zsm2@exmail.nottingham.ac.uk&gt;; Selim Yilmaz &lt;ldxsy3@exmail.nottingham.=
+ac.uk&gt;<br><b>Subject:</b> Re: GNSUM meeting notes 20-10-2023</span></span=
+><span style=3D""><span style=3D""> </span></span></p><div><p class=3D"x_x_x_x_Mso=
+Normal"><span style=3D""><span style=3D"">&nbsp;</span></span></p></div></div><d=
+iv><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:1=
+2pt; color:black">Hi Scott,</span></span></p></div><div><p class=3D"x_x_x_x_Ms=
+oNormal"><span style=3D""><span style=3D"font-size:12pt; color:black">&nbsp;</sp=
+an></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span s=
+tyle=3D"font-size:12pt; color:black">Firstly, I shall be eternally grateful to=
+ you for persisting with this. I greatly appreciate your insight. This proje=
+ct does not stand or fall by the use of a particular statistical technique w=
+hich, if I understand your email correctly, is fortunate since our attempts =
+to&nbsp; use Feehan and Salganik's protocol seems to force us into making st=
+atistical assumptions about the relationship between our sample and its fram=
+e that we cannot justify.</span></span></p></div><div><p class=3D"x_x_x_x_MsoN=
+ormal"><span style=3D""><span style=3D"font-size:12pt; color:black">&nbsp;</span=
+></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span cla=
+ss=3D"x_x_x_x_xxcontentpasted0"><span style=3D"font-size:12pt; color:black">I am=
+ sorry that I am not so familiar with the terminology that you have used, so=
+ I am not able to comment with any confidence&nbsp; whether '<span style=3D"ba=
+ckground-color:white">we think/ can argue that $s_F$ is representative of $F=
+$.' If you are able to clarify this, then we can perhaps direct Selim with m=
+ore confidence.&nbsp;</span></span></span></span><span style=3D""><span style=3D=
+"font-size:12pt; color:black"></span></span></p></div><div><div><p class=3D"x_=
+x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt; color:black; ba=
+ckground-color:white"><br style=3D""><br style=3D""></span></span><span style=3D""=
+><span style=3D"font-size:12pt; color:black"></span></span></p></div></div><di=
+v><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span class=3D"x_x_x_x_xxcontent=
+pasted0"><span style=3D"font-size:12pt; color:black; background-color:white">&=
+nbsp;As f</span></span></span><span style=3D""><span class=3D"x_x_x_x_xxcontentp=
+asted0"><span style=3D"font-size:12pt; color:black">ar as I am concerned the b=
+ig prize is a statistical viable population estimate - by a means that our d=
+ata will support.</span></span></span><span style=3D""><span style=3D"font-size:=
+12pt; color:black"></span></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"=
+><span style=3D""><span style=3D"font-size:12pt; color:black">&nbsp;</span></spa=
+n></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"fo=
+nt-size:12pt; color:black">However, I am very pleased that you do seem to in=
+dicate that we might be able to proceed with a RDS/NSUM approach - this woul=
+d seem to be very good news-&nbsp; although I do recognise that in doing thi=
+s, we would have to live with the drawbacks of the NSUM which again makes ce=
+rtain problematic assumptions (as detailed by Feehan and Salganik 2016). I a=
+lso am glad that you think we do have ARD - if not enriched ARD.</span></spa=
+n></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"fo=
+nt-size:12pt; color:black">&nbsp;</span></span></p></div><div><p class=3D"x_x_=
+x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt; color:black">The =
+'stop- start' process does not make this any easier as it is difficult to ke=
+ep the technical detail of these procedures in one's head. Do you think that=
+ we could perhaps arrange an&nbsp;in-person Friday session (1/2 or full day?=
+) for us to try and work through this between us - or, might another approac=
+h suit you better?</span></span></p></div><div><p class=3D"x_x_x_x_MsoNormal">=
+<span style=3D""><span style=3D"font-size:12pt; color:black">&nbsp;</span></span=
+></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"fon=
+t-size:12pt; color:black">Unfortunately, I am in Portsmouth for a workshop t=
+his Friday, but I could clear my diary on 3 November if you think trying to =
+work this through in a longer in-person session might be more efficient?</sp=
+an></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span s=
+tyle=3D"font-size:12pt; color:black">&nbsp;</span></span></p></div><div><p cla=
+ss=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt; color:bla=
+ck">Best wishes</span></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><sp=
+an style=3D""><span style=3D"font-size:12pt; color:black">Caroline</span></span>=
+</p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font=
+-size:12pt; color:black">&nbsp;</span></span></p></div><div><p class=3D"x_x_x_=
+x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt; color:black">&nbsp;=
+</span></span></p></div><div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D"=
+"><span style=3D"font-size:12pt; color:black">&nbsp;</span></span></p></div><d=
+iv id=3D"x_x_x_x_x_x_Signature"><div><div><p class=3D"x_x_x_x_MsoNormal"><span s=
+tyle=3D""><span style=3D"font-size:12pt; color:black">&nbsp;</span></span></p></=
+div><div id=3D"x_x_x_x_x_x_divtagdefaultwrapper"><p class=3D"x_x_x_x_xxmsonormal=
+"><span style=3D""><b><span style=3D"font-size:12pt; font-family:Arial,sans-seri=
+f; color:rgb(0,155,189)">Dr Caroline Emberson (preferred pronouns she/her)</=
+span></b></span><span style=3D""><span style=3D"font-size:12pt; color:black"></s=
+pan></span></p><p class=3D"x_x_x_x_xxmsonormal"><span style=3D""><b><span style=3D=
+"font-size:12pt; font-family:Arial,sans-serif; color:rgb(19,27,87)">Assistan=
+t Professor</span></b></span><span style=3D""><span style=3D"font-size:12pt; col=
+or:black"></span></span></p><p class=3D"x_x_x_x_xxmsonormal"><span style=3D""><s=
+pan style=3D"font-size:9pt; font-family:Arial,sans-serif; color:black">&nbsp;<=
+/span></span><span style=3D""><span style=3D"font-size:12pt; color:black"></span=
+></span></p><p class=3D"x_x_x_x_xxmsonormal"><span style=3D""><span style=3D"font-=
+size:9pt; font-family:Arial,sans-serif; color:rgb(19,27,87)">Nottingham Univ=
+ersity Business School OMIS/ Faculty of Social Science<br>University of Nott=
+ingham</span></span><span style=3D""><span style=3D"font-size:12pt; color:black"=
+></span></span></p><p class=3D"x_x_x_x_xxmsonormal"><span style=3D""><span style=
+=3D"font-size:9pt; font-family:Arial,sans-serif; color:rgb(19,27,87)">A20, Hig=
+hfield House</span></span><span style=3D""><span style=3D"font-size:12pt; color:=
+black"></span></span></p><p class=3D"x_x_x_x_xxmsonormal"><span style=3D""><span=
+ style=3D"font-size:9pt; font-family:Arial,sans-serif; color:rgb(19,27,87)">Un=
+iversity Park</span></span><span style=3D""><span style=3D"font-size:12pt; color=
+:black"></span></span></p><p class=3D"x_x_x_x_xxmsonormal"><span style=3D""><spa=
+n style=3D"font-size:9pt; font-family:Arial,sans-serif; color:rgb(19,27,87)">N=
+ottingham, NG7 2RD</span></span><span style=3D""><span style=3D"font-size:12pt; =
+color:black"></span></span></p><p class=3D"x_x_x_x_xxmsonormal"><span style=3D""=
+><span style=3D"font-size:9pt; font-family:Arial,sans-serif; color:black">&nbs=
+p;</span></span><span style=3D""><span style=3D"font-size:12pt; color:black"></s=
+pan></span></p><p class=3D"x_x_x_x_xxmsonormal"><span style=3D""><span style=3D"fo=
+nt-size:9pt; font-family:Arial,sans-serif; color:rgb(19,27,87)">+44 (0) 115 =
+8283072<b>&nbsp;</b></span></span><span style=3D""><b><span style=3D"font-size:9=
+pt; color:rgb(19,27,87)">| </span></b></span><span style=3D""></span><a href=3D"=
+http://nottingham.ac.uk/" target=3D"_blank"><span style=3D""><span style=3D"font-s=
+ize:9.0pt; font-family:&quot;Arial&quot;,sans-serif">caroline.emberson@notti=
+ngham.ac.uk</span></span><span style=3D""></span></a><span style=3D""><span styl=
+e=3D"font-size:12pt; color:black"></span></span></p><p class=3D"x_x_x_x_xxmsonor=
+mal"><span style=3D""><span style=3D"font-size:12pt; color:black">&nbsp;</span><=
+/span></p><p class=3D"x_x_x_x_xxmsonormal"><span style=3D""><span style=3D"font-si=
+ze:9pt; font-family:Arial,sans-serif; color:black">Please note that my worki=
+ng days are Monday, Tuesday, Thursday and Friday</span><span style=3D"color:bl=
+ack"></span></span></p><p class=3D"x_x_x_x_xxmsonormal"><span style=3D""><span s=
+tyle=3D"color:black">&nbsp;</span></span></p><p class=3D"x_x_x_x_xxmsonormal"><s=
+pan style=3D""><b><span lang=3D"EN-US" style=3D"font-size:9pt; font-family:Georgia=
+,serif; color:rgb(21,118,158)">Follow us</span></b></span><span style=3D""><sp=
+an style=3D"font-size:12pt; color:black"></span></span></p><p class=3D"x_x_x_x_x=
+xmsonormal"><span style=3D""></span><a href=3D"http://facebook.com/TheUniofNotti=
+ngham"><span style=3D""><span lang=3D"EN-US" style=3D"font-size:9pt; font-family:A=
+rial,sans-serif; color:rgb(0,0,233)">Facebook.com/UniofNottingham</span></sp=
+an></a><span style=3D""><span style=3D"font-size:12pt; color:black"></span></spa=
+n></p><p class=3D"x_x_x_x_xxmsonormal"><span style=3D""></span><a href=3D"http://t=
+witter.com/UniofNottingham"><span style=3D""><span lang=3D"EN-US" style=3D"font-si=
+ze:9pt; font-family:Arial,sans-serif; color:rgb(0,0,233)">Twitter.com/UniofN=
+ottingham</span></span></a><span style=3D""><span style=3D"font-size:12pt; color=
+:black"></span></span></p><p class=3D"x_x_x_x_xxmsonormal"><span style=3D""></sp=
+an><a href=3D"http://youtube.com/nottmuniversity"><span style=3D""><span lang=3D"E=
+N-US" style=3D"font-size:9pt; font-family:Arial,sans-serif; color:rgb(0,0,233)=
+">Youtube.com/nottmuniversity</span></span></a><span style=3D""><span style=3D"f=
+ont-size:12pt; color:black"></span></span></p><p class=3D"x_x_x_x_xxmsonormal"=
+><span style=3D""></span><a href=3D"http://instagram.com/uniofnottingham"><span =
+style=3D""><span lang=3D"EN-US" style=3D"font-size:9pt; font-family:Arial,sans-ser=
+if; color:rgb(0,0,233)">Instagram.com/uniofnottingham</span></span></a><span=
+ style=3D""><span style=3D"font-size:12pt; color:black"></span></span></p><p cla=
+ss=3D"x_x_x_x_xxmsonormal"><span style=3D""></span><a href=3D"http://linkedin.com/=
+company/university-of-nottingham"><span style=3D""><span lang=3D"EN-US" style=3D"f=
+ont-size:9pt; font-family:Arial,sans-serif; color:rgb(0,0,233)">Linkedin.com=
+/company/university-of-nottingham</span></span></a><span style=3D""><span styl=
+e=3D"font-size:12pt; color:black"></span></span></p><p class=3D"x_x_x_x_xxmsonor=
+mal"><span style=3D""></span><a href=3D"http://www.foursquare.com/uniofnottingha=
+m"><span style=3D""><span lang=3D"EN-US" style=3D"font-size:9pt; font-family:Arial=
+,sans-serif; color:rgb(0,0,233)">F</span></span><span style=3D""><span lang=3D"E=
+N-US" style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif">ours=
+quare.com/uniofnottingham</span></span><span style=3D""></span></a><span style=
+=3D""><span style=3D"font-size:12pt; color:black"></span></span></p><p class=3D"x_=
+x_x_x_xxmsonormal"><span style=3D""><span lang=3D"EN-US" style=3D"font-size:9pt; f=
+ont-family:Arial,sans-serif; color:rgb(0,0,233)">&nbsp;</span></span><span s=
+tyle=3D""><span style=3D"font-size:12pt; color:black"></span></span></p><p class=
+=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"color:black">&nbsp;</span><=
+/span></p></div><span style=3D""></span><span style=3D""></span><span style=3D""><=
+/span><span style=3D""></span><table class=3D"x_x_x_x_MsoNormalTable" border=3D"0"=
+ cellpadding=3D"0" id=3D"x_x_x_x_x_x_pbpsiglinktable" style=3D""><tbody><tr style=3D=
+""><td style=3D"padding:.75pt .75pt .75pt .75pt"><p class=3D"x_x_x_x_MsoNormal">=
+<span style=3D""></span><a href=3D"https://outlook.office.com/bookwithme/user/68=
+c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmE=
+mailSignature"><span style=3D""><span style=3D"text-decoration:none; color:windo=
+wtext"><span style=3D""><span style=3D"border:1pt solid windowtext; padding:0cm;=
+ color:blue"><span style=3D""><img border=3D"0" width=3D"32" height=3D"32" id=3D"x_x_x=
+_x__x0000_i1028" alt=3D"Image removed by sender." data-outlook-trace=3D"F:0|T:4"=
+ src=3D"cid:~WRD0000.jpg"></span></span></span></span></span></a><span style=3D"=
+"><span style=3D""></span></span></p></td><td style=3D"padding:.75pt .75pt .75pt=
+ .75pt"><span style=3D""></span></td><td style=3D"padding:.75pt .75pt .75pt .75p=
+t"><p class=3D"x_x_x_x_MsoNormal"><span style=3D""></span><a href=3D"https://outlo=
+ok.office.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottin=
+gham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature"><span style=3D""><span style=3D"t=
+ext-decoration:none; color:rgb(0,120,212)">Book time to meet with me</span><=
+/span><span style=3D""></span></a><span style=3D""><span style=3D""></span></span>=
+</p></td><td style=3D"padding:.75pt .75pt .75pt .75pt"><span style=3D""></span><=
+table class=3D"x_x_x_x_MsoNormalTable" border=3D"0" cellpadding=3D"0" style=3D""><tb=
+ody><tr style=3D""><td style=3D"padding:.75pt .75pt .75pt .75pt"><span style=3D"">=
+</span></td></tr></tbody></table><span style=3D""></span></td></tr></tbody></t=
+able></div></div></div><div class=3D"x_x_x_x_MsoNormal" align=3D"center" style=3D"=
+text-align:center"><span style=3D""><span style=3D"color:white"><hr size=3D"0" wid=
+th=3D"98%" align=3D"center"></span></span></div><div id=3D"x_x_x_x_x_x_divRplyFwdM=
+sg"><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><b><span style=3D"color:black"=
+>From:</span></b></span><span style=3D""><span style=3D"color:black"> Scott Mose=
+r (staff) &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Sent:</b> 21 October =
+2023 17:52<br><b>To:</b> Caroline Emberson (staff) &lt;lizce@exmail.nottingh=
+am.ac.uk&gt;; Selim Yilmaz &lt;ldxsy3@exmail.nottingham.ac.uk&gt;<br><b>Subj=
+ect:</b> Re: GNSUM meeting notes 20-10-2023</span></span><span style=3D""><spa=
+n style=3D""> </span></span></p><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D=
+""><span style=3D"">&nbsp;</span></span></p></div></div><div><div><p class=3D"x_=
+x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt; color:black">Ma=
+ny thanks to all.&nbsp; I'm afraid I write with some bad news.&nbsp; But not=
+ as bad as I had earlier thought.&nbsp; I have spend the afternoon (re-)wrap=
+ping my head around things, and reflecting on our meeting yesterday.&nbsp; T=
+oday my approach was to (1) look for replication studies using NSUM/ GNSUM (=
+2) look at the literature citing the original F&amp;G 2016 paper and (3) sta=
+rt to look into alternative estimators, specifically look into papers that u=
+ser RDS and NSUM to estimate the size of hidden populations.</span></span></=
+p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-s=
+ize:12pt; color:black">&nbsp;</span></span></p></div><div><p class=3D"x_x_x_x_=
+MsoNormal"><span style=3D""><span style=3D"font-size:12pt; color:black">&nbsp;</=
+span></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span=
+ style=3D"font-size:12pt; color:black">&nbsp;</span></span></p></div><div><p c=
+lass=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt; color:b=
+lack">### The bad news ###</span></span></p></div><div><p class=3D"x_x_x_x_Mso=
+Normal"><span style=3D""><span style=3D"font-size:12pt; color:black">&nbsp;</spa=
+n></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span st=
+yle=3D"font-size:12pt; color:black">I understand the Exploratory Protocol to b=
+e the steps to arrive at the estimate for the size of the hidden population =
+using eqn. 23 of F&amp;S (2016).&nbsp; The 'innovation' of what they call th=
+e 'modified basic scale-up estimator'&nbsp; is two fold:&nbsp; First they us=
+e the average degree size of everyone in F to everyone in F (this makes sens=
+e);&nbsp; then they use the size of the sample frame ($N_F$) rather than the=
+ total population size ($N$ in eqn. 22).&nbsp; Specifically, in the right-mo=
+st fraction.&nbsp; That is the issue we discussed yesterday regarding the or=
+der in which the divisions were taken.&nbsp; But technically speaking, that =
+is incorrect.&nbsp; I've tried to 'slice' this quantity in a number of ways,=
+ but I think we need the size of the sample frame, $N_F$, in any event.&nbsp=
+; And I really hope I am wrong!</span></span></p></div><div><p class=3D"x_x_x_=
+x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt; color:black">&nbsp;=
+</span></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><sp=
+an style=3D"font-size:12pt; color:black">To wit, the denominator of the right-=
+most fraction of eqn. 23 involves _the size of the frame, F_.&nbsp; Which we=
+ do not have.&nbsp; Actually, it is worse than that, because we definitely t=
+o not have $\hat{d}_{F,F}$.&nbsp; Now, I _think_ -- but do not know -- that =
+what the Protocol it trying to do is to estimate these quantities from the s=
+ample ($s_F$).&nbsp; I don't know if that is OK or not.&nbsp; I would be mor=
+e convinced if we knew s_F was a representative sample from F.&nbsp; But I t=
+hink this issue was discussed yesterday.</span></span></p></div><div><p clas=
+s=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt; color:blac=
+k">&nbsp;</span></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span sty=
+le=3D""><span style=3D"font-size:12pt; color:black">Alternatively, we can try to=
+ estimate the average degree from F to F (called $\hat{d}_{F,F}$) using the =
+formula in the bottom-center 'orb' of Figure 4.&nbsp; This is the 'known pop=
+ulation scale-up' I was talking&nbsp;about yesterday.&nbsp; I tried to dig d=
+eeper: $N_{\mathcal{A}}$ is the total size of all the 'probe alter' groups (=
+aka 'pivot groups' or PG).&nbsp; For use, we have one: the size of those tha=
+t have gone through the NRM.&nbsp; From page 161, this group (for us, in gen=
+eral _these_ groups) must belong to the sample frame, F.&nbsp; So:</span></s=
+pan></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"=
+font-size:12pt; color:black">1.If we are going to use the known group-size t=
+o calculate the average personal degree size, then I think we need to assume=
+ that everyone that has gone through the NRM is part of the sample frame.&nb=
+sp; Is this true?&nbsp; I very much doubt it, but again, I really hope I am =
+wrong!</span></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D=
+""><span style=3D"font-size:12pt; color:black">2.In the application(s) of GNSU=
+M I've seen, specifically the following</span></span></p></div><div><p class=
+=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt; color:black=
+">Jing, L., Qu, C., Yu, H., Wang, T., &amp; Cui, Y. (2014). Estimating the s=
+izes of populations at high risk for HIV: A comparison study. <i>PloS One</i=
+>, <i>9</i>(4), e95601. </span></span><a href=3D"https://doi.org/10.1371/journ=
+al.pone.0095601"><span style=3D""><span style=3D"font-size:12.0pt">https://doi.o=
+rg/10.1371/journal.pone.0095601</span></span><span style=3D""></span></a><span=
+ style=3D""><span style=3D"font-size:12pt; color:black"></span></span></p></div>=
+<div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt=
+; color:black">they take a random sample from the population (frame in our c=
+ase) and an RDS/ Vincent link tracing sample from the hidden population.&nbs=
+p; I understand we dont' have the latter, but I don't think we have the form=
+er, either (?).</span></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><sp=
+an style=3D""><span style=3D"font-size:12pt; color:black">2a.&nbsp; I *think * h=
+ave some replication materials from some NSUM/ GNSUM published studies.&nbsp=
+;&nbsp; Perhaps even the Jing et al.&nbsp; I have simply forgotten since I l=
+ast looked at this in depth in the spring.</span></span></p></div><div><p cl=
+ass=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt; color:bl=
+ack">&nbsp;</span></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span s=
+tyle=3D""><span style=3D"font-size:12pt; color:black">I looked for any paper usi=
+ng their 'modified basic scale-up estimator' (eqn 23) but I couldn't find an=
+y. </span></span><span style=3D""><span style=3D"font-size:12pt; font-family:&qu=
+ot;Apple Color Emoji&quot;; color:black">=F0=9F=99=81</span></span><span style=3D""><s=
+pan style=3D"font-size:12pt; color:black"></span></span></p></div><div><p clas=
+s=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt; color:blac=
+k">&nbsp;</span></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span sty=
+le=3D""><span style=3D"font-size:12pt; color:black">&nbsp;</span></span></p></di=
+v><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12=
+pt; color:black">### Now for the not-so bad news ###</span></span></p></div>=
+<div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt=
+; color:black">&nbsp;</span></span></p></div><div><p class=3D"x_x_x_x_MsoNorma=
+l"><span style=3D""><span style=3D"font-size:12pt; color:black">If we think/ can=
+ argue that $s_F$ is representative of $F$, then I could see a case for the =
+approach that Selim is currently coding up being useful.</span></span></p></=
+div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:=
+12pt; color:black">&nbsp;</span></span></p></div><div><p class=3D"x_x_x_x_MsoN=
+ormal"><span style=3D""><span style=3D"font-size:12pt; color:black">&nbsp;</span=
+></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span sty=
+le=3D"font-size:12pt; color:black">### Now for the good news ###</span></span>=
+</p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font=
+-size:12pt; color:black">&nbsp;</span></span></p></div><div><p class=3D"x_x_x_=
+x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt; color:black">The st=
+ructure of the data is exactly a &quot;RDS with ARD data collected from the =
+sample frame of DW in the UK who have a mobile phone.&quot;&nbsp; And there =
+are loads of papers that deal with this type of data:</span></span></p></div=
+><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12p=
+t; color:black">&nbsp;</span></span></p></div><div><p class=3D"x_x_x_x_MsoNorm=
+al"><span style=3D""><span style=3D"font-size:12pt; color:black">[RDS and measur=
+ements of a 'hidden population' papers]</span></span></p></div><div><p class=
+=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt; color:black=
+">&nbsp;</span></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span styl=
+e=3D""><span style=3D"font-size:12pt; color:black">I am only peripherally knowle=
+dgeable&nbsp;about RDS and inference.&nbsp; And not at all about NSUM and RD=
+S.&nbsp; but it is out there, and we can try them out (?)</span></span></p><=
+/div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size=
+:12pt; color:black">&nbsp;</span></span></p></div><div><p class=3D"x_x_x_x_Mso=
+Normal"><span style=3D""><span style=3D"font-size:12pt; color:black">&nbsp;</spa=
+n></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span st=
+yle=3D"font-size:12pt; color:black">---</span></span></p></div><div><p class=3D"=
+x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt; color:black">=
+&nbsp;</span></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D=
+""><span style=3D"font-size:12pt; color:black">On my end, the 'start and stop'=
+ of research is _really_ inefficient.&nbsp; And has shown to introduce error=
+s.&nbsp; So, my preference is to get this done asap, if we are going to get =
+it done that is.</span></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><s=
+pan style=3D""><span style=3D"font-size:12pt; color:black">&nbsp;</span></span><=
+/p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-=
+size:12pt; color:black">I hope we can chat further.&nbsp; </span></span></p>=
+</div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-siz=
+e:12pt; color:black">Best,</span></span></p></div><div><p class=3D"x_x_x_x_Mso=
+Normal"><span style=3D""><span style=3D"font-size:12pt; color:black">scott</span=
+></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span sty=
+le=3D"font-size:12pt; color:black">&nbsp;</span></span></p></div><div><p class=
+=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt; color:black=
+">&nbsp;</span></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span styl=
+e=3D""><span style=3D"font-size:12pt; color:black">&nbsp;</span></span></p></div=
+><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12p=
+t; color:black">&nbsp;</span></span></p></div><div><p class=3D"x_x_x_x_MsoNorm=
+al"><span style=3D""><span style=3D"font-size:12pt; color:black">&nbsp;</span></=
+span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D=
+"font-size:12pt; color:black">&nbsp;</span></span></p></div><div class=3D"x_x_=
+x_x_MsoNormal" align=3D"center" style=3D"text-align:center"><span style=3D""><span=
+ style=3D""><hr size=3D"0" width=3D"98%" align=3D"center"></span></span></div><div i=
+d=3D"x_x_x_x_x_x_x_divRplyFwdMsg"><p class=3D"x_x_x_x_MsoNormal"><span style=3D"">=
+<b><span style=3D"color:black">From:</span></b></span><span style=3D""><span sty=
+le=3D"color:black">&nbsp;Caroline Emberson (staff) &lt;lizce@exmail.nottingham=
+.ac.uk&gt;<br><b>Sent:</b>&nbsp;Friday, October 20, 2023 1:22 PM<br><b>To:</=
+b>&nbsp;Selim Yilmaz &lt;ldxsy3@exmail.nottingham.ac.uk&gt;; Scott Moser (st=
+aff) &lt;ldzsm2@exmail.nottingham.ac.uk&gt;<br><b>Subject:</b>&nbsp;GNSUM me=
+eting notes 20-10-2023</span></span><span style=3D""><span style=3D""> </span></=
+span></p><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"">&nb=
+sp;</span></span></p></div></div><div><p class=3D"x_x_x_x_MsoNormal"><span sty=
+le=3D""><span style=3D"font-size:12pt; color:black">Thanks for moving us on, Sco=
+tt. Here is the record of what we discussed which I shall attempt to synthes=
+is into the beginnings of a draft over the next week or so.</span></span></p=
+></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-si=
+ze:12pt; color:black">&nbsp;</span></span></p></div><div><p class=3D"x_x_x_x_M=
+soNormal"><span style=3D""><span style=3D"font-size:12pt; color:black">Best wish=
+es</span></span></p></div><div><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><=
+span style=3D"font-size:12pt; color:black">Caroline</span></span></p></div><di=
+v><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><span style=3D"font-size:12pt; c=
+olor:black">&nbsp;</span></span></p></div><div><p class=3D"x_x_x_x_MsoNormal">=
+<span style=3D""><span style=3D"font-size:12pt; color:black">&nbsp;</span></span=
+></p></div><div id=3D"x_x_x_x_x_x_x_x_Signature"><div><p class=3D"x_x_x_x_MsoNor=
+mal"><span style=3D""><span style=3D"font-size:12pt; color:black">&nbsp;</span><=
+/span></p></div><div id=3D"x_x_x_x_x_x_x_x_divtagdefaultwrapper"><p><span styl=
+e=3D""><b><span style=3D"font-size:12pt; font-family:Arial,sans-serif; color:rgb=
+(0,155,189)">Dr Caroline Emberson (preferred pronouns she/her)</span></b></s=
+pan><span style=3D""><span style=3D"font-size:12pt; color:black"></span></span><=
+/p><p><span style=3D""><b><span style=3D"font-size:12pt; font-family:Arial,sans-=
+serif; color:rgb(19,27,87)">Nottingham Research Fellow, Rights Lab</span></b=
+></span><span style=3D""><span style=3D"font-size:12pt; color:black"></span></sp=
+an></p><p><span style=3D""><span style=3D"font-size:9pt; font-family:Arial,sans-=
+serif; color:black">&nbsp;</span></span><span style=3D""><span style=3D"font-siz=
+e:12pt; color:black"></span></span></p><p><span style=3D""><span style=3D"font-s=
+ize:9pt; font-family:Arial,sans-serif; color:rgb(19,27,87)">Nottingham Unive=
+rsity Business School OMIS/ Faculty of Social Science<br>University of Notti=
+ngham</span></span><span style=3D""><span style=3D"font-size:12pt; color:black">=
+</span></span></p><p><span style=3D""><span style=3D"font-size:9pt; font-family:=
+Arial,sans-serif; color:rgb(19,27,87)">A20, Highfield House</span></span><sp=
+an style=3D""><span style=3D"font-size:12pt; color:black"></span></span></p><p><=
+span style=3D""><span style=3D"font-size:9pt; font-family:Arial,sans-serif; colo=
+r:rgb(19,27,87)">University Park</span></span><span style=3D""><span style=3D"fo=
+nt-size:12pt; color:black"></span></span></p><p><span style=3D""><span style=3D"=
+font-size:9pt; font-family:Arial,sans-serif; color:rgb(19,27,87)">Nottingham=
+, NG7 2RD</span></span><span style=3D""><span style=3D"font-size:12pt; color:bla=
+ck"></span></span></p><p><span style=3D""><span style=3D"font-size:9pt; font-fam=
+ily:Arial,sans-serif; color:black">&nbsp;</span></span><span style=3D""><span =
+style=3D"font-size:12pt; color:black"></span></span></p><p><span style=3D""><spa=
+n style=3D"font-size:9pt; font-family:Arial,sans-serif; color:rgb(19,27,87)">+=
+44 (0) 115 8283072<b>&nbsp;</b></span></span><span style=3D""><b><span style=3D"=
+font-size:9pt; color:rgb(19,27,87)">| </span></b></span><span style=3D""></spa=
+n><a href=3D"http://nottingham.ac.uk/"><span style=3D""><span style=3D"font-size:9=
+.0pt; font-family:&quot;Arial&quot;,sans-serif">caroline.emberson@nottingham=
+.ac.uk</span></span><span style=3D""></span></a><span style=3D""><span style=3D"fo=
+nt-size:12pt; color:black"></span></span></p><p><span style=3D""><span style=3D"=
+font-size:9pt; font-family:Arial,sans-serif; color:black">&nbsp;</span></spa=
+n><span style=3D""><span style=3D"font-size:12pt; color:black"></span></span></p=
+><p><span style=3D""><span style=3D"font-size:9pt; font-family:Arial,sans-serif;=
+ color:black">&nbsp;</span></span><span style=3D""><span style=3D"font-size:12pt=
+; color:black"></span></span></p><p><span style=3D""><b><span style=3D"font-size=
+:9pt; font-family:Georgia,serif; color:rgb(21,118,158)">Follow us</span></b>=
+</span><span style=3D""><span style=3D"font-size:12pt; color:black"></span></spa=
+n></p><p><span style=3D""></span><a href=3D"http://facebook.com/TheUniofNottingh=
+am"><span style=3D""><span style=3D"font-size:9pt; font-family:Arial,sans-serif;=
+ color:rgb(0,0,233)">Facebook.com/UniofNottingham</span></span></a><span sty=
+le=3D""><span style=3D"font-size:12pt; color:black"></span></span></p><p><span s=
+tyle=3D""></span><a href=3D"http://twitter.com/UniofNottingham"><span style=3D""><=
+span style=3D"font-size:9pt; font-family:Arial,sans-serif; color:rgb(0,0,233)"=
+>Twitter.com/UniofNottingham</span></span></a><span style=3D""><span style=3D"fo=
+nt-size:12pt; color:black"></span></span></p><p><span style=3D""></span><a hre=
+f=3D"http://youtube.com/nottmuniversity"><span style=3D""><span style=3D"font-size=
+:9pt; font-family:Arial,sans-serif; color:rgb(0,0,233)">Youtube.com/nottmuni=
+versity</span></span></a><span style=3D""><span style=3D"font-size:12pt; color:b=
+lack"></span></span></p><p><span style=3D""></span><a href=3D"http://instagram.c=
+om/uniofnottingham"><span style=3D""><span style=3D"font-size:9pt; font-family:A=
+rial,sans-serif; color:rgb(0,0,233)">Instagram.com/uniofnottingham</span></s=
+pan></a><span style=3D""><span style=3D"font-size:12pt; color:black"></span></sp=
+an></p><p><span style=3D""></span><a href=3D"http://linkedin.com/company/univers=
+ity-of-nottingham"><span style=3D""><span style=3D"font-size:9pt; font-family:Ar=
+ial,sans-serif; color:rgb(0,0,233)">Linkedin.com/company/university-of-notti=
+ngham</span></span></a><span style=3D""><span style=3D"font-size:12pt; color:bla=
+ck"></span></span></p><p><span style=3D""></span><a href=3D"http://www.foursquar=
+e.com/uniofnottingham"><span style=3D""><span style=3D"font-size:9pt; font-famil=
+y:Arial,sans-serif; color:rgb(0,0,233)">F</span></span></a><span style=3D""></=
+span><a href=3D"http://www.foursquare.com/uniofnottingham"><span style=3D""><spa=
+n style=3D"font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif">oursquar=
+e.com/uniofnottingham</span></span><span style=3D""></span></a><span style=3D"">=
+<span style=3D"font-size:12pt; color:black"></span></span></p><p><span style=3D"=
+"><u><span style=3D"font-size:9pt; font-family:Arial,sans-serif; color:rgb(0,0=
+,233)">&nbsp;</span></u></span><span style=3D""><span style=3D"font-size:12pt; c=
+olor:black"></span></span></p><p class=3D"x_x_x_x_MsoNormal"><span style=3D""><s=
+pan style=3D"font-size:12pt; color:black">&nbsp;</span></span></p></div><span =
+style=3D""></span><span style=3D""></span><span style=3D""></span><span style=3D""><=
+/span><table class=3D"x_x_x_x_MsoNormalTable" border=3D"0" cellpadding=3D"0" id=3D"x=
+_x_x_x_x_x_x_x_pbpsiglinktable" style=3D""><tbody><tr style=3D""><td style=3D"padd=
+ing:.75pt .75pt .75pt .75pt"><p class=3D"x_x_x_x_MsoNormal"><span style=3D""></s=
+pan><a href=3D"https://outlook.office.com/bookwithme/user/68c1e07fca314c1a863a=
+4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature"><sp=
+an style=3D""><span style=3D"text-decoration:none; color:windowtext"><span style=
+=3D""><span style=3D"border:1pt solid windowtext; padding:0cm; color:blue"><span=
+ style=3D""><img border=3D"0" width=3D"32" height=3D"32" id=3D"x_x_x_x__x0000_i1025" a=
+lt=3D"Image removed by sender." data-outlook-trace=3D"F:0|T:4" src=3D"cid:~WRD0000=
+.jpg"></span></span></span></span></span></a><span style=3D""><span style=3D""><=
+/span></span></p></td><td style=3D"padding:.75pt .75pt .75pt .75pt"><span styl=
+e=3D""></span></td><td style=3D"padding:.75pt .75pt .75pt .75pt"><p class=3D"x_x_x=
+_x_MsoNormal"><span style=3D""></span><a href=3D"https://outlook.office.com/book=
+withme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymo=
+us&amp;ep=3DbwmEmailSignature"><span style=3D""><span style=3D"text-decoration:non=
+e; color:rgb(0,120,212)">Book time to meet with me</span></span></a><span st=
+yle=3D""><span style=3D""></span></span></p></td><td style=3D"padding:.75pt .75pt =
+.75pt .75pt"><span style=3D""></span></td></tr></tbody></table><span style=3D"">=
+</span><p class=3D"x_x_x_x_MsoNormal"><span style=3D"">&nbsp;</span></p></div></=
+div></div></div></div></div></div></div></div></body></html>
+
+--B_3821516406_848493247--
+

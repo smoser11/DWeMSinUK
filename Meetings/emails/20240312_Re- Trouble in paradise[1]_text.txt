@@ -1,0 +1,274 @@
+Date: 20240312
+Subject: Re: Trouble in paradise
+
+Hi Scott,
+
+We could justify the selection of themes 2 and 3 with reference to the Bellagio-Harvard guidelines (https://glc.yale.edu/sites/default/files/pdf/the_bellagio-_harvard_guidelines_on_the_legal_parameters_of_slavery.pdf)
+
+These guidelines define forced labour as 'all work or service which is exacted from any person with menace of any penalty (theme 3) and for which the said person has not offered himself voluntarily (theme 2)'
+
+This would create a 'high bar' definition of forced labour. We could perhaps still justify the use of the total NRM figures (which include other forms of modern slavery in addition to forced labour) on conservative grounds. Some NRM statistics do attempt to split out 'labour exploitation', but I cannot find a cumulative analysis and even in recent figures there is an unhelpful 'labour and criminal exploitation' category.
+
+Is this a narrow path forward?
+
+Best wishes
+Caroline
+
+
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (AFHEA)
+
+
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB 
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 11 March 2024 13:00
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Subject: RE: Trouble in paradise 
+ 
+PS. I ran things through an LLM and got the following, when asking for themes or topics asked in both ‘types’ of questions.  Themes 2 and 3 look promising, but the question wording seems different/ more specific for questions about individual experiences (?)  I don’ tknow if this is true, but if so perhas we could aggregate/ combine some of the questions about individuals to make them comparison to the questions about ‘how many X do you know?”?
+
+ 
+
+ 
+
+>>>
+
+To identify personal experiences asked about in both types of questions, we need to look for overlapping themes or specific experiences in the respondent's working conditions (first type) that are also inquired about in terms of the respondent's knowledge of other domestic workers' situations (second type). Essentially, we're looking for topics covered in both sets of questions that pertain to both the respondents themselves and their awareness of these issues among their peers.
+
+ 
+
+Considering the lists provided:
+
+ 
+
+**Shared Themes in Both Types of Questions:**
+
+ 
+
+1. **Working Conditions and Satisfaction**: 
+
+   - First type: Questions like Q19 (job enjoyment) and Q23 (satisfaction with working conditions).
+
+   - Second type: Q14 (knowing others dissatisfied with their working conditions) and Q35 (knowing others suffering from bad working conditions).
+
+   
+
+2. **Freedom and Restrictions**:
+
+   - First type: Q29 (being forced to work), Q30 (control over work times), and Q32 (feeling unable to leave work premises).
+
+   - Second type: Q33 (knowing others experiencing restrictions on their freedom).
+
+ 
+
+3. **Abuse and Mistreatment**:
+
+   - First type: Q44 (experiencing abuse, harassment, or physical violence), Q45 (forced, deceived, or threatened into poor working conditions), Q47 (employer intimidation or threats), and Q48 (verbal abuse from employer).
+
+   - Second type: Q49 (knowing others who have experienced the use of threat or force).
+
+ 
+
+4. **Health and Safety**:
+
+   - First type: Q72 (feeling that the working environment is safe and healthy) and Q73 (access to medical care).
+
+   - Second type: Q68 (knowing others suffering from mental ill health), Q74 (knowing others who do not have access to medical care), and Q77 (knowing others suffering from bad environmental conditions).
+
+ 
+
+5. **Document Access and Legal Rights**:
+
+   - First type: Q70 (employer or agent withholding travel and identity documentation).
+
+   - Second type: Q71 (knowing others who do not have access to their own travel and identity documents).
+
+ 
+
+These themes represent areas where the survey seeks to understand not only the personal experiences of the respondents concerning their working conditions, freedom, abuse, health, and legal rights but also their awareness of similar issues faced by other domestic workers they know. 
+
+ 
+
+ 
+
+From: Scott Moser (staff) 
+Sent: Monday, March 11, 2024 12:49 PM
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Subject: RE: Trouble in paradise
+
+ 
+
+Thank you again for the interesting meeting today!
+
+ 
+
+Here are the ‘how many people do you know?’ questions and I found (not guaranteed to be complete):
+
+ 
+Q13: 2f_howmany_population: Asks if the respondent personally knows other domestic workers in the UK and requests a numerical value of how many, based on contacts in their mobile phone.
+Q14: 2g_howmany_dissatisfied: Inquires whether the respondent knows any domestic workers who are dissatisfied with their current working conditions, also asking for a numerical value.
+Q21: 4c: Questions if the respondent personally knows other domestic workers who do not have good relations with their employers, asking for a numerical value.
+Q25: 4g: Asks if the respondent personally knows other domestic workers who do not enjoy their work, with a response in numerical value.
+Q33: 5a5: Inquires whether the respondent knows other domestic workers experiencing restrictions on their freedom, requesting a numerical value.
+Q35: 5a7: Asks if the respondent personally knows other domestic workers suffering from bad working conditions, with a response in numerical value.
+Q43: 5b8: Asks if the respondent personally knows other domestic workers who have experienced problems with debt or pay, requesting a numerical value.
+Q49: 5c6: Inquires if the respondent personally knows other domestic workers who have experienced the use of threat or force, with a response in numerical value.
+Q68: 5e4: Questions whether the respondent personally knows other domestic workers suffering from mental ill health, requesting a numerical value.
+Q71: 5f3: Asks if the respondent knows other domestic workers who do not have access to their own travel and identity documents, with a response in numerical value.
+Q74: 5f6: Inquires if the respondent personally knows other domestic workers who do not have access to medical care, with a response in numerical value.
+Q77: 5f9: Questions whether the respondent personally knows other domestic workers who suffer from bad environmental conditions, with a response in numerical value.
+Q79: 5f11: Asks if the respondent knows other domestic workers who do not know where to go for help, with a response in numerical value.
+Q83: 5f16: Inquires if the respondent personally knows other domestic workers who have suffered from severe forms of labor exploitation without using the NRM, with a response in numerical value.
+Q84: 5f15: Questions if the respondent personally knows other domestic workers who went through the NRM system, with a numerical value response.
+ 
+
+ 
+
+From: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk> 
+Sent: Monday, March 11, 2024 8:47 AM
+To: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: Trouble in paradise
+
+ 
+
+I am free to meeting today or tomorrow any time except today between 1-4.30pm
+
+ 
+
+Best wishes
+
+Caroline
+
+ 
+
+ 
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (AFHEA)
+
+ 
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB 
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk
+
+ 
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+ 
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+ 
+
+Book time to meet with me
+From: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Sent: 08 March 2024 17:35
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>; Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Subject: Trouble in paradise 
+
+ 
+
+Dear  Both, 
+
+I did a bit of a deep dive (again!) into the F&S 2016 (?) paper and looked at the data and codebook again.  I’m sorry I didn’t do so before our meeting today b/c/ it would have been much better to discuss the following instead of an email.   Sorry for the bother, but could we meet on Teams very briefly early next week to have a short chat?    Here are some of the issues:
+
+The questions for ‘how many people in H (=the hidden population)’ – e.g.  Q33. 5a5 , Q33. 5a7, Q49. 5c6 
+
+Q64. 5d11 
+
+Q83. 5f16 
+
+Q88. 5f16 
+
+Q89. 5f15 
+
+  -- don’t exactly match up with q36 and q80 that we use in the RDS estimation.
+
+ 
+
+Worse, the ‘known population’ method we discussed (using “Q89. 5f15: Do you know personally of any other domes�c workers who went through the NRM system? If so, how many? Numerical value “) has TONS of missing values in the data-set, which makes it unusable for us.  We could try the number of DW in the UK, but we only have a vague idea of the size of this population.  
+
+ 
+
+Basically, we need a way of estimating the average number of DWs people in the sample know.  Weirdly, I think I need to _exclude_ those that we think are in H (the exact opposite as the RDS technique).  
+
+ 
+
+Oh, and I continue to have questions about the codebook and how variables are named in the data set.  For example, the codebook only goes up to Q90, but the excel data contains over 100 question varables.
+
+ 
+
+Sorry and thanks,
+
+Scott
+
+ 
+
+ 
+

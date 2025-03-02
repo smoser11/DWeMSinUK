@@ -1,0 +1,204 @@
+Yeah, all good. Thank you. Good. Just discussing the some question deadlines that are approaching, you know, teaching concerns. Yeah.
+It just never ends. It's just, it's just, yeah. Anyway.
+We feel your pain from the previous term.
+Well, it's funny that you say that because I was talking to college. It seems that you're in the majority of Carolina that at least among people I talked to that this term is the heavy term compared to last term.
+So I'm sorry. I'm very sorry. And I'm very glad mine is over so or yeah, you know.
+Yeah, so I saw your email Scott say thank you for prompting us. I think we still even I would just discussing the like a plan for going forward because we haven't moved very far from our last meeting.
+I don't want to spend a lot of time talking about stuff that we really just have already discussed. Yeah.
+That won't really help us.
+But so there are two issues that the clean data that you need to be able to do anything.
+And then there's the population estimate that you need in order to do anything.
+Are those the two main issues for you?
+Yes, that's exactly right. And for whatever it's worth. I feel like we're really close.
+But yeah, that's that's exactly right, Caroline.
+So Dr. Moses, you have sent me last time and you taught me to do that bootstrapping.
+And so I also told us to Caroline. Yeah.
+When we're waiting. I didn't do anything. That's okay.
+When I saw your Tuesday, I said to you, I will send you something. Yeah, but I couldn't get. Yeah.
+Yeah, I think a good way to accelerate this would be to meet in person like me and you so that we can go through my questions that I have for the bootstrapping together.
+Yeah, I will be on Monday on campus. Would you have time then to Monday?
+Yeah, I could do Monday afternoon three or four.
+Can you do before 1pm or before noon?
+No, I can't do mornings. I could do 1pm. I think hang on.
+I can't do it 1pm until 2pm and then from 3pm until 4pm and then from 5pm until 6pm.
+So I could do from 1pm until no from I could do from 2pm until 3pm.
+2pm should work. Yeah. Yeah. Yeah, that should work.
+On Monday. Yeah.
+Do you mind sending me a team's invite? We can meet where we can meet my office, your office, coffee.
+We can meet in your office. That's fine. That's fine.
+But the main thing, the most urgent thing I think is this data issues is the, I just don't understand what's, did my question make sense or am I just confused?
+Which question? Yeah, exactly. Right. My question about the, about the data and the code books.
+You asked something about the code book and I think the code book that I had sent in end of November, beginning of end of November, this is also the latest one.
+Okay, good.
+This should be the most recent updated code book that we have. Good.
+And then you had also a question about the referrals to phone numbers, 10 or 5.
+Yeah, it's, well, yeah, yeah, because the data, yeah, exactly.
+Yeah, so for that is, in our survey, people have sometimes referred more than five referrals or 10, but we said we will only accept up to five.
+Yeah, just the first thing. Okay.
+Second information is, even if people have referred, let's say, seven people, five, it does mean they have been successful.
+No, of course, right, of course. So that's why, in order to understand how many referrals we had eventually, we would have to go back and look at the recruiter and ID, and at the wave, so that we can identify which I, which person ID recruiter has successfully recruited or referred people.
+I got that. And of course, really, the successful recruit referrals aren't the same as referrals, and that's fine. I'm fine with that. The issue is really just one of variables.
+It looks like some people refer up to nine people, and that's, or attempt to refer up to nine people, and that's fine. That's fine.
+Up to 10, yeah. But then there are these weird gaps. So sometimes there'll be three phone numbers, and then no phone numbers, and then another phone number.
+So on the survey, people could write down the people that they will refer, and some people couldn't refer anyone, and some other people could only refer three or four people.
+That doesn't explain the gap.
+Let me share my screen if you don't mind, and probably easier to just look at it.
+I have to figure out how to share my name screen. Let's try that. Hopefully that's working. Can you see my Excel?
+Yeah.
+These are great examples.
+Okay, so first let me pop over to the code book, and there's no coding after Q90.
+My understanding is that Q105 here, up to Q110, were the referrals that were used. So those were the coupons that were given.
+And then you've got this person who refers nine people. That's fine. That makes sense. But look at this person.
+This person refers three phone numbers, and then they refer six nothings, and then there's a phone number way over here.
+Or take this person. Their Q105 is blank, but then they refer a ton of people. So I just don't understand how this happens.
+Yeah.
+So for starters, is my understanding correct that this is the possible set of phone numbers?
+Again, I understand that if that number is larger than five, that we don't actually give the coupons, and that's great.
+And that's actually super helpful.
+But the reason I'm asking is because at our last meeting, we had this observation. I think Caroline had a great suggestion.
+But there's some people that say they know zero domestic workers in the UK, but then they refer people.
+And so we said, well, that's weird. So we should fix that up. And that's right.
+And then I was thinking, well, hang on. That logic applies to everybody.
+So if you say you know two people, two domestic workers in the UK, and you give five phone numbers, that same logic applies.
+And we should still fix up that number.
+And so that's why I'm asking is because I need to know the number of phone numbers that people give.
+And I, like, so for this row, what is the answer to that question? Is it three or is it four?
+Or can we not tell?
+In that case that you have highlighted before.
+Okay, good. Thank you.
+Okay, that's excellent. That's what I understand. And so and likewise, so this for this row, the number would be nine.
+Yeah, nine.
+Okay, so basically I shouldn't worry about the or the gaps or the ordering.
+I think you shouldn't worry about gaps in between the phone number referrals.
+And if you want to understand why that is so I could send you the printed survey from the just system.
+So you can also see how it was on the smartphone on the computer.
+People were filled out.
+Wonderful. Yes. Thank you. That's that's super wonderful.
+But now even even this conversation is super helpful because now I know the the number of phone numbers that a person gave.
+And that was the missing piece that I was I was.
+Yeah, that was the most urgent, I guess, but but so yes, please do that and please do send me whatever you can.
+Oh, I'm going to take this off.
+And and that's great news. Thank you. I will.
+How do I stop? I will.
+I can move forward with that information. So that's great. And then Monday we can meet to talk about the bootstrap stuff.
+And yeah, like I said, I think we're really close. I think we're we're we're we're virtually ready to go. Oh, oh, the population estimate. Yes, Caroline, what were your thoughts on on that?
+So I've been tracking the Europeans on this and they have a category that they call personal household services PHS.
+And they've started to collect data on this.
+And it comprises two elements.
+So there's the just jotted down the details that I found.
+And they work without accommodation, which has a NAC code 88. And then they have an activities of households as employees of domestic personnel, which is NAC 97.
+Now that is also a sick code for the UK, this activities. So that's very closely linked to domestic workers that second one is tightly bounded.
+An analysis that included UK figures from 2017. So it's not too far away.
+And it just sort of a snapshot in quarter three of that. Yeah. And then the figures that they gave for those two NAC codes were 929,000 and 51,000 respectively.
+The social work without accommodation is that bigger figure. And then the activities of households as employers of domestic personnel is that 51,000 figure.
+Excellent. So the paper, they've got some trends for other countries and they, I mean, I think we could make an argument that they're broadly static.
+Okay, if you're saying we're not very sensitive.
+Yeah.
+So the question then is, for us, do we want to combine them to have this that gives you the one million figure that I think, or roughly a million, or do we want to take this smaller lower number of 51,000 that's a bit more problematic because the overseas domestic worker visa figure
+number is larger than that. It's 79,000.
+So.
+So hang on. I think I misread you. So the first category was 920,000 or 92,000.
+929,000.
+Oh, wow. Okay. My mistake.
+And what were the codes again? I'm sorry. NEC? I don't know this.
+N-A-C-E. I don't know what it stands for. But N-A-C-E-88.
+Okay.
+Which is social work without accommodation. I've dropped you an email. So,
+Oh, thank you. I'm sorry.
+That's all right. And N-A-C-E-97, which is this activities of households as employers of domestic personnel.
+So I think that probably can now, given enough time and perseverance, perhaps go through Eurostat and try and pull out something more recent. But if, yeah, that's what I was hoping.
+I agree.
+Yeah.
+But that gives us, I mean, you were talking about sensitivity analysis. So I suppose we could almost talk about a range.
+Yeah.
+From we've got lower and upper limits, haven't we?
+Yeah, exactly.
+Yeah.
+But perhaps is the most.
+Yep. I think that's a great idea.
+Conservative approach.
+Yes. I think you're 100% right. Yeah. And like I said, the, the, I don't know what I'm sorry. I don't know where the 1.7 million came from.
+The, it's really, it's very insensitive, at least when the numbers get big. So like once you hit a million, the results just don't change at all.
+I haven't played with things as small as 50, 51,000. But I will. And I think you're right. I think the range, I think we say, you know, here's the number that we're using site, site, site.
+In the appendix, here's the robot, here's the sensitivity analysis and how things change. And I'm curious to see with these new numbers what happens. But like I said, it was like from 900 to a million to 1.5 million to anything around a million or higher, like nothing changes.
+So, so I, and I don't know about the lower. So I'll, but I'll play with this. So I think this is, please don't spend any more time on, I mean, please do save the citation.
+We can, we can, you know, site the site the site.
+I've got, yeah, I've logged it across in an email to you.
+Really? What I've just told you now. So we've got, we've got the link to the numbers.
+Good. Okay. Well, I can, I can get, I can get on this starting this afternoon.
+Should we meet next week or if, if Selene can get the, well, that's not entirely off.
+I can have, I can have everything except the in some polished by next Friday and depending on how our meeting goes on Monday, Selene. Yeah, the in some stuff might take a little longer. I don't know.
+But, but, but, but the, just from the, just from this conversation, I can finish off the RDS stuff for sure.
+Okay. Would a three o'clock meeting next week be all right?
+Sure.
+I've got something in for two.
+No problem.
+Already.
+Yeah.
+Does that work for you, Selene?
+Yeah, as long as it's after afternoon is fine.
+Yeah. So we said three.
+Yeah, it's fine for me.
+I'll send something across.
+I also sent a meeting link.
+Thank you.
+Yeah.
+Yeah.
+And so how, how do you, how should I prepare for this meeting? What are you?
+Yeah.
+I think you will have the knowledge already, but I will ask you just some questions, some small questions. Yeah.
+And some small questions.
+So that's fine.
+You can guide me.
+Sure.
+So you don't need to prepare anything.
+Just about that.
+Okay. Okay.
+He said, he said, okay.
+All right.
+All right.
+Sounds good.
+And thanks for, like I said, this was.
+This is very helpful for me.
+So thanks.
+That's great.
+Yeah.
+No, it's just, it just is tantalizing now, isn't it?
+Cause it was, I think we, we get it.
+As you say, we're getting close.
+So close.
+It's really just, just delivering now.
+Yeah.
+Oh, no, no, no, no.
+I didn't mean it critically, Selene.
+Not at all.
+And in fact, I was, I, no, no, no, no, no, no, no, no.
+No, I'm not saying anything critical.
+It's just, I, I, I'm with Caroline.
+Like we just, let's get it done.
+Let's get it done.
+We can, we can, we can do it.
+So thanks.
+Thanks so much.
+And I hope you have.
+Find some time to enjoy the weekend.
+And we'll talk in a week.
+Yeah.
+Thanks.
+Good to see you.
+Thanks very much.
+Bye everybody.
+Thank you.
+Thank you.
+Thank you.
+I don't care.
+Jimmie crack corn and I don't care.
+Jimmie crack corn and I don't care.
+Jimmie crack corn but I don't care.
+Jimmie crack corn and I don't care.
+My master's gone away.
+That's the lyric.
+Okay.
+Here we go again.
+Same French guy.
+All right, sir.

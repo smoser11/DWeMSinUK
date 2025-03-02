@@ -1,0 +1,80 @@
+Date: 20230918
+Subject: GNSUM Population estimates
+
+
+Hi Scott and Selim,
+
+I have now looked up the statistics related to the population estimates that we have discussed.
+
+Referrals to the NRM
+Perhaps the most robust are the UKs NRM figures. These start in April 2009, with the latest estimate available for the first quarter of 2023. Totally up these estimates gives a total of 73,019 referrals.
+
+Calculated from the following subtotals: 
+All referrals Jan to March 2023: 4,746
+All referrals Jan to Dec 2022: 16,938
+Positive reasonable grounds decisions at time of referral to the NRM (1st April 2009 - Dec 2021)(All adults, all minors and age unknown)* : 51,335
+
+*This represents a slightly lower figure than all referrals (e.g. for the annual figures that are available for 2021 - 'all referrals' stand at 12,706 while 'positive grounds referrals for all adults, all minors and age unknown is reported at 11,371). 
+
+
+The annual NRM figures reported between 2009-2021 are contained in the attached file, which I have downloaded from https://www.ons.gov.uk/peoplepopulationandcommunity/crimeandjustice/adhocs/14939numberofpotentialmodernslaveryvictimswithinthenationalreferralmechanismbyageandgenderukyearendingdecember2009toyearendingdecember2021
+
+The figure for the year 2022 was 16,938, obtained from from  https://www.gov.uk/government/statistics/modern-slavery-national-referral-mechanism-and-duty-to-notify-statistics-uk-end-of-year-summary-2022/modern-slavery-national-referral-mechanism-and-duty-to-notify-statistics-uk-end-of-year-summary-2022
+
+Further statistics are available for the first quarter of 2023 (Jan to Mar) with a further 4,746 referrals https://www.gov.uk/government/statistics/modern-slavery-national-referral-mechanism-and-duty-to-notify-statistics-uk-january-to-march-2023/modern-slavery-national-referral-mechanism-and-duty-to-notify-statistics-uk-quarter-1-2023-january-to-march
+
+
+Number of domestic workers in the UK
+Previous NGO reports have used the Overseas Domestic Workers' Visa figure to estimate the number of domestic workers in the UK (see for example, recent blog by Trust for London https://trustforlondon.org.uk/news/domestic-workers-day-2022/#:~:text=Worldwide%20there%20are%2067%20million,wages%2C%20physical%20and%20sexual%20abuse., and earlier Kalayaan report http://www.kalayaan.org.uk/documents/Kalayaan%20Oxfam%20report.pdf).  Selim has found the most recent published statistics for this, which state that 19,780 overseas domestic worker visas were issued in the year to June 2023
+https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-june-2023/why-do-people-come-to-the-uk-to-work
+
+As I mentioned, this direct comparison is complicated by the fact that some of our respondents may have now have settled status, or may be in domestic work on an EEA visa (e.g. those from South America) and so is likely an underestimation of the true population ( and not even considering those in domestic work without the legal right to work)
+
+We could perhaps clarify our sample and identify the sub set of those on 'tied' visas (we did ask this question) and then use this sub-sample for bootstrapping and comparison purposes. Selim - can you tell us how many respondents reported that they were on a tied visa?  or, alternatively/ in addition perhaps conduct some sort of sensitivity analysis to estimate the impact of various levels of under-estimation.
+
+I hope this helps, 
+
+Best wishes
+Caroline
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Nottingham Research Fellow, Rights Lab
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+ 
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+ 
+
+ 
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+
+

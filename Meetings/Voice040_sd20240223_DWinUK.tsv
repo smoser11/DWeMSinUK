@@ -1,0 +1,205 @@
+start	end	text
+0	9000	Yeah, all good. Thank you. Good. Just discussing the some question deadlines that are approaching, you know, teaching concerns. Yeah.
+9000	15000	It just never ends. It's just, it's just, yeah. Anyway.
+15000	19000	We feel your pain from the previous term.
+19000	32000	Well, it's funny that you say that because I was talking to college. It seems that you're in the majority of Carolina that at least among people I talked to that this term is the heavy term compared to last term.
+32000	40000	So I'm sorry. I'm very sorry. And I'm very glad mine is over so or yeah, you know.
+40000	52000	Yeah, so I saw your email Scott say thank you for prompting us. I think we still even I would just discussing the like a plan for going forward because we haven't moved very far from our last meeting.
+52000	58000	I don't want to spend a lot of time talking about stuff that we really just have already discussed. Yeah.
+58000	60000	That won't really help us.
+60000	69000	But so there are two issues that the clean data that you need to be able to do anything.
+69000	75000	And then there's the population estimate that you need in order to do anything.
+75000	77000	Are those the two main issues for you?
+77000	83000	Yes, that's exactly right. And for whatever it's worth. I feel like we're really close.
+83000	86000	But yeah, that's that's exactly right, Caroline.
+86000	92000	So Dr. Moses, you have sent me last time and you taught me to do that bootstrapping.
+92000	94000	And so I also told us to Caroline. Yeah.
+94000	97000	When we're waiting. I didn't do anything. That's okay.
+97000	103000	When I saw your Tuesday, I said to you, I will send you something. Yeah, but I couldn't get. Yeah.
+103000	115000	Yeah, I think a good way to accelerate this would be to meet in person like me and you so that we can go through my questions that I have for the bootstrapping together.
+115000	121000	Yeah, I will be on Monday on campus. Would you have time then to Monday?
+121000	127000	Yeah, I could do Monday afternoon three or four.
+127000	131000	Can you do before 1pm or before noon?
+131000	135000	No, I can't do mornings. I could do 1pm. I think hang on.
+135000	144000	I can't do it 1pm until 2pm and then from 3pm until 4pm and then from 5pm until 6pm.
+144000	151000	So I could do from 1pm until no from I could do from 2pm until 3pm.
+151000	156000	2pm should work. Yeah. Yeah. Yeah, that should work.
+156000	158000	On Monday. Yeah.
+158000	164000	Do you mind sending me a team's invite? We can meet where we can meet my office, your office, coffee.
+164000	167000	We can meet in your office. That's fine. That's fine.
+167000	180000	But the main thing, the most urgent thing I think is this data issues is the, I just don't understand what's, did my question make sense or am I just confused?
+180000	188000	Which question? Yeah, exactly. Right. My question about the, about the data and the code books.
+188000	200000	You asked something about the code book and I think the code book that I had sent in end of November, beginning of end of November, this is also the latest one.
+200000	201000	Okay, good.
+201000	206000	This should be the most recent updated code book that we have. Good.
+206000	214000	And then you had also a question about the referrals to phone numbers, 10 or 5.
+214000	219000	Yeah, it's, well, yeah, yeah, because the data, yeah, exactly.
+219000	230000	Yeah, so for that is, in our survey, people have sometimes referred more than five referrals or 10, but we said we will only accept up to five.
+230000	232000	Yeah, just the first thing. Okay.
+232000	242000	Second information is, even if people have referred, let's say, seven people, five, it does mean they have been successful.
+242000	269000	No, of course, right, of course. So that's why, in order to understand how many referrals we had eventually, we would have to go back and look at the recruiter and ID, and at the wave, so that we can identify which I, which person ID recruiter has successfully recruited or referred people.
+269000	282000	I got that. And of course, really, the successful recruit referrals aren't the same as referrals, and that's fine. I'm fine with that. The issue is really just one of variables.
+282000	293000	It looks like some people refer up to nine people, and that's, or attempt to refer up to nine people, and that's fine. That's fine.
+293000	304000	Up to 10, yeah. But then there are these weird gaps. So sometimes there'll be three phone numbers, and then no phone numbers, and then another phone number.
+304000	318000	So on the survey, people could write down the people that they will refer, and some people couldn't refer anyone, and some other people could only refer three or four people.
+318000	321000	That doesn't explain the gap.
+321000	327000	Let me share my screen if you don't mind, and probably easier to just look at it.
+327000	337000	I have to figure out how to share my name screen. Let's try that. Hopefully that's working. Can you see my Excel?
+337000	338000	Yeah.
+339000	343000	These are great examples.
+343000	352000	Okay, so first let me pop over to the code book, and there's no coding after Q90.
+352000	365000	My understanding is that Q105 here, up to Q110, were the referrals that were used. So those were the coupons that were given.
+365000	372000	And then you've got this person who refers nine people. That's fine. That makes sense. But look at this person.
+372000	381000	This person refers three phone numbers, and then they refer six nothings, and then there's a phone number way over here.
+381000	391000	Or take this person. Their Q105 is blank, but then they refer a ton of people. So I just don't understand how this happens.
+391000	392000	Yeah.
+392000	400000	So for starters, is my understanding correct that this is the possible set of phone numbers?
+400000	405000	Again, I understand that if that number is larger than five, that we don't actually give the coupons, and that's great.
+405000	407000	And that's actually super helpful.
+407000	416000	But the reason I'm asking is because at our last meeting, we had this observation. I think Caroline had a great suggestion.
+416000	421000	But there's some people that say they know zero domestic workers in the UK, but then they refer people.
+421000	425000	And so we said, well, that's weird. So we should fix that up. And that's right.
+425000	428000	And then I was thinking, well, hang on. That logic applies to everybody.
+428000	434000	So if you say you know two people, two domestic workers in the UK, and you give five phone numbers, that same logic applies.
+434000	438000	And we should still fix up that number.
+438000	445000	And so that's why I'm asking is because I need to know the number of phone numbers that people give.
+445000	453000	And I, like, so for this row, what is the answer to that question? Is it three or is it four?
+453000	455000	Or can we not tell?
+455000	459000	In that case that you have highlighted before.
+459000	461000	Okay, good. Thank you.
+461000	467000	Okay, that's excellent. That's what I understand. And so and likewise, so this for this row, the number would be nine.
+467000	469000	Yeah, nine.
+469000	474000	Okay, so basically I shouldn't worry about the or the gaps or the ordering.
+474000	479000	I think you shouldn't worry about gaps in between the phone number referrals.
+479000	488000	And if you want to understand why that is so I could send you the printed survey from the just system.
+488000	492000	So you can also see how it was on the smartphone on the computer.
+492000	494000	People were filled out.
+494000	496000	Wonderful. Yes. Thank you. That's that's super wonderful.
+496000	504000	But now even even this conversation is super helpful because now I know the the number of phone numbers that a person gave.
+504000	507000	And that was the missing piece that I was I was.
+507000	513000	Yeah, that was the most urgent, I guess, but but so yes, please do that and please do send me whatever you can.
+513000	515000	Oh, I'm going to take this off.
+515000	519000	And and that's great news. Thank you. I will.
+519000	521000	How do I stop? I will.
+521000	530000	I can move forward with that information. So that's great. And then Monday we can meet to talk about the bootstrap stuff.
+530000	541000	And yeah, like I said, I think we're really close. I think we're we're we're we're virtually ready to go. Oh, oh, the population estimate. Yes, Caroline, what were your thoughts on on that?
+541000	551000	So I've been tracking the Europeans on this and they have a category that they call personal household services PHS.
+551000	554000	And they've started to collect data on this.
+554000	557000	And it comprises two elements.
+557000	561000	So there's the just jotted down the details that I found.
+561000	573000	And they work without accommodation, which has a NAC code 88. And then they have an activities of households as employees of domestic personnel, which is NAC 97.
+573000	584000	Now that is also a sick code for the UK, this activities. So that's very closely linked to domestic workers that second one is tightly bounded.
+585000	594000	An analysis that included UK figures from 2017. So it's not too far away.
+594000	607000	And it just sort of a snapshot in quarter three of that. Yeah. And then the figures that they gave for those two NAC codes were 929,000 and 51,000 respectively.
+607000	616000	The social work without accommodation is that bigger figure. And then the activities of households as employers of domestic personnel is that 51,000 figure.
+616000	625000	Excellent. So the paper, they've got some trends for other countries and they, I mean, I think we could make an argument that they're broadly static.
+625000	628000	Okay, if you're saying we're not very sensitive.
+628000	629000	Yeah.
+629000	647000	So the question then is, for us, do we want to combine them to have this that gives you the one million figure that I think, or roughly a million, or do we want to take this smaller lower number of 51,000 that's a bit more problematic because the overseas domestic worker visa figure
+647000	652000	number is larger than that. It's 79,000.
+652000	653000	So.
+653000	660000	So hang on. I think I misread you. So the first category was 920,000 or 92,000.
+660000	661000	929,000.
+661000	663000	Oh, wow. Okay. My mistake.
+663000	667000	And what were the codes again? I'm sorry. NEC? I don't know this.
+667000	673000	N-A-C-E. I don't know what it stands for. But N-A-C-E-88.
+673000	674000	Okay.
+674000	677000	Which is social work without accommodation. I've dropped you an email. So,
+677000	679000	Oh, thank you. I'm sorry.
+679000	689000	That's all right. And N-A-C-E-97, which is this activities of households as employers of domestic personnel.
+689000	703000	So I think that probably can now, given enough time and perseverance, perhaps go through Eurostat and try and pull out something more recent. But if, yeah, that's what I was hoping.
+703000	704000	I agree.
+704000	705000	Yeah.
+705000	711000	But that gives us, I mean, you were talking about sensitivity analysis. So I suppose we could almost talk about a range.
+711000	712000	Yeah.
+712000	717000	From we've got lower and upper limits, haven't we?
+717000	718000	Yeah, exactly.
+718000	719000	Yeah.
+719000	720000	But perhaps is the most.
+720000	722000	Yep. I think that's a great idea.
+722000	724000	Conservative approach.
+724000	731000	Yes. I think you're 100% right. Yeah. And like I said, the, the, I don't know what I'm sorry. I don't know where the 1.7 million came from.
+731000	745000	The, it's really, it's very insensitive, at least when the numbers get big. So like once you hit a million, the results just don't change at all.
+745000	757000	I haven't played with things as small as 50, 51,000. But I will. And I think you're right. I think the range, I think we say, you know, here's the number that we're using site, site, site.
+758000	775000	In the appendix, here's the robot, here's the sensitivity analysis and how things change. And I'm curious to see with these new numbers what happens. But like I said, it was like from 900 to a million to 1.5 million to anything around a million or higher, like nothing changes.
+775000	786000	So, so I, and I don't know about the lower. So I'll, but I'll play with this. So I think this is, please don't spend any more time on, I mean, please do save the citation.
+786000	788000	We can, we can, you know, site the site the site.
+788000	791000	I've got, yeah, I've logged it across in an email to you.
+791000	795000	Really? What I've just told you now. So we've got, we've got the link to the numbers.
+795000	802000	Good. Okay. Well, I can, I can get, I can get on this starting this afternoon.
+802000	811000	Should we meet next week or if, if Selene can get the, well, that's not entirely off.
+812000	829000	I can have, I can have everything except the in some polished by next Friday and depending on how our meeting goes on Monday, Selene. Yeah, the in some stuff might take a little longer. I don't know.
+829000	838000	But, but, but, but the, just from the, just from this conversation, I can finish off the RDS stuff for sure.
+838000	841000	Okay. Would a three o'clock meeting next week be all right?
+841000	842000	Sure.
+842000	844000	I've got something in for two.
+844000	845000	No problem.
+845000	846000	Already.
+846000	847000	Yeah.
+847000	848000	Does that work for you, Selene?
+848000	852000	Yeah, as long as it's after afternoon is fine.
+852000	854000	Yeah. So we said three.
+854000	856000	Yeah, it's fine for me.
+856000	859000	I'll send something across.
+859000	862000	I also sent a meeting link.
+862000	863000	Thank you.
+863000	864000	Yeah.
+864000	865000	Yeah.
+865000	870000	And so how, how do you, how should I prepare for this meeting? What are you?
+870000	871000	Yeah.
+871000	877000	I think you will have the knowledge already, but I will ask you just some questions, some small questions. Yeah.
+877000	878000	And some small questions.
+878000	879000	So that's fine.
+879000	880000	You can guide me.
+880000	881000	Sure.
+881000	883000	So you don't need to prepare anything.
+883000	884000	Just about that.
+884000	885000	Okay. Okay.
+885000	886000	He said, he said, okay.
+886000	887000	All right.
+887000	888000	All right.
+888000	889000	Sounds good.
+889000	891000	And thanks for, like I said, this was.
+891000	893000	This is very helpful for me.
+893000	894000	So thanks.
+894000	895000	That's great.
+895000	896000	Yeah.
+896000	898000	No, it's just, it just is tantalizing now, isn't it?
+898000	900000	Cause it was, I think we, we get it.
+900000	901000	As you say, we're getting close.
+901000	902000	So close.
+902000	904000	It's really just, just delivering now.
+904000	905000	Yeah.
+905000	906000	Oh, no, no, no, no.
+906000	908000	I didn't mean it critically, Selene.
+908000	909000	Not at all.
+909000	911000	And in fact, I was, I, no, no, no, no, no, no, no, no.
+911000	912000	No, I'm not saying anything critical.
+912000	914000	It's just, I, I, I'm with Caroline.
+914000	915000	Like we just, let's get it done.
+915000	916000	Let's get it done.
+916000	918000	We can, we can, we can do it.
+918000	919000	So thanks.
+919000	920000	Thanks so much.
+920000	921000	And I hope you have.
+921000	923000	Find some time to enjoy the weekend.
+923000	926000	And we'll talk in a week.
+926000	927000	Yeah.
+927000	928000	Thanks.
+928000	929000	Good to see you.
+929000	931000	Thanks very much.
+931000	933000	Bye everybody.
+950000	957000	Thank you.
+980000	982000	Thank you.
+982000	983000	Thank you.
+1010000	1020000	I don't care.
+1020000	1022000	Jimmie crack corn and I don't care.
+1022000	1024000	Jimmie crack corn and I don't care.
+1024000	1028000	Jimmie crack corn but I don't care.
+1028000	1030000	Jimmie crack corn and I don't care.
+1030000	1032000	My master's gone away.
+1032000	1034000	That's the lyric.
+1034000	1043000	Okay.
+1043000	1049000	Here we go again.
+1049000	1051000	Same French guy.
+1051000	1061000	All right, sir.

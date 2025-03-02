@@ -1,0 +1,232 @@
+Date: 20231110
+Subject: Re: Revised approach to RDS/NSUM estimation
+
+Thank you Selim
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+ 
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+
+Book time to meet with me
+From: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Sent: 10 November 2023 13:45
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Cc: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: Revised approach to RDS/NSUM estimation 
+ 
+Dear Caroline and Dr Moser, 
+
+I hope this email finds you well. 
+
+Please see attached the updated further coding with adjusted Category_13 and Sum_categories. 
+
+Thank you. 
+
+With kind regards, 
+
+Selim Yilmaz
+From: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Sent: 10 November 2023 09:18
+To: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Cc: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: Revised approach to RDS/NSUM estimation 
+ 
+Excellent. Thanks Selim. We can discuss further when we meet at lunchtime.
+
+Best wishes
+Caroline
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+ 
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+
+Book time to meet with me
+From: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Sent: 10 November 2023 00:28
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Cc: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: Revised approach to RDS/NSUM estimation 
+ 
+Dear Caroline and Dr Moser,
+
+I hope this email finds you well.
+
+Please see attached the tasks for further coding. I created 13 new columns for each category of exploitation, one new column for the sum of exploitation weight (Sum_categories), and another column for whether or not there is any type of exploitation (Whether_exploitation). This coding has shown that all respondents face some level of exploitation, and the number of sample is still the same (n=97).
+
+Please let me know if there is anything else.
+
+Thank you.
+
+With kind regards,
+
+Selim Yilmaz
+From: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Sent: 06 November 2023 09:26
+To: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Cc: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Re: Revised approach to RDS/NSUM estimation 
+ 
+Dear Caroline,
+
+Thank you for updating me.
+
+I will work on the coding as you explained, and be in touch with you if I have any questions. If you do not hear from me, I will update my progress in the meeting on Friday.
+
+Thank you, and have a good week.
+
+With kind regards,
+
+Selim Yilmaz
+From: Caroline Emberson (staff) <lizce@exmail.nottingham.ac.uk>
+Sent: 03 November 2023 14:32
+To: Selim Yilmaz <ldxsy3@exmail.nottingham.ac.uk>
+Cc: Scott Moser (staff) <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Revised approach to RDS/NSUM estimation 
+ 
+Hi Selim,
+
+I hope you enjoyed your trip to Turkey. Following Scott's observation that we have collected RDS data on the frame population rather than focusing on the hidden population, we have discussed some possible ways forward and agreed that we trim our data to include only those respondents who identify that their circumstances could be considered abusive - taking the widest possible spectrum of abuse (i.e. including behaviours such as verbal abuse and all other indicators of exploitation). Since 82% of our sample reported verbal abuse, we are hoping that this approach means that we can keep a high proportion of our respondents in our analysis
+
+This approach - and the generation of a risk index - requires some elaboration and further coding of our data set. 
+
+That being the case, would you be able and willing to carry out the following tasks?
+
+Insert a new column for each of the 13 possible risk categories identified (as indicated in the attachment to this email) and, where the respondent indicates that they have experienced each particular form of abuse, assign the weight indicated  into the cell (0 would indicate that that respondent did not report any abuse of that type)
+
+Insert a 'sum' risk category column - which then sums all the weighted risks for each of the 13 abuse categories to give an index value between 0 (no abuse of any kind) and 1( all forms of abuse reported)
+Insert one further new column indicating for each respondent whether they report any type of exploitation (broadly defined) coded 0 for no abuse reported and 1 for any  type of abuse reported. (Again, you can use the questions that indicate abuse found in the attached document). It would be useful if you could then let us know how many respondents this leaves in our sample.
+If this makes sense to you, do you think that you can press ahead with this coding send through the updated data set to me and Scott? 
+
+If anything here is unclear - or you would like to discuss the weightings I've assigned (which are indeed somewhat subjective) and you'd like a quick chat with me first we can schedule a call next week. 
+
+If you're available, Scott has already sent through a meeting invitation for us all meet again next Friday - for an update on progress/ agree our next steps.
+
+Best wishes
+Caroline
+
+
+
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor
+
+ 
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+A20, Highfield House
+
+University Park
+
+Nottingham, NG7 2RD
+
+ 
+
++44 (0) 115 8283072 | caroline.emberson@nottingham.ac.uk
+
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+
+Follow us
+
+Facebook.com/UniofNottingham
+
+Twitter.com/UniofNottingham
+
+Youtube.com/nottmuniversity
+
+Instagram.com/uniofnottingham
+
+Linkedin.com/company/university-of-nottingham
+
+Foursquare.com/uniofnottingham
+
+ 
+
+
+Book time to meet with me
+

@@ -1,0 +1,117 @@
+Received: from AM9PR06MB7315.eurprd06.prod.outlook.com (2603:10a6:20b:2cf::5)
+ by AS8PR06MB7301.eurprd06.prod.outlook.com with HTTPS; Tue, 24 Sep 2024
+ 19:19:51 +0000
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=exmail.nottingham.ac.uk;
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com (2603:10a6:20b:99::17)
+ by AM9PR06MB7315.eurprd06.prod.outlook.com (2603:10a6:20b:2cf::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7982.27; Tue, 24 Sep
+ 2024 19:19:50 +0000
+Received: from AM6PR06MB5941.eurprd06.prod.outlook.com ([::1]) by
+ AM6PR06MB5941.eurprd06.prod.outlook.com ([fe80::78bf:18af:f6eb:65ba%5]) with
+ Microsoft SMTP Server id 15.20.7982.022; Tue, 24 Sep 2024 19:19:50 +0000
+From: "Caroline Emberson (staff)" <lizce@exmail.nottingham.ac.uk>
+To: "Scott Moser (staff)" <ldzsm2@exmail.nottingham.ac.uk>
+Subject: Automatic reply: Anticipated special issue - possible 4* journal
+ outlet
+Thread-Topic: Anticipated special issue - possible 4* journal outlet
+Thread-Index: AQHbBceDdn7SPdcPjUi0G2xfpnGvvLJZYwiAgAbv+maABtSugIAAOjQT
+References:
+ <AM6PR06MB59417B3B99005C0950971C0CA0652@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <3CB5EB21-B96A-4C20-95D3-F91DD17D14E1@nottingham.ac.uk>
+ <AM6PR06MB5941D991681B3939E147AA41A06C2@AM6PR06MB5941.eurprd06.prod.outlook.com>
+ <5D2097D3-F170-47F6-8983-08E9DC4DB16C@nottingham.ac.uk>
+In-Reply-To: <5D2097D3-F170-47F6-8983-08E9DC4DB16C@nottingham.ac.uk>
+X-MS-Has-Attach:
+X-Auto-Response-Suppress: All
+X-MS-Exchange-Organization-SCL: 1
+X-MS-Exchange-Inbox-Rules-Loop: lizce@exmail.nottingham.ac.uk
+X-MS-TNEF-Correlator: b90a7d3a-b4b1-4fc7-991c-700787733cec
+MIME-Version: 1.0
+Date: Tue, 24 Sep 2024 19:19:50 +0000
+X-MS-Exchange-Organization-MessageDirectionality: Originating
+X-MS-Exchange-Organization-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 03
+Message-Id:
+ <5f9dd96e4f47448e827752a564419030@AM6PR06MB5941.eurprd06.prod.outlook.com>
+X-MS-Exchange-Organization-Network-Message-Id:
+ 98c872f9-8df0-40d0-a647-08dcdccddc6b
+X-MS-Exchange-Parent-Message-Id:
+ <5D2097D3-F170-47F6-8983-08E9DC4DB16C@nottingham.ac.uk>
+Auto-Submitted: auto-generated
+X-MS-Exchange-Generated-Message-Source: Mailbox Rules Agent
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ AM6PR06MB5941:EE_|AM9PR06MB7315:EE_|AS8PR06MB7301:EE_
+Return-Path: <>
+X-MS-Exchange-Organization-ExpirationStartTime: 24 Sep 2024 19:19:50.7475
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Office365-Filtering-Correlation-Id: 98c872f9-8df0-40d0-a647-08dcdccddc6b
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|41050700001;
+X-Forefront-Antispam-Report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR06MB5941.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(41050700001);DIR:INT;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Sep 2024 19:19:50.3957
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR06MB5941.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-Network-Message-Id: 98c872f9-8df0-40d0-a647-08dcdccddc6b
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM9PR06MB7315
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:01.0080672
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.7982.022
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(425001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	pViMZ24kYSifLGsfT6+guCJAA+cLQiJN/+77N3nT5DVirzmsr7SspLO+0jMVE0XtYEEsppp0aDZsiywIO8Qxdklkh8C607dWImKQht+KOni1S1IASbNI7AbQUBrGcBE6F8C43MDpNzzUDRLDAlr9QKjAvOkT7jrh0+5sF+9Rxj4pAaek86KQVF5huyF1RumLauqZUbmgFKVOM+1fjMF1qNDvhEhn27UC9Swv+bN93PswwKN3dP6Mmw19iUsW44WVDRD3z1YNf5dDZ9T77yYqSSfDKULLwzfD+BDsa3T/aUYdUyh8MeZJOsQNi7CsEVVHnXCwCi8zfUwSZl8lv6jkQcqVCnySum4Acczdo6DNf6usM908c1HFStANyOtysnYz7I2DCO0ISAxyR+QH55WL8AlTpg5vee0AIcZUx3/WULcnf1kw+9Hheg6FfhtLU5wXrxf/CVAAXQ1SQQUCLC3Z7SfzWsGBrq80DdKD5Vnr5rUmiecWxSK41qVvDKSHX4rb2b8hXAJb+E2tpdcEl/LiWI1yzElW3cZiJtKy0IY0qec+bJWM7wj5bcIYKjhCdv47VI8zOtSk9KkrXD5yeE9jWunXQddfXjwlaDoC6TBC9mj/kgOhHPKiSgKXDf0IONOOW8L4jhZRM7pIkxDY9vNuQWAboFYjf2cjq8t6iQhButATcAhfpR3O/IzzIdnT4chArt78SNCN17OxK+PZnuFqS70x44rpmX/1c6Qf2aGRJqCSnFo0tvFPvs/iDL6Gn3ttYF2bf4C45i7Nf1Zj7zDNGJTGnJyguwTjMJuSxxdQ60qQglk8x8O4QP/jHHdbnq19IW7Z/biwDFqXe6Neaai/UA==
+Content-type: multipart/alternative;
+	boundary="B_3821516406_549092760"
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3821516406_549092760
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: 7bit
+
+Thank you for your message. I am on annual leave until Monday, 30th September. Please forgive me if I read and answer your email upon my return.
+
+ 
+
+Best wishes
+
+Caroline
+
+
+
+
+--B_3821516406_549092760
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"></head><=
+body><p style=3D"text-align:left; margin:0px"><span style=3D"font-family:Arial,s=
+ans-serif; font-size:11pt; color:black; background-color:white">Thank you fo=
+r your message. I am on annual leave until Monday, 30<sup>th</sup>&nbsp;Sept=
+ember. Please forgive me if I read and answer your email upon my return.</sp=
+an></p><p style=3D"text-align:left; background-color:white; margin:0px"><span =
+style=3D"font-family:Arial,sans-serif; font-size:11pt; color:black">&nbsp;</sp=
+an></p><p style=3D"text-align:left; background-color:white; margin:0px"><span =
+style=3D"font-family:Arial,sans-serif; font-size:11pt; color:black">Best wishe=
+s</span><span style=3D"font-size:15px; color:rgb(66,66,66)"><br></span></p><p =
+style=3D"text-align:left; background-color:white; margin:0px"><span style=3D"fon=
+t-family:Arial,sans-serif; font-size:11pt; color:black">Caroline</span></p><=
+div style=3D"text-align:left; font-size:15px; color:rgb(66,66,66)"><br></div><=
+/body></html>
+
+--B_3821516406_549092760--
+
