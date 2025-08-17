@@ -42,8 +42,11 @@ Draft Development
 
 
 Update methods section with technical details
+
 Add results from statistical analysis once complete
+
 Position for IJOPM special issue deadline (Sept 2025)
+
 Consider addressing how multiple estimation approaches increase confidence
 
 

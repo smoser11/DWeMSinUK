@@ -1,0 +1,182 @@
+.flex-container {
+  /* We first create a flex layout context */
+  display: flex;
+
+  /* Then we define the flow direction
+     and if we allow the items to wrap
+   * Remember this is the same as:
+   * flex-direction: row;
+   * flex-wrap: wrap;
+   */
+  flex-flow: row wrap;
+
+  /* Then we define how is distributed the remaining space */
+  justify-content: space-around;
+}
+
+
+
+.infobox {
+  padding: 1em 1em 1em 5em;
+  margin-bottom: 10px;
+  border: 2px solid orange;
+  border-radius: 10px;
+}
+
+
+<!-- https://pavellaptev.medium.com/css-weekly-2-an-image-on-the-left-text-on-the-left-a5e59b2acdb5 -->
+
+.infoboxB {
+  border: 3px solid blue;
+  padding: 20px 40px 40px;
+  max-width: 640px;
+  &__image {
+    display: inline-block;
+    vertical-align: top;
+    width: 46%;
+    margin: 20px 30px 0 0;
+    background-image: url("tip.png");
+  }
+  &__text {
+    display: inline-block;
+    width: 46%;
+    @media (max-width: 620px) {
+      width: 100%;
+    }
+  }
+}
+
+
+.infobox2 {
+  padding: 1em 1em 1em 1em;
+  padding-left: 10%;
+  margin-bottom: 10px;
+  border: 2px solid orange;
+  border-radius: 10px;
+  background: #f5f5f5 5px center/3em no-repeat;
+}
+
+.caution {
+  background-image: url("caution.png");
+  background-size: 8%;
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
+.tip {
+  background-image: url("tip.png");
+  background-size: 8%;
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
+.warning {
+  background-image: url("warning.png");
+  background-size: 8%;
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
+.question {
+  background-image: url("question-mark-vector-icon.jpg");
+  background-size: 8%;
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
+.important {
+  background-image: url("important.png");
+  background-size: 8%;
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
+.aside {
+  background-image: url("shelfShoes.jpg");
+  background-size: 8%;
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
+.note {
+  background-image: url("note.png");
+  background-size: 8%;
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
+.figure {
+  text-align: center;
+}
+
+.unpack {
+  background-image: url("box-png-icon-52.png");
+  background-size: contain;
+}
+
+.unpack2 {
+  background-image: url("suitcase.jpg");
+  background-size: contain;
+}
+
+.unpack3 {
+  background-image: url("unpack-icon-67.png");
+  background-size: 10% 20%;
+}
+
+.unpack4 {
+  background-image: url("36_courier_box_unpack-512.png");
+  background-size: 9%;
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
+.unpack5 {
+  background-image: url("open-suitcase-vintage-empty-icon-isolated-design-vector-illustration-203023024.jpg");
+  background-size: 8%;
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
+
+
+
+body{ /* Normal  */
+      font-size: 14px;
+  }
+td {  /* Table  */
+  font-size: 14px;
+}
+h1.title {
+  font-size: 34px;
+  color: DarkRed;
+}
+h1 { /* Header 1 */
+  font-size: 24px;
+  color: DarkBlue;
+}
+h2 { /* Header 2 */
+    font-size: 22px;
+  color: DarkBlue;
+}
+h3 { /* Header 3 */
+  font-size: 18px;
+/*  font-family: "Times New Roman", Times, serif; */
+  color: DarkBlue;
+}
+h3.subtitle {
+  font-size: 24px; /* Adjust the font size as needed */
+}
+code.r{ /* Code block */
+    font-size: 12px;
+}
+pre { /* Code block - determines code spacing between lines */
+    font-size: 12px;
+}
+
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 14px;
+    border-left: 5px solid #eee;
+}
