@@ -28,7 +28,8 @@ clean_data <- function() {
       recruiter.id = replace_na(recruiter.id, -1),
       # Create participant IDs
       id = node_2_id_respondent_recruit,
-      ridc = node_1_recruiter,
+      # Handle recruiter character variable (ridc) properly
+      ridc = as.character(node_1_recruiter),
       ridc = replace_na(ridc, "seed"),
       rowNum = row_number()
     ) %>%
@@ -77,9 +78,12 @@ clean_data <- function() {
   save(data_final, data_nonzero, 
        file = here("data", "processed", "cleaned_data.RData"))
   
-  # Create CSV exports for external use
-  write.csv(data_final, here("data", "processed", "data_full.csv"), row.names = FALSE)
-  write.csv(data_nonzero, here("data", "processed", "data_nonzero.csv"), row.names = FALSE)
+  # Create CSV exports for external use (remove list columns first)
+  data_final_csv <- data_final %>% select(-NonEmptyValues)
+  data_nonzero_csv <- data_nonzero %>% select(-NonEmptyValues)
+  
+  write.csv(data_final_csv, here("data", "processed", "data_full.csv"), row.names = FALSE)
+  write.csv(data_nonzero_csv, here("data", "processed", "data_nonzero.csv"), row.names = FALSE)
   
   # Create long format data for network analysis
   cat("Creating long format network data...\n")

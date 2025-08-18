@@ -170,8 +170,9 @@ prepare_data <- function() {
   cat("Saving prepared data...\n")
   save(dd, rd.dd, file = here("data", "processed", "prepared_data.RData"))
   
-  # Export CSV for external use
-  write.csv(dd, here("data", "processed", "prepared_data.csv"), row.names = FALSE)
+  # Export CSV for external use (remove list columns first)
+  dd_csv <- dd %>% select(-NonEmptyValues)
+  write.csv(dd_csv, here("data", "processed", "prepared_data.csv"), row.names = FALSE)
   
   cat("Data preparation completed successfully!\n")
   cat("- Prepared data:", nrow(dd), "observations\n")
