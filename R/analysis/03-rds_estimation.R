@@ -2,6 +2,7 @@
 # Comprehensive RDS estimation analysis including bootstrap methods
 # RDS-I, RDS-II, RDS-SS, Model-Assisted, Population Size, and Bootstrap CI
 
+
 # Load required libraries
 library(tidyverse)
 library(RDS)
@@ -83,11 +84,24 @@ run_rds_estimation <- function(
   # 3. Population Size Estimation using SS-PSE
   cat("Computing population size estimates...\n")
   tryCatch({
+    # fit_fast <- posteriorsize(
+    #   rd.dd,
+    #   median.prior.size = 10000,
+    #   visibility = TRUE,
+    #   visibilitydistribution = "nbinom",   # << faster than CMP
+    #   parallel = 12, parallel.type = "PSOCK",
+    #   burnin = 12000, samplesize = 3000, interval = 5
+    # )
+    
     ss_pse <- posteriorsize(
       rd.dd,
       mean.prior.size = 980000,
-      maxN = 2000000,
+#    maxN = 2000000,
       visibility = TRUE,
+      visibilitydistribution = "nbinom",   # << faster than CMP
+      parallel = 12,
+      parallel.type = "PSOCK",
+      burnin = 15, samplesize = 4, interval = 1,
       K = FALSE
     )
   }, error = function(e) {
