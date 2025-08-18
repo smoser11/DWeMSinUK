@@ -15,7 +15,7 @@ if (!exists("dd") || !exists("rd.dd")) {
 
 # Source the results database functions
 source(here("R", "analysis", "03a-rds_basic_estimation.R"))
-skip_execution <- TRUE  # Prevent basic script from running
+skip_execution <- FALSE  # Prevent basic script from running
 
 # Create unique ID for MA parameter configuration
 create_ma_parameter_id <- function(outcome_var, pop_size, seed_selection = "degree", 

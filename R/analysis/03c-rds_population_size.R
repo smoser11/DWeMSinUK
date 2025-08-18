@@ -16,7 +16,7 @@ if (!exists("dd") || !exists("rd.dd")) {
 
 # Source the results database functions
 source(here("R", "analysis", "03a-rds_basic_estimation.R"))
-skip_execution <- TRUE  # Prevent basic script from running
+skip_execution <- FALSE  # Prevent basic script from running
 
 # Create unique ID for population size estimation configuration
 create_popsize_parameter_id <- function(prior_size, visibility_dist = "nbinom", 

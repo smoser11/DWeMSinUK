@@ -1,11 +1,11 @@
 DWeMSinUK Analysis Pipeline Summary
-Generated: 2025-08-18 11:01:55.196164
+Generated: 2025-08-18 16:50:18.543763
 
 Files processed:
 - Cleaned data: ✓
 - Prepared data: ✓
 - RDS results: ✗
-- NSUM results: ✗
+- NSUM results: ✓
 - Comparison results: ✗
 
 Analysis parameters:

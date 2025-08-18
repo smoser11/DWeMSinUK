@@ -1,0 +1,9 @@
+"variable","converged","n_observations","variable_type","convergence_metric","has_error","error_message"
+"document_withholding_rds",TRUE,85,"categorical",NA,FALSE,NA
+"pay_issues_rds",TRUE,85,"categorical",NA,FALSE,NA
+"threats_abuse_rds",TRUE,85,"categorical",NA,FALSE,NA
+"excessive_hours_rds",TRUE,85,"categorical",NA,FALSE,NA
+"access_to_help_rds",TRUE,85,"categorical",NA,FALSE,NA
+"zQ36",TRUE,85,"categorical",NA,FALSE,NA
+"zQ80",TRUE,85,"categorical",NA,FALSE,NA
+"sum_categories_factor",TRUE,85,"categorical",NA,FALSE,NA

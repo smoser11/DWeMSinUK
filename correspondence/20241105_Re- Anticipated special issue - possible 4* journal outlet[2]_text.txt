@@ -275,4 +275,165 @@ Step 4 — “Findings” section outline (ready to draft)
     
     
     
+    ___
     
+---
+---
+
+
+
+
+
+
+
+
+
+
+
+```{r setu, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(tidyverse)
+library(kableExtra)
+library(ggplot2)
+library(plotly)
+library(DT)
+library(gt)
+
+# Load results
+load("output/rds_estimates.RData")
+load("data/processed/prepared_data.RData")
+```
+
+## Executive Summary
+
+This analysis estimates the prevalence of modern slavery among domestic workers in the UK using multiple RDS methodologies. We examine two primary indicators across various population size assumptions and estimation techniques.
+
+**Key Findings:**
+- Below minimum wage prevalence (Q36): X.X% - Y.Y% (95% CI)
+- NRM referral experience (Q80): A.A% - B.B% (95% CI)  
+- Population size estimates: 980,000 - 1.74M domestic workers
+
+## Sample Characteristics
+
+### Recruitment Network Structure
+
+```{r network-summary}
+#| label: tbl-network
+#| tbl-cap: "RDS Sample Network Characteristics"
+
+network_stats <- tibble(
+  Characteristic = c("Total Sample Size", "Recruitment Waves", "Average Degree", 
+                    "Median Degree", "Seeds", "Longest Chain", "Mean Chain Length"),
+  Value = c(
+    nrow(rd.dd),
+    max(rd.dd$wave, na.rm = TRUE),
+    round(mean(rd.dd$numRef, na.rm = TRUE), 1),
+    round(median(rd.dd$numRef, na.rm = TRUE), 1),
+    sum(rd.dd$recruiter.id == -1),
+    "TBD", # Calculate from recruitment chains
+    "TBD"  # Calculate average chain length
+  )
+)
+
+network_stats %>%
+  gt() %>%
+  tab_header(title = "Network Characteristics") %>%
+  fmt_number(columns = Value, decimals = 1, use_seps = TRUE)
+```
+
+### Demographic Composition
+
+```{r demographics}
+#| label: fig-demographics
+#| fig-cap: "Sample Composition by Nationality Clusters"
+
+# Create nationality breakdown
+nationality_summary <- rd.dd %>%
+  group_by(nationality_cluster) %>%
+  summarise(
+    n = n(),
+    percent = round(n() / nrow(rd.dd) * 100, 1),
+    .groups = 'drop'
+  )
+
+ggplot(nationality_summary, aes(x = nationality_cluster, y = percent, fill = nationality_cluster)) +
+  geom_col() +
+  geom_text(aes(label = paste0(n, "\n(", percent, "%)")), vjust = -0.5) +
+  scale_fill_viridis_d() +
+  theme_minimal() +
+  labs(x = "Nationality Cluster", y = "Percentage", 
+       title = "Sample Distribution by Nationality") +
+  theme(legend.position = "none")
+```
+
+## RDS Estimation Results
+
+### Model-Assisted Estimates by Population Size
+
+```{r ma-estimates-table}
+#| label: tbl-ma-estimates
+#| tbl-cap: "Model-Assisted Estimates by Population Size and Seed Selection"
+
+# Extract MA results and create comparison table
+ma_comparison <- expand_grid(
+  seed_method = c("sample", "random", "degree"),
+  pop_size = c(100000, 953000, 1000000, 1500000),
+  indicator = c("q36", "q80", "composite_risk")
+) %>%
+  rowwise() %>%
+  mutate(
+    key = paste0(seed_method, "_", pop_size),
+    estimate = ifelse(key %in% names(ma_results),
+                     ma_results[[key]][[indicator]]$estimate, NA),
+    ci_lower = ifelse(key %in% names(ma_results),
+                     ma_results[[key]][[indicator]]$conf.int[1], NA),
+    ci_upper = ifelse(key %in% names(ma_results),
+                     ma_results[[key]][[indicator]]$conf.int[2], NA)
+  ) %>%
+  ungroup() %>%
+  filter(!is.na(estimate))
+
+# Create formatted table
+ma_comparison %>%
+  mutate(
+    pop_size_f = scales::comma(pop_size),
+    estimate_ci = sprintf("%.3f (%.3f, %.3f)", estimate, ci_lower, ci_upper)
+  ) %>%
+  select(seed_method, pop_size_f, indicator, estimate_ci) %>%
+  pivot_wider(names_from = indicator, values_from = estimate_ci) %>%
+  gt() %>%
+  tab_header(title = "Model-Assisted Estimates by Method") %>%
+  cols_label(
+    seed_method = "Seed Selection",
+    pop_size_f = "Population Size",
+    q36 = "Below Min Wage",
+    q80 = "NRM Experience", 
+    composite_risk = "Composite Risk"
+  ) %>%
+  tab_spanner(label = "Prevalence Estimates (95% CI)", columns = c(q36, q80, composite_risk))
+```
+
+### Traditional RDS Estimators Comparison
+
+```{r rds-comparison}
+#| label: tbl-rds-comparison
+#| tbl-cap: "RDS Estimator Comparison (N=980,000)"
+
+# Extract RDS estimates for standard population size
+rds_980k <- rds_results[["980000"]]
+
+rds_table <- tibble(
+  Method = c("RDS-I", "RDS-II", "Successive Sampling"),
+  `Q36 Estimate` = c(
+    rds_980k$rds_i$q36$estimate,
+    rds_980k$rds_ii$q36$estimate,
+    rds_980k$rds_ss$q36$estimate
+  ),
+  `Q36 95% CI` = c(
+    sprintf("(%.3f, %.3f)", rds_980k$rds_i$q36$conf.int[1], rds_980k$rds_i$q36$conf.int[2]),
+    sprintf("(%.3f, %.3f)", rds_980k$rds_ii$q36$conf.int[1], rds_980k$rds_ii$q36$conf.int[2]),
+    sprintf("(%.3f, %.3f)", rds_980k$rds_ss$q36$conf.int[1], rds_980k$rds_ss$q36$conf.int[2])
+  ) #...
+```
+
+
