@@ -13,8 +13,8 @@ bibliography:
     - MyLibrary31-07-2025.bib
 csl: apa.csl
 citeproc: true
-filters:
-  - citefield.lua #https://github.com/bcdavasconcelos/cite-field
+# filters:
+#   - citefield.lua #https://github.com/bcdavasconcelos/cite-field
 reference-section-title: ""
 #cite-method: citeproc
 fontsize: 12pt
@@ -23,6 +23,7 @@ subparagraph: true
 execute:
   warning: false
   message: false
+  eval: false
 format:
   pdf:
     keep-tex: true
