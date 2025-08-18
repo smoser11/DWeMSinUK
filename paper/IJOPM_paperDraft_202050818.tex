@@ -1,0 +1,1367 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  12pt,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{stmaryrd}
+% Numbering is tied to sections (e.g., Proposition 2.1, 2.2, etc.)
+% Theorems and Propositions (italic)
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+% Definitions and Corollaries (upright)
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{example}{Example}
+% \newtheorem{algorithm}[theorem]{Algorithm}
+% Optional: formatting for the proof environment
+\renewenvironment{proof}
+   {\par\noindent\textbf{Proof.}\ }
+   {\hfill$\blacksquare$\par}
+
+
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Estimating the risk of labour exploitation and abuse among transnational domestic workers in the UK},
+  pdfauthor={Caroline Emberson; Scott Moser},
+  colorlinks=true,
+  linkcolor={black},
+  filecolor={Maroon},
+  citecolor={RoyalBlue},
+  urlcolor={BrickRed},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Estimating the risk of labour exploitation and abuse among
+transnational domestic workers in the UK}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Modern Slavery Among Domestic Workers: Comprehensive RDS
+Analysis}
+\author{Caroline Emberson \and Scott Moser}
+\date{18, August 2025}
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+
+\newpage
+
+\section{Introduction}\label{introduction}
+
+Labour exploitation has been defined as `work situations that deviate
+significantly from standard working conditions as defined by legislation
+or other binding legal regulations, concerning in particular
+remuneration, working hours, leave entitlements, health and safety
+standards and decent treatment'
+((\citeproc{ref-european_union_for_fundamental_rights_2015}{\textbf{european\_union\_for\_fundamental\_rights\_2015?}}),
+p.~10). In the operations and supply chain management literature,
+businesses' respect for these kinds of employee labour rights began with
+studies focused upon labour rights transgressions related to risk
+reduction and risk communication and considered how to improve
+employees' health and safety (Chinander
+(\citeproc{ref-chinander_aligning_2001}{2001}); Wolf
+(\citeproc{ref-wolf_operationalizing_2001}{2001})). Recently, more
+serious labour rights abuses have come to the fore with studies
+examining the challenges of severe labour abuse under the umbrella term
+`modern slavery' (Gold et al. (\citeproc{ref-gold_modern_2015}{2015});
+New (\citeproc{ref-new_modern_2015}{2015}); Benstead et al.
+(\citeproc{ref-benstead_horizontal_2018}{2018}); Stevenson \& Cole
+(\citeproc{ref-stevenson_modern_2018}{2018})). While this literature
+offers important insights into these severe forms of labour exploitation
+in global supply chains, the wider social sustainability literature has
+been criticised for taking a de-humanised approach to the understanding
+of workers and their working conditions (Soundararajan et al.
+(\citeproc{ref-soundararajan_humanizing_2021}{2021})). Perhaps as a
+result, little attention has been paid to workers' experiences of severe
+forms of labour exploitation in the literature to date. While recent
+projects seek to examine the phenomenon of worker voice in factory
+settings (Trust (\citeproc{ref-leverhulme_trust_research_2022}{2022})),
+nowhere are the realities of individual workers' experiences of employer
+exploitation brought into sharper relief than in the setting of domestic
+work in private households.
+
+The authors of the Global Slavery Index estimate that there are
+seventy-six million people employed in domestic work worldwide
+((\citeproc{ref-ilo_walk_free_iom_2022}{\textbf{ilo\_walk\_free\_iom\_2022?}})).
+According to Bonnet et al. (\citeproc{ref-bonnet_domestic_2022}{2022}),
+eighty percent of this domestic work is unregulated and informal. Labour
+exploitation has been identified as an extensive global problem within
+the sector, with domestic work identified as one of five private sector
+groupings which contribute the most to forced labour. Defined in the ILO
+Forced Labour Convention, 1930 No.29, forced or compulsory labour is
+`all work or service which is exacted from a person under the threat of
+a penalty and for which the person has not offered himself or herself
+voluntarily' (O (\citeproc{ref-ilo_what_2024}{2024})). Seventy-six
+percent of domestic workers are women, and these workers represent four
+percent of the total female workforce
+((\citeproc{ref-ilo_walk_free_iom_2022}{\textbf{ilo\_walk\_free\_iom\_2022?}})).
+Indeed, women in forced labour are much more likely to be in domestic
+work than in any other occupation
+(\citeproc{ref-ilo_walk_free_iom_2022}{\textbf{ilo\_walk\_free\_iom\_2022?}}).
+The ILO suggest that female domestic workers may be coerced through
+non-payment of wages; abuse of vulnerability; subjected to physical and
+sexual violence or experience threats against their family members. Such
+severe forms of labour exploitation may be present alongside other,
+perhaps less severe but equally illegal, practices which constitute
+various forms of labour abuse. The criminalisation of both labour
+exploitation and abuse in a domestic setting has developed in recent
+times, with legislation enacted in the United Kingdom (UK), Europe,
+Australia and Norway to criminalise such severe exploitation under the
+term `modern slavery'. However, even where modern slavery laws are in
+place, reliance on traditional, inspection-led, approaches to detection
+designed primarily to ensure labour rights compliance within communal
+workplaces such as factories mean that the number of reported cases of
+labour exploitation in private dwellings may well severely underestimate
+actual exploitation levels. This article aims to contribute to a more
+nuanced understanding of how survey techniques may be developed to
+improve understanding of the realities of workers' conditions by
+demonstrating the use of a statistically robust estimation of the nature
+and proportion of labour exploitation and abuse among domestic workers
+in the UK. This setting was chosen due to long-standing national
+legislation criminalising modern slavery introduced to the UK in 2015.
+Despite, or perhaps because of this legislation, in recent years the
+number of potential victims entering the UK's National Referral
+Mechanism (NRM), a scheme which provides government support for those
+suspected to be modern slavery survivors, has continued to increase.
+Nineteen thousand, one hundred and twenty-five potential victims were
+recorded in 2024: the highest annual figure since the NRM began
+(\citeproc{ref-home_office_modern_2025}{Office, 2025}). In 2024, for the
+first time the number of cases of potential modern slavery among females
+handled by the charity Unseen, who run the UK's modern slavery helpline,
+were more prevalent than those among men (Carter
+(\citeproc{ref-carter_women_2025}{2025})). Despite these worrying
+headline statistics, and the persistence of specific concerns about high
+levels of exploitation among domestic workers in the grey literature
+(Kalayaan (\citeproc{ref-kalayaan_new_2008}{2008}); Mantouvalou
+(\citeproc{ref-mantouvalou_modern_2016}{2016});
+(\citeproc{ref-lawrs_2023}{\textbf{lawrs\_2023?}})), to our knowledge
+no-one has yet estimated the nature and extent of labour exploitation
+and abuse that may exist among domestic workers in the UK.
+
+In contrast to overseas factory workers in globally dispersed, product,
+supply chains, many service workers engaged in domestic work have
+migrated to work in the UK. These transnational workers enter on
+restricted visas where their employment---and their right to remain in
+the country---is tied to their continuing employment. It is now ten
+years since the UK's Modern Slavery Act was enacted. During its passage
+through parliament, those advocating for the rights of domestic workers
+were successful in expanding the final category boundaries of the
+legislation to include, in Section 53, the specific definition of
+(overseas) domestic workers as modern slavery victims (Caruana et al.
+(\citeproc{ref-caruana_boundaries_2025}{2025})). These transnational
+migrants are at particular risk of exploitation due to regulatory visa
+restrictions and intersecting structural issues related to their gender,
+the relative isolation of domestic work and a lack of supportive social
+networks. This can mean that they fall out of legal migratory status.
+Due to the social stigma attached to such illegal working, transnational
+workers remaining in the UK without the right to work may be considered
+a hidden, hard-to-reach, population. Extracting a sample of domestic
+workers which includes this group raises difficulties when trying to
+employ the normal statistical sampling methods considered necessary for
+robust prevalence estimation. Perhaps due to these sampling
+difficulties, we know relatively little about the nature of labour
+exploitation among this particularly at-risk group of workers.
+Fortunately, there has been significant interest in the development of
+alternative methods for prevalence estimation which include such
+hard-to-reach groups, with many scholars advocating and developing the
+use of respondent-driven sampling (RDS) techniques to support
+statistically robust estimators.
+
+In this paper, we make two specific contributions to the operations and
+supply chain management literature. First, we demonstrate the use of RDS
+coupled with Network Scale-up Methods (N-SUM) to reach and sample
+respondents' views of their working conditions among these,
+predominantly female, transnational migrant domestic workers. We use the
+data we obtain from these respondents to show how such a survey can be
+used to estimate the proportion of workers experiencing labour
+exploitation. Second, we begin to capture the nature and extent of
+modern slavery as voiced by domestic service workers thereby, we
+believe, expanding the nascent literature on worker voice which has, in
+the main, focussed primarily upon factory workers (Stephens et al.
+(\citeproc{ref-stephens_theorising_2024}{2024})). These contributions
+not only extend our understanding of the risks of labour exploitation
+and abuse among service workers engaged in domestic settings but also
+show how it is possible to shed light on the severity of the
+individuals' experience of exploitation through the construction of a
+novel risk index. The remainder of this paper is structured as follows.
+First, we describe our conceptual framework and introduce the context of
+our study in more detail, highlighting what is already known about the
+current population of domestic workers in the UK and the conditions in
+which they work. Next, we describe our research methods. We review the
+development of the respondent-driven sampling (RDS) techniques we used
+and explain why this sampling method is suitable for our study. We then
+describe our survey methods, including how we designed our survey
+instrument, contacted our sample seeds and analysed our data. We then
+present and discuss our findings, detailing the proportional estimate
+that we calculated and the risk index we constructed. In our discussion,
+we expand upon the implications of our findings for government policy,
+enforcement practices and further research, including how these methods
+may be used in future studies of labour exploitation in other sectoral
+and geographic contexts. The limitations of our study are outlined,
+before, finally, we conclude our article.
+
+\section{Conceptualising Labour Exploitation and the Degree of
+Risk}\label{conceptualising-labour-exploitation-and-the-degree-of-risk}
+
+Modern slavery has been criticised by some for its overly extensive
+scope: encapsulating a broad range of divergent sub-categories of
+exploitation
+((\citeproc{ref-oconnell_davidson_2015}{\textbf{oconnell\_davidson\_2015?}});
+(\citeproc{ref-gutierrez-huerter_2023}{\textbf{gutierrez-huerter\_2023?}})).
+For this reason, we used the International Labour Organization's
+((\citeproc{ref-ilo_2012}{\textbf{ilo\_2012?}})) `Indicators of Forced
+Labour' to identify the potential for severe labour exploitation and as
+a basis for the quantification of our labour exploitation and abuse risk
+index. The ILO identify eleven indicators designed to help understand
+how forced labour arises and how it affects victims. These indicators
+include: abuse of vulnerability; deception; restriction of movement;
+isolation; physical and sexual violence; intimidation and threats;
+retention of identity documents; withholding of wages; debt bondage;
+abusive working and living conditions and excessive overtime. According
+to the ILO, the presence of a single indicator in any given situation
+may in some cases imply the existence of forced labour. However, it also
+suggests that in other cases it may be necessary to look for several
+indications which, taken together, may point to a case of forced labour.
+We seek to refine this statement through the construction of a composite
+index by which means a degree of risk related to the likelihood of a
+domestic worker experiencing this most severe form of exploitation may
+be distinguished from the likely occurrence of less severe, though
+similarly illegal, forms of labour abuse.
+
+\subsection{Evaluating the Degree of
+Risk}\label{evaluating-the-degree-of-risk}
+
+The study of risk management has a long tradition in operations and
+supply chain management. Initially, the risks under consideration were
+primarily related to ensuring continuity of the supply of goods and
+services (see for example, Jüttner et al.
+(\citeproc{ref-juttner_supply_2003}{2003})). Beginning with Anderson
+(\citeproc{ref-anderson_critical_2006}{2006}) and Anderson \& Anderson
+(\citeproc{ref-anderson_sustainability_2009}{2009}), however, a
+literature stream of sustainability-related supply chain risk management
+developed related specifically to the risks associated with the
+environment and social justice. A normative consensus related to the
+main stages of supply chain risk management has developed in the
+literature, with a five-stage sequential model typically presented.
+There have also been empirical studies of risk management within various
+industrial supply chains in the United States and India (Tarei et al.
+(\citeproc{ref-tarei_hybrid_2018}{2018}); Dellana et al.
+(\citeproc{ref-dellana_scale_2021}{2021})), including the quantification
+of a risk index for the petroleum supply chain (Tarei et al.
+(\citeproc{ref-tarei_hybrid_2018}{2018})). Yet, while these authors
+recognize the need for responsible management and its effect on societal
+values, in line with other literature in the field they view risk from
+the perspective of the corporate supply chain rather than examining the
+risk of harm to the worker.
+
+In our study, we conceptualise the risk of labour exploitation from the
+workers' perspective. We conceive severe forms of labour exploitation
+such as forced labour as one end of a spectrum ranging from illegal
+employment practices that constitute labour abuse, such as wage payments
+below legal minimum wage levels and health and safety violations,
+through to the likelihood of criminal exploitation recognized in the UK
+as modern slavery. Our assessment of this personal risk permits a degree
+of risk to be assigned to various clusters of forced labour indicators
+with the more indicators present, the stronger the likelihood that the
+working conditions may be considered exploitative. Our approach,
+therefore, includes, but goes beyond, assessing the likelihood of forced
+labour by simply quantifying the proportion of survivors entering the
+UK's National Referral Mechanism (NRM): a government system for survivor
+support set up to identify whether there are positive grounds for the
+identification of Modern Slavery. In our method, an NRM referral is used
+as the strongest indicator of modern slavery risk, with lesser risks
+assessed according to the degree to which cumulative indicators of
+forced labour are reported.
+
+\section{Case Setting: Labour Exploitation Risk Among Transnational
+Migrant Domestic Workers In The
+UK}\label{case-setting-labour-exploitation-risk-among-transnational-migrant-domestic-workers-in-the-uk}
+
+Domestic work forms part of a broader industrial category of Personal
+and Household Service work (PHS). Work in this category includes those
+employed in `social work activities without accommodation' and
+`activities of households as employers of domestic personnel'
+((\citeproc{ref-european_commission_2012}{\textbf{european\_commission\_2012?}})).
+In 2017, an estimated 980,000 people were engaged in PHS work in the UK
+(Manoudi et al. (\citeproc{ref-manoudi_analysis_2018}{2018})). Manoudi
+et al. (\citeproc{ref-manoudi_analysis_2018}{2018}) highlight that the
+PHS sector is dominated by women and migrants, with many undeclared
+foreign workers. Detailed statistics related to the country of origin of
+domestic workers migrating to work in PHS in the UK are difficult to
+isolate before 2019. Since that time, annual migration has fluctuated --
+falling sharply in 2021 due in part to the COVID-19 pandemic, before
+later rising again above pre-pandemic levels. In the year to December
+2022, the UK Home Office reported that it had issued 18,533 Overseas
+Domestic Worker visas
+((\citeproc{ref-home_office_2023}{\textbf{home\_office\_2023?}})). These
+domestic workers came from various countries in South America and Asia,
+including many from the Philippines.
+
+In 2023, Strauss \& Cocco (\citeproc{ref-strauss_britain_2023}{2023})
+reported a big shift in the source countries of migrants arriving in the
+UK on the Overseas Domestic Worker and other types of worker visas.
+Transnational domestic workers from the Philippines and India accounted
+for the single largest number of applications granted (10,186 and 3,858
+visas respectively), followed by smaller, but still significant, numbers
+of workers arriving from Bangladesh (465), Nigeria (446), Sri Lanka
+(444), Egypt (422), and Ethiopia (285). In the same period, smaller
+numbers of visa applications to work as a domestic worker in the UK were
+also accepted from workers from other source countries including, but
+not limited to, the Sudan, Nepal, Ghana, Kenya, Lebanon, Eritrea, Iran,
+Turkey, Yemen, Malaysia, Thailand, and Morocco. This post-Brexit
+increase in the diversity of source countries from which transnational
+workers are drawn makes a more detailed analysis of the risk of labour
+exploitation in the sector both timely and more urgent.
+
+There is a long history of reports of exploitation in the domestic work
+sector in the UK. In 2008, the civil society organisation Kalayaan,
+which was formed to campaign for the formal recognition of migrant
+domestic workers' rights in the UK, reported on the impact of proposed
+changes to the UK immigration system on migrant domestic workers
+(Kalayaan (\citeproc{ref-kalayaan_new_2008}{2008})). Their report
+highlights government recognition of documented and unacceptable levels
+of abuse and exploitation among domestic workers in the UK as early as
+1996. At this stage, new policies, including the development of a
+specialised visa allowing domestic workers to change employer during
+their stay were introduced. However, in 2012, these visa conditions were
+modified, tying domestic workers to a single employer and restricting
+the length of time that they are permitted to remain in the country to a
+period of six months (Gower (\citeproc{ref-gower_calls_2016}{2016})).
+Overseas domestic worker visa holders are now, again, permitted to
+change employers, but not to apply to renew their six-month long visa
+unless they receive a positive `Conclusive Grounds' decision related to
+exploitation considered to be modern slavery through the UK's National
+Referral Mechanism (NRM) (Romero \& Fisher
+(\citeproc{ref-romero_blueprint_2025}{2025})).
+
+These reports highlight the underlying reasons for migrant domestic
+workers' vulnerability, including workers' relative desperation for
+work; their lack of social ties; unfamiliarity with English language and
+culture; long working hours; lack of knowledge of their legal rights; a
+lack of oversight of the private home as a workplace; their work forming
+part of the informal economy; their reliance on their employer for
+permission to work in the UK; and their lack of recourse to public
+funds. As a result, migrant domestic workers are vulnerable to abuse
+ranging from minor breaches of employment and health and safety law, to
+physical and sexual violence, slavery, forced labour and trafficking.
+
+That these conditions may persist is evidenced by a report from another
+civil society organisation, the Latin American Women's Rights Service,
+which describes the results from twelve in-depth interviews with Latin
+American domestic workers in the UK. This report depicts high levels of
+isolation, exploitation and abuse including a failure by employers to
+provide written contracts or payslips; breaches of verbal agreements; a
+requirement to perform different tasks from those indicated during
+recruitment; increasing working hours with little or no time off;
+excessive work days; a lack of paid holiday; many domestic workers not
+registered with a GP; sexual harassment in the workplace; verbal or
+physical abuse; employer surveillance; a lack of opportunity to change
+working conditions; isolation and fear of seeking help; and high
+reported levels of trafficking for labour exploitation
+((\citeproc{ref-lawrs_2023}{\textbf{lawrs\_2023?}})).
+
+Against this backdrop, we used respondent driven sampling (RDS) as a
+sampling technique to recruit and survey domestic workers in the UK
+about the working conditions they were experiencing to estimate the
+nature and scale of abuse and exploitation based upon reports of their
+conditions by domestic workers themselves.
+
+\section{Research Methods}\label{research-methods}
+
+{[}Scott- do feel free to edit as you see fit{]}
+
+\subsection{Respondent-Driven Sampling (RDS) And Survey
+Method}\label{respondent-driven-sampling-rds-and-survey-method}
+
+Comprehensive descriptions and literature reviews of the development and
+use of RDS to estimate the population size of a hidden population are
+available elsewhere (Heckathorn
+(\citeproc{ref-heckathorn_comment_2011}{2011}); Gile et al.
+(\citeproc{ref-gile_methods_2018}{2018})). Suffice it to say, the
+possibilities of the use of a one-wave snowball sampling to allow
+researchers to obtain a sample of personal networks was posited by Frank
+\& Snijders (\citeproc{ref-frank_estimating_1994}{1994}). Following the
+identification of a set of original sample members known as seeds,
+Heckathorn (\citeproc{ref-heckathorn_respondent-driven_1997}{1997});
+Heckathorn (\citeproc{ref-heckathorn_respondent-driven_2002}{2002})
+advocate the use of a double incentive to recompense participants not
+only for their involvement, but also for their recruitment of further
+participants in subsequent `waves' of participation by drawing upon the
+social ties through which members of the hidden population are connected
+to each other.
+
+The typical number of original sample seeds is between two and ten:
+chosen as heterogeneously as possible (Gile et al.
+(\citeproc{ref-gile_methods_2018}{2018})). Though they may be subject to
+both systematic and non-systematic errors, the use of snowballing
+methods for the study of hidden populations, with the support of
+monetary or symbolic rewards, has been advocated as a way of creating
+robust recruitment embodying diversity in characteristics such as
+ethnicity, gender and geographical location (Heckathorn
+(\citeproc{ref-heckathorn_respondent-driven_1997}{1997}); Heckathorn
+(\citeproc{ref-heckathorn_respondent-driven_2002}{2002})). In these
+papers, Heckathorn advances the development of RDS to include
+self-reported network size as a population estimator and bootstrapping
+techniques to support the development of an estimator's confidence
+intervals, an approach that has since been refined by others (Gile \&
+Handcock (\citeproc{ref-gile_network_2015}{2015})). Such developments
+derive a new class of indicators for the population mean and define a
+corresponding bootstrap method to estimate the errors in RDS. The
+resulting `network working model' permits the individual's connectedness
+in the network to be tested, while reducing bias with respect to the
+composition of the seeds. Snowball sampling is based upon the initial
+recruitment of the original sample selection by means of convenience.
+RDS also takes a non-random approach to seed selection, but relies upon
+the social network structure that exists between participants to produce
+a non-probabilistic sample (Goodman
+(\citeproc{ref-goodman_comment_2011}{2011})). Incentive structure is
+important---though this weakness is not a feature of our target hidden
+population, some researchers have identified that younger men with
+higher socio-economic status are less likely to participate (McCreesh et
+al. (\citeproc{ref-mccreesh_respondent_2013}{2013})). Perhaps of more
+concern, RDS has been described as a risky strategy since researchers
+cannot be sure whether enough respondents have been recruited through
+subsequent waves to eliminate bias within the original sample members
+(Vincent \& Thompson (\citeproc{ref-vincent_estimating_2017}{2017})).
+
+RDS has been widely used to sample a variety of hidden populations,
+including HIV prevalence, rape and client-initiated gender-based
+violence among sex workers (McCreesh et al.
+(\citeproc{ref-mccreesh_evaluation_2012}{2012}); Schwitters et al.
+(\citeproc{ref-schwitters_prevalence_2012}{2012})). While the RDS method
+has proved limited when seeking to provide population heterogeneity by
+geographical location (McCreesh et al.
+(\citeproc{ref-mccreesh_evaluation_2011}{2011})), where these population
+features are of lesser importance, such methods have been used
+successfully. RDS methods have been used to survey other migrant
+populations (Tyldum (\citeproc{ref-tyldum_surveying_2021}{2021})), while
+such network-based referrals have been described as the only viable
+method to reach many types of labour trafficking victims (Zhang
+(\citeproc{ref-zhang_measuring_2012}{2012})) and have been used to
+research exploitation among low-wage workers in three American cities
+(Bernhardt et al. (\citeproc{ref-bernhardt_broken_2009}{2009})); a study
+of labour trafficking in migrant communities in the city of San Diego
+(Vincent \& Thompson (\citeproc{ref-vincent_estimating_2017}{2017}));
+examination of the worst forms of child labour in the Indian state of
+Bihar (Zhang et al. (\citeproc{ref-zhang_victims_2019}{2019})); and the
+commercial sexual exploitation of children in Nepal (Jordan et al.
+(\citeproc{ref-jordan_overcoming_2020}{2020})).
+
+In the following section, we describe our methods, including how we
+designed our survey, contacted our sample seeds, and analysed our data.
+Our approach can best be described as Web-based RDS (Wejnert \&
+Heckathorn (\citeproc{ref-wejnert_web-based_2008}{2008})). We designed a
+web survey using the JISC online survey interface, suitable for our
+respondents to complete via a mobile phone. Composite measures to
+quantify the extent to which respondents were at risk of labour
+exploitation, including severe forms of exploitation such as forced
+labour, were constructed from existing exploitation typologies, notably
+the ILO's Indicators ((\citeproc{ref-ilo_2012}{\textbf{ilo\_2012?}})).
+The survey consisted of these 11 composite indicators and included
+questions related to domestic workers' level of job satisfaction,
+employment conditions, and demographic data such as nationality, age,
+and gender. The main survey was conducted in the five months between
+February and July 2023.
+
+\subsection{Initial Sample Selection}\label{initial-sample-selection}
+
+We selected our first wave of participants nonrandomly by convenience
+sampling. Mobile phone numbers were used both to identify seed
+participants and to act as a unique identifier for those whom they
+referred. To avoid sample homophily, original sample members were
+selected from three distinct domestic worker communities. This was
+facilitated by civil society organisations who represented distinct
+domestic worker communities. One was an exclusively online community of
+transnational domestic workers working in the UK, the second represented
+UK domestic workers of Filipino origin, and the third drew its
+membership from the Latin American community of domestic workers, also
+in the UK. Along with other academics with expertise in exploitation
+within domestic work, representatives from these three organisations
+also contributed to survey question design and facilitated the piloting
+of an initial version of the survey (which was translated and made
+available in four languages: English, Spanish, Tagalog, and Portuguese)
+to selected domestic workers within each community.
+
+\subsection{Survey Incentives: Incentive Design and Participation
+Verification}\label{survey-incentives-incentive-design-and-participation-verification}
+
+A double incentive scheme rewarded respondents both for completing the
+questionnaire and for each referral who went on to engage with the
+survey. The challenge of incentive design is to set the incentive at a
+level that adequately rewards respondents' time and participation, but
+that also avoids the risk of fraudulent participation due to too high a
+monetary gain (Jordan et al.
+(\citeproc{ref-jordan_overcoming_2020}{2020})). A sum of £10 was
+provided for survey completion with a further £5 for each successful
+nomination. While respondents were asked to nominate up to 10 domestic
+workers within their existing social network, it was the first three of
+these from whom participation was requested in subsequent waves. This
+approach is akin to the use of vouchers in face-to-face studies as
+advocated by Thompson (\citeproc{ref-thompson_new_2020}{2020}).
+
+The ethical and practical issues related to the design and effective use
+of incentives for RDS among vulnerable populations has been much
+discussed in the literature; see, for example, Wang et al.
+(\citeproc{ref-wang_respondent-driven_2005}{2005});
+(\citeproc{ref-abdul-quader_2006}{\textbf{abdul-quader\_2006?}}); Singer
+\& Bossarte (\citeproc{ref-singer_incentives_2006}{2006}); DeJong et al.
+(\citeproc{ref-dejong_ethical_2009}{2009}); Semaan et al.
+(\citeproc{ref-semaan_ethical_2009}{2009}); Brunovskis \& Surtees
+(\citeproc{ref-brunovskis_untold_2010}{2010}); Semaan
+(\citeproc{ref-semaan_time-space_2010}{2010}); Platt et al.
+(\citeproc{ref-platt_adapting_2015}{2015}), including the specificities
+of incentive use within web-based surveys (Cobanoglu \& Cobanoglu
+(\citeproc{ref-cobanoglu_effect_2003}{2003})). Following the principles
+of lottery use established by Brown et al.
+(\citeproc{ref-brown_you_2006}{2006}) and Laguilles et al.
+(\citeproc{ref-laguilles_can_2011}{2011}), we also designed our survey
+to encourage the maximum extent of participation by entering all
+respondents completing the questionnaire into a free prize draw for
+£150. Research suggests that a high lottery provides the most
+cost-effective incentive for obtaining complete responses (Gajic et al.
+(\citeproc{ref-gajic_cost-effectiveness_2012}{2012})). While using
+incentives to encourage participation would seem to be desirable, it is
+worth noting the potential downside of respondents fabricating responses
+to increase their remuneration (Robinson
+(\citeproc{ref-robinson_sampling_2014}{2014})). To minimise this risk,
+mobile phone numbers for each respondent and those whom they referred
+were collated, and each of these numbers was called by one of the
+authors of the paper to ascertain the veracity of the respondent as a
+migrant domestic worker.
+
+\section{Data Analysis}\label{data-analysis}
+
+\subsection{Descriptive Statistics}\label{descriptive-statistics}
+
+In total, we received completed online surveys from 97 respondents. Of
+these respondents, 90 identified themselves as transnational migrants.
+Forty-five percent regarded themselves as self-employed, 39\% identified
+themselves as employees, and 16\% categorised their employment status as
+that of a worker.
+
+Of the 97 respondents, 64 (66\% of the total), and the largest single
+nationality group, reported that they had a Filipina background. Other
+nationalities represented included Dominican, Brazilian, Spanish,
+Colombian, Bolivian, Venezuelan, Cuban, and Panamanian. Female domestic
+workers made up 97\% of the sample, with 3\% of the sample comprised of
+male domestic workers. The age structure of the domestic workers was
+skewed towards those over 45 years old, with such workers representing
+over half of the sample (see Table 1).
+
+\subsection{Network Structure}\label{network-structure}
+
+\section{Findings}\label{findings}
+
+\subsection{Point Estimation and Confidence
+Intervals}\label{point-estimation-and-confidence-intervals}
+
+\subsection{Risk Index}\label{risk-index}
+
+\section{Discussion}\label{discussion}
+
+{[}Scott to add and revise{]}
+
+\subsection{Implications for Policy}\label{implications-for-policy}
+
+The UK Government has proved reluctant to respond to calls to remove the
+restrictive, tied, visa conditions currently in force for those migrant
+workers working in the UK on the Overseas Domestic Workers visa (Gower
+(\citeproc{ref-gower_calls_2016}{2016})). Maintaining these restrictive
+conditions prevents the ratification in the UK of C189, the
+International Convention for Domestic Workers
+((\citeproc{ref-ilo_2011}{\textbf{ilo\_2011?}})). If the estimates
+resulting from our study are correct, these visa conditions place
+migrant domestic workers at significant risk of serious forms of labour
+exploitation including, in its most severe form, exploitation that
+exhibits the characteristics of forced labour---legally considered a
+form of modern slavery.
+
+To reduce the vulnerability of transnational domestic workers to
+this---and other---forms of labour exploitation, we urge policy-makers
+to reconsider these discriminatory visa conditions and offer the same
+freedoms to domestic workers that are enjoyed by other groups of workers
+under UK law.
+
+In addition, given the vulnerabilities experienced by workers due to the
+private nature of the workplace, we would urge the UK government to
+consider the regulation of domestic worker employers.
+
+Finally, given the stigma and very real danger of deportation of those
+migrant domestic workers who may have fallen out of legal migration
+status, our evidence suggests that there is an urgent need for the UK
+Government to enforce a firewall between immigration control and labour
+exploitation if the true scale of abuse is to be made visible and the
+perpetrators brought to justice.
+
+\subsection{Implications for Practice}\label{implications-for-practice}
+
+The UK Visa and Immigration service already offers rights-based training
+to migrant domestic workers via UK embassies in certain source
+countries. To reduce migrant domestic workers vulnerabilities, we
+advocate the expansion of this training both to include explicit
+training related to employment and labour rights within the UK and to
+the rapidly expanding range of new source countries from where migrant
+domestic workers are now drawn.
+
+\subsection{Further Research}\label{further-research}
+
+We believe that web-RDS combined with statistical estimators such as
+NSUM offers an important method for the capture and comparison of
+relative proportions of labour exploitation and abuse in sectors within
+and beyond the UK. Network scale up methods, and potential enhancements
+such as Generalised network scale up estimators offer to enhance
+understanding, not least within operations and supply chain management
+research, of the extent of labour exploitation in different sectors and
+across industries.
+
+\subsection{Limitations of the Study}\label{limitations-of-the-study}
+
+As with any empirical research, our study is subject to limitations. In
+terms of nationality, our sample is not representative of the
+demographics of those domestic workers employed on Overseas Domestic
+Worker Visas in 2022 the UK. Due to the increasing number of workers on
+Overseas Domestic Work visas from the Indian sub-continent, attempts
+were made also to seed respondents from this community. This proved
+difficult, with anecdotal information suggesting that domestic workers
+from this community rarely had access to a personal mobile phone. It is
+not therefore possible to infer the nature and extent of labour
+exploitation within this sub-section of the domestic worker population.
+
+As the network structure of our sample demonstrates, even with a
+well-designed incentive scheme it proved difficult to recruit
+respondents from these communities of domestic workers in subsequent
+sampling waves in the time available. Most of our respondents are
+therefore original sample members draw from the three domestic worker
+communities used to seed the survey.
+
+\section{Conclusion}\label{conclusion}
+
+\newpage
+
+\subsection{Executive Summary}\label{executive-summary}
+
+This analysis estimates the prevalence of modern slavery among domestic
+workers in the UK using multiple RDS methodologies. We examine two
+primary indicators across various population size assumptions and
+estimation techniques.
+
+\textbf{Key Findings:} - Below minimum wage prevalence (Q36): X.X\% -
+Y.Y\% (95\% CI) - NRM referral experience (Q80): A.A\% - B.B\% (95\%
+CI)\\
+- Population size estimates: 980,000 - 1.74M domestic workers
+
+\subsection{Sample Characteristics}\label{sample-characteristics}
+
+\subsubsection{Recruitment Network
+Structure}\label{recruitment-network-structure}
+
+\begin{table}
+
+\caption{\label{tbl-network}RDS Sample Network Characteristics}
+
+\centering{
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{network\_stats }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{Characteristic =} \FunctionTok{c}\NormalTok{(}\StringTok{"Total Sample Size"}\NormalTok{, }\StringTok{"Recruitment Waves"}\NormalTok{, }\StringTok{"Average Degree"}\NormalTok{, }
+                    \StringTok{"Median Degree"}\NormalTok{, }\StringTok{"Seeds"}\NormalTok{, }\StringTok{"Longest Chain"}\NormalTok{, }\StringTok{"Mean Chain Length"}\NormalTok{),}
+  \AttributeTok{Value =} \FunctionTok{c}\NormalTok{(}
+    \FunctionTok{nrow}\NormalTok{(rd.dd),}
+    \FunctionTok{max}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{wave, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{numRef, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{1}\NormalTok{),}
+    \FunctionTok{round}\NormalTok{(}\FunctionTok{median}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{numRef, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{1}\NormalTok{),}
+    \FunctionTok{sum}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{recruiter.id }\SpecialCharTok{==} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{),}
+    \StringTok{"TBD"}\NormalTok{, }\CommentTok{\# Calculate from recruitment chains}
+    \StringTok{"TBD"}  \CommentTok{\# Calculate average chain length}
+\NormalTok{  )}
+\NormalTok{)}
+
+\NormalTok{network\_stats }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{gt}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tab\_header}\NormalTok{(}\AttributeTok{title =} \StringTok{"Network Characteristics"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{fmt\_number}\NormalTok{(}\AttributeTok{columns =}\NormalTok{ Value, }\AttributeTok{decimals =} \DecValTok{1}\NormalTok{, }\AttributeTok{use\_seps =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+}
+
+\end{table}%
+
+\subsubsection{Demographic Composition}\label{demographic-composition}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create nationality breakdown}
+\NormalTok{nationality\_summary }\OtherTok{\textless{}{-}}\NormalTok{ rd.dd }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(nationality\_cluster) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}
+    \AttributeTok{n =} \FunctionTok{n}\NormalTok{(),}
+    \AttributeTok{percent =} \FunctionTok{round}\NormalTok{(}\FunctionTok{n}\NormalTok{() }\SpecialCharTok{/} \FunctionTok{nrow}\NormalTok{(rd.dd) }\SpecialCharTok{*} \DecValTok{100}\NormalTok{, }\DecValTok{1}\NormalTok{),}
+    \AttributeTok{.groups =} \StringTok{\textquotesingle{}drop\textquotesingle{}}
+\NormalTok{  )}
+
+\FunctionTok{ggplot}\NormalTok{(nationality\_summary, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ nationality\_cluster, }\AttributeTok{y =}\NormalTok{ percent, }\AttributeTok{fill =}\NormalTok{ nationality\_cluster)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =} \FunctionTok{paste0}\NormalTok{(n, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{("}\NormalTok{, percent, }\StringTok{"\%)"}\NormalTok{)), }\AttributeTok{vjust =} \SpecialCharTok{{-}}\FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_viridis\_d}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Nationality Cluster"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Percentage"}\NormalTok{, }
+       \AttributeTok{title =} \StringTok{"Sample Distribution by Nationality"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{RDS Estimation Results}\label{rds-estimation-results}
+
+\subsubsection{Model-Assisted Estimates by Population
+Size}\label{model-assisted-estimates-by-population-size}
+
+\begin{table}
+
+\caption{\label{tbl-ma-estimates}Model-Assisted Estimates by Population
+Size and Seed Selection}
+
+\centering{
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Extract MA results and create comparison table}
+\NormalTok{ma\_comparison }\OtherTok{\textless{}{-}} \FunctionTok{expand\_grid}\NormalTok{(}
+  \AttributeTok{seed\_method =} \FunctionTok{c}\NormalTok{(}\StringTok{"sample"}\NormalTok{, }\StringTok{"random"}\NormalTok{, }\StringTok{"degree"}\NormalTok{),}
+  \AttributeTok{pop\_size =} \FunctionTok{c}\NormalTok{(}\DecValTok{100000}\NormalTok{, }\DecValTok{953000}\NormalTok{, }\DecValTok{1000000}\NormalTok{, }\DecValTok{1500000}\NormalTok{),}
+  \AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\StringTok{"q36"}\NormalTok{, }\StringTok{"q80"}\NormalTok{, }\StringTok{"composite\_risk"}\NormalTok{)}
+\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rowwise}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{key =} \FunctionTok{paste0}\NormalTok{(seed\_method, }\StringTok{"\_"}\NormalTok{, pop\_size),}
+    \AttributeTok{estimate =} \FunctionTok{ifelse}\NormalTok{(key }\SpecialCharTok{\%in\%} \FunctionTok{names}\NormalTok{(ma\_results),}
+\NormalTok{                     ma\_results[[key]][[indicator]]}\SpecialCharTok{$}\NormalTok{estimate, }\ConstantTok{NA}\NormalTok{),}
+    \AttributeTok{ci\_lower =} \FunctionTok{ifelse}\NormalTok{(key }\SpecialCharTok{\%in\%} \FunctionTok{names}\NormalTok{(ma\_results),}
+\NormalTok{                     ma\_results[[key]][[indicator]]}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{1}\NormalTok{], }\ConstantTok{NA}\NormalTok{),}
+    \AttributeTok{ci\_upper =} \FunctionTok{ifelse}\NormalTok{(key }\SpecialCharTok{\%in\%} \FunctionTok{names}\NormalTok{(ma\_results),}
+\NormalTok{                     ma\_results[[key]][[indicator]]}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{2}\NormalTok{], }\ConstantTok{NA}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(estimate))}
+
+\CommentTok{\# Create formatted table}
+\NormalTok{ma\_comparison }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{pop\_size\_f =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{comma}\NormalTok{(pop\_size),}
+    \AttributeTok{estimate\_ci =} \FunctionTok{sprintf}\NormalTok{(}\StringTok{"\%.3f (\%.3f, \%.3f)"}\NormalTok{, estimate, ci\_lower, ci\_upper)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(seed\_method, pop\_size\_f, indicator, estimate\_ci) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ indicator, }\AttributeTok{values\_from =}\NormalTok{ estimate\_ci) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{gt}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tab\_header}\NormalTok{(}\AttributeTok{title =} \StringTok{"Model{-}Assisted Estimates by Method"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{cols\_label}\NormalTok{(}
+    \AttributeTok{seed\_method =} \StringTok{"Seed Selection"}\NormalTok{,}
+    \AttributeTok{pop\_size\_f =} \StringTok{"Population Size"}\NormalTok{,}
+    \AttributeTok{q36 =} \StringTok{"Below Min Wage"}\NormalTok{,}
+    \AttributeTok{q80 =} \StringTok{"NRM Experience"}\NormalTok{, }
+    \AttributeTok{composite\_risk =} \StringTok{"Composite Risk"}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tab\_spanner}\NormalTok{(}\AttributeTok{label =} \StringTok{"Prevalence Estimates (95\% CI)"}\NormalTok{, }\AttributeTok{columns =} \FunctionTok{c}\NormalTok{(q36, q80, composite\_risk))}
+\end{Highlighting}
+\end{Shaded}
+
+}
+
+\end{table}%
+
+\subsubsection{Traditional RDS Estimators
+Comparison}\label{traditional-rds-estimators-comparison}
+
+\begin{table}
+
+\caption{\label{tbl-rds-comparison}RDS Estimator Comparison (N=980,000)}
+
+\centering{
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Extract RDS estimates for standard population size}
+\NormalTok{rds\_980k }\OtherTok{\textless{}{-}}\NormalTok{ rds\_results[[}\StringTok{"980000"}\NormalTok{]]}
+
+\NormalTok{rds\_table }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{Method =} \FunctionTok{c}\NormalTok{(}\StringTok{"RDS{-}I"}\NormalTok{, }\StringTok{"RDS{-}II"}\NormalTok{, }\StringTok{"Successive Sampling"}\NormalTok{),}
+  \StringTok{\textasciigrave{}}\AttributeTok{Q36 Estimate}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{c}\NormalTok{(}
+\NormalTok{    rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_i}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{estimate,}
+\NormalTok{    rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_ii}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{estimate,}
+\NormalTok{    rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_ss}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{estimate}
+\NormalTok{  ),}
+  \StringTok{\textasciigrave{}}\AttributeTok{Q36 95\% CI}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{c}\NormalTok{(}
+    \FunctionTok{sprintf}\NormalTok{(}\StringTok{"(\%.3f, \%.3f)"}\NormalTok{, rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_i}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{1}\NormalTok{], rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_i}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{2}\NormalTok{]),}
+    \FunctionTok{sprintf}\NormalTok{(}\StringTok{"(\%.3f, \%.3f)"}\NormalTok{, rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_ii}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{1}\NormalTok{], rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_ii}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{2}\NormalTok{]),}
+    \FunctionTok{sprintf}\NormalTok{(}\StringTok{"(\%.3f, \%.3f)"}\NormalTok{, rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_ss}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{1}\NormalTok{], rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_ss}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{2}\NormalTok{])}
+\NormalTok{  ) }\CommentTok{\#...}
+\end{Highlighting}
+\end{Shaded}
+
+}
+
+\end{table}%
+
+\newpage
+
+\section{References}\label{references}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-anderson_critical_2006}
+Anderson, D. R. (2006). The critical importance of sustainability risk
+management. \emph{Risk Management (00355593)}, \emph{53}(4), 66--74.
+\url{https://search.ebscohost.com/login.aspx?direct=true&db=buh&AN=20781527&site=ehost-live}
+
+\bibitem[\citeproctext]{ref-anderson_sustainability_2009}
+Anderson, D. R., \& Anderson, K. E. (2009). Sustainability risk
+management. \emph{Risk Management and Insurance Review}, \emph{12}(1),
+25--38. \url{https://doi.org/10.1111/j.1540-6296.2009.01152.x}
+
+\bibitem[\citeproctext]{ref-benstead_horizontal_2018}
+Benstead, A. V., Hendry, L. C., \& Stevenson, M. (2018). Horizontal
+collaboration in response to modern slavery legislation: An action
+research project. \emph{International Journal of Operations \&Amp;
+Production Management}, \emph{38}(12), 2286--2312.
+\url{https://doi.org/10.1108/IJOPM-10-2017-0611}
+
+\bibitem[\citeproctext]{ref-bernhardt_broken_2009}
+Bernhardt, A., Milkman, R. T., \& N. (2009). \emph{Broken laws,
+unprotected workers: Violations of employment and labor laws in
+america's cities} {[}\{UCLA\} \{IRLE\} Report.{]}.
+
+\bibitem[\citeproctext]{ref-bonnet_domestic_2022}
+Bonnet, F., Carre, F., \& Vanek, J. (2022). \emph{Domestic workers in
+the world: A statistical profile. {WIEGO}}.
+\url{https://www.wiego.org/research-library-publications/domestic-workers-world-statistical-profile/}
+
+\bibitem[\citeproctext]{ref-brown_you_2006}
+Brown, J. S., Schonfeld, T. L., \& Gordon, B. G. (2006). You may have
+already won...'': An examination of the use of lottery payments in
+research. \emph{{IRB}: Ethics \& Human Research}, \emph{28}(1), 12--16.
+
+\bibitem[\citeproctext]{ref-brunovskis_untold_2010}
+Brunovskis, A., \& Surtees, R. (2010). Untold stories: Biases and
+selection effects in research with victims of trafficking for sexual
+exploitation. \emph{International Migration}, \emph{48}(4), 1--37.
+
+\bibitem[\citeproctext]{ref-carter_women_2025}
+Carter, J. (2025, April 30). \emph{Women and girls at growing risk of
+modern slavery, data reveals. Unseen}.
+\url{https://www.unseenuk.org/latest-modern-slavery-helpline-data/}
+
+\bibitem[\citeproctext]{ref-caruana_boundaries_2025}
+Caruana, R., Crane, A., \& Ingram, C. (2025). The boundaries of modern
+slavery: The role of exemplars in new category formation. \emph{Academy
+of Management Journal}, \emph{68}(3), 507--539.
+\url{https://doi.org/10.5465/amj.2022.0210}
+
+\bibitem[\citeproctext]{ref-chinander_aligning_2001}
+Chinander, K. R. (2001). Aligning accountability and awaress for
+environmental performance in operations. \emph{Production and Operations
+Management}, \emph{10}(3), 276--291.
+\url{https://doi.org/10.1111/j.1937-5956.2001.tb00375.x}
+
+\bibitem[\citeproctext]{ref-cobanoglu_effect_2003}
+Cobanoglu, C., \& Cobanoglu, N. (2003). The effect of incentives in web
+surveys: Application and ethical considerations. \emph{International
+Journal of Market Research}, \emph{45}(4), 1--13.
+
+\bibitem[\citeproctext]{ref-dejong_ethical_2009}
+DeJong, J., Mahfoud, Z., Khoury, D., Barbir, F., \& Afifi, R. A. (2009).
+Ethical considerations in {HIV}/{AIDS} biobehavioral surveys that use
+respondent-driven sampling: Illustrations from lebanon. \emph{American
+Journal of Public Health}, \emph{99}(9), 1562--1567.
+
+\bibitem[\citeproctext]{ref-dellana_scale_2021}
+Dellana, S., Rowe, W. J., \& Liao, Y. (2021). A scale for measuring
+organizational risk management maturity in the supply chain.
+\emph{Benchmarking: An International Journal}, \emph{29}(3), 905--930.
+\url{https://doi.org/10.1108/BIJ-11-2020-0578}
+
+\bibitem[\citeproctext]{ref-frank_estimating_1994}
+Frank, O., \& Snijders, T. (1994). Estimating the size of hidden
+populations using snowball sampling. \emph{Journal of Official
+Statistics-Stockholm}, \emph{10}, 53--53.
+
+\bibitem[\citeproctext]{ref-gajic_cost-effectiveness_2012}
+Gajic, A., Cameron, D., \& Hurley, J. (2012). The cost-effectiveness of
+cash versus lottery incentives for a web-based, stated-preference
+community survey. \emph{The European Journal of Health Economics},
+\emph{13}(6), 789--799.
+
+\bibitem[\citeproctext]{ref-gile_methods_2018}
+Gile, K. J., Beaudry, I. S., Handcock, M. S., \& Ott, M. Q. (2018).
+Methods for inference from respondent-driven sampling data. \emph{Annual
+Review of Statistics and Its Application}, \emph{5}, 65--93.
+\url{https://doi.org/10.1146/annurev-statistics-031017-100704}
+
+\bibitem[\citeproctext]{ref-gile_network_2015}
+Gile, K. J., \& Handcock, M. S. (2015). Network model-assisted inference
+from respondent-driven sampling data. \emph{Journal of the Royal
+Statistical Society: Series A (Statistics in Society)}, \emph{178}(3),
+619--639. \url{https://doi.org/10.1111/rssa.12091}
+
+\bibitem[\citeproctext]{ref-gold_modern_2015}
+Gold, S., Trautrims, A., \& Trodd, Z. (2015). Modern slavery challenges
+to supply chain management. \emph{Supply Chain Management: An
+International Journal}, \emph{20}(5), 485--494.
+\url{https://doi.org/10.1108/SCM-02-2015-0046}
+
+\bibitem[\citeproctext]{ref-goodman_comment_2011}
+Goodman, L. A. (2011). Comment: On respondent-driven sampling and
+snowball sampling in hard-to-reach populations and snowball sampling not
+in hard-to-reach populations. \emph{Sociological Methodology},
+\emph{41}(1), 347--353.
+
+\bibitem[\citeproctext]{ref-gower_calls_2016}
+Gower, M. (2016). \emph{Calls to change overseas domestic worker visa
+conditions}.
+\url{https://researchbriefings.files.parliament.uk/documents/SN04786/SN04786.pdf}
+
+\bibitem[\citeproctext]{ref-heckathorn_respondent-driven_1997}
+Heckathorn, D. D. (1997). Respondent-driven sampling: A new approach to
+the study of hidden populations. \emph{Social Problems}, \emph{44}(2),
+174--199. \url{https://doi.org/10.2307/3096941}
+
+\bibitem[\citeproctext]{ref-heckathorn_respondent-driven_2002}
+Heckathorn, D. D. (2002). Respondent-driven sampling {II}: deriving
+valid population estimates from chain-referral samples of hidden
+populations. \emph{Social problems}, \emph{49}(1), 11--34.
+
+\bibitem[\citeproctext]{ref-heckathorn_comment_2011}
+Heckathorn, D. D. (2011). Comment: Snowball versus respondent-driven
+sampling. \emph{Sociological Methodology}, \emph{41}(1), 355--366.
+
+\bibitem[\citeproctext]{ref-jordan_overcoming_2020}
+Jordan, L., Chui, C. H. K., Larmar, S., \& O'Leary, P. (2020).
+Overcoming methodological challenges in prevalence studies in developing
+contexts with vulnerable children. \emph{International Social Work},
+\emph{63}(3), 371--385.
+
+\bibitem[\citeproctext]{ref-juttner_supply_2003}
+Jüttner, U., Peck, H., \& Christopher, M. (2003). Supply chain risk
+management: Outlining an agenda for future research. \emph{International
+Journal of Logistics Research and Applications}, \emph{6}(4), 197--210.
+\url{https://doi.org/10.1080/13675560310001627016}
+
+\bibitem[\citeproctext]{ref-kalayaan_new_2008}
+Kalayaan. (2008). \emph{The new bonded labour?}
+\url{http://www.kalayaan.org.uk/documents/Kalayaan\%20Oxfam\%20report.pdf}
+
+\bibitem[\citeproctext]{ref-laguilles_can_2011}
+Laguilles, J. S., Williams, E. A., \& Saunders, D. B. (2011). Can
+lottery incentives boost web survey response rates? Findings from four
+experiments. \emph{Research in Higher Education}, \emph{52}(5),
+537--553.
+
+\bibitem[\citeproctext]{ref-manoudi_analysis_2018}
+Manoudi, A., Weber, T., Scott, D., \& Hawley Woodall, J. (2018).
+\emph{An analysis of personal and household services to support work
+life balance for working parents and carers - google search}
+{[}Synthesis Report \{ECE\} Thematic Review{]}. European Commission.
+\url{https://www.google.com/search?q=An+analysis+of+Personal+and+Household+Services+to+support+work+life+balance+for+working+parents+and+carers&rlz=1C1GCEB_enGB932GB935&oq=An+analysis+of+Personal+and+Household+Services+to+support+work+life+balance+for+working+parents+and+carers&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCDIzNjNqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8}
+
+\bibitem[\citeproctext]{ref-mantouvalou_modern_2016}
+Mantouvalou, V. (2016). Modern slavery? The {UK} visa system and the
+exploitation of migrant domestic workers. In \emph{British politics and
+policy at {LSE}}.
+\url{https://blogs.lse.ac.uk/politicsandpolicy/exploitation-of-migrant-domestic-workers-in-the-uk/.}
+
+\bibitem[\citeproctext]{ref-mccreesh_respondent_2013}
+McCreesh, N., Copas, A., Seeley, J., Johnston, L. G., Sonnenberg, P., \&
+Hayes, R. J. (2013). Respondent driven sampling: Determinants of
+recruitment and a method to improve point estimation. \emph{{PLoS}
+{ONE}}, \emph{8}(10).
+
+\bibitem[\citeproctext]{ref-mccreesh_evaluation_2012}
+McCreesh, N., Frost, S. D. W., Seeley, J., Katongole, J., Tarsh, M. N.,
+Ndunguse, R., Jichi, F., Lunel, N. L., Maher, D., Johnston, L. G.,
+Sonnenberg, P., Copas, A. J., Hayes, R. J., \& White, R. G. (2012).
+Evaluation of respondent-driven sampling. \emph{Epidemiology},
+\emph{23}(1), 138--147. \url{https://www.jstor.org/stable/23214188}
+
+\bibitem[\citeproctext]{ref-mccreesh_evaluation_2011}
+McCreesh, N., Johnston, L. G., \& Copas, A. (2011). Evaluation of the
+role of location and distance in recruitment in respondent-driven
+sampling. \emph{International Journal of Health Geography},
+\emph{10}(56).
+
+\bibitem[\citeproctext]{ref-new_modern_2015}
+New, S. J. (2015). Modern slavery and the supply chain: The limits of
+corporate social responsibility? \emph{Supply Chain Management},
+\emph{20}(6), 697--707. \url{https://doi.org/10.1108/SCM-06-2015-0201}
+
+\bibitem[\citeproctext]{ref-ilo_what_2024}
+O, I. L. (2024, January 28). \emph{What is forced labour?}
+\url{https://www.ilo.org/topics/forced-labour-modern-slavery-and-trafficking-persons/what-forced-labour}
+
+\bibitem[\citeproctext]{ref-home_office_modern_2025}
+Office, H. (2025). \emph{Modern slavery: National referral mechanism and
+duty to notify statistics {UK}, end of year summary 2024. {GOV}.{UK}}.
+\url{https://www.gov.uk/government/statistics/modern-slavery-nrm-and-dtn-statistics-end-of-year-summary-2024/modern-slavery-national-referral-mechanism-and-duty-to-notify-statistics-uk-end-of-year-summary-2024}
+
+\bibitem[\citeproctext]{ref-platt_adapting_2015}
+Platt, L., Luthra, R., \& Frere-Smith, T. (2015). Adapting chain
+referral methods to sample new migrants: Possibilities and limitations.
+\emph{Demographic Research}, \emph{33}, 665--700.
+
+\bibitem[\citeproctext]{ref-robinson_sampling_2014}
+Robinson, O. C. (2014). Sampling in interview-based qualitative
+research: A theoretical and practical guide. \emph{Qualitative Research
+in Psychology}, \emph{11}(1), 25--41.
+
+\bibitem[\citeproctext]{ref-romero_blueprint_2025}
+Romero, A., \& Fisher, O. (2025). \emph{Blueprint for safer and fairer
+migration for low-paid work}. Focus on Labour Exploitation.
+\url{https://labourexploitation.org/app/uploads/2025/06/Flex-Report-Blueprint-for-safer-and-fairer-migration-for-low-paid-work_final_30_June-.pdf}
+
+\bibitem[\citeproctext]{ref-schwitters_prevalence_2012}
+Schwitters, A., Swaminathan, M., \& Serwadda, D. (2012). Prevalence of
+rape and client-initiated gender-based violence among female sex
+workers: Kampala, uganda. \emph{{AIDS} Behaviour}, \emph{19}, 68--76.
+
+\bibitem[\citeproctext]{ref-semaan_time-space_2010}
+Semaan, S. (2010). Time-space sampling and respondent-driven sampling
+with hard-to-reach populations. \emph{Methodological Innovations
+Online}, \emph{5}(2), 60--75.
+
+\bibitem[\citeproctext]{ref-semaan_ethical_2009}
+Semaan, S., Santibanez, S., Garfein, R. S., Heckathorn, D. D., \&
+Jarlais, D. C. (2009). Ethical and regulatory considerations in {HIV}
+prevention studies employing respondent-driven sampling.
+\emph{International Journal of Drug Policy}, \emph{20}(1), 14--27.
+
+\bibitem[\citeproctext]{ref-singer_incentives_2006}
+Singer, E., \& Bossarte, R. M. (2006). Incentives for survey
+participation: When are they {``coercive''}? \emph{American Journal of
+Preventive Medicine}, \emph{31}(5), 411--418.
+
+\bibitem[\citeproctext]{ref-soundararajan_humanizing_2021}
+Soundararajan, V., Wilhelm, M. M., \& Crane, A. (2021). Humanizing
+research on working conditions in supply chains: Building a path to
+decent work. \emph{Journal of Supply Chain Management}, \emph{57}(2),
+3--13. \url{https://doi.org/10.1111/jscm.12260}
+
+\bibitem[\citeproctext]{ref-stephens_theorising_2024}
+Stephens, V., Benstead, A. V., Goworek, H., Charles, E., \& Lukic, D.
+(2024). Theorising worker voice for supply chain justice --
+communication, representation and recognition. \emph{International
+Journal of Operations \&Amp; Production Management}, \emph{45}(3),
+653--676. \url{https://doi.org/10.1108/IJOPM-06-2023-0528}
+
+\bibitem[\citeproctext]{ref-stevenson_modern_2018}
+Stevenson, M., \& Cole, R. (2018). Modern slavery in supply chains: A
+secondary data analysis of detection, remediation and disclosure.
+\emph{Supply Chain Management: An International Journal}, \emph{23}.
+\url{https://doi.org/10.1108/SCM-11-2017-0382}
+
+\bibitem[\citeproctext]{ref-strauss_britain_2023}
+Strauss, D., \& Cocco, F. (2023). \emph{Britain after brexit: The
+surprising surge in skilled migrants}.
+
+\bibitem[\citeproctext]{ref-tarei_hybrid_2018}
+Tarei, P. K., Thakkar, J. J., \& Nag, B. (2018). A hybrid approach for
+quantifying supply chain risk and prioritizing the risk drivers: A case
+of indian petroleum supply chain. \emph{Journal of Manufacturing
+Technology Management}, \emph{29}(3), 533--569.
+\url{https://doi.org/10.1108/JMTM-10-2017-0218}
+
+\bibitem[\citeproctext]{ref-thompson_new_2020}
+Thompson, S. (2020). \emph{New estimates for network sampling}.
+
+\bibitem[\citeproctext]{ref-leverhulme_trust_research_2022}
+Trust, L. (2022). \emph{Research project grants. Grant listings}.
+\url{https://www.leverhulme.ac.uk/listings?field_grant_scheme_target_id=15}
+
+\bibitem[\citeproctext]{ref-tyldum_surveying_2021}
+Tyldum, G. (2021). Surveying migrant populations with respondent-driven
+sampling. Experiences from surveys of east-west migration in europe.
+\emph{International Journal of Social Research Methodology},
+\emph{24}(3), 341--335.
+
+\bibitem[\citeproctext]{ref-vincent_estimating_2017}
+Vincent, K., \& Thompson, S. (2017). Estimating population size with
+link-tracing sampling. \emph{Journal of the American Statistical
+Association}, \emph{112}(519), 1286--1295.
+\url{https://doi.org/10.1080/01621459.2016.1212712}
+
+\bibitem[\citeproctext]{ref-wang_respondent-driven_2005}
+Wang, J., Carlson, R. G., Falck, R. S., Siegal, H. A., Rahman, A., \&
+Li, L. (2005). Respondent-driven sampling to recruit {MDMA} users: A
+methodological assessment. \emph{Drug and Alcohol Dependence},
+\emph{78}(2), 147--157.
+
+\bibitem[\citeproctext]{ref-wejnert_web-based_2008}
+Wejnert, C., \& Heckathorn, D. D. (2008). Web-based network sampling:
+Efficiency and efficacy of respondent-driven sampling for online
+research. \emph{Sociological Methods \& Research}, \emph{37}(1),
+105--134.
+
+\bibitem[\citeproctext]{ref-wolf_operationalizing_2001}
+Wolf, F. G. (2001). Operationalizing and testing normal accident theory
+in petrochemical plants and refineries. \emph{Production and Operations
+Management}, \emph{10}(3), 292--305.
+\url{https://doi.org/10.1111/j.1937-5956.2001.tb00376.x}
+
+\bibitem[\citeproctext]{ref-zhang_measuring_2012}
+Zhang, S. X. (2012). Measuring labour trafficking: A research note.
+\emph{Crime, Law and Social Change}, \emph{58}, 469--482.
+
+\bibitem[\citeproctext]{ref-zhang_victims_2019}
+Zhang, S. X., Dank, M., Vincent, K., Narayanan, P., Bharadwaj, S., \&
+Balasubramaniam, S. M. (2019). Victims without a voice: Measuring worst
+forms of child labor in the indian state of bihar. \emph{Victims \&
+Offenders}, \emph{14}(7), 832--858.
+
+\end{CSLReferences}
+
+\newpage
+
+\appendix
+
+\section{Appendix A}\label{appendix-a}
+
+
+
+
+\end{document}
