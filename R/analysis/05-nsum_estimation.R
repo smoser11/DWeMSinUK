@@ -103,20 +103,23 @@ estimate_hidden_pop_size <- function(data, weights, hidden_var,
 		sum(weights, na.rm = TRUE)
 	
 	# Calculate average degree (d_F,F) using known populations
+	# Use weighted average of degree variables (don't divide by probe_sizes - that's for scaling)
 	d_F_F <- sapply(1:length(degree_vars), function(i) {
 		sum(data[[degree_vars[i]]] * weights, na.rm = TRUE) / 
-			sum(weights, na.rm = TRUE) / probe_sizes[i]
+			sum(weights, na.rm = TRUE)
 	})
 	d_F_F <- mean(d_F_F, na.rm = TRUE)
 	
-	# NSUM estimate
-	N_H_estimate <- (y_F_H / d_F_F) * total_pop_size
+	# NSUM estimate - calculate proportion first, then scale if needed
+	proportion_estimate <- y_F_H / d_F_F
+	N_H_estimate <- proportion_estimate * total_pop_size
 	
 	return(list(
 		N_H_estimate = N_H_estimate,
+		proportion_estimate = proportion_estimate,
 		y_F_H = y_F_H,
 		d_F_F = d_F_F,
-		vis_fraction = y_F_H / d_F_F
+		vis_fraction = proportion_estimate
 	))
 }
 

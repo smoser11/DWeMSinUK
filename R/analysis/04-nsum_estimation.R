@@ -38,12 +38,13 @@ estimate_nsum_population <- function(data, weights, hidden_connections_var,
            sum(weights_complete, na.rm = TRUE)
   
   # Calculate average degree: d_F,F (weighted average degree to known populations)
+  # Note: probe_sizes are used for visibility scaling, not degree calculation
   degree_estimates <- numeric(length(degree_vars))
   
   for (i in seq_along(degree_vars)) {
     if (degree_vars[i] %in% names(data_complete)) {
       degree_estimates[i] <- sum(data_complete[[degree_vars[i]]] * weights_complete, na.rm = TRUE) / 
-                            sum(weights_complete, na.rm = TRUE) / probe_sizes[i]
+                            sum(weights_complete, na.rm = TRUE)
     } else {
       degree_estimates[i] <- NA
     }
