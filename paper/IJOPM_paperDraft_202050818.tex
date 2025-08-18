@@ -876,171 +876,6 @@ communities used to seed the survey.
 
 \newpage
 
-\subsection{Executive Summary}\label{executive-summary}
-
-This analysis estimates the prevalence of modern slavery among domestic
-workers in the UK using multiple RDS methodologies. We examine two
-primary indicators across various population size assumptions and
-estimation techniques.
-
-\textbf{Key Findings:} - Below minimum wage prevalence (Q36): X.X\% -
-Y.Y\% (95\% CI) - NRM referral experience (Q80): A.A\% - B.B\% (95\%
-CI)\\
-- Population size estimates: 980,000 - 1.74M domestic workers
-
-\subsection{Sample Characteristics}\label{sample-characteristics}
-
-\subsubsection{Recruitment Network
-Structure}\label{recruitment-network-structure}
-
-\begin{table}
-
-\caption{\label{tbl-network}RDS Sample Network Characteristics}
-
-\centering{
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{network\_stats }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
-  \AttributeTok{Characteristic =} \FunctionTok{c}\NormalTok{(}\StringTok{"Total Sample Size"}\NormalTok{, }\StringTok{"Recruitment Waves"}\NormalTok{, }\StringTok{"Average Degree"}\NormalTok{, }
-                    \StringTok{"Median Degree"}\NormalTok{, }\StringTok{"Seeds"}\NormalTok{, }\StringTok{"Longest Chain"}\NormalTok{, }\StringTok{"Mean Chain Length"}\NormalTok{),}
-  \AttributeTok{Value =} \FunctionTok{c}\NormalTok{(}
-    \FunctionTok{nrow}\NormalTok{(rd.dd),}
-    \FunctionTok{max}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{wave, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
-    \FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{numRef, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{1}\NormalTok{),}
-    \FunctionTok{round}\NormalTok{(}\FunctionTok{median}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{numRef, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{1}\NormalTok{),}
-    \FunctionTok{sum}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{recruiter.id }\SpecialCharTok{==} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{),}
-    \StringTok{"TBD"}\NormalTok{, }\CommentTok{\# Calculate from recruitment chains}
-    \StringTok{"TBD"}  \CommentTok{\# Calculate average chain length}
-\NormalTok{  )}
-\NormalTok{)}
-
-\NormalTok{network\_stats }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{gt}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{tab\_header}\NormalTok{(}\AttributeTok{title =} \StringTok{"Network Characteristics"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{fmt\_number}\NormalTok{(}\AttributeTok{columns =}\NormalTok{ Value, }\AttributeTok{decimals =} \DecValTok{1}\NormalTok{, }\AttributeTok{use\_seps =} \ConstantTok{TRUE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-}
-
-\end{table}%
-
-\subsubsection{Demographic Composition}\label{demographic-composition}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Create nationality breakdown}
-\NormalTok{nationality\_summary }\OtherTok{\textless{}{-}}\NormalTok{ rd.dd }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{group\_by}\NormalTok{(nationality\_cluster) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{summarise}\NormalTok{(}
-    \AttributeTok{n =} \FunctionTok{n}\NormalTok{(),}
-    \AttributeTok{percent =} \FunctionTok{round}\NormalTok{(}\FunctionTok{n}\NormalTok{() }\SpecialCharTok{/} \FunctionTok{nrow}\NormalTok{(rd.dd) }\SpecialCharTok{*} \DecValTok{100}\NormalTok{, }\DecValTok{1}\NormalTok{),}
-    \AttributeTok{.groups =} \StringTok{\textquotesingle{}drop\textquotesingle{}}
-\NormalTok{  )}
-
-\FunctionTok{ggplot}\NormalTok{(nationality\_summary, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ nationality\_cluster, }\AttributeTok{y =}\NormalTok{ percent, }\AttributeTok{fill =}\NormalTok{ nationality\_cluster)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_col}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =} \FunctionTok{paste0}\NormalTok{(n, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{("}\NormalTok{, percent, }\StringTok{"\%)"}\NormalTok{)), }\AttributeTok{vjust =} \SpecialCharTok{{-}}\FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{scale\_fill\_viridis\_d}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Nationality Cluster"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Percentage"}\NormalTok{, }
-       \AttributeTok{title =} \StringTok{"Sample Distribution by Nationality"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\subsection{RDS Estimation Results}\label{rds-estimation-results}
-
-\subsubsection{Model-Assisted Estimates by Population
-Size}\label{model-assisted-estimates-by-population-size}
-
-\begin{table}
-
-\caption{\label{tbl-ma-estimates}Model-Assisted Estimates by Population
-Size and Seed Selection}
-
-\centering{
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Extract MA results and create comparison table}
-\NormalTok{ma\_comparison }\OtherTok{\textless{}{-}} \FunctionTok{expand\_grid}\NormalTok{(}
-  \AttributeTok{seed\_method =} \FunctionTok{c}\NormalTok{(}\StringTok{"sample"}\NormalTok{, }\StringTok{"random"}\NormalTok{, }\StringTok{"degree"}\NormalTok{),}
-  \AttributeTok{pop\_size =} \FunctionTok{c}\NormalTok{(}\DecValTok{100000}\NormalTok{, }\DecValTok{953000}\NormalTok{, }\DecValTok{1000000}\NormalTok{, }\DecValTok{1500000}\NormalTok{),}
-  \AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\StringTok{"q36"}\NormalTok{, }\StringTok{"q80"}\NormalTok{, }\StringTok{"composite\_risk"}\NormalTok{)}
-\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{rowwise}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{mutate}\NormalTok{(}
-    \AttributeTok{key =} \FunctionTok{paste0}\NormalTok{(seed\_method, }\StringTok{"\_"}\NormalTok{, pop\_size),}
-    \AttributeTok{estimate =} \FunctionTok{ifelse}\NormalTok{(key }\SpecialCharTok{\%in\%} \FunctionTok{names}\NormalTok{(ma\_results),}
-\NormalTok{                     ma\_results[[key]][[indicator]]}\SpecialCharTok{$}\NormalTok{estimate, }\ConstantTok{NA}\NormalTok{),}
-    \AttributeTok{ci\_lower =} \FunctionTok{ifelse}\NormalTok{(key }\SpecialCharTok{\%in\%} \FunctionTok{names}\NormalTok{(ma\_results),}
-\NormalTok{                     ma\_results[[key]][[indicator]]}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{1}\NormalTok{], }\ConstantTok{NA}\NormalTok{),}
-    \AttributeTok{ci\_upper =} \FunctionTok{ifelse}\NormalTok{(key }\SpecialCharTok{\%in\%} \FunctionTok{names}\NormalTok{(ma\_results),}
-\NormalTok{                     ma\_results[[key]][[indicator]]}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{2}\NormalTok{], }\ConstantTok{NA}\NormalTok{)}
-\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(estimate))}
-
-\CommentTok{\# Create formatted table}
-\NormalTok{ma\_comparison }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{mutate}\NormalTok{(}
-    \AttributeTok{pop\_size\_f =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{comma}\NormalTok{(pop\_size),}
-    \AttributeTok{estimate\_ci =} \FunctionTok{sprintf}\NormalTok{(}\StringTok{"\%.3f (\%.3f, \%.3f)"}\NormalTok{, estimate, ci\_lower, ci\_upper)}
-\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{select}\NormalTok{(seed\_method, pop\_size\_f, indicator, estimate\_ci) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ indicator, }\AttributeTok{values\_from =}\NormalTok{ estimate\_ci) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{gt}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{tab\_header}\NormalTok{(}\AttributeTok{title =} \StringTok{"Model{-}Assisted Estimates by Method"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{cols\_label}\NormalTok{(}
-    \AttributeTok{seed\_method =} \StringTok{"Seed Selection"}\NormalTok{,}
-    \AttributeTok{pop\_size\_f =} \StringTok{"Population Size"}\NormalTok{,}
-    \AttributeTok{q36 =} \StringTok{"Below Min Wage"}\NormalTok{,}
-    \AttributeTok{q80 =} \StringTok{"NRM Experience"}\NormalTok{, }
-    \AttributeTok{composite\_risk =} \StringTok{"Composite Risk"}
-\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{tab\_spanner}\NormalTok{(}\AttributeTok{label =} \StringTok{"Prevalence Estimates (95\% CI)"}\NormalTok{, }\AttributeTok{columns =} \FunctionTok{c}\NormalTok{(q36, q80, composite\_risk))}
-\end{Highlighting}
-\end{Shaded}
-
-}
-
-\end{table}%
-
-\subsubsection{Traditional RDS Estimators
-Comparison}\label{traditional-rds-estimators-comparison}
-
-\begin{table}
-
-\caption{\label{tbl-rds-comparison}RDS Estimator Comparison (N=980,000)}
-
-\centering{
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Extract RDS estimates for standard population size}
-\NormalTok{rds\_980k }\OtherTok{\textless{}{-}}\NormalTok{ rds\_results[[}\StringTok{"980000"}\NormalTok{]]}
-
-\NormalTok{rds\_table }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
-  \AttributeTok{Method =} \FunctionTok{c}\NormalTok{(}\StringTok{"RDS{-}I"}\NormalTok{, }\StringTok{"RDS{-}II"}\NormalTok{, }\StringTok{"Successive Sampling"}\NormalTok{),}
-  \StringTok{\textasciigrave{}}\AttributeTok{Q36 Estimate}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{c}\NormalTok{(}
-\NormalTok{    rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_i}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{estimate,}
-\NormalTok{    rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_ii}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{estimate,}
-\NormalTok{    rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_ss}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{estimate}
-\NormalTok{  ),}
-  \StringTok{\textasciigrave{}}\AttributeTok{Q36 95\% CI}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{c}\NormalTok{(}
-    \FunctionTok{sprintf}\NormalTok{(}\StringTok{"(\%.3f, \%.3f)"}\NormalTok{, rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_i}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{1}\NormalTok{], rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_i}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{2}\NormalTok{]),}
-    \FunctionTok{sprintf}\NormalTok{(}\StringTok{"(\%.3f, \%.3f)"}\NormalTok{, rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_ii}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{1}\NormalTok{], rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_ii}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{2}\NormalTok{]),}
-    \FunctionTok{sprintf}\NormalTok{(}\StringTok{"(\%.3f, \%.3f)"}\NormalTok{, rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_ss}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{1}\NormalTok{], rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_ss}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{2}\NormalTok{])}
-\NormalTok{  ) }\CommentTok{\#...}
-\end{Highlighting}
-\end{Shaded}
-
-}
-
-\end{table}%
-
 \newpage
 
 \section{References}\label{references}
@@ -1360,6 +1195,171 @@ Offenders}, \emph{14}(7), 832--858.
 \appendix
 
 \section{Appendix A}\label{appendix-a}
+
+\subsection{Executive Summary}\label{executive-summary}
+
+This analysis estimates the prevalence of modern slavery among domestic
+workers in the UK using multiple RDS methodologies. We examine two
+primary indicators across various population size assumptions and
+estimation techniques.
+
+\textbf{Key Findings:} - Below minimum wage prevalence (Q36): X.X\% -
+Y.Y\% (95\% CI) - NRM referral experience (Q80): A.A\% - B.B\% (95\%
+CI)\\
+- Population size estimates: 980,000 - 1.74M domestic workers
+
+\subsection{Sample Characteristics}\label{sample-characteristics}
+
+\subsubsection{Recruitment Network
+Structure}\label{recruitment-network-structure}
+
+\begin{table}
+
+\caption{\label{tbl-network}RDS Sample Network Characteristics}
+
+\centering{
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{network\_stats }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{Characteristic =} \FunctionTok{c}\NormalTok{(}\StringTok{"Total Sample Size"}\NormalTok{, }\StringTok{"Recruitment Waves"}\NormalTok{, }\StringTok{"Average Degree"}\NormalTok{, }
+                    \StringTok{"Median Degree"}\NormalTok{, }\StringTok{"Seeds"}\NormalTok{, }\StringTok{"Longest Chain"}\NormalTok{, }\StringTok{"Mean Chain Length"}\NormalTok{),}
+  \AttributeTok{Value =} \FunctionTok{c}\NormalTok{(}
+    \FunctionTok{nrow}\NormalTok{(rd.dd),}
+    \FunctionTok{max}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{wave, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{numRef, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{1}\NormalTok{),}
+    \FunctionTok{round}\NormalTok{(}\FunctionTok{median}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{numRef, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{1}\NormalTok{),}
+    \FunctionTok{sum}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{recruiter.id }\SpecialCharTok{==} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{),}
+    \StringTok{"TBD"}\NormalTok{, }\CommentTok{\# Calculate from recruitment chains}
+    \StringTok{"TBD"}  \CommentTok{\# Calculate average chain length}
+\NormalTok{  )}
+\NormalTok{)}
+
+\NormalTok{network\_stats }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{gt}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tab\_header}\NormalTok{(}\AttributeTok{title =} \StringTok{"Network Characteristics"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{fmt\_number}\NormalTok{(}\AttributeTok{columns =}\NormalTok{ Value, }\AttributeTok{decimals =} \DecValTok{1}\NormalTok{, }\AttributeTok{use\_seps =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+}
+
+\end{table}%
+
+\subsubsection{Demographic Composition}\label{demographic-composition}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create nationality breakdown}
+\NormalTok{nationality\_summary }\OtherTok{\textless{}{-}}\NormalTok{ rd.dd }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(nationality\_cluster) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}
+    \AttributeTok{n =} \FunctionTok{n}\NormalTok{(),}
+    \AttributeTok{percent =} \FunctionTok{round}\NormalTok{(}\FunctionTok{n}\NormalTok{() }\SpecialCharTok{/} \FunctionTok{nrow}\NormalTok{(rd.dd) }\SpecialCharTok{*} \DecValTok{100}\NormalTok{, }\DecValTok{1}\NormalTok{),}
+    \AttributeTok{.groups =} \StringTok{\textquotesingle{}drop\textquotesingle{}}
+\NormalTok{  )}
+
+\FunctionTok{ggplot}\NormalTok{(nationality\_summary, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ nationality\_cluster, }\AttributeTok{y =}\NormalTok{ percent, }\AttributeTok{fill =}\NormalTok{ nationality\_cluster)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =} \FunctionTok{paste0}\NormalTok{(n, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{("}\NormalTok{, percent, }\StringTok{"\%)"}\NormalTok{)), }\AttributeTok{vjust =} \SpecialCharTok{{-}}\FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_viridis\_d}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Nationality Cluster"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Percentage"}\NormalTok{, }
+       \AttributeTok{title =} \StringTok{"Sample Distribution by Nationality"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{RDS Estimation Results}\label{rds-estimation-results}
+
+\subsubsection{Model-Assisted Estimates by Population
+Size}\label{model-assisted-estimates-by-population-size}
+
+\begin{table}
+
+\caption{\label{tbl-ma-estimates}Model-Assisted Estimates by Population
+Size and Seed Selection}
+
+\centering{
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Extract MA results and create comparison table}
+\NormalTok{ma\_comparison }\OtherTok{\textless{}{-}} \FunctionTok{expand\_grid}\NormalTok{(}
+  \AttributeTok{seed\_method =} \FunctionTok{c}\NormalTok{(}\StringTok{"sample"}\NormalTok{, }\StringTok{"random"}\NormalTok{, }\StringTok{"degree"}\NormalTok{),}
+  \AttributeTok{pop\_size =} \FunctionTok{c}\NormalTok{(}\DecValTok{100000}\NormalTok{, }\DecValTok{953000}\NormalTok{, }\DecValTok{1000000}\NormalTok{, }\DecValTok{1500000}\NormalTok{),}
+  \AttributeTok{indicator =} \FunctionTok{c}\NormalTok{(}\StringTok{"q36"}\NormalTok{, }\StringTok{"q80"}\NormalTok{, }\StringTok{"composite\_risk"}\NormalTok{)}
+\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rowwise}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{key =} \FunctionTok{paste0}\NormalTok{(seed\_method, }\StringTok{"\_"}\NormalTok{, pop\_size),}
+    \AttributeTok{estimate =} \FunctionTok{ifelse}\NormalTok{(key }\SpecialCharTok{\%in\%} \FunctionTok{names}\NormalTok{(ma\_results),}
+\NormalTok{                     ma\_results[[key]][[indicator]]}\SpecialCharTok{$}\NormalTok{estimate, }\ConstantTok{NA}\NormalTok{),}
+    \AttributeTok{ci\_lower =} \FunctionTok{ifelse}\NormalTok{(key }\SpecialCharTok{\%in\%} \FunctionTok{names}\NormalTok{(ma\_results),}
+\NormalTok{                     ma\_results[[key]][[indicator]]}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{1}\NormalTok{], }\ConstantTok{NA}\NormalTok{),}
+    \AttributeTok{ci\_upper =} \FunctionTok{ifelse}\NormalTok{(key }\SpecialCharTok{\%in\%} \FunctionTok{names}\NormalTok{(ma\_results),}
+\NormalTok{                     ma\_results[[key]][[indicator]]}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{2}\NormalTok{], }\ConstantTok{NA}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(estimate))}
+
+\CommentTok{\# Create formatted table}
+\NormalTok{ma\_comparison }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{pop\_size\_f =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{comma}\NormalTok{(pop\_size),}
+    \AttributeTok{estimate\_ci =} \FunctionTok{sprintf}\NormalTok{(}\StringTok{"\%.3f (\%.3f, \%.3f)"}\NormalTok{, estimate, ci\_lower, ci\_upper)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(seed\_method, pop\_size\_f, indicator, estimate\_ci) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ indicator, }\AttributeTok{values\_from =}\NormalTok{ estimate\_ci) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{gt}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tab\_header}\NormalTok{(}\AttributeTok{title =} \StringTok{"Model{-}Assisted Estimates by Method"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{cols\_label}\NormalTok{(}
+    \AttributeTok{seed\_method =} \StringTok{"Seed Selection"}\NormalTok{,}
+    \AttributeTok{pop\_size\_f =} \StringTok{"Population Size"}\NormalTok{,}
+    \AttributeTok{q36 =} \StringTok{"Below Min Wage"}\NormalTok{,}
+    \AttributeTok{q80 =} \StringTok{"NRM Experience"}\NormalTok{, }
+    \AttributeTok{composite\_risk =} \StringTok{"Composite Risk"}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tab\_spanner}\NormalTok{(}\AttributeTok{label =} \StringTok{"Prevalence Estimates (95\% CI)"}\NormalTok{, }\AttributeTok{columns =} \FunctionTok{c}\NormalTok{(q36, q80, composite\_risk))}
+\end{Highlighting}
+\end{Shaded}
+
+}
+
+\end{table}%
+
+\subsubsection{Traditional RDS Estimators
+Comparison}\label{traditional-rds-estimators-comparison}
+
+\begin{table}
+
+\caption{\label{tbl-rds-comparison}RDS Estimator Comparison (N=980,000)}
+
+\centering{
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Extract RDS estimates for standard population size}
+\NormalTok{rds\_980k }\OtherTok{\textless{}{-}}\NormalTok{ rds\_results[[}\StringTok{"980000"}\NormalTok{]]}
+
+\NormalTok{rds\_table }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{Method =} \FunctionTok{c}\NormalTok{(}\StringTok{"RDS{-}I"}\NormalTok{, }\StringTok{"RDS{-}II"}\NormalTok{, }\StringTok{"Successive Sampling"}\NormalTok{),}
+  \StringTok{\textasciigrave{}}\AttributeTok{Q36 Estimate}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{c}\NormalTok{(}
+\NormalTok{    rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_i}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{estimate,}
+\NormalTok{    rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_ii}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{estimate,}
+\NormalTok{    rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_ss}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{estimate}
+\NormalTok{  ),}
+  \StringTok{\textasciigrave{}}\AttributeTok{Q36 95\% CI}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{c}\NormalTok{(}
+    \FunctionTok{sprintf}\NormalTok{(}\StringTok{"(\%.3f, \%.3f)"}\NormalTok{, rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_i}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{1}\NormalTok{], rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_i}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{2}\NormalTok{]),}
+    \FunctionTok{sprintf}\NormalTok{(}\StringTok{"(\%.3f, \%.3f)"}\NormalTok{, rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_ii}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{1}\NormalTok{], rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_ii}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{2}\NormalTok{]),}
+    \FunctionTok{sprintf}\NormalTok{(}\StringTok{"(\%.3f, \%.3f)"}\NormalTok{, rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_ss}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{1}\NormalTok{], rds\_980k}\SpecialCharTok{$}\NormalTok{rds\_ss}\SpecialCharTok{$}\NormalTok{q36}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{2}\NormalTok{])}
+\NormalTok{  ) }\CommentTok{\#...}
+\end{Highlighting}
+\end{Shaded}
+
+}
+
+\end{table}%
 
 
 

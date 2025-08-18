@@ -281,6 +281,20 @@ As the network structure of our sample demonstrates, even with a well-designed i
 \newpage
 
 
+
+\newpage
+# References
+::: {#refs}
+:::
+<!-- This will be populated by Pandoc if you use --citeproc and a .bib file -->
+
+\newpage
+```{=latex}
+\appendix
+```
+
+# Appendix A
+
 ```{r setu, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 library(tidyverse)
@@ -426,24 +440,6 @@ rds_table <- tibble(
     sprintf("(%.3f, %.3f)", rds_980k$rds_ss$q36$conf.int[1], rds_980k$rds_ss$q36$conf.int[2])
   ) #...
 ```
-
-
-
-
-
-
-\newpage
-# References
-::: {#refs}
-:::
-<!-- This will be populated by Pandoc if you use --citeproc and a .bib file -->
-
-\newpage
-```{=latex}
-\appendix
-```
-
-# Appendix A
 
 
 
