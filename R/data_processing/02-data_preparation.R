@@ -10,7 +10,7 @@ library(psych)
 library(here)
 
 # Load cleaned data
-if (!exists("cleaned_data")) {
+if (!exists("data_final") || !exists("data_nonzero")) {
   load(here("data", "processed", "cleaned_data.RData"))
 }
 
@@ -190,4 +190,7 @@ prepare_data <- function() {
 # Execute data preparation if running this script directly
 if (!exists("skip_execution")) {
   prepared_data <- prepare_data()
+  # Make dd and rd.dd available in global environment
+  dd <<- prepared_data$dd
+  rd.dd <<- prepared_data$rd.dd
 }

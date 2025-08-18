@@ -9,7 +9,7 @@ library(ggplot2)
 library(here)
 
 # Load prepared data
-if (!exists("prepared_data")) {
+if (!exists("dd") || !exists("rd.dd")) {
   load(here("data", "processed", "prepared_data.RData"))
 }
 
