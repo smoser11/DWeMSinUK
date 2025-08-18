@@ -12,27 +12,41 @@ This repository contains a research project analyzing domestic worker exploitati
 ```
 DWeMSinUK/
 ├── R/                          # All R analysis scripts
+│   ├── 00-main_pipeline.R     # Master analysis pipeline
 │   ├── data_processing/        # Data cleaning and preparation
+│   │   ├── 01-data_cleaning.R  # Raw data import and cleaning
+│   │   └── 02-data_preparation.R # Comparable indicators and RDS formatting
 │   ├── analysis/              # Statistical estimation methods
+│   │   ├── 03-rds_estimation.R # RDS-I/II/SS estimation and bootstrap
+│   │   ├── 04-nsum_estimation.R # Network scale-up methods
+│   │   └── 05-comparison_analysis.R # RDS vs NSUM comparison
 │   ├── utils/                 # Helper functions and utilities
-│   └── ScratchWork/           # Experimental/development scripts
+│   │   └── helper_functions.R # Shared utility functions
+│   └── archive/               # Archived old/experimental scripts
+│       ├── old_versions/      # Previous script versions
+│       ├── experiments/       # Experimental scripts
+│       └── scratch_work/      # Daily work files
 ├── data/                      # Data files (raw and processed)
 │   ├── raw/                   # Original survey data
 │   └── processed/             # Cleaned datasets (.RData files)
+├── output/                    # Analysis results and outputs
+│   ├── figures/               # All plots and visualizations
+│   ├── tables/                # Summary tables and estimates
+│   └── reports/               # Generated analysis reports
 ├── paper/                     # Academic papers and manuscripts
-├── output/                    # Analysis results and estimates
 ├── GNSUM/                     # G-NSUM specific materials
 ├── Replication/               # External replication studies
 └── Notes/                     # Research notes and documentation
 ```
 
 ### Key Analysis Files
-- `R/data_processing/01-data_cleaning.R` - Data import and cleaning pipeline
-- `R/data_processing/02-data_preparation.R` - Network variable creation and RDS formatting
-- `R/analysis/03-rds_estimation.R` - RDS-I, RDS-II, and RDS-SS estimation methods
-- `R/analysis/04-bootstrap_analysis.R` - Neighborhood and tree bootstrap implementations
-- `R/analysis/05-nsum_estimation.R` - Network scale-up method estimates
-- `R/utils/helper_functions.R` - Shared utility functions
+- `R/00-main_pipeline.R` - Master script that runs the complete analysis pipeline
+- `R/data_processing/01-data_cleaning.R` - Raw data import, cleaning, and network size calculation
+- `R/data_processing/02-data_preparation.R` - CE's comparable indicators and RDS weight calculation
+- `R/analysis/03-rds_estimation.R` - RDS-I/II/SS estimation with bootstrap confidence intervals
+- `R/analysis/04-nsum_estimation.R` - Network scale-up method population estimates  
+- `R/analysis/05-comparison_analysis.R` - Systematic RDS vs NSUM comparison using matched indicators
+- `R/utils/helper_functions.R` - Shared utility functions with proper path handling
 
 ### Data Processing Pipeline
 1. Raw survey data is imported from `data/raw/`
@@ -49,16 +63,25 @@ DWeMSinUK/
 
 ## Common Development Commands
 
-### Running Analysis
+### Running Complete Analysis Pipeline
 ```r
-# Load and run complete analysis pipeline
+# Run entire analysis pipeline (recommended)
+source("R/00-main_pipeline.R")
+
+# Or run individual steps
 source("R/data_processing/01-data_cleaning.R")
 source("R/data_processing/02-data_preparation.R")
 source("R/analysis/03-rds_estimation.R")
+source("R/analysis/04-nsum_estimation.R")
+source("R/analysis/05-comparison_analysis.R")
+```
 
-# Run specific estimation methods
-run_rds_estimates()    # Multiple RDS estimators
-run_bootstrap_analysis()  # Bootstrap confidence intervals
+### Running Specific Analysis Methods
+```r
+# Individual analysis functions (after data preparation)
+rds_results <- run_rds_estimation()      # RDS estimates with bootstrap CIs
+nsum_results <- run_nsum_estimation()    # NSUM population estimates
+comparison <- run_comparison_analysis()  # RDS vs NSUM comparison
 ```
 
 ### Data Processing
@@ -95,17 +118,24 @@ rmarkdown::render("paper/DWeMSinUK.Rmd")
 - Q61+Q62/Q64: Excessive working hours
 - Q78/Q79: Access to help and support
 
-### Comparable RDS/NSUM Indicators
-The `create_comparable_indicators()` function in `R/01-Data.R` creates matched indicators for fair comparison between RDS (egocentric) and NSUM (alter-centric) estimation methods:
+### CE's Comparable RDS/NSUM Indicators (2024-11-05)
+The `create_comparable_indicators()` function in `R/data_processing/02-data_preparation.R` implements CE's exact specifications for matched indicators between RDS (egocentric) and NSUM (alter-centric) estimation methods:
 
-**High Confidence Pairs:**
-- `document_withholding_rds/nsum`: Q70 vs Q71 (document control)
-- `pay_issues_rds/nsum`: Q39+Q42 vs Q43 (debt/pay withholding)
-- `threats_abuse_rds/nsum`: Q45+Q47+Q48 vs Q49 (force/threats/abuse)
+**Highest Confidence:**
+- `document_withholding_rds/nsum`: Q70 5f2 = Q71 5f3 (document control)
 
-**Lower Confidence Pairs:**
-- `excessive_hours_rds/nsum`: Q61+Q62 vs Q64 (work hours/rest)
-- `access_to_help_rds/nsum`: Q78rev vs Q79 (access to support)
+**High Confidence:**
+- `pay_issues_rds/nsum`: Q39 5b4 and Q42 5b7 = Q43 5b8 (debt/pay withholding)  
+- `threats_abuse_rds/nsum`: Q45 5c2 and Q47 5c4 and Q48 5c5 = Q49 5c6 (force/threats/abuse)
+
+**Medium Confidence:**
+- `excessive_hours_rds/nsum`: Q61 5d8 and Q62 5d9 = Q64 5d11 (work hours/rest, missing annual leave in RDS)
+
+**Lowest Confidence:**
+- `access_to_help_rds/nsum`: Q78 5f10 (reverse coded) = Q79 5f11 (access to support)
+
+**Additional Network Variable:**
+- `known_network_size`: Q13 2f (number of domestic workers with contact details)
 
 All indicators are binary (0/1) with logical OR for composite RDS measures and proper handling of missing/"don't know" responses.
 
@@ -122,8 +152,23 @@ All indicators are binary (0/1) with logical OR for composite RDS measures and p
 
 ## Development Notes
 
+### Code Organization (August 2025 Reorganization)
+- **Modular Design**: Each analysis script can run independently after data preparation
+- **Path Management**: All file paths use `here()` package for reproducibility 
+- **CE's Specifications**: Comparable indicators implemented exactly per 2024-11-05 correspondence
+- **Sequential Focus**: RDS analysis first (03), then NSUM (04), then comparison (05)
+- **Archived Scripts**: Old/experimental code preserved in `R/archive/` with documentation
+
+### Technical Requirements
 - Use `.RData` format for processed datasets to preserve R object structures
-- Bootstrap methods require careful handling of network topology
+- Bootstrap methods require careful handling of network topology  
 - Missing data ("don't know" responses) requires special treatment in estimation
 - Consider separate analyses for Filipino subgroup due to distinct network patterns
 - All estimation results should include confidence intervals and uncertainty measures
+- Path handling with `here()` package ensures reproducibility across systems
+
+### Output Structure
+- Results: `output/` (`.RData` files)
+- Tables: `output/tables/` (`.csv` files) 
+- Figures: `output/figures/` (`.png` files)
+- Reports: `output/reports/` (`.txt` files)
