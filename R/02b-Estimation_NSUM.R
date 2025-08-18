@@ -284,7 +284,7 @@ result <- neighb(RDS.data, quant = c(0.025, 0.975), method = "percentile", B = 1
 
 
 
-Using this function:
+#Using this function:
 	"""
 	Using this function:
 """

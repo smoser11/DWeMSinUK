@@ -1,3 +1,6 @@
+We need to ensure that the ego-centric  survey questions used in the RDS are comparable to alter-centred questions used in NSUM.  Here are ways to aggregate (or combine) questions to create new comparable questions for both methods, from my co-author, CE:
+""""
+
 Date: 20241105
 Subject: Re: Anticipated special issue - possible 4* journal outlet
 
@@ -17,8 +20,82 @@ The known network size question I identified is Q13 2f (related to the number of
 
 Best wishes
 Caroline
+""""
 
- 
+ Use the existing CLAUDE.md file to get up to speed on this project, 
+  please.
+  
+  
+  
+  
+  Thank you.  I want combine, refine, and organize the R: codebase.  For 
+  example there are currently R: scirpts in the R folder as well as in the 
+  `analysis` and `data-processing` subfolders.  I think the latter two 
+  contain important and useful code, but it is all very disorganized.
+  
+  
+  
+  
+
+1. Technical Analysis Steps
+
+Your notes say:
+
+Neighborhood bootstrap for RDS
+
+Feehan & Salganik weighted NSUM
+
+Match question sets (Q70/71, Q39+42/43, Q45+47+48/49, Q61+62/64, Q78+79)
+
+✅ This matches perfectly with the “preferred RDS + NSUM with weights” plan I outlined.
+🔧 Adjustment: Instead of just Q36/Q80, you’ve identified additional question groupings for NSUM matching. That means in your Findings, you’ll have a set of outcomes: pay issues, document withholding, abuse/threats, excessive hours, access to help — plus your Q36/Q80 binary and risk index.
+
+👉 Suggestion:
+Focus first on RDS + NSUM for one or two outcomes (say, pay below minimum wage and document withholding). Once that pipeline works, scale to the rest. Otherwise you risk tinkering forever on all at once.
+
+2. Population Parameters
+
+Your notes say:
+
+980,000 as UK DW population (EU)
+
+44,360 as NRM referrals baseline
+
+Handle “don’t know” + zero degree (already solved)
+
+Filipino subgroup analysis
+
+✅ The 980k aligns with your earlier EU/ONS bound, and you’ve already solved the anomalies.
+🔧 Adjustment: You don’t need to rerun all sensitivity grids yet — just fix on 980k as your working “preferred N.” Add sensitivity later for robustness.
+
+3. Risk Index Implementation
+
+Weights:
+
+NRM referral (0.35)
+
+Forced labor indicators (0.55 total)
+
+Below minimum wage (0.10)
+
+
+
+
+🚦 Practical Recommendation
+
+Given this, here’s the laser-focused order I’d suggest for you now:
+
+Pick one outcome (say, “pay below minimum wage”).
+
+Run preferred RDS SS estimate (with N=980k, bootstrap CI).
+
+Run weighted NSUM for same outcome (eq. 7 with SS weights, v=1,0.7,0.5).
+
+Produce one table + forest plot in Quarto.
+
+Insert stub commentary beneath.
+
+Once this is running smoothly, extend to the other grouped questions, then to risk index, then to Filipino subgroup. This way you’ll have something publishable in days, not months.
 
 
 
