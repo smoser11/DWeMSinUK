@@ -42,7 +42,7 @@ for (component in names(rds_config)[1:6]) {
 cat("\n")
 
 # Set execution flag to prevent individual scripts from running
-skip_execution <- TRUE
+skip_execution <- FALSE
 
 # Component 1: Basic RDS Estimation (RDS-I, RDS-II, RDS-SS)
 if (rds_config$run_basic_rds) {
@@ -122,7 +122,7 @@ if (rds_config$run_population_size) {
       source(here("R", "analysis", "03c-rds_population_size.R"))
       popsize_results <- run_population_size_estimation(
         prior_sizes = c(980000),
-        force_recompute = rds_config$force_recompute
+        force_recompute = TRUE # rds_config$force_recompute
       )
       cat("✓ Population size estimation completed\n\n")
     }, error = function(e) {

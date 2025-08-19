@@ -87,29 +87,19 @@ prepare_bootstrap_data <- function() {
   degree_var <- if ("network.size" %in% names(rd.dd)) "network.size" else "network.size.variable"
   degree_values <- rd.dd[[degree_var]]
   
-  # Convert edges to the format expected by neighb() function
-  if (nrow(edges_df) > 0) {
-    edges_list <- list(
-      node1 = edges_df$from,
-      node2 = edges_df$to
-    )
-  } else {
-    edges_list <- list(
-      node1 = integer(0),
-      node2 = integer(0)
-    )
-  }
+  # neighb() expects edges as data.frame with from/to columns, NOT as list
+  # (This was the source of the "Duplicate vertex names" error)
   
   rds_bootstrap_data <- list(
     nodes = node_ids,
-    edges = edges_list,
+    edges = edges_df,  # Use data.frame format, not list
     traits = traits_df,
-    degree = degree_values  # Remove setNames - just use vector
+    degree = degree_values
   )
   
   cat("Bootstrap data prepared:\n")
   cat("- Nodes:", length(rds_bootstrap_data$nodes), "\n")
-  cat("- Edges:", length(rds_bootstrap_data$edges$node1), "\n")
+  cat("- Edges:", nrow(rds_bootstrap_data$edges), "\n")
   cat("- Traits:", ncol(rds_bootstrap_data$traits), "\n")
   cat("- Available variables:", paste(available_vars, collapse = ", "), "\n")
   

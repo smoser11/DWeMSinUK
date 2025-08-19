@@ -1,0 +1,61 @@
+"indicator","population_label","method","estimate_pct"
+"Document withholding","1.74M","RDS_I",49.4
+"Document withholding","1.74M","RDS_II",34.2
+"Document withholding","1.74M","RDS_SS",34.2
+"Document withholding","100k","RDS_I",49.4
+"Document withholding","100k","RDS_II",34.2
+"Document withholding","100k","RDS_SS",34.2
+"Document withholding","50k","RDS_I",49.4
+"Document withholding","50k","RDS_II",34.2
+"Document withholding","50k","RDS_SS",34.2
+"Document withholding","980k","RDS_I",49.4
+"Document withholding","980k","RDS_II",34.2
+"Document withholding","980k","RDS_SS",34.2
+"Excessive hours","1.74M","RDS_I",92.8
+"Excessive hours","1.74M","RDS_II",83.7
+"Excessive hours","1.74M","RDS_SS",83.7
+"Excessive hours","100k","RDS_I",92.8
+"Excessive hours","100k","RDS_II",83.7
+"Excessive hours","100k","RDS_SS",83.7
+"Excessive hours","50k","RDS_I",92.8
+"Excessive hours","50k","RDS_II",83.7
+"Excessive hours","50k","RDS_SS",83.7
+"Excessive hours","980k","RDS_I",92.8
+"Excessive hours","980k","RDS_II",83.7
+"Excessive hours","980k","RDS_SS",83.7
+"Limited access to help","1.74M","RDS_I",57.7
+"Limited access to help","1.74M","RDS_II",59.4
+"Limited access to help","1.74M","RDS_SS",59.4
+"Limited access to help","100k","RDS_I",57.7
+"Limited access to help","100k","RDS_II",59.4
+"Limited access to help","100k","RDS_SS",59.4
+"Limited access to help","50k","RDS_I",57.7
+"Limited access to help","50k","RDS_II",59.4
+"Limited access to help","50k","RDS_SS",59.4
+"Limited access to help","980k","RDS_I",57.7
+"Limited access to help","980k","RDS_II",59.4
+"Limited access to help","980k","RDS_SS",59.4
+"Pay issues","1.74M","RDS_I",59.3
+"Pay issues","1.74M","RDS_II",49.7
+"Pay issues","1.74M","RDS_SS",49.7
+"Pay issues","100k","RDS_I",59.3
+"Pay issues","100k","RDS_II",49.7
+"Pay issues","100k","RDS_SS",49.7
+"Pay issues","50k","RDS_I",59.3
+"Pay issues","50k","RDS_II",49.7
+"Pay issues","50k","RDS_SS",49.7
+"Pay issues","980k","RDS_I",59.3
+"Pay issues","980k","RDS_II",49.7
+"Pay issues","980k","RDS_SS",49.7
+"Threats/abuse","1.74M","RDS_I",65.2
+"Threats/abuse","1.74M","RDS_II",57.2
+"Threats/abuse","1.74M","RDS_SS",57.2
+"Threats/abuse","100k","RDS_I",65.2
+"Threats/abuse","100k","RDS_II",57.2
+"Threats/abuse","100k","RDS_SS",57.2
+"Threats/abuse","50k","RDS_I",65.2
+"Threats/abuse","50k","RDS_II",57.2
+"Threats/abuse","50k","RDS_SS",57.2
+"Threats/abuse","980k","RDS_I",65.2
+"Threats/abuse","980k","RDS_II",57.2
+"Threats/abuse","980k","RDS_SS",57.2
