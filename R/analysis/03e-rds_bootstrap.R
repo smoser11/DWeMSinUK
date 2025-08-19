@@ -18,7 +18,7 @@ if (!exists("dd") || !exists("rd.dd")) {
 
 # Source the results database functions
 source(here("R", "analysis", "03a-rds_basic_estimation.R"))
-skip_execution <- TRUE  # Prevent basic script from running
+skip_execution <- FALSE  # Prevent basic script from running
 
 # Create unique ID for bootstrap configuration
 create_bootstrap_parameter_id <- function(base_config_id, bootstrap_method, n_bootstrap, 
