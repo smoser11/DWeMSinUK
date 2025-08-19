@@ -32,16 +32,28 @@ create_popsize_parameter_id <- function(prior_size, visibility_dist = "nbinom",
 # Main function: Population Size Estimation
 run_population_size_estimation <- function(
   prior_sizes = c(50000, 100000, 980000, 1740000),
-  visibility_distributions = c("nbinom", "cmp"),
-  parallel_cores = min(12, detectCores()),
+  visibility_distributions = c("nbinom"),  # Start with just nbinom
+  parallel_cores = min(4, detectCores()),  # Reduce parallel cores
   parallel_type = "PSOCK",
-  burnin_samples = c(15, 1000),  # Fast vs thorough
-  mcmc_samples = c(4, 500),      # Fast vs thorough  
-  mcmc_intervals = c(1, 5),      # Fast vs thorough
+  burnin_samples = c(50, 1000),  # More conservative burnin
+  mcmc_samples = c(100, 500),    # Reasonable sample sizes
+  mcmc_intervals = c(5, 10),     # Conservative intervals
   force_recompute = FALSE
 ) {
   
   cat("Starting population size estimation using SS-PSE...\n")
+  
+  # Validate RDS data for population size estimation
+  if (!exists("rd.dd") || nrow(rd.dd) < 10) {
+    stop("Insufficient RDS data for population size estimation. Need at least 10 observations.")
+  }
+  
+  # Check for essential variables
+  essential_vars <- c("degree", "recruiter.id")
+  missing_vars <- essential_vars[!essential_vars %in% names(rd.dd)]
+  if (length(missing_vars) > 0) {
+    cat("Warning: Missing variables for SS-PSE:", paste(missing_vars, collapse = ", "), "\n")
+  }
   
   # Load existing results
   results_db <- load_rds_results_database()
@@ -90,19 +102,40 @@ run_population_size_estimation <- function(
     
     tryCatch({
       
-      # Run posteriorsize estimation
-      ss_pse_result <- posteriorsize(
-        rd.dd,
-        mean.prior.size = params$prior_size,
-        visibility = TRUE,
-        visibilitydistribution = params$visibility_dist,
-        parallel = parallel_cores,
-        parallel.type = parallel_type,
-        burnin = params$burnin,
-        samplesize = params$samplesize,
-        interval = params$interval,
-        K = FALSE
-      )
+      # Run posteriorsize estimation with error handling
+      cat("Engaging warp drive using", parallel_type, "...\n")
+      
+      # First try with parallel processing
+      ss_pse_result <- tryCatch({
+        posteriorsize(
+          rd.dd,
+          mean.prior.size = params$prior_size,
+          visibilitydistribution = params$visibility_dist,
+          burnin = params$burnin,
+          samplesize = params$samplesize,
+          interval = params$interval,
+          K = FALSE,
+          priorsizedistribution = "beta",
+          parallel = parallel_cores,
+          parallel.type = parallel_type,
+          verbose = FALSE
+        )
+      }, error = function(e) {
+        # If parallel fails, try sequential
+        cat("    Parallel failed, trying sequential...\n")
+        posteriorsize(
+          rd.dd,
+          mean.prior.size = params$prior_size,
+          visibilitydistribution = params$visibility_dist,
+          burnin = params$burnin,
+          samplesize = params$samplesize,
+          interval = params$interval,
+          K = FALSE,
+          priorsizedistribution = "beta",
+          parallel = 1,  # Sequential
+          verbose = FALSE
+        )
+      })
       
       end_time <- Sys.time()
       computation_time <- as.numeric(difftime(end_time, start_time, units = "mins"))
