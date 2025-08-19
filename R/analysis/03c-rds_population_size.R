@@ -19,12 +19,9 @@ source(here("R", "analysis", "03a-rds_basic_estimation.R"))
 skip_execution <- FALSE  # Prevent basic script from running
 
 # Create unique ID for population size estimation configuration
-create_popsize_parameter_id <- function(prior_size, visibility_dist = "nbinom", 
-                                       parallel_cores = 4, burnin = 15, samplesize = 4, 
-                                       interval = 1, seed = NULL) {
-  components <- c("SS_PSE", paste0("prior", prior_size), visibility_dist, 
-                  paste0("cores", parallel_cores), paste0("burn", burnin), 
-                  paste0("samp", samplesize), paste0("int", interval))
+create_popsize_parameter_id <- function(prior_size, burnin = 100, samplesize = 200, seed = NULL) {
+  components <- c("SS_PSE", paste0("prior", prior_size), paste0("burn", burnin), 
+                  paste0("samp", samplesize))
   if (!is.null(seed)) components <- c(components, paste0("seed", seed))
   return(paste(components, collapse = "_"))
 }
@@ -55,14 +52,9 @@ simple_population_size_estimate <- function(rds_data, prior_size = 980000) {
 
 run_population_size_estimation <- function(
   prior_sizes = c(980000),  # Focus on main estimate
-  visibility_distributions = c("nbinom"),  # Start with just nbinom
-  parallel_cores = min(4, detectCores()),  # Reduce parallel cores  
-  parallel_type = "PSOCK",
   burnin_samples = c(100),   # Single conservative setting
   mcmc_samples = c(200),     # Single reasonable setting
-  mcmc_intervals = c(10),    # Single conservative setting
-  force_recompute = FALSE,
-  use_simple_fallback = TRUE  # Enable simple fallback method
+  force_recompute = FALSE
 ) {
   
   cat("Starting population size estimation using SS-PSE...\n")
@@ -100,13 +92,11 @@ run_population_size_estimation <- function(
   skipped_count <- 0
   computed_count <- 0
   
-  # Create parameter combinations
+  # Create parameter combinations (simplified)
   param_combinations <- expand.grid(
     prior_size = prior_sizes,
-    visibility_dist = visibility_distributions,
     burnin = burnin_samples,
     samplesize = mcmc_samples,
-    interval = mcmc_intervals,
     stringsAsFactors = FALSE
   )
   
@@ -117,8 +107,7 @@ run_population_size_estimation <- function(
     
     # Create unique ID for this configuration
     config_id <- create_popsize_parameter_id(
-      params$prior_size, params$visibility_dist, parallel_cores,
-      params$burnin, params$samplesize, params$interval
+      params$prior_size, params$burnin, params$samplesize
     )
     
     # Check if already computed
@@ -132,84 +121,34 @@ run_population_size_estimation <- function(
     
     # Compute population size estimate
     cat("  Computing", config_id, "\n")
-    cat("    Prior:", params$prior_size, "| Dist:", params$visibility_dist, 
-        "| MCMC:", params$burnin, "/", params$samplesize, "/", params$interval, "\n")
+    cat("    Prior:", params$prior_size, "| MCMC:", params$burnin, "/", params$samplesize, "\n")
     
     start_time <- Sys.time()
     
     tryCatch({
       
-      # Run posteriorsize estimation with error handling
-      cat("Engaging warp drive using", parallel_type, "...\n")
-      
-      # Use minimal parameter set to avoid version incompatibilities
-      ss_pse_result <- tryCatch({
-        # Try with minimal parameters first
-        posteriorsize(
-          rd.dd,
-          mean.prior.size = params$prior_size,
-          visibilitydistribution = params$visibility_dist,
-          burnin = params$burnin,
-          samplesize = params$samplesize,
-          interval = params$interval,
-          verbose = FALSE
-        )
-      }, error = function(e) {
-        cat("    Standard approach failed:", e$message, "\n")
-        cat("    Trying even simpler approach...\n")
-        
-        # Try with absolute minimal parameters
-        tryCatch({
-          posteriorsize(
-            rd.dd,
-            mean.prior.size = params$prior_size,
-            burnin = params$burnin,
-            samplesize = params$samplesize
-          )
-        }, error = function(e2) {
-          cat("    All SS-PSE approaches failed. Error:", e2$message, "\n")
-          
-          # Use simple fallback if enabled
-          if (use_simple_fallback) {
-            cat("    Using simple population size estimation fallback...\n")
-            return(simple_population_size_estimate(rd.dd, params$prior_size))
-          } else {
-            return(list(
-              error = paste("SS-PSE failed:", e2$message),
-              method = "SS_PSE",
-              status = "failed"
-            ))
-          }
-        })
-      })
+      # Run posteriorsize estimation (simplified approach that works)
+      ss_pse_result <- posteriorsize(
+        rd.dd,
+        mean.prior.size = params$prior_size,
+        burnin = params$burnin,
+        samplesize = params$samplesize
+      )
       
       end_time <- Sys.time()
       computation_time <- as.numeric(difftime(end_time, start_time, units = "mins"))
       
-      # Store result with metadata (handle different result types)
-      result_metadata <- list(
+      # Store result with metadata
+      new_results[[config_id]] <- list(
+        method = "SS_PSE",
         prior_size = params$prior_size,
-        visibility_distribution = params$visibility_dist,
-        parallel_cores = parallel_cores,
-        parallel_type = parallel_type,
         burnin = params$burnin,
         samplesize = params$samplesize,
-        interval = params$interval,
+        estimate = ss_pse_result,
         config_id = config_id,
         computation_time_mins = computation_time,
         n_observations = nrow(dd)
       )
-      
-      # Add method-specific information
-      if (!is.null(ss_pse_result$method)) {
-        result_metadata$method <- ss_pse_result$method
-        result_metadata$estimate <- ss_pse_result
-      } else {
-        result_metadata$method <- "SS_PSE"
-        result_metadata$estimate <- ss_pse_result
-      }
-      
-      new_results[[config_id]] <- result_metadata
       
       cat("    Completed in", round(computation_time, 2), "minutes\n")
       computed_count <- computed_count + 1
