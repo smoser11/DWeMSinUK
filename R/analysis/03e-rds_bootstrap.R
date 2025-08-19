@@ -34,14 +34,32 @@ prepare_bootstrap_data <- function() {
   
   cat("Preparing network data for bootstrap analysis...\n")
   
-  # Create edge list (relationships between recruiters and recruits)
-  edges_df <- data.frame(
-    from = rd.dd$recruiter.id[rd.dd$recruiter.id != -1],
-    to = rd.dd$id[rd.dd$recruiter.id != -1]
-  )
+  # Use row indices as node IDs to avoid duplicate issues
+  n_nodes <- nrow(rd.dd)
+  node_ids <- 1:n_nodes
   
-  # Renumber nodes sequentially for bootstrap packages
-  node_map <- setNames(1:length(rd.dd$id), rd.dd$id)
+  # Create edge list using row indices
+  edges_list <- list()
+  for (i in 1:n_nodes) {
+    recruiter_id <- rd.dd$recruiter.id[i]
+    if (!is.na(recruiter_id) && recruiter_id != "-1") {
+      # Find the row index of the recruiter
+      recruiter_row <- which(rd.dd$id == recruiter_id)
+      if (length(recruiter_row) == 1) {
+        edges_list[[length(edges_list) + 1]] <- data.frame(
+          from = recruiter_row,
+          to = i
+        )
+      }
+    }
+  }
+  
+  # Combine edges or create empty data frame
+  if (length(edges_list) > 0) {
+    edges_df <- do.call(rbind, edges_list)
+  } else {
+    edges_df <- data.frame(from = integer(0), to = integer(0))
+  }
   
   # Prepare traits data frame (all outcome variables)
   # Focus on CE's comparable indicators and preferred method results
@@ -49,7 +67,7 @@ prepare_bootstrap_data <- function() {
                    "excessive_hours_rds", "access_to_help_rds", "zQ36", "zQ80", 
                    "sum_categories_factor", "composite_risk")
   
-  # Filter to existing variables
+  # Filter to existing variables in dd data
   available_vars <- outcome_vars[outcome_vars %in% names(dd)]
   traits_df <- dd[, available_vars, drop = FALSE]
   
@@ -60,19 +78,38 @@ prepare_bootstrap_data <- function() {
     }
   }
   
+  # Ensure at least 2 columns for neighb() function requirement
+  if (ncol(traits_df) == 1) {
+    traits_df$dummy_var <- 0  # Add dummy variable if only one trait
+  }
+  
+  # Create degree vector (use network size)
+  degree_var <- if ("network.size" %in% names(rd.dd)) "network.size" else "network.size.variable"
+  degree_values <- rd.dd[[degree_var]]
+  
+  # Convert edges to the format expected by neighb() function
+  if (nrow(edges_df) > 0) {
+    edges_list <- list(
+      node1 = edges_df$from,
+      node2 = edges_df$to
+    )
+  } else {
+    edges_list <- list(
+      node1 = integer(0),
+      node2 = integer(0)
+    )
+  }
+  
   rds_bootstrap_data <- list(
-    nodes = 1:length(node_map),
-    edges = data.frame(
-      from = node_map[as.character(edges_df$from)],
-      to = node_map[as.character(edges_df$to)]
-    ),
+    nodes = node_ids,
+    edges = edges_list,
     traits = traits_df,
-    degree = setNames(rd.dd$network.size, 1:length(rd.dd$network.size))
+    degree = degree_values  # Remove setNames - just use vector
   )
   
   cat("Bootstrap data prepared:\n")
   cat("- Nodes:", length(rds_bootstrap_data$nodes), "\n")
-  cat("- Edges:", nrow(rds_bootstrap_data$edges), "\n")
+  cat("- Edges:", length(rds_bootstrap_data$edges$node1), "\n")
   cat("- Traits:", ncol(rds_bootstrap_data$traits), "\n")
   cat("- Available variables:", paste(available_vars, collapse = ", "), "\n")
   
