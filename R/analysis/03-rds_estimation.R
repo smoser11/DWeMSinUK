@@ -13,10 +13,12 @@ library(here)
 rds_config <- list(
   # Analysis components to run
   run_basic_rds = TRUE,
-  run_model_assisted = FALSE,  # Set to FALSE by default (computationally expensive)
-  run_population_size = FALSE, # Set to FALSE by default (computationally expensive)
+  run_enhanced_analysis = TRUE,    # Model selection and comparison tables
+  run_model_assisted = FALSE,      # Set to FALSE by default (computationally expensive)
+  run_population_size = FALSE,     # Set to FALSE by default (computationally expensive)
   run_convergence = TRUE,
-  run_bootstrap = FALSE,       # Set to FALSE by default (computationally expensive)
+  run_bootstrap = FALSE,           # Set to FALSE by default (computationally expensive)
+  run_visualizations = TRUE,       # Publication-ready plots
   
   # Basic parameters
   outcome_vars = c("document_withholding_rds", "pay_issues_rds", "threats_abuse_rds", 
@@ -24,10 +26,13 @@ rds_config <- list(
   legacy_vars = c("zQ36", "zQ80", "sum_categories_factor"),
   pop_sizes = c(50000, 100000, 980000, 1740000),
   
+  # Preferred method (from enhanced analysis)
+  preferred_method = "RDS_SS",
+  
   # Computational parameters
   force_recompute = FALSE,
   parallel_cores = 4,
-  bootstrap_samples = 100
+  bootstrap_samples = 1000
 )
 
 cat("RDS Analysis Configuration:\n")
@@ -54,6 +59,30 @@ if (rds_config$run_basic_rds) {
     cat("✓ Basic RDS estimation completed\n\n")
   }, error = function(e) {
     cat("✗ Basic RDS estimation failed:", e$message, "\n\n")
+  })
+}
+
+# Component 1b: Enhanced Analysis (Model Selection & Tables)
+if (rds_config$run_enhanced_analysis) {
+  cat("Step 1b: Enhanced RDS analysis (model selection, tables, sensitivity)...\n")
+  
+  tryCatch({
+    # Model selection analysis
+    source(here("R", "analysis", "03a_enhanced_analysis.R"))
+    cat("✓ Model selection analysis completed\n")
+    
+    # Comparison tables
+    source(here("R", "analysis", "03a_comparison_tables.R"))
+    cat("✓ Comparison tables created\n")
+    
+    # Sensitivity analysis
+    source(here("R", "analysis", "03a_sensitivity_analysis.R"))
+    cat("✓ Sensitivity analysis completed\n")
+    
+    cat("Enhanced analysis completed successfully\n\n")
+    
+  }, error = function(e) {
+    cat("✗ Enhanced analysis failed:", e$message, "\n\n")
   })
 }
 
@@ -144,18 +173,44 @@ if (rds_config$run_bootstrap) {
   }
 }
 
+# Component 6: Publication Visualizations
+if (rds_config$run_visualizations) {
+  cat("Step 6: Creating publication-ready visualizations...\n")
+  
+  tryCatch({
+    source(here("R", "analysis", "03a_visualizations.R"))
+    cat("✓ Visualization suite completed\n\n")
+  }, error = function(e) {
+    cat("✗ Visualization creation failed:", e$message, "\n\n")
+  })
+}
+
 # Summary and Results
 cat("=== RDS ANALYSIS PIPELINE COMPLETED ===\n")
 cat("Results available in:\n")
 cat("- Database: output/rds_results_database.RDS\n")
 cat("- Tables: output/tables/\n") 
+cat("  * rds_main_comparison.csv (main text table)\n")
+cat("  * rds_appendix_comparison.csv (appendix table)\n")
+cat("  * rds_method_differences.csv (method comparison)\n")
+cat("  * rds_sensitivity_table.csv (robustness analysis)\n")
 cat("- Figures: output/figures/\n")
+cat("  * rds_main_comparison.png (main text figure)\n")
+cat("  * rds_combined_analysis.png (comprehensive appendix figure)\n")
+cat("- Analysis: output/\n")
+cat("  * rds_model_selection_analysis.RData (preferred method justification)\n")
+cat("  * rds_sensitivity_analysis.RData (robustness assessment)\n")
+cat("\nPreferred Method: RDS-SS (justified by enhanced analysis)\n")
 cat("\nTo run individual components:\n")
 cat("- source('R/analysis/03a-rds_basic_estimation.R')\n")
-cat("- source('R/analysis/03b-rds_model_assisted.R')     # Expensive\n")
-cat("- source('R/analysis/03c-rds_population_size.R')    # Expensive\n") 
+cat("- source('R/analysis/03a_enhanced_analysis.R')       # Model selection\n")
+cat("- source('R/analysis/03a_comparison_tables.R')       # Publication tables\n")
+cat("- source('R/analysis/03a_sensitivity_analysis.R')    # Robustness testing\n")
+cat("- source('R/analysis/03a_visualizations.R')          # Publication plots\n")
+cat("- source('R/analysis/03b-rds_model_assisted.R')      # Expensive\n")
+cat("- source('R/analysis/03c-rds_population_size.R')     # Expensive\n") 
 cat("- source('R/analysis/03d-rds_convergence.R')\n")
-cat("- source('R/analysis/03e-rds_bootstrap.R')          # Very expensive\n")
+cat("- source('R/analysis/03e-rds_bootstrap.R')           # Very expensive\n")
 cat("\nTo access results programmatically:\n")
 cat("- results_db <- readRDS('output/rds_results_database.RDS')\n")
 cat("- basic_results <- get_basic_rds_results()\n")

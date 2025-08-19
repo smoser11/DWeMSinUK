@@ -44,6 +44,7 @@ prepare_bootstrap_data <- function() {
   node_map <- setNames(1:length(rd.dd$id), rd.dd$id)
   
   # Prepare traits data frame (all outcome variables)
+  # Focus on CE's comparable indicators and preferred method results
   outcome_vars <- c("document_withholding_rds", "pay_issues_rds", "threats_abuse_rds", 
                    "excessive_hours_rds", "access_to_help_rds", "zQ36", "zQ80", 
                    "sum_categories_factor", "composite_risk")
@@ -84,7 +85,8 @@ run_neighborhood_bootstrap <- function(
   n_bootstrap = 1000,
   quantiles = c(0.025, 0.975),
   method = "percentile",
-  force_recompute = FALSE
+  force_recompute = FALSE,
+  preferred_method_priority = TRUE  # Prioritize RDS-SS (preferred method)
 ) {
   
   cat("Starting Neighborhood Bootstrap analysis...\n")
@@ -101,10 +103,20 @@ run_neighborhood_bootstrap <- function(
   
   # Determine which configurations to bootstrap
   if (is.null(target_configs)) {
-    # Bootstrap all successful basic RDS results
-    target_configs <- names(results_db$basic_rds)[
-      sapply(results_db$basic_rds, function(x) is.null(x$error))
-    ]
+    if (preferred_method_priority) {
+      # Prioritize RDS-SS configurations (preferred method from 03a analysis)
+      target_configs <- names(results_db$basic_rds)[
+        sapply(results_db$basic_rds, function(x) {
+          is.null(x$error) && !is.null(x$method) && x$method == "RDS_SS"
+        })
+      ]
+      cat("Prioritizing preferred method (RDS-SS) for bootstrap analysis\n")
+    } else {
+      # Bootstrap all successful basic RDS results
+      target_configs <- names(results_db$basic_rds)[
+        sapply(results_db$basic_rds, function(x) is.null(x$error))
+      ]
+    }
   }
   
   cat("Target configurations for bootstrap:", length(target_configs), "\n")

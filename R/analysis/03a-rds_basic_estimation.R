@@ -174,6 +174,8 @@ create_basic_rds_summary <- function(results_list) {
         ci_lower = ifelse(!is.null(result$estimate$confidence.interval), result$estimate$confidence.interval[1], NA),
         ci_upper = ifelse(!is.null(result$estimate$confidence.interval), result$estimate$confidence.interval[2], NA),
         n_observations = result$n_observations,
+        bootstrap_ready = TRUE,  # Flag for 03e integration
+        preferred_method = ifelse(result$method == "RDS_SS", TRUE, FALSE),  # Mark preferred method
         stringsAsFactors = FALSE
       )))
     }

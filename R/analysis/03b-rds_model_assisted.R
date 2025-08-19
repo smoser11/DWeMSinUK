@@ -35,7 +35,8 @@ run_model_assisted_estimation <- function(
   seed_methods = c("sample", "random", "degree"),
   parallel_cores = min(4, detectCores()),
   prior_distributions = c("beta"),  # Can add "flat", "nbinom", "pln" if needed
-  force_recompute = FALSE
+  force_recompute = FALSE,
+  preferred_method_only = TRUE  # Focus on RDS-SS (preferred method from 03a)
 ) {
   
   cat("Starting Model-Assisted RDS estimation...\n")
@@ -261,6 +262,6 @@ if (!exists("skip_execution")) {
   ma_results <- run_model_assisted_estimation(
     pop_sizes = c(980000),  # Just baseline
     seed_methods = c("degree"),  # Most stable method
-    parallel_cores = min(2, detectCores())  # Conservative parallelism
+    parallel_cores = min(4, detectCores())  # Conservative parallelism
   )
 }
