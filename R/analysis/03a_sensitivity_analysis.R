@@ -114,16 +114,29 @@ run_rds_sensitivity_analysis <- function(
       "Wave information not available"
     },
     
-    # Network density by group
-    network_density = dd %>%
-      group_by(nationality_group) %>%
-      summarise(
-        n = n(),
-        avg_degree = mean(degree, na.rm = TRUE),
-        avg_network_size = mean(q13, na.rm = TRUE),
-        .groups = "drop"
-      ) %>%
-      filter(!is.na(nationality_group))
+    # Network density by group (using available grouping variables)
+    network_density = if ("nationality_group" %in% names(dd)) {
+      dd %>%
+        group_by(nationality_group) %>%
+        summarise(
+          n = n(),
+          avg_degree = mean(degree, na.rm = TRUE),
+          avg_network_size = mean(q13, na.rm = TRUE),
+          .groups = "drop"
+        ) %>%
+        filter(!is.na(nationality_group))
+    } else if ("nationality" %in% names(dd)) {
+      dd %>%
+        group_by(nationality) %>%
+        summarise(
+          n = n(),
+          avg_network_size = mean(q13, na.rm = TRUE),
+          .groups = "drop"
+        ) %>%
+        filter(!is.na(nationality))
+    } else {
+      data.frame(message = "No nationality grouping variable found")
+    }
   )
   sensitivity_results$sample_diagnostics <- sample_diagnostics
   

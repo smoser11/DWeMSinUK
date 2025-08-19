@@ -14,10 +14,10 @@ rds_config <- list(
   # Analysis components to run
   run_basic_rds = TRUE,
   run_enhanced_analysis = TRUE,    # Model selection and comparison tables
-  run_model_assisted = FALSE,      # Set to FALSE by default (computationally expensive)
-  run_population_size = FALSE,     # Set to FALSE by default (computationally expensive)
+  run_model_assisted = TRUE,      # Set to FALSE by default (computationally expensive)
+  run_population_size = TRUE,     # Set to FALSE by default (computationally expensive)
   run_convergence = TRUE,
-  run_bootstrap = FALSE,           # Set to FALSE by default (computationally expensive)
+  run_bootstrap = TRUE,           # Set to FALSE by default (computationally expensive)
   run_visualizations = TRUE,       # Publication-ready plots
   
   # Basic parameters

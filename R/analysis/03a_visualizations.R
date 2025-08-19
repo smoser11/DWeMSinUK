@@ -19,7 +19,7 @@ theme_rds_publication <- function() {
       legend.title = element_text(size = 11),
       legend.text = element_text(size = 10),
       panel.grid.minor = element_blank(),
-      panel.grid.major = element_line(size = 0.5, color = "gray90"),
+      panel.grid.major = element_line(linewidth = 0.5, color = "gray90"),
       strip.text = element_text(size = 10, face = "bold")
     )
 }
@@ -172,7 +172,7 @@ create_population_sensitivity_plot <- function() {
   
   p <- ggplot(sensitivity_data, aes(x = pop_label, y = estimate_pct, 
                                    color = indicator, group = indicator)) +
-    geom_line(size = 1.2, alpha = 0.8) +
+    geom_line(linewidth = 1.2, alpha = 0.8) +
     geom_point(size = 3, alpha = 0.9) +
     scale_color_brewer(type = "qual", palette = "Dark2", name = "Indicator") +
     scale_y_continuous(labels = function(x) paste0(x, "%")) +

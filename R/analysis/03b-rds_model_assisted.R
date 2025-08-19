@@ -19,9 +19,9 @@ skip_execution <- FALSE  # Prevent basic script from running
 
 # Create unique ID for MA parameter configuration
 create_ma_parameter_id <- function(outcome_var, pop_size, seed_selection = "degree", 
-                                  parallel_cores = 4, prior_distribution = "beta", seed = NULL) {
+                                  parallel_cores = 4, seed = NULL) {
   components <- c("MA", outcome_var, pop_size, seed_selection, 
-                  paste0("cores", parallel_cores), prior_distribution)
+                  paste0("cores", parallel_cores))
   if (!is.null(seed)) components <- c(components, paste0("seed", seed))
   return(paste(components, collapse = "_"))
 }
@@ -34,7 +34,6 @@ run_model_assisted_estimation <- function(
   pop_sizes = c(50000, 100000, 980000, 1740000),
   seed_methods = c("sample", "random", "degree"),
   parallel_cores = min(4, detectCores()),
-  prior_distributions = c("beta"),  # Can add "flat", "nbinom", "pln" if needed
   force_recompute = FALSE,
   preferred_method_only = TRUE  # Focus on RDS-SS (preferred method from 03a)
 ) {
@@ -64,87 +63,82 @@ run_model_assisted_estimation <- function(
     
     for (pop_size in pop_sizes) {
       for (seed_method in seed_methods) {
-        for (prior_dist in prior_distributions) {
+        
+        # Create unique ID for this configuration
+        config_id <- create_ma_parameter_id(var, pop_size, seed_method, 
+                                          parallel_cores)
+        
+        # Check if already computed
+        if (!force_recompute && 
+            "model_assisted" %in% names(results_db) && 
+            config_id %in% names(results_db$model_assisted)) {
+          cat("    Skipping MA for", var, "at N =", pop_size, 
+              "with", seed_method, "seeds (already computed)\n")
+          skipped_count <- skipped_count + 1
+          next
+        }
+        
+        # Compute MA estimate
+        cat("    Computing MA for", var, "at N =", pop_size, 
+            "with", seed_method, "seeds and", parallel_cores, "cores\n")
+        cat("      This may take several minutes...\n")
+        
+        start_time <- Sys.time()
+        
+        tryCatch({
           
-          # Create unique ID for this configuration
-          config_id <- create_ma_parameter_id(var, pop_size, seed_method, 
-                                            parallel_cores, prior_dist)
+          ma_result <- MA.estimates(
+            rd.dd,
+            trait.variable = var,
+            N = pop_size,
+            seed.selection = seed_method,
+            parallel = parallel_cores
+          )
           
-          # Check if already computed
-          if (!force_recompute && 
-              "model_assisted" %in% names(results_db) && 
-              config_id %in% names(results_db$model_assisted)) {
-            cat("    Skipping MA for", var, "at N =", pop_size, 
-                "with", seed_method, "seeds (already computed)\n")
-            skipped_count <- skipped_count + 1
-            next
+          end_time <- Sys.time()
+          computation_time <- as.numeric(difftime(end_time, start_time, units = "mins"))
+          
+          # Store result with metadata
+          new_results[[config_id]] <- list(
+            method = "MA",
+            outcome_variable = var,
+            population_size = pop_size,
+            seed_selection = seed_method,
+            parallel_cores = parallel_cores,
+            estimate = ma_result,
+            config_id = config_id,
+            computation_time_mins = computation_time,
+            n_observations = nrow(dd)
+          )
+          
+          cat("      Completed in", round(computation_time, 2), "minutes\n")
+          computed_count <- computed_count + 1
+          
+          # Save intermediate results (in case of crash)
+          if (computed_count %% 5 == 0) {
+            temp_db <- load_rds_results_database()
+            temp_db <- save_to_rds_database(temp_db, new_results, "model_assisted")
+            new_results <- list()  # Reset after saving
+            cat("    Intermediate save completed (", computed_count, "total)\n")
           }
           
-          # Compute MA estimate
-          cat("    Computing MA for", var, "at N =", pop_size, 
-              "with", seed_method, "seeds and", parallel_cores, "cores\n")
-          cat("      This may take several minutes...\n")
+        }, error = function(e) {
+          end_time <- Sys.time()
+          computation_time <- as.numeric(difftime(end_time, start_time, units = "mins"))
           
-          start_time <- Sys.time()
-          
-          tryCatch({
-            
-            ma_result <- MA.estimates(
-              rd.dd,
-              trait.variable = var,
-              N = pop_size,
-              seed.selection = seed_method,
-              parallel = parallel_cores,
-              priorsizedistribution = prior_dist
-            )
-            
-            end_time <- Sys.time()
-            computation_time <- as.numeric(difftime(end_time, start_time, units = "mins"))
-            
-            # Store result with metadata
-            new_results[[config_id]] <- list(
-              method = "MA",
-              outcome_variable = var,
-              population_size = pop_size,
-              seed_selection = seed_method,
-              parallel_cores = parallel_cores,
-              prior_distribution = prior_dist,
-              estimate = ma_result,
-              config_id = config_id,
-              computation_time_mins = computation_time,
-              n_observations = nrow(dd)
-            )
-            
-            cat("      Completed in", round(computation_time, 2), "minutes\n")
-            computed_count <- computed_count + 1
-            
-            # Save intermediate results (in case of crash)
-            if (computed_count %% 5 == 0) {
-              temp_db <- load_rds_results_database()
-              temp_db <- save_to_rds_database(temp_db, new_results, "model_assisted")
-              new_results <- list()  # Reset after saving
-              cat("    Intermediate save completed (", computed_count, "total)\n")
-            }
-            
-          }, error = function(e) {
-            end_time <- Sys.time()
-            computation_time <- as.numeric(difftime(end_time, start_time, units = "mins"))
-            
-            cat("      Error after", round(computation_time, 2), "minutes:", e$message, "\n")
-            new_results[[config_id]] <- list(
-              method = "MA",
-              outcome_variable = var,
-              population_size = pop_size,
-              seed_selection = seed_method,
-              parallel_cores = parallel_cores,
-              prior_distribution = prior_dist,
-              error = e$message,
-              config_id = config_id,
-              computation_time_mins = computation_time,
-              n_observations = nrow(dd)
-            )
-          })
-        }
+          cat("      Error after", round(computation_time, 2), "minutes:", e$message, "\n")
+          new_results[[config_id]] <- list(
+            method = "MA",
+            outcome_variable = var,
+            population_size = pop_size,
+            seed_selection = seed_method,
+            parallel_cores = parallel_cores,
+            error = e$message,
+            config_id = config_id,
+            computation_time_mins = computation_time,
+            n_observations = nrow(dd)
+          )
+        })
       }
     }
   }
