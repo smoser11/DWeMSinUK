@@ -52,12 +52,13 @@ final_config <- list(
   quantiles = c(0.025, 0.975),
   
   # Bayesian MCMC parameters (for MA.estimates and posteriorsize)
-  bayesian_samplesize = 2000,  # Increased for better convergence
-  bayesian_burnin = 10000,     # Increased burnin
-  bayesian_interval = 10,      # Thinning interval
-  ma_iterations = 5,           # MA.estimates iterations
-  ma_M1 = 50,                  # More networked populations
-  ma_M2 = 40,                  # More RDS samples per network
+  # Updated based on convergence diagnostics showing severe autocorrelation
+  bayesian_samplesize = 10000, # Doubled for better convergence
+  bayesian_burnin = 50000,     # Much longer burnin for stationarity
+  bayesian_interval = 20,      # More thinning to reduce autocorrelation
+  ma_iterations = 10,          # More MA.estimates iterations
+  ma_M1 = 100,                 # More networked populations for stability
+  ma_M2 = 50,                  # More RDS samples per network
   
   # Computational parameters
   parallel_cores = 4,
@@ -69,11 +70,83 @@ final_config <- list(
 )
 
 cat("FINAL Bayesian analysis configuration:\n")
-cat("- Methods:\", length(final_config$models), \"with proper uncertainty\n")
-cat("- Bayesian samplesize:\", final_config$bayesian_samplesize, \"\n")
-cat("- Bayesian burnin:\", final_config$bayesian_burnin, \"\n")
-cat("- MA iterations/M1/M2:\", final_config$ma_iterations, \"/\", final_config$ma_M1, \"/\", final_config$ma_M2, \"\n")
-cat("- Bootstrap (frequentist only):\", final_config$n_bootstrap_freq, \"samples\n\n")
+cat("- Methods:", length(final_config$models), "with proper uncertainty\n")
+cat("- Bayesian samplesize:", final_config$bayesian_samplesize, "\n")
+cat("- Bayesian burnin:", final_config$bayesian_burnin, "\n") 
+cat("- Bayesian interval (thinning):", final_config$bayesian_interval, "\n")
+cat("- MA iterations/M1/M2:", final_config$ma_iterations, "/", final_config$ma_M1, "/", final_config$ma_M2, "\n")
+cat("- Bootstrap (frequentist only):", final_config$n_bootstrap_freq, "samples\n")
+cat("- Convergence parameters updated based on diagnostics\n\n")
+
+# ============================================================================
+# CONVERGENCE CHECKING HELPER FUNCTIONS
+# ============================================================================
+
+check_mcmc_convergence <- function(mcmc_samples, method_name = "MCMC") {
+  
+  if (is.null(mcmc_samples) || !is.matrix(mcmc_samples)) {
+    return(list(convergence_ok = FALSE, warning = "No MCMC samples available"))
+  }
+  
+  mcmc_obj <- mcmc(mcmc_samples)
+  convergence_info <- list()
+  warnings <- c()
+  
+  # Effective sample size
+  eff_size <- effectiveSize(mcmc_obj)
+  convergence_info$effective_size <- eff_size
+  
+  # Check if effective sample size is adequate (> 400 is generally good)
+  if (any(eff_size < 400, na.rm = TRUE)) {
+    warnings <- c(warnings, "Low effective sample size (< 400)")
+  }
+  
+  # Geweke diagnostic
+  geweke_result <- tryCatch({
+    geweke.diag(mcmc_obj)
+  }, error = function(e) NULL)
+  
+  if (!is.null(geweke_result)) {
+    convergence_info$geweke_z <- geweke_result$z
+    
+    # Check convergence (|z| > 1.96 indicates problems)
+    convergence_issues <- abs(geweke_result$z) > 1.96
+    if (any(convergence_issues, na.rm = TRUE)) {
+      failed_params <- names(geweke_result$z)[convergence_issues]
+      warnings <- c(warnings, paste("Geweke convergence failed for:", paste(failed_params, collapse = ", ")))
+    }
+  }
+  
+  # Heidelberger-Welch diagnostic  
+  heidel_result <- tryCatch({
+    heidel.diag(mcmc_obj)
+  }, error = function(e) NULL)
+  
+  if (!is.null(heidel_result)) {
+    # Check stationarity
+    if (any(!heidel_result[, "stest"], na.rm = TRUE)) {
+      failed_params <- rownames(heidel_result)[!heidel_result[, "stest"]]
+      warnings <- c(warnings, paste("Stationarity test failed for:", paste(failed_params, collapse = ", ")))
+    }
+    
+    # Check halfwidth test
+    if (any(!heidel_result[, "htest"], na.rm = TRUE)) {
+      failed_params <- rownames(heidel_result)[!heidel_result[, "htest"]]
+      warnings <- c(warnings, paste("Halfwidth test failed for:", paste(failed_params, collapse = ", ")))
+    }
+  }
+  
+  # Overall assessment
+  convergence_ok <- length(warnings) == 0
+  
+  return(list(
+    convergence_ok = convergence_ok,
+    warnings = warnings,
+    effective_size_min = min(eff_size, na.rm = TRUE),
+    effective_size_mean = mean(eff_size, na.rm = TRUE),
+    details = convergence_info
+  ))
+}
 
 # ============================================================================
 # FINAL IMPLEMENTATIONS WITH PROPER UNCERTAINTY
@@ -231,14 +304,14 @@ estimate_final_rds_ss <- function(outcome_var, population_size, n_bootstrap = 10
 # MA.estimates with BUILT-IN Bayesian credible intervals (NO bootstrap!)
 estimate_final_ma_estimates <- function(outcome_var, population_size) {
   tryCatch({
-    # Use actual MA.estimates() with proper Bayesian parameters
+    # Use actual MA.estimates() with improved convergence parameters
     ma_result <- MA.estimates(
       rd.dd, 
       outcome.variable = outcome_var,
       N = population_size,
-      number.of.iterations = final_config$ma_iterations,
-      M1 = final_config$ma_M1,
-      M2 = final_config$ma_M2,
+      number.of.iterations = final_config$ma_iterations,  # Now 10
+      M1 = final_config$ma_M1,                           # Now 100
+      M2 = final_config$ma_M2,                           # Now 50
       parallel = final_config$parallel_cores,
       verbose = FALSE
     )
@@ -297,14 +370,14 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
 # posteriorsize with BUILT-IN Bayesian credible intervals (NO bootstrap!)
 estimate_final_posteriorsize <- function(outcome_var, population_size) {
   tryCatch({
-    # Use actual posteriorsize() with proper Bayesian parameters  
+    # Use actual posteriorsize() with improved convergence parameters  
     ps_result <- posteriorsize(
       rd.dd,
       mean.prior.size = population_size,
       sd.prior.size = population_size * 0.1,
-      samplesize = final_config$bayesian_samplesize,
-      burnin = final_config$bayesian_burnin,
-      interval = final_config$bayesian_interval,
+      samplesize = final_config$bayesian_samplesize,    # Now 10,000
+      burnin = final_config$bayesian_burnin,            # Now 50,000  
+      interval = final_config$bayesian_interval,        # Now 20
       parallel = final_config$parallel_cores,
       verbose = FALSE
     )
@@ -338,23 +411,19 @@ estimate_final_posteriorsize <- function(outcome_var, population_size) {
       trait_se <- ci_lower <- ci_upper <- NA
     }
     
-    # Check convergence using MCMC samples
+    # Check convergence using MCMC samples with comprehensive diagnostics
     convergence_info <- "No convergence check"
+    convergence_ok <- TRUE
     if (!is.null(ps_result$sample) && final_config$check_convergence) {
-      # Convert to mcmc object and check diagnostics
-      mcmc_samples <- mcmc(ps_result$sample)
-      geweke_test <- tryCatch({
-        geweke.diag(mcmc_samples)
-      }, error = function(e) NULL)
+      # Use comprehensive convergence checking
+      conv_check <- check_mcmc_convergence(ps_result$sample, "posteriorsize")
+      convergence_ok <- conv_check$convergence_ok
       
-      if (!is.null(geweke_test)) {
-        # Check if any z-scores are > 2 (potential convergence issues)
-        high_z <- any(abs(geweke_test$z) > 2, na.rm = TRUE)
-        convergence_info <- if (high_z) {
-          "Potential convergence issues (Geweke z > 2)"
-        } else {
-          "Geweke convergence test passed"
-        }
+      if (convergence_ok) {
+        convergence_info <- paste0("✓ Convergence OK (min ESS: ", round(conv_check$effective_size_min), ")")
+      } else {
+        convergence_info <- paste0("⚠ Convergence issues: ", paste(conv_check$warnings, collapse = "; "))
+        cat("WARNING [posteriorsize]:", convergence_info, "\n")
       }
     }
     
