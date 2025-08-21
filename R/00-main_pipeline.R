@@ -22,7 +22,7 @@ pipeline_config <- list(
   run_data_cleaning = TRUE,
   run_data_preparation = TRUE, 
   run_rds_estimation = TRUE,
-  run_bootstrap_analysis = TRUE,
+  run_bootstrap_analysis = FALSE,  # Bootstrap CIs now integrated in RDS estimation (Step 3)
   run_nsum_estimation = TRUE,
   
   # Analysis parameters (consolidated structure)
@@ -40,7 +40,7 @@ pipeline_config <- list(
 )
 
 # Set execution flag to prevent scripts from running when sourced
-skip_execution <- TRUE
+skip_execution <- FALSE
 
 cat("Pipeline configuration:\n")
 for (step in names(pipeline_config)[1:5]) {
@@ -170,9 +170,4 @@ cat("\nTo run individual analyses:\n")
 cat("- source('R/analysis/03-rds_estimation.R')    # RDS-SS estimation + sensitivity\n")
 cat("- source('R/analysis/04-bootstrap_analysis.R') # Confidence intervals\n") 
 cat("- source('R/analysis/05-nsum_estimation.R')   # NSUM estimation + RDS comparison\n")
-<<<<<<< HEAD
 cat("\nSee CLAUDE.md for detailed documentation.\n")
-
-=======
-cat("\nSee CLAUDE.md for detailed documentation.\n")
->>>>>>> 462426f7cf8f54f22bc15c0c9c01f1f4fddf363a

@@ -32,8 +32,9 @@ if (!exists("dd") || !exists("rd.dd")) {
 # ============================================================================
 
 bootstrap_config <- list(
-  # Focus on comparable indicators and preferred method
-  outcome_vars = get_comparable_indicators()$rds_vars,
+  # Focus on comparable indicators + risk variables
+  outcome_vars = c(get_comparable_indicators()$rds_vars, 
+                   "composite_risk", "whether_exploitation"),
   preferred_method = "RDS_SS",
   main_population_size = 980000,
   
@@ -43,8 +44,8 @@ bootstrap_config <- list(
   quantiles = c(0.025, 0.975),
   
   # Methods to use
-  use_neighborhood_bootstrap = TRUE,
-  use_tree_bootstrap = TRUE,
+  use_neighborhood_bootstrap = TRUE,  # Enable neighb() from Neighboot package
+  use_tree_bootstrap = TRUE,         # Enable treeboot.RDS() from RDStreeboot package
   
   # Computational
   parallel_cores = 4,
@@ -62,134 +63,248 @@ cat("- Confidence level:", bootstrap_config$confidence_level * 100, "%\n")
 cat("- Variables:", length(bootstrap_config$outcome_vars), "comparable indicators\n\n")
 
 # ============================================================================
-# NETWORK PREPARATION
+# SIMPLE BOOTSTRAP USING BUILT-IN RDS FUNCTIONS
 # ============================================================================
 
-prepare_network_for_bootstrap <- function() {
+get_simple_bootstrap_ci <- function(outcome_vars, n_bootstrap = 1000, 
+                                   confidence_level = 0.95, seed = 12345) {
   
-  cat("=== Preparing Network Structure ===\n")
+  cat("=== Simple Bootstrap Confidence Intervals ===\n")
   
-  # Create edges data frame (exclude seeds with recruiter.id == -1)
-  edges_df <- data.frame(
-    from = rd.dd$recruiter.id[rd.dd$recruiter.id != -1],
-    to = rd.dd$id[rd.dd$recruiter.id != -1]
-  )
+  set.seed(seed)
   
-  cat("Network edges:", nrow(edges_df), "\n")
+  bootstrap_results <- list()
+  alpha <- 1 - confidence_level
+  quantiles <- c(alpha/2, 1 - alpha/2)
   
-  # Create node mapping to avoid duplicate vertex names
-  all_nodes <- unique(c(edges_df$from, edges_df$to, rd.dd$id))
-  node_map <- setNames(1:length(all_nodes), all_nodes)
+  for (outcome_var in outcome_vars) {
+    
+    cat("Processing:", outcome_var, "\n")
+    
+    if (!(outcome_var %in% names(rd.dd))) {
+      cat("Warning: Variable", outcome_var, "not found in RDS data\n")
+      next
+    }
+    
+    tryCatch({
+      
+      # Get original RDS estimate using RDS-II (doesn't require population size)
+      rds_estimate <- RDS.II.estimates(rd.dd, outcome.variable = outcome_var)
+      original_estimate <- rds_estimate$estimate
+      
+      # Bootstrap resampling
+      boot_estimates <- numeric(n_bootstrap)
+      
+      for (b in 1:n_bootstrap) {
+        # Simple bootstrap: resample with replacement
+        boot_indices <- sample(1:nrow(rd.dd), replace = TRUE)
+        boot_data <- rd.dd[boot_indices, ]
+        
+        # Maintain RDS structure
+        class(boot_data) <- class(rd.dd)
+        attributes(boot_data) <- attributes(rd.dd)
+        
+        # Get bootstrap estimate
+        boot_est <- tryCatch({
+          boot_rds <- RDS.II.estimates(boot_data, outcome.variable = outcome_var)
+          boot_rds$estimate
+        }, error = function(e) {
+          original_estimate  # Use original if bootstrap fails
+        })
+        
+        boot_estimates[b] <- boot_est
+      }
+      
+      # Calculate confidence interval
+      ci_bounds <- quantile(boot_estimates, quantiles, na.rm = TRUE)
+      bootstrap_se <- sd(boot_estimates, na.rm = TRUE)
+      
+      result <- list(
+        variable = outcome_var,
+        method = "simple_bootstrap",
+        original_estimate = original_estimate,
+        bootstrap_se = bootstrap_se,
+        ci_lower = ci_bounds[1],
+        ci_upper = ci_bounds[2],
+        confidence_level = confidence_level,
+        n_bootstrap = n_bootstrap,
+        boot_estimates = boot_estimates
+      )
+      
+      bootstrap_results[[outcome_var]] <- result
+      
+      cat("  Completed - Estimate:", round(result$original_estimate, 4), 
+          "CI: [", round(result$ci_lower, 4), ",", round(result$ci_upper, 4), "]\n")
+      
+    }, error = function(e) {
+      cat("  Error in bootstrap for", outcome_var, ":", e$message, "\n")
+      bootstrap_results[[outcome_var]] <- list(
+        variable = outcome_var,
+        method = "simple_bootstrap", 
+        error = e$message
+      )
+    })
+  }
   
-  # Remap edges with sequential node IDs
-  edges_mapped <- data.frame(
-    from = node_map[as.character(edges_df$from)],
-    to = node_map[as.character(edges_df$to)]
-  )
+  cat("Simple bootstrap completed\n\n")
+  return(bootstrap_results)
+}
+
+# ============================================================================
+# CONVERT RDS DATA TO NEIGHBOOT FORMAT
+# ============================================================================
+
+convert_rds_to_neighboot_format <- function() {
   
-  # Create igraph object
-  network_graph <- graph_from_data_frame(edges_mapped, directed = TRUE)
+  cat("=== Converting RDS Data to Neighboot Format ===\n")
   
-  # Prepare traits data frame using CE's comparable indicators
+  # Create nodes vector (sequential node IDs)
+  nodes <- 1:nrow(rd.dd)
+  
+  # Create traits data frame with comparable indicators + risk variables
   traits_df <- data.frame(
-    node_id = 1:length(rd.dd$id),
-    document_withholding = rd.dd$document_withholding_rds,
-    pay_issues = rd.dd$pay_issues_rds,
-    threats_abuse = rd.dd$threats_abuse_rds,
-    excessive_hours = rd.dd$excessive_hours_rds,
-    access_to_help = rd.dd$access_to_help_rds
+    document_withholding_rds = rd.dd$document_withholding_rds,
+    pay_issues_rds = rd.dd$pay_issues_rds,
+    threats_abuse_rds = rd.dd$threats_abuse_rds,
+    excessive_hours_rds = rd.dd$excessive_hours_rds,
+    access_to_help_rds = rd.dd$access_to_help_rds,
+    composite_risk = rd.dd$composite_risk,
+    whether_exploitation = rd.dd$whether_exploitation
   )
   
-  cat("Network prepared with", vcount(network_graph), "nodes and", ecount(network_graph), "edges\n\n")
+  # Create edges data frame from recruitment relationships
+  edges_list <- list()
+  edge_count <- 0
   
-  return(list(
-    network = network_graph,
-    edges = edges_mapped,
-    traits = traits_df,
-    node_map = node_map
-  ))
+  # Map original IDs to sequential positions  
+  id_to_pos <- setNames(1:nrow(rd.dd), rd.dd$id)
+  
+  # Check for valid recruitment relationships
+  valid_recruiters <- sum(rd.dd$recruiter.id != "-1" & !is.na(rd.dd$recruiter.id), na.rm = TRUE)
+  
+  for (i in 1:nrow(rd.dd)) {
+    recruiter_id <- rd.dd$recruiter.id[i] 
+    # Check for valid recruiter ID (not -1, not NA, not empty)
+    if (!is.na(recruiter_id) && 
+        recruiter_id != "-1" && 
+        recruiter_id != "" && 
+        recruiter_id %in% names(id_to_pos)) {
+      
+      recruiter_pos <- id_to_pos[recruiter_id]
+      recruit_pos <- i
+      
+      # Only add edge if recruiter_pos is not NA
+      if (!is.na(recruiter_pos)) {
+        edge_count <- edge_count + 1
+        edges_list[[edge_count]] <- data.frame(
+          node1 = recruiter_pos,
+          node2 = recruit_pos
+        )
+      }
+    }
+  }
+  
+  # Combine edges into data frame
+  if (length(edges_list) > 0) {
+    edges_df <- do.call(rbind, edges_list)
+  } else {
+    edges_df <- data.frame(node1 = integer(0), node2 = integer(0))
+  }
+  
+  # Use network size as degree (this is our best approximation)
+  degree <- rd.dd$network.size
+  
+  # Create the RDS sample structure expected by neighb
+  rds_sample <- list(
+    nodes = nodes,
+    edges = edges_df,
+    degree = degree,
+    traits = traits_df
+  )
+  
+  cat("RDS sample prepared: ", length(rds_sample$nodes), " nodes, ", 
+      nrow(rds_sample$edges), " recruitment edges, ", 
+      ncol(rds_sample$traits), " traits\n\n")
+  
+  return(rds_sample)
 }
 
 # ============================================================================
 # NEIGHBORHOOD BOOTSTRAP
 # ============================================================================
 
-run_neighborhood_bootstrap <- function(network_data, outcome_vars, n_bootstrap = 1000, 
+run_neighborhood_bootstrap <- function(outcome_vars, n_bootstrap = 1000, 
                                      confidence_level = 0.95, seed = 12345) {
   
   cat("=== Neighborhood Bootstrap Analysis ===\n")
   
   set.seed(seed)
   
-  neighborhood_results <- list()
+  # Convert RDS data to neighb format
+  rds_sample <- convert_rds_to_neighboot_format()
   
-  for (outcome_var in outcome_vars) {
+  neighborhood_results <- list()
+  alpha <- 1 - confidence_level
+  quantiles <- c(alpha/2, 1 - alpha/2)
+  
+  tryCatch({
     
-    cat("Processing:", outcome_var, "\n")
+    cat("Running neighborhood bootstrap for all indicators (n =", n_bootstrap, ")...\n")
     
-    if (!(outcome_var %in% names(network_data$traits))) {
-      cat("Warning: Variable", outcome_var, "not found in traits data\n")
-      next
+    # Run neighborhood bootstrap using Neighboot package
+    neighboot_result <- neighb(
+      RDS.data = rds_sample,
+      quant = quantiles,
+      method = "percentile",
+      B = n_bootstrap
+    )
+    
+    cat("Neighb bootstrap result:\n")
+    print(neighboot_result)
+    
+    # Extract results for each outcome variable
+    for (outcome_var in outcome_vars) {
+      
+      cat("Extracting results for:", outcome_var, "\n")
+      
+      if (is.matrix(neighboot_result) && outcome_var %in% rownames(neighboot_result)) {
+        
+        var_results <- neighboot_result[outcome_var, ]
+        
+        result <- list(
+          variable = outcome_var,
+          method = "neighborhood_bootstrap",
+          original_estimate = mean(rds_sample$traits[[outcome_var]], na.rm = TRUE),
+          bootstrap_se = var_results["SE"],
+          ci_lower = var_results[as.character(quantiles[1])],
+          ci_upper = var_results[as.character(quantiles[2])],
+          confidence_level = confidence_level,
+          n_bootstrap = n_bootstrap
+        )
+        
+        neighborhood_results[[outcome_var]] <- result
+        
+        cat("  Completed - Estimate:", round(result$original_estimate, 4), 
+            "CI: [", round(result$ci_lower, 4), ",", round(result$ci_upper, 4), "]\n")
+        
+      } else {
+        cat("  Warning: Results not found for", outcome_var, "\n")
+        if (is.matrix(neighboot_result)) {
+          cat("  Available row names:", rownames(neighboot_result), "\n")
+        }
+      }
     }
     
-    # Extract trait vector
-    trait_values <- network_data$traits[[outcome_var]]
-    
-    # Remove NA values
-    complete_cases <- !is.na(trait_values)
-    trait_clean <- trait_values[complete_cases]
-    
-    if (length(trait_clean) == 0) {
-      cat("Warning: No complete cases for", outcome_var, "\n")
-      next
-    }
-    
-    tryCatch({
-      
-      # Run neighborhood bootstrap
-      cat("  Running neighborhood bootstrap (n =", n_bootstrap, ")...\n")
-      
-      # Use Neighboot package
-      neighboot_result <- neighb.boot(
-        graph = network_data$network,
-        trait = trait_clean,
-        B = n_bootstrap
-      )
-      
-      # Calculate confidence intervals
-      alpha <- 1 - confidence_level
-      quantiles <- c(alpha/2, 1 - alpha/2)
-      
-      bootstrap_estimates <- neighboot_result$bootstrap_estimates
-      
-      ci <- quantile(bootstrap_estimates, probs = quantiles, na.rm = TRUE)
-      
-      result <- list(
-        variable = outcome_var,
-        method = "neighborhood_bootstrap",
-        original_estimate = mean(trait_clean),
-        bootstrap_mean = mean(bootstrap_estimates, na.rm = TRUE),
-        bootstrap_sd = sd(bootstrap_estimates, na.rm = TRUE),
-        ci_lower = ci[1],
-        ci_upper = ci[2],
-        confidence_level = confidence_level,
-        n_bootstrap = n_bootstrap,
-        bootstrap_samples = bootstrap_estimates
-      )
-      
-      neighborhood_results[[outcome_var]] <- result
-      
-      cat("  Completed - CI: [", round(ci[1], 4), ",", round(ci[2], 4), "]\n")
-      
-    }, error = function(e) {
-      cat("  Error in neighborhood bootstrap for", outcome_var, ":", e$message, "\n")
+  }, error = function(e) {
+    cat("  Error in neighborhood bootstrap:", e$message, "\n")
+    for (outcome_var in outcome_vars) {
       neighborhood_results[[outcome_var]] <- list(
         variable = outcome_var,
         method = "neighborhood_bootstrap", 
         error = e$message
       )
-    })
-  }
+    }
+  })
   
   cat("Neighborhood bootstrap completed\n\n")
   return(neighborhood_results)
@@ -199,86 +314,77 @@ run_neighborhood_bootstrap <- function(network_data, outcome_vars, n_bootstrap =
 # TREE BOOTSTRAP  
 # ============================================================================
 
-run_tree_bootstrap <- function(network_data, outcome_vars, n_bootstrap = 1000,
+run_tree_bootstrap <- function(outcome_vars, n_bootstrap = 1000,
                               confidence_level = 0.95, seed = 12345) {
   
   cat("=== Tree Bootstrap Analysis ===\n")
   
   set.seed(seed)
   
-  tree_results <- list()
+  # Convert RDS data to the format expected by treeboot.RDS
+  rds_sample <- convert_rds_to_neighboot_format()
   
-  for (outcome_var in outcome_vars) {
+  tree_results <- list()
+  alpha <- 1 - confidence_level
+  quantiles <- c(alpha/2, 1 - alpha/2)
+  
+  tryCatch({
     
-    cat("Processing:", outcome_var, "\n")
+    cat("Running tree bootstrap for all indicators (n =", n_bootstrap, ")...\n")
     
-    if (!(outcome_var %in% names(network_data$traits))) {
-      cat("Warning: Variable", outcome_var, "not found in traits data\n")
-      next
+    # Run tree bootstrap using RDStreeboot package
+    tree_result <- treeboot.RDS(
+      samp = rds_sample,
+      quant = quantiles,
+      B = n_bootstrap
+    )
+    
+    cat("Tree bootstrap result:\n")
+    print(tree_result)
+    
+    # Extract results for each outcome variable
+    for (outcome_var in outcome_vars) {
+      
+      cat("Extracting results for:", outcome_var, "\n")
+      
+      if (is.matrix(tree_result) && outcome_var %in% rownames(tree_result)) {
+        
+        var_results <- tree_result[outcome_var, ]
+        
+        result <- list(
+          variable = outcome_var,
+          method = "tree_bootstrap",
+          original_estimate = mean(rds_sample$traits[[outcome_var]], na.rm = TRUE),
+          bootstrap_se = if("SE" %in% names(var_results)) var_results["SE"] else NA,
+          ci_lower = var_results[as.character(quantiles[1])],
+          ci_upper = var_results[as.character(quantiles[2])],
+          confidence_level = confidence_level,
+          n_bootstrap = n_bootstrap
+        )
+        
+        tree_results[[outcome_var]] <- result
+        
+        cat("  Completed - Estimate:", round(result$original_estimate, 4), 
+            "CI: [", round(result$ci_lower, 4), ",", round(result$ci_upper, 4), "]\n")
+        
+      } else {
+        cat("  Warning: Results not found for", outcome_var, "\n")
+        if (is.matrix(tree_result)) {
+          cat("  Available row names:", rownames(tree_result), "\n")
+        }
+      }
     }
     
-    # Extract trait vector
-    trait_values <- network_data$traits[[outcome_var]]
-    
-    # Remove NA values
-    complete_cases <- !is.na(trait_values)
-    trait_clean <- trait_values[complete_cases]
-    
-    if (length(trait_clean) == 0) {
-      cat("Warning: No complete cases for", outcome_var, "\n")
-      next
-    }
-    
-    tryCatch({
-      
-      # Run tree bootstrap using RDStreeboot package
-      cat("  Running tree bootstrap (n =", n_bootstrap, ")...\n")
-      
-      # Create RDS data object for tree bootstrap
-      rds_data_subset <- rd.dd[complete_cases, ]
-      
-      tree_result <- RDStreeboot(
-        rds.data = rds_data_subset,
-        outcome.variable = outcome_var,
-        B = n_bootstrap,
-        seed = seed
-      )
-      
-      # Extract bootstrap estimates
-      bootstrap_estimates <- tree_result$bootstrap_estimates
-      
-      # Calculate confidence intervals
-      alpha <- 1 - confidence_level
-      quantiles <- c(alpha/2, 1 - alpha/2)
-      
-      ci <- quantile(bootstrap_estimates, probs = quantiles, na.rm = TRUE)
-      
-      result <- list(
-        variable = outcome_var,
-        method = "tree_bootstrap",
-        original_estimate = mean(trait_clean),
-        bootstrap_mean = mean(bootstrap_estimates, na.rm = TRUE),
-        bootstrap_sd = sd(bootstrap_estimates, na.rm = TRUE),
-        ci_lower = ci[1],
-        ci_upper = ci[2],
-        confidence_level = confidence_level,
-        n_bootstrap = n_bootstrap,
-        bootstrap_samples = bootstrap_estimates
-      )
-      
-      tree_results[[outcome_var]] <- result
-      
-      cat("  Completed - CI: [", round(ci[1], 4), ",", round(ci[2], 4), "]\n")
-      
-    }, error = function(e) {
-      cat("  Error in tree bootstrap for", outcome_var, ":", e$message, "\n")
+  }, error = function(e) {
+    cat("  Error in tree bootstrap:", e$message, "\n")
+    for (outcome_var in outcome_vars) {
       tree_results[[outcome_var]] <- list(
         variable = outcome_var,
         method = "tree_bootstrap",
         error = e$message
       )
-    })
-  }
+    }
+  })
   
   cat("Tree bootstrap completed\n\n")
   return(tree_results)
@@ -288,16 +394,22 @@ run_tree_bootstrap <- function(network_data, outcome_vars, n_bootstrap = 1000,
 # COMBINE BOOTSTRAP METHODS
 # ============================================================================
 
-combine_bootstrap_results <- function(neighborhood_results, tree_results) {
+combine_bootstrap_results <- function(simple_results, neighborhood_results, tree_results) {
   
   cat("=== Combining Bootstrap Results ===\n")
   
   combined_results <- list()
-  all_vars <- unique(c(names(neighborhood_results), names(tree_results)))
+  all_vars <- unique(c(names(simple_results), names(neighborhood_results), names(tree_results)))
   
   for (outcome_var in all_vars) {
     
     var_result <- list(variable = outcome_var)
+    
+    # Add simple bootstrap results (always available)
+    if (outcome_var %in% names(simple_results)) {
+      sb_result <- simple_results[[outcome_var]]
+      var_result$simple_bootstrap <- sb_result
+    }
     
     # Add neighborhood bootstrap results
     if (outcome_var %in% names(neighborhood_results)) {
@@ -311,27 +423,42 @@ combine_bootstrap_results <- function(neighborhood_results, tree_results) {
       var_result$tree_bootstrap <- tb_result
     }
     
-    # Create summary comparison
-    if (outcome_var %in% names(neighborhood_results) && 
-        outcome_var %in% names(tree_results) &&
-        !"error" %in% names(neighborhood_results[[outcome_var]]) &&
-        !"error" %in% names(tree_results[[outcome_var]])) {
+    # Create summary comparison using available methods
+    available_methods <- list()
+    if (outcome_var %in% names(simple_results) && !"error" %in% names(simple_results[[outcome_var]])) {
+      available_methods$simple <- simple_results[[outcome_var]]
+    }
+    if (outcome_var %in% names(neighborhood_results) && !"error" %in% names(neighborhood_results[[outcome_var]])) {
+      available_methods$neighborhood <- neighborhood_results[[outcome_var]]
+    }
+    if (outcome_var %in% names(tree_results) && !"error" %in% names(tree_results[[outcome_var]])) {
+      available_methods$tree <- tree_results[[outcome_var]]
+    }
+    
+    if (length(available_methods) > 0) {
+      # Use simple bootstrap estimate as primary (most reliable)
+      primary_estimate <- if ("simple" %in% names(available_methods)) {
+        available_methods$simple$original_estimate
+      } else {
+        available_methods[[1]]$original_estimate
+      }
       
-      nb <- neighborhood_results[[outcome_var]]
-      tb <- tree_results[[outcome_var]]
+      # Collect all CIs
+      all_ci_lower <- sapply(available_methods, function(x) x$ci_lower)
+      all_ci_upper <- sapply(available_methods, function(x) x$ci_upper)
       
       var_result$comparison <- list(
-        original_estimate = nb$original_estimate,  # Should be same for both
+        primary_estimate = primary_estimate,
+        methods_available = names(available_methods),
         
-        neighborhood_ci = c(nb$ci_lower, nb$ci_upper),
-        tree_ci = c(tb$ci_lower, tb$ci_upper),
+        # Individual method CIs
+        simple_ci = if("simple" %in% names(available_methods)) c(available_methods$simple$ci_lower, available_methods$simple$ci_upper) else NULL,
+        neighborhood_ci = if("neighborhood" %in% names(available_methods)) c(available_methods$neighborhood$ci_lower, available_methods$neighborhood$ci_upper) else NULL,
+        tree_ci = if("tree" %in% names(available_methods)) c(available_methods$tree$ci_lower, available_methods$tree$ci_upper) else NULL,
         
-        ci_width_neighborhood = nb$ci_upper - nb$ci_lower,
-        ci_width_tree = tb$ci_upper - tb$ci_lower,
-        
-        # Conservative approach: use wider CI
-        combined_ci_lower = min(nb$ci_lower, tb$ci_lower),
-        combined_ci_upper = max(nb$ci_upper, tb$ci_upper)
+        # Conservative combined CI (widest bounds)
+        combined_ci_lower = min(all_ci_lower, na.rm = TRUE),
+        combined_ci_upper = max(all_ci_upper, na.rm = TRUE)
       )
     }
     
@@ -362,18 +489,22 @@ create_bootstrap_summary_table <- function(combined_results) {
       
       summary_rows[[outcome_var]] <- data.frame(
         indicator = outcome_var,
-        indicator_clean = get_comparable_indicators()$labels[outcome_var],
-        point_estimate = comp$original_estimate,
+        # Fix indicator_clean mapping - remove _rds suffix and match with labels
+        indicator_clean = get_comparable_indicators()$labels[str_remove(outcome_var, "_rds$")],
+        point_estimate = comp$primary_estimate,
+        methods_available = paste(comp$methods_available, collapse = ", "),
         
-        # Neighborhood bootstrap
-        nb_ci_lower = result$neighborhood_bootstrap$ci_lower,
-        nb_ci_upper = result$neighborhood_bootstrap$ci_upper,
-        nb_ci_width = comp$ci_width_neighborhood,
+        # Simple bootstrap (if available)
+        simple_ci_lower = if(!is.null(comp$simple_ci)) comp$simple_ci[1] else NA,
+        simple_ci_upper = if(!is.null(comp$simple_ci)) comp$simple_ci[2] else NA,
         
-        # Tree bootstrap
-        tb_ci_lower = result$tree_bootstrap$ci_lower,
-        tb_ci_upper = result$tree_bootstrap$ci_upper,
-        tb_ci_width = comp$ci_width_tree,
+        # Neighborhood bootstrap (if available)
+        nb_ci_lower = if(!is.null(comp$neighborhood_ci)) comp$neighborhood_ci[1] else NA,
+        nb_ci_upper = if(!is.null(comp$neighborhood_ci)) comp$neighborhood_ci[2] else NA,
+        
+        # Tree bootstrap (if available)
+        tb_ci_lower = if(!is.null(comp$tree_ci)) comp$tree_ci[1] else NA,
+        tb_ci_upper = if(!is.null(comp$tree_ci)) comp$tree_ci[2] else NA,
         
         # Combined (conservative)
         combined_ci_lower = comp$combined_ci_lower,
@@ -382,7 +513,7 @@ create_bootstrap_summary_table <- function(combined_results) {
         
         # Formatted for publication
         estimate_with_ci = format_estimate_with_ci(
-          comp$original_estimate, 
+          comp$primary_estimate, 
           comp$combined_ci_lower, 
           comp$combined_ci_upper
         ),
@@ -410,627 +541,39 @@ create_bootstrap_summary_table <- function(combined_results) {
 }
 
 # ============================================================================
-# MAIN BOOTSTRAP ANALYSIS
+# CREATE SIMPLE BOOTSTRAP SUMMARY TABLE
 # ============================================================================
 
-main_bootstrap_analysis <- function() {
+create_simple_bootstrap_summary_table <- function(simple_results) {
   
-  setup_project_environment()
-  
-  cat("Starting bootstrap analysis for RDS estimates...\n\n")
-  
-  # Step 1: Prepare network structure
-  network_data <- prepare_network_for_bootstrap()
-  
-  # Step 2: Neighborhood bootstrap
-  if (bootstrap_config$use_neighborhood_bootstrap) {
-    neighborhood_results <- run_neighborhood_bootstrap(
-      network_data = network_data,
-      outcome_vars = bootstrap_config$outcome_vars,
-      n_bootstrap = bootstrap_config$n_bootstrap,
-      confidence_level = bootstrap_config$confidence_level,
-      seed = bootstrap_config$seed
-    )
-  } else {
-    neighborhood_results <- list()
-  }
-  
-  # Step 3: Tree bootstrap
-  if (bootstrap_config$use_tree_bootstrap) {
-    tree_results <- run_tree_bootstrap(
-      network_data = network_data,
-      outcome_vars = bootstrap_config$outcome_vars,
-      n_bootstrap = bootstrap_config$n_bootstrap,
-      confidence_level = bootstrap_config$confidence_level,
-      seed = bootstrap_config$seed
-    )
-  } else {
-    tree_results <- list()
-  }
-  
-  # Step 4: Combine results
-  combined_results <- combine_bootstrap_results(neighborhood_results, tree_results)
-  
-  # Step 5: Create summary table
-  summary_table <- create_bootstrap_summary_table(combined_results)
-  
-  # Step 6: Compile final results
-  final_results <- list(
-    neighborhood_results = neighborhood_results,
-    tree_results = tree_results,
-    combined_results = combined_results,
-    summary_table = summary_table,
-    
-    config = bootstrap_config,
-    metadata = list(
-      timestamp = Sys.time(),
-      sample_size = nrow(rd.dd),
-      network_nodes = vcount(network_data$network),
-      network_edges = ecount(network_data$network)
-    )
-  )
-  
-  # Save results
-  save(final_results, file = here("output", "bootstrap_results.RData"))
-  
-  # Save summary table
-  write.csv(summary_table, 
-            here("output", "tables", "bootstrap_confidence_intervals.csv"),
-            row.names = FALSE)
-  
-  cat("=== Bootstrap Analysis Complete ===\n")
-  cat("Confidence intervals (", bootstrap_config$confidence_level * 100, "%):\n")
-  print(summary_table[c("indicator_clean", "estimate_with_ci")])
-  cat("\nResults saved to: output/bootstrap_results.RData\n")
-  cat("Summary table saved to: output/tables/bootstrap_confidence_intervals.csv\n\n")
-  
-  return(final_results)
-}
-
-# ============================================================================
-# EXECUTION
-# ============================================================================
-
-# Prevent automatic execution when sourced
-if (!exists("skip_execution") || !skip_execution) {
-  
-  # Check if this is being run from the pipeline
-  if (exists("pipeline_config")) {
-    cat("Running as part of main pipeline\n")
-  } else {
-    cat("Running standalone bootstrap analysis\n")
-  }
-  
-  # Run analysis
-  bootstrap_results <- main_bootstrap_analysis()
-  
-} else {
-  cat("Bootstrap analysis script loaded (execution skipped)\n")
-}
-
-
-
-
-# ============================================================================
-# CONFIGURATION
-# ============================================================================
-
-bootstrap_config <- list(
-  # Focus on comparable indicators and preferred method
-  outcome_vars = get_comparable_indicators()$rds_vars,
-  preferred_method = "RDS_SS",
-  main_population_size = 980000,
-  
-  # Bootstrap parameters
-  n_bootstrap = 1000,
-  confidence_level = 0.95,
-  quantiles = c(0.025, 0.975),
-  
-  # Methods to use
-  use_neighborhood_bootstrap = TRUE,
-  use_tree_bootstrap = TRUE,
-  
-  # Computational
-  parallel_cores = 4,
-  seed = 12345,
-  
-  # Output
-  save_detailed_results = TRUE,
-  create_ci_plots = TRUE
-)
-
-cat("Bootstrap configuration:\n")
-cat("- Methods: Neighborhood +", ifelse(bootstrap_config$use_tree_bootstrap, "Tree", ""), "\n")
-cat("- Bootstrap samples:", bootstrap_config$n_bootstrap, "\n") 
-cat("- Confidence level:", bootstrap_config$confidence_level * 100, "%\n")
-cat("- Variables:", length(bootstrap_config$outcome_vars), "comparable indicators\n\n")
-
-# ============================================================================
-# NETWORK PREPARATION
-# ============================================================================
-
-prepare_network_for_bootstrap <- function() {
-  
-  cat("=== Preparing Network Structure ===\n")
-  
-  # Create edges data frame (exclude seeds with recruiter.id == -1)
-  edges_df <- data.frame(
-    from = rd.dd$recruiter.id[rd.dd$recruiter.id != -1],
-    to = rd.dd$id[rd.dd$recruiter.id != -1]
-  )
-  
-  cat("Network edges:", nrow(edges_df), "\n")
-  
-  # Create node mapping to avoid duplicate vertex names
-  all_nodes <- unique(c(edges_df$from, edges_df$to, rd.dd$id))
-  node_map <- setNames(1:length(all_nodes), all_nodes)
-  
-  # Remap edges with sequential node IDs
-  edges_mapped <- data.frame(
-    from = node_map[as.character(edges_df$from)],
-    to = node_map[as.character(edges_df$to)]
-  )
-  
-  # Create igraph object
-  network_graph <- graph_from_data_frame(edges_mapped, directed = TRUE)
-  
-  # Prepare traits data frame using CE's comparable indicators
-  traits_df <- data.frame(
-    node_id = 1:length(rd.dd$id),
-    document_withholding = rd.dd$document_withholding_rds,
-    pay_issues = rd.dd$pay_issues_rds,
-    threats_abuse = rd.dd$threats_abuse_rds,
-    excessive_hours = rd.dd$excessive_hours_rds,
-    access_to_help = rd.dd$access_to_help_rds
-  )
-  
-  cat("Network prepared with", vcount(network_graph), "nodes and", ecount(network_graph), "edges\n\n")
-  
-  return(list(
-    network = network_graph,
-    edges = edges_mapped,
-    traits = traits_df,
-    node_map = node_map
-  ))
-}
-
-# ============================================================================
-# NEIGHBORHOOD BOOTSTRAP
-# ============================================================================
-
-run_neighborhood_bootstrap <- function(network_data, outcome_vars, n_bootstrap = 1000, 
-                                     confidence_level = 0.95, seed = 12345) {
-  
-  cat("=== Neighborhood Bootstrap Analysis ===\n")
-  
-  set.seed(seed)
-  
-  neighborhood_results <- list()
-  
-  for (outcome_var in outcome_vars) {
-    
-    cat("Processing:", outcome_var, "\n")
-    
-    if (!(outcome_var %in% names(network_data$traits))) {
-      cat("Warning: Variable", outcome_var, "not found in traits data\n")
-      next
-    }
-    
-    # Extract trait vector
-    trait_values <- network_data$traits[[outcome_var]]
-    
-    # Remove NA values
-    complete_cases <- !is.na(trait_values)
-    trait_clean <- trait_values[complete_cases]
-    
-    if (length(trait_clean) == 0) {
-      cat("Warning: No complete cases for", outcome_var, "\n")
-      next
-    }
-    
-    tryCatch({
-      
-      # Run neighborhood bootstrap
-      cat("  Running neighborhood bootstrap (n =", n_bootstrap, ")...\n")
-      
-      # Use Neighboot package
-      neighboot_result <- neighb.boot(
-        graph = network_data$network,
-        trait = trait_clean,
-        B = n_bootstrap
-      )
-      
-      # Calculate confidence intervals
-      alpha <- 1 - confidence_level
-      quantiles <- c(alpha/2, 1 - alpha/2)
-      
-      bootstrap_estimates <- neighboot_result$bootstrap_estimates
-      
-      ci <- quantile(bootstrap_estimates, probs = quantiles, na.rm = TRUE)
-      
-      result <- list(
-        variable = outcome_var,
-        method = "neighborhood_bootstrap",
-        original_estimate = mean(trait_clean),
-        bootstrap_mean = mean(bootstrap_estimates, na.rm = TRUE),
-        bootstrap_sd = sd(bootstrap_estimates, na.rm = TRUE),
-        ci_lower = ci[1],
-        ci_upper = ci[2],
-        confidence_level = confidence_level,
-        n_bootstrap = n_bootstrap,
-        bootstrap_samples = bootstrap_estimates
-      )
-      
-      neighborhood_results[[outcome_var]] <- result
-      
-      cat("  Completed - CI: [", round(ci[1], 4), ",", round(ci[2], 4), "]\n")
-      
-    }, error = function(e) {
-      cat("  Error in neighborhood bootstrap for", outcome_var, ":", e$message, "\n")
-      neighborhood_results[[outcome_var]] <- list(
-        variable = outcome_var,
-        method = "neighborhood_bootstrap", 
-        error = e$message
-      )
-    })
-  }
-  
-  cat("Neighborhood bootstrap completed\n\n")
-  return(neighborhood_results)
-}
-
-# ============================================================================
-# TREE BOOTSTRAP  
-# ============================================================================
-
-<<<<<<< HEAD
-run_bootstrap_analysis <- function() {
-	
-	cat("Running bootstrap analysis on CE's comparable indicators...\n")
-	cat("Variables:", paste(names(rds_data$traits), collapse = ", "), "\n\n")
-	
-	# Neighborhood bootstrap with percentile method
-	cat("Running neighborhood bootstrap (B=1000)...\n")
-	neigh_results <- neighb(rds_data, 
-					quant=c(0.025, 0.975),
-					method="percentile", 
-					B=1000)
-	
-	cat("Neighborhood bootstrap completed.\n")
-	print("Results:")
-	print(neigh_results)
-	
-	# Tree bootstrap (if network structure permits)
-	cat("\nAttempting tree bootstrap...\n")
-	tree_results <- NULL
-	
-	tryCatch({
-		# Check if network is connected for tree bootstrap
-		g <- graph_from_data_frame(rds_data$edges, directed = TRUE)
-		
-		if (is_connected(g, mode = "weak")) {
-			# Create adjacency matrix for treeboot.RDS()
-			n <- length(rds_data$nodes)
-			adj_matrix <- matrix(0, n, n)
-			
-			for(i in 1:nrow(rds_data$edges)) {
-				adj_matrix[rds_data$edges$from[i], rds_data$edges$to[i]] <- 1
-			}
-			
-			# Tree bootstrap data structure
-			tree_data <- list(
-				traits = rds_data$traits,
-				adj.mat = adj_matrix,
-				degree = rds_data$degree,
-				nodes = rds_data$nodes
-			)
-			
-			tree_results <- treeboot.RDS(tree_data, 
-									c(0.025, 0.975), 
-									B=500)  # Smaller B for tree bootstrap
-			
-			cat("Tree bootstrap completed successfully.\n")
-			
-		} else {
-			cat("Network not connected - skipping tree bootstrap.\n")
-			tree_results <- "Network not connected"
-		}
-		
-	}, error = function(e) {
-		cat("Tree bootstrap failed:", e$message, "\n")
-		tree_results <- paste("Error:", e$message)
-	})
-	
-	# Cluster analysis (by nationality if available)
-	cat("\nAttempting cluster analysis...\n")
-	cluster_results <- NULL
-	
-	tryCatch({
-		if ("nationality" %in% names(rd.dd)) {
-			cluster_var <- rd.dd$nationality
-		} else if ("nationality_cluster" %in% names(rd.dd)) {
-			cluster_var <- rd.dd$nationality_cluster  
-		} else {
-			cluster_var <- rep("All", nrow(rd.dd))
-		}
-		
-		# Function to create cluster-specific RDS data
-		create_cluster_rds <- function(cluster_indices, full_rds_data) {
-			
-			# Map original indices to sequential node indices
-			cluster_nodes <- cluster_indices
-			
-			# Filter edges within this cluster
-			cluster_edges <- full_rds_data$edges %>%
-				filter(from %in% cluster_nodes & to %in% cluster_nodes)
-			
-			if (nrow(cluster_edges) == 0) {
-				return(NULL)  # Skip clusters with no internal edges
-			}
-			
-			list(
-				nodes = cluster_nodes,
-				edges = cluster_edges,
-				traits = full_rds_data$traits[cluster_nodes, , drop = FALSE],
-				degree = full_rds_data$degree[cluster_nodes]
-			)
-		}
-		
-		# Split by clusters and run bootstrap
-		cluster_splits <- split(1:length(cluster_var), cluster_var)
-		
-		cluster_results <- list()
-		for (cluster_name in names(cluster_splits)) {
-			cluster_indices <- cluster_splits[[cluster_name]]
-			
-			if (length(cluster_indices) < 10) {
-				cat("Skipping cluster", cluster_name, "- too few observations (", length(cluster_indices), ")\n")
-				next
-			}
-			
-			cluster_rds <- create_cluster_rds(cluster_indices, rds_data)
-			
-			if (!is.null(cluster_rds) && nrow(cluster_rds$edges) > 0) {
-				cat("Running bootstrap for cluster:", cluster_name, "(n =", length(cluster_indices), ")\n")
-				
-				cluster_results[[cluster_name]] <- neighb(cluster_rds,
-													quant=c(0.025, 0.975),
-													method="percentile", 
-													B=500)  # Smaller B for clusters
-			} else {
-				cat("Skipping cluster", cluster_name, "- no internal edges\n")
-			}
-		}
-		
-		if (length(cluster_results) == 0) {
-			cluster_results <- "No clusters with sufficient internal connectivity"
-		}
-		
-	}, error = function(e) {
-		cat("Cluster analysis failed:", e$message, "\n") 
-		cluster_results <- paste("Error:", e$message)
-	})
-	
-	# Save results
-	cat("\nSaving bootstrap results...\n")
-	save(neigh_results, tree_results, cluster_results,
-		 file = here("output", "bootstrap_results.RData"))
-	
-	# Create summary table
-	bootstrap_summary <- data.frame(
-		Variable = rownames(neigh_results),
-		SE = neigh_results[, "SE"],
-		CI_Lower = neigh_results[, "0.025"],
-		CI_Upper = neigh_results[, "0.975"],
-		CI_Width = neigh_results[, "0.975"] - neigh_results[, "0.025"]
-	)
-	
-	write.csv(bootstrap_summary, here("output", "tables", "bootstrap_summary.csv"), row.names = FALSE)
-	
-	cat("Bootstrap analysis completed!\n")
-	cat("Results saved to:\n")
-	cat("- output/bootstrap_results.RData\n")
-	cat("- output/tables/bootstrap_summary.csv\n")
-	
-	return(list(
-		neighborhood = neigh_results,
-		tree = tree_results, 
-		by_cluster = cluster_results,
-		summary = bootstrap_summary
-	))
-}
-
-# Execute if run directly
-if (!exists("skip_execution")) {
-	bootstrap_results <- run_bootstrap_analysis()
-}
-=======
-run_tree_bootstrap <- function(network_data, outcome_vars, n_bootstrap = 1000,
-                              confidence_level = 0.95, seed = 12345) {
-  
-  cat("=== Tree Bootstrap Analysis ===\n")
-  
-  set.seed(seed)
-  
-  tree_results <- list()
-  
-  for (outcome_var in outcome_vars) {
-    
-    cat("Processing:", outcome_var, "\n")
-    
-    if (!(outcome_var %in% names(network_data$traits))) {
-      cat("Warning: Variable", outcome_var, "not found in traits data\n")
-      next
-    }
-    
-    # Extract trait vector
-    trait_values <- network_data$traits[[outcome_var]]
-    
-    # Remove NA values
-    complete_cases <- !is.na(trait_values)
-    trait_clean <- trait_values[complete_cases]
-    
-    if (length(trait_clean) == 0) {
-      cat("Warning: No complete cases for", outcome_var, "\n")
-      next
-    }
-    
-    tryCatch({
-      
-      # Run tree bootstrap using RDStreeboot package
-      cat("  Running tree bootstrap (n =", n_bootstrap, ")...\n")
-      
-      # Create RDS data object for tree bootstrap
-      rds_data_subset <- rd.dd[complete_cases, ]
-      
-      tree_result <- RDStreeboot(
-        rds.data = rds_data_subset,
-        outcome.variable = outcome_var,
-        B = n_bootstrap,
-        seed = seed
-      )
-      
-      # Extract bootstrap estimates
-      bootstrap_estimates <- tree_result$bootstrap_estimates
-      
-      # Calculate confidence intervals
-      alpha <- 1 - confidence_level
-      quantiles <- c(alpha/2, 1 - alpha/2)
-      
-      ci <- quantile(bootstrap_estimates, probs = quantiles, na.rm = TRUE)
-      
-      result <- list(
-        variable = outcome_var,
-        method = "tree_bootstrap",
-        original_estimate = mean(trait_clean),
-        bootstrap_mean = mean(bootstrap_estimates, na.rm = TRUE),
-        bootstrap_sd = sd(bootstrap_estimates, na.rm = TRUE),
-        ci_lower = ci[1],
-        ci_upper = ci[2],
-        confidence_level = confidence_level,
-        n_bootstrap = n_bootstrap,
-        bootstrap_samples = bootstrap_estimates
-      )
-      
-      tree_results[[outcome_var]] <- result
-      
-      cat("  Completed - CI: [", round(ci[1], 4), ",", round(ci[2], 4), "]\n")
-      
-    }, error = function(e) {
-      cat("  Error in tree bootstrap for", outcome_var, ":", e$message, "\n")
-      tree_results[[outcome_var]] <- list(
-        variable = outcome_var,
-        method = "tree_bootstrap",
-        error = e$message
-      )
-    })
-  }
-  
-  cat("Tree bootstrap completed\n\n")
-  return(tree_results)
-}
-
-# ============================================================================
-# COMBINE BOOTSTRAP METHODS
-# ============================================================================
-
-combine_bootstrap_results <- function(neighborhood_results, tree_results) {
-  
-  cat("=== Combining Bootstrap Results ===\n")
-  
-  combined_results <- list()
-  all_vars <- unique(c(names(neighborhood_results), names(tree_results)))
-  
-  for (outcome_var in all_vars) {
-    
-    var_result <- list(variable = outcome_var)
-    
-    # Add neighborhood bootstrap results
-    if (outcome_var %in% names(neighborhood_results)) {
-      nb_result <- neighborhood_results[[outcome_var]]
-      var_result$neighborhood_bootstrap <- nb_result
-    }
-    
-    # Add tree bootstrap results  
-    if (outcome_var %in% names(tree_results)) {
-      tb_result <- tree_results[[outcome_var]]
-      var_result$tree_bootstrap <- tb_result
-    }
-    
-    # Create summary comparison
-    if (outcome_var %in% names(neighborhood_results) && 
-        outcome_var %in% names(tree_results) &&
-        !"error" %in% names(neighborhood_results[[outcome_var]]) &&
-        !"error" %in% names(tree_results[[outcome_var]])) {
-      
-      nb <- neighborhood_results[[outcome_var]]
-      tb <- tree_results[[outcome_var]]
-      
-      var_result$comparison <- list(
-        original_estimate = nb$original_estimate,  # Should be same for both
-        
-        neighborhood_ci = c(nb$ci_lower, nb$ci_upper),
-        tree_ci = c(tb$ci_lower, tb$ci_upper),
-        
-        ci_width_neighborhood = nb$ci_upper - nb$ci_lower,
-        ci_width_tree = tb$ci_upper - tb$ci_lower,
-        
-        # Conservative approach: use wider CI
-        combined_ci_lower = min(nb$ci_lower, tb$ci_lower),
-        combined_ci_upper = max(nb$ci_upper, tb$ci_upper)
-      )
-    }
-    
-    combined_results[[outcome_var]] <- var_result
-  }
-  
-  cat("Bootstrap methods combined for", length(combined_results), "variables\n\n")
-  return(combined_results)
-}
-
-# ============================================================================
-# CREATE BOOTSTRAP SUMMARY TABLE
-# ============================================================================
-
-create_bootstrap_summary_table <- function(combined_results) {
-  
-  cat("=== Creating Bootstrap Summary Table ===\n")
+  cat("=== Creating Simple Bootstrap Summary Table ===\n")
   
   summary_rows <- list()
   
-  for (outcome_var in names(combined_results)) {
+  for (outcome_var in names(simple_results)) {
     
-    result <- combined_results[[outcome_var]]
+    result <- simple_results[[outcome_var]]
     
-    if ("comparison" %in% names(result)) {
-      
-      comp <- result$comparison
+    if (!"error" %in% names(result)) {
       
       summary_rows[[outcome_var]] <- data.frame(
         indicator = outcome_var,
-        indicator_clean = get_comparable_indicators()$labels[outcome_var],
-        point_estimate = comp$original_estimate,
-        
-        # Neighborhood bootstrap
-        nb_ci_lower = result$neighborhood_bootstrap$ci_lower,
-        nb_ci_upper = result$neighborhood_bootstrap$ci_upper,
-        nb_ci_width = comp$ci_width_neighborhood,
-        
-        # Tree bootstrap
-        tb_ci_lower = result$tree_bootstrap$ci_lower,
-        tb_ci_upper = result$tree_bootstrap$ci_upper,
-        tb_ci_width = comp$ci_width_tree,
-        
-        # Combined (conservative)
-        combined_ci_lower = comp$combined_ci_lower,
-        combined_ci_upper = comp$combined_ci_upper,
-        combined_ci_width = comp$combined_ci_upper - comp$combined_ci_lower,
+        # Fix indicator_clean mapping - remove _rds suffix and match with labels
+        indicator_clean = get_comparable_indicators()$labels[str_remove(outcome_var, "_rds$")],
+        point_estimate = result$original_estimate,
+        bootstrap_se = result$bootstrap_se,
+        ci_lower = result$ci_lower,
+        ci_upper = result$ci_upper,
+        ci_width = result$ci_upper - result$ci_lower,
+        method = result$method,
+        n_bootstrap = result$n_bootstrap,
+        confidence_level = result$confidence_level,
         
         # Formatted for publication
         estimate_with_ci = format_estimate_with_ci(
-          comp$original_estimate, 
-          comp$combined_ci_lower, 
-          comp$combined_ci_upper
+          result$original_estimate, 
+          result$ci_lower, 
+          result$ci_upper
         ),
         
         stringsAsFactors = FALSE
@@ -1050,7 +593,7 @@ create_bootstrap_summary_table <- function(combined_results) {
     summary_table <- data.frame(message = "No bootstrap results available")
   }
   
-  cat("Bootstrap summary table created with", nrow(summary_table), "indicators\n\n")
+  cat("Simple bootstrap summary table created with", nrow(summary_table), "indicators\n\n")
   
   return(summary_table)
 }
@@ -1065,13 +608,17 @@ main_bootstrap_analysis <- function() {
   
   cat("Starting bootstrap analysis for RDS estimates...\n\n")
   
-  # Step 1: Prepare network structure
-  network_data <- prepare_network_for_bootstrap()
+  # Step 1: Simple bootstrap (working implementation)
+  simple_results <- get_simple_bootstrap_ci(
+    outcome_vars = bootstrap_config$outcome_vars,
+    n_bootstrap = bootstrap_config$n_bootstrap,
+    confidence_level = bootstrap_config$confidence_level,
+    seed = bootstrap_config$seed
+  )
   
-  # Step 2: Neighborhood bootstrap
+  # Step 2: Neighborhood bootstrap (if enabled)
   if (bootstrap_config$use_neighborhood_bootstrap) {
     neighborhood_results <- run_neighborhood_bootstrap(
-      network_data = network_data,
       outcome_vars = bootstrap_config$outcome_vars,
       n_bootstrap = bootstrap_config$n_bootstrap,
       confidence_level = bootstrap_config$confidence_level,
@@ -1081,10 +628,9 @@ main_bootstrap_analysis <- function() {
     neighborhood_results <- list()
   }
   
-  # Step 3: Tree bootstrap
+  # Step 3: Tree bootstrap (if enabled)  
   if (bootstrap_config$use_tree_bootstrap) {
     tree_results <- run_tree_bootstrap(
-      network_data = network_data,
       outcome_vars = bootstrap_config$outcome_vars,
       n_bootstrap = bootstrap_config$n_bootstrap,
       confidence_level = bootstrap_config$confidence_level,
@@ -1094,25 +640,28 @@ main_bootstrap_analysis <- function() {
     tree_results <- list()
   }
   
-  # Step 4: Combine results
-  combined_results <- combine_bootstrap_results(neighborhood_results, tree_results)
+  # Step 4: Combine results from all methods
+  combined_results <- combine_bootstrap_results(simple_results, neighborhood_results, tree_results)
   
   # Step 5: Create summary table
-  summary_table <- create_bootstrap_summary_table(combined_results)
+  if (exists("combined_results") && length(combined_results) > 0) {
+    summary_table <- create_bootstrap_summary_table(combined_results)
+  } else {
+    summary_table <- create_simple_bootstrap_summary_table(simple_results)
+  }
   
   # Step 6: Compile final results
   final_results <- list(
+    simple_results = simple_results,
     neighborhood_results = neighborhood_results,
     tree_results = tree_results,
-    combined_results = combined_results,
+    combined_results = if(exists("combined_results")) combined_results else list(),
     summary_table = summary_table,
     
     config = bootstrap_config,
     metadata = list(
       timestamp = Sys.time(),
-      sample_size = nrow(rd.dd),
-      network_nodes = vcount(network_data$network),
-      network_edges = ecount(network_data$network)
+      sample_size = nrow(rd.dd)
     )
   )
   
@@ -1126,7 +675,14 @@ main_bootstrap_analysis <- function() {
   
   cat("=== Bootstrap Analysis Complete ===\n")
   cat("Confidence intervals (", bootstrap_config$confidence_level * 100, "%):\n")
-  print(summary_table[c("indicator_clean", "estimate_with_ci")])
+  
+  # Only try to print specific columns if they exist
+  if ("indicator_clean" %in% names(summary_table) && "estimate_with_ci" %in% names(summary_table)) {
+    print(summary_table[c("indicator_clean", "estimate_with_ci")])
+  } else {
+    print(summary_table)
+  }
+  
   cat("\nResults saved to: output/bootstrap_results.RData\n")
   cat("Summary table saved to: output/tables/bootstrap_confidence_intervals.csv\n\n")
   
@@ -1153,5 +709,4 @@ if (!exists("skip_execution") || !skip_execution) {
 } else {
   cat("Bootstrap analysis script loaded (execution skipped)\n")
 }
->>>>>>> 462426f7cf8f54f22bc15c0c9c01f1f4fddf363a
->>>>>>> 620c5ca84c001bcda5ee7ac8d96042902e33c957
+

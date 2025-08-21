@@ -44,9 +44,8 @@ rds_config <- list(
   run_convergence_diagnostics = TRUE,
   run_method_comparison = TRUE,   # For appendices
   
-  # Variables (CE's comparable indicators + risk variables)
-  outcome_vars = c(get_comparable_indicators()$rds_vars, 
-                   "composite_risk", "whether_exploitation"),
+  # Variables (CE's comparable indicators)
+  outcome_vars = get_comparable_indicators()$rds_vars,
   legacy_vars = c("zQ36", "zQ80", "sum_categories_factor"),
   
   # Population scenarios for sensitivity
