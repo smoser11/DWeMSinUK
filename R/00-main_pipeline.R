@@ -170,5 +170,9 @@ cat("\nTo run individual analyses:\n")
 cat("- source('R/analysis/03-rds_estimation.R')    # RDS-SS estimation + sensitivity\n")
 cat("- source('R/analysis/04-bootstrap_analysis.R') # Confidence intervals\n") 
 cat("- source('R/analysis/05-nsum_estimation.R')   # NSUM estimation + RDS comparison\n")
+<<<<<<< HEAD
 cat("\nSee CLAUDE.md for detailed documentation.\n")
 
+=======
+cat("\nSee CLAUDE.md for detailed documentation.\n")
+>>>>>>> 462426f7cf8f54f22bc15c0c9c01f1f4fddf363a

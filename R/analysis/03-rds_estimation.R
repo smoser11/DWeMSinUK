@@ -400,6 +400,7 @@ main_rds_analysis <- function() {
 # ============================================================================
 # EXECUTION
 # ============================================================================
+<<<<<<< HEAD
 
 # Prevent automatic execution when sourced
 if (!exists("skip_execution") || !skip_execution) {
@@ -418,3 +419,22 @@ if (!exists("skip_execution") || !skip_execution) {
   cat("RDS estimation script loaded (execution skipped)\n")
 }
 
+=======
+
+# Prevent automatic execution when sourced
+if (!exists("skip_execution") || !skip_execution) {
+  
+  # Check if this is being run from the pipeline
+  if (exists("pipeline_config")) {
+    cat("Running as part of main pipeline\n")
+  } else {
+    cat("Running standalone RDS analysis\n")
+  }
+  
+  # Run analysis
+  rds_results <- main_rds_analysis()
+  
+} else {
+  cat("RDS estimation script loaded (execution skipped)\n")
+}
+>>>>>>> 462426f7cf8f54f22bc15c0c9c01f1f4fddf363a
