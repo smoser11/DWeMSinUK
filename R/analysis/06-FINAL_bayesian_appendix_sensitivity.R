@@ -307,7 +307,7 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
     # Use actual MA.estimates() with improved convergence parameters
     ma_result <- MA.estimates(
       rd.dd, 
-      outcome.variable = outcome_var,
+      trait.variable = outcome_var,                       # Correct parameter name
       N = population_size,
       number.of.iterations = final_config$ma_iterations,  # Now 10
       M1 = final_config$ma_M1,                           # Now 100
