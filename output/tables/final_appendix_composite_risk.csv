@@ -1,0 +1,5 @@
+"method_clean","uncertainty_clean","method_type","1.74M","100K","50K","980K"
+"posteriorsize()","Bayesian CI","bayesian","36.9% (31.9–42.0)","36.9% (31.9–41.9)","36.9% (31.5–42.3)","36.9% (32.0–41.9)"
+"RDS-I","Asymptotic","frequentist","39.8% (CI not available)","39.8% (CI not available)","39.8% (CI not available)","39.8% (CI not available)"
+"RDS-II","Bootstrap","frequentist","36.9% (30.8–43.9)","36.9% (30.1–43.5)","36.9% (30.9–43.8)","36.9% (30.6–43.5)"
+"RDS-SS","Bootstrap","frequentist","36.9% (30.8–43.9)","36.9% (30.6–44.0)","36.9% (30.6–43.8)","36.9% (30.5–43.8)"
