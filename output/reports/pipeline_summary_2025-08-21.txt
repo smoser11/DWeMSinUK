@@ -1,0 +1,27 @@
+DWeMSinUK Analysis Pipeline Summary
+Generated: 2025-08-21 13:49:39.929763
+
+Files processed:
+- Cleaned data: ✓
+- Prepared data: ✓
+- RDS results: ✓
+- Bootstrap results: ✓
+- NSUM results: ✓
+
+Analysis parameters:
+- Preferred models: RDS_SS & weighted NSUM
+- Main population size: 980,000
+- Population scenarios: 50000, 1e+05, 980000, 1740000
+- Bootstrap samples: 1000
+
+Output locations:
+- Tables: output/tables/
+- Figures: output/figures/
+- Results: output/
+
+Next steps:
+1. Review results in output/ directory
+2. Check figures in output/figures/
+3. Examine summary tables in output/tables/
+4. Run individual analysis scripts for specific investigations
+

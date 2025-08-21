@@ -150,6 +150,31 @@ All indicators are binary (0/1) with logical OR for composite RDS measures and p
 - Implements nationality clustering (Filipino, Latinx, British, Other)
 - Validates network size claims against survey responses
 
+### Environment Setup
+```r
+# Install required packages if not available
+install.packages(c("tidyverse", "janitor", "here", "RDS", "igraph", 
+                   "boot", "parallel", "ggplot2", "scales", "viridis"))
+
+# Load project with proper path setup
+library(here)
+source(here("R", "utils", "helper_functions.R"))
+setup_project_environment()
+```
+
+### Project Configuration
+The main pipeline uses a configuration-driven approach:
+- Pipeline settings in `R/00-main_pipeline.R` control which analyses run
+- RDS analysis configuration in `R/analysis/03-rds_estimation.R` 
+- Skip execution flags prevent scripts from running when sourced
+- Results are cached to avoid recomputation
+
+### Data Requirements
+- Survey data must be in `data/raw/` or `data/survey/`
+- Expected data files: CSV or Excel formats with RDS network structure
+- Required variables: recruiter.id, id, and survey question columns (Q##)
+- Network validation handles missing recruiter IDs (-1) and zero-degree nodes
+
 ## Development Notes
 
 ### Code Organization (August 2025 Reorganization)
@@ -158,6 +183,19 @@ All indicators are binary (0/1) with logical OR for composite RDS measures and p
 - **CE's Specifications**: Comparable indicators implemented exactly per 2024-11-05 correspondence
 - **Sequential Focus**: RDS analysis first (03), then NSUM (04), then comparison (05)
 - **Archived Scripts**: Old/experimental code preserved in `R/archive/` with documentation
+
+#### Modular Architecture
+The RDS analysis (Step 3) is particularly modular with coordinator scripts:
+- `03-rds_estimation.R` - Main RDS coordinator that calls sub-modules
+- `03a-rds_basic_estimation.R` - Core RDS-I/II/SS estimates  
+- `03b-rds_model_assisted.R` - Model-assisted estimation
+- `03c-rds_population_size.R` - Population size sensitivity analysis
+- `03d-rds_convergence.R` - Convergence diagnostics
+- `03e-rds_bootstrap.R` - Bootstrap confidence intervals
+- `03a_enhanced_analysis.R` - Method comparison and selection
+- `03a_visualizations.R` - Publication-ready plots
+
+Each module can be disabled via configuration flags in the coordinator script for faster development cycles.
 
 ### Technical Requirements
 - Use `.RData` format for processed datasets to preserve R object structures
@@ -172,3 +210,29 @@ All indicators are binary (0/1) with logical OR for composite RDS measures and p
 - Tables: `output/tables/` (`.csv` files) 
 - Figures: `output/figures/` (`.png` files)
 - Reports: `output/reports/` (`.txt` files)
+
+### Debugging and Troubleshooting
+
+#### Common Issues
+- **"Error in here()": Project root not detected** - Ensure `CLAUDE.md` exists in project root
+- **Bootstrap convergence warnings** - Adjust `bootstrap_samples` parameter or check network topology
+- **Memory issues with large populations** - Reduce population size scenarios or use parallel processing
+- **Missing RDS network connections** - Validate recruiter.id column for -1 values and network structure
+
+#### Checking Results
+```r
+# Verify pipeline completion
+list.files(here("output"), pattern = "*.RData")
+
+# Check processed data integrity  
+load(here("data", "processed", "prepared_data.RData"))
+summary(prepared_data)
+
+# Review convergence diagnostics
+readRDS(here("output", "rds_convergence_diagnostics.RDS"))
+```
+
+#### Performance Optimization
+- Set `force_recompute = FALSE` to use cached results
+- Adjust `parallel_cores` parameter for bootstrap methods
+- Use smaller population size scenarios for testing: `c(50000, 100000)`
