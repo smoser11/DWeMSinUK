@@ -79,7 +79,7 @@ Q62. How often do you feel you work more than excessively?
 CITE RDS and CRAN:  @RDSA
 
 
-1. Start with SS-PSE of http://hpmrg.org/sspse/ then add the \visability' aspect as per @mcla23-modeling .
+1. Start with SS-PSE of http://hpmrg.org/sspse/ then add the 'visability' aspect as per @mcla23-modeling .
 
 - NOTE: `posteriorsize()` this is just based on personal-network size (<http://hpmrg.org/sspse/>)
 	- http://www.respondentdrivensampling.org/  and @gile2010-respondent

@@ -237,18 +237,22 @@ get_comparable_indicators <- function() {
     nsum_vars = c("document_withholding_nsum", "pay_issues_nsum", "threats_abuse_nsum", 
                   "excessive_hours_nsum", "access_to_help_nsum"),
     labels = c(
-      "Document withholding" = "document_withholding",
-      "Pay-related issues" = "pay_issues", 
-      "Threats and abuse" = "threats_abuse",
-      "Excessive working hours" = "excessive_hours",
-      "Limited access to help" = "access_to_help"
+      "document_withholding" = "Document withholding",
+      "pay_issues" = "Pay-related issues", 
+      "threats_abuse" = "Threats and abuse",
+      "excessive_hours" = "Excessive working hours",
+      "access_to_help" = "Limited access to help",
+      "composite_risk" = "Composite risk score",
+      "whether_exploitation" = "Overall exploitation indicator"
     ),
     confidence_levels = c(
       "document_withholding" = "Highest",
       "pay_issues" = "High",
       "threats_abuse" = "High", 
       "excessive_hours" = "Medium",
-      "access_to_help" = "Lowest"
+      "access_to_help" = "Lowest",
+      "composite_risk" = "High",
+      "whether_exploitation" = "High"
     )
   ))
 }

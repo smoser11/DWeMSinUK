@@ -1,6 +1,8 @@
-"indicator","estimate","confidence","estimate_pct","indicator_clean"
-"excessive_hours_rds",0.837284529663637,NA,83.7284529663637,NA
-"access_to_help_rds",0.593632888454803,NA,59.3632888454803,NA
-"threats_abuse_rds",0.5722487861393,NA,57.22487861393,NA
-"pay_issues_rds",0.496527013804293,NA,49.6527013804293,NA
-"document_withholding_rds",0.342444965586162,NA,34.2444965586162,NA
+"indicator","estimate","confidence","estimate_pct","indicator_base","indicator_clean","ci_lower","ci_upper","estimate_with_ci"
+"whether_exploitation",0.972452234141699,"High",97.2452234141699,"whether_exploitation","Overall exploitation indicator",0.921199823185597,1,"97.2% (92.1–100.0)"
+"excessive_hours_rds",0.837284529663637,NA,83.7284529663637,"excessive_hours","Excessive working hours",0.720281453818367,0.930613629676362,"83.7% (72.0–93.1)"
+"access_to_help_rds",0.593632888454803,NA,59.3632888454803,"access_to_help","Limited access to help",0.419643594064966,0.728563744369133,"59.4% (42.0–72.9)"
+"threats_abuse_rds",0.5722487861393,NA,57.22487861393,"threats_abuse","Threats and abuse",0.419343315242455,0.726399546220875,"57.2% (41.9–72.6)"
+"pay_issues_rds",0.496527013804293,NA,49.6527013804293,"pay_issues","Pay-related issues",0.356392542321455,0.638778665846482,"49.7% (35.6–63.9)"
+"composite_risk",0.369097054893396,"High",36.9097054893396,"composite_risk","Composite risk score",0.305040144518518,0.435126186006926,"36.9% (30.5–43.5)"
+"document_withholding_rds",0.342444965586162,NA,34.2444965586162,"document_withholding","Document withholding",0.194456329866812,0.473064870721195,"34.2% (19.4–47.3)"

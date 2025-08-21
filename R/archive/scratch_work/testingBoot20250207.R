@@ -106,11 +106,11 @@ neighb(rds_data,
 
 
 
+load("data/processed/prepared_data.RData")
 
 
 
 run_bootstrap_analysis <- function() {
-	load("data/processed/prepared_data.RData")
 
 		
 	# Prepare data structure for neighb()
