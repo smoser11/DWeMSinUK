@@ -534,20 +534,38 @@ process_final_results <- function(all_results) {
   
   cat("=== Processing FINAL Results ===\n")
   
+  # Helper function to safely extract values
+  safe_extract <- function(result, field, default = NA) {
+    if (is.null(result) || !is.list(result)) return(default)
+    value <- result[[field]]
+    if (is.null(value) || length(value) == 0) return(default)
+    return(value)
+  }
+  
   results_df <- map_dfr(all_results, function(result) {
+    # Skip NULL or invalid results
+    if (is.null(result) || !is.list(result)) {
+      return(data.frame(
+        indicator = NA, pop_size = NA, pop_label = NA, method = NA,
+        method_type = NA, estimate = NA, se = NA, ci_lower = NA,
+        ci_upper = NA, uncertainty_method = NA, convergence_info = NA,
+        error_msg = "Invalid result", stringsAsFactors = FALSE
+      ))
+    }
+    
     data.frame(
-      indicator = result$indicator %||% NA,
-      pop_size = result$pop_size %||% NA,
-      pop_label = result$pop_label %||% NA,
-      method = result$method %||% NA,
-      method_type = result$method_type %||% NA,
-      estimate = result$estimate %||% NA,
-      se = result$se %||% NA,
-      ci_lower = result$ci_lower %||% NA,
-      ci_upper = result$ci_upper %||% NA,
-      uncertainty_method = result$uncertainty_method %||% NA,
-      convergence_info = result$convergence_info %||% NA,
-      error_msg = result$error %||% NA,
+      indicator = safe_extract(result, "indicator", NA),
+      pop_size = safe_extract(result, "pop_size", NA),
+      pop_label = safe_extract(result, "pop_label", NA),
+      method = safe_extract(result, "method", NA),
+      method_type = safe_extract(result, "method_type", NA),
+      estimate = safe_extract(result, "estimate", NA),
+      se = safe_extract(result, "se", NA),
+      ci_lower = safe_extract(result, "ci_lower", NA),
+      ci_upper = safe_extract(result, "ci_upper", NA),
+      uncertainty_method = safe_extract(result, "uncertainty_method", NA),
+      convergence_info = safe_extract(result, "convergence_info", "No info"),
+      error_msg = safe_extract(result, "error", NA),
       stringsAsFactors = FALSE
     )
   })
