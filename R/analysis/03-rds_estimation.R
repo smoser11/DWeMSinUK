@@ -1,220 +1,419 @@
 # 03-rds_estimation.R
-# RDS Estimation Coordinator Script
-# This script coordinates the modular RDS analysis components
+# Comprehensive RDS Estimation Analysis
+# Domestic Worker Exploitation and Modern Slavery in UK
+# 
+# Focus: RDS-SS as preferred method for main text
+# Includes: Basic estimation, model-assisted, sensitivity analysis for appendices
 
-cat("=== RDS Analysis Pipeline Coordinator ===\n")
-cat("Domestic Worker Exploitation and Modern Slavery in UK\n")
-cat("Modular RDS estimation using comparable indicators\n\n")
+cat("=== RDS Estimation Analysis ===\n")
+cat("Preferred model: RDS-SS with comparable indicators\n")
+cat("Robustness analysis for appendices\n\n")
 
 # Load required libraries
+library(tidyverse)
+library(RDS)
+library(sspse)
+library(parallel)
+library(ggplot2)
+library(kableExtra)
 library(here)
 
-# Configuration for RDS analysis
+# Source helper functions
+source(here("R", "utils", "helper_functions.R"))
+
+# Load prepared data
+if (!exists("dd") || !exists("rd.dd")) {
+  load(here("data", "processed", "prepared_data.RData"))
+  cat("Loaded prepared RDS data\n")
+}
+
+# ============================================================================
+# CONFIGURATION
+# ============================================================================
+
+# Analysis configuration
 rds_config <- list(
-  # Analysis components to run
-  run_basic_rds = TRUE,
-  run_enhanced_analysis = TRUE,    # Model selection and comparison tables
-  run_model_assisted = TRUE,      # Set to FALSE by default (computationally expensive)
-  run_population_size = TRUE,     # Set to FALSE by default (computationally expensive)
-  run_convergence = TRUE,
-  run_bootstrap = TRUE,           # Set to FALSE by default (computationally expensive)
-  run_visualizations = TRUE,       # Publication-ready plots
-  
-  # Basic parameters
-  outcome_vars = c("document_withholding_rds", "pay_issues_rds", "threats_abuse_rds", 
-                   "excessive_hours_rds", "access_to_help_rds"),
-  legacy_vars = c("zQ36", "zQ80", "sum_categories_factor"),
-  pop_sizes = c(50000, 100000, 980000, 1740000),
-  
-  # Preferred method (from enhanced analysis)
+  # Main analysis (for main text)
   preferred_method = "RDS_SS",
+  main_population_size = 980000,  # EU baseline
+  
+  # Methods to run
+  run_basic_estimation = TRUE,
+  run_model_assisted = FALSE,     # Computationally expensive - set TRUE if needed
+  run_population_size_sensitivity = TRUE,
+  run_convergence_diagnostics = TRUE,
+  run_method_comparison = TRUE,   # For appendices
+  
+  # Variables (CE's comparable indicators)
+  outcome_vars = get_comparable_indicators()$rds_vars,
+  legacy_vars = c("zQ36", "zQ80", "sum_categories_factor"),
+  
+  # Population scenarios for sensitivity
+  population_sizes = get_population_parameters()$sizes,
   
   # Computational parameters
   force_recompute = FALSE,
   parallel_cores = 4,
-  bootstrap_samples = 1000
+  
+  # Output control
+  save_tables = TRUE,
+  save_plots = TRUE,
+  create_appendix_materials = TRUE
 )
 
-cat("RDS Analysis Configuration:\n")
-for (component in names(rds_config)[1:6]) {
-  cat("-", component, ":", rds_config[[component]], "\n")
-}
-cat("\n")
+cat("Configuration loaded:\n")
+cat("- Preferred method:", rds_config$preferred_method, "\n")
+cat("- Main population size:", format(rds_config$main_population_size, big.mark = ","), "\n")
+cat("- Outcome variables:", length(rds_config$outcome_vars), "comparable indicators\n")
+cat("- Population scenarios:", length(rds_config$population_sizes), "sizes\n\n")
 
-# Set execution flag to prevent individual scripts from running
-skip_execution <- FALSE
+# Initialize results database
+results_db <- load_rds_results_database()
 
-# Component 1: Basic RDS Estimation (RDS-I, RDS-II, RDS-SS)
-if (rds_config$run_basic_rds) {
-  cat("Step 1: Basic RDS estimation (RDS-I, RDS-II, RDS-SS)...\n")
+# ============================================================================
+# BASIC RDS ESTIMATION (RDS-I, RDS-II, RDS-SS)
+# ============================================================================
+
+run_basic_rds_estimation <- function(outcome_vars, population_sizes, force_recompute = FALSE) {
   
-  tryCatch({
-    source(here("R", "analysis", "03a-rds_basic_estimation.R"))
+  cat("=== Basic RDS Estimation ===\n")
+  cat("Methods: RDS-I, RDS-II, RDS-SS\n")
+  
+  all_results <- list()
+  
+  for (outcome_var in outcome_vars) {
+    
+    cat("Processing:", outcome_var, "\n")
+    
+    if (!(outcome_var %in% names(rd.dd))) {
+      cat("Warning: Variable", outcome_var, "not found in data\n")
+      next
+    }
+    
+    var_results <- list()
+    
+    for (pop_size in population_sizes) {
+      
+      # Create parameter ID for caching
+      param_id <- create_parameter_id("BASIC", outcome_var, pop_size)
+      
+      if (!force_recompute && param_id %in% names(results_db)) {
+        cat("  Using cached results for", param_id, "\n")
+        var_results[[as.character(pop_size)]] <- results_db[[param_id]]
+        next
+      }
+      
+      tryCatch({
+        
+        # RDS-I estimation
+        rds_I <- RDS.I.estimates(rds.data = rd.dd, 
+                                outcome.variable = outcome_var,
+                                N = pop_size)
+        
+        # RDS-II estimation  
+        rds_II <- RDS.II.estimates(rds.data = rd.dd,
+                                  outcome.variable = outcome_var,
+                                  N = pop_size)
+        
+        # RDS-SS estimation (preferred)
+        rds_SS <- RDS.SS.estimates(rds.data = rd.dd,
+                                  outcome.variable = outcome_var, 
+                                  N = pop_size)
+        
+        # Compile results
+        result <- list(
+          variable = outcome_var,
+          population_size = pop_size,
+          RDS_I = rds_I$estimate,
+          RDS_II = rds_II$estimate, 
+          RDS_SS = rds_SS$estimate,
+          
+          # Store full objects for bootstrap later
+          rds_I_object = rds_I,
+          rds_II_object = rds_II,
+          rds_SS_object = rds_SS,
+          
+          # Metadata
+          sample_size = nrow(rd.dd),
+          timestamp = Sys.time()
+        )
+        
+        var_results[[as.character(pop_size)]] <- result
+        
+        # Cache result
+        results_db <- save_to_rds_database(results_db, result, param_id)
+        
+        cat("  Completed:", param_id, "\n")
+        
+      }, error = function(e) {
+        cat("  Error in", param_id, ":", e$message, "\n")
+        var_results[[as.character(pop_size)]] <- list(
+          variable = outcome_var,
+          population_size = pop_size,
+          error = e$message
+        )
+      })
+    }
+    
+    all_results[[outcome_var]] <- var_results
+  }
+  
+  cat("Basic RDS estimation completed\n\n")
+  return(all_results)
+}
+
+# ============================================================================
+# PREFERRED MODEL RESULTS (MAIN TEXT)
+# ============================================================================
+
+extract_preferred_results <- function(basic_results, preferred_method = "RDS_SS", 
+                                    main_pop_size = 980000) {
+  
+  cat("=== Extracting Preferred Model Results ===\n")
+  cat("Method:", preferred_method, "at population size:", format(main_pop_size, big.mark = ","), "\n")
+  
+  preferred_results <- list()
+  
+  comparable_indicators <- get_comparable_indicators()
+  
+  for (outcome_var in names(basic_results)) {
+    
+    if (as.character(main_pop_size) %in% names(basic_results[[outcome_var]])) {
+      
+      result <- basic_results[[outcome_var]][[as.character(main_pop_size)]]
+      
+      if (preferred_method %in% names(result)) {
+        preferred_results[[outcome_var]] <- list(
+          estimate = result[[preferred_method]],
+          variable_label = comparable_indicators$labels[outcome_var],
+          confidence_level = comparable_indicators$confidence_levels[outcome_var],
+          population_size = main_pop_size,
+          method = preferred_method
+        )
+      }
+    }
+  }
+  
+  # Create main results table
+  main_table <- data.frame(
+    indicator = names(preferred_results),
+    estimate = sapply(preferred_results, function(x) x$estimate),
+    confidence = sapply(preferred_results, function(x) x$confidence_level),
+    stringsAsFactors = FALSE
+  ) %>%
+    mutate(
+      estimate_pct = estimate * 100,
+      indicator_clean = get_comparable_indicators()$labels[indicator]
+    ) %>%
+    arrange(desc(estimate))
+  
+  cat("Preferred results extracted for", nrow(main_table), "indicators\n\n")
+  
+  return(list(
+    results = preferred_results,
+    main_table = main_table
+  ))
+}
+
+# ============================================================================
+# CONVERGENCE DIAGNOSTICS
+# ============================================================================
+
+run_convergence_diagnostics <- function(outcome_vars, save_plots = TRUE) {
+  
+  cat("=== Convergence Diagnostics ===\n")
+  
+  diagnostics <- list()
+  
+  for (outcome_var in outcome_vars) {
+    
+    if (!(outcome_var %in% names(rd.dd))) {
+      next
+    }
+    
+    cat("Convergence analysis for:", outcome_var, "\n")
+    
+    tryCatch({
+      
+      # Generate convergence plots
+      conv_plot <- convergence.plot(rd.dd, outcome.variable = outcome_var)
+      
+      diagnostics[[outcome_var]] <- conv_plot
+      
+      if (save_plots) {
+        filename <- here("output", "figures", paste0("convergence_", outcome_var, ".png"))
+        ggsave(filename, conv_plot, width = 8, height = 6, dpi = 300)
+      }
+      
+    }, error = function(e) {
+      cat("  Error in convergence for", outcome_var, ":", e$message, "\n")
+    })
+  }
+  
+  cat("Convergence diagnostics completed\n\n")
+  return(diagnostics)
+}
+
+# ============================================================================
+# SENSITIVITY ANALYSIS (APPENDICES)
+# ============================================================================
+
+run_sensitivity_analysis <- function(basic_results, focus_vars = NULL) {
+  
+  cat("=== Sensitivity Analysis for Appendices ===\n")
+  
+  if (is.null(focus_vars)) {
+    focus_vars <- names(basic_results)[1:3]  # Focus on top 3 indicators
+  }
+  
+  sensitivity_results <- list()
+  
+  # 1. Population size sensitivity
+  pop_sensitivity <- list()
+  
+  for (outcome_var in focus_vars) {
+    
+    var_results <- basic_results[[outcome_var]]
+    
+    # Extract RDS-SS estimates across population sizes
+    estimates_by_pop <- sapply(var_results, function(x) {
+      if ("RDS_SS" %in% names(x)) x$RDS_SS else NA
+    })
+    
+    estimates_by_pop <- estimates_by_pop[!is.na(estimates_by_pop)]
+    
+    if (length(estimates_by_pop) > 0) {
+      pop_sensitivity[[outcome_var]] <- list(
+        population_sizes = as.numeric(names(estimates_by_pop)),
+        estimates = estimates_by_pop,
+        relative_change = (max(estimates_by_pop) - min(estimates_by_pop)) / min(estimates_by_pop)
+      )
+    }
+  }
+  
+  # 2. Method comparison (all methods)
+  method_comparison <- list()
+  
+  main_pop <- rds_config$main_population_size
+  
+  for (outcome_var in focus_vars) {
+    
+    if (as.character(main_pop) %in% names(basic_results[[outcome_var]])) {
+      
+      result <- basic_results[[outcome_var]][[as.character(main_pop)]]
+      
+      method_comparison[[outcome_var]] <- list(
+        RDS_I = result$RDS_I,
+        RDS_II = result$RDS_II,
+        RDS_SS = result$RDS_SS
+      )
+    }
+  }
+  
+  sensitivity_results$population_sensitivity = pop_sensitivity
+  sensitivity_results$method_comparison = method_comparison
+  
+  cat("Sensitivity analysis completed\n\n")
+  return(sensitivity_results)
+}
+
+# ============================================================================
+# MAIN EXECUTION
+# ============================================================================
+
+main_rds_analysis <- function() {
+  
+  setup_project_environment()
+  
+  cat("Starting comprehensive RDS analysis...\n\n")
+  
+  # Step 1: Basic RDS estimation
+  if (rds_config$run_basic_estimation) {
     basic_results <- run_basic_rds_estimation(
       outcome_vars = rds_config$outcome_vars,
-      legacy_vars = rds_config$legacy_vars,
-      pop_sizes = rds_config$pop_sizes,
+      population_sizes = rds_config$population_sizes,
       force_recompute = rds_config$force_recompute
     )
-    cat("✓ Basic RDS estimation completed\n\n")
-  }, error = function(e) {
-    cat("✗ Basic RDS estimation failed:", e$message, "\n\n")
-  })
-}
-
-# Component 1b: Enhanced Analysis (Model Selection & Tables)
-if (rds_config$run_enhanced_analysis) {
-  cat("Step 1b: Enhanced RDS analysis (model selection, tables, sensitivity)...\n")
-  
-  tryCatch({
-    # Model selection analysis
-    source(here("R", "analysis", "03a_enhanced_analysis.R"))
-    cat("✓ Model selection analysis completed\n")
-    
-    # Comparison tables
-    source(here("R", "analysis", "03a_comparison_tables.R"))
-    cat("✓ Comparison tables created\n")
-    
-    # Sensitivity analysis
-    source(here("R", "analysis", "03a_sensitivity_analysis.R"))
-    cat("✓ Sensitivity analysis completed\n")
-    
-    cat("Enhanced analysis completed successfully\n\n")
-    
-  }, error = function(e) {
-    cat("✗ Enhanced analysis failed:", e$message, "\n\n")
-  })
-}
-
-# Component 2: Model-Assisted Estimation (expensive)
-if (rds_config$run_model_assisted) {
-  cat("Step 2: Model-Assisted RDS estimation...\n")
-  cat("Warning: This is computationally expensive and will take significant time.\n")
-  
-  response <- readline(prompt = "Continue with Model-Assisted estimation? (y/N): ")
-  if (tolower(response) == "y") {
-    tryCatch({
-      source(here("R", "analysis", "03b-rds_model_assisted.R"))
-      ma_results <- run_model_assisted_estimation(
-        outcome_vars = rds_config$outcome_vars,
-        legacy_vars = rds_config$legacy_vars,
-        pop_sizes = c(980000),  # Conservative: just baseline
-        parallel_cores = rds_config$parallel_cores,
-        force_recompute = rds_config$force_recompute
-      )
-      cat("✓ Model-Assisted estimation completed\n\n")
-    }, error = function(e) {
-      cat("✗ Model-Assisted estimation failed:", e$message, "\n\n")
-    })
   } else {
-    cat("Model-Assisted estimation skipped by user\n\n")
+    cat("Skipping basic estimation (disabled in config)\n")
+    return(invisible(NULL))
   }
-}
-
-# Component 3: Population Size Estimation (expensive)
-if (rds_config$run_population_size) {
-  cat("Step 3: Population size estimation (SS-PSE)...\n")
-  cat("Warning: This is computationally expensive.\n")
   
-  response <- readline(prompt = "Continue with Population Size estimation? (y/N): ")
-  if (tolower(response) == "y") {
-    tryCatch({
-      source(here("R", "analysis", "03c-rds_population_size.R"))
-      popsize_results <- run_population_size_estimation(
-        prior_sizes = c(980000),
-        force_recompute = TRUE # rds_config$force_recompute
-      )
-      cat("✓ Population size estimation completed\n\n")
-    }, error = function(e) {
-      cat("✗ Population size estimation failed:", e$message, "\n\n")
-    })
-  } else {
-    cat("Population size estimation skipped by user\n\n")
-  }
-}
-
-# Component 4: Convergence Diagnostics
-if (rds_config$run_convergence) {
-  cat("Step 4: Convergence diagnostics...\n")
+  # Step 2: Extract preferred model results (main text)
+  preferred_results <- extract_preferred_results(
+    basic_results = basic_results,
+    preferred_method = rds_config$preferred_method,
+    main_pop_size = rds_config$main_population_size
+  )
   
-  tryCatch({
-    source(here("R", "analysis", "03d-rds_convergence.R"))
+  # Step 3: Convergence diagnostics
+  if (rds_config$run_convergence_diagnostics) {
     convergence_results <- run_convergence_diagnostics(
       outcome_vars = rds_config$outcome_vars,
-      legacy_vars = rds_config$legacy_vars
+      save_plots = rds_config$save_plots
     )
-    diagnostic_plots <- generate_diagnostic_plots()
-    cat("✓ Convergence diagnostics completed\n\n")
-  }, error = function(e) {
-    cat("✗ Convergence diagnostics failed:", e$message, "\n\n")
-  })
-}
-
-# Component 5: Bootstrap Uncertainty (very expensive)
-if (rds_config$run_bootstrap) {
-  cat("Step 5: Bootstrap uncertainty estimation...\n")
-  cat("Warning: This is very computationally expensive and will take substantial time.\n")
-  
-  response <- readline(prompt = "Continue with Bootstrap analysis? (y/N): ")
-  if (tolower(response) == "y") {
-    tryCatch({
-      source(here("R", "analysis", "03e-rds_bootstrap.R"))
-      bootstrap_results <- run_neighborhood_bootstrap(
-        n_bootstrap = rds_config$bootstrap_samples,
-        force_recompute = rds_config$force_recompute
-      )
-      bootstrap_summary <- create_bootstrap_summary()
-      cat("✓ Bootstrap uncertainty estimation completed\n\n")
-    }, error = function(e) {
-      cat("✗ Bootstrap uncertainty estimation failed:", e$message, "\n\n")
-    })
-  } else {
-    cat("Bootstrap analysis skipped by user\n\n")
   }
-}
-
-# Component 6: Publication Visualizations
-if (rds_config$run_visualizations) {
-  cat("Step 6: Creating publication-ready visualizations...\n")
   
-  tryCatch({
-    source(here("R", "analysis", "03a_visualizations.R"))
-    cat("✓ Visualization suite completed\n\n")
-  }, error = function(e) {
-    cat("✗ Visualization creation failed:", e$message, "\n\n")
-  })
+  # Step 4: Sensitivity analysis (appendices)
+  if (rds_config$run_method_comparison) {
+    sensitivity_results <- run_sensitivity_analysis(
+      basic_results = basic_results,
+      focus_vars = rds_config$outcome_vars[1:3]  # Top 3 indicators
+    )
+  }
+  
+  # Step 5: Save main results
+  final_results <- list(
+    basic_results = basic_results,
+    preferred_results = preferred_results,
+    sensitivity_results = if(exists("sensitivity_results")) sensitivity_results else NULL,
+    convergence_results = if(exists("convergence_results")) convergence_results else NULL,
+    
+    config = rds_config,
+    metadata = list(
+      timestamp = Sys.time(),
+      sample_size = nrow(rd.dd),
+      preferred_method = rds_config$preferred_method,
+      main_population_size = rds_config$main_population_size
+    )
+  )
+  
+  # Save results
+  save(final_results, file = here("output", "rds_estimation_results.RData"))
+  
+  # Save main table for easy access
+  if (rds_config$save_tables) {
+    write.csv(preferred_results$main_table, 
+              here("output", "tables", "rds_main_results.csv"),
+              row.names = FALSE)
+  }
+  
+  cat("=== RDS Analysis Complete ===\n")
+  cat("Main results (", rds_config$preferred_method, "):\n")
+  print(preferred_results$main_table)
+  cat("\nResults saved to: output/rds_estimation_results.RData\n")
+  cat("Main table saved to: output/tables/rds_main_results.csv\n\n")
+  
+  return(final_results)
 }
 
-# Summary and Results
-cat("=== RDS ANALYSIS PIPELINE COMPLETED ===\n")
-cat("Results available in:\n")
-cat("- Database: output/rds_results_database.RDS\n")
-cat("- Tables: output/tables/\n") 
-cat("  * rds_main_comparison.csv (main text table)\n")
-cat("  * rds_appendix_comparison.csv (appendix table)\n")
-cat("  * rds_method_differences.csv (method comparison)\n")
-cat("  * rds_sensitivity_table.csv (robustness analysis)\n")
-cat("- Figures: output/figures/\n")
-cat("  * rds_main_comparison.png (main text figure)\n")
-cat("  * rds_combined_analysis.png (comprehensive appendix figure)\n")
-cat("- Analysis: output/\n")
-cat("  * rds_model_selection_analysis.RData (preferred method justification)\n")
-cat("  * rds_sensitivity_analysis.RData (robustness assessment)\n")
-cat("\nPreferred Method: RDS-SS (justified by enhanced analysis)\n")
-cat("\nTo run individual components:\n")
-cat("- source('R/analysis/03a-rds_basic_estimation.R')\n")
-cat("- source('R/analysis/03a_enhanced_analysis.R')       # Model selection\n")
-cat("- source('R/analysis/03a_comparison_tables.R')       # Publication tables\n")
-cat("- source('R/analysis/03a_sensitivity_analysis.R')    # Robustness testing\n")
-cat("- source('R/analysis/03a_visualizations.R')          # Publication plots\n")
-cat("- source('R/analysis/03b-rds_model_assisted.R')      # Expensive\n")
-cat("- source('R/analysis/03c-rds_population_size.R')     # Expensive\n") 
-cat("- source('R/analysis/03d-rds_convergence.R')\n")
-cat("- source('R/analysis/03e-rds_bootstrap.R')           # Very expensive\n")
-cat("\nTo access results programmatically:\n")
-cat("- results_db <- readRDS('output/rds_results_database.RDS')\n")
-cat("- basic_results <- get_basic_rds_results()\n")
-cat("- convergence <- load_convergence_results()\n")
+# ============================================================================
+# EXECUTION
+# ============================================================================
 
-# Clean up
-rm(skip_execution)
+# Prevent automatic execution when sourced
+if (!exists("skip_execution") || !skip_execution) {
+  
+  # Check if this is being run from the pipeline
+  if (exists("pipeline_config")) {
+    cat("Running as part of main pipeline\n")
+  } else {
+    cat("Running standalone RDS analysis\n")
+  }
+  
+  # Run analysis
+  rds_results <- main_rds_analysis()
+  
+} else {
+  cat("RDS estimation script loaded (execution skipped)\n")
+}

@@ -22,17 +22,21 @@ pipeline_config <- list(
   run_data_cleaning = TRUE,
   run_data_preparation = TRUE, 
   run_rds_estimation = TRUE,
+  run_bootstrap_analysis = TRUE,
   run_nsum_estimation = TRUE,
-  run_comparison_analysis = TRUE,
   
-  # Analysis parameters
+  # Analysis parameters (consolidated structure)
+  preferred_rds_method = "RDS_SS",
+  preferred_nsum_method = "weighted",
   include_bootstrap = TRUE,
   n_bootstrap = 1000,
   population_sizes = c(50000, 100000, 980000, 1740000),
+  main_population_size = 980000,
   
   # Output options
   save_intermediate_results = TRUE,
-  create_summary_report = TRUE
+  create_summary_report = TRUE,
+  generate_comparison_tables = TRUE
 )
 
 # Set execution flag to prevent scripts from running when sourced
@@ -42,7 +46,9 @@ cat("Pipeline configuration:\n")
 for (step in names(pipeline_config)[1:5]) {
   cat("-", step, ":", pipeline_config[[step]], "\n")
 }
-cat("\n")
+cat("- Preferred models: RDS-SS,", pipeline_config$preferred_nsum_method, "NSUM\n")
+cat("- Main population size:", format(pipeline_config$main_population_size, big.mark = ","), "\n")
+cat("- Bootstrap samples:", pipeline_config$n_bootstrap, "\n\n")
 
 # Step 1: Data Cleaning and Import
 if (pipeline_config$run_data_cleaning) {
@@ -83,28 +89,28 @@ if (pipeline_config$run_rds_estimation) {
   })
 }
 
-# Step 4: NSUM Estimation Analysis  
-if (pipeline_config$run_nsum_estimation) {
-  cat("\nStep 4: NSUM estimation analysis...\n")
+# Step 4: Bootstrap Analysis (Confidence Intervals)
+if (pipeline_config$run_bootstrap_analysis && pipeline_config$include_bootstrap) {
+  cat("\nStep 4: Bootstrap analysis for confidence intervals...\n")
   
   tryCatch({
-    source(here("R", "analysis", "04-nsum_estimation.R"))
-    cat("✓ NSUM estimation completed\n")
+    source(here("R", "analysis", "04-bootstrap_analysis.R"))
+    cat("✓ Bootstrap analysis completed\n")
   }, error = function(e) {
-    cat("✗ NSUM estimation failed:", e$message, "\n")
+    cat("✗ Bootstrap analysis failed:", e$message, "\n")
     return(FALSE)
   })
 }
 
-# Step 5: Comparative Analysis
-if (pipeline_config$run_comparison_analysis) {
-  cat("\nStep 5: RDS vs NSUM comparison analysis...\n")
+# Step 5: NSUM Estimation Analysis  
+if (pipeline_config$run_nsum_estimation) {
+  cat("\nStep 5: NSUM estimation analysis...\n")
   
   tryCatch({
-    source(here("R", "analysis", "05-comparison_analysis.R"))  
-    cat("✓ Comparison analysis completed\n")
+    source(here("R", "analysis", "05-nsum_estimation.R"))
+    cat("✓ NSUM estimation completed\n")
   }, error = function(e) {
-    cat("✗ Comparison analysis failed:", e$message, "\n")
+    cat("✗ NSUM estimation failed:", e$message, "\n")
     return(FALSE)
   })
 }
@@ -123,13 +129,14 @@ if (pipeline_config$create_summary_report) {
       paste("- Cleaned data:", ifelse(file.exists(here("data", "processed", "cleaned_data.RData")), "✓", "✗")),
       paste("- Prepared data:", ifelse(file.exists(here("data", "processed", "prepared_data.RData")), "✓", "✗")),
       paste("- RDS results:", ifelse(file.exists(here("output", "rds_estimation_results.RData")), "✓", "✗")),
+      paste("- Bootstrap results:", ifelse(file.exists(here("output", "bootstrap_results.RData")), "✓", "✗")),
       paste("- NSUM results:", ifelse(file.exists(here("output", "nsum_estimation_results.RData")), "✓", "✗")),
-      paste("- Comparison results:", ifelse(file.exists(here("output", "comparison_analysis_results.RData")), "✓", "✗")),
       "",
       "Analysis parameters:",
-      paste("- Population sizes:", paste(pipeline_config$population_sizes, collapse = ", ")),
+      paste("- Preferred models:", pipeline_config$preferred_rds_method, "&", pipeline_config$preferred_nsum_method, "NSUM"),
+      paste("- Main population size:", format(pipeline_config$main_population_size, big.mark = ",")),
+      paste("- Population scenarios:", paste(pipeline_config$population_sizes, collapse = ", ")),
       paste("- Bootstrap samples:", pipeline_config$n_bootstrap),
-      paste("- Include bootstrap:", pipeline_config$include_bootstrap),
       "",
       "Output locations:",
       "- Tables: output/tables/",
@@ -160,7 +167,7 @@ cat("- Tables: output/tables/\n")
 cat("- Figures: output/figures/\n")
 cat("- Reports: output/reports/\n")
 cat("\nTo run individual analyses:\n")
-cat("- source('R/analysis/03-rds_estimation.R')\n")
-cat("- source('R/analysis/04-nsum_estimation.R')\n") 
-cat("- source('R/analysis/05-comparison_analysis.R')\n")
+cat("- source('R/analysis/03-rds_estimation.R')    # RDS-SS estimation + sensitivity\n")
+cat("- source('R/analysis/04-bootstrap_analysis.R') # Confidence intervals\n") 
+cat("- source('R/analysis/05-nsum_estimation.R')   # NSUM estimation + RDS comparison\n")
 cat("\nSee CLAUDE.md for detailed documentation.\n")

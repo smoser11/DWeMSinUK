@@ -188,3 +188,109 @@ setup_project_environment <- function() {
   
   return(invisible(TRUE))
 }
+
+# ============================================================================
+# RDS ANALYSIS SHARED FUNCTIONS
+# ============================================================================
+
+# RDS Results Database Management
+load_rds_results_database <- function() {
+  results_file <- here("output", "rds_results_database.RDS")
+  
+  if (file.exists(results_file)) {
+    cat("Loading existing RDS results database...\n")
+    return(readRDS(results_file))
+  } else {
+    cat("Creating new RDS results database...\n")
+    return(list())
+  }
+}
+
+save_to_rds_database <- function(results_db, new_results, result_type) {
+  results_file <- here("output", "rds_results_database.RDS")
+  
+  # Add new results to database
+  results_db[[result_type]] <- new_results
+  results_db[[paste0(result_type, "_timestamp")]] <- Sys.time()
+  
+  # Save database
+  saveRDS(results_db, results_file)
+  cat("Results saved to database:", result_type, "\n")
+  
+  return(results_db)
+}
+
+# Parameter ID generation for caching
+create_parameter_id <- function(method, outcome_var, pop_size, additional_params = NULL) {
+  components <- c(method, outcome_var, pop_size)
+  if (!is.null(additional_params)) {
+    components <- c(components, additional_params)
+  }
+  return(paste(components, collapse = "_"))
+}
+
+# CE's comparable indicators specification
+get_comparable_indicators <- function() {
+  return(list(
+    rds_vars = c("document_withholding_rds", "pay_issues_rds", "threats_abuse_rds", 
+                 "excessive_hours_rds", "access_to_help_rds"),
+    nsum_vars = c("document_withholding_nsum", "pay_issues_nsum", "threats_abuse_nsum", 
+                  "excessive_hours_nsum", "access_to_help_nsum"),
+    labels = c(
+      "Document withholding" = "document_withholding",
+      "Pay-related issues" = "pay_issues", 
+      "Threats and abuse" = "threats_abuse",
+      "Excessive working hours" = "excessive_hours",
+      "Limited access to help" = "access_to_help"
+    ),
+    confidence_levels = c(
+      "document_withholding" = "Highest",
+      "pay_issues" = "High",
+      "threats_abuse" = "High", 
+      "excessive_hours" = "Medium",
+      "access_to_help" = "Lowest"
+    )
+  ))
+}
+
+# Publication theme and colors
+theme_rds_publication <- function() {
+  theme_minimal() +
+    theme(
+      text = element_text(size = 12, family = "Arial"),
+      plot.title = element_text(size = 14, face = "bold"),
+      plot.subtitle = element_text(size = 11, color = "gray60"),
+      axis.title = element_text(size = 11),
+      axis.text = element_text(size = 10),
+      legend.title = element_text(size = 11),
+      legend.text = element_text(size = 10),
+      panel.grid.minor = element_blank(),
+      panel.grid.major = element_line(linewidth = 0.5, color = "gray90"),
+      strip.text = element_text(size = 10, face = "bold")
+    )
+}
+
+# Color palette for methods
+get_method_colors <- function() {
+  return(c(
+    "RDS_I" = "#E31A1C", 
+    "RDS_II" = "#1F78B4", 
+    "RDS_SS" = "#33A02C",
+    "Model_Assisted" = "#FF7F00",
+    "NSUM" = "#6A3D9A"
+  ))
+}
+
+# Format estimates for publication
+format_estimate_with_ci <- function(estimate, ci_lower, ci_upper, as_percentage = TRUE) {
+  multiplier <- ifelse(as_percentage, 100, 1)
+  suffix <- ifelse(as_percentage, "%", "")
+  
+  if (is.na(ci_lower) || is.na(ci_upper)) {
+    return(sprintf("%.1f%s", estimate * multiplier, suffix))
+  } else {
+    return(sprintf("%.1f%s (%.1f–%.1f)", 
+                   estimate * multiplier, suffix,
+                   ci_lower * multiplier, ci_upper * multiplier))
+  }
+}
