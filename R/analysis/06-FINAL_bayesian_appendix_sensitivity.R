@@ -53,9 +53,9 @@ final_config <- list(
   
   # Bayesian MCMC parameters (for MA.estimates and posteriorsize)
   # Updated based on convergence diagnostics showing severe autocorrelation
-  bayesian_samplesize = 10000, # Doubled for better convergence
+  bayesian_samplesize = 20000, # Doubled for better convergence
   bayesian_burnin = 50000,     # Much longer burnin for stationarity
-  bayesian_interval = 20,      # More thinning to reduce autocorrelation
+  bayesian_interval = 17,      # More thinning to reduce autocorrelation
   ma_iterations = 10,          # More MA.estimates iterations
   ma_M1 = 100,                 # More networked populations for stability
   ma_M2 = 50,                  # More RDS samples per network
@@ -307,7 +307,7 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
     # Use actual MA.estimates() with improved convergence parameters
     ma_result <- MA.estimates(
       rd.dd, 
-      outcome.variable = outcome_var,
+      trait.variable = outcome_var,                       # Correct parameter name
       N = population_size,
       number.of.iterations = final_config$ma_iterations,  # Now 10
       M1 = final_config$ma_M1,                           # Now 100

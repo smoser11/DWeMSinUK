@@ -226,7 +226,7 @@ run_ma_estimates_diagnostics <- function(outcome_var, population_size) {
   ma_result <- tryCatch({
     MA.estimates(
       rd.dd, 
-      outcome.variable = outcome_var,
+      trait.variable = outcome_var,  # Correct parameter name
       N = population_size,
       number.of.iterations = convergence_config$ma_diagnostic_iterations,
       M1 = convergence_config$ma_diagnostic_M1,
@@ -399,7 +399,7 @@ create_model_comparison_plots <- function(results_df) {
   
   sensitivity_plot <- plot_data %>%
     ggplot(aes(x = pop_size_factor, y = estimate_pct, color = method_clean, group = method_clean)) +
-    geom_line(size = 1) +
+    geom_line(linewidth = 1) +
     geom_point(size = 2) +
     geom_errorbar(aes(ymin = ci_lower_pct, ymax = ci_upper_pct), width = 0.2) +
     facet_wrap(~indicator_clean, scales = "free_y") +
