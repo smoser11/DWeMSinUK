@@ -10,7 +10,7 @@ date: today
 date-format: "DD, MMMM YYYY"
 bibliography: 
     - references.bib
-    - MyLibrary31-07-2025.bib #CitedReferencesOnly.bib #MyLibrary_Corrected.bib
+    - MyLibrary2025-08-22.bib #CitedReferencesOnly.bib #MyLibrary_Corrected.bib
 csl: apa.csl
 citeproc: true
 # filters:
