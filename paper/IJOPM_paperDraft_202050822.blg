@@ -1,0 +1,107 @@
+[0] Config.pm:328> INFO - This is Biber 2.21
+[0] Config.pm:331> INFO - Logfile is 'IJOPM_paperDraft_202050822.blg'
+[49] biber-darwin:342> INFO - === Sat Aug 23, 2025, 14:44:37
+[60] Biber.pm:421> INFO - Reading 'IJOPM_paperDraft_202050822.bcf'
+[120] Biber.pm:1002> INFO - Found 64 citekeys in bib section 0
+[131] Biber.pm:4487> INFO - Processing section 0
+[138] Biber.pm:4678> INFO - Looking for bibtex file 'references.bib' for section 0
+[282] bibtex.pm:1713> INFO - LaTeX decoding ...
+[10726] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
+[11378] Biber.pm:4678> INFO - Looking for bibtex file 'MyLibrary2025-08-22.bib' for section 0
+[11388] bibtex.pm:1713> INFO - LaTeX decoding ...
+[11689] bibtex.pm:1519> INFO - Found BibTeX data source 'MyLibrary2025-08-22.bib'
+[11715] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[11715] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[11715] Biber.pm:4307> INFO - Sorting list 'nyt/global//global/global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[11715] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[11715] bbl.pm:676> INFO - Writing 'IJOPM_paperDraft_202050822.bbl' with encoding 'UTF-8'
+[11715] bbl.pm:779> INFO - Output to IJOPM_paperDraft_202050822.bbl
+[11715] Biber.pm:132> WARN - Duplicate entry key: '14-workshop' in file 'references.bib', skipping ...
+[11715] Biber.pm:132> WARN - Duplicate entry key: 'bach03-special' in file 'references.bib', skipping ...
+[11716] Biber.pm:132> WARN - Citekey alias 'bane93-cointegrationa' is also a real entry key, skipping ...
+[11716] Biber.pm:132> WARN - Citekey alias 'beck01-timeseriescrosssectiona' is also a real entry key, skipping ...
+[11716] Biber.pm:132> WARN - Duplicate entry key: 'calv95-rational' in file 'references.bib', skipping ...
+[11716] Biber.pm:132> WARN - Entry alias '-research' is also a real entry key, skipping ...
+[11716] Biber.pm:132> WARN - Entry alias 'heal18-dataa' already has an alias 'heal18-1', skipping ...
+[11716] Biber.pm:132> WARN - Entry alias 'heal18-dataa' already has an alias 'heal18-1', skipping ...
+[11716] Biber.pm:132> WARN - Entry alias 'heal18-dataa' already has an alias 'heal18-1', skipping ...
+[11716] Biber.pm:132> WARN - Entry alias 'heal18-dataa' already has an alias 'heal18-1', skipping ...
+[11716] Biber.pm:132> WARN - Entry alias 'heal18-dataa' already has an alias 'heal18-1', skipping ...
+[11716] Biber.pm:132> WARN - Entry alias 'heal18-dataa' already has an alias 'heal18-1', skipping ...
+[11716] Biber.pm:132> WARN - Duplicate entry key: 'jaff47-essay' in file 'references.bib', skipping ...
+[11716] Biber.pm:132> WARN - Citekey alias 'kame18-bayesian' is also a real entry key, skipping ...
+[11716] Biber.pm:132> WARN - Entry alias 'mora18-issuea' already has an alias 'mora18-supporting', skipping ...
+[11716] Biber.pm:132> WARN - Citekey alias 'mura68-logic' is also a real entry key, skipping ...
+[11716] Biber.pm:132> WARN - Citekey alias 'ok02-utility' is also a real entry key, skipping ...
+[11716] Biber.pm:132> WARN - Duplicate entry key: 'rae71-political' in file 'references.bib', skipping ...
+[11716] Biber.pm:132> WARN - Entry alias 'sark10-resorta' already has an alias 'sark10-chapter', skipping ...
+[11716] Biber.pm:132> WARN - Entry alias 'karc14-rapid' is also a real entry key, skipping ...
+[11716] Biber.pm:132> WARN - Entry alias 'alle92-congress' is also a real entry key, skipping ...
+[11716] Biber.pm:132> WARN - Duplicate entry key: 'gile18-methods' in file 'MyLibrary2025-08-22.bib', skipping ...
+[11716] Biber.pm:132> WARN - Duplicate entry key: 'ILO11-indicators' in file 'MyLibrary2025-08-22.bib', skipping ...
+[11716] Biber.pm:132> WARN - Duplicate entry key: 'ILO11-c189domestic' in file 'MyLibrary2025-08-22.bib', skipping ...
+[11716] Biber.pm:132> WARN - I didn't find a database entry for 'ref-european_union_for_fundamental_rights_severe_2015' (section 0)
+[11716] Biber.pm:132> WARN - I didn't find a database entry for 'ref-chinander_aligning_2001' (section 0)
+[11716] Biber.pm:132> WARN - I didn't find a database entry for 'ref-wolf_operationalizing_2001' (section 0)
+[11716] Biber.pm:132> WARN - I didn't find a database entry for 'ref-gold_modern_2015' (section 0)
+[11716] Biber.pm:132> WARN - I didn't find a database entry for 'ref-new_modern_2015' (section 0)
+[11716] Biber.pm:132> WARN - I didn't find a database entry for 'ref-benstead_horizontal_2018' (section 0)
+[11716] Biber.pm:132> WARN - I didn't find a database entry for 'ref-stevenson_modern_2018' (section 0)
+[11716] Biber.pm:132> WARN - I didn't find a database entry for 'ref-soundararajan_humanizing_2021' (section 0)
+[11716] Biber.pm:132> WARN - I didn't find a database entry for 'ref-leverhulme_trust_research_2022' (section 0)
+[11716] Biber.pm:132> WARN - I didn't find a database entry for 'ref-international_labour_organization_global_2022' (section 0)
+[11716] Biber.pm:132> WARN - I didn't find a database entry for 'ref-bonnet_domestic_2022' (section 0)
+[11716] Biber.pm:132> WARN - I didn't find a database entry for 'ref-home_office_modern_2025' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-carter_women_2025' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-kalayaan_new_2008' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-mantouvalou_modern_2016' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-latin_american_womens_rights_service_behind_2023' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-caruana_boundaries_2025' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-stephens_theorising_2024' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-oconnell_davidson_margins_2015' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-gutierrez-huerter_o_change_2023' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-ILO11-indicators' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-juttner_supply_2003' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-anderson_critical_2006' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-anderson_sustainability_2009' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-tarei_hybrid_2018' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-dellana_scale_2021' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-european_commission_staff_2012' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-manoudi_analysis_2018' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-home_office_why_2023' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-strauss_britain_2023' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-gower_calls_2016' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-romero_blueprint_2025' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-heckathorn_comment_2011' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-gile_methods_2018' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-frank_estimating_1994' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-heckathorn_respondent-driven_1997' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-heckathorn_respondent-driven_2002' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-gile_network_2015' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-goodman_comment_2011' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-mccreesh_respondent_2013' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-vincent_estimating_2017' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-mccreesh_evaluation_2012' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-schwitters_prevalence_2012' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-mccreesh_evaluation_2011' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-tyldum_surveying_2021' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-zhang_measuring_2012' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-bernhardt_broken_2009' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-zhang_victims_2019' (section 0)
+[11717] Biber.pm:132> WARN - I didn't find a database entry for 'ref-jordan_overcoming_2020' (section 0)
+[11718] Biber.pm:132> WARN - I didn't find a database entry for 'ref-wejnert_web-based_2008' (section 0)
+[11718] Biber.pm:132> WARN - I didn't find a database entry for 'ref-thompson_new_2020' (section 0)
+[11718] Biber.pm:132> WARN - I didn't find a database entry for 'ref-wang_respondent-driven_2005' (section 0)
+[11718] Biber.pm:132> WARN - I didn't find a database entry for 'ref-abdul-quader_effectiveness_2006' (section 0)
+[11718] Biber.pm:132> WARN - I didn't find a database entry for 'ref-singer_incentives_2006' (section 0)
+[11718] Biber.pm:132> WARN - I didn't find a database entry for 'ref-dejong_ethical_2009' (section 0)
+[11718] Biber.pm:132> WARN - I didn't find a database entry for 'ref-semaan_ethical_2009' (section 0)
+[11718] Biber.pm:132> WARN - I didn't find a database entry for 'ref-brunovskis_untold_2010' (section 0)
+[11718] Biber.pm:132> WARN - I didn't find a database entry for 'ref-semaan_time-space_2010' (section 0)
+[11718] Biber.pm:132> WARN - I didn't find a database entry for 'ref-platt_adapting_2015' (section 0)
+[11718] Biber.pm:132> WARN - I didn't find a database entry for 'ref-cobanoglu_effect_2003' (section 0)
+[11718] Biber.pm:132> WARN - I didn't find a database entry for 'ref-brown_you_2006' (section 0)
+[11718] Biber.pm:132> WARN - I didn't find a database entry for 'ref-laguilles_can_2011' (section 0)
+[11718] Biber.pm:132> WARN - I didn't find a database entry for 'ref-gajic_cost-effectiveness_2012' (section 0)
+[11718] Biber.pm:132> WARN - I didn't find a database entry for 'ref-robinson_sampling_2014' (section 0)
+[11718] Biber.pm:134> INFO - WARNINGS: 88

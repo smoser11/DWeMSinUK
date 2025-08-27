@@ -12,7 +12,7 @@ bibliography:
     - references.bib
     - MyLibrary2025-08-22.bib #CitedReferencesOnly.bib #MyLibrary_Corrected.bib
 csl: apa.csl
-citeproc: true
+#citeproc: true
 # filters:
 #   - citefield.lua #https://github.com/bcdavasconcelos/cite-field
 reference-section-title: ""
@@ -27,6 +27,7 @@ execute:
 format:
   pdf:
     keep-tex: true
+  #  template: null
     documentclass: article
     #pdf-engine: xelatex
     #cite-method: biblatex
@@ -42,9 +43,18 @@ format:
     fig-width: 8
     fig-height: 5
     pandoc:
-      from: markdown+tex_math_dollars+tex_math_single_backslash    
+      from: markdown+tex_math_dollars+tex_math_single_backslash
     include-in-header:
       text: |
+        \usepackage[
+        backend=biber,
+        style=authoryear,      % Change style here: apa, chicago, numeric...
+        sorting=nyt,           % Name, Year, Title sorting
+        maxcitenames=2,        % Truncate long author lists
+        natbib=true
+        ]{biblatex}
+        \addbibresource{references.bib}
+        \addbibresource{MyLibrary2025-08-22}
         \usepackage{amsthm}
         \usepackage{amsmath}
         \usepackage{amsfonts}

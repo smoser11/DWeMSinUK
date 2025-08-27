@@ -179,6 +179,15 @@
  
 
 
+\usepackage[
+backend=biber,
+style=authoryear,      % Change style here: apa, chicago, numeric...
+sorting=nyt,           % Name, Year, Title sorting
+maxcitenames=2,        % Truncate long author lists
+natbib=true
+]{biblatex}
+\addbibresource{references.bib}
+\addbibresource{MyLibrary2025-08-22.bib}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -271,7 +280,7 @@ transnational domestic workers in the UK}
 \subtitle{Modern Slavery Among Domestic Workers: Comprehensive RDS
 Analysis}
 \author{Caroline Emberson \and Scott Moser}
-\date{22, August 2025}
+\date{23, August 2025}
 \begin{document}
 \maketitle
 
@@ -881,6 +890,8 @@ communities used to seed the survey.
 \section{Conclusion}\label{conclusion}
 
 \newpage
+
+\printbibliography
 
 \newpage
 
