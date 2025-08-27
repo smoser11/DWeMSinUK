@@ -382,6 +382,7 @@ estimate_final_posteriorsize <- function(outcome_var, population_size) {
       verbose = FALSE
     )
     
+    
     # Extract population size estimates with credible intervals (built-in!)
     if (!is.null(ps_result$N) && length(ps_result$N) >= 5) {
       # ps_result$N contains: MAP, Mean, Median, P025, P975
