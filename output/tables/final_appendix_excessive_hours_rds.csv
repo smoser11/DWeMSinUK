@@ -1,5 +1,4 @@
 "method_clean","uncertainty_clean","method_type","1.74M","100K","50K","980K"
-"posteriorsize()","Bayesian CI","bayesian","83.7% (71.9–95.6)","83.7% (72.3–95.1)","83.7% (72.3–95.2)","83.7% (72.4–95.1)"
 "RDS-I","Asymptotic","frequentist","92.8% (CI not available)","92.8% (CI not available)","92.8% (CI not available)","92.8% (CI not available)"
-"RDS-II","Bootstrap","frequentist","83.7% (72.7–93.1)","83.7% (71.9–93.8)","83.7% (71.1–93.5)","83.7% (71.8–93.0)"
-"RDS-SS","Bootstrap","frequentist","83.7% (72.5–92.7)","83.7% (72.3–93.2)","83.7% (72.4–93.1)","83.7% (71.9–93.1)"
+"RDS-II","Bootstrap","frequentist","83.7% (71.8–93.0)","83.7% (72.0–93.4)","83.7% (71.2–93.3)","83.7% (71.9–93.4)"
+"RDS-SS","Bootstrap","frequentist","83.7% (72.3–93.4)","83.7% (72.1–93.2)","83.7% (71.7–93.2)","83.7% (71.9–93.0)"

@@ -701,12 +701,17 @@ create_final_comparison_tables <- function(results_df) {
              estimate_with_ci, uncertainty_clean, method_type) %>%
       arrange(pop_label, method_clean)
     
-    # Create wide table format
+    # Create wide table format with duplicate handling
     wide_table <- indicator_data %>%
+      # First, handle duplicates by taking the first occurrence
+      group_by(method_clean, uncertainty_clean, method_type, pop_label) %>%
+      slice(1) %>%
+      ungroup() %>%
       pivot_wider(
         names_from = pop_label,
         values_from = estimate_with_ci,
-        id_cols = c(method_clean, uncertainty_clean, method_type)
+        id_cols = c(method_clean, uncertainty_clean, method_type),
+        values_fn = first  # Take first value if still duplicates
       ) %>%
       arrange(method_type, method_clean)
     
@@ -820,6 +825,16 @@ if (!exists("skip_execution") || !skip_execution) {
   
   # Run final analysis
   final_results <- main_final_appendix_analysis()
+  
+  # Make key objects available in global environment
+  results_df <<- final_results$results_df
+  comparison_tables <<- final_results$comparison_tables
+  master_table <<- final_results$master_table
+  
+  cat("Key objects available in global environment:\n")
+  cat("- results_df: Main results data frame\n")
+  cat("- comparison_tables: List of tables by indicator\n") 
+  cat("- master_table: Master comparison table\n\n")
   
 } else {
   cat("FINAL appendix analysis script loaded (execution skipped)\n")
