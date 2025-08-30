@@ -47,7 +47,7 @@ final_config <- list(
                  "composite_risk", "whether_exploitation"),
   
   # Bootstrap parameters (ONLY for frequentist methods)
-  n_bootstrap_freq = 1000,  # For RDS-I, RDS-II, RDS-SS
+  n_bootstrap_freq = 5000,  # For RDS-I, RDS-II, RDS-SS
   confidence_level = 0.95,
   quantiles = c(0.025, 0.975),
   
@@ -55,13 +55,13 @@ final_config <- list(
   # Updated based on convergence diagnostics showing severe autocorrelation
   bayesian_samplesize = 20000, # Doubled for better convergence
   bayesian_burnin = 50000,     # Much longer burnin for stationarity
-  bayesian_interval = 17,      # More thinning to reduce autocorrelation
+  bayesian_interval = 21,      # More thinning to reduce autocorrelation
   ma_iterations = 10,          # More MA.estimates iterations
   ma_M1 = 100,                 # More networked populations for stability
   ma_M2 = 50,                  # More RDS samples per network
   
   # Computational parameters
-  parallel_cores = 4,
+  parallel_cores = 12,
   
   # Output control
   save_detailed_results = TRUE,
@@ -153,7 +153,7 @@ check_mcmc_convergence <- function(mcmc_samples, method_name = "MCMC") {
 # ============================================================================
 
 # RDS-I with neighb() bootstrap (frequentist)
-estimate_final_rds_i <- function(outcome_var, n_bootstrap = 1000) {
+estimate_final_rds_i <- function(outcome_var, n_bootstrap = 5000) {
   tryCatch({
     # Point estimate
     result <- RDS.I.estimates(rd.dd, outcome.variable = outcome_var)
@@ -214,7 +214,7 @@ estimate_final_rds_i <- function(outcome_var, n_bootstrap = 1000) {
 }
 
 # RDS-II with bootstrap (frequentist)
-estimate_final_rds_ii <- function(outcome_var, n_bootstrap = 1000) {
+estimate_final_rds_ii <- function(outcome_var, n_bootstrap = 5000) {
   tryCatch({
     # Point estimate
     result <- RDS.II.estimates(rd.dd, outcome.variable = outcome_var)
@@ -258,7 +258,7 @@ estimate_final_rds_ii <- function(outcome_var, n_bootstrap = 1000) {
 }
 
 # RDS-SS with bootstrap (frequentist)
-estimate_final_rds_ss <- function(outcome_var, population_size, n_bootstrap = 1000) {
+estimate_final_rds_ss <- function(outcome_var, population_size, n_bootstrap = 5000) {
   tryCatch({
     # Point estimate
     result <- RDS.SS.estimates(rd.dd, outcome.variable = outcome_var, N = population_size)
@@ -379,7 +379,7 @@ estimate_final_posteriorsize <- function(outcome_var, population_size) {
       burnin = final_config$bayesian_burnin,            # Now 50,000  
       interval = final_config$bayesian_interval,        # Now 20
       parallel = final_config$parallel_cores,
-      verbose = FALSE
+      verbose = TRUE
     )
     
     
