@@ -300,6 +300,22 @@ As the network structure of our sample demonstrates, even with a well-designed i
 
 # Appendix A
 
+## The Survey
+
+(From codebook)
+
+Compare corresponding survey questions between RDS and NSUM methods:
+
+Q70/Q71 (document withholding)
+Q39+Q42/Q43 (pay issues)
+Q45+Q47+Q48/Q49 (abuse/threats)
+Q61+Q62/Q64 (excessive hours)
+Q78/Q79 (access to help)
+
+
+
+# Appendix B
+
 ```{r setu, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 library(tidyverse)
