@@ -1,0 +1,2 @@
+"indicator","pop_size","pop_label","method","method_type","estimate","se","ci_lower","ci_upper","uncertainty_method","convergence_info","error_msg","indicator_clean","method_clean","uncertainty_clean","estimate_pct","ci_lower_pct","ci_upper_pct","se_pct","estimate_with_ci"
+"document_withholding_rds",980000,"980K","MA_estimates","bayesian",NA,NA,NA,NA,NA,"No info","error reading from connection","Document withholding","MA.estimates()",NA,NA,NA,NA,NA,"NA% (CI not available)"
