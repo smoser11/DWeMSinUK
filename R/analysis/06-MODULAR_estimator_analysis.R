@@ -39,13 +39,18 @@ modular_config <- list(
   available_methods = c("RDS_I", "RDS_II", "RDS_SS", "MA_estimates", "posteriorsize"),
   
   # Population sizes for sensitivity analysis
-  population_sizes = c(50000, 100000, 980000, 1740000),
-  population_labels = c("50K", "100K", "980K", "1.74M"),
-
+  # population_sizes = c(50000, 100000, 980000, 1740000),
+  # population_labels = c("50K", "100K", "980K", "1.74M"),
+  population_sizes = c(980000),
+  population_labels = c("980K"),
   
-  # All indicators to test
-  indicators = c(get_comparable_indicators()$rds_vars, 
-                 "composite_risk", "whether_exploitation"),
+  # # All indicators to test
+  # indicators = c(get_comparable_indicators()$rds_vars,            "composite_risk", "whether_exploitation"),
+  indicators = c("document_withholding_rds"),  # Just one indicator
+  ma_iterations = 2,    # Was 3
+  ma_M1 = 5000,        # Was 10000  
+  ma_M2 = 2500,        # Was 5000
+  
   
   # Bootstrap parameters (ONLY for frequentist methods)
   n_bootstrap_freq = 5000,  # For RDS-I, RDS-II, RDS-SS
@@ -56,12 +61,12 @@ modular_config <- list(
   bayesian_samplesize = 20000, # Doubled for better convergence  20k
   bayesian_burnin = 50000,     # Much longer burnin for stationarity  50k
   bayesian_interval = 21,      # More thinning to reduce autocorrelation
-  ma_iterations = 3,          # More MA.estimates iterations  -- 3
-  ma_M1 = 10000,                 # More networked populations for stability -- 10K-50K
-  ma_M2 = 5000,                  # More RDS samples per network 5K - 25K
+  # ma_iterations = 3,          # More MA.estimates iterations  -- 3
+  # ma_M1 = 10000,                 # More networked populations for stability -- 10K-50K
+  # ma_M2 = 5000,                  # More RDS samples per network 5K - 25K
   
   # Computational parameters
-  parallel_cores = 18,
+  parallel_cores = 8,
   
   # Output control
   save_detailed_results = TRUE,
@@ -816,21 +821,46 @@ run_ma_estimates_analysis <- function(indicators = NULL, population_sizes = NULL
     
     cat("Processing MA.estimates for:", indicator, "\n")
     
+    # Process each indicator separately for memory management
+    indicator_results <- list()
+    indicator_count <- 0
+    
     for (pop_size in population_sizes) {
       result_count <- result_count + 1
+      indicator_count <- indicator_count + 1
+      
+      # Print memory usage before estimation
+      cat("  Memory before:", format(object.size(environment()), units = "MB"), "\n")
       
       result <- estimate_final_ma_estimates(indicator, pop_size)
       result$indicator <- indicator
       result$pop_size <- pop_size
       result$pop_label <- modular_config$population_labels[which(modular_config$population_sizes == pop_size)]
       
+      indicator_results[[indicator_count]] <- result
       ma_results[[result_count]] <- result
       
       if (any(!is.na(result$estimate))) {
         cat("  Pop", format(pop_size, big.mark = ","), ":", 
             sprintf("%.2f%% (%.2f-%.2f)", result$estimate*100, result$ci_lower*100, result$ci_upper*100), "\n")
       }
+      
+      # Force garbage collection after each population size
+      gc()
+      cat("  Memory after GC:", format(object.size(environment()), units = "MB"), "\n")
     }
+    
+    # Save results for this indicator immediately
+    if (save_results) {
+      indicator_file <- here("output", paste0("ma_estimates_", indicator, "_results.RData"))
+      save(indicator_results, file = indicator_file)
+      cat("  Saved results for", indicator, "to", basename(indicator_file), "\n")
+    }
+    
+    # Aggressive memory cleanup
+    rm(indicator_results)
+    gc()
+    cat("Completed indicator:", indicator, "- Memory after cleanup:", format(object.size(environment()), units = "MB"), "\n\n")
   }
   
   # Process results
