@@ -317,6 +317,18 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
     # Extract Bayesian credible intervals (built-in!)
     point_estimate <- ma_result$estimate
     
+    # Debug: Print MA.estimates structure
+    cat("Debug MA.estimates structure:\n")
+    cat("Names:", names(ma_result), "\n")
+    if (!is.null(ma_result$interval)) {
+      cat("Interval class:", class(ma_result$interval), "\n")
+      if (is.matrix(ma_result$interval)) {
+        cat("Interval colnames:", colnames(ma_result$interval), "\n")
+        cat("Interval content:\n")
+        print(ma_result$interval)
+      }
+    }
+    
     # MA.estimates returns interval with confidence bounds
     if (!is.null(ma_result$interval) && is.matrix(ma_result$interval)) {
       interval_data <- ma_result$interval
@@ -625,7 +637,7 @@ run_rds_i_analysis <- function(indicators = NULL, population_sizes = NULL,
       
       rds_i_results[[result_count]] <- result
       
-      if (!is.na(result$estimate)) {
+      if (any(!is.na(result$estimate))) {
         cat("  Pop", format(pop_size, big.mark = ","), ":", 
             sprintf("%.2f%% (%.2f-%.2f)", result$estimate*100, result$ci_lower*100, result$ci_upper*100), "\n")
       }
@@ -684,7 +696,7 @@ run_rds_ii_analysis <- function(indicators = NULL, population_sizes = NULL,
       
       rds_ii_results[[result_count]] <- result
       
-      if (!is.na(result$estimate)) {
+      if (any(!is.na(result$estimate))) {
         cat("  Pop", format(pop_size, big.mark = ","), ":", 
             sprintf("%.2f%% (%.2f-%.2f)", result$estimate*100, result$ci_lower*100, result$ci_upper*100), "\n")
       }
@@ -743,7 +755,7 @@ run_rds_ss_analysis <- function(indicators = NULL, population_sizes = NULL,
       
       rds_ss_results[[result_count]] <- result
       
-      if (!is.na(result$estimate)) {
+      if (any(!is.na(result$estimate))) {
         cat("  Pop", format(pop_size, big.mark = ","), ":", 
             sprintf("%.2f%% (%.2f-%.2f)", result$estimate*100, result$ci_lower*100, result$ci_upper*100), "\n")
       }
@@ -803,7 +815,7 @@ run_ma_estimates_analysis <- function(indicators = NULL, population_sizes = NULL
       
       ma_results[[result_count]] <- result
       
-      if (!is.na(result$estimate)) {
+      if (any(!is.na(result$estimate))) {
         cat("  Pop", format(pop_size, big.mark = ","), ":", 
             sprintf("%.2f%% (%.2f-%.2f)", result$estimate*100, result$ci_lower*100, result$ci_upper*100), "\n")
       }
@@ -863,7 +875,7 @@ run_posteriorsize_analysis <- function(indicators = NULL, population_sizes = NUL
       
       ps_results[[result_count]] <- result
       
-      if (!is.na(result$estimate)) {
+      if (any(!is.na(result$estimate))) {
         cat("  Pop", format(pop_size, big.mark = ","), ":", 
             sprintf("%.2f%% (%.2f-%.2f)", result$estimate*100, result$ci_lower*100, result$ci_upper*100), "\n")
       }
