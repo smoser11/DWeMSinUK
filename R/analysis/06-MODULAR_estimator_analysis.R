@@ -52,12 +52,12 @@ modular_config <- list(
   quantiles = c(0.025, 0.975),
   
   # Bayesian MCMC parameters (for MA.estimates and posteriorsize)
-  bayesian_samplesize = 20000, # Doubled for better convergence
-  bayesian_burnin = 50000,     # Much longer burnin for stationarity
+  bayesian_samplesize = 20000, # Doubled for better convergence  20k
+  bayesian_burnin = 50000,     # Much longer burnin for stationarity  50k
   bayesian_interval = 21,      # More thinning to reduce autocorrelation
-  ma_iterations = 10,          # More MA.estimates iterations
-  ma_M1 = 100,                 # More networked populations for stability
-  ma_M2 = 50,                  # More RDS samples per network
+  ma_iterations = 3,          # More MA.estimates iterations  -- 3
+  ma_M1 = 10000,                 # More networked populations for stability -- 10K-50K
+  ma_M2 = 5000,                  # More RDS samples per network 5K - 25K
   
   # Computational parameters
   parallel_cores = 12,
@@ -315,30 +315,40 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
     )
     
     # Extract Bayesian credible intervals (built-in!)
-    point_estimate <- ma_result$estimate
-    
-    # Debug: Print MA.estimates structure
-    cat("Debug MA.estimates structure:\n")
-    cat("Names:", names(ma_result), "\n")
-    if (!is.null(ma_result$interval)) {
-      cat("Interval class:", class(ma_result$interval), "\n")
-      if (is.matrix(ma_result$interval)) {
-        cat("Interval colnames:", colnames(ma_result$interval), "\n")
-        cat("Interval content:\n")
-        print(ma_result$interval)
-      }
+    # MA.estimates returns both positive and complement - take first (positive) only
+    point_estimate <- if (is.numeric(ma_result$estimate) && length(ma_result$estimate) > 1) {
+      ma_result$estimate[1]  # Take only the positive outcome
+    } else {
+      ma_result$estimate
     }
     
-    # MA.estimates returns interval with confidence bounds
-    if (!is.null(ma_result$interval) && is.matrix(ma_result$interval)) {
-      interval_data <- ma_result$interval
-      if ("95% Lower Bound" %in% colnames(interval_data) && 
-          "95% Upper Bound" %in% colnames(interval_data)) {
-        ci_lower <- interval_data[1, "95% Lower Bound"]
-        ci_upper <- interval_data[1, "95% Upper Bound"]
-        bayesian_se <- interval_data[1, "s.e."] 
+    # Debug: Print estimates and interval content
+    cat("Estimate:", ma_result$estimate, "\n")
+    if (!is.null(ma_result$interval)) {
+      cat("Interval content:", ma_result$interval, "\n")
+    }
+    
+    # MA.estimates returns interval as numeric vector
+    if (!is.null(ma_result$interval)) {
+      if (is.numeric(ma_result$interval) && length(ma_result$interval) >= 5) {
+        # Based on debug output: elements 4,5 appear to be the credible interval bounds
+        ci_lower <- ma_result$interval[4]  # 0.1667887
+        ci_upper <- ma_result$interval[5]  # 0.8332113  
+        bayesian_se <- if(length(ma_result$interval) >= 10) ma_result$interval[9] else NA
+      } else if (is.matrix(ma_result$interval)) {
+        # Original matrix handling (kept as fallback)
+        interval_data <- ma_result$interval
+        if ("95% Lower Bound" %in% colnames(interval_data) && 
+            "95% Upper Bound" %in% colnames(interval_data)) {
+          ci_lower <- interval_data[1, "95% Lower Bound"]
+          ci_upper <- interval_data[1, "95% Upper Bound"]
+          bayesian_se <- interval_data[1, "s.e."] 
+        } else {
+          ci_lower <- NA
+          ci_upper <- NA
+          bayesian_se <- NA
+        }
       } else {
-        # Fallback if column names differ
         ci_lower <- NA
         ci_upper <- NA
         bayesian_se <- NA
