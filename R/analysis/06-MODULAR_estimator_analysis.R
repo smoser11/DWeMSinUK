@@ -1027,7 +1027,7 @@ create_selective_comparison_table <- function(results_df, methods = NULL,
     arrange(indicator_clean)
   
   if (save_table) {
-    filename <- paste0(table_name, "_", format(population_size/1000, digits = 0), "k.csv")
+    filename <- paste0(table_name, "_", format(population_size/1000, digits = 1, nsmall = 0), "k.csv")
     write.csv(comparison_table, here("output", "tables", filename), row.names = FALSE)
     cat("Table saved:", filename, "\n")
   }
