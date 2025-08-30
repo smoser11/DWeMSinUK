@@ -41,6 +41,7 @@ modular_config <- list(
   # Population sizes for sensitivity analysis
   population_sizes = c(50000, 100000, 980000, 1740000),
   population_labels = c("50K", "100K", "980K", "1.74M"),
+
   
   # All indicators to test
   indicators = c(get_comparable_indicators()$rds_vars, 
@@ -60,7 +61,7 @@ modular_config <- list(
   ma_M2 = 5000,                  # More RDS samples per network 5K - 25K
   
   # Computational parameters
-  parallel_cores = 12,
+  parallel_cores = 18,
   
   # Output control
   save_detailed_results = TRUE,
@@ -1220,7 +1221,10 @@ print_usage_examples <- function() {
   cat("   freq_results <- run_frequentist_methods()\n\n")
   
   cat("9. Run all Bayesian methods:\n")
-  cat("   bayes_results <- run_bayesian_methods()\n\n")
+  cat("   bayes_results <- run_bayesian_methods()\n
+  population_sizes  <- 980000 \n
+      ma_analysis <- run_ma_estimates_analysis()
+      \n")
 }
 
 # ============================================================================
