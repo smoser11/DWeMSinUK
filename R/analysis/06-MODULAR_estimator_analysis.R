@@ -51,6 +51,9 @@ modular_config <- list(
   ma_M1 = 1000,        # Was 10000  
   ma_M2 = 500,        # Was 5000
   
+  # Computational parameters
+  parallel_cores = 1,
+  n_bootstrap = NULL,
   
   # Bootstrap parameters (ONLY for frequentist methods)
   n_bootstrap_freq = 10000,  # For RDS-I, RDS-II, RDS-SS
@@ -65,9 +68,7 @@ modular_config <- list(
   # ma_M1 = 10000,                 # More networked populations for stability -- 10K-50K
   # ma_M2 = 5000,                  # More RDS samples per network 5K - 25K
   
-  # Computational parameters
-  parallel_cores = 4,
-  
+
   # Output control
   save_detailed_results = TRUE,
   create_comparison_tables = TRUE,
@@ -854,7 +855,6 @@ run_ma_estimates_analysis <- function(indicators = NULL, population_sizes = NULL
   
   if (is.null(indicators)) indicators <- modular_config$indicators
   if (is.null(population_sizes)) population_sizes <- modular_config$population_sizes
-  if (is.null(n_bootstrap)) n_bootstrap <- modular_config$n_bootstrap_freq
   
   cat("=== MA.estimates Analysis (Standalone Bayesian) ===\n")
   cat("Indicators:", length(indicators), "\n")
@@ -945,7 +945,6 @@ run_posteriorsize_analysis <- function(indicators = NULL, population_sizes = NUL
   
   if (is.null(indicators)) indicators <- modular_config$indicators
   if (is.null(population_sizes)) population_sizes <- modular_config$population_sizes
-  if (is.null(n_bootstrap)) n_bootstrap <- modular_config$n_bootstrap_freq
   
   cat("=== posteriorsize Analysis (Standalone Bayesian) ===\n")
   cat("Indicators:", length(indicators), "\n")
