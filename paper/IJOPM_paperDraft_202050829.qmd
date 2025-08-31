@@ -237,6 +237,7 @@ Of the 97 respondents, 64 (66% of the total), and the largest single nationality
 
 ## Network Structure
 
+GRAPH HERE.
 
 # Findings
 
@@ -300,17 +301,39 @@ As the network structure of our sample demonstrates, even with a well-designed i
 
 # Appendix A
 
+
+
+
+Population Parameters
+
+
+Use ~980,000 as UK domestic worker population estimate (EU data)
+Use 44,360 as NRM adult referrals baseline
+Address treatment of "don't know" responses and zero network size claims
+Consider separate analysis for Filipino subgroup
+
+
+
+
+
 ## The Survey
 
 (From codebook)
 
 Compare corresponding survey questions between RDS and NSUM methods:
 
-Q70/Q71 (document withholding)
-Q39+Q42/Q43 (pay issues)
-Q45+Q47+Q48/Q49 (abuse/threats)
-Q61+Q62/Q64 (excessive hours)
-Q78/Q79 (access to help)
+- Q70/Q71 (document withholding)
+- Q39+Q42/Q43 (pay issues)
+- Q45+Q47+Q48/Q49 (abuse/threats)
+- Q61+Q62/Q64 (excessive hours)
+- Q78/Q79 (access to help)
+
+Risk Index Implementation
+
+- Clean coding for 13 risk categories with proper weightings
+- NRM referral (0.35)
+- Forced labor indicators (0.55 total)
+- Below minimum wage (0.10)
 
 
 
