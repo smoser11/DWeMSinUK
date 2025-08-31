@@ -45,15 +45,15 @@ modular_config <- list(
   population_labels = c("980K"),
   
   # # All indicators to test
-  # indicators = c(get_comparable_indicators()$rds_vars,            "composite_risk", "whether_exploitation"),
-  indicators = c("pay_issues_rds"   ,        "threats_abuse_rds"),  # Just one indicator
+  indicators = c(get_comparable_indicators()$rds_vars,            "composite_risk", "whether_exploitation"),
+  #indicators = c("pay_issues_rds"   ,        "threats_abuse_rds"),  # Just one indicator
   ma_iterations = 2,    # Was 3
   ma_M1 = 1000,        # Was 10000  
   ma_M2 = 500,        # Was 5000
   
   
   # Bootstrap parameters (ONLY for frequentist methods)
-  n_bootstrap_freq = 5000,  # For RDS-I, RDS-II, RDS-SS
+  n_bootstrap_freq = 10000,  # For RDS-I, RDS-II, RDS-SS
   confidence_level = 0.95,
   quantiles = c(0.025, 0.975),
   
@@ -163,42 +163,39 @@ estimate_final_rds_i <- function(outcome_var, n_bootstrap = 5000) {
     result <- RDS.I.estimates(rd.dd, outcome.variable = outcome_var)
     point_estimate <- result$estimate
     
-    # Use neighb() for bootstrap CI (frequentist method)
+    # Use working neighb() format from archived 04-bootstrap_analysis.R
     rds_sample <- convert_rds_to_neighboot_format()
     
-    if (outcome_var %in% names(rds_sample$traits)) {
-      single_var_sample <- rds_sample
-      single_var_sample$traits <- rds_sample$traits[outcome_var]
+    neighb_result <- tryCatch({
+      cat("  Attempting neighb() for", outcome_var, "with working format\n")
       
-      neighb_result <- tryCatch({
-        neighb(
-          RDS.data = single_var_sample,
-          quant = modular_config$quantiles,
-          method = "percentile", 
-          B = n_bootstrap
-        )
-      }, error = function(e) NULL)
-      
-      if (!is.null(neighb_result) && is.matrix(neighb_result) && 
-          outcome_var %in% rownames(neighb_result)) {
-        var_results <- neighb_result[outcome_var, ]
-        bootstrap_se <- var_results["SE"]
-        ci_lower <- var_results[as.character(modular_config$quantiles[1])]
-        ci_upper <- var_results[as.character(modular_config$quantiles[2])]
-        uncertainty_method <- "neighb_bootstrap"
-      } else {
-        # Fallback to asymptotic CI
-        bootstrap_se <- result$se
-        ci_lower <- pmax(0, point_estimate - 1.96 * bootstrap_se)
-        ci_upper <- pmin(1, point_estimate + 1.96 * bootstrap_se)
-        uncertainty_method <- "asymptotic"
-      }
+      neighb(
+        RDS.data = rds_sample,
+        quant = modular_config$quantiles,
+        method = "percentile", 
+        B = n_bootstrap
+      )
+    }, error = function(e) {
+      cat("  ERROR in neighb():", e$message, "\n")
+      NULL
+    })
+    
+    if (!is.null(neighb_result) && is.matrix(neighb_result) && 
+        outcome_var %in% rownames(neighb_result)) {
+      # Extract results from neighb() matrix
+      var_results <- neighb_result[outcome_var, ]
+      bootstrap_se <- var_results["SE"]
+      ci_lower <- var_results[as.character(modular_config$quantiles[1])]
+      ci_upper <- var_results[as.character(modular_config$quantiles[2])]
+      uncertainty_method <- "neighb_bootstrap"
+      cat("  SUCCESS: neighb() worked!\n")
     } else {
-      # Fallback to asymptotic CI
+      # Fallback to asymptotic CI if neighb() still fails
       bootstrap_se <- result$se
       ci_lower <- pmax(0, point_estimate - 1.96 * bootstrap_se)
       ci_upper <- pmin(1, point_estimate + 1.96 * bootstrap_se)
       uncertainty_method <- "asymptotic"
+      cat("  FALLBACK: Using asymptotic CI\n")
     }
     
     list(
@@ -217,42 +214,63 @@ estimate_final_rds_i <- function(outcome_var, n_bootstrap = 5000) {
   })
 }
 
-# RDS-II with bootstrap (frequentist)
+# RDS-II with neighborhood bootstrap (frequentist)  
 estimate_final_rds_ii <- function(outcome_var, n_bootstrap = 5000) {
   tryCatch({
     # Point estimate
     result <- RDS.II.estimates(rd.dd, outcome.variable = outcome_var)
     point_estimate <- result$estimate
     
-    # Simple bootstrap for RDS-II (frequentist)
-    boot_estimates <- numeric(n_bootstrap)
+    # Use working neighb() format (same as RDS-I)
+    rds_sample <- convert_rds_to_neighboot_format()
     
-    for (b in 1:n_bootstrap) {
-      boot_indices <- sample(1:nrow(rd.dd), replace = TRUE)
-      boot_data <- rd.dd[boot_indices, ]
+    neighb_result <- tryCatch({
+      cat("  Attempting neighb() for", outcome_var, "in RDS-II\n")
       
-      class(boot_data) <- class(rd.dd)
-      attributes(boot_data) <- attributes(rd.dd)
+      neighb(
+        RDS.data = rds_sample,
+        quant = modular_config$quantiles,
+        method = "percentile", 
+        B = n_bootstrap
+      )
+    }, error = function(e) {
+      cat("  ERROR in neighb():", e$message, "\n")
+      NULL
+    })
+    
+    if (!is.null(neighb_result) && is.matrix(neighb_result) && 
+        outcome_var %in% rownames(neighb_result)) {
+      # Extract results from neighb() matrix
+      var_results <- neighb_result[outcome_var, ]
+      bootstrap_se <- var_results["SE"]
+      ci_lower <- var_results[as.character(modular_config$quantiles[1])]
+      ci_upper <- var_results[as.character(modular_config$quantiles[2])]
+      uncertainty_method <- "neighb_bootstrap"
+      cat("  SUCCESS: neighb() worked for RDS-II! SE=", bootstrap_se, "CI=", ci_lower, "-", ci_upper, "\n")
+    } else {
+      # Debug what neighb() actually returned
+      cat("  DEBUG RDS-II: neighb_result class=", class(neighb_result), "\n")
+      if (is.matrix(neighb_result)) {
+        cat("  DEBUG RDS-II: rownames=", rownames(neighb_result), "\n")
+        cat("  DEBUG RDS-II: looking for outcome_var=", outcome_var, "\n")
+      }
       
-      boot_est <- tryCatch({
-        boot_result <- RDS.II.estimates(boot_data, outcome.variable = outcome_var)
-        boot_result$estimate
-      }, error = function(e) point_estimate)
-      
-      boot_estimates[b] <- boot_est
+      # Fallback to asymptotic CI if neighb() fails
+      bootstrap_se <- result$se
+      ci_lower <- pmax(0, point_estimate - 1.96 * bootstrap_se)
+      ci_upper <- pmin(1, point_estimate + 1.96 * bootstrap_se)
+      uncertainty_method <- "asymptotic"
+      cat("  FALLBACK: Using asymptotic CI for RDS-II\n")
     }
-    
-    ci_bounds <- quantile(boot_estimates, modular_config$quantiles, na.rm = TRUE)
-    bootstrap_se <- sd(boot_estimates, na.rm = TRUE)
     
     list(
       method = "RDS_II",
       estimate = point_estimate,
       se = bootstrap_se,
-      ci_lower = ci_bounds[1],
-      ci_upper = ci_bounds[2],
+      ci_lower = ci_lower,
+      ci_upper = ci_upper,
       population_size = NA,
-      uncertainty_method = "simple_bootstrap",
+      uncertainty_method = uncertainty_method,
       method_type = "frequentist"
     )
   }, error = function(e) {
@@ -261,42 +279,56 @@ estimate_final_rds_ii <- function(outcome_var, n_bootstrap = 5000) {
   })
 }
 
-# RDS-SS with bootstrap (frequentist)
+# RDS-SS with neighborhood bootstrap (frequentist)
 estimate_final_rds_ss <- function(outcome_var, population_size, n_bootstrap = 5000) {
   tryCatch({
     # Point estimate
     result <- RDS.SS.estimates(rd.dd, outcome.variable = outcome_var, N = population_size)
     point_estimate <- result$estimate
     
-    # Simple bootstrap for RDS-SS (frequentist)
-    boot_estimates <- numeric(n_bootstrap)
+    # Use working neighb() format (same as RDS-I and RDS-II)
+    rds_sample <- convert_rds_to_neighboot_format()
     
-    for (b in 1:n_bootstrap) {
-      boot_indices <- sample(1:nrow(rd.dd), replace = TRUE)
-      boot_data <- rd.dd[boot_indices, ]
+    neighb_result <- tryCatch({
+      cat("  Attempting neighb() for", outcome_var, "in RDS-SS\n")
       
-      class(boot_data) <- class(rd.dd)
-      attributes(boot_data) <- attributes(rd.dd)
-      
-      boot_est <- tryCatch({
-        boot_result <- RDS.SS.estimates(boot_data, outcome.variable = outcome_var, N = population_size)
-        boot_result$estimate
-      }, error = function(e) point_estimate)
-      
-      boot_estimates[b] <- boot_est
+      neighb(
+        RDS.data = rds_sample,
+        quant = modular_config$quantiles,
+        method = "percentile", 
+        B = n_bootstrap
+      )
+    }, error = function(e) {
+      cat("  ERROR in neighb():", e$message, "\n")
+      NULL
+    })
+    
+    if (!is.null(neighb_result) && is.matrix(neighb_result) && 
+        outcome_var %in% rownames(neighb_result)) {
+      # Extract results from neighb() matrix
+      var_results <- neighb_result[outcome_var, ]
+      bootstrap_se <- var_results["SE"]
+      ci_lower <- var_results[as.character(modular_config$quantiles[1])]
+      ci_upper <- var_results[as.character(modular_config$quantiles[2])]
+      uncertainty_method <- "neighb_bootstrap"
+      cat("  SUCCESS: neighb() worked for RDS-SS!\n")
+    } else {
+      # Fallback to asymptotic CI if neighb() fails
+      bootstrap_se <- result$se
+      ci_lower <- pmax(0, point_estimate - 1.96 * bootstrap_se)
+      ci_upper <- pmin(1, point_estimate + 1.96 * bootstrap_se)
+      uncertainty_method <- "asymptotic"
+      cat("  FALLBACK: Using asymptotic CI for RDS-SS\n")
     }
-    
-    ci_bounds <- quantile(boot_estimates, modular_config$quantiles, na.rm = TRUE)
-    bootstrap_se <- sd(boot_estimates, na.rm = TRUE)
     
     list(
       method = "RDS_SS",
       estimate = point_estimate,
       se = bootstrap_se,
-      ci_lower = ci_bounds[1],
-      ci_upper = ci_bounds[2],
+      ci_lower = ci_lower,
+      ci_upper = ci_upper,
       population_size = population_size,
-      uncertainty_method = "simple_bootstrap",
+      uncertainty_method = uncertainty_method,
       method_type = "frequentist"
     )
   }, error = function(e) {
@@ -495,13 +527,22 @@ estimate_final_posteriorsize <- function(outcome_var, population_size) {
   })
 }
 
-# NEIGHBOOT data conversion (reuse from original)
+# NEIGHBOOT data conversion (working version from archived 04-bootstrap_analysis.R)
 convert_rds_to_neighboot_format <- function() {
-  nodes <- 1:nrow(rd.dd)
   
-  traits_df <- data.frame(
+  # Create proper edges data frame (exclude seeds with recruiter.id == -1) 
+  edges_df <- data.frame(
+    from = rd.dd$recruiter.id[rd.dd$recruiter.id != -1],
+    to = rd.dd$id[rd.dd$recruiter.id != -1]
+  )
+  
+  # Renumber nodes sequentially to avoid "Duplicate vertex names"
+  node_map <- setNames(1:length(rd.dd$id), rd.dd$id)
+  
+  # Use CE's comparable indicators
+  comparable_traits <- data.frame(
     document_withholding_rds = rd.dd$document_withholding_rds,
-    pay_issues_rds = rd.dd$pay_issues_rds,
+    pay_issues_rds = rd.dd$pay_issues_rds, 
     threats_abuse_rds = rd.dd$threats_abuse_rds,
     excessive_hours_rds = rd.dd$excessive_hours_rds,
     access_to_help_rds = rd.dd$access_to_help_rds,
@@ -509,46 +550,22 @@ convert_rds_to_neighboot_format <- function() {
     whether_exploitation = rd.dd$whether_exploitation
   )
   
-  edges_list <- list()
-  edge_count <- 0
-  id_to_pos <- setNames(1:nrow(rd.dd), rd.dd$id)
+  # Handle missing values (replace with 0 for binary indicators)
+  comparable_traits <- comparable_traits %>%
+    mutate(across(everything(), ~ifelse(is.na(.x), 0, .x)))
   
-  for (i in 1:nrow(rd.dd)) {
-    recruiter_id <- rd.dd$recruiter.id[i] 
-    if (!is.na(recruiter_id) && 
-        recruiter_id != "-1" && 
-        recruiter_id != "" && 
-        recruiter_id %in% names(id_to_pos)) {
-      
-      recruiter_pos <- id_to_pos[recruiter_id]
-      recruit_pos <- i
-      
-      if (!is.na(recruiter_pos)) {
-        edge_count <- edge_count + 1
-        edges_list[[edge_count]] <- data.frame(
-          node1 = recruiter_pos,
-          node2 = recruit_pos
-        )
-      }
-    }
-  }
-  
-  if (length(edges_list) > 0) {
-    edges_df <- do.call(rbind, edges_list)
-  } else {
-    edges_df <- data.frame(node1 = integer(0), node2 = integer(0))
-  }
-  
-  degree <- rd.dd$network.size
-  
-  rds_sample <- list(
-    nodes = nodes,
-    edges = edges_df,
-    degree = degree,
-    traits = traits_df
+  # Create corrected RDS data structure (WORKING FORMAT)
+  rds_data <- list(
+    nodes = 1:length(node_map),
+    edges = data.frame(
+      from = node_map[as.character(edges_df$from)],
+      to = node_map[as.character(edges_df$to)]
+    ),
+    traits = comparable_traits,
+    degree = setNames(rd.dd$network.size, 1:length(rd.dd$network.size))
   )
   
-  return(rds_sample)
+  return(rds_data)
 }
 
 # Results processing function (reuse from original)
@@ -638,10 +655,11 @@ process_final_results <- function(all_results) {
 
 # RDS-I Analysis (standalone)
 run_rds_i_analysis <- function(indicators = NULL, population_sizes = NULL, 
-                               n_bootstrap = 5000, save_results = TRUE) {
+                               n_bootstrap = NULL, save_results = TRUE) {
   
   if (is.null(indicators)) indicators <- modular_config$indicators
   if (is.null(population_sizes)) population_sizes <- modular_config$population_sizes
+  if (is.null(n_bootstrap)) n_bootstrap <- modular_config$n_bootstrap_freq
   
   cat("=== RDS-I Analysis (Standalone) ===\n")
   cat("Indicators:", length(indicators), "\n")
@@ -669,9 +687,14 @@ run_rds_i_analysis <- function(indicators = NULL, population_sizes = NULL,
       
       rds_i_results[[result_count]] <- result
       
+      # Debug: Show what we got back
+      cat("  DEBUG: estimate =", result$estimate, "ci_lower =", result$ci_lower, "ci_upper =", result$ci_upper, "\n")
+      
       if (any(!is.na(result$estimate))) {
         cat("  Pop", format(pop_size, big.mark = ","), ":", 
             sprintf("%.2f%% (%.2f-%.2f)", result$estimate*100, result$ci_lower*100, result$ci_upper*100), "\n")
+      } else {
+        cat("  No results to display (estimate is NA)\n")
       }
     }
   }
@@ -697,10 +720,11 @@ run_rds_i_analysis <- function(indicators = NULL, population_sizes = NULL,
 
 # RDS-II Analysis (standalone)
 run_rds_ii_analysis <- function(indicators = NULL, population_sizes = NULL, 
-                                n_bootstrap = 5000, save_results = TRUE) {
+                                n_bootstrap = NULL, save_results = TRUE) {
   
   if (is.null(indicators)) indicators <- modular_config$indicators
   if (is.null(population_sizes)) population_sizes <- modular_config$population_sizes
+  if (is.null(n_bootstrap)) n_bootstrap <- modular_config$n_bootstrap_freq
   
   cat("=== RDS-II Analysis (Standalone) ===\n")
   cat("Indicators:", length(indicators), "\n")
@@ -728,9 +752,14 @@ run_rds_ii_analysis <- function(indicators = NULL, population_sizes = NULL,
       
       rds_ii_results[[result_count]] <- result
       
+      # Debug: Show what we got back
+      cat("  DEBUG: estimate =", result$estimate, "ci_lower =", result$ci_lower, "ci_upper =", result$ci_upper, "\n")
+      
       if (any(!is.na(result$estimate))) {
         cat("  Pop", format(pop_size, big.mark = ","), ":", 
             sprintf("%.2f%% (%.2f-%.2f)", result$estimate*100, result$ci_lower*100, result$ci_upper*100), "\n")
+      } else {
+        cat("  No results to display (estimate is NA)\n")
       }
     }
   }
@@ -756,10 +785,11 @@ run_rds_ii_analysis <- function(indicators = NULL, population_sizes = NULL,
 
 # RDS-SS Analysis (standalone)
 run_rds_ss_analysis <- function(indicators = NULL, population_sizes = NULL, 
-                                n_bootstrap = 5000, save_results = TRUE) {
+                                n_bootstrap = NULL, save_results = TRUE) {
   
   if (is.null(indicators)) indicators <- modular_config$indicators
   if (is.null(population_sizes)) population_sizes <- modular_config$population_sizes
+  if (is.null(n_bootstrap)) n_bootstrap <- modular_config$n_bootstrap_freq
   
   cat("=== RDS-SS Analysis (Standalone) ===\n")
   cat("Indicators:", length(indicators), "\n")
@@ -787,9 +817,14 @@ run_rds_ss_analysis <- function(indicators = NULL, population_sizes = NULL,
       
       rds_ss_results[[result_count]] <- result
       
+      # Debug: Show what we got back
+      cat("  DEBUG: estimate =", result$estimate, "ci_lower =", result$ci_lower, "ci_upper =", result$ci_upper, "\n")
+      
       if (any(!is.na(result$estimate))) {
         cat("  Pop", format(pop_size, big.mark = ","), ":", 
             sprintf("%.2f%% (%.2f-%.2f)", result$estimate*100, result$ci_lower*100, result$ci_upper*100), "\n")
+      } else {
+        cat("  No results to display (estimate is NA)\n")
       }
     }
   }
@@ -819,6 +854,7 @@ run_ma_estimates_analysis <- function(indicators = NULL, population_sizes = NULL
   
   if (is.null(indicators)) indicators <- modular_config$indicators
   if (is.null(population_sizes)) population_sizes <- modular_config$population_sizes
+  if (is.null(n_bootstrap)) n_bootstrap <- modular_config$n_bootstrap_freq
   
   cat("=== MA.estimates Analysis (Standalone Bayesian) ===\n")
   cat("Indicators:", length(indicators), "\n")
@@ -856,9 +892,14 @@ run_ma_estimates_analysis <- function(indicators = NULL, population_sizes = NULL
       indicator_results[[indicator_count]] <- result
       ma_results[[result_count]] <- result
       
+      # Debug: Show what we got back
+      cat("  DEBUG: estimate =", result$estimate, "ci_lower =", result$ci_lower, "ci_upper =", result$ci_upper, "\n")
+      
       if (any(!is.na(result$estimate))) {
         cat("  Pop", format(pop_size, big.mark = ","), ":", 
             sprintf("%.2f%% (%.2f-%.2f)", result$estimate*100, result$ci_lower*100, result$ci_upper*100), "\n")
+      } else {
+        cat("  No results to display (estimate is NA)\n")
       }
       
       # Force garbage collection after each population size
@@ -904,6 +945,7 @@ run_posteriorsize_analysis <- function(indicators = NULL, population_sizes = NUL
   
   if (is.null(indicators)) indicators <- modular_config$indicators
   if (is.null(population_sizes)) population_sizes <- modular_config$population_sizes
+  if (is.null(n_bootstrap)) n_bootstrap <- modular_config$n_bootstrap_freq
   
   cat("=== posteriorsize Analysis (Standalone Bayesian) ===\n")
   cat("Indicators:", length(indicators), "\n")
@@ -932,9 +974,14 @@ run_posteriorsize_analysis <- function(indicators = NULL, population_sizes = NUL
       
       ps_results[[result_count]] <- result
       
+      # Debug: Show what we got back
+      cat("  DEBUG: estimate =", result$estimate, "ci_lower =", result$ci_lower, "ci_upper =", result$ci_upper, "\n")
+      
       if (any(!is.na(result$estimate))) {
         cat("  Pop", format(pop_size, big.mark = ","), ":", 
             sprintf("%.2f%% (%.2f-%.2f)", result$estimate*100, result$ci_lower*100, result$ci_upper*100), "\n")
+      } else {
+        cat("  No results to display (estimate is NA)\n")
       }
     }
   }
