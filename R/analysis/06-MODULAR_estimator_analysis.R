@@ -46,10 +46,10 @@ modular_config <- list(
   
   # # All indicators to test
   # indicators = c(get_comparable_indicators()$rds_vars,            "composite_risk", "whether_exploitation"),
-  indicators = c("document_withholding_rds"),  # Just one indicator
+  indicators = c("pay_issues_rds"   ,        "threats_abuse_rds"),  # Just one indicator
   ma_iterations = 2,    # Was 3
-  ma_M1 = 5000,        # Was 10000  
-  ma_M2 = 2500,        # Was 5000
+  ma_M1 = 1000,        # Was 10000  
+  ma_M2 = 500,        # Was 5000
   
   
   # Bootstrap parameters (ONLY for frequentist methods)
@@ -66,7 +66,7 @@ modular_config <- list(
   # ma_M2 = 5000,                  # More RDS samples per network 5K - 25K
   
   # Computational parameters
-  parallel_cores = 8,
+  parallel_cores = 4,
   
   # Output control
   save_detailed_results = TRUE,
@@ -317,7 +317,8 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
       M1 = modular_config$ma_M1,                           # Now 100
       M2 = modular_config$ma_M2,                           # Now 50
       parallel = modular_config$parallel_cores,
-      verbose = FALSE
+      verbose = TRUE,  # Enable verbose output for debugging
+      full.output = TRUE  # Get complete output with MCMC diagnostics
     )
     
     # Extract Bayesian credible intervals (built-in!)
@@ -328,10 +329,25 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
       ma_result$estimate
     }
     
-    # Debug: Print estimates and interval content
+    # Debug: Print estimates and all MA.estimates components
+    cat("MA.estimates components:", names(ma_result), "\n")
     cat("Estimate:", ma_result$estimate, "\n")
     if (!is.null(ma_result$interval)) {
       cat("Interval content:", ma_result$interval, "\n")
+    }
+    
+    # Check for any MCMC or convergence-related components
+    if (!is.null(ma_result$sample)) {
+      cat("Sample component found - class:", class(ma_result$sample), "length:", length(ma_result$sample), "\n")
+    }
+    if (!is.null(ma_result$samples)) {
+      cat("Samples component found - class:", class(ma_result$samples), "length:", length(ma_result$samples), "\n")
+    }
+    if (!is.null(ma_result$details)) {
+      cat("Details component found - class:", class(ma_result$details), "names:", names(ma_result$details), "\n")
+    }
+    if (!is.null(ma_result$mcmc)) {
+      cat("MCMC component found - class:", class(ma_result$mcmc), "\n")
     }
     
     # MA.estimates returns interval as numeric vector
@@ -818,7 +834,7 @@ run_ma_estimates_analysis <- function(indicators = NULL, population_sizes = NULL
       cat("Warning: Indicator", indicator, "not found in data\n")
       next
     }
-    
+    gc()
     cat("Processing MA.estimates for:", indicator, "\n")
     
     # Process each indicator separately for memory management
