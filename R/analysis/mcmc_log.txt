@@ -106,3 +106,9 @@ Est. diff. activity= 0.364391
 Homophily estimated to be 0.252220
 newPop$crossStat: 724626.204212, crossStat: 724630.736784
 In term ‘nodefactor’ in package ‘ergm’: Argument ‘base’ has been superseded by ‘levels’, and it is recommended to use the latter.  Note that its interpretation may be different.
+ergm::summary_formula(newPop$initialNet~nodefactor('disease',base=0)): 0=2551214.000000 1=890876.000000
+number of diseased= 335597; prevalence= 0.342446
+ergm::summary_formula(initialNet~nodemix('disease'))= 944685.000000
+ ergm::summary_formula(initialNet~nodemix('disease'))= 114516.000000
+Starting MPLE...
+fitted differential.activity= 0.670517

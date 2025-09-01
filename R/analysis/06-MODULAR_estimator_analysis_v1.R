@@ -1329,6 +1329,8 @@ if (!exists("skip_execution") || !skip_execution) {
 } else {
   cat("MODULAR estimator analysis script loaded\n")
   cat("Use print_usage_examples() to see usage examples\n")
+
 }
 
 ma_analysis <- run_ma_estimates_analysis()
+
