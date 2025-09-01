@@ -154,6 +154,149 @@ check_mcmc_convergence <- function(mcmc_samples, method_name = "MCMC") {
 }
 
 # ============================================================================
+# HELPER FUNCTIONS FOR ADDITIONAL BOOTSTRAP METHODS
+# ============================================================================
+
+# Helper functions for RDS.bootstrap.intervals methods
+calculate_salganik_bootstrap <- function(outcome_var, rds_method = "RDS-I", population_size = NULL, n_bootstrap = 5000) {
+  tryCatch({
+    cat("  Attempting Salganik bootstrap for", outcome_var, "using", rds_method, "\n")
+    
+    # Use RDS.bootstrap.intervals with Salganik uncertainty
+    if (rds_method == "RDS-SS" && !is.null(population_size)) {
+      salganik_result <- RDS.bootstrap.intervals(
+        rds.data = rd.dd,
+        outcome.variable = outcome_var,
+        weight.type = "RDS-SS",
+        N = population_size,
+        uncertainty = "Salganik",
+        number.of.bootstrap.samples = n_bootstrap,
+        confidence.level = 0.95
+      )
+    } else {
+      salganik_result <- RDS.bootstrap.intervals(
+        rds.data = rd.dd,
+        outcome.variable = outcome_var,
+        weight.type = switch(rds_method,
+          "RDS-I" = "RDS-I",
+          "RDS-II" = "RDS-II", 
+          "RDS-SS" = "RDS-SS"),
+        uncertainty = "Salganik",
+        number.of.bootstrap.samples = n_bootstrap,
+        confidence.level = 0.95
+      )
+    }
+    
+    list(
+      estimate = salganik_result$estimate,
+      se = salganik_result$std.error,
+      ci_lower = salganik_result$CI.lower,
+      ci_upper = salganik_result$CI.upper,
+      uncertainty_method = "Salganik_bootstrap"
+    )
+    
+  }, error = function(e) {
+    cat("  ERROR in Salganik bootstrap:", e$message, "\n")
+    return(NULL)
+  })
+}
+
+calculate_srs_bootstrap <- function(outcome_var, rds_method = "RDS-I", population_size = NULL, n_bootstrap = 5000) {
+  tryCatch({
+    cat("  Attempting SRS bootstrap for", outcome_var, "using", rds_method, "\n")
+    
+    # Use RDS.bootstrap.intervals with SRS uncertainty  
+    if (rds_method == "RDS-SS" && !is.null(population_size)) {
+      srs_result <- RDS.bootstrap.intervals(
+        rds.data = rd.dd,
+        outcome.variable = outcome_var,
+        weight.type = "RDS-SS",
+        N = population_size,
+        uncertainty = "SRS",
+        number.of.bootstrap.samples = n_bootstrap,
+        confidence.level = 0.95
+      )
+    } else {
+      srs_result <- RDS.bootstrap.intervals(
+        rds.data = rd.dd,
+        outcome.variable = outcome_var,
+        weight.type = switch(rds_method,
+          "RDS-I" = "RDS-I",
+          "RDS-II" = "RDS-II",
+          "RDS-SS" = "RDS-SS"), 
+        uncertainty = "SRS",
+        number.of.bootstrap.samples = n_bootstrap,
+        confidence.level = 0.95
+      )
+    }
+    
+    list(
+      estimate = srs_result$estimate,
+      se = srs_result$std.error,
+      ci_lower = srs_result$CI.lower,
+      ci_upper = srs_result$CI.upper,
+      uncertainty_method = "SRS_bootstrap"
+    )
+    
+  }, error = function(e) {
+    cat("  ERROR in SRS bootstrap:", e$message, "\n")
+    return(NULL)
+  })
+}
+
+# Enhanced functions that return multiple uncertainty methods
+calculate_multiple_uncertainty_methods <- function(outcome_var, rds_method, population_size = NULL, n_bootstrap = 5000) {
+  results <- list()
+  
+  cat("Calculating multiple uncertainty methods for", outcome_var, "using", rds_method, "\n")
+  
+  # 1. Neighb bootstrap (existing working method) 
+  neighb_result <- switch(rds_method,
+    "RDS-I" = estimate_final_rds_i(outcome_var, n_bootstrap),
+    "RDS-II" = estimate_final_rds_ii(outcome_var, n_bootstrap),
+    "RDS-SS" = estimate_final_rds_ss(outcome_var, population_size, n_bootstrap)
+  )
+  
+  if (!is.null(neighb_result) && !is.na(neighb_result$estimate)) {
+    results[[1]] <- neighb_result
+  }
+  
+  # 2. Salganik bootstrap 
+  salganik_result <- calculate_salganik_bootstrap(outcome_var, rds_method, population_size, n_bootstrap)
+  if (!is.null(salganik_result)) {
+    salganik_formatted <- list(
+      method = rds_method,
+      estimate = salganik_result$estimate,
+      se = salganik_result$se,
+      ci_lower = salganik_result$ci_lower,
+      ci_upper = salganik_result$ci_upper,
+      population_size = population_size,
+      uncertainty_method = salganik_result$uncertainty_method,
+      method_type = "frequentist"
+    )
+    results[[length(results) + 1]] <- salganik_formatted
+  }
+  
+  # 3. SRS bootstrap
+  srs_result <- calculate_srs_bootstrap(outcome_var, rds_method, population_size, n_bootstrap)
+  if (!is.null(srs_result)) {
+    srs_formatted <- list(
+      method = rds_method,
+      estimate = srs_result$estimate,
+      se = srs_result$se,
+      ci_lower = srs_result$ci_lower,
+      ci_upper = srs_result$ci_upper,
+      population_size = population_size,
+      uncertainty_method = srs_result$uncertainty_method,
+      method_type = "frequentist"
+    )
+    results[[length(results) + 1]] <- srs_formatted
+  }
+  
+  return(results)
+}
+
+# ============================================================================
 # CORE ESTIMATION FUNCTIONS (same as original - reused)
 # ============================================================================
 
@@ -679,23 +822,28 @@ run_rds_i_analysis <- function(indicators = NULL, population_sizes = NULL,
     cat("Processing RDS-I for:", indicator, "\n")
     
     for (pop_size in population_sizes) {
-      result_count <- result_count + 1
+      # Calculate multiple uncertainty methods for this indicator
+      multiple_results <- calculate_multiple_uncertainty_methods(indicator, "RDS-I", pop_size, n_bootstrap)
       
-      result <- estimate_final_rds_i(indicator, n_bootstrap)
-      result$indicator <- indicator
-      result$pop_size <- pop_size
-      result$pop_label <- modular_config$population_labels[which(modular_config$population_sizes == pop_size)]
-      
-      rds_i_results[[result_count]] <- result
-      
-      # Debug: Show what we got back
-      cat("  DEBUG: estimate =", result$estimate, "ci_lower =", result$ci_lower, "ci_upper =", result$ci_upper, "\n")
-      
-      if (any(!is.na(result$estimate))) {
-        cat("  Pop", format(pop_size, big.mark = ","), ":", 
-            sprintf("%.2f%% (%.2f-%.2f)", result$estimate*100, result$ci_lower*100, result$ci_upper*100), "\n")
-      } else {
-        cat("  No results to display (estimate is NA)\n")
+      # Add each uncertainty method as a separate result
+      for (result in multiple_results) {
+        result_count <- result_count + 1
+        
+        result$indicator <- indicator
+        result$pop_size <- pop_size
+        result$pop_label <- modular_config$population_labels[which(modular_config$population_sizes == pop_size)]
+        
+        rds_i_results[[result_count]] <- result
+        
+        # Debug: Show what we got back
+        cat("  DEBUG (", result$uncertainty_method, "): estimate =", result$estimate, "ci_lower =", result$ci_lower, "ci_upper =", result$ci_upper, "\n")
+        
+        if (any(!is.na(result$estimate))) {
+          cat("  Pop", format(pop_size, big.mark = ","), "(", result$uncertainty_method, "):", 
+              sprintf("%.2f%% (%.2f-%.2f)", result$estimate*100, result$ci_lower*100, result$ci_upper*100), "\n")
+        } else {
+          cat("  No results to display for", result$uncertainty_method, "(estimate is NA)\n")
+        }
       }
     }
   }
@@ -744,23 +892,28 @@ run_rds_ii_analysis <- function(indicators = NULL, population_sizes = NULL,
     cat("Processing RDS-II for:", indicator, "\n")
     
     for (pop_size in population_sizes) {
-      result_count <- result_count + 1
+      # Calculate multiple uncertainty methods for this indicator
+      multiple_results <- calculate_multiple_uncertainty_methods(indicator, "RDS-II", pop_size, n_bootstrap)
       
-      result <- estimate_final_rds_ii(indicator, n_bootstrap)
-      result$indicator <- indicator
-      result$pop_size <- pop_size
-      result$pop_label <- modular_config$population_labels[which(modular_config$population_sizes == pop_size)]
-      
-      rds_ii_results[[result_count]] <- result
-      
-      # Debug: Show what we got back
-      cat("  DEBUG: estimate =", result$estimate, "ci_lower =", result$ci_lower, "ci_upper =", result$ci_upper, "\n")
-      
-      if (any(!is.na(result$estimate))) {
-        cat("  Pop", format(pop_size, big.mark = ","), ":", 
-            sprintf("%.2f%% (%.2f-%.2f)", result$estimate*100, result$ci_lower*100, result$ci_upper*100), "\n")
-      } else {
-        cat("  No results to display (estimate is NA)\n")
+      # Add each uncertainty method as a separate result
+      for (result in multiple_results) {
+        result_count <- result_count + 1
+        
+        result$indicator <- indicator
+        result$pop_size <- pop_size
+        result$pop_label <- modular_config$population_labels[which(modular_config$population_sizes == pop_size)]
+        
+        rds_ii_results[[result_count]] <- result
+        
+        # Debug: Show what we got back
+        cat("  DEBUG (", result$uncertainty_method, "): estimate =", result$estimate, "ci_lower =", result$ci_lower, "ci_upper =", result$ci_upper, "\n")
+        
+        if (any(!is.na(result$estimate))) {
+          cat("  Pop", format(pop_size, big.mark = ","), "(", result$uncertainty_method, "):", 
+              sprintf("%.2f%% (%.2f-%.2f)", result$estimate*100, result$ci_lower*100, result$ci_upper*100), "\n")
+        } else {
+          cat("  No results to display for", result$uncertainty_method, "(estimate is NA)\n")
+        }
       }
     }
   }
@@ -809,23 +962,28 @@ run_rds_ss_analysis <- function(indicators = NULL, population_sizes = NULL,
     cat("Processing RDS-SS for:", indicator, "\n")
     
     for (pop_size in population_sizes) {
-      result_count <- result_count + 1
+      # Calculate multiple uncertainty methods for this indicator
+      multiple_results <- calculate_multiple_uncertainty_methods(indicator, "RDS-SS", pop_size, n_bootstrap)
       
-      result <- estimate_final_rds_ss(indicator, pop_size, n_bootstrap)
-      result$indicator <- indicator
-      result$pop_size <- pop_size
-      result$pop_label <- modular_config$population_labels[which(modular_config$population_sizes == pop_size)]
-      
-      rds_ss_results[[result_count]] <- result
-      
-      # Debug: Show what we got back
-      cat("  DEBUG: estimate =", result$estimate, "ci_lower =", result$ci_lower, "ci_upper =", result$ci_upper, "\n")
-      
-      if (any(!is.na(result$estimate))) {
-        cat("  Pop", format(pop_size, big.mark = ","), ":", 
-            sprintf("%.2f%% (%.2f-%.2f)", result$estimate*100, result$ci_lower*100, result$ci_upper*100), "\n")
-      } else {
-        cat("  No results to display (estimate is NA)\n")
+      # Add each uncertainty method as a separate result
+      for (result in multiple_results) {
+        result_count <- result_count + 1
+        
+        result$indicator <- indicator
+        result$pop_size <- pop_size
+        result$pop_label <- modular_config$population_labels[which(modular_config$population_sizes == pop_size)]
+        
+        rds_ss_results[[result_count]] <- result
+        
+        # Debug: Show what we got back
+        cat("  DEBUG (", result$uncertainty_method, "): estimate =", result$estimate, "ci_lower =", result$ci_lower, "ci_upper =", result$ci_upper, "\n")
+        
+        if (any(!is.na(result$estimate))) {
+          cat("  Pop", format(pop_size, big.mark = ","), "(", result$uncertainty_method, "):", 
+              sprintf("%.2f%% (%.2f-%.2f)", result$estimate*100, result$ci_lower*100, result$ci_upper*100), "\n")
+        } else {
+          cat("  No results to display for", result$uncertainty_method, "(estimate is NA)\n")
+        }
       }
     }
   }
