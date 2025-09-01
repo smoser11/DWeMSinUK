@@ -45,7 +45,7 @@ modular_config <- list(
   population_labels = c("980K"),
   
   # # All indicators to test
-  indicators = c(get_comparable_indicators()$rds_vars,            "composite_risk", "whether_exploitation"),
+  indicators = c(get_comparable_indicators()$rds_vars,  "composite_risk", "whether_exploitation"),
   #indicators = c("pay_issues_rds"   ,        "threats_abuse_rds"),  # Just one indicator
   ma_iterations = 2,    # Was 3
   ma_M1 = 1000,        # Was 10000  

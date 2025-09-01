@@ -1,0 +1,266 @@
+Okay, here are some thoughts on the paper with Caroline, aka C.E.
+First is the title. Can't we come up with a more clever, catchy-sounding title?
+Boy, that should be the very last thing.
+Next, the abstract. I need to make edits, but they should be edits and not wholesale replacements.
+Okay, moving on. Part 1. What's the point?
+So what do we do? So describe what we do.
+We perform an estimation of the prevalence of domestic workers in the U.K. experiencing some form of labor exploitation.
+Why is this important?
+Maybe some quotes from Zoe or the Home Office about measurement and meeting sustainable, whatever those U.N. development SDGs.
+So it's important for that.
+Okay, then, the literature, what's out there, and importantly, how do we differ?
+What is it that we do that advances the state of knowledge or the...
+the field that hasn't been done already?
+I don't know where this next part goes, but then how do we do this?
+So we do this with a novel sample,
+a novel respondent-driven sample,
+and perform a quantitative estimation of prevalence
+using a number of models,
+but largely loosely...
+well, sorry, specifically,
+using a number of estimators
+that broadly fit in
+two main
+distinct
+estimation techniques
+namely
+namely RDS
+based estimators
+both for Glutist and Bayesian
+and also
+in some
+network scale-up method
+models
+which use
+ego...
+egoistic information
+sorry, which
+RDS
+models use ego-based information
+so it uses information based on the characteristics of individuals that are in our sample
+along with other stuff like
+who referred you, when you were referred, etc.
+compared to
+in some models
+which use
+I'll call alter information
+which use information about
+who
+an individual in our sample
+knows
+and characteristics
+about
+the people in
+the social network
+of our respondents
+okay, so loosely those are the two
+main
+so C-section
+4
+for RDS
+C-section 5
+for in-sum
+maybe we need to
+why these methods
+or maybe we should just say
+the novelty
+part of the novelty
+is
+using
+these two methods
+based on the same survey
+also regarding
+why does this matter
+okay, so
+also regarding
+what do we do
+we need to stress
+that what we do
+is very
+is very quantitative
+it's extremely quantitative
+based on this
+boutique novel
+survey
+see
+Ilmez and
+Emerson
+for more on the
+nature of the
+survey
+and
+and
+qualitative
+analysis
+thereof
+we take this
+quantitative approach
+using this novel
+survey
+yes
+that's what we do
+why is our
+approach
+new
+or different
+or better
+than previous
+approaches
+well
+boutique sample
+focusing on
+one particular
+sector
+yeah
+okay
+so
+part two
+one of the main
+contributions
+is at a
+conceptual level
+so we
+conceptualize
+experiencing
+modern slavery
+or being
+exploited
+experiencing
+labor exploitation
+in two
+qualitatively
+different ways
+first
+either
+an individual
+is or is not
+experiencing
+experiencing
+exploitation
+we have a number
+of indicators
+for that
+and
+going from
+sort of
+low to high
+or using
+different definitions
+but then
+separately
+we conceptualize
+labor exploitation
+in a continuous
+manner
+which can be
+thought of as
+a risk index
+so
+here the thinking
+is
+we're sampling
+from
+the set
+of
+domestic workers
+with a
+mobile phone
+in the UK
+we posit
+that all such
+members have
+some degree
+of
+being exploited
+maybe
+maybe that
+number
+is zero
+maybe it's
+not
+and
+we use
+we inductively
+and using
+expert
+knowledge
+a
+risk index
+measuring
+the
+likelihood
+or the
+exposure
+of an
+individual
+to
+exploitation
+for each
+of these
+conceptual
+izations
+we have
+multiple
+operationalizations
+that is to say
+variables
+and measurements
+okay
+then
+methodology
+broadly
+discuss
+RDS
+method
+no no
+first
+the sample
+so first
+discuss the
+sample
+show
+the nice
+picture
+maybe some
+descriptive
+statistics
+point them
+to
+Caroline's
+other
+paper
+then
+methodology
+in broad
+terms
+discuss
+how RDS
+works
+how
+information
+from social
+networks
+can be
+used
+likewise
+for
+in sum
+the distinction
+between
+these two
+and then
+let's move
+to
+results
+and
+discussions
+for
+events.
+
+
+
+
+
+
+
+
