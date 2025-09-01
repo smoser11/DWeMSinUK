@@ -1,3 +1,7 @@
+
+library(gitcreds)
+gitcreds_get(use_cache = FALSE)$password
+
 gitcreds::gitcreds_set() 
 
 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

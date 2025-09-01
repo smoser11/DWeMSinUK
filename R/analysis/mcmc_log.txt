@@ -1,0 +1,108 @@
+nohup: ignoring input
+=== MODULAR Estimator Analysis ===
+Individual functions for each estimator method
+Flexible combination and comparison tools
+
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.1.0     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Registered S3 method overwritten by 'Hmisc':
+  method          from
+  summary.formula ergm
+Registered S3 method overwritten by 'RDS':
+  method         from          
+  $.control.list statnet.common
+Loading required package: parallel
+Loading required package: KernSmooth
+KernSmooth 2.23 loaded
+Copyright M. P. Wand 1997-2009
+sspse: Estimating Hidden Population Size using Respondent Driven
+Sampling Data
+Version 1.1.0-2 created on 2024-09-05.
+copyright (c) 2014, Krista J. Gile, University of Massachusetts - Amherst
+                    Mark S. Handcock, University of California - Los Angeles
+ For citation information, type citation("sspse").
+ Type help("sspse-package") to get started.
+
+
+Attaching package: ‘sspse’
+
+The following object is masked from ‘package:RDS’:
+
+    impute.visibility
+
+here() starts at /data/home/Documents/GitHub/DWeMSinUK
+
+Attaching package: ‘janitor’
+
+The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+Loaded prepared RDS data with weights
+Modular configuration:
+- Available methods: 5 
+- Indicators: 7 
+- Population scenarios: 1 
+
+=== MODULAR ESTIMATOR ANALYSIS USAGE EXAMPLES ===
+
+1. Run individual estimator:
+   rds_i_results <- run_rds_i_analysis()
+   rds_ss_results <- run_rds_ss_analysis()
+
+2. Run subset of indicators:
+   rds_i_results <- run_rds_i_analysis(indicators = c('document_withholding_rds', 'pay_issues_rds'))
+
+3. Run with custom parameters:
+   rds_ss_results <- run_rds_ss_analysis(n_bootstrap = 1000, save_results = FALSE)
+
+4. Combine results from different runs:
+   combined <- combine_estimator_results(rds_i_results, rds_ss_results)
+
+5. Load and combine saved results:
+   files <- c('output/rds_i_analysis_results.RData', 'output/rds_ss_analysis_results.RData')
+   combined <- load_and_combine_results(files)
+
+6. Create selective comparison table:
+   table <- create_selective_comparison_table(combined$results_df, methods = c('RDS_I', 'RDS_SS'))
+
+7. Create selective plots:
+   plots <- create_selective_plots(combined$results_df, methods = c('RDS_I', 'RDS_SS'))
+
+8. Run all frequentist methods:
+   freq_results <- run_frequentist_methods()
+
+9. Run all Bayesian methods:
+   bayes_results <- run_bayesian_methods()
+
+  population_sizes  <- 980000 
+
+      ma_analysis <- run_ma_estimates_analysis()
+      
+=== MA.estimates Analysis (Standalone Bayesian) ===
+Indicators: 7 
+Population sizes: 1 
+MA iterations: 2 
+MA M1/M2: 1000 / 500 
+
+Processing MA.estimates for: document_withholding_rds 
+  Memory before: 0 Mb 
+
+Note: Using the data's maximum number of coupons as the number.of.coupons = 5 
+SW prev: 0.494048
+[1] 0.470821
+SW crossStat: 2780910.478431
+Est. homophily = 0.252220
+Est. diff. activity= 0.364391
+!!!!Starting on iteration number 1.
+Homophily estimated to be 0.252220
+newPop$crossStat: 724626.204212, crossStat: 724630.736784
+In term ‘nodefactor’ in package ‘ergm’: Argument ‘base’ has been superseded by ‘levels’, and it is recommended to use the latter.  Note that its interpretation may be different.
