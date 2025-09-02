@@ -52,7 +52,7 @@ modular_config <- list(
   ma_M2 = 25,  #500,        # Was 5000
   
   # Computational parameters
-  parallel_cores = 8,
+  parallel_cores = 3,
   n_bootstrap = NULL,
   
   # Bootstrap parameters (ONLY for frequentist methods)
@@ -343,78 +343,61 @@ estimate_final_rds_ss <- function(outcome_var, population_size, n_bootstrap = 50
 # MA.estimates with BUILT-IN Bayesian credible intervals (NO bootstrap!)
 estimate_final_ma_estimates <- function(outcome_var, population_size) {
   tryCatch({
+    cat("Processing indicator:", outcome_var, "for population:", format(population_size, big.mark = ","), "\n")
     # Use actual MA.estimates() with improved convergence parameters
+    # More conservative parameters to prevent hanging/crashing
+    cat("  Starting MA.estimates with conservative parameters...\n")
+    
     ma_result <- MA.estimates(
       rd.dd, 
-      trait.variable = outcome_var,                       # Correct parameter name
+      trait.variable = outcome_var,
       N = population_size,
-      number.of.iterations = modular_config$ma_iterations,  # Now 10
-      M1 = modular_config$ma_M1,                           # Now 100
-      M2 = modular_config$ma_M2,                           # Now 50
-      parallel = modular_config$parallel_cores,
-      verbose = TRUE,  # Enable verbose output for debugging
-      full.output = TRUE  # Get complete output with MCMC diagnostics
+      number.of.iterations = 1,                           # Single iteration for speed
+      M1 = 2,                                           # Very small for debugging
+      M2 = 1,                                            # Very small for debugging
+      parallel = 1,                                       # Single-core
+      verbose = TRUE,                                    # Clean output
+      full.output = FALSE,                                 # Keep diagnostics
+      seed = 42,                                         # Reproducible
+      # Fast debugging parameters
+      MPLE.samplesize = 10,                            # Much smaller than default 50000
+      SAN.maxit = 2,                                     # Much smaller than default 5
+      SAN.nsteps = 100,                                 # Much smaller than default 2^19
+      sim.interval = 10                                 # Much smaller than default 10000
     )
     
+    cat("  MA.estimates completed successfully\n")
+    
     # Extract Bayesian credible intervals (built-in!)
-    # MA.estimates returns both positive and complement - take first (positive) only
-    point_estimate <- if (is.numeric(ma_result$estimate) && length(ma_result$estimate) > 1) {
-      ma_result$estimate[1]  # Take only the positive outcome
-    } else {
-      ma_result$estimate
-    }
-    
-    # Debug: Print estimates and all MA.estimates components
-    cat("MA.estimates components:", names(ma_result), "\n")
-    cat("Estimate:", ma_result$estimate, "\n")
-    if (!is.null(ma_result$interval)) {
-      cat("Interval content:", ma_result$interval, "\n")
-    }
-    
-    # Check for any MCMC or convergence-related components
-    if (!is.null(ma_result$sample)) {
-      cat("Sample component found - class:", class(ma_result$sample), "length:", length(ma_result$sample), "\n")
-    }
-    if (!is.null(ma_result$samples)) {
-      cat("Samples component found - class:", class(ma_result$samples), "length:", length(ma_result$samples), "\n")
-    }
-    if (!is.null(ma_result$details)) {
-      cat("Details component found - class:", class(ma_result$details), "names:", names(ma_result$details), "\n")
-    }
-    if (!is.null(ma_result$mcmc)) {
-      cat("MCMC component found - class:", class(ma_result$mcmc), "\n")
-    }
-    
-    # MA.estimates returns interval as numeric vector
-    if (!is.null(ma_result$interval)) {
-      if (is.numeric(ma_result$interval) && length(ma_result$interval) >= 5) {
-        # Based on debug output: elements 4,5 appear to be the credible interval bounds
-        ci_lower <- ma_result$interval[4]  # 0.1667887
-        ci_upper <- ma_result$interval[5]  # 0.8332113  
-        bayesian_se <- if(length(ma_result$interval) >= 10) ma_result$interval[9] else NA
-      } else if (is.matrix(ma_result$interval)) {
-        # Original matrix handling (kept as fallback)
-        interval_data <- ma_result$interval
-        if ("95% Lower Bound" %in% colnames(interval_data) && 
-            "95% Upper Bound" %in% colnames(interval_data)) {
-          ci_lower <- interval_data[1, "95% Lower Bound"]
-          ci_upper <- interval_data[1, "95% Upper Bound"]
-          bayesian_se <- interval_data[1, "s.e."] 
-        } else {
-          ci_lower <- NA
-          ci_upper <- NA
-          bayesian_se <- NA
-        }
+    # Handle different MA.estimates return structures
+    if (is.numeric(ma_result$estimate)) {
+      if (length(ma_result$estimate) > 1) {
+        point_estimate <- ma_result$estimate[1]  # Take only the positive outcome
       } else {
-        ci_lower <- NA
-        ci_upper <- NA
-        bayesian_se <- NA
+        point_estimate <- ma_result$estimate
       }
+    } else if (is.list(ma_result$estimate)) {
+      # If estimate is a list, try to extract the first numeric element
+      point_estimate <- tryCatch({
+        if ("estimate" %in% names(ma_result$estimate)) {
+          ma_result$estimate$estimate[1]
+        } else {
+          as.numeric(ma_result$estimate[[1]])[1]
+        }
+      }, error = function(e) NA)
     } else {
-      ci_lower <- NA
-      ci_upper <- NA  
-      bayesian_se <- NA
+      cat("  WARNING: Unexpected estimate structure\n")
+      point_estimate <- NA
     }
+    
+    # Extract confidence intervals directly from MA.estimates result
+    # Based on established pattern: interval[4] = 2.5%, interval[5] = 97.5%
+    ci_lower <- ma_result$interval[4]  # 2.5% quantile (lower CI bound)
+    ci_upper <- ma_result$interval[5]  # 97.5% quantile (upper CI bound)
+    bayesian_se <- if(length(ma_result$interval) >= 10) ma_result$interval[9] else NA
+    
+    # Debug the extraction
+    cat("  Extracted: ci_lower =", ci_lower, "ci_upper =", ci_upper, "\n")
     
     # Check for convergence (if available)
     convergence_info <- if (!is.null(ma_result$details)) {
@@ -439,8 +422,15 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
     )
     
   }, error = function(e) {
+    cat("  ERROR in MA.estimates for", outcome_var, ":", e$message, "\n")
+    
+    # Check if error is related to network matrix issues
+    if (grepl("number of items to replace|dimension|matrix", e$message, ignore.case = TRUE)) {
+      cat("  Network matrix dimension error detected - this may indicate data structure issues\n")
+    }
+    
     list(method = "MA_estimates", estimate = NA, se = NA, ci_lower = NA, ci_upper = NA, 
-         error = e$message, population_size = population_size, method_type = "bayesian")
+         error = paste("MA.estimates failed:", e$message), population_size = population_size, method_type = "bayesian")
   })
 }
 
