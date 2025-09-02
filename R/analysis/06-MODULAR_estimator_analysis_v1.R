@@ -47,12 +47,12 @@ modular_config <- list(
   # # All indicators to test
   indicators = c(get_comparable_indicators()$rds_vars,            "composite_risk", "whether_exploitation"),
   #indicators = c("pay_issues_rds"   ,        "threats_abuse_rds"),  # Just one indicator
-  ma_iterations = 2,    # Was 3
-  ma_M1 = 1000,        # Was 10000  
-  ma_M2 = 500,        # Was 5000
+  ma_iterations = 3,    # Was 3
+  ma_M1 = 50,  #1000,        # Was 10000  
+  ma_M2 = 25,  #500,        # Was 5000
   
   # Computational parameters
-  parallel_cores = 1,
+  parallel_cores = 8,
   n_bootstrap = NULL,
   
   # Bootstrap parameters (ONLY for frequentist methods)
@@ -72,7 +72,9 @@ modular_config <- list(
   # Output control
   save_detailed_results = TRUE,
   create_comparison_tables = TRUE,
-  check_convergence = TRUE
+  check_convergence = TRUE,
+  full.output = TRUE,
+  verbose= TRUE
 )
 
 cat("Modular configuration:\n")
