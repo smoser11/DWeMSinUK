@@ -348,25 +348,83 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
     # More conservative parameters to prevent hanging/crashing
     cat("  Starting MA.estimates with conservative parameters...\n")
     
-    ma_result <- MA.estimates(
-      rd.dd, 
-      trait.variable = outcome_var,
-      N = population_size,
-      number.of.iterations = 1,                           # Single iteration for speed
-      M1 = 2,                                           # Very small for debugging
-      M2 = 1,                                            # Very small for debugging
-      parallel = 1,                                       # Single-core
-      verbose = TRUE,                                    # Clean output
-      full.output = FALSE,                                 # Keep diagnostics
-      seed = 42,                                         # Reproducible
-      # Fast debugging parameters
-      MPLE.samplesize = 10,                            # Much smaller than default 50000
-      SAN.maxit = 2,                                     # Much smaller than default 5
-      SAN.nsteps = 100,                                 # Much smaller than default 2^19
-      sim.interval = 10                                 # Much smaller than default 10000
-    )
+    # Capture the console output to extract the actual prevalence estimate
+    capture_output <- capture.output({
+      ma_result <- MA.estimates(
+        rd.dd, 
+        trait.variable = outcome_var,
+        N = population_size,
+        number.of.iterations = 1,                           # Single iteration for speed
+        M1 = 2,                                           # Very small for debugging
+        M2 = 1,                                            # Very small for debugging
+        parallel = 1,                                       # Single-core
+        verbose = TRUE,                                    # Clean output
+        full.output = FALSE,                                 # Keep diagnostics
+        seed = 42,                                         # Reproducible
+        # Fast debugging parameters
+        MPLE.samplesize = 10,                            # Much smaller than default 50000
+        SAN.maxit = 2,                                     # Much smaller than default 5
+        SAN.nsteps = 100,                                 # Much smaller than default 2^19
+        sim.interval = 10                                 # Much smaller than default 10000
+      )
+    })
+    
+    # Print the captured output (so we can still see it)
+    cat(paste(capture_output, collapse = "\n"), "\n")
+    
+    # Extract the actual prevalence estimate from the console output
+    prevalence_line <- grep("Prevalence estimate", capture_output, value = TRUE)
+    if (length(prevalence_line) > 0) {
+      # Extract the numerical value from "Prevalence estimate X.XXXXXX"
+      prevalence_match <- regmatches(prevalence_line, regexpr("[0-9]+\\.[0-9]+", prevalence_line))
+      if (length(prevalence_match) > 0) {
+        actual_prevalence <- as.numeric(prevalence_match[1])
+        cat("  CAPTURED actual prevalence estimate:", actual_prevalence, "\n")
+      } else {
+        actual_prevalence <- NA
+      }
+    } else {
+      actual_prevalence <- NA
+    }
     
     cat("  MA.estimates completed successfully\n")
+    
+    # COMPREHENSIVE DEBUG: Save and inspect the complete ma_result object
+    cat("  ===== FULL MA_RESULT INSPECTION =====\n")
+    cat("  class(ma_result):", class(ma_result), "\n")
+    cat("  typeof(ma_result):", typeof(ma_result), "\n")
+    cat("  names(ma_result):", names(ma_result), "\n")
+    cat("  length(ma_result):", length(ma_result), "\n")
+    
+    # Save the complete ma_result for later inspection
+    ma_debug_file <- here("output", paste0("ma_result_debug_", outcome_var, ".RData"))
+    save(ma_result, file = ma_debug_file)
+    cat("  Saved complete ma_result to:", ma_debug_file, "\n")
+    
+    # Inspect the interval component specifically
+    cat("  ===== INTERVAL COMPONENT INSPECTION =====\n")
+    cat("  class(ma_result$interval):", class(ma_result$interval), "\n")
+    cat("  typeof(ma_result$interval):", typeof(ma_result$interval), "\n")
+    if (is.matrix(ma_result$interval)) {
+      cat("  MATRIX structure detected\n")
+      cat("  dim(ma_result$interval):", dim(ma_result$interval), "\n")
+      cat("  colnames(ma_result$interval):", colnames(ma_result$interval), "\n")
+      cat("  rownames(ma_result$interval):", rownames(ma_result$interval), "\n")
+      cat("  Full matrix content:\n")
+      print(ma_result$interval)
+    } else {
+      cat("  VECTOR structure detected\n")
+      cat("  length(ma_result$interval):", length(ma_result$interval), "\n")
+      cat("  Vector content:", ma_result$interval, "\n")
+    }
+    
+    # Inspect the estimate component
+    cat("  ===== ESTIMATE COMPONENT INSPECTION =====\n")
+    cat("  class(ma_result$estimate):", class(ma_result$estimate), "\n")
+    cat("  length(ma_result$estimate):", length(ma_result$estimate), "\n")
+    cat("  ma_result$estimate:", ma_result$estimate, "\n")
+    
+    cat("  ===== END INSPECTION =====\n")
     
     # Extract Bayesian credible intervals (built-in!)
     # Handle different MA.estimates return structures
@@ -390,14 +448,79 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
       point_estimate <- NA
     }
     
-    # Extract confidence intervals directly from MA.estimates result
-    # Based on established pattern: interval[4] = 2.5%, interval[5] = 97.5%
-    ci_lower <- ma_result$interval[4]  # 2.5% quantile (lower CI bound)
-    ci_upper <- ma_result$interval[5]  # 97.5% quantile (upper CI bound)
-    bayesian_se <- if(length(ma_result$interval) >= 10) ma_result$interval[9] else NA
+    # COMPREHENSIVE DEBUG: Let's understand the full MA.estimates result structure
+    cat("  DEBUG: Complete ma_result analysis:\n")
+    cat("  class(ma_result):", class(ma_result), "\n")
+    cat("  names(ma_result):", names(ma_result), "\n")
+    cat("  ma_result$estimate:", ma_result$estimate, "\n")
+    if (!is.null(ma_result$interval)) {
+      cat("  length(ma_result$interval):", length(ma_result$interval), "\n")
+      cat("  ma_result$interval:", paste(ma_result$interval, collapse = ", "), "\n")
+    }
+    if (!is.null(ma_result$details)) {
+      cat("  ma_result has details component\n")
+    }
+    
+    # Use the captured actual prevalence estimate as our point estimate
+    # This should match the "Prevalence estimate" printed by MA.estimates
+    if (!is.na(actual_prevalence)) {
+      point_estimate <- actual_prevalence
+      cat("  Using CAPTURED prevalence as point estimate:", point_estimate, "\n")
+    } else {
+      # Fallback to ma_result$estimate if capture failed
+      point_estimate <- ma_result$estimate
+      cat("  Using ma_result$estimate as fallback:", point_estimate, "\n")
+    }
+    
+    # For confidence intervals, we need to understand the structure better
+    # Let's try all possible positions and see what makes sense
+    if (!is.null(ma_result$interval) && length(ma_result$interval) > 0) {
+      cat("  Trying to identify CI positions in interval vector:\n")
+      for (i in 1:min(12, length(ma_result$interval))) {
+        cat("    interval[", i, "] =", ma_result$interval[i], "\n")
+      }
+      
+      # Based on the debug output, I can see the correct pattern:
+      # The ma_result$estimate contains TWO values that correspond to the CI bounds
+      # And ma_result$interval[1] and [2] seem to be the complement estimates
+      
+      if (length(ma_result$interval) >= 12) {
+        # According to documentation, interval should be a matrix with named columns
+        # Try to access as matrix first, fall back to vector indexing
+        if (is.matrix(ma_result$interval) && "95% Lower Bound" %in% colnames(ma_result$interval)) {
+          # Use the proper matrix structure from documentation
+          # For binary traits, we want the row corresponding to the positive category (trait = 1)
+          if (nrow(ma_result$interval) == 2) {
+            # Binary trait: use row 2 (positive category)
+            ci_lower <- ma_result$interval[2, "95% Lower Bound"]
+            ci_upper <- ma_result$interval[2, "95% Upper Bound"]
+          } else {
+            # Single numeric trait: use row 1
+            ci_lower <- ma_result$interval[1, "95% Lower Bound"]  
+            ci_upper <- ma_result$interval[1, "95% Upper Bound"]
+          }
+        } else {
+          # Fallback to vector indexing (current behavior)
+          ci_lower <- ma_result$interval[4]
+          ci_upper <- ma_result$interval[5]
+        }
+      } else if (length(ma_result$interval) >= 2) {
+        # Simpler structure - use first two positions with ordering
+        ci_lower <- min(ma_result$interval[1], ma_result$interval[2])
+        ci_upper <- max(ma_result$interval[1], ma_result$interval[2])
+      } else {
+        ci_lower <- NA
+        ci_upper <- NA
+      }
+    } else {
+      ci_lower <- NA
+      ci_upper <- NA
+    }
+    
+    bayesian_se <- if(!is.null(ma_result$interval) && length(ma_result$interval) >= 3) ma_result$interval[3] else NA
     
     # Debug the extraction
-    cat("  Extracted: ci_lower =", ci_lower, "ci_upper =", ci_upper, "\n")
+    cat("  FINAL EXTRACTION: estimate =", point_estimate, "ci_lower =", ci_lower, "ci_upper =", ci_upper, "\n")
     
     # Check for convergence (if available)
     convergence_info <- if (!is.null(ma_result$details)) {
@@ -576,15 +699,22 @@ process_final_results <- function(all_results) {
     # Skip NULL or invalid results
     if (is.null(result) || !is.list(result)) {
       return(data.frame(
-        indicator = NA, pop_size = NA, pop_label = NA, method = NA,
+        indicator = "unknown", pop_size = NA, pop_label = NA, method = NA,
         method_type = NA, estimate = NA, se = NA, ci_lower = NA,
         ci_upper = NA, uncertainty_method = NA, convergence_info = NA,
-        error_msg = "Invalid result", stringsAsFactors = FALSE
+        error_msg = "Invalid result", stringsAsFactors = FALSE,
+        row.names = NULL  # Explicitly set row names to avoid issues
       ))
     }
     
+    # Ensure indicator has a valid value to avoid missing row names
+    indicator_val <- safe_extract(result, "indicator", "unknown")
+    if (is.na(indicator_val) || is.null(indicator_val) || indicator_val == "") {
+      indicator_val <- "unknown"
+    }
+    
     data.frame(
-      indicator = safe_extract(result, "indicator", NA),
+      indicator = indicator_val,
       pop_size = safe_extract(result, "pop_size", NA),
       pop_label = safe_extract(result, "pop_label", NA),
       method = safe_extract(result, "method", NA),
@@ -596,7 +726,8 @@ process_final_results <- function(all_results) {
       uncertainty_method = safe_extract(result, "uncertainty_method", NA),
       convergence_info = safe_extract(result, "convergence_info", "No info"),
       error_msg = safe_extract(result, "error", NA),
-      stringsAsFactors = FALSE
+      stringsAsFactors = FALSE,
+      row.names = NULL  # Explicitly avoid row name issues
     )
   })
   

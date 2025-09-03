@@ -1,0 +1,36 @@
+---
+title: "SimRDS Package"
+author: "Ayesha Perera"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{description}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+Hidden populations are hard to access due to secrecy. 
+Respondent driven sampling (RDS) happens to be a promising
+technique since it consists of probabilistic sampling.RDS enables to produce credible estimations than
+using non-probabilistic techniques. Yet the method
+consumes a considerable amount of resources which
+restricts the researchers to use RDS in its full
+potential. To better understanding of the usage of the package refer to 
+[Perera, A., & Ramanayake, A. (2019). Assessing the effects of respondent driven sampling estimators on population characteristics. Proceeding of Asia International Conference on Multidisciplinary Research](https://www.aimr.tirdiconference.com/assets/images/portfolio/Conference-Proceeding-AIMR-19.pdf)
+
+# How you can use this package
+
+## For the Researcher who has not yet collected the RDS sample
+The function `population` could be used if the researcher has some understanding of the population—such as the distribution of degrees, whether certain parameters are high or low, or the relationship between responses and other variables—they can use this package to simulate a similar population. This allows the researcher to determine the optimal combination of seeds, coupons, and estimators for their study before conducting the actual empirical research.
+
+If the researcher lacks prior knowledge about the population of interest, they can gain insight through a pilot study. The then generate populations that mirror the characteristics identified in the pilot study, helping to refine the choice of key variables and sampling parameters.
+
+
+## For researchers who has already completed collecting the RDS sample
+The researcher can use the specific number of seeds and coupons used during the sample collection to recreate the population. This allows for testing various estimators on the simulated population to identify the most effective one.
+
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
