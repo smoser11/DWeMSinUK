@@ -359,7 +359,7 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
         M2 = 1,                                            # Very small for debugging
         parallel = 1,                                       # Single-core
         verbose = TRUE,                                    # Clean output
-        full.output = FALSE,                                 # Keep diagnostics
+        full.output = TRUE,                                 # Keep diagnostics
         seed = 42,                                         # Reproducible
         # Fast debugging parameters
         MPLE.samplesize = 10,                            # Much smaller than default 50000
@@ -1458,7 +1458,7 @@ result <- MA.estimates(
   M2 = 1,                                            # Very small for debugging
   parallel = 1,                                       # Single-core
   verbose = TRUE,                                    # Clean output
-  full.output = FALSE,                                 # Keep diagnostics
+  full.output = TRUE,                                 # Keep diagnostics
   seed = 42,                                         # Reproducible
   # Fast debugging parameters
   MPLE.samplesize = 10,                            # Much smaller than default 50000
