@@ -461,15 +461,20 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
       cat("  ma_result has details component\n")
     }
     
-    # Use the captured actual prevalence estimate as our point estimate
-    # This should match the "Prevalence estimate" printed by MA.estimates
-    if (!is.na(actual_prevalence)) {
-      point_estimate <- actual_prevalence
-      cat("  Using CAPTURED prevalence as point estimate:", point_estimate, "\n")
+    # Use the prevalence estimate from ma_result$estimate[2] 
+    # This matches the captured prevalence and is the correct category
+    if (length(ma_result$estimate) >= 2) {
+      point_estimate <- ma_result$estimate[2]  # Prevalence category estimate
+      cat("  Using ma_result$estimate[2] as point estimate:", point_estimate, "\n")
     } else {
-      # Fallback to ma_result$estimate if capture failed
-      point_estimate <- ma_result$estimate
-      cat("  Using ma_result$estimate as fallback:", point_estimate, "\n")
+      # Fallback approaches
+      if (!is.na(actual_prevalence)) {
+        point_estimate <- actual_prevalence
+        cat("  Using CAPTURED prevalence as point estimate:", point_estimate, "\n")
+      } else {
+        point_estimate <- ma_result$estimate
+        cat("  Using ma_result$estimate as fallback:", point_estimate, "\n")
+      }
     }
     
     # For confidence intervals, we need to understand the structure better
@@ -485,25 +490,11 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
       # And ma_result$interval[1] and [2] seem to be the complement estimates
       
       if (length(ma_result$interval) >= 12) {
-        # According to documentation, interval should be a matrix with named columns
-        # Try to access as matrix first, fall back to vector indexing
-        if (is.matrix(ma_result$interval) && "95% Lower Bound" %in% colnames(ma_result$interval)) {
-          # Use the proper matrix structure from documentation
-          # For binary traits, we want the row corresponding to the positive category (trait = 1)
-          if (nrow(ma_result$interval) == 2) {
-            # Binary trait: use row 2 (positive category)
-            ci_lower <- ma_result$interval[2, "95% Lower Bound"]
-            ci_upper <- ma_result$interval[2, "95% Upper Bound"]
-          } else {
-            # Single numeric trait: use row 1
-            ci_lower <- ma_result$interval[1, "95% Lower Bound"]  
-            ci_upper <- ma_result$interval[1, "95% Upper Bound"]
-          }
-        } else {
-          # Fallback to vector indexing (current behavior)
-          ci_lower <- ma_result$interval[4]
-          ci_upper <- ma_result$interval[5]
-        }
+        # Based on the debug output, the working pattern is:
+        # interval[4] and interval[5] contain the confidence intervals
+        # This matches the previous working results
+        ci_lower <- ma_result$interval[4]  # Lower CI bound
+        ci_upper <- ma_result$interval[5]  # Upper CI bound
       } else if (length(ma_result$interval) >= 2) {
         # Simpler structure - use first two positions with ordering
         ci_lower <- min(ma_result$interval[1], ma_result$interval[2])
@@ -1457,3 +1448,21 @@ if (!exists("skip_execution") || !skip_execution) {
 
 ma_analysis <- run_ma_estimates_analysis()
 
+outcome_var <- "composite_risk"  # threats_abuse_rds   excessive_hours_rds
+result <- MA.estimates(
+  rd.dd, 
+  trait.variable = outcome_var,
+  N = 980000,
+  number.of.iterations = 1,                           # Single iteration for speed
+  M1 = 2,                                           # Very small for debugging
+  M2 = 1,                                            # Very small for debugging
+  parallel = 1,                                       # Single-core
+  verbose = TRUE,                                    # Clean output
+  full.output = FALSE,                                 # Keep diagnostics
+  seed = 42,                                         # Reproducible
+  # Fast debugging parameters
+  MPLE.samplesize = 10,                            # Much smaller than default 50000
+  SAN.maxit = 2,                                     # Much smaller than default 5
+  SAN.nsteps = 100,                                 # Much smaller than default 2^19
+  sim.interval = 10                                 # Much smaller than default 10000
+)
