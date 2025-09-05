@@ -1,15 +1,17 @@
-# 06-MODULAR_estimator_analysis_v2.R
+# 06-MODULAR_estimator_analysis_v3.R
 # Modular RDS Estimator Analysis with Individual Method Functions
 # Domestic Worker Exploitation and Modern Slavery in UK
 #
-# NEW MODULAR APPROACH:
+# PRODUCTION VERSION:
+# - MA.estimates() with production parameters (50K MPLE, 2^19 steps, etc.)
+# - Simplified extraction using direct array indexing
 # - Run individual estimators independently: run_rds_i_analysis(), run_rds_ss_analysis(), etc.
 # - Combine results from different runs selectively
 # - Create comparison tables/plots for subsets of methods
-# - Much more flexible and debuggable than monolithic approach
 
-cat("=== MODULAR Estimator Analysis v2 ===\n")
+cat("=== MODULAR Estimator Analysis v3 (Production) ===\n")
 cat("Individual functions for each estimator method\n")
+cat("MA.estimates with production parameters\n")
 cat("Flexible combination and comparison tools\n\n")
 
 # Load required libraries
@@ -345,22 +347,23 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
   tryCatch({
     cat("Processing indicator:", outcome_var, "for population:", format(population_size, big.mark = ","), "\n")
     
-    # Run MA.estimates with your proven parameters
+    # Run MA.estimates with production parameters
     ma_result <- MA.estimates(
       rd.dd, 
       trait.variable = outcome_var,
       N = population_size,
-      number.of.iterations = 1,
+      number.of.iterations = 2,                           # Production: 2 iterations
       M1 = 2,
       M2 = 1,
-      parallel = 1,
-      verbose = FALSE,  # Reduce output noise
-      full.output = TRUE,
+      parallel = 1,                                       # Keep single-core as requested
+      verbose = FALSE,                                    # Reduce output noise
+      full.output = TRUE,                                 # Keep as requested
       seed = 42,
-      MPLE.samplesize = 2,
-      SAN.maxit = 2,
-      SAN.nsteps = 10,
-      sim.interval = 2
+      # Production parameters
+      MPLE.samplesize = 50000,                           # Production: default 50000
+      SAN.maxit = 5,                                     # Production: default 5
+      SAN.nsteps = 2^19,                                 # Production: default 2^19
+      sim.interval = 10000                               # Production: default 10000
     )
     
     # Extract values using direct array indexing (your working method)

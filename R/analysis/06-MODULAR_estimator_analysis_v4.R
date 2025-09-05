@@ -1,15 +1,17 @@
-# 06-MODULAR_estimator_analysis_v2.R
+# 06-MODULAR_estimator_analysis_v4.R
 # Modular RDS Estimator Analysis with Individual Method Functions
 # Domestic Worker Exploitation and Modern Slavery in UK
 #
-# NEW MODULAR APPROACH:
-# - Run individual estimators independently: run_rds_i_analysis(), run_rds_ss_analysis(), etc.
-# - Combine results from different runs selectively
-# - Create comparison tables/plots for subsets of methods
-# - Much more flexible and debuggable than monolithic approach
+# ENHANCED PRODUCTION VERSION:
+# - MA.estimates() with production parameters (50K MPLE, 2^19 steps, etc.)
+# - Simplified extraction using direct array indexing (WORKING METHOD)
+# - Enhanced result recording: full ma_result objects, comprehensive metadata
+# - Compatible with downstream analysis: NSUM comparison, diagnostics, gt tables
+# - Maintains backward compatibility with existing field names
 
-cat("=== MODULAR Estimator Analysis v2 ===\n")
+cat("=== MODULAR Estimator Analysis v4 (Enhanced Production) ===\n")
 cat("Individual functions for each estimator method\n")
+cat("MA.estimates with production parameters + comprehensive result recording\n")
 cat("Flexible combination and comparison tools\n\n")
 
 # Load required libraries
@@ -345,22 +347,23 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
   tryCatch({
     cat("Processing indicator:", outcome_var, "for population:", format(population_size, big.mark = ","), "\n")
     
-    # Run MA.estimates with your proven parameters
+    # Run MA.estimates with production parameters
     ma_result <- MA.estimates(
       rd.dd, 
       trait.variable = outcome_var,
       N = population_size,
-      number.of.iterations = 1,
+      number.of.iterations = 2,                           # Production: 2 iterations
       M1 = 2,
       M2 = 1,
-      parallel = 1,
-      verbose = FALSE,  # Reduce output noise
-      full.output = TRUE,
+      parallel = 1,                                       # Keep single-core as requested
+      verbose = FALSE,                                    # Reduce output noise
+      full.output = TRUE,                                 # Keep as requested
       seed = 42,
-      MPLE.samplesize = 2,
-      SAN.maxit = 2,
-      SAN.nsteps = 10,
-      sim.interval = 2
+      # Production parameters
+      MPLE.samplesize = 50000,                           # Production: default 50000
+      SAN.maxit = 5,                                     # Production: default 5
+      SAN.nsteps = 2^19,                                 # Production: default 2^19
+      sim.interval = 10000                               # Production: default 10000
     )
     
     # Extract values using direct array indexing (your working method)
@@ -378,7 +381,39 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
       bayesian_se <- NA
     }
     
+    # Store parameters used for this run
+    ma_parameters <- list(
+      N = population_size,
+      number.of.iterations = 2,
+      M1 = 2,
+      M2 = 1,
+      parallel = 1,
+      verbose = FALSE,
+      full.output = TRUE,
+      seed = 42,
+      MPLE.samplesize = 50000,
+      SAN.maxit = 5,
+      SAN.nsteps = 2^19,
+      sim.interval = 10000
+    )
+    
+    # Save complete MA.estimates result for diagnostics
+    ma_debug_file <- here("output", paste0("ma_result_full_", outcome_var, ".RData"))
+    save(ma_result, file = ma_debug_file)
+    
+    # Extract additional diagnostic information if available
+    convergence_details <- if (!is.null(ma_result$details)) {
+      list(
+        details_available = TRUE,
+        details_class = class(ma_result$details),
+        details_length = length(ma_result$details)
+      )
+    } else {
+      list(details_available = FALSE)
+    }
+    
     list(
+      # Core results (maintain backward compatibility)
       method = "MA_estimates",
       estimate = point_estimate,
       se = bayesian_se,
@@ -386,7 +421,27 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
       ci_upper = ci_upper,
       population_size = population_size,
       uncertainty_method = "bayesian_credible_interval",
-      method_type = "bayesian"
+      method_type = "bayesian",
+      
+      # Enhanced fields for comprehensive analysis
+      indicator = outcome_var,
+      bayesian_credible_interval = list(
+        lower_95 = ci_lower,
+        upper_95 = ci_upper,
+        point_estimate = point_estimate,
+        standard_error = bayesian_se
+      ),
+      ma_parameters = ma_parameters,
+      ma_result_file = ma_debug_file,
+      convergence_info = convergence_details,
+      extraction_method = "direct_array_indexing",
+      extraction_indices = list(point = 2, lower_ci = 4, upper_ci = 6, se = 3),
+      
+      # Metadata for comparison with other methods
+      estimation_type = "bayesian_mcmc",
+      uncertainty_type = "credible_interval",
+      ci_coverage = 0.95,
+      run_timestamp = Sys.time()
     )
     
   }, error = function(e) {
@@ -1295,6 +1350,8 @@ if (!exists("skip_execution") || !skip_execution) {
 }
 
 ma_analysis <- run_ma_estimates_analysis()
+
+
 
 outcome_var <- "threats_abuse_rds"  #composite_risk"  # threats_abuse_rds   excessive_hours_rds
 result <- MA.estimates(
