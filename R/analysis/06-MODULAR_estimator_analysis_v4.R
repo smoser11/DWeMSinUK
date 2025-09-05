@@ -353,15 +353,15 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
       trait.variable = outcome_var,
       N = population_size,
       number.of.iterations = 2,                           # Production: 2 iterations
-      M1 = 2,
-      M2 = 1,
+      M1 = 50,
+      M2 = 25,
       parallel = 1,                                       # Keep single-core as requested
-      verbose = FALSE,                                    # Reduce output noise
+      verbose = TRUE,                                    # Reduce output noise
       full.output = TRUE,                                 # Keep as requested
       seed = 42,
       # Production parameters
       MPLE.samplesize = 50000,                           # Production: default 50000
-      SAN.maxit = 5,                                     # Production: default 5
+      SAN.maxit = 10,                                     # Production: default 5
       SAN.nsteps = 2^19,                                 # Production: default 2^19
       sim.interval = 10000                               # Production: default 10000
     )
@@ -392,7 +392,7 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
       full.output = TRUE,
       seed = 42,
       MPLE.samplesize = 50000,
-      SAN.maxit = 5,
+      SAN.maxit = 10,
       SAN.nsteps = 2^19,
       sim.interval = 10000
     )
@@ -1349,6 +1349,8 @@ if (!exists("skip_execution") || !skip_execution) {
 
 }
 
+
+
 ma_analysis <- run_ma_estimates_analysis()
 
 
@@ -1359,17 +1361,17 @@ result <- MA.estimates(
   trait.variable = outcome_var,
   N = 980000,
   number.of.iterations = 1,                           # Single iteration for speed
-  M1 = 2,                                           # Very small for debugging
-  M2 = 1,                                            # Very small for debugging
+  M1 = 50,                                           # Very small for debugging
+  M2 = 25,                                            # Very small for debugging
   parallel = 1,                                       # Single-core
   verbose = TRUE,                                    # Clean output
   full.output = TRUE,                                # Keep diagnostics
-  seed = 42,                                         # Reproducible
+  seed = 44,                                         # Reproducible
   # Fast debugging parameters
-  MPLE.samplesize = 2,                            # Much smaller than default 50000
-  SAN.maxit = 2,                                     # Much smaller than default 5
-  SAN.nsteps = 10,                                 # Much smaller than default 2^19
-  sim.interval = 2                                 # Much smaller than default 10000
+  MPLE.samplesize = 50000,                            # Much smaller than default 50000
+  SAN.maxit = 5,                                     # Much smaller than default 5
+  SAN.nsteps = 2^19,                                 # Much smaller than default 2^19
+  sim.interval = 10000                                 # Much smaller than default 10000
 )
 
 print(result)
