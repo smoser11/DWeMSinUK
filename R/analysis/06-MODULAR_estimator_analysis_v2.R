@@ -362,10 +362,10 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
         full.output = TRUE,                                 # Keep diagnostics
         seed = 42,                                         # Reproducible
         # Fast debugging parameters
-        MPLE.samplesize = 10,                            # Much smaller than default 50000
+        MPLE.samplesize = 2,                            # Much smaller than default 50000
         SAN.maxit = 2,                                     # Much smaller than default 5
-        SAN.nsteps = 100,                                 # Much smaller than default 2^19
-        sim.interval = 10                                 # Much smaller than default 10000
+        SAN.nsteps = 10,                                 # Much smaller than default 2^19
+        sim.interval = 5                                 # Much smaller than default 10000
       )
     })
     
@@ -461,106 +461,32 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
       cat("  ma_result has details component\n")
     }
     
-    # Extract point estimate from the rds.interval.estimate object
+    # Extract values using direct array indexing (correct method)
     if (!is.null(ma_result$estimate) && inherits(ma_result$estimate, "rds.interval.estimate")) {
-      # The prevalence category is usually "1", extract from ma_result$estimate$estimate["1"]
-      if (!is.null(ma_result$estimate$estimate) && "1" %in% names(ma_result$estimate$estimate)) {
-        point_estimate <- ma_result$estimate$estimate["1"]
-        cat("  Using ma_result$estimate$estimate['1'] as point estimate:", point_estimate, "\n")
-      } else if (!is.na(actual_prevalence)) {
-        point_estimate <- actual_prevalence
-        cat("  Using CAPTURED prevalence as point estimate:", point_estimate, "\n")
-      } else {
-        point_estimate <- NA
-        cat("  Could not extract point estimate from rds.interval.estimate object\n")
-      }
-    } else {
-      # Fallback approaches
-      if (!is.na(actual_prevalence)) {
-        point_estimate <- actual_prevalence
-        cat("  Using CAPTURED prevalence as point estimate:", point_estimate, "\n")
-      } else {
-        point_estimate <- NA
-        cat("  No valid point estimate found\n")
-      }
-    }
-    
-    # Extract confidence intervals from the rds.interval.estimate object structure
-    # Based on analysis: ma_result$estimate is an rds.interval.estimate object with internal structure
-    if (!is.null(ma_result$estimate) && inherits(ma_result$estimate, "rds.interval.estimate")) {
-      cat("  Extracting from rds.interval.estimate object\n")
+      # Point estimate (prevalence): result$estimate$interval[2]
+      point_estimate <- ma_result$estimate$interval[2]
       
-      # Use the printed output approach by capturing print() output
-      # This is the most reliable way to get the formatted CI
-      print_output <- capture.output(print(ma_result$estimate))
-      cat("  Captured print output for CI extraction\n")
+      # Lower 95% CI bound: result$estimate$interval[4]
+      ci_lower <- ma_result$estimate$interval[4]
       
-      # Look for the line with the prevalence category (usually "1")
-      # The line looks like: "1   0.5948 (  0.4682,   0.7214)          1.47     0.0646    51"
-      prevalence_line <- grep("^1\\s+", print_output, value = TRUE)
-      if (length(prevalence_line) > 0) {
-        cat("  Found prevalence line:", prevalence_line, "\n")
-        # Extract the interval from the line like: "1   0.5948 (  0.4682,   0.7214)..."
-        interval_match <- regmatches(prevalence_line, regexpr("\\(\\s*([0-9\\.]+),\\s*([0-9\\.]+)\\s*\\)", prevalence_line))
-        if (length(interval_match) > 0) {
-          # Extract the numbers from the parentheses
-          numbers <- regmatches(interval_match, gregexpr("[0-9\\.]+", interval_match))[[1]]
-          if (length(numbers) == 2) {
-            ci_lower <- as.numeric(numbers[1])
-            ci_upper <- as.numeric(numbers[2])
-            cat("  Successfully parsed CI from print output: [", ci_lower, ",", ci_upper, "]\n")
-          } else {
-            ci_lower <- NA
-            ci_upper <- NA
-            cat("  Failed to parse numbers from print output\n")
-          }
-        } else {
-          ci_lower <- NA
-          ci_upper <- NA
-          cat("  Failed to match interval pattern in print output\n")
-        }
-      } else {
-        cat("  Could not find prevalence category line in print output\n")
-        # Debug: show all lines to help troubleshoot
-        for (i in 1:min(10, length(print_output))) {
-          cat("    Line", i, ": '", print_output[i], "'\n")
-        }
-        ci_lower <- NA
-        ci_upper <- NA
-      }
+      # Upper 95% CI bound: result$estimate$interval[6]
+      ci_upper <- ma_result$estimate$interval[6]
+      
+      cat("  Direct extraction - Point estimate:", point_estimate, "CI: [", ci_lower, ",", ci_upper, "]\n")
     } else {
-      cat("  ma_result$estimate is not an rds.interval.estimate object\n")
+      cat("  ERROR: ma_result$estimate is not an rds.interval.estimate object\n")
+      point_estimate <- NA
       ci_lower <- NA
       ci_upper <- NA
     }
     
-    # Extract standard error from the rds.interval.estimate object
-    if (!is.null(ma_result$estimate) && inherits(ma_result$estimate, "rds.interval.estimate")) {
-      # Try to extract SE from the print output
-      if (exists("print_output") && length(print_output) > 0) {
-        prevalence_line <- grep("^1\\s+", print_output, value = TRUE)
-        if (length(prevalence_line) > 0) {
-          # Look for SE in the line - it's usually after the CI
-          se_match <- regmatches(prevalence_line, regexpr("[0-9\\.]+\\s+[0-9]+\\s*$", prevalence_line))
-          if (length(se_match) > 0) {
-            se_parts <- strsplit(trimws(se_match), "\\s+")[[1]]
-            if (length(se_parts) >= 2) {
-              bayesian_se <- as.numeric(se_parts[1])  # SE is usually first number
-              cat("  Extracted SE from print output:", bayesian_se, "\\n")
-            } else {
-              bayesian_se <- NA
-            }
-          } else {
-            bayesian_se <- NA
-          }
-        } else {
-          bayesian_se <- NA
-        }
-      } else {
-        bayesian_se <- NA
-      }
+    # Standard error (if available in the interval array)
+    bayesian_se <- if (!is.null(ma_result$estimate) && 
+                      inherits(ma_result$estimate, "rds.interval.estimate") && 
+                      length(ma_result$estimate$interval) >= 3) {
+      ma_result$estimate$interval[3]
     } else {
-      bayesian_se <- NA
+      NA
     }
     
     # Debug the extraction
@@ -1514,10 +1440,10 @@ result <- MA.estimates(
   full.output = TRUE,                                # Keep diagnostics
   seed = 42,                                         # Reproducible
   # Fast debugging parameters
-  MPLE.samplesize = 10,                            # Much smaller than default 50000
+  MPLE.samplesize = 2,                            # Much smaller than default 50000
   SAN.maxit = 2,                                     # Much smaller than default 5
-  SAN.nsteps = 100,                                 # Much smaller than default 2^19
-  sim.interval = 10                                 # Much smaller than default 10000
+  SAN.nsteps = 10,                                 # Much smaller than default 2^19
+  sim.interval = 2                                 # Much smaller than default 10000
 )
 
 print(result)
