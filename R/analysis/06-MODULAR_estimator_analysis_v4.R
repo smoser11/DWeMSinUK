@@ -63,8 +63,8 @@ modular_config <- list(
   quantiles = c(0.025, 0.975),
   
   # Bayesian MCMC parameters (for MA.estimates and posteriorsize)
-  bayesian_samplesize = 20000, # Doubled for better convergence  20k
-  bayesian_burnin = 50000,     # Much longer burnin for stationarity  50k
+  bayesian_samplesize = 50000, # Aggressive increase for convergence (was 20k)
+  bayesian_burnin = 100000,    # Aggressive burnin for stationarity (was 50k)
   bayesian_interval = 21,      # More thinning to reduce autocorrelation
   # ma_iterations = 3,          # More MA.estimates iterations  -- 3
   # ma_M1 = 10000,                 # More networked populations for stability -- 10K-50K
@@ -1350,12 +1350,15 @@ if (!exists("skip_execution") || !skip_execution) {
 }
 
 
-
-ma_analysis <- run_ma_estimates_analysis()
-
+posteriorsize_analysis <- run_posteriorsize_analysis()
 
 
-outcome_var <- "threats_abuse_rds"  #composite_risk"  # threats_abuse_rds   excessive_hours_rds
+
+# ma_analysis <- run_ma_estimates_analysis()
+
+
+
+outcome_var <- "composite_risk"  #composite_risk"  # threats_abuse_rds   excessive_hours_rds
 result <- MA.estimates(
   rd.dd, 
   trait.variable = outcome_var,
