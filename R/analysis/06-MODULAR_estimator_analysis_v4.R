@@ -63,8 +63,8 @@ modular_config <- list(
   quantiles = c(0.025, 0.975),
   
   # Bayesian MCMC parameters (for MA.estimates and posteriorsize)
-  bayesian_samplesize = 50000, # Aggressive increase for convergence (was 20k)
-  bayesian_burnin = 100000,    # Aggressive burnin for stationarity (was 50k)
+  bayesian_samplesize = 100000, # Very aggressive increase for convergence (was 50k)
+  bayesian_burnin = 200000,    # Very aggressive burnin for stationarity (was 100k)
   bayesian_interval = 21,      # More thinning to reduce autocorrelation
   # ma_iterations = 3,          # More MA.estimates iterations  -- 3
   # ma_M1 = 10000,                 # More networked populations for stability -- 10K-50K
@@ -454,14 +454,14 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
 # posteriorsize with BUILT-IN Bayesian credible intervals (NO bootstrap!)
 estimate_final_posteriorsize <- function(outcome_var, population_size) {
   tryCatch({
-    # Use actual posteriorsize() with improved convergence parameters  
+    # Use posteriorsize() with aggressive MCMC parameters only (avoid broken model adjustments)
     ps_result <- posteriorsize(
       rd.dd,
       mean.prior.size = population_size,
-      sd.prior.size = population_size * 0.1,
-      samplesize = modular_config$bayesian_samplesize,    # Now 20,000
-      burnin = modular_config$bayesian_burnin,            # Now 50,000  
-      interval = modular_config$bayesian_interval,        # Now 21
+      sd.prior.size = population_size * 0.1,              # Revert to working prior
+      samplesize = modular_config$bayesian_samplesize,    # Now 100,000
+      burnin = modular_config$bayesian_burnin,            # Now 200,000  
+      interval = modular_config$bayesian_interval,        # Keep 21
       parallel = modular_config$parallel_cores,
       verbose = TRUE
     )
