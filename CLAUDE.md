@@ -43,9 +43,11 @@ DWeMSinUK/
 - `R/00-main_pipeline.R` - Master script that runs the complete analysis pipeline
 - `R/data_processing/01-data_cleaning.R` - Raw data import, cleaning, and network size calculation
 - `R/data_processing/02-data_preparation.R` - CE's comparable indicators and RDS weight calculation
-- `R/analysis/03-rds_estimation.R` - RDS-I/II/SS estimation with bootstrap confidence intervals
-- `R/analysis/04-nsum_estimation.R` - Network scale-up method population estimates  
-- `R/analysis/05-comparison_analysis.R` - Systematic RDS vs NSUM comparison using matched indicators
+- `R/analysis/03-rds_estimation.R` - RDS-I/II/SS estimation with configurable bootstrap confidence intervals
+- `R/analysis/04-bootstrap_analysis.R` - Standalone bootstrap analysis (can be integrated or separate)
+- `R/analysis/05-nsum_estimation.R` - Network scale-up method population estimates
+- `R/analysis/06-*.R` - Extended sensitivity analysis and method comparison scripts  
+- `R/analysis/07-*.R` - Convergence diagnostics and visualization utilities
 - `R/utils/helper_functions.R` - Shared utility functions with proper path handling
 
 ### Data Processing Pipeline
@@ -70,10 +72,10 @@ source("R/00-main_pipeline.R")
 
 # Or run individual steps
 source("R/data_processing/01-data_cleaning.R")
-source("R/data_processing/02-data_preparation.R")
+source("R/data_processing/02-data_preparation.R") 
 source("R/analysis/03-rds_estimation.R")
-source("R/analysis/04-nsum_estimation.R")
-source("R/analysis/05-comparison_analysis.R")
+source("R/analysis/04-bootstrap_analysis.R")
+source("R/analysis/05-nsum_estimation.R")
 ```
 
 ### Running Specific Analysis Methods
@@ -164,10 +166,23 @@ setup_project_environment()
 
 ### Project Configuration
 The main pipeline uses a configuration-driven approach:
-- Pipeline settings in `R/00-main_pipeline.R` control which analyses run
-- RDS analysis configuration in `R/analysis/03-rds_estimation.R` 
+- Pipeline settings in `R/00-main_pipeline.R` control which analyses run:
+  ```r
+  pipeline_config <- list(
+    run_data_cleaning = TRUE,
+    run_data_preparation = TRUE, 
+    run_rds_estimation = TRUE,
+    run_bootstrap_analysis = FALSE,  # Integrated in RDS by default
+    run_nsum_estimation = TRUE,
+    preferred_rds_method = "RDS_SS",
+    n_bootstrap = 1000,
+    population_sizes = c(50000, 100000, 980000, 1740000),
+    main_population_size = 980000
+  )
+  ```
+- Individual analysis configuration in each `R/analysis/*.R` script
 - Skip execution flags prevent scripts from running when sourced
-- Results are cached to avoid recomputation
+- Results are cached to avoid recomputation via `force_recompute = FALSE` parameters
 
 ### Data Requirements
 - Survey data must be in `data/raw/` or `data/survey/`
@@ -185,17 +200,21 @@ The main pipeline uses a configuration-driven approach:
 - **Archived Scripts**: Old/experimental code preserved in `R/archive/` with documentation
 
 #### Modular Architecture
-The RDS analysis (Step 3) is particularly modular with coordinator scripts:
-- `03-rds_estimation.R` - Main RDS coordinator that calls sub-modules
-- `03a-rds_basic_estimation.R` - Core RDS-I/II/SS estimates  
-- `03b-rds_model_assisted.R` - Model-assisted estimation
-- `03c-rds_population_size.R` - Population size sensitivity analysis
-- `03d-rds_convergence.R` - Convergence diagnostics
-- `03e-rds_bootstrap.R` - Bootstrap confidence intervals
-- `03a_enhanced_analysis.R` - Method comparison and selection
-- `03a_visualizations.R` - Publication-ready plots
+The analysis structure uses a sequential, coordinated approach:
+- `03-rds_estimation.R` - Main RDS estimation with comprehensive configuration system
+- `04-bootstrap_analysis.R` - Bootstrap confidence intervals (can be integrated or standalone)
+- `05-nsum_estimation.R` - Network scale-up method estimation
+- `06-*.R` - Extended analysis scripts for sensitivity testing and comparisons
+- `07-*.R` - Convergence diagnostics and visualization
 
-Each module can be disabled via configuration flags in the coordinator script for faster development cycles.
+Analysis modules can be selectively enabled/disabled via configuration flags in each coordinator script for faster development cycles. The pipeline supports both sequential execution and individual module runs.
+
+#### Extended Analysis Capabilities
+Recent extensions provide additional analysis options:
+- `06-*.R` scripts: Multiple versions for sensitivity analysis, Bayesian approaches, and modular estimator comparisons
+- `07-*.R` scripts: Convergence diagnostics and enhanced visualization capabilities
+- Modular estimator analysis with version control (v1, v2, v3, v4) for iterative development
+- Enhanced appendix materials generation for academic publications
 
 ### Technical Requirements
 - Use `.RData` format for processed datasets to preserve R object structures
@@ -233,6 +252,8 @@ readRDS(here("output", "rds_convergence_diagnostics.RDS"))
 ```
 
 #### Performance Optimization
-- Set `force_recompute = FALSE` to use cached results
-- Adjust `parallel_cores` parameter for bootstrap methods
+- Set `force_recompute = FALSE` to use cached results (available in most analysis scripts)
+- Adjust `parallel_cores` parameter for bootstrap methods (default: 4)
 - Use smaller population size scenarios for testing: `c(50000, 100000)`
+- Disable expensive analyses in configuration: `run_model_assisted = FALSE`, `run_bootstrap_analysis = FALSE`
+- Use pipeline configuration to skip completed steps during development
