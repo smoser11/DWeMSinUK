@@ -14,17 +14,6 @@ library(tidyverse)
 library(RDS)
 library(ggplot2)
 library(here)
-library(parallel)  # For Monte Carlo simulation
-library(boot)      # For bootstrap confidence intervals
-
-# Load NSUM-specific packages from CRAN
-tryCatch({
-  library(networkscaleup)  # Modern Bayesian NSUM with Stan backend
-  nsum_packages_available <- TRUE
-}, error = function(e) {
-  cat("Warning: networkscaleup package not available. Using custom implementation.\n")
-  nsum_packages_available <- FALSE
-})
 
 # Source helper functions
 source(here("R", "utils", "helper_functions.R"))
@@ -62,39 +51,18 @@ nsum_config <- list(
   total_population_sizes = get_population_parameters()$sizes,
   preferred_population_size = 980000,  # EU baseline
   
-  # Multiple weighting schemes from data preparation
-  weighting_schemes = list(
-    "unweighted" = NULL,
-    "rds_I" = "wt.RDS1_",  # Variable-specific RDS-I weights
-    "vh_980k" = "wt.vh_980k",
-    "vh_100k" = "wt.vh_100k", 
-    "vh_050k" = "wt.vh_050k",
-    "vh_1740k" = "wt.vh_1740k",
-    "ss_980k" = "wt.SS_980k",
-    "ss_100k" = "wt.SS_100k",
-    "ss_050k" = "wt.SS_050k", 
-    "ss_1740k" = "wt.SS_1740k"
-  ),
-  
   # Analysis options
   use_rds_weights = TRUE,
   run_sensitivity_analysis = TRUE,
   create_comparison_with_rds = TRUE,
-  run_monte_carlo = TRUE,
-  
-  # Monte Carlo parameters
-  mc_iterations = 1000,  # Number of Monte Carlo iterations
-  mc_confidence_level = 0.95,
-  mc_parallel_cores = 4,
   
   # Estimation methods
-  estimation_methods = c("basic", "weighted", "stratified", "monte_carlo"),
+  estimation_methods = c("basic", "weighted", "stratified"),
   preferred_method = "weighted",
   
   # Output
   save_detailed_results = TRUE,
-  create_plots = TRUE,
-  save_all_weighting_results = TRUE
+  create_plots = TRUE
 )
 
 cat("NSUM configuration:\n")
@@ -105,31 +73,25 @@ cat("- Preferred method:", nsum_config$preferred_method, "\n")
 cat("- Preferred population:", format(nsum_config$preferred_population_size, big.mark = ","), "\n\n")
 
 # ============================================================================
-# CORE NSUM ESTIMATION FUNCTION (Enhanced with Multiple Weighting Support)
+# CORE NSUM ESTIMATION FUNCTION
 # ============================================================================
 
 estimate_nsum_population <- function(data, weights = NULL, hidden_connections_var, 
                                    degree_vars, probe_sizes, 
                                    total_population_size = 980000,
-                                   method = "basic", weighting_scheme = "unweighted") {
+                                   method = "basic") {
   
   # Input validation
   if (length(degree_vars) != length(probe_sizes)) {
     stop("degree_vars and probe_sizes must have the same length")
   }
   
-  # Handle weights based on weighting scheme
+  # Handle weights
   if (is.null(weights)) {
     weights <- rep(1, nrow(data))
     cat("  Using unweighted estimation\n")
   } else {
-    cat("  Using", weighting_scheme, "weights\n")
-  }
-  
-  # Validate weights
-  if (length(weights) != nrow(data)) {
-    warning("Weight vector length doesn't match data rows. Using unweighted.")
-    weights <- rep(1, nrow(data))
+    cat("  Using RDS weights\n")
   }
   
   # Remove missing values for this estimation
@@ -220,7 +182,6 @@ estimate_nsum_population <- function(data, weights = NULL, hidden_connections_va
     
     # Metadata
     method = method,
-    weighting_scheme = weighting_scheme,
     hidden_variable = hidden_connections_var,
     degree_variables = degree_vars,
     probe_sizes = probe_sizes
@@ -230,54 +191,15 @@ estimate_nsum_population <- function(data, weights = NULL, hidden_connections_va
 }
 
 # ============================================================================
-# MULTIPLE WEIGHTING SCHEMES NSUM ESTIMATION
+# NSUM ESTIMATION FOR ALL INDICATORS
 # ============================================================================
 
-get_weights_for_scheme <- function(data, scheme_name, outcome_var = NULL) {
+run_nsum_estimation <- function(outcome_vars, population_sizes, method = "weighted") {
   
-  if (scheme_name == "unweighted") {
-    return(NULL)
-  }
-  
-  # Variable-specific RDS-I weights
-  if (scheme_name == "rds_I" && !is.null(outcome_var)) {
-    # Convert NSUM variable to RDS variable name
-    rds_var <- gsub("_nsum", "_rds", outcome_var)
-    weight_var <- paste0("wt.RDS1_", rds_var)
-    
-    if (weight_var %in% names(data)) {
-      return(data[[weight_var]])
-    } else {
-      # Fallback to generic RDS-I weights if variable-specific not available
-      weight_var <- paste0("wt.RDS1_", gsub("_nsum", "", outcome_var))
-      if (weight_var %in% names(data)) {
-        return(data[[weight_var]])
-      }
-    }
-  }
-  
-  # Population-based weights
-  weight_var <- nsum_config$weighting_schemes[[scheme_name]]
-  if (weight_var %in% names(data)) {
-    return(data[[weight_var]])
-  }
-  
-  # If weight variable not found, return NULL (unweighted)
-  cat("Warning: Weight variable", weight_var, "not found. Using unweighted.\n")
-  return(NULL)
-}
-
-run_comprehensive_nsum_estimation <- function(outcome_vars, population_sizes, 
-                                            weighting_schemes = names(nsum_config$weighting_schemes)) {
-  
-  cat("=== Comprehensive NSUM Estimation ===\n")
-  cat("Indicators:", length(outcome_vars), "\n")
-  cat("Population sizes:", length(population_sizes), "\n")
-  cat("Weighting schemes:", length(weighting_schemes), "\n")
-  cat("Total combinations:", length(outcome_vars) * length(population_sizes) * length(weighting_schemes), "\n\n")
+  cat("=== NSUM Estimation for Comparable Indicators ===\n")
+  cat("Method:", method, "\n")
   
   all_results <- list()
-  scheme_summaries <- list()
   
   # Get RDS weights if using weighted method
   if (method == "weighted" && nsum_config$use_rds_weights) {
