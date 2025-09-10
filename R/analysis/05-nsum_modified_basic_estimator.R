@@ -64,16 +64,18 @@ basic_nsum_config <- list(
   degree_var = "known_network_size",  # Q13 2f - total domestic workers known
   
   # Multiple RDS weighting schemes for robustness
-  # NOTE: VH and SS weights excluded due to unrealistic NSUM estimates
+  # NOTE: All weights now properly normalized to address scaling differences
   weight_schemes = list(
     "unweighted" = NULL,
     "rds_I_document_withholding" = "wt.RDS1_document_withholding",
     "rds_I_pay_issues" = "wt.RDS1_pay_issues", 
     "rds_I_threats_abuse" = "wt.RDS1_threats_abuse",
     "rds_I_excessive_hours" = "wt.RDS1_excessive_hours",
-    "rds_I_access_to_help" = "wt.RDS1_access_to_help"
-    # EXCLUDED: VH and SS weights create unrealistic billion-scale estimates
-    # Due to extreme weight values causing formula instability
+    "rds_I_access_to_help" = "wt.RDS1_access_to_help",
+    "vh_980k" = "wt.vh_980k",  # RESTORED: Now with proper normalization
+    "vh_100k" = "wt.vh_100k",
+    "vh_050k" = "wt.vh_050k",
+    "ss_980k" = "wt.SS_980k"
   ),
   
   # Multiple frame population sizes for robustness
