@@ -112,13 +112,16 @@ cat("- True positive rates:", length(nsum_config$adjustment_factors$true_positiv
 # ============================================================================
 # MODIFIED BASIC SCALE-UP ESTIMATOR WITH ADJUSTMENT FACTORS
 # ============================================================================
+# ============================================================================
+# CORRECTED BASIC SCALE-UP ESTIMATOR WITH ADJUSTMENT FACTORS
+# ============================================================================
 
 calculate_nsum_with_adjustments <- function(data, rds_var, nsum_var, degree_var, 
-                                          weight_var = NULL, N_F, 
-                                          degree_ratio = 1.0, 
-                                          true_positive_rate = 1.0, 
-                                          precision = 1.0,
-                                          scheme_name = "unknown") {
+                                            weight_var = NULL, N_F, 
+                                            degree_ratio = 1.0, 
+                                            true_positive_rate = 1.0, 
+                                            precision = 1.0,
+                                            scheme_name = "unknown") {
   
   # Input validation
   required_vars <- c(rds_var, nsum_var, degree_var)
@@ -142,8 +145,14 @@ calculate_nsum_with_adjustments <- function(data, rds_var, nsum_var, degree_var,
   
   valid_cases <- !is.na(weights) & weights > 0 & is.finite(weights)
   
+  # DEBUG OUTPUT - Add this to see what's happening
+  cat("=== NSUM CALCULATION DEBUG ===\n")
+  cat("Scheme:", scheme_name, "N_F:", N_F, "\n")
+  cat("Weight summary:", summary(weights[valid_cases]), "\n")
+  cat("Sum of weights:", sum(weights[valid_cases]), "\n")
+  
   # ====================================================================
-  # STEP 1: Calculate y_F,H (total out-reports)
+  # STEP 1: Calculate weighted proportion of out-reports (CORRECTED)
   # ====================================================================
   
   out_reports <- data[[nsum_var]]
@@ -157,17 +166,17 @@ calculate_nsum_with_adjustments <- function(data, rds_var, nsum_var, degree_var,
     ))
   }
   
-  # Convert binary indicators to counts if needed
-  if (all(out_reports[valid_out_cases] %in% c(0, 1), na.rm = TRUE)) {
-    # Binary indicator: sum weighted reports
-    y_FH <- sum(out_reports[valid_out_cases] * weights[valid_out_cases])
-  } else {
-    # Count data: sum weighted counts
-    y_FH <- sum(out_reports[valid_out_cases] * weights[valid_out_cases])
-  }
+  # CORRECTED: Calculate weighted proportion, not weighted total
+  weighted_out_reports <- sum(out_reports[valid_out_cases] * weights[valid_out_cases])
+  total_weights_out <- sum(weights[valid_out_cases])
+  proportion_out_reports <- weighted_out_reports / total_weights_out
+  
+  cat("Weighted out-reports:", weighted_out_reports, "\n")
+  cat("Total weights (out):", total_weights_out, "\n") 
+  cat("Proportion out-reports:", proportion_out_reports, "\n")
   
   # ====================================================================
-  # STEP 2: Calculate d_F,F (average degree within frame population)
+  # STEP 2: Calculate weighted average degree (CORRECTED)
   # ====================================================================
   
   degrees <- data[[degree_var]]
@@ -181,9 +190,11 @@ calculate_nsum_with_adjustments <- function(data, rds_var, nsum_var, degree_var,
     ))
   }
   
-  # Weighted average degree
+  # Weighted average degree (this was correct)
   d_FF <- sum(degrees[valid_degree_cases] * weights[valid_degree_cases]) / 
-          sum(weights[valid_degree_cases])
+    sum(weights[valid_degree_cases])
+  
+  cat("Average degree:", d_FF, "\n")
   
   if (d_FF <= 0) {
     return(list(
@@ -194,31 +205,40 @@ calculate_nsum_with_adjustments <- function(data, rds_var, nsum_var, degree_var,
   }
   
   # ====================================================================
-  # STEP 3: Apply Modified Basic Scale-Up with Adjustment Factors
+  # STEP 3: Apply CORRECTED Basic Scale-Up with Adjustment Factors  
   # ====================================================================
   
-  # Feehan & Salganik (2016) Equation 24:
-  # N_H = (y_F,H / d_F,F) * N_F * (1/δ_F) * (1/τ_F) * η_F
+  # CORRECTED NSUM Formula:
+  # N_H = (proportion_out_reports / d_FF) * N_F * adjustments
   
-  basic_estimate <- (y_FH / d_FF) * N_F
+  basic_estimate <- (proportion_out_reports / d_FF) * N_F
+  
+  cat("Basic estimate:", basic_estimate, "\n")
   
   # Apply adjustment factors
   adjusted_estimate <- basic_estimate * (1 / degree_ratio) * (1 / true_positive_rate) * precision
   
+  cat("Adjusted estimate:", adjusted_estimate, "\n")
+  
   # ====================================================================
-  # STEP 4: Calculate RDS prevalence for comparison
+  # STEP 4: Calculate RDS prevalence for comparison (CORRECTED)
   # ====================================================================
   
   rds_cases <- !is.na(data[[rds_var]]) & valid_cases
   
   if (sum(rds_cases) > 0) {
+    # CORRECTED: Calculate weighted proportion
     rds_prevalence <- sum(data[[rds_var]][rds_cases] * weights[rds_cases]) / 
-                      sum(weights[rds_cases])
+      sum(weights[rds_cases])
     rds_estimate <- rds_prevalence * N_F
   } else {
     rds_prevalence <- NA
     rds_estimate <- NA
   }
+  
+  cat("RDS prevalence:", rds_prevalence, "\n")
+  cat("RDS estimate:", rds_estimate, "\n")
+  cat("========================\n\n")
   
   # ====================================================================
   # STEP 5: Return comprehensive results
@@ -235,8 +255,8 @@ calculate_nsum_with_adjustments <- function(data, rds_var, nsum_var, degree_var,
     true_positive_rate = true_positive_rate,
     precision = precision,
     
-    # NSUM components
-    y_FH = y_FH,
+    # NSUM components (CORRECTED)
+    y_FH = proportion_out_reports,  # Now a proportion, not a total
     d_FF = d_FF,
     basic_estimate = basic_estimate,
     adjusted_estimate = adjusted_estimate,
@@ -248,7 +268,7 @@ calculate_nsum_with_adjustments <- function(data, rds_var, nsum_var, degree_var,
     
     # Ratios for interpretation
     nsum_rds_ratio = ifelse(!is.na(rds_estimate) && rds_estimate > 0, 
-                           adjusted_estimate / rds_estimate, NA),
+                            adjusted_estimate / rds_estimate, NA),
     adjustment_impact = adjusted_estimate / basic_estimate,
     
     # Sample sizes
@@ -258,7 +278,6 @@ calculate_nsum_with_adjustments <- function(data, rds_var, nsum_var, degree_var,
     n_rds = sum(rds_cases, na.rm = TRUE)
   ))
 }
-
 # ============================================================================
 # COMPREHENSIVE SENSITIVITY ANALYSIS
 # ============================================================================

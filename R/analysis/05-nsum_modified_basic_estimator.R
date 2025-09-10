@@ -64,17 +64,16 @@ basic_nsum_config <- list(
   degree_var = "known_network_size",  # Q13 2f - total domestic workers known
   
   # Multiple RDS weighting schemes for robustness
+  # NOTE: VH and SS weights excluded due to unrealistic NSUM estimates
   weight_schemes = list(
     "unweighted" = NULL,
     "rds_I_document_withholding" = "wt.RDS1_document_withholding",
     "rds_I_pay_issues" = "wt.RDS1_pay_issues", 
     "rds_I_threats_abuse" = "wt.RDS1_threats_abuse",
     "rds_I_excessive_hours" = "wt.RDS1_excessive_hours",
-    "rds_I_access_to_help" = "wt.RDS1_access_to_help",
-    "vh_980k" = "wt.vh_980k",
-    "vh_100k" = "wt.vh_100k",
-    "vh_050k" = "wt.vh_050k",
-    "ss_980k" = "wt.SS_980k"
+    "rds_I_access_to_help" = "wt.RDS1_access_to_help"
+    # EXCLUDED: VH and SS weights create unrealistic billion-scale estimates
+    # Due to extreme weight values causing formula instability
   ),
   
   # Multiple frame population sizes for robustness
@@ -126,14 +125,18 @@ modified_basic_nsum <- function(data, rds_var, nsum_var, degree_var, weight_var,
     ))
   }
   
-  # Get weights
+  # Get weights and normalize them
   if (is.null(weight_var) || !weight_var %in% names(data)) {
     weights <- rep(1, nrow(data))
     if (!is.null(weight_var)) {
       cat("Warning: Weight variable", weight_var, "not found. Using unweighted.\n")
     }
   } else {
-    weights <- data[[weight_var]]
+    raw_weights <- data[[weight_var]]
+    # Normalize weights to sample size to ensure consistent scaling
+    # This addresses the issue where VH/SS weights sum to population size
+    # while RDS-I weights sum to 1
+    weights <- raw_weights * nrow(data) / sum(raw_weights, na.rm = TRUE)
   }
   
   # Ensure weights are valid
