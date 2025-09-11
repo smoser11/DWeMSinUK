@@ -145,11 +145,11 @@ calculate_nsum_with_adjustments <- function(data, rds_var, nsum_var, degree_var,
   
   valid_cases <- !is.na(weights) & weights > 0 & is.finite(weights)
   
-  # DEBUG OUTPUT - Add this to see what's happening
-  cat("=== NSUM CALCULATION DEBUG ===\n")
-  cat("Scheme:", scheme_name, "N_F:", N_F, "\n")
-  cat("Weight summary:", summary(weights[valid_cases]), "\n")
-  cat("Sum of weights:", sum(weights[valid_cases]), "\n")
+  # DEBUG OUTPUT - Add this to see what's happening (DISABLED TO REDUCE OUTPUT)
+  # cat("=== NSUM CALCULATION DEBUG ===\n")
+  # cat("Scheme:", scheme_name, "N_F:", N_F, "\n")
+  # cat("Weight summary:", summary(weights[valid_cases]), "\n")
+  # cat("Sum of weights:", sum(weights[valid_cases]), "\n")
   
   # ====================================================================
   # STEP 1: Calculate weighted proportion of out-reports (CORRECTED)
@@ -171,9 +171,9 @@ calculate_nsum_with_adjustments <- function(data, rds_var, nsum_var, degree_var,
   total_weights_out <- sum(weights[valid_out_cases])
   proportion_out_reports <- weighted_out_reports / total_weights_out
   
-  cat("Weighted out-reports:", weighted_out_reports, "\n")
-  cat("Total weights (out):", total_weights_out, "\n") 
-  cat("Proportion out-reports:", proportion_out_reports, "\n")
+  # cat("Weighted out-reports:", weighted_out_reports, "\n")
+  # cat("Total weights (out):", total_weights_out, "\n") 
+  # cat("Proportion out-reports:", proportion_out_reports, "\n")
   
   # ====================================================================
   # STEP 2: Calculate weighted average degree (CORRECTED)
@@ -194,7 +194,7 @@ calculate_nsum_with_adjustments <- function(data, rds_var, nsum_var, degree_var,
   d_FF <- sum(degrees[valid_degree_cases] * weights[valid_degree_cases]) / 
     sum(weights[valid_degree_cases])
   
-  cat("Average degree:", d_FF, "\n")
+  # cat("Average degree:", d_FF, "\n")
   
   if (d_FF <= 0) {
     return(list(
@@ -213,12 +213,12 @@ calculate_nsum_with_adjustments <- function(data, rds_var, nsum_var, degree_var,
   
   basic_estimate <- (proportion_out_reports / d_FF) * N_F
   
-  cat("Basic estimate:", basic_estimate, "\n")
+  # cat("Basic estimate:", basic_estimate, "\n")
   
   # Apply adjustment factors
   adjusted_estimate <- basic_estimate * (1 / degree_ratio) * (1 / true_positive_rate) * precision
   
-  cat("Adjusted estimate:", adjusted_estimate, "\n")
+  # cat("Adjusted estimate:", adjusted_estimate, "\n")
   
   # ====================================================================
   # STEP 4: Calculate RDS prevalence for comparison (CORRECTED)
@@ -236,9 +236,9 @@ calculate_nsum_with_adjustments <- function(data, rds_var, nsum_var, degree_var,
     rds_estimate <- NA
   }
   
-  cat("RDS prevalence:", rds_prevalence, "\n")
-  cat("RDS estimate:", rds_estimate, "\n")
-  cat("========================\n\n")
+  # cat("RDS prevalence:", rds_prevalence, "\n")
+  # cat("RDS estimate:", rds_estimate, "\n")
+  # cat("========================\n\n")
   
   # ====================================================================
   # STEP 5: Return comprehensive results
@@ -337,6 +337,19 @@ run_sensitivity_analysis <- function(data, save_results = TRUE) {
                 precision = eta_F,
                 scheme_name = scheme_name
               )
+              
+              # DEBUG: Show sample results for first few iterations
+              if (progress_counter <= 5) {
+                cat("DEBUG - Iteration", progress_counter, ":\n")
+                cat("  Indicator:", indicator_name, ", Scheme:", scheme_name, "\n")
+                cat("  N_F:", N_F, ", delta_F:", delta_F, ", tau_F:", tau_F, ", eta_F:", eta_F, "\n")
+                if (!is.null(result$basic_estimate) && !is.null(result$adjusted_estimate)) {
+                  cat("  Basic estimate:", round(result$basic_estimate), "\n")
+                  cat("  Adjusted estimate:", round(result$adjusted_estimate), "\n")
+                  cat("  Adjustment impact:", round(result$adjustment_impact, 3), "\n")
+                }
+                cat("  ---\n")
+              }
               
               # Add metadata
               result$indicator_name <- indicator_name

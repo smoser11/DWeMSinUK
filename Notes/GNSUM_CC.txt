@@ -1,0 +1,52 @@
+
+
+Excellent.  I want to talk about NSUM estimation using my RDS sample.  The sample is of Domestic Workers in the UK. 
+  Please read 'GNSUM/Feehan and Salganik - 2016 - Generalizing the Network Scale-Up Method.pdf'
+
+
+│ > Thank you.  I want to discuss the comment "...reconsider whether NSUM    │
+│   is the appropriate method for                                              │
+│     comparing to RDS prevalence estimates in this context."  I do not agree  │
+│   but I could be wrong.  From the Feehan and Salganik 2016 (hereafter        │
+│   FS16) paper we have the 'modified basic scale up' esimtator (equations 23  │
+│   and 24), that only require a sample from the frame population, F.  If we   │
+│   perform sensitivity analysis for the adjustmetn factors (e.g. their        │
+│   Table 3), isn't NSUM appropriate? 
+
+
+
+ > Excellent thank you.  Before you impliment anything I want to make sure I  │
+│   understand the NSUM (and related GNSUM, modified, etc. etc.).  First,      │
+│   both the basic scale up and the generalized scale up use the frame         │
+│   population size, $N_F$, correct?  But it does not use the sample size in   │
+│   the scalue up calculations.   Is this correct?   
+
+Excellent. Thank you.  I want to discuss  the files `nsum_adjustment_factors.r` and 
+`nsum_results_display.r`  Running both (and producing the objects `sensitivity_results` and `summary_analysis`) the nsum_results_display produce graphs and tables that do not make sense.  For example, this graph shows no change in the estimated size of the hidden population (note there are multiple indicators for membership in the hidden population).
+
+Do not make any edits just yet.  We are just talking and problem solving right now.
+
+
+
+
+ > Further, the inclusion probabilities ($\pi_i$) are important (e.g. for     │
+│   their equation 6).  Now, since we have an RDS sample I suggest we use      │
+│   various weights produced by the `RDS` package -- prooperly re-scated to    │
+│   be inclusion probabilities -- in these calculations.  But importatnly, we  │
+│   **do not** have visability estimates.  Does this make sense?  
+
+
+│ > I think the $\pi_i$ need to sum to 1, right?  But generally, yes, you are  │
+│   on the right track, especially using the weights (wt.RDS1_*, wt.vh_*,      │
+│   wt.SS_*) (with respective population sizes ($N_F$)        
+
+│ > Good.  Next make to use the rescaled bootstrap procedure of e.g. Rust and  │
+│   Rao.  There is a CRAN package to do this:                                  │
+│   https://cran.r-project.org/web/packages/surveybootstrap/index.html   With  │
+│   this, please completely re-write nsum_results_display.r and                │
+│   nsum_adjustment_factors.r to correctly perform ROBUST NSUM esimation       │
+│   useing my RDS sample.  Next, use Apendix D in the Online Apendix (/Users/  │
+│   sm38679/Library/CloudStorage/Dropbox/zotero/storage/FT7AR9J6/Feehan\ and\  │
+│   Salganik\ -\ 2016\ -\ Online\ appendix.pdf  ) to perform senisitivity      │
+│   analysis that show exactly how estimates will be affected by violations    │
+│   of assumptions.      

@@ -519,12 +519,53 @@ plot_sensitivity_analysis <- function(results_df) {
     return(NULL)
   }
   
+  # === DEBUGGING OUTPUT FOR SENSITIVITY PLOT ===
+  cat("\n=== SENSITIVITY PLOT DEBUG ===\n")
+  cat("Total rows in sens_data:", nrow(sens_data), "\n")
+  cat("Preferred N_F:", preferred_n_f, "\n")
+  cat("Preferred scheme:", preferred_scheme, "\n")
+  
+  cat("\nUnique values in sens_data:\n")
+  cat("- degree_ratio:", paste(sort(unique(sens_data$degree_ratio)), collapse = ", "), "\n")
+  cat("- true_positive_rate:", paste(sort(unique(sens_data$true_positive_rate)), collapse = ", "), "\n")
+  cat("- indicator_name:", paste(unique(sens_data$indicator_name), collapse = ", "), "\n")
+  cat("- precision:", paste(unique(sens_data$precision), collapse = ", "), "\n")
+  
+  # Check if we have multiple values per combination
+  cat("\nData structure check:\n")
+  data_structure <- sens_data %>%
+    group_by(indicator_name, degree_ratio, true_positive_rate) %>%
+    summarise(
+      n_rows = n(),
+      min_basic = min(basic_estimate, na.rm = TRUE),
+      max_basic = max(basic_estimate, na.rm = TRUE),
+      min_adjusted = min(adjusted_estimate, na.rm = TRUE),
+      max_adjusted = max(adjusted_estimate, na.rm = TRUE),
+      unique_adjustment_impact = n_distinct(adjustment_impact, na.rm = TRUE),
+      .groups = 'drop'
+    )
+  
+  print(data_structure)
+  
+  # Show actual values for one indicator to debug
+  cat("\nSample data for first indicator:\n")
+  sample_data <- sens_data %>%
+    filter(indicator_name == unique(sens_data$indicator_name)[1]) %>%
+    select(degree_ratio, true_positive_rate, precision, basic_estimate, 
+           adjusted_estimate, adjustment_impact) %>%
+    arrange(degree_ratio, true_positive_rate, precision)
+  
+  print(head(sample_data, 15))
+  
   # Check if we have enough data for faceting
   tpr_values <- unique(sens_data$true_positive_rate)
   if (length(tpr_values) == 0) {
     cat("No true_positive_rate values available\n")
     return(NULL)
   }
+  
+  cat("\nUsing", length(tpr_values), "true_positive_rate values:", paste(tpr_values, collapse = ", "), "\n")
+  cat("================================\n")
   
   # Plot 1: Effect of degree ratio
   p2 <- sens_data %>%
