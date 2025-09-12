@@ -1,0 +1,246 @@
+But first here are some emails, documents, meeting transcripts, and drafts between myself (SJM) and co-author Caroline (CE) to help you understand where we are.  Please note the dates. Save this information for later, but do not respond.
+
+
+
+
+Here is some R; code to bootstrat uncertainty for a 2-D estimate ($r_{min}, r_{max}$).  Show me how to use it.  
+
+"""
+
+# Build FH upper (comonotonic) joint from marginals pX, pY (both sum to 1)
+
+fh_upper <- function(pX, pY){
+
+	cx <- cumsum(pX); cy <- cumsum(pY)
+
+	i <- j <- 1; px <- py <- 0
+
+	J <- matrix(0, length(pX), length(pY))
+
+	while(i <= length(pX) && j <= length(pY)){
+
+		nx <- cx[i]; ny <- cy[j]
+
+		J[i,j] <- max(0, min(nx, ny) - max(px, py))
+
+		if(nx < ny){ px <- nx; i <- i + 1 } 
+
+		else if(nx > ny){ py <- ny; j <- j + 1 }
+
+		else { px <- nx; py <- ny; i <- i + 1; j <- j + 1 }
+
+	}
+
+	J
+
+}
+
+# FH "lower" (antitone) by pairing X with reversed Y, then un-reversing columns
+
+fh_lower <- function(pX, pY){
+
+	Jrev <- fh_upper(pX, rev(pY))
+
+	Jrev[, ncol(Jrev):1, drop=FALSE]
+
+}
+
+# Pearson r from a joint table and score vectors
+
+r_from_joint <- function(J, x_scores, y_scores){
+
+	pX <- rowSums(J); pY <- colSums(J)
+
+	EX <- sum(pX  x_scores); EY <- sum(pY  y_scores)
+
+	EXY <- sum(J * outer(x_scores, y_scores))
+
+	cov <- EXY - EX * EY
+
+	sdX <- sqrt(sum(pX * x_scores^2) - EX^2)
+
+	sdY <- sqrt(sum(pY * y_scores^2) - EY^2)
+
+	cov / (sdX * sdY)
+
+}
+
+# One-shot estimator from data vectors x,y (ordinal categories 1..K etc.)
+
+extreme_rs <- function(x, y, x_scores = NULL, y_scores = NULL){
+
+	if(is.null(x_scores)) x_scores <- sort(unique(x))
+
+	if(is.null(y_scores)) y_scores <- sort(unique(y))
+
+	# align scores to contiguous indices
+
+	x_levels <- x_scores; y_levels <- y_scores
+
+	pX <- prop.table(table(factor(x, levels = x_levels)))
+
+	pY <- prop.table(table(factor(y, levels = y_levels)))
+
+	Jmax <- fh_upper(as.numeric(pX), as.numeric(pY))
+
+	Jmin <- fh_lower(as.numeric(pX), as.numeric(pY))
+
+	r_max <- r_from_joint(Jmax, x_levels, y_levels)
+
+	r_min <- r_from_joint(Jmin, x_levels, y_levels)
+
+	c(r_min = r_min, r_max = r_max)
+
+}
+
+# Bootstrap wrapper
+
+boot_extremes <- function(x, y, B = 1000, seed = 1){
+
+	set.seed(seed)
+
+	est0 <- extreme_rs(x, y)
+
+	n <- length(x); out <- matrix(NA_real_, B, 2, dimnames=list(NULL, names(est0)))
+
+	for(b in 1:B){
+
+		idx <- sample.int(n, n, replace = TRUE)
+
+		out[b,] <- extreme_rs(x[idx], y[idx])
+
+	}
+
+	list(
+
+		est = est0,
+
+		boot = out,
+
+		ci = apply(out, 2, quantile, probs = c(.025, .975))
+
+	)
+
+}
+
+"""
+
+In the process you will need to simulate cross-tables. Here is_some_ code that might be of help (or it might not):
+
+"""
+
+"""
+
+
+
+
+
+A. Data Structure Debug
+
+=== SENSITIVITY PLOT DEBUG ===
+Total rows in sens_data: 840 
+Preferred N_F: 980000 
+Preferred scheme: ss_980k 
+
+Unique values in sens_data:
+- degree_ratio: 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 
+- true_positive_rate: 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 
+- indicator_name: document_withholding, pay_issues, threats_abuse, excessive_hours, access_to_help 
+- precision: 0.8, 0.9, 1 
+
+  B. Data Structure Check
+
+
+  This shows how many data points exist per combination:
+
+
+Data structure check:
+# A tibble: 280 × 9
+   indicator_name degree_ratio true_positive_rate n_rows min_basic max_basic min_adjusted max_adjusted
+   <chr>                 <dbl>              <dbl>  <int>     <dbl>     <dbl>        <dbl>        <dbl>
+ 1 access_to_help         0.5                 0.3      3    83054.    83054.      442957.      553696.
+ 2 access_to_help         0.5                 0.4      3    83054.    83054.      332218.      415272.
+ 3 access_to_help         0.5                 0.5      3    83054.    83054.      265774.      332218.
+ 4 access_to_help         0.5                 0.6      3    83054.    83054.      221478.      276848.
+ 5 access_to_help         0.5                 0.7      3    83054.    83054.      189839.      237298.
+ 6 access_to_help         0.5                 0.8      3    83054.    83054.      166109.      207636.
+ 7 access_to_help         0.5                 0.9      3    83054.    83054.      147652.      184565.
+ 8 access_to_help         0.5                 1        3    83054.    83054.      132887.      166109.
+ 9 access_to_help         0.75                0.3      3    83054.    83054.      295305.      369131.
+10 access_to_help         0.75                0.4      3    83054.    83054.      221478.      276848.
+# ℹ 270 more rows
+# ℹ 1 more variable: unique_adjustment_impact <int>
+# ℹ Use `print(n = ...)` to see more rows
+
+  C. Sample Data
+
+  Shows actual values for the first indicator:
+
+Sample data for first indicator:
+# A tibble: 15 × 6
+   degree_ratio true_positive_rate precision basic_estimate adjusted_estimate adjustment_impact
+          <dbl>              <dbl>     <dbl>          <dbl>             <dbl>             <dbl>
+ 1          0.5                0.3       0.8         77417.           412890.              5.33
+ 2          0.5                0.3       0.9         77417.           464501.              6   
+ 3          0.5                0.3       1           77417.           516112.              6.67
+ 4          0.5                0.4       0.8         77417.           309667.              4   
+ 5          0.5                0.4       0.9         77417.           348376.              4.5 
+ 6          0.5                0.4       1           77417.           387084.              5   
+ 7          0.5                0.5       0.8         77417.           247734.              3.2 
+ 8          0.5                0.5       0.9         77417.           278701.              3.6 
+ 9          0.5                0.5       1           77417.           309667.              4   
+10          0.5                0.6       0.8         77417.           206445.              2.67
+11          0.5                0.6       0.9         77417.           232250.              3   
+12          0.5                0.6       1           77417.           258056.              3.33
+13          0.5                0.7       0.8         77417.           176953.              2.29
+14          0.5                0.7       0.9         77417.           199072.              2.57
+15          0.5                0.7       1           77417.           221191.              2.86
+
+Using 8 true_positive_rate values: 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 
+
+QUESTIONS:
+
+Question 1: Are adjustment factors varying?
+
+  - Look at "Unique values" - do you see multiple degree_ratio and true_positive_rate values?
+  
+  Yes,both `degree_ratio` and `true_positive_rate` have different values (see Output A above).
+  
+
+  Question 2: Are there multiple data points per combination?
+
+  - Look at "Data structure check" - is n_rows always 1?
+  
+  No `n_rows` is always 3. (I made some minor edits so that some internal objects are made global -- see the most recent GitHub commit please.)
+  
+
+  Question 3: Are basic estimates identical?
+
+  - Look at min_basic vs max_basic - are they the same?
+ 
+ yes, `all(data_structure$max_basic == data_structure$min_basic)` returns "TRUE"
+ 
+ 
+  Question 4: Are adjusted estimates varying?
+
+  - Look at min_adjusted vs max_adjusted - do they differ?
+  
+  Yes -- all the min/max adjusted values are different.  The command `all(data_structure$max_adjusted != data_structure$min_adjusted)` returns TRUE.
+  
+  
+  Question 5: Are adjustment impacts meaningful?
+
+  - Look at adjustment_impact values in sample data
+  
+  There is variation in `sample_data$adjustment_impact`, but the range and distribution are not as you are expecting.  The minimum value is 0.4 and the maximum value is 6.67 These commands:
+````
+library(psych)
+describe(sample_data$adjustment_impact)
+``` 
+produce this output:
+"""
+   vars   n mean  sd median trimmed  mad min  max range skew kurtosis   se
+X1    1 168 1.58 1.1   1.27    1.39 0.77 0.4 6.67  6.27 1.87     4.24 0.08
+"""
+  
+  

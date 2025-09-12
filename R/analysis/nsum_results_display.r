@@ -533,7 +533,7 @@ plot_sensitivity_analysis <- function(results_df) {
   
   # Check if we have multiple values per combination
   cat("\nData structure check:\n")
-  data_structure <- sens_data %>%
+  data_structure <<- sens_data %>%
     group_by(indicator_name, degree_ratio, true_positive_rate) %>%
     summarise(
       n_rows = n(),
@@ -549,7 +549,7 @@ plot_sensitivity_analysis <- function(results_df) {
   
   # Show actual values for one indicator to debug
   cat("\nSample data for first indicator:\n")
-  sample_data <- sens_data %>%
+  sample_data <<- sens_data %>%
     filter(indicator_name == unique(sens_data$indicator_name)[1]) %>%
     select(degree_ratio, true_positive_rate, precision, basic_estimate, 
            adjusted_estimate, adjustment_impact) %>%
