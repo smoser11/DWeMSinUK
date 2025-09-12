@@ -27,11 +27,13 @@ Excellent. Thank you.  I want to discuss  the files `nsum_adjustment_factors.r` 
 Do not make any edits just yet.  We are just talking and problem solving right now.
 
 
+OK, at this point we need to 'fork' the sensitivity analysis into two.
+
 
 
  > Further, the inclusion probabilities ($\pi_i$) are important (e.g. for     │
 │   their equation 6).  Now, since we have an RDS sample I suggest we use      │
-│   various weights produced by the `RDS` package -- prooperly re-scated to    │
+│   various weights produced by the `RDS` package -- properly re-scaled to    │
 │   be inclusion probabilities -- in these calculations.  But importatnly, we  │
 │   **do not** have visability estimates.  Does this make sense?  
 
@@ -45,7 +47,9 @@ Do not make any edits just yet.  We are just talking and problem solving right n
 │   https://cran.r-project.org/web/packages/surveybootstrap/index.html   With  │
 │   this, please completely re-write nsum_results_display.r and                │
 │   nsum_adjustment_factors.r to correctly perform ROBUST NSUM esimation       │
-│   useing my RDS sample.  Next, use Apendix D in the Online Apendix (/Users/  │
+│   useing my RDS sample.
+
+  Next, use Apendix D in the Online Apendix (/Users/  │
 │   sm38679/Library/CloudStorage/Dropbox/zotero/storage/FT7AR9J6/Feehan\ and\  │
 │   Salganik\ -\ 2016\ -\ Online\ appendix.pdf  ) to perform senisitivity      │
 │   analysis that show exactly how estimates will be affected by violations    │

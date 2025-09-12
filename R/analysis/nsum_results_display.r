@@ -20,6 +20,65 @@ bootstrap_nsum_ci <- function(data, rds_var, nsum_var, degree_var, weight_var = 
   
   cat("Bootstrapping confidence intervals for", rds_var, "...\n")
   
+  # DEBUG: Check input data
+  cat("DEBUG BOOTSTRAP - Input check:\n")
+  cat("  Data rows:", nrow(data), "\n")
+  cat("  rds_var values:", sum(!is.na(data[[rds_var]])), "non-NA,", sum(data[[rds_var]], na.rm = TRUE), "positive\n")
+  cat("  nsum_var values:", sum(!is.na(data[[nsum_var]])), "non-NA,", sum(data[[nsum_var]], na.rm = TRUE), "positive\n")
+  cat("  degree_var values:", sum(!is.na(data[[degree_var]])), "non-NA, mean:", round(mean(data[[degree_var]], na.rm = TRUE), 2), "\n")
+  if (!is.null(weight_var) && weight_var %in% names(data)) {
+    cat("  weight_var values:", sum(!is.na(data[[weight_var]])), "non-NA, mean:", round(mean(data[[weight_var]], na.rm = TRUE), 2), "\n")
+  }
+  cat("  Parameters: N_F =", N_F, ", degree_ratio =", degree_ratio, ", TPR =", true_positive_rate, ", precision =", precision, "\n")
+  
+  # Test the bootstrap function once first
+  cat("DEBUG BOOTSTRAP - Testing bootstrap function once...\n")
+  test_indices <- 1:nrow(data)  # Use all data first
+  test_result <- tryCatch({
+    boot_data <- data[test_indices, ]
+    
+    result <- calculate_nsum_with_adjustments(
+      data = boot_data,
+      rds_var = rds_var,
+      nsum_var = nsum_var,
+      degree_var = degree_var,
+      weight_var = weight_var,
+      N_F = N_F,
+      degree_ratio = degree_ratio,
+      true_positive_rate = true_positive_rate,
+      precision = precision
+    )
+    
+    if (is.null(result$error)) {
+      cat("  Test successful: NSUM =", round(result$adjusted_estimate), ", RDS =", round(result$rds_estimate), "\n")
+      c(result$adjusted_estimate, result$rds_estimate)
+    } else {
+      cat("  Test failed with error:", result$error, "\n")
+      c(NA, NA)
+    }
+  }, error = function(e) {
+    cat("  Test error:", e$message, "\n")
+    c(NA, NA)
+  })
+  
+  if (all(is.na(test_result))) {
+    cat("ERROR: Bootstrap function fails on full data. Cannot proceed.\n")
+    return(list(
+      nsum_ci_lower = NA,
+      nsum_ci_upper = NA,
+      rds_ci_lower = NA,
+      rds_ci_upper = NA,
+      n_valid_boot = 0,
+      boot_estimates = NULL
+    ))
+  }
+  
+  cat("DEBUG BOOTSTRAP - Test completed, proceeding to bootstrap...\n")
+  cat("DEBUG BOOTSTRAP - test_result values:", test_result, "\n")
+  
+  # Clear test_result to avoid accidental return
+  rm(test_result)
+  
   # Bootstrap function
   boot_nsum <- function(data, indices) {
     boot_data <- data[indices, ]
@@ -43,31 +102,72 @@ bootstrap_nsum_ci <- function(data, rds_var, nsum_var, degree_var, weight_var = 
     }
   }
   
-  # Run bootstrap
-  boot_results <- boot(data, boot_nsum, R = n_boot)
+  # Run bootstrap with reduced sample for debugging
+  n_boot_debug <- min(n_boot, 100)  # Use smaller sample for debugging
+  cat("DEBUG BOOTSTRAP - Running", n_boot_debug, "bootstrap samples...\n")
+  cat("DEBUG BOOTSTRAP - About to call boot()...\n")
+  
+  boot_results <- tryCatch({
+    boot(data, boot_nsum, R = n_boot_debug)
+  }, error = function(e) {
+    cat("ERROR in boot():", e$message, "\n")
+    return(NULL)
+  })
+  
+  if (is.null(boot_results)) {
+    cat("ERROR: Bootstrap failed completely.\n")
+    return(list(
+      nsum_ci_lower = NA,
+      nsum_ci_upper = NA,
+      rds_ci_lower = NA,
+      rds_ci_upper = NA,
+      n_valid_boot = 0,
+      boot_estimates = NULL
+    ))
+  }
+  
+  cat("DEBUG BOOTSTRAP - Bootstrap completed, processing results...\n")
+  cat("  Bootstrap results dimensions:", dim(boot_results$t), "\n")
+  cat("  First 5 bootstrap results:\n")
+  print(head(boot_results$t, 5))
   
   # Extract confidence intervals
   alpha <- 1 - conf_level
   
   # NSUM CI (first column)
   nsum_boot <- boot_results$t[, 1]  # First column is adjusted_estimate
+  cat("DEBUG BOOTSTRAP - NSUM bootstrap values:", length(nsum_boot), "total,", sum(!is.na(nsum_boot)), "valid\n")
+  cat("  NSUM range:", round(min(nsum_boot, na.rm = TRUE)), "to", round(max(nsum_boot, na.rm = TRUE)), "\n")
+  
   nsum_boot <- nsum_boot[!is.na(nsum_boot)]
   
   if (length(nsum_boot) > 10) {
     nsum_ci <- quantile(nsum_boot, c(alpha/2, 1-alpha/2))
+    cat("  NSUM CI:", round(nsum_ci[1]), "to", round(nsum_ci[2]), "\n")
   } else {
+    cat("  NSUM CI: insufficient valid bootstrap samples (", length(nsum_boot), ")\n")
     nsum_ci <- c(NA, NA)
   }
   
   # RDS CI (second column)
   rds_boot <- boot_results$t[, 2]  # Second column is rds_estimate
+  cat("DEBUG BOOTSTRAP - RDS bootstrap values:", length(rds_boot), "total,", sum(!is.na(rds_boot)), "valid\n")
+  cat("  RDS range:", round(min(rds_boot, na.rm = TRUE)), "to", round(max(rds_boot, na.rm = TRUE)), "\n")
+  
   rds_boot <- rds_boot[!is.na(rds_boot)]
   
   if (length(rds_boot) > 10) {
     rds_ci <- quantile(rds_boot, c(alpha/2, 1-alpha/2))
+    cat("  RDS CI:", round(rds_ci[1]), "to", round(rds_ci[2]), "\n")
   } else {
+    cat("  RDS CI: insufficient valid bootstrap samples (", length(rds_boot), ")\n")
     rds_ci <- c(NA, NA)
   }
+  
+  cat("DEBUG BOOTSTRAP - Final CI results:\n")
+  cat("  NSUM CI: [", nsum_ci[1], ",", nsum_ci[2], "]\n")
+  cat("  RDS CI: [", rds_ci[1], ",", rds_ci[2], "]\n")
+  cat("  Valid bootstrap samples:", length(nsum_boot), "\n")
   
   return(list(
     nsum_ci_lower = nsum_ci[1],
@@ -175,18 +275,57 @@ process_results_with_ci <- function(results_df, data, n_boot = 500) {
       weight_var <- "wt.vh_980k"
     }
     
-    ci_result <- bootstrap_nsum_ci(
-      data = data,
-      rds_var = scenario$indicator,
-      nsum_var = str_replace(scenario$indicator, "_rds$", "_nsum"),
-      degree_var = "known_network_size",
-      weight_var = weight_var,
-      N_F = scenario$N_F,
-      degree_ratio = scenario$degree_ratio,
-      true_positive_rate = scenario$true_positive_rate,
-      precision = scenario$precision,
-      n_boot = n_boot
-    )
+    # DEBUG CI calculation
+    cat("DEBUG CI calc for scenario", i, "of", nrow(key_scenarios), ":\n")
+    cat("  Indicator:", scenario$indicator, "\n")
+    cat("  NSUM var:", str_replace(scenario$indicator, "_rds$", "_nsum"), "\n")
+    cat("  Weight var:", weight_var, "\n")
+    cat("  N_F:", scenario$N_F, "\n")
+    
+    ci_result <- tryCatch({
+      bootstrap_nsum_ci(
+        data = data,
+        rds_var = scenario$indicator,
+        nsum_var = str_replace(scenario$indicator, "_rds$", "_nsum"),
+        degree_var = "known_network_size",
+        weight_var = weight_var,
+        N_F = scenario$N_F,
+        degree_ratio = scenario$degree_ratio,
+        true_positive_rate = scenario$true_positive_rate,
+        precision = scenario$precision,
+        n_boot = n_boot
+      )
+    }, error = function(e) {
+      cat("  ERROR in bootstrap_nsum_ci:", e$message, "\n")
+      return(list(
+        nsum_ci_lower = NA,
+        nsum_ci_upper = NA,
+        rds_ci_lower = NA,
+        rds_ci_upper = NA,
+        n_valid_boot = 0
+      ))
+    })
+    
+    # Debug: Check what ci_result actually contains
+    cat("  DEBUG CI result class:", class(ci_result), "\n")
+    cat("  DEBUG CI result structure:\n")
+    if (is.list(ci_result)) {
+      cat("    List with names:", paste(names(ci_result), collapse = ", "), "\n")
+      cat("  CI result - NSUM:", ci_result$nsum_ci_lower, "to", ci_result$nsum_ci_upper, "\n")
+      cat("  CI result - RDS:", ci_result$rds_ci_lower, "to", ci_result$rds_ci_upper, "\n")
+      cat("  Valid bootstrap samples:", ci_result$n_valid_boot, "\n")
+    } else {
+      cat("    Not a list! Content:", ci_result, "\n")
+      # Convert to proper list structure if needed
+      ci_result <- list(
+        nsum_ci_lower = NA,
+        nsum_ci_upper = NA,
+        rds_ci_lower = NA,
+        rds_ci_upper = NA,
+        n_valid_boot = 0
+      )
+    }
+    cat("  ---\n")
     
     scenario %>%
       mutate(
@@ -286,8 +425,16 @@ create_summary_table <- function(results_df) {
     ) %>%
     select(indicator_name, scheme, nsum_formatted, rds_formatted, ratio_formatted)
   
-  # Pivot wider
+  # Pivot wider with proper handling of duplicates
   wide_data <- main_estimates %>%
+    # Group and summarize to handle any duplicates
+    group_by(indicator_name, scheme) %>%
+    summarise(
+      nsum_formatted = first(nsum_formatted),
+      rds_formatted = first(rds_formatted), 
+      ratio_formatted = first(ratio_formatted),
+      .groups = 'drop'
+    ) %>%
     pivot_wider(
       names_from = scheme,
       values_from = c(nsum_formatted, rds_formatted, ratio_formatted),
@@ -311,32 +458,67 @@ create_summary_table <- function(results_df) {
     }
   }
   
-  # Create gt table
-  gt_table <- wide_data %>%
-    gt() %>%
-    tab_header(
-      title = "NSUM vs RDS Estimates of Domestic Worker Exploitation",
-      subtitle = paste("Population:", format(preferred_n_f, big.mark = ","), 
-                       "| Degree ratio:", preferred_degree_ratio,
-                       "| True positive rate:", preferred_tpr)
-    ) %>%
-    cols_label(.list = col_labels) %>%
-    fmt_number(
-      columns = contains("ratio"),
-      decimals = 2
-    ) %>%
-    tab_style(
-      style = list(cell_text(weight = "bold")),
-      locations = cells_column_labels()
-    ) %>%
-    tab_footnote(
-      footnote = "Numbers in parentheses are 95% confidence intervals from bootstrap samples",
-      locations = cells_column_labels(columns = contains("nsum_formatted"))
-    ) %>%
-    cols_width(
-      indicator_name ~ px(180),
-      everything() ~ px(120)
-    )
+  # Create gt table with error handling
+  cat("DEBUG: Creating gt table...\n")
+  cat("Wide data dimensions:", nrow(wide_data), "x", ncol(wide_data), "\n")
+  cat("Available columns:", paste(names(wide_data), collapse = ", "), "\n")
+  
+  # Check for ratio columns
+  ratio_columns <- names(wide_data)[grepl("ratio", names(wide_data))]
+  cat("Ratio columns found:", paste(ratio_columns, collapse = ", "), "\n")
+  
+  gt_table <- tryCatch({
+    wide_data %>%
+      gt() %>%
+      tab_header(
+        title = "NSUM vs RDS Estimates of Domestic Worker Exploitation",
+        subtitle = paste("Population:", format(preferred_n_f, big.mark = ","), 
+                         "| Degree ratio:", preferred_degree_ratio,
+                         "| True positive rate:", preferred_tpr)
+      ) %>%
+      cols_label(.list = col_labels) %>%
+      {
+        # Only apply fmt_number if ratio columns exist and contain numeric data
+        if (length(ratio_columns) > 0) {
+          # Check if the ratio columns actually contain numeric data
+          ratio_numeric <- sapply(ratio_columns, function(col) {
+            if (col %in% names(wide_data)) {
+              is.numeric(wide_data[[col]]) && !all(is.na(wide_data[[col]]))
+            } else {
+              FALSE
+            }
+          })
+          
+          if (any(ratio_numeric)) {
+            numeric_ratio_cols <- ratio_columns[ratio_numeric]
+            cat("Formatting numeric ratio columns:", paste(numeric_ratio_cols, collapse = ", "), "\n")
+            fmt_number(., columns = all_of(numeric_ratio_cols), decimals = 2)
+          } else {
+            cat("No numeric ratio columns to format\n")
+            .
+          }
+        } else {
+          cat("No ratio columns found\n")
+          .
+        }
+      } %>%
+      tab_style(
+        style = list(cell_text(weight = "bold")),
+        locations = cells_column_labels()
+      ) %>%
+      tab_footnote(
+        footnote = "Numbers in parentheses are 95% confidence intervals from bootstrap samples",
+        locations = cells_column_labels(columns = contains("nsum_formatted"))
+      ) %>%
+      cols_width(
+        indicator_name ~ px(180),
+        everything() ~ px(120)
+      )
+  }, error = function(e) {
+    cat("ERROR in gt table creation:", e$message, "\n")
+    cat("Returning simple data frame instead of gt table\n")
+    return(wide_data)  # Return the data frame if gt fails
+  })
   
   return(gt_table)
 }
@@ -463,7 +645,21 @@ plot_estimate_comparison <- function(results_df) {
   scheme_colors <- rainbow(length(unique(plot_data$scheme)))
   names(scheme_colors) <- unique(plot_data$scheme)
   
-  p1 <- plot_data %>%
+  # Filter out rows with NA values that would cause plotting issues
+  plot_data_clean <- plot_data %>%
+    filter(
+      !is.na(rds_estimate) & is.finite(rds_estimate),
+      !is.na(adjusted_estimate) & is.finite(adjusted_estimate)
+    )
+  
+  cat("Plot data after cleaning: ", nrow(plot_data_clean), " of ", nrow(plot_data), " rows\n")
+  
+  if (nrow(plot_data_clean) == 0) {
+    cat("No valid data for plotting after removing NAs\n")
+    return(NULL)
+  }
+  
+  p1 <- plot_data_clean %>%
     ggplot(aes(x = rds_estimate, y = adjusted_estimate, color = scheme)) +
     geom_point(size = 3, alpha = 0.8) +
     geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "gray50") +
@@ -493,8 +689,13 @@ plot_estimate_comparison <- function(results_df) {
 
 plot_sensitivity_analysis <- function(results_df) {
   
-  # Use flexible filtering
-  debug_results <- results_df %>% filter(is.na(error))
+  # Use flexible filtering and remove NA values
+  debug_results <- results_df %>% 
+    filter(
+      is.na(error),
+      !is.na(adjusted_estimate) & is.finite(adjusted_estimate),
+      !is.na(degree_ratio) & is.finite(degree_ratio)
+    )
   
   if (nrow(debug_results) == 0) {
     cat("No valid data for sensitivity plot\n")
@@ -596,7 +797,9 @@ plot_sensitivity_analysis <- function(results_df) {
     pop_data <- results_df %>%
       filter(
         is.na(error),
-        scheme == preferred_scheme
+        scheme == preferred_scheme,
+        !is.na(nsum_prevalence) & is.finite(nsum_prevalence),
+        !is.na(N_F) & is.finite(N_F)
       ) %>%
       group_by(indicator_name, N_F) %>%
       slice(1) %>%
@@ -647,7 +850,8 @@ plot_weight_comparison <- function(results_df) {
   weight_data <- results_df %>%
     filter(
       is.na(error),
-      N_F == preferred_n_f
+      N_F == preferred_n_f,
+      !is.na(adjusted_estimate) & is.finite(adjusted_estimate)
     ) %>%
     group_by(indicator_name, scheme) %>%
     slice(1) %>%
