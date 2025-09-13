@@ -47,10 +47,54 @@ OK, at this point we need to 'fork' the sensitivity analysis into two.
 │   https://cran.r-project.org/web/packages/surveybootstrap/index.html   With  │
 │   this, please completely re-write nsum_results_display.r and                │
 │   nsum_adjustment_factors.r to correctly perform ROBUST NSUM esimation       │
-│   useing my RDS sample.
+│   using my RDS sample.
+
+
+### 20250912CC
+
+> Thank you.  Your Steps are out of order (e.g. Step 1, Step 2, Step 1, Step 
+  3, Step 4, Step 5, Step 6).  I think the problem lies in the 'second Step 
+  1', which seems to give 0 valid NSUM and 1 valid RDS estimates. CI scenario 
+  29 of 30 :  access_to_help , scheme: ss_980k 
+  Survey bootstrap CI for access_to_help_rds ...
+  Running survey bootstrap for access_to_help_rds with 500 replications...
+  Generated 500 bootstrap samples
+  Bootstrap completed: 0 valid NSUM estimates, 0 valid RDS estimates
+  CI scenario 30 of 30 :  access_to_help , scheme: ss_980k 
+  Survey bootstrap CI for access_to_help_rds ...
+  Running survey bootstrap for access_to_help_rds with 500 replications...
+  Generated 500 bootstrap samples
+  Bootstrap completed: 0 valid NSUM estimates, 0 valid RDS estimates
+  Enhanced results created with 9240 rows
+  Step 3: Creating summary tables...
+  Creating robust summary table...
+  Creating robust sensitivity analysis table...
+  Step 4: Creating visualizations...
+  Creating robust NSUM vs RDS comparison plot...
+  Creating robust sensitivity analysis plot...
+  Creating inclusion probability analysis plot...
+  Step 5: Saving results...
+  Error saving comparison plot: Discrete values supplied to continuous scale. 
+  Sensitivity plot saved successfully
+  Inclusion plot saved successfully
+  Step 6: Displaying results...
+
+
+
+  Error in `scale_y_continuous()`:
+  ! Discrete values supplied to continuous scale.
+  ℹ Example values: NA, NA, NA, NA, and NA
+  Run `rlang::last_trace()` to see where the error occurred.
+  ⎿  5-hour limit reached ∙ resets 5pm
+     /upgrade to increase your usage limit.
+
+
+
+---
+
 
   Next, use Apendix D in the Online Apendix (/Users/  │
 │   sm38679/Library/CloudStorage/Dropbox/zotero/storage/FT7AR9J6/Feehan\ and\  │
-│   Salganik\ -\ 2016\ -\ Online\ appendix.pdf  ) to perform senisitivity      │
+│   Salganik\ -\ 2016\ -\ Online\ appendix D.pdf  ) to perform senisitivity      │
 │   analysis that show exactly how estimates will be affected by violations    │
 │   of assumptions.      
