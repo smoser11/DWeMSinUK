@@ -269,80 +269,175 @@ calculate_robust_nsum <- function(data, rds_var, nsum_var, degree_var,
 
 robust_nsum_bootstrap <- function(data, rds_var, nsum_var, degree_var,
                                   weight_var, N_F,
-                                  degree_ratio = 1.0, 
+                                  degree_ratio = 1.0,
                                   true_positive_rate = 1.0,
                                   precision = 1.0,
                                   n_boot = 1000) {
-  
+
   cat("Running survey bootstrap for", rds_var, "with", n_boot, "replications...\n")
-  
+
+  # First debug: check the input data
+  valid_input <- !is.na(data[[rds_var]]) & !is.na(data[[nsum_var]]) &
+                 !is.na(data[[degree_var]]) & !is.na(data[[weight_var]])
+
+  cat("Input data validation:\n")
+  cat("- Total observations:", nrow(data), "\n")
+  cat("- Valid observations:", sum(valid_input), "\n")
+  cat("- Missing", rds_var, ":", sum(is.na(data[[rds_var]])), "\n")
+  cat("- Missing", nsum_var, ":", sum(is.na(data[[nsum_var]])), "\n")
+  cat("- Missing", degree_var, ":", sum(is.na(data[[degree_var]])), "\n")
+  cat("- Missing", weight_var, ":", sum(is.na(data[[weight_var]])), "\n")
+
+  if (sum(valid_input) < 10) {
+    cat("ERROR: Insufficient valid observations for bootstrap\n")
+    return(list(
+      nsum_ci_lower = NA, nsum_ci_upper = NA,
+      rds_ci_lower = NA, rds_ci_upper = NA,
+      n_valid_boot = 0, boot_estimates = NULL
+    ))
+  }
+
+  # Work with valid data only
+  data_valid <- data[valid_input, ]
+
   # Prepare survey design for bootstrap
-  # For RDS, we treat each individual as a PSU since there's no cluster structure
-  data$psu_id <- 1:nrow(data)  # Each person is their own PSU
-  
-  # Add inclusion probabilities 
-  pi_i <- calculate_inclusion_probabilities(data, weight_var, N_F)
-  data$survey_weight <- 1 / pi_i  # Survey weights = 1/π_i
-  
+  # For RDS, each individual is a PSU (primary sampling unit)
+  data_valid$psu_id <- 1:nrow(data_valid)
+
+  # Add inclusion probabilities
+  pi_i <- calculate_inclusion_probabilities(data_valid, weight_var, N_F)
+  data_valid$survey_weight <- 1 / pi_i  # Survey weights = 1/π_i
+
+  cat("Inclusion probabilities: min =", round(min(pi_i), 6),
+      "max =", round(max(pi_i), 6),
+      "mean =", round(mean(pi_i), 6), "\n")
+
   # Define survey design formula
   # weight ~ psu_vars (no strata for basic RDS)
   survey_design <- survey_weight ~ psu_id
-  
+
+  # Debug: Check surveybootstrap package structure
+  cat("Attempting rescaled bootstrap with", nrow(data_valid), "observations...\n")
+
   # Draw bootstrap samples using rescaled bootstrap
-  boot_samples <- rescaled.bootstrap.sample(
-    survey.data = data,
-    survey.design = survey_design,
-    num.reps = n_boot,
-    parallel = robust_nsum_config$bootstrap$parallel
-  )
-  
+  boot_samples <- tryCatch({
+    rescaled.bootstrap.sample(
+      survey.data = data_valid,
+      survey.design = survey_design,
+      num.reps = n_boot,
+      parallel = robust_nsum_config$bootstrap$parallel
+    )
+  }, error = function(e) {
+    cat("Bootstrap sampling failed:", e$message, "\n")
+    return(NULL)
+  })
+
+  if (is.null(boot_samples)) {
+    cat("ERROR: Bootstrap sampling failed\n")
+    return(list(
+      nsum_ci_lower = NA, nsum_ci_upper = NA,
+      rds_ci_lower = NA, rds_ci_upper = NA,
+      n_valid_boot = 0, boot_estimates = NULL
+    ))
+  }
+
   cat("Generated", length(boot_samples), "bootstrap samples\n")
+
+  # Debug: Check structure of first bootstrap sample
+  if (length(boot_samples) > 0) {
+    cat("Bootstrap sample structure:\n")
+    cat("- Names:", names(boot_samples[[1]]), "\n")
+    cat("- Sample 1 length:", nrow(boot_samples[[1]]), "\n")
+    cat("- Sample 1 columns:", names(boot_samples[[1]]), "\n")
+  }
   
   # Calculate NSUM estimates for each bootstrap sample
   boot_estimates <- map_dfr(1:length(boot_samples), function(b) {
-    
+
     boot_data <- boot_samples[[b]]
-    
+
+    # Debug bootstrap sample structure
+    if (b <= 3) {  # Only debug first 3 samples
+      cat("Bootstrap sample", b, ":\n")
+      cat("- Columns:", paste(names(boot_data), collapse = ", "), "\n")
+      cat("- Rows:", nrow(boot_data), "\n")
+      if ("index" %in% names(boot_data)) {
+        cat("- Index range:", range(boot_data$index), "\n")
+      }
+      if ("weight.scale" %in% names(boot_data)) {
+        cat("- Weight.scale range:", round(range(boot_data$weight.scale), 4), "\n")
+      }
+    }
+
     # Merge bootstrap info back with original data
-    boot_merged <- data[boot_data$index, ] 
-    boot_merged$boot_weight <- data$survey_weight[boot_data$index] * boot_data$weight.scale
+    if (!"index" %in% names(boot_data)) {
+      cat("ERROR: No 'index' column in bootstrap sample", b, "\n")
+      return(tibble(nsum_est = NA, rds_est = NA))
+    }
+
+    boot_merged <- data_valid[boot_data$index, ]
+    boot_merged$boot_weight <- data_valid$survey_weight[boot_data$index] * boot_data$weight.scale
     
     # Calculate NSUM estimate with bootstrap weights
     result <- tryCatch({
-      
+
       # Use bootstrap-adjusted weights
       pi_i_boot <- 1 / boot_merged$boot_weight
       pi_i_boot <- pi_i_boot / sum(pi_i_boot, na.rm = TRUE)  # Rescale to sum to 1
-      
+
       # Apply NSUM calculation with bootstrap weights
-      valid_cases <- !is.na(boot_merged[[rds_var]]) & !is.na(boot_merged[[nsum_var]]) & 
+      valid_cases <- !is.na(boot_merged[[rds_var]]) & !is.na(boot_merged[[nsum_var]]) &
                     !is.na(boot_merged[[degree_var]]) & !is.na(pi_i_boot) & pi_i_boot > 0
-      
-      if (sum(valid_cases) < 10) return(tibble(nsum_est = NA, rds_est = NA))
-      
+
+      if (b <= 3) {  # Debug first few samples
+        cat("  Valid cases in sample", b, ":", sum(valid_cases), "out of", length(valid_cases), "\n")
+        cat("  Missing in bootstrap sample:\n")
+        cat("  -", rds_var, ":", sum(is.na(boot_merged[[rds_var]])), "\n")
+        cat("  -", nsum_var, ":", sum(is.na(boot_merged[[nsum_var]])), "\n")
+        cat("  -", degree_var, ":", sum(is.na(boot_merged[[degree_var]])), "\n")
+        cat("  - pi_i_boot:", sum(is.na(pi_i_boot) | pi_i_boot <= 0), "\n")
+      }
+
+      if (sum(valid_cases) < 10) {
+        if (b <= 3) cat("  Insufficient valid cases (<10) in sample", b, "\n")
+        return(tibble(nsum_est = NA, rds_est = NA))
+      }
+
       valid_boot <- boot_merged[valid_cases, ]
       pi_boot_valid <- pi_i_boot[valid_cases]
-      
+
       # NSUM calculation
       out_reports <- valid_boot[[nsum_var]]
       degrees <- valid_boot[[degree_var]]
-      
+
       y_FH_prop <- sum(out_reports / pi_boot_valid, na.rm = TRUE) / sum(1 / pi_boot_valid, na.rm = TRUE)
       d_FF <- sum(degrees / pi_boot_valid, na.rm = TRUE) / sum(1 / pi_boot_valid, na.rm = TRUE)
-      
-      if (d_FF <= 0) return(tibble(nsum_est = NA, rds_est = NA))
-      
+
+      if (b <= 3) {
+        cat("  y_FH_prop =", round(y_FH_prop, 4), ", d_FF =", round(d_FF, 4), "\n")
+      }
+
+      if (d_FF <= 0) {
+        if (b <= 3) cat("  d_FF <= 0, returning NA\n")
+        return(tibble(nsum_est = NA, rds_est = NA))
+      }
+
       basic_est <- (y_FH_prop / d_FF) * N_F
       nsum_est <- basic_est * (1/degree_ratio) * (1/true_positive_rate) * precision
-      
-      # RDS estimate  
+
+      # RDS estimate
       rds_cases <- valid_boot[[rds_var]]
       rds_prev <- sum(rds_cases / pi_boot_valid, na.rm = TRUE) / sum(1 / pi_boot_valid, na.rm = TRUE)
       rds_est <- rds_prev * N_F
-      
+
+      if (b <= 3) {
+        cat("  Final estimates: NSUM =", round(nsum_est), ", RDS =", round(rds_est), "\n")
+      }
+
       tibble(nsum_est = nsum_est, rds_est = rds_est)
-      
+
     }, error = function(e) {
+      if (b <= 3) cat("  Error in sample", b, ":", e$message, "\n")
       tibble(nsum_est = NA, rds_est = NA)
     })
     

@@ -48,8 +48,8 @@ calculate_robust_nsum_ci <- function(data, rds_var, nsum_var, degree_var,
 # ============================================================================
 
 process_robust_results_with_ci <- function(results_df, data, n_boot = 500) {
-  
-  cat("Step 1: Processing robust results with survey bootstrap CIs...\n")
+
+  cat("Processing robust results with survey bootstrap CIs...\n")
   
   # Debug data structure first
   valid_results <- results_df %>% filter(is.na(error))
@@ -372,42 +372,58 @@ create_robust_sensitivity_table <- function(results_df) {
 # ============================================================================
 
 plot_robust_comparison <- function(results_df) {
-  
+
   cat("Creating robust NSUM vs RDS comparison plot...\n")
-  
-  # Prepare plot data
+
+  # Prepare plot data with better filtering
   plot_data <- results_df %>%
     filter(
       is.na(error),
       !is.na(adjusted_estimate) & is.finite(adjusted_estimate),
       !is.na(rds_estimate) & is.finite(rds_estimate),
+      adjusted_estimate > 0 & rds_estimate > 0,  # Remove zeros and negative values
       N_F == 980000,
       degree_ratio == 1.0,
       true_positive_rate == 0.7
     ) %>%
     slice_head(n = 50)  # Limit for clarity
-  
+
   if (nrow(plot_data) == 0) {
     cat("No valid data for comparison plot\n")
     return(NULL)
   }
+
+  # Check if we have any confidence intervals
+  has_nsum_ci <- any(!is.na(plot_data$nsum_ci_lower) & !is.na(plot_data$nsum_ci_upper))
+  has_rds_ci <- any(!is.na(plot_data$rds_ci_lower) & !is.na(plot_data$rds_ci_upper))
+
+  cat("Data for comparison plot: n=", nrow(plot_data), ", NSUM CIs=", has_nsum_ci, ", RDS CIs=", has_rds_ci, "\n")
   
-  # Create comparison plot
+  # Create comparison plot with conditional error bars
   p1 <- plot_data %>%
     ggplot(aes(x = rds_estimate, y = adjusted_estimate, color = scheme)) +
     geom_point(size = 3, alpha = 0.8) +
-    geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "gray50") +
-    # Add error bars where available
-    geom_errorbar(aes(ymin = nsum_ci_lower, ymax = nsum_ci_upper), 
-                  width = 0, alpha = 0.6, na.rm = TRUE) +
-    geom_errorbarh(aes(xmin = rds_ci_lower, xmax = rds_ci_upper), 
-                   height = 0, alpha = 0.6, na.rm = TRUE) +
-    scale_x_continuous(labels = label_comma()) +
-    scale_y_continuous(labels = label_comma()) +
+    geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "gray50")
+
+  # Add error bars only if we have valid CIs
+  if (has_nsum_ci) {
+    p1 <- p1 + geom_errorbar(aes(ymin = nsum_ci_lower, ymax = nsum_ci_upper),
+                            width = 0, alpha = 0.6, na.rm = TRUE)
+  }
+  if (has_rds_ci) {
+    p1 <- p1 + geom_errorbarh(aes(xmin = rds_ci_lower, xmax = rds_ci_upper),
+                             height = 0, alpha = 0.6, na.rm = TRUE)
+  }
+
+  # Add scales and themes
+  p1 <- p1 +
+    scale_x_continuous(labels = label_comma(), limits = c(0, NA)) +
+    scale_y_continuous(labels = label_comma(), limits = c(0, NA)) +
     scale_color_viridis_d(name = "RDS Weight Scheme") +
     labs(
-      title = "Robust NSUM vs RDS Estimates with Survey Bootstrap CIs",
-      subtitle = "Dashed line shows perfect agreement (NSUM = RDS)",
+      title = "Robust NSUM vs RDS Estimates",
+      subtitle = paste("Dashed line shows perfect agreement (NSUM = RDS)",
+                      if(has_nsum_ci || has_rds_ci) "\nError bars show 95% bootstrap CIs" else ""),
       x = "RDS Estimate",
       y = "NSUM Estimate",
       color = "Weight Scheme"
