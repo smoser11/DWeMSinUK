@@ -68,3 +68,4 @@ cat("\n=== ORIGINAL PRINT OUTPUT ===\n")
 print(ma_result$estimate)
 
 cat("\n=== Test completed ===\n")
+

@@ -28,6 +28,8 @@ tryCatch({
 
 # Source helper functions
 source(here("R", "utils", "helper_functions.R"))
+source(here("R", "config.R"))
+global_config <- get_global_config()
 
 # Load prepared data
 if (!exists("dd") || !exists("rd.dd")) {
@@ -59,8 +61,8 @@ nsum_config <- list(
   ),
   
   # Population scenarios
-  total_population_sizes = get_population_parameters()$sizes,
-  preferred_population_size = 980000,  # EU baseline
+  total_population_sizes = global_config$population_sizes,
+  preferred_population_size = global_config$main_population_size,  # EU baseline
   
   # Multiple weighting schemes from data preparation
   weighting_schemes = list(
@@ -89,7 +91,7 @@ nsum_config <- list(
   
   # Estimation methods
   estimation_methods = c("basic", "weighted", "stratified", "monte_carlo"),
-  preferred_method = "weighted",
+  preferred_method = global_config$preferred_nsum_method,
   
   # Output
   save_detailed_results = TRUE,

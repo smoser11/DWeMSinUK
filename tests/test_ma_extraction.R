@@ -78,3 +78,4 @@ cat("\n=== COMPARISON WITH PRINT OUTPUT ===\n")
 print(ma_result$estimate)
 
 cat("\nTest completed.\n")
+

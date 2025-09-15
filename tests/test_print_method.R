@@ -49,3 +49,4 @@ if (length(ma_result$estimate$interval) >= 6) {
     }
   }
 }
+

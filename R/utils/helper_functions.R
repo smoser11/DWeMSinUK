@@ -12,9 +12,11 @@ ensure_here_setup <- function() {
   if (!exists("here")) {
     library(here)
   }
-  # Verify we're in the right directory
-  if (!file.exists(here("CLAUDE.md"))) {
-    warning("Project root directory may not be set correctly. Expected CLAUDE.md in root.")
+  # Verify project root using RStudio project file or a marker
+  has_rproj <- length(list.files(here(), pattern = "\\.Rproj$", ignore.case = TRUE)) > 0
+  has_marker <- file.exists(here(".project-root"))
+  if (!(has_rproj || has_marker)) {
+    warning("Project root may not be set. Expected an .Rproj file or .project-root marker in repository root.")
   }
 }
 

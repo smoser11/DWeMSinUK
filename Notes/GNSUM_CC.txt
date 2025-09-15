@@ -98,3 +98,15 @@ OK, at this point we need to 'fork' the sensitivity analysis into two.
 │   Salganik\ -\ 2016\ -\ Online\ appendix D.pdf  ) to perform senisitivity      │
 │   analysis that show exactly how estimates will be affected by violations    │
 │   of assumptions.      
+
+
+
+
+
+
+----
+
+
+The 'Symmetric Visibility Variant' is really excellent!  Yes!  We can use e.g. 'Q49. 5c6'  ('how_many_threat') or 'Q64. 5d11' ('how_many_labour_rights') or Q71 5f3 ('how_many_documents') or even 'Q83. 5f16' ('how_many_noNRM') and 'Q84. 5f15' ('how_many_NRM') as the number of people the survey respondant knows in the hidden population!
+
+

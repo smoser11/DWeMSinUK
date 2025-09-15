@@ -13,6 +13,10 @@ library(here)
 # Source utility functions first
 cat("Loading utility functions...\n")
 source(here("R", "utils", "helper_functions.R"))
+source(here("R", "config.R"))
+
+# Global configuration
+global_config <- get_global_config()
 
 # Initialize project environment
 setup_project_environment()
@@ -26,12 +30,12 @@ pipeline_config <- list(
   run_nsum_estimation = TRUE,
   
   # Analysis parameters (consolidated structure)
-  preferred_rds_method = "RDS_SS",
-  preferred_nsum_method = "weighted",
-  include_bootstrap = TRUE,
-  n_bootstrap = 1000,
-  population_sizes = c(50000, 100000, 980000, 1740000),
-  main_population_size = 980000,
+  preferred_rds_method = global_config$preferred_rds_method,
+  preferred_nsum_method = global_config$preferred_nsum_method,
+  include_bootstrap = global_config$include_bootstrap,
+  n_bootstrap = global_config$n_bootstrap,
+  population_sizes = global_config$population_sizes,
+  main_population_size = global_config$main_population_size,
   
   # Output options
   save_intermediate_results = TRUE,

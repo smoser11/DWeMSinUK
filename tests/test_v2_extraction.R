@@ -29,6 +29,7 @@ if (!is.null(ma_result$estimate) && inherits(ma_result$estimate, "rds.interval.e
   prevalence_line <- grep("^1\\s+", print_output, value = TRUE)
   if (length(prevalence_line) > 0) {
     cat("✓ Found prevalence line:", prevalence_line, "\n")
+    
     # Extract the interval from the line like: "1   0.5948 (  0.4682,   0.7214)..."
     interval_match <- regmatches(prevalence_line, regexpr("\\(\\s*([0-9\\.]+),\\s*([0-9\\.]+)\\s*\\)", prevalence_line))
     if (length(interval_match) > 0) {
@@ -95,3 +96,4 @@ if (!is.null(ma_result$estimate) && inherits(ma_result$estimate, "rds.interval.e
 
 cat("\n=== ORIGINAL PRINT OUTPUT FOR REFERENCE ===\n")
 print(ma_result$estimate)
+

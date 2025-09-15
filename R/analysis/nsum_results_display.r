@@ -10,8 +10,16 @@ library(scales)
 library(viridis)
 library(surveybootstrap)
 
-# Source the robust NSUM functions
-source(here("R", "analysis", "nsum_adjustment_factors.r"))
+# Source the robust NSUM functions (prefer .R, fallback to .r)
+adj_R <- here("R", "analysis", "nsum_adjustment_factors.R")
+adj_r <- here("R", "analysis", "nsum_adjustment_factors.r")
+if (file.exists(adj_R)) {
+  source(adj_R)
+} else if (file.exists(adj_r)) {
+  source(adj_r)
+} else {
+  stop("nsum_adjustment_factors file not found (.R or .r)")
+}
 
 # ============================================================================
 # ROBUST SURVEY BOOTSTRAP FOR NSUM CONFIDENCE INTERVALS
@@ -320,229 +328,148 @@ create_robust_sensitivity_table <- function(results_df) {
   
   # Pivot for sensitivity display
   sens_wide <- sens_data %>%
-    group_by(indicator_name, degree_ratio, true_positive_rate) %>%
-    reframe(
-      estimate_range = paste(
-        format(round(min(adjusted_estimate)), big.mark = ","),
-        "-",
-        format(round(max(adjusted_estimate)), big.mark = ",")
-      ),
-      min_est = min(adjusted_estimate),
-      max_est = max(adjusted_estimate),
-      .groups = 'drop'
-    ) %>%
-    mutate(
-      range_ratio = round(pmax(1.25, (max_est - min_est) / pmin(min_est, 1)), 2)
-    ) %>%
-    select(-min_est, -max_est) %>%
-    pivot_wider(
-      names_from = c(degree_ratio, true_positive_rate),
-      values_from = estimate_range,
-      names_sep = "_"
-    )
+    tidyr::unite("degree_tpr", degree_ratio, true_positive_rate, sep = " | ") %>%
+    select(degree_tpr, ci_formatted, adjusted_estimate, adjustment_impact)
   
-  # Create sensitivity gt table
-  sens_table <- tryCatch({
+  # Create gt table (with safe fallback)
+  gt_table <- tryCatch({
     sens_wide %>%
       gt() %>%
       tab_header(
-        title = "Sensitivity of NSUM Estimates to Adjustment Factors",
-        subtitle = paste("Document Withholding |", preferred_scheme, "| Population:", 
-                        format(preferred_n_f, big.mark = ","))
+        title = "Sensitivity Analysis: Adjustment Factors",
+        subtitle = paste("Population:", format(preferred_n_f, big.mark = ","))
       ) %>%
-      tab_spanner_delim(delim = "_") %>%
+      cols_label(
+        degree_tpr = "Degree ratio | True positive",
+        ci_formatted = "95% CI (NSUM)",
+        adjusted_estimate = "Adjusted NSUM",
+        adjustment_impact = "Impact"
+      ) %>%
       tab_style(
         style = list(cell_text(weight = "bold")),
         locations = cells_column_labels()
-      ) %>%
-      fmt_number(
-        columns = contains("range_ratio"),
-        decimals = 2
       )
   }, error = function(e) {
-    cat("Sensitivity table creation failed:", e$message, "\n")
+    cat("GT sensitivity table creation failed:", e$message, "\n")
     return(sens_wide)
   })
   
-  return(sens_table)
+  return(gt_table)
 }
 
 # ============================================================================
-# ROBUST VISUALIZATION FUNCTIONS
+# VISUALIZATIONS
 # ============================================================================
 
 plot_robust_comparison <- function(results_df) {
-
-  cat("Creating robust NSUM vs RDS comparison plot...\n")
-
-  # Prepare plot data with better filtering
-  plot_data <- results_df %>%
-    filter(
-      is.na(error),
-      !is.na(adjusted_estimate) & is.finite(adjusted_estimate),
-      !is.na(rds_estimate) & is.finite(rds_estimate),
-      adjusted_estimate > 0 & rds_estimate > 0,  # Remove zeros and negative values
-      N_F == 980000,
-      degree_ratio == 1.0,
-      true_positive_rate == 0.7
-    ) %>%
-    slice_head(n = 50)  # Limit for clarity
-
-  if (nrow(plot_data) == 0) {
-    cat("No valid data for comparison plot\n")
-    return(NULL)
-  }
-
-  # Check if we have any confidence intervals
-  has_nsum_ci <- any(!is.na(plot_data$nsum_ci_lower) & !is.na(plot_data$nsum_ci_upper))
-  has_rds_ci <- any(!is.na(plot_data$rds_ci_lower) & !is.na(plot_data$rds_ci_upper))
-
-  cat("Data for comparison plot: n=", nrow(plot_data), ", NSUM CIs=", has_nsum_ci, ", RDS CIs=", has_rds_ci, "\n")
   
-  # Create comparison plot with conditional error bars
-  p1 <- plot_data %>%
-    ggplot(aes(x = rds_estimate, y = adjusted_estimate, color = scheme)) +
-    geom_point(size = 3, alpha = 0.8) +
-    geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "gray50")
-
-  # Add error bars only if we have valid CIs
-  if (has_nsum_ci) {
-    p1 <- p1 + geom_errorbar(aes(ymin = nsum_ci_lower, ymax = nsum_ci_upper),
-                            width = 0, alpha = 0.6, na.rm = TRUE)
-  }
-  if (has_rds_ci) {
-    p1 <- p1 + geom_errorbarh(aes(xmin = rds_ci_lower, xmax = rds_ci_upper),
-                             height = 0, alpha = 0.6, na.rm = TRUE)
-  }
-
-  # Add scales and themes
-  p1 <- p1 +
-    scale_x_continuous(labels = label_comma(), limits = c(0, NA)) +
-    scale_y_continuous(labels = label_comma(), limits = c(0, NA)) +
-    scale_color_viridis_d(name = "RDS Weight Scheme") +
-    labs(
-      title = "Robust NSUM vs RDS Estimates",
-      subtitle = paste("Dashed line shows perfect agreement (NSUM = RDS)",
-                      if(has_nsum_ci || has_rds_ci) "\nError bars show 95% bootstrap CIs" else ""),
-      x = "RDS Estimate",
-      y = "NSUM Estimate",
-      color = "Weight Scheme"
-    ) +
-    theme_minimal() +
-    theme(
-      plot.title = element_text(size = 14, face = "bold"),
-      plot.subtitle = element_text(size = 12),
-      legend.position = "bottom"
+  valid_results <- results_df %>% filter(is.na(error))
+  if (nrow(valid_results) == 0) return(NULL)
+  
+  preferred_n_f <- if (980000 %in% unique(valid_results$N_F)) 980000 else max(valid_results$N_F)
+  preferred_scheme <- valid_results$scheme[1]
+  
+  plt_data <- valid_results %>%
+    filter(
+      N_F == preferred_n_f,
+      scheme == preferred_scheme,
+      degree_ratio == 1.0,
+      true_positive_rate == 0.7,
+      precision == 1.0
+    ) %>%
+    mutate(
+      indicator_label = factor(indicator_name, levels = unique(indicator_name))
     )
   
-  return(p1)
+  if (nrow(plt_data) == 0) return(NULL)
+  
+  ggplot(plt_data, aes(x = indicator_label)) +
+    geom_point(aes(y = nsum_estimate, color = "NSUM"), size = 3, position = position_nudge(x = -0.15)) +
+    geom_point(aes(y = rds_estimate, color = "RDS"), size = 3, position = position_nudge(x = 0.15)) +
+    scale_color_manual(values = c("NSUM" = "#6A3D9A", "RDS" = "#33A02C")) +
+    scale_y_continuous(labels = scales::comma) +
+    labs(
+      title = "NSUM vs RDS Estimates",
+      x = "Indicator",
+      y = "Estimated count",
+      color = "Method"
+    ) +
+    theme_minimal()
 }
 
 plot_robust_sensitivity <- function(results_df) {
+  valid_results <- results_df %>% filter(is.na(error))
+  if (nrow(valid_results) == 0) return(NULL)
   
-  cat("Creating robust sensitivity analysis plot...\n")
+  preferred_n_f <- if (980000 %in% unique(valid_results$N_F)) 980000 else max(valid_results$N_F)
+  preferred_scheme <- valid_results$scheme[1]
   
-  # Prepare sensitivity data
-  sens_data <- results_df %>%
-    filter(
-      is.na(error),
-      !is.na(adjusted_estimate) & is.finite(adjusted_estimate),
-      N_F == 980000,
-      scheme == first(unique(scheme))
-    ) %>%
-    group_by(indicator_name, degree_ratio, true_positive_rate) %>%
-    slice_head(n = 1) %>%
-    ungroup()
+  plt_data <- valid_results %>%
+    filter(N_F == preferred_n_f, scheme == preferred_scheme)
   
-  if (nrow(sens_data) == 0) {
-    cat("No valid data for sensitivity plot\n")
-    return(NULL)
-  }
-  
-  # Plot sensitivity to degree ratio
-  p2 <- sens_data %>%
-    ggplot(aes(x = degree_ratio, y = adjusted_estimate, color = indicator_name)) +
-    geom_line(aes(group = interaction(indicator_name, true_positive_rate)), 
-              alpha = 0.6, linewidth = 1) +
-    geom_point(alpha = 0.8) +
-    facet_wrap(~true_positive_rate, 
-               labeller = labeller(true_positive_rate = function(x) paste("TPR =", x))) +
-    scale_y_continuous(labels = label_comma()) +
-    scale_color_viridis_d(name = "Exploitation Type") +
+  ggplot(plt_data, aes(x = degree_ratio, y = adjusted_estimate, color = true_positive_rate)) +
+    geom_line(aes(group = true_positive_rate)) +
+    scale_y_continuous(labels = scales::comma) +
     labs(
-      title = "Robust NSUM Sensitivity to Adjustment Factors",
-      x = "Degree Ratio (Hidden/Frame Population)",
-      y = "NSUM Estimate"
+      title = "Sensitivity: Degree ratio vs Adjusted NSUM",
+      x = "Degree ratio",
+      y = "Adjusted estimate",
+      color = "TPR"
     ) +
-    theme_minimal() +
-    theme(
-      plot.title = element_text(size = 12, face = "bold"),
-      legend.position = "bottom",
-      legend.title = element_text(size = 10),
-      legend.text = element_text(size = 9)
-    )
-  
-  return(p2)
+    theme_minimal()
 }
 
 plot_inclusion_probability_analysis <- function(results_df) {
+  valid_results <- results_df %>% filter(is.na(error))
+  if (nrow(valid_results) == 0) return(NULL)
   
-  cat("Creating inclusion probability analysis plot...\n")
+  preferred_n_f <- if (980000 %in% unique(valid_results$N_F)) 980000 else max(valid_results$N_F)
+  preferred_scheme <- valid_results$scheme[1]
   
-  # Prepare inclusion probability data
-  pi_data <- results_df %>%
+  plt_data <- valid_results %>%
     filter(
-      is.na(error),
-      !is.na(pi_i_mean) & !is.na(pi_i_min) & !is.na(pi_i_max),
-      is.finite(pi_i_mean) & is.finite(pi_i_min) & is.finite(pi_i_max),
-      pi_i_mean > 0 & pi_i_min > 0 & pi_i_max > 0,
-      N_F == 980000,
-      degree_ratio == 1.0,
-      true_positive_rate == 0.7
-    ) %>%
-    group_by(scheme, indicator_name) %>%
-    slice_head(n = 1) %>%
-    ungroup()
-  
-  if (nrow(pi_data) == 0) {
-    cat("No inclusion probability data available\n")
-    return(NULL)
-  }
-  
-  # Plot inclusion probability ranges by scheme
-  p3 <- pi_data %>%
-    ggplot(aes(x = scheme, color = scheme)) +
-    geom_point(aes(y = pi_i_mean), size = 3) +
-    geom_errorbar(aes(ymin = pi_i_min, ymax = pi_i_max), width = 0.2) +
-    facet_wrap(~indicator_name, scales = "free_y") +
-    scale_color_viridis_d() +
-    labs(
-      title = "Inclusion Probability Ranges by RDS Weight Scheme",
-      x = "RDS Weight Scheme",
-      y = "Inclusion Probability (π_i)",
-      color = "Scheme"
-    ) +
-    theme_minimal() +
-    theme(
-      plot.title = element_text(size = 12, face = "bold"),
-      axis.text.x = element_text(angle = 45, hjust = 1),
-      legend.position = "none"
+      N_F == preferred_n_f,
+      scheme == preferred_scheme,
+      degree_ratio == 1.0, true_positive_rate == 0.7, precision == 1.0
     )
   
-  return(p3)
+  if (!all(c("pi_i_min", "pi_i_max") %in% names(plt_data))) return(NULL)
+  
+  ggplot(plt_data, aes(x = indicator_name, y = nsum_rds_ratio)) +
+    geom_col(fill = "#1F78B4") +
+    geom_text(aes(label = paste0(round(nsum_rds_ratio, 2), " (", round(pi_i_min, 4), "-", round(pi_i_max, 4), ")")),
+              vjust = -0.5, size = 3) +
+    labs(
+      title = "NSUM/RDS Ratio with Inclusion Probability Range",
+      x = "Indicator",
+      y = "Ratio (NSUM/RDS)"
+    ) +
+    ylim(0, max(plt_data$nsum_rds_ratio, na.rm = TRUE) * 1.25) +
+    theme_minimal()
 }
 
 # ============================================================================
-# COMPREHENSIVE ROBUST ANALYSIS WORKFLOW  
+# MASTER FUNCTION TO RUN ROBUST DISPLAY PIPELINE
 # ============================================================================
 
 analyze_robust_nsum_results <- function(data, n_boot = 500) {
   
-  cat("=== Comprehensive Robust NSUM Analysis ===\n\n")
+  cat("=== Running Robust NSUM Results Display Pipeline ===\n")
   
-  # Step 1: Run robust NSUM analysis
-  cat("Step 1: Running robust NSUM analysis...\n")
-  robust_results <- run_robust_nsum_analysis(data)
+  # Step 1: Compute robust NSUM results (without CIs)
+  cat("Step 1: Running robust NSUM adjustments...\n")
+  robust_results <- tryCatch({
+    run_robust_nsum_adjustments(data)
+  }, error = function(e) {
+    cat("Error during robust adjustments:", e$message, "\n")
+    return(NULL)
+  })
+  
+  if (is.null(robust_results)) {
+    cat("ERROR: Robust NSUM adjustments failed\n")
+    return(NULL)
+  }
+  
   results_df <- robust_results$valid_results
   
   # Step 2: Add survey bootstrap confidence intervals
@@ -671,3 +598,4 @@ analyze_robust_nsum_results <- function(data, n_boot = 500) {
 cat("=== Robust NSUM Results Display Functions Loaded ===\n")
 cat("To run complete analysis with survey bootstrap CIs:\n")
 cat("robust_analysis <- analyze_robust_nsum_results(dd, n_boot = 500)\n\n")
+

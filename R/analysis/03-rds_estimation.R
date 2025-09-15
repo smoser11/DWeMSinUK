@@ -20,6 +20,8 @@ library(here)
 
 # Source helper functions
 source(here("R", "utils", "helper_functions.R"))
+source(here("R", "config.R"))
+global_config <- get_global_config()
 
 # Load prepared data
 if (!exists("dd") || !exists("rd.dd")) {
@@ -34,8 +36,8 @@ if (!exists("dd") || !exists("rd.dd")) {
 # Analysis configuration
 rds_config <- list(
   # Main analysis (for main text)
-  preferred_method = "RDS_SS",
-  main_population_size = 980000,  # EU baseline
+  preferred_method = global_config$preferred_rds_method,
+  main_population_size = global_config$main_population_size,  # EU baseline
   
   # Methods to run
   run_basic_estimation = TRUE,
@@ -50,15 +52,15 @@ rds_config <- list(
   legacy_vars = c("zQ36", "zQ80", "sum_categories_factor"),
   
   # Population scenarios for sensitivity
-  population_sizes = get_population_parameters()$sizes,
+  population_sizes = global_config$population_sizes,
   
   # Computational parameters
   force_recompute = FALSE,
-  parallel_cores = 4,
+  parallel_cores = global_config$parallel_cores,
   
   # Output control
-  save_tables = TRUE,
-  save_plots = TRUE,
+  save_tables = global_config$save_tables,
+  save_plots = global_config$save_plots,
   create_appendix_materials = TRUE
 )
 
