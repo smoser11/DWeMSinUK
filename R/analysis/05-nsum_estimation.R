@@ -269,8 +269,9 @@ get_weights_for_scheme <- function(data, scheme_name, outcome_var = NULL) {
   return(NULL)
 }
 
-run_comprehensive_nsum_estimation <- function(outcome_vars, population_sizes, 
-                                            weighting_schemes = names(nsum_config$weighting_schemes)) {
+run_comprehensive_nsum_estimation <- function(outcome_vars, population_sizes,
+                                              method = nsum_config$preferred_method,
+                                              weighting_schemes = names(nsum_config$weighting_schemes)) {
   
   cat("=== Comprehensive NSUM Estimation ===\n")
   cat("Indicators:", length(outcome_vars), "\n")
@@ -351,6 +352,15 @@ run_comprehensive_nsum_estimation <- function(outcome_vars, population_sizes,
   
   cat("\nNSUM estimation completed\n\n")
   return(all_results)
+}
+
+# Backwards-compatible wrapper expected by the pipeline
+run_nsum_estimation <- function(outcome_vars, population_sizes, method = "weighted") {
+  run_comprehensive_nsum_estimation(
+    outcome_vars = outcome_vars,
+    population_sizes = population_sizes,
+    method = method
+  )
 }
 
 # ============================================================================

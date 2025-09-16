@@ -600,7 +600,13 @@ However, NSUM typically assumes a **simple random sample** of the frame populati
 
 To adapt NSUM for use with RDS data, we must **adjust for the non-uniform sampling process**. This requires estimating each respondent’s **inclusion probability** $\pi_i$, as outlined in @feeh16-generaling and earlier in @salf06-variance. Moreover, because these inclusion probabilities vary across bootstrap samples, we must **recompute weights** for each resample.
 
-We propose a three-step bootstrap method for estimating uncertainty in NSUM from RDS samples. This approach is modular, flexible, and compatible with multiple estimators.
+We propose a three-step bootstrap method for estimating uncertainty in NSUM from RDS samples:
+
+Step 1: Resampling the RDS Sample
+Step 2: Recalculate Inclusion Probabilities
+Step 3: NSUM Estimation on Resampled and Reweighted Data
+
+This approach is modular, flexible, and compatible with multiple estimators.  At each step, the researcher has multiple decisions to make (e.g. _how_ to resample, which RDS weights to use, which version of NSUM estimator to use).
 
 * * *
 
