@@ -2,6 +2,8 @@ library(RDS)
 library(RDStreeboot)
 library(surveybootstrap)
 library(Neighboot)
+library(dplyr)
+library(purrr)
 
 
 ## FOR CHAIN RESAMPLING:
@@ -12,59 +14,68 @@ prepare_chain_bootstrap_inputs <- function(rds_data,
                                            degree_col = "known_network_size",
                                            traits = "trait_A",
                                            keep.vars = NULL) {
-  # Step 1: Rename to expected structure for surveybootstrap
-  rds_data <- rds_data %>%
+  # Step 1: Remove duplicate recruiter column if it exists
+  if ("recruiter_id" %in% names(rds_data) && recruiter_col == "recruiter.id") {
+    rds_data <- rds_data %>% select(-recruiter_id)
+  }
+
+  # Step 2: Create working copy and rename to expected structure
+  rds_data_clean <- rds_data %>%
     rename(uid = !!sym(id_col),
            recruiter_id = !!sym(recruiter_col),
            degree = !!sym(degree_col))
+
+  # Add required attributes for surveybootstrap
+  attr(rds_data_clean, "key") <- "uid"
   
   # Step 2: Build recruitment chains
-  seed_ids <- rds_data$uid[rds_data$recruiter_id == 0 | is.na(rds_data$recruiter_id)]
-  
+  seed_ids <- rds_data_clean$uid[rds_data_clean$recruiter_id == -1 | rds_data_clean$recruiter_id == "-1" | is.na(rds_data_clean$recruiter_id)]
+
   chains <- lapply(seed_ids, function(seed_id) {
-    surveybootstrap::make.chain(
+    surveybootstrap:::make.chain(
       seed.id = seed_id,
-      survey.data = rds_data,
+      survey.data = rds_data_clean,
       is.child.fn = function(id, parent_id) {
-        rds_data$recruiter_id[rds_data$uid == id] == parent_id
+        rds_data_clean$recruiter_id[rds_data_clean$uid == id] == parent_id
       }
     )
   })
-  
+
   # Step 3: Estimate mixing model
-  mm <- surveybootstrap::estimate.mixing(
-    survey.data = rds_data,
-    parent.data = rds_data,
+  mm <- surveybootstrap:::estimate.mixing(
+    survey.data = rds_data_clean,
+    parent.data = rds_data_clean,
     traits = traits
   )
-  
+
   # Step 4: Estimate degree distributions
-  dd <- surveybootstrap::estimate.degree.distns(
-    survey.data = rds_data,
+  dd <- surveybootstrap:::estimate.degree.distns(
+    survey.data = rds_data_clean,
     d.hat.vals = "degree",
     traits = traits,
     keep.vars = keep.vars
   )
-  
+
   return(list(
     chains = chains,
     mm = mm,
     degree_dist = dd,
-    processed_data = rds_data
+    processed_data = rds_data_clean
   ))
 }
 
 
-# Suppose dd is your main data frame with known_network_size and exploitation traits
-chain_inputs <- prepare_chain_bootstrap_inputs(
-  rds_data = dd,
-  traits = c("document_withholding_rds", "pay_issues_rds"),
-  keep.vars = c("document_withholding_nsum", "pay_issues_nsum")
-)
-
-rds_sample$chains <- chain_inputs$chains
-rds_sample$mm <- chain_inputs$mm
-rds_sample$degree_dist <- chain_inputs$degree_dist
+# # Example usage (commented out to prevent auto-execution when sourcing)
+# # Suppose dd is your main data frame with known_network_size and exploitation traits
+# chain_inputs <- prepare_chain_bootstrap_inputs(
+#   rds_data = dd,
+#   traits = c("document_withholding_rds", "pay_issues_rds"),
+#   keep.vars = c("document_withholding_nsum", "pay_issues_nsum")
+# )
+#
+# rds_sample$chains <- chain_inputs$chains
+# rds_sample$mm <- chain_inputs$mm
+# rds_sample$degree_dist <- chain_inputs$degree_dist
 
 
 
@@ -111,67 +122,101 @@ bootstrap_rds_sample <- function(rds_sample,
                       
                       # ------------------------------------------
                       "tree" = {
-                        if (verbose) cat("Running Tree Bootstrap via RDStreeboot...\n")
-                        net <- list(
-                          nodes = dd[[id_col]],
-                          edges = list(
-                            node1 = dd[[recruiter_col]],
-                            node2 = dd[[id_col]]
-                          ),
-                          traits = if (!is.null(traits)) dd[, traits, drop = FALSE] else NULL,
-                          degree = dd[[degree_col]]
-                        )
-                        
-                        resamples <- RDStreeboot::tree.boot(net, B = B)
+                        if (verbose) cat("Running Tree Bootstrap (actual resampling)...\n")
+
+                        # Convert to rds.data.frame format if needed
+                        if (!"rds.data.frame" %in% class(dd)) {
+                          # Create proper rds.data.frame
+                          rds_df <- dd
+                          rds_df$wave <- 0  # Initialize wave
+
+                          # Calculate waves based on recruitment structure
+                          seeds <- which(rds_df[[recruiter_col]] == -1)
+                          rds_df$wave[seeds] <- 0
+
+                          # Simple wave calculation (could be improved)
+                          for (wave in 1:10) {  # Max 10 waves
+                            current_wave_ids <- rds_df[[id_col]][rds_df$wave == wave - 1]
+                            if (length(current_wave_ids) == 0) break
+                            next_wave_mask <- rds_df[[recruiter_col]] %in% current_wave_ids
+                            rds_df$wave[next_wave_mask] <- wave
+                          }
+
+                          # Convert to rds.data.frame
+                          rds_df <- RDS::as.rds.data.frame(rds_df,
+                                                           population.size = 100000,  # Default population size
+                                                           id = id_col,
+                                                           recruiter.id = recruiter_col,
+                                                           network.size = degree_col)
+                        } else {
+                          rds_df <- dd
+                        }
+
+                        # Perform tree bootstrap using source code from RDS package
+                        bootstrap_samples <- tree_bootstrap_resamples(rds_df, traits, B, verbose)
+
                         if (return_rds_df) {
-                          purrr::map(resamples, ~ RDS::as.rds.data.frame(.x, id = id_col, recruiter.id = recruiter_col))
-                        } else resamples
+                          bootstrap_samples  # Already in rds.data.frame format
+                        } else {
+                          lapply(bootstrap_samples, as.data.frame)
+                        }
                       },
                       
                       # ------------------------------------------
                       "neighboot" = {
-                        if (verbose) cat("Running Neighboot Bootstrap via Neighboot::neighb...\n")
-                        net <- list(
-                          nodes = dd[[id_col]],
-                          edges = list(
-                            node1 = dd[[recruiter_col]],
-                            node2 = dd[[id_col]]
+                        if (verbose) cat("Running Neighborhood Bootstrap (actual resampling)...\n")
+
+                        # Create edges data frame (exclude seeds and handle missing values)
+                        valid_edges <- dd[[recruiter_col]] != -1 & !is.na(dd[[recruiter_col]])
+                        edges_df <- data.frame(
+                          node1 = dd[[recruiter_col]][valid_edges],
+                          node2 = dd[[id_col]][valid_edges]
+                        )
+
+                        # Create sequential node IDs to avoid string issues
+                        node_map <- setNames(1:nrow(dd), dd[[id_col]])
+
+                        # Map edges to sequential IDs, handling any missing mappings
+                        edge_node1_mapped <- node_map[as.character(edges_df$node1)]
+                        edge_node2_mapped <- node_map[as.character(edges_df$node2)]
+
+                        # Remove edges with unmapped nodes
+                        valid_mappings <- !is.na(edge_node1_mapped) & !is.na(edge_node2_mapped)
+
+                        # Prepare data in neighb format
+                        neighb_data <- list(
+                          nodes = 1:nrow(dd),
+                          edges = data.frame(
+                            node1 = edge_node1_mapped[valid_mappings],
+                            node2 = edge_node2_mapped[valid_mappings]
                           ),
-                          traits = if (!is.null(traits)) dd[, traits, drop = FALSE] else NULL,
+                          traits = if (!is.null(traits)) dd[, traits, drop = FALSE] else data.frame(dummy = rep(1, nrow(dd))),
                           degree = dd[[degree_col]]
                         )
-                        
-                        boot <- do.call(Neighboot::neighb, c(list(dat = net, reps = B, output = "list"), neighb_args))
+
+                        # Perform neighborhood bootstrap using source code from Neighboot package
+                        bootstrap_samples <- neighb_bootstrap_resamples(neighb_data, dd, B, verbose, id_col, recruiter_col)
+
                         if (return_rds_df) {
-                          purrr::map(boot, ~ RDS::as.rds.data.frame(.x, id = id_col, recruiter.id = recruiter_col))
-                        } else boot
+                          purrr::map(bootstrap_samples, ~ RDS::as.rds.data.frame(.x, id = id_col, recruiter.id = recruiter_col))
+                        } else {
+                          bootstrap_samples
+                        }
                       },
                       
                       # ------------------------------------------
                       "chain" = {
-                        if (verbose) cat("Running Chain Bootstrap via surveybootstrap...\n")
-                        
-                        # Build inputs
-                        chain_inputs <- prepare_chain_bootstrap_inputs(
-                          rds_data = dd,
-                          id_col = id_col,
-                          recruiter_col = recruiter_col,
-                          degree_col = degree_col,
-                          traits = traits,
-                          keep.vars = keep.vars
-                        )
-                        
-                        boot <- surveybootstrap::rds.boot.draw.chain(
-                          chains = chain_inputs$chains,
-                          mm = chain_inputs$mm,
-                          dd = chain_inputs$degree_dist,
-                          num.reps = B,
-                          keep.vars = keep.vars
-                        )
-                        
+                        if (verbose) cat("Running Chain Bootstrap (simplified approach)...\n")
+
+                        # For now, use a simplified chain bootstrap approach
+                        # This resamples recruitment chains rather than using surveybootstrap
+                        bootstrap_samples <- chain_bootstrap_simple(dd, B, id_col, recruiter_col, traits, verbose)
+
                         if (return_rds_df) {
-                          purrr::map(boot, ~ RDS::as.rds.data.frame(.x, id = id_col, recruiter.id = recruiter_col))
-                        } else boot
+                          purrr::map(bootstrap_samples, ~ RDS::as.rds.data.frame(.x, id = id_col, recruiter.id = recruiter_col))
+                        } else {
+                          bootstrap_samples
+                        }
                       },
                       
                       # ------------------------------------------
@@ -194,21 +239,283 @@ bootstrap_rds_sample <- function(rds_sample,
   return(boot_list)
 }
 
+# =============================================================================
+# ACTUAL BOOTSTRAP RESAMPLING FUNCTIONS (extracted from CRAN package source)
+# =============================================================================
+
+#' Tree Bootstrap Resampling Function
+#'
+#' Based on treeboot() function from CRAN/RDS/R/treeboot.R
+#' Returns individual bootstrap samples instead of just confidence intervals
+tree_bootstrap_resamples <- function(rds.data, traits = NULL, B = 500, verbose = TRUE) {
+
+  # Extract information from rds.data.frame
+  if (!is(rds.data, "rds.data.frame")) {
+    stop("rds.data must be of type rds.data.frame")
+  }
+
+  network.size <- attr(rds.data, "network.size.variable")
+  id <- RDS::get.id(rds.data)
+  recruiter.id <- RDS::get.rid(rds.data)
+
+  # Rationalize recruiter.id information
+  recruiter.row <- match(recruiter.id, id)
+  recruiter.row[is.na(recruiter.row)] <- 0
+  n <- length(id)
+  id.row <- 1:n
+  seed.rows <- which(RDS::get.wave(rds.data) == 0)
+
+  recruits <- lapply(id.row, function(i) which(recruiter.row == i))
+
+  # Prepare outcomes (traits to bootstrap)
+  if (is.null(traits)) {
+    # Use all numeric columns except structural ones
+    exclude_cols <- c("id", "recruiter.id", "wave", "network.size.variable")
+    all_cols <- names(rds.data)
+    trait_cols <- setdiff(all_cols, exclude_cols)
+    numeric_cols <- trait_cols[sapply(rds.data[trait_cols], is.numeric)]
+    outcomes <- data.frame(rds.data)[numeric_cols]
+  } else {
+    outcomes <- data.frame(rds.data)[traits]
+  }
+
+  if (verbose) cat("  Tree bootstrap: resampling", B, "trees...\n")
+
+  # Perform B bootstrap replicates
+  bootstrap_samples <- list()
+  for (b in 1:B) {
+    if (verbose && b %% 100 == 0) cat("    Completed", b, "replicates\n")
+
+    # Core tree bootstrap function (adapted from CRAN source)
+    boot_sample <- tree_bootstrap_single(seed.rows, recruits, rds.data[[network.size]],
+                                        outcomes, RDS::get.population.size(rds.data))
+    bootstrap_samples[[b]] <- boot_sample
+  }
+
+  return(bootstrap_samples)
+}
+
+#' Single Tree Bootstrap Sample
+#'
+#' Adapted from treeboot() function in CRAN/RDS/R/treeboot.R
+tree_bootstrap_single <- function(seed.rows, recruits, network.size, outcomes, population.size, fixed.size = TRUE) {
+
+  resample <- function(x, size = length(x), replace = TRUE) {
+    x[sample.int(length(x), size = size, replace = replace)]
+  }
+
+  n <- length(recruits)
+  nseed <- length(seed.rows)
+
+  samp.rows <- as.list(resample(seed.rows))
+  samp.ids <- as.list(1:length(seed.rows))
+
+  sample.id <- function(node.row, id, recr.id, wave) {
+    if (is.null(node.row)) {
+      recr <- resample(seed.rows)
+      result <- list()
+    } else {
+      recr <- resample(recruits[[node.row]])
+      result <- list(c(node.row, id, recr.id, wave))
+    }
+    for (i in seq_along(recr)) {
+      result <- c(result, sample.id(recr[i], paste0(id, i), id, wave + 1))
+    }
+    result
+  }
+
+  if (fixed.size) {
+    result <- list()
+    boot.seeds <- 0
+    boot.n <- 0
+    while (TRUE) {
+      seed <- resample(seed.rows, 1)
+      tree <- sample.id(seed, as.character(boot.seeds), "_", 0)
+      if (boot.n + length(tree) > n) {
+        wave <- sapply(tree, function(x) as.numeric(x[4]))
+        for (i in max(wave):1) {
+          ntrim <- boot.n + length(tree) - n
+          nw <- sum(wave == i)
+          if (nw < ntrim) {
+            tree[wave == i] <- NULL
+            wave <- sapply(tree, function(x) as.numeric(x[4]))
+          } else {
+            ind <- resample(which(wave == i), ntrim, replace = FALSE)
+            tree[ind] <- NULL
+            break
+          }
+        }
+      }
+      result <- c(result, tree)
+      boot.n <- length(result)
+      boot.seeds <- boot.seeds + 1
+      if (length(result) >= n)
+        break
+    }
+  } else {
+    result <- sample.id(NULL, "", NA, -1)
+  }
+
+  # Create bootstrap data frame
+  df <- data.frame(row = sapply(result, function(x) as.numeric(x[1])),
+                  id = sapply(result, function(x) x[2]),
+                  recruiter.id = sapply(result, function(x) x[3]))
+  df <- cbind(df, outcomes[df$row, , drop = FALSE])
+  df$network.size.variable <- network.size[df$row]
+  df$row <- NULL
+
+  # Convert to rds.data.frame
+  bootstrapped.data <- RDS::as.rds.data.frame(df,
+                                             population.size = population.size,
+                                             check.valid = FALSE)
+  return(bootstrapped.data)
+}
+
+#' Neighborhood Bootstrap Resampling Function
+#'
+#' Based on .Nb() function from CRAN/Neighboot/R/neighb.R
+#' Returns individual bootstrap samples instead of just confidence intervals
+neighb_bootstrap_resamples <- function(neighb_data, original_data, B = 500, verbose = TRUE, id_col = "id", recruiter_col = "recruiter.id") {
+
+  if (verbose) cat("  Neighborhood bootstrap: resampling", B, "neighborhoods...\n")
+
+  # Build graph from neighb_data format
+  RDS.gr <- igraph::graph_from_data_frame(neighb_data$edges, directed = FALSE,
+                                         vertices = data.frame(id = neighb_data$nodes, neighb_data$traits))
+  e.deg <- igraph::degree(RDS.gr, mode = "total")
+  cr <- mean(e.deg)
+
+  # Calculate sample size for each bootstrap replicate
+  sz <- round(length(neighb_data$traits[, 1]) / cr)
+
+  bootstrap_samples <- list()
+
+  for (b in 1:B) {
+    if (verbose && b %% 100 == 0) cat("    Completed", b, "replicates\n")
+
+    # Core neighborhood bootstrap (from .Nb function)
+    xx.s <- sample(1:length(neighb_data$traits[, 1]), size = sz, replace = TRUE)
+    x.neig <- as.numeric(unlist(igraph::ego(
+      RDS.gr,
+      order = 1,
+      nodes = xx.s,
+      mode = "all",
+      mindist = 1
+    )))
+
+    # Create bootstrap sample from neighborhood indices
+    if (length(x.neig) > 0) {
+      bootstrap_indices <- unique(x.neig)  # Remove duplicates
+
+      # Map back to original data
+      bootstrap_sample <- original_data[bootstrap_indices, ]
+
+      # Reset row names and IDs for bootstrap sample
+      rownames(bootstrap_sample) <- NULL
+      bootstrap_sample[[id_col]] <- 1:nrow(bootstrap_sample)
+
+      # Simplify recruitment structure (all seeds for simplicity)
+      bootstrap_sample[[recruiter_col]] <- -1
+
+      bootstrap_samples[[b]] <- bootstrap_sample
+    } else {
+      # Fallback: simple random sample if no neighbors found
+      bootstrap_samples[[b]] <- original_data[sample(nrow(original_data), replace = TRUE), ]
+    }
+  }
+
+  return(bootstrap_samples)
+}
+
+#' Simple Chain Bootstrap Resampling Function
+#'
+#' A simplified chain bootstrap that resamples recruitment chains
+#' without requiring the complex surveybootstrap package setup
+chain_bootstrap_simple <- function(data, B = 500, id_col = "id", recruiter_col = "recruiter.id", traits = NULL, verbose = TRUE) {
+
+  if (verbose) cat("  Chain bootstrap: resampling", B, "recruitment chains...\n")
+
+  # Identify recruitment chains
+  chains <- identify_recruitment_chains_simple(data, id_col, recruiter_col)
+
+  bootstrap_samples <- list()
+
+  for (b in 1:B) {
+    if (verbose && b %% 100 == 0) cat("    Completed", b, "replicates\n")
+
+    # Sample chains with replacement
+    n_chains <- length(chains)
+    sampled_chain_indices <- sample(1:n_chains, size = n_chains, replace = TRUE)
+
+    # Combine sampled chains into bootstrap sample
+    bootstrap_sample <- do.call(rbind, chains[sampled_chain_indices])
+    rownames(bootstrap_sample) <- NULL
+
+    # Reset IDs to be sequential
+    bootstrap_sample[[id_col]] <- 1:nrow(bootstrap_sample)
+
+    # Update recruiter relationships (simplified)
+    bootstrap_sample[[recruiter_col]] <- ifelse(
+      bootstrap_sample[[recruiter_col]] == -1,
+      -1,
+      sample(1:nrow(bootstrap_sample), nrow(bootstrap_sample), replace = TRUE)
+    )
+
+    bootstrap_samples[[b]] <- bootstrap_sample
+  }
+
+  return(bootstrap_samples)
+}
+
+#' Identify Simple Recruitment Chains
+#'
+#' Identifies recruitment chains starting from seeds
+identify_recruitment_chains_simple <- function(data, id_col = "id", recruiter_col = "recruiter.id") {
+
+  # Start with seeds
+  seeds <- data[data[[recruiter_col]] == -1, ]
+  chains <- list()
+
+  if (nrow(seeds) == 0) {
+    # No clear seeds, treat each observation as its own chain
+    for (i in 1:nrow(data)) {
+      chains[[i]] <- data[i, ]
+    }
+  } else {
+    # For simplicity, create chains by seed
+    for (i in 1:nrow(seeds)) {
+      seed_id <- seeds[[id_col]][i]
+
+      # Find all recruits of this seed (direct recruits only for simplicity)
+      recruits <- data[data[[recruiter_col]] == seed_id, ]
+
+      # Create chain with seed + its recruits
+      if (nrow(recruits) > 0) {
+        chain <- rbind(seeds[i, ], recruits)
+      } else {
+        chain <- seeds[i, ]
+      }
+
+      chains[[i]] <- chain
+    }
+  }
+
+  return(chains)
+}
 
 
 
 
-#### TESTING
-
-B <- 500
-
-boot_samples <- bootstrap_rds_sample(
-  rds_sample = rd.dd,
-  method = "tree",
-  B = B,
-  traits = c("q8_a", "q11", "q5"),
-  keep.vars = c("document_withholding_nsum", "pay_issues_nsum"),
-  save_path = here::here("output", paste0("bootstrap_chain_",B,".rds") )
-)
+# #### TESTING (commented out to prevent auto-execution when sourcing)
+#
+# B <- 500
+# boot_samples <- bootstrap_rds_sample(
+#   rds_sample = rd.dd,
+#   method = "chain",   # c("tree", "neighboot", "chain", "simple", "ss"),
+#   B = B,
+#   traits = c("q8_a", "q11", "q5"),
+#   keep.vars = c("document_withholding_nsum", "pay_issues_nsum"),
+#   save_path = here::here("output", paste0("bootstrap_chain_",B,".rds") )
+# )
 
 

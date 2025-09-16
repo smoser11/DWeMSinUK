@@ -3,3 +3,13 @@ Okay, here are some thoughts on the paper with Caroline, aka C.E. First is the t
 
 HERE ARE SOME ADDITIONAL COMMENTS AND CONCERNS AND THOUGHTS:
 
+Here are some additional thoughts, concerned about the paper that I think we should address prior to submission so that the main things are is it a good fit with the journal special edition seems to prioritize methods which we have conceptual innovations, which I think we can argue using multiple indicators, both dichotomous and contin this idea of a risk index is a very clever, conceptual move.  There are some resources you might want to look at for example, 16400 one all exposed to some degree of risk to take and eat it too two files  call 036320250207 CE.
+Also, there are some relevant emails on is titled four star general article  when is car trouble in paradise?.
+
+ALSO, workers voice, which I think we can also argue, especially if linked to Caroline's previous paper, especially under represented workers, voice vis-à-vis Filipino and Latinx domestic workers.  I on the other hand, would like to make sure that there is some eye to politics. Are there policy implications we can play up is their impact of the study that we can suggest?  I asked because I definitely want to specifically address criteria for the REF ref 2026 criteria if this gets reviewed.
+
+
+
+More pedantically I need to include a very small review regarding methods. I definitely need to write the findings section and the discussion section.  Somewhere I don't know where I would like to include the methodological contribution regarding RDS and in some and point out the novel bootstrap procedure we have impleted.  I would also like to at least mention the in the method discussion that the note from ML notebook the difference in how social network is used, and these different prevalence estimates and perhaps mentioned this and presentation or discussion advertising of the new three stage estimate that we have implemented.  
+
+The appendix should contain robustness that shouldn't contain various subsections sensitivity as one and model comparison as another yet another subsection in robustness should be data so sub setting data by groups next sub setting data by suspicious data points. What happens if we remove them.
