@@ -240,7 +240,7 @@ true,style=apa,sorting=nyt,maxcitenames=2]{biblatex}
 \title{Estimating the risk of labour exploitation and abuse among
 domestic workers in the UK}
 \author{Caroline Emberson \and Scott Moser}
-\date{15, September 2025}
+\date{16, September 2025}
 \begin{document}
 \maketitle
 
@@ -1183,7 +1183,319 @@ That is, the average proportion of alters known by members of \(H\) who
 are in the frame population \(F\). Incorporating this, the symmetric
 visibility GNSUM becomes:
 
-{[}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Version 2}\label{version-2}
+
+\section{Bootstrap-Based Uncertainty Estimation for NSUM with RDS
+Samples}\label{bootstrap-based-uncertainty-estimation-for-nsum-with-rds-samples}
+
+\subsection{1. Introduction}\label{introduction-2}
+
+The \textbf{Network Scale-Up Method (NSUM)} is a powerful tool for
+estimating the size of hidden populations. By asking respondents about
+the number of people they know who belong to a hidden group, and
+calibrating by their social network size, we can estimate the total size
+of that group within a known frame population.
+
+However, NSUM typically assumes a \textbf{simple random sample} of the
+frame population. In practice, researchers often rely on
+\textbf{Respondent-Driven Sampling (RDS)} to access hard-to-reach
+populations. RDS is a non-probability sampling method based on peer
+referral chains, and it introduces significant complexity due to:
+
+\begin{itemize}
+\item
+  Unknown inclusion probabilities,
+\item
+  Dependencies in the recruitment process,
+\item
+  Homophily on hidden traits,
+\item
+  Non-uniform degree distributions.
+\end{itemize}
+
+To adapt NSUM for use with RDS data, we must \textbf{adjust for the
+non-uniform sampling process}. This requires estimating each
+respondent's \textbf{inclusion probability} \(\pi_i\), as outlined in
+\textcite{feeh16-generaling} and earlier in \textcite{salf06-variance}.
+Moreover, because these inclusion probabilities vary across bootstrap
+samples, we must \textbf{recompute weights} for each resample.
+
+We propose a three-step bootstrap method for estimating uncertainty in
+NSUM from RDS samples:
+
+Step 1: Resampling the RDS Sample Step 2: Recalculate Inclusion
+Probabilities Step 3: NSUM Estimation on Resampled and Reweighted Data
+
+This approach is modular, flexible, and compatible with multiple
+estimators. At each step, the researcher has multiple decisions to make
+(e.g.~\emph{how} to resample, which RDS weights to use, which version of
+NSUM estimator to use).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. The Three-Step Bootstrap
+Procedure}\label{the-three-step-bootstrap-procedure}
+
+\subsubsection{Step 1: Resampling the RDS
+Sample}\label{step-1-resampling-the-rds-sample-1}
+
+RDS is network-dependent and violates IID assumptions. Therefore,
+resampling must preserve recruitment structure, seed variation, and
+referral chains.
+
+We consider four strategies:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Tree Bootstrap}\\
+  Entire recruitment trees rooted in seeds are resampled with
+  replacement. Each tree \(T_j\) consists of all respondents traced to
+  seed \(j\). This preserves hierarchical dependencies and captures
+  between-tree heterogeneity (\textcite{salg06-variance}).
+\item
+  \textbf{Successive Sampling Bootstrap}\\
+  Mimics the RDS process as a form of successive sampling from a finite
+  population. Each respondent is selected without replacement, with
+  probabilities proportional to degree \(d_i\). Requires an assumed
+  frame population size \(N\). Implemented in
+  \texttt{RDS::gile.ss.weights()} (\textcite{gile11-inference}).
+\item
+  \textbf{Neighborhood Bootstrap}\\
+  Introduced by \textcite{yauc22-neighboot}, this method resamples by
+  selecting respondents and replacing them with their \textbf{neighbors}
+  in the recruitment graph. This maintains local network dependencies
+  and simulates resampling from the underlying contact network.
+\item
+  \textbf{Chain Bootstrap}\\
+  Each bootstrap replicate samples chains or subchains with replacement,
+  preserving recruiter--recruitee links. This is implemented in
+  \texttt{surveybootstrap::rds.boot.draw.chain()} and used in studies
+  like \textcite{weir12-comparison}.
+\end{enumerate}
+
+Each resample produces a new dataset \(\mathcal{S}^{(b)}\), which is
+passed to Step 2.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Step 2: Recalculate Inclusion
+Probabilities}\label{step-2-recalculate-inclusion-probabilities}
+
+RDS produces samples with \textbf{unknown and unequal probabilities of
+inclusion}, which must be corrected when used in NSUM estimation. This
+is achieved by estimating the probability \(\pi_i^{(b)}\) that each
+individual \(i\) in bootstrap replicate \(b\) is included in the sample,
+conditional on their degree and position in the recruitment tree.
+
+These probabilities are used to generate \textbf{sampling weights}
+\(w_i^{(b)} = 1/\pi_i^{(b)}\), which are passed into NSUM estimators.
+
+\paragraph{Estimation Methods}\label{estimation-methods}
+
+\textbf{(a) RDS-II (Volz-Heckathorn) Weights}\\
+Assumes the probability of selection is proportional to the respondent's
+degree:
+
+\[\pi_i \propto d_i \quad \Rightarrow \quad w_i = \frac{1}{d_i}\]
+
+These weights are normalized post hoc. This method is simple but does
+not account for homophily or finite population correction
+(\textcite{volz08-rds}).
+
+\textbf{(b) Gile's Successive Sampling (SS) Weights}\\
+This method assumes RDS approximates successive sampling without
+replacement. The inclusion probabilities are computed by simulating from
+a known or assumed population size \(N\). This method is implemented in
+\texttt{RDS::gile.ss.weights()} and adjusts for:
+
+\begin{itemize}
+\item
+  Finite population effects,
+\item
+  Degree-based sampling,
+\item
+  Sample depletion over waves.
+\end{itemize}
+
+\textbf{(c) User-Defined or Model-Based Weights}\\
+Researchers may define weights using alternative models or Bayesian
+simulations. This includes post-stratification or fitting full
+generative models of the RDS process.
+
+\paragraph{Software Example (R)}\label{software-example-r}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(RDS)}
+\NormalTok{rd }\OtherTok{\textless{}{-}} \FunctionTok{as.rds.data.frame}\NormalTok{(boot\_sample, }\AttributeTok{id =} \StringTok{"id"}\NormalTok{, }\AttributeTok{recruiter.id =} \StringTok{"recruiter.id"}\NormalTok{)}
+\NormalTok{boot\_sample}\SpecialCharTok{$}\NormalTok{ss\_weight }\OtherTok{\textless{}{-}} \FunctionTok{gile.ss.weights}\NormalTok{(rd, }\AttributeTok{N =} \DecValTok{980000}\NormalTok{)}
+\NormalTok{boot\_sample}\SpecialCharTok{$}\NormalTok{vh\_weight }\OtherTok{\textless{}{-}} \FunctionTok{rds.weights}\NormalTok{(rd, }\AttributeTok{weight.type =} \StringTok{"RDS{-}II"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The output is a new dataset with respondent traits, degrees, and updated
+\(\pi_i^{(b)}\), which are used in Step 3.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Step 3: NSUM Estimation on Resampled and Reweighted
+Data}\label{step-3-nsum-estimation-on-resampled-and-reweighted-data}
+
+Given a bootstrap sample \(\mathcal{S}^{(b)}\), we estimate the size of
+the hidden population \(N_H\) using one of several NSUM estimators. All
+estimators rely on weighted sums of out-reports and degree.
+
+\paragraph{(a) Generalized NSUM (GNSUM)}\label{a-generalized-nsum-gnsum}
+
+As described in \textcite{feeh16-generaling}, GNSUM estimates:
+
+\[\hat{N}_H^{(b)} = \left( \frac{\sum_{i} \frac{y_{i,H}}{\pi_i^{(b)}}}{\sum_{i} \frac{d_i}{\pi_i^{(b)}}} \right) \cdot N_F\]
+
+Where:
+
+\begin{itemize}
+\item
+  \(y_{i,H}\): number of known alters in the hidden population,
+\item
+  \(d_i\): degree (known network size, e.g.~from Q13),
+\item
+  \(N_F\): size of the frame population (e.g.~domestic workers in UK).
+\end{itemize}
+
+\paragraph{(b) GNSUM with Symmetric Visibility (for Hidden Members in
+RDS)}\label{b-gnsum-with-symmetric-visibility-for-hidden-members-in-rds}
+
+In your context, some RDS respondents are ex post identified as members
+of the hidden population. Under the \textbf{symmetric visibility
+assumption}, if \(i \in H\), we assume the probability that \(i\) knows
+\(j\) is the same as \(j\) knows \(i\). This allows \textbf{in-reports}
+to be incorporated.
+
+Let:
+
+\begin{itemize}
+\item
+  \(I_H(i) = 1\) if \(i \in H\), 0 otherwise
+\item
+  \(y_{i}^{\text{in}}\): number of other hidden members who report
+  knowing \(i\)
+\end{itemize}
+
+Then the estimator becomes:
+
+\[\hat{N}_H^{(b)} = \left( \frac{\sum_{i} \frac{y_{i,H} + I_H(i) \cdot y_{i}^{\text{in}}}{\pi_i^{(b)}}}{\sum_{i} \frac{d_i}{\pi_i^{(b)}}} \right) \cdot N_F\]
+
+\paragraph{(c) Modified Basic Scale-Up
+(MBSU)}\label{c-modified-basic-scale-up-mbsu}
+
+This estimator adjusts for key reporting biases via three correction
+factors:
+
+\[\hat{N}_H^{(b)} = \left( \frac{\sum_{i} \frac{y_{i,H}}{\pi_i^{(b)}}}{\sum_{i} \frac{d_i}{\pi_i^{(b)}}} \right) \cdot N_F \cdot \frac{1}{\delta \cdot \tau \cdot \rho}\]
+
+Where:
+
+\begin{itemize}
+\item
+  \(\delta\): \textbf{Transmission bias} (probability respondent is
+  aware of alter's status),
+\item
+  \(\tau\): \textbf{Barrier effect} (social mixing between hidden and
+  frame population),
+\item
+  \(\rho\): \textbf{Popularity bias} (relative visibility of hidden
+  population members).
+\end{itemize}
+
+These values can be:
+
+\begin{itemize}
+\item
+  Estimated using \textbf{known subpopulations} (e.g., alter groups with
+  known size),
+\item
+  Set by expert \textbf{elicitation},
+\item
+  Scanned in \textbf{sensitivity analysis}.
+\end{itemize}
+
+\paragraph{(d) Model-Based NSUM}\label{d-model-based-nsum}
+
+Bayesian implementations (e.g. \textcite{malt15-estimating}) model:
+
+\begin{itemize}
+\item
+  Degree distributions,
+\item
+  Reporting error,
+\item
+  Group visibility,
+\item
+  Hidden population size.
+\end{itemize}
+
+They yield a \textbf{posterior distribution} over \(N_H\), and
+uncertainty is embedded within the model.
+
+Software:
+
+\begin{itemize}
+\item
+  \texttt{NSUMBayes} (in \texttt{R})
+\item
+  Custom MCMC in \texttt{stan} or \texttt{JAGS}
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{4. Aggregating Bootstrap
+Estimates}\label{aggregating-bootstrap-estimates}
+
+After \(B\) replicates:
+
+\[\hat{N}_H^{(1)}, \dots, \hat{N}_H^{(B)}\]
+
+We compute:
+
+\begin{itemize}
+\item
+  \textbf{Point estimate}:
+  \(\bar{N}_H = \frac{1}{B} \sum_b \hat{N}_H^{(b)}\)
+\item
+  \textbf{Standard error}: sample SD
+\item
+  \textbf{95\% CI}: empirical percentiles (e.g., 2.5\%, 97.5\%)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{5. References}\label{references-1}
+
+\begin{itemize}
+\item
+  \textcite{feeh16-generaling}
+\item
+  \textcite{salf06-variance}
+\item
+  \textcite{gile11-inference}
+\item
+  \textcite{volz08-rds}
+\item
+  \textcite{malt15-estimating}
+\item
+  \textcite{yauc22-neighboot}
+\item
+  \textcite{weir12-comparison}
+\item
+  \textcite{salg06-variance}
+\item
+  \textcite{rust96-rescaled}
+\item
+  \textcite{rao88-resampling}
+\end{itemize}
 
 
 
