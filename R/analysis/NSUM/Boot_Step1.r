@@ -14,6 +14,11 @@ prepare_chain_bootstrap_inputs <- function(rds_data,
                                            degree_col = "known_network_size",
                                            traits = "trait_A",
                                            keep.vars = NULL) {
+  # Ensure dplyr is loaded
+  if (!require(dplyr, quietly = TRUE)) {
+    stop("dplyr package is required for chain bootstrap")
+  }
+
   # Step 1: Remove duplicate recruiter column if it exists
   if ("recruiter_id" %in% names(rds_data) && recruiter_col == "recruiter.id") {
     rds_data <- rds_data %>% select(-recruiter_id)
@@ -208,6 +213,11 @@ bootstrap_rds_sample <- function(rds_sample,
                       "chain" = {
                         if (verbose) cat("Running Chain Bootstrap (simplified approach)...\n")
 
+                        # Ensure dplyr is available for chain bootstrap
+                        if (!require(dplyr, quietly = TRUE)) {
+                          stop("dplyr package is required for chain bootstrap")
+                        }
+
                         # For now, use a simplified chain bootstrap approach
                         # This resamples recruitment chains rather than using surveybootstrap
                         bootstrap_samples <- chain_bootstrap_simple(dd, B, id_col, recruiter_col, traits, verbose)
@@ -267,17 +277,12 @@ tree_bootstrap_resamples <- function(rds.data, traits = NULL, B = 500, verbose =
 
   recruits <- lapply(id.row, function(i) which(recruiter.row == i))
 
-  # Prepare outcomes (traits to bootstrap)
-  if (is.null(traits)) {
-    # Use all numeric columns except structural ones
-    exclude_cols <- c("id", "recruiter.id", "wave", "network.size.variable")
-    all_cols <- names(rds.data)
-    trait_cols <- setdiff(all_cols, exclude_cols)
-    numeric_cols <- trait_cols[sapply(rds.data[trait_cols], is.numeric)]
-    outcomes <- data.frame(rds.data)[numeric_cols]
-  } else {
-    outcomes <- data.frame(rds.data)[traits]
-  }
+  # Prepare all data for bootstrap (keep all variables)
+  # Exclude only the structural RDS columns that will be recreated
+  exclude_cols <- c("id", "recruiter.id", "wave", "network.size.variable")
+  all_cols <- names(rds.data)
+  data_cols <- setdiff(all_cols, exclude_cols)
+  outcomes <- data.frame(rds.data)[data_cols]
 
   if (verbose) cat("  Tree bootstrap: resampling", B, "trees...\n")
 
@@ -373,55 +378,76 @@ tree_bootstrap_single <- function(seed.rows, recruits, network.size, outcomes, p
 
 #' Neighborhood Bootstrap Resampling Function
 #'
-#' Based on .Nb() function from CRAN/Neighboot/R/neighb.R
+#' Based on Yauck et al. (2022) algorithm and CRAN/Neighboot/R/neighb.R
 #' Returns individual bootstrap samples instead of just confidence intervals
 neighb_bootstrap_resamples <- function(neighb_data, original_data, B = 500, verbose = TRUE, id_col = "id", recruiter_col = "recruiter.id") {
 
   if (verbose) cat("  Neighborhood bootstrap: resampling", B, "neighborhoods...\n")
 
-  # Build graph from neighb_data format
-  RDS.gr <- igraph::graph_from_data_frame(neighb_data$edges, directed = FALSE,
-                                         vertices = data.frame(id = neighb_data$nodes, neighb_data$traits))
-  e.deg <- igraph::degree(RDS.gr, mode = "total")
-  cr <- mean(e.deg)
+  # Step 1: Identify recruiters and their neighborhoods
+  recruiters <- original_data[original_data[[id_col]] %in% unique(original_data[[recruiter_col]][original_data[[recruiter_col]] != -1]), ]
 
-  # Calculate sample size for each bootstrap replicate
-  sz <- round(length(neighb_data$traits[, 1]) / cr)
+  if (nrow(recruiters) == 0) {
+    if (verbose) cat("    No recruiters found, falling back to simple bootstrap\n")
+    bootstrap_samples <- replicate(B, original_data[sample(nrow(original_data), replace = TRUE), ], simplify = FALSE)
+    return(bootstrap_samples)
+  }
+
+  # Create neighborhoods for each recruiter
+  neighborhoods <- list()
+  for (i in 1:nrow(recruiters)) {
+    recruiter_id <- recruiters[[id_col]][i]
+    recruits <- original_data[original_data[[recruiter_col]] == recruiter_id, ]
+
+    # Neighborhood = recruiter + their direct recruits
+    neighborhood <- rbind(recruiters[i, ], recruits)
+    neighborhoods[[i]] <- neighborhood
+  }
+
+  if (verbose) cat("    Found", length(neighborhoods), "recruiter neighborhoods\n")
 
   bootstrap_samples <- list()
 
   for (b in 1:B) {
     if (verbose && b %% 100 == 0) cat("    Completed", b, "replicates\n")
 
-    # Core neighborhood bootstrap (from .Nb function)
-    xx.s <- sample(1:length(neighb_data$traits[, 1]), size = sz, replace = TRUE)
-    x.neig <- as.numeric(unlist(igraph::ego(
-      RDS.gr,
-      order = 1,
-      nodes = xx.s,
-      mode = "all",
-      mindist = 1
-    )))
+    # Step 2: Sample recruiters with replacement (same number as original)
+    sampled_recruiter_indices <- sample(1:length(neighborhoods), size = length(neighborhoods), replace = TRUE)
 
-    # Create bootstrap sample from neighborhood indices
-    if (length(x.neig) > 0) {
-      bootstrap_indices <- unique(x.neig)  # Remove duplicates
+    # Step 3: Build bootstrap sample by combining sampled neighborhoods
+    bootstrap_sample <- do.call(rbind, neighborhoods[sampled_recruiter_indices])
 
-      # Map back to original data
-      bootstrap_sample <- original_data[bootstrap_indices, ]
+    # Reset row names and IDs for bootstrap sample
+    rownames(bootstrap_sample) <- NULL
+    bootstrap_sample[[id_col]] <- 1:nrow(bootstrap_sample)
 
-      # Reset row names and IDs for bootstrap sample
-      rownames(bootstrap_sample) <- NULL
-      bootstrap_sample[[id_col]] <- 1:nrow(bootstrap_sample)
-
-      # Simplify recruitment structure (all seeds for simplicity)
-      bootstrap_sample[[recruiter_col]] <- -1
-
-      bootstrap_samples[[b]] <- bootstrap_sample
-    } else {
-      # Fallback: simple random sample if no neighbors found
-      bootstrap_samples[[b]] <- original_data[sample(nrow(original_data), replace = TRUE), ]
+    # Simplify recruitment structure for RDS compatibility
+    # Make all recruiter IDs either -1 (seed) or point to valid IDs in the sample (avoiding self-recruitment)
+    for (i in 1:nrow(bootstrap_sample)) {
+      if (bootstrap_sample[[recruiter_col]][i] == -1) {
+        # Keep as seed
+        bootstrap_sample[[recruiter_col]][i] <- -1
+      } else {
+        # Assign random recruiter (not themselves)
+        potential_recruiters <- setdiff(bootstrap_sample[[id_col]], bootstrap_sample[[id_col]][i])
+        if (length(potential_recruiters) > 0) {
+          bootstrap_sample[[recruiter_col]][i] <- sample(potential_recruiters, 1)
+        } else {
+          # If no potential recruiters, make it a seed
+          bootstrap_sample[[recruiter_col]][i] <- -1
+        }
+      }
     }
+
+    # Ensure at least one seed exists (to avoid RDS validation errors)
+    if (!any(bootstrap_sample[[recruiter_col]] == -1)) {
+      bootstrap_sample[[recruiter_col]][1] <- -1
+    }
+
+    # Note: We preserve duplicates (individuals can appear multiple times)
+    # This is correct according to Yauck et al. algorithm
+
+    bootstrap_samples[[b]] <- bootstrap_sample
   }
 
   return(bootstrap_samples)
@@ -454,12 +480,19 @@ chain_bootstrap_simple <- function(data, B = 500, id_col = "id", recruiter_col =
     # Reset IDs to be sequential
     bootstrap_sample[[id_col]] <- 1:nrow(bootstrap_sample)
 
-    # Update recruiter relationships (simplified)
-    bootstrap_sample[[recruiter_col]] <- ifelse(
-      bootstrap_sample[[recruiter_col]] == -1,
-      -1,
-      sample(1:nrow(bootstrap_sample), nrow(bootstrap_sample), replace = TRUE)
-    )
+    # Update recruiter relationships (simplified - avoid self-recruitment)
+    non_seed_mask <- bootstrap_sample[[recruiter_col]] != -1
+    if (any(non_seed_mask)) {
+      # For non-seeds, assign random valid recruiter (not themselves)
+      for (i in which(non_seed_mask)) {
+        potential_recruiters <- setdiff(1:nrow(bootstrap_sample), i)
+        if (length(potential_recruiters) > 0) {
+          bootstrap_sample[[recruiter_col]][i] <- sample(potential_recruiters, 1)
+        } else {
+          bootstrap_sample[[recruiter_col]][i] <- -1  # Make it a seed if no alternatives
+        }
+      }
+    }
 
     bootstrap_samples[[b]] <- bootstrap_sample
   }
@@ -506,16 +539,17 @@ identify_recruitment_chains_simple <- function(data, id_col = "id", recruiter_co
 
 
 
-# #### TESTING (commented out to prevent auto-execution when sourcing)
-#
-# B <- 500
-# boot_samples <- bootstrap_rds_sample(
-#   rds_sample = rd.dd,
-#   method = "chain",   # c("tree", "neighboot", "chain", "simple", "ss"),
-#   B = B,
-#   traits = c("q8_a", "q11", "q5"),
-#   keep.vars = c("document_withholding_nsum", "pay_issues_nsum"),
-#   save_path = here::here("output", paste0("bootstrap_chain_",B,".rds") )
-# )
+#### TESTING (commented out to prevent auto-execution when sourcing)
+
+B <- 500
+boot_samples <- bootstrap_rds_sample(
+  rds_sample = rd.dd,
+  method = "chain",   # c("tree", "neighboot", "chain", "simple", "ss"),
+  B = B,
+  traits = c("q8_a", "q11", "q5"),
+  keep.vars = c("document_withholding_nsum", "pay_issues_nsum"),
+  save_path = here::here("output", paste0("bootstrap_chain_",B,".rds") )
+)
+
 
 
