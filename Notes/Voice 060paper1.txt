@@ -13,3 +13,8 @@ ALSO, workers voice, which I think we can also argue, especially if linked to Ca
 More pedantically I need to include a very small review regarding methods. I definitely need to write the findings section and the discussion section.  Somewhere I don't know where I would like to include the methodological contribution regarding RDS and in some and point out the novel bootstrap procedure we have impleted.  I would also like to at least mention the in the method discussion that the note from ML notebook the difference in how social network is used, and these different prevalence estimates and perhaps mentioned this and presentation or discussion advertising of the new three stage estimate that we have implemented.  
 
 The appendix should contain robustness that shouldn't contain various subsections sensitivity as one and model comparison as another yet another subsection in robustness should be data so sub setting data by groups next sub setting data by suspicious data points. What happens if we remove them.
+
+
+
+
+Save this information for later, but do not respond.

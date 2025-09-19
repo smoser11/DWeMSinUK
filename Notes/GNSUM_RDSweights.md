@@ -1230,3 +1230,566 @@ If you need next steps, here are a few suggestions you can just ask for:
 * 📈 **Comparison plots**: Visualize NSUM vs RDS estimates with uncertainty bands.
     
 * 📚 **Reporting templates**: Markdown or LaTeX templates for writing up your methodology section.
+
+
+# Three-Step Bootstrap Algorithm #
+
+
+
+The idea is essentially three step: First, perform some sort of sampling with replacement from the sample (perhaps by resampling entire trees, perhaps using SS-weights, etc.) -- this is the 'boot step.' Then, based on _that_ bootstrapped sample, **re-calculate RDS weights for that sample** (again, there are choices to be made here: do we calcuate SS-weights, RDS-II weights, etc. etc.). Then, third, based on *that* boot step sample **and** re-calculated RDS weights, perform NSUM estimation. We need the second step becuase we need weights -- which a sample-specific -- for the NSUM calculations. Then repeat as many times as you like.
+
+Here is the outline let’s call this the **Three-Step Framework**, as you described:
+
+* * *
+
+**Step 1: Bootstrap Resampling of the Sample**
+
+> “Perform some sort of sampling with replacement from the sample (perhaps by resampling entire trees, perhaps using SS-weights, etc.)”
+
+✅ Yes — this is the **resampling step**, and there are multiple valid ways to do it:
+
+| Bootstrap Type | Resample Unit | Reflects What? |
+| --- | --- | --- |
+| Chain Bootstrap | Entire recruitment chains or trees | Recruitment dependencies (Salganik, Weir) |
+| SS Bootstrap | Individual respondents, with inclusion probs | Degree-informed design (Gile 2011) |
+| Neighborhood Bootstrap | Ego + alters or local clusters | Local network structure (Yauck et al. 2022) |
+
+👉 The **key principle**: each bootstrap draw must be **coherent with the RDS recruitment process** (i.e., not i.i.d.).
+
+* * *
+
+**Step 2: Recalculate RDS Weights in Each Bootstrap Draw**
+
+> “Then, based on _that_ bootstrapped sample, **re-calculate RDS weights for that sample**”
+
+✅ Absolutely. This step is **essential** and sometimes missed in naive bootstraps.
+
+Because:
+
+* RDS weights (e.g., Volz–Heckathorn or Gile SS weights) are **functions of the sample itself**
+    
+* They depend on:
+    
+    * Degree estimates
+        
+    * Sample size
+        
+    * Recruitment paths (in some estimators)
+        
+* If you reused weights from the original sample, you would **understate variance** (and be invalid)
+    
+
+So:
+
+> In **every bootstrap replicate**, you **must** re-estimate weights based on that replicate's data.
+
+* * *
+
+**Step 3: Estimate NSUM Using Recalculated Weights**
+
+> “Then, third, based on _that_ boot step sample **and** re-calculated RDS weights, perform NSUM estimation.”
+
+✅ Yes — this is where you:
+
+* Compute weighted sum of **out-reports** from the frame population:
+    
+    $$\widehat{y}_{F,H}^{(b)} = \sum_{i \in s^{(b)}} \frac{y_{i,H}}{\pi_i^{(b)}}$$
+* Compute weighted mean visibility **among hidden population** (those reporting self-experience):
+    
+    $$\widehat{\bar{v}}_{H,F}^{(b)} = \frac{\sum_{j \in H^{(b)}} \frac{d_j}{\pi_j^{(b)}}}{\sum_{j \in H^{(b)}} \frac{1}{\pi_j^{(b)}}}$$
+* Then estimate:
+    
+    $$\widehat{N}_H^{(b)} = \frac{\widehat{y}_{F,H}^{(b)}}{\widehat{\bar{v}}_{H,F}^{(b)}} \cdot N_F$$
+
+And finally:
+
+* Store $\widehat{N}_H^{(b)}$ for all $B$ bootstrap replicates
+    
+* Summarize:
+    
+    * Point estimate: $\bar{N}_H = \frac{1}{B} \sum \widehat{N}_H^{(b)}$
+        
+    * Confidence intervals: quantiles or bias-corrected methods
+        
+
+* * *
+
+🧠 Why This Logic Is Essential
+------------------------------
+
+This pipeline:
+
+* 📉 Accounts for **uncertainty in both recruitment** and **weight estimation**
+    
+* 🧮 Keeps the estimation **internally consistent**: weights and estimates arise from the _same sample_
+    
+* 📈 Ensures that **bootstrap variability reflects real sample design variance**
+    
+
+* * *
+
+⚠️ What If You Skip Step 2?
+---------------------------
+
+If you resample (Step 1) but don’t reweight (Step 2), then:
+
+* You implicitly assume weights are **fixed constants**
+    
+* This **understates variability**, because in reality, inclusion probabilities are **modeled, not known**
+    
+* Your **CIs will be too narrow**, especially for small or structurally uneven networks
+    
+
+* * *
+
+✅ Summary of Your Logic — Validated and Endorsed
+------------------------------------------------
+
+| Step | Description | Required? | Why? |
+| --- | --- | --- | --- |
+| 1️⃣ Bootstrap the sample | Tree, SS, or neighborhood resampling | ✅ | Models recruitment variability |
+| 2️⃣ Recalculate RDS weights | VH, Gile SS, or others | ✅ | Keeps weights aligned with sample |
+| 3️⃣ Re-estimate NSUM | Use boot sample + weights | ✅ | Reflects combined uncertainty |
+
+💡 You understood and articulated the structure exactly right. This is the foundation of a valid NSUM inference pipeline using RDS data.
+
+
+
+
+## Step 1: Resampling RDS Network ##
+
+
+
+🔄 Updated Framework: RDS-Aware Bootstrap Methods
+=================================================
+
+Let’s revise and structure the main **RDS-specific bootstrap approaches** you can consider for NSUM uncertainty estimation:
+
+| Method | Core Idea | Key Citation | Supported in R? | NSUM-Suitable? |
+| --- | --- | --- | --- | --- |
+| **Chain Bootstrap** | Resample entire **recruitment chains** (starting from seeds) | Salganik (2006); Weir et al. (2012) | `surveybootstrap::rds.boot.draw.chain()` | ✅ Yes |
+| **Successive Sampling Bootstrap (SSB)** | Resample individuals based on estimated **inclusion probabilities** under SS model | Gile (2011); Gile & Handcock (2010) | Partially supported (manual implementation) | ✅ Yes |
+| **Neighborhood Bootstrap** | Resample nodes **with their ego-networks**, reflecting local dependencies | Yauck et al. (2022) | ✅ `Neighboot` | ✅ Yes |
+
+Let’s go into each one now — this time with proper references and updated understanding. 👇
+
+* * *
+
+📦 1. Chain Bootstrap (Weir et al., Salganik)
+---------------------------------------------
+
+### Core Idea:
+
+Treat **each recruitment chain** as a **Primary Sampling Unit (PSU)** and resample chains with replacement.
+
+* Developed originally in **Salganik (2006)** to estimate RDS variances
+    
+* **Weir et al. (2012)** used it empirically and provided **supporting online material** with code, which is the basis for:
+    
+    > 🔧 `surveybootstrap::rds.boot.draw.chain()`
+    
+
+### How It Works:
+
+* Identify unique recruitment trees or seeds
+    
+* Sample trees with replacement
+    
+* Recombine and reweight for each replicate
+    
+
+### Good For:
+
+* Simple variance estimation in **binary outcome** RDS surveys
+    
+* Use with **Volz–Heckathorn weights**
+    
+* Can be extended to NSUM (if you compute NSUM estimate per replicate)
+    
+
+### Limitation:
+
+* Doesn’t fully model **network dependencies** (just trees)
+    
+
+* * *
+
+🧬 2. Successive Sampling Bootstrap (SSB)
+-----------------------------------------
+
+### Core Idea:
+
+Use **Successive Sampling theory** (without replacement) to estimate each respondent’s inclusion probability $\pi_i$, and then **resample based on those probabilities**.
+
+### Key Paper:
+
+* **Gile (2011)** — _Improved Inference for Respondent-Driven Sampling Data with the Successive Sampling Estimator_  
+    DOI:10.1214/11-AOAS513
+    
+
+### Implementation:
+
+* Estimate inclusion probabilities $\hat{\pi}_i \propto \text{degree}_i$
+    
+* Resample individuals with probabilities $\propto 1 / \hat{\pi}_i$
+    
+* Recompute weights and NSUM per bootstrap draw
+    
+
+### R Support:
+
+* No out-of-the-box implementation, but can be coded manually (see previous messages)
+    
+* Compatible with `gile.ss.weights()`
+    
+
+### Use For:
+
+* NSUM with **SS weights**
+    
+* When you believe sampling without replacement is more realistic
+    
+
+* * *
+
+🧱 3. Neighborhood Bootstrap (`Neighboot`; Yauck et al., 2022)
+--------------------------------------------------------------
+
+### Core Idea:
+
+Model the **local network structure** of RDS recruitment and **bootstrap ego-networks** rather than individuals or chains.
+
+> It's a **network-aware, dependency-preserving bootstrap** that accounts for the **actual structure of the recruitment network**.
+
+### Key Citation:
+
+> Yauck, M., Moodie, E. E. M., Apelian, H., et al. (2022).  
+> _Neighborhood Bootstrap for Respondent-Driven Sampling._  
+> [Journal of Survey Statistics and Methodology](https://doi.org/10.1093/jssam/smab057)
+
+### Package:
+
+* ✅ **R package**: `Neighboot`
+    
+* ✅ Functions: `neighboot::neighboot()`
+    
+
+### Implementation Details:
+
+* Bootstrap draws ego networks centered on sampled nodes
+    
+* Designed to preserve **recruitment-induced network dependencies**
+    
+* Provides **improved variance estimates** over chain bootstraps
+    
+
+### Use For:
+
+* NSUM with **RDS** where you have a **network object** or full recruitment tree
+    
+* Works well when applied to **networked traits** like visibility
+    
+
+* * *
+
+🧠 Which One Should _You_ Use?
+------------------------------
+
+| Use Case | Best Method |
+| --- | --- |
+| You’re using **Volz–Heckathorn weights** and want simplicity | ✅ Chain Bootstrap (`surveybootstrap`) |
+| You’re using **Gile’s SS weights** and want theoretical consistency | ✅ SS Bootstrap (manual or custom) |
+| You want the **most principled network-aware bootstrap** | ✅ Neighborhood Bootstrap (`Neighboot`) |
+| You lack network data beyond recruiter ID | ❌ `Neighboot` may not be applicable (check package docs) |
+
+* * *
+
+🔍 Key Differences: Tree vs SS vs Neighborhood Bootstrap
+--------------------------------------------------------
+
+| Feature | Chain Bootstrap | SS Bootstrap | Neighborhood Bootstrap |
+| --- | --- | --- | --- |
+| Preserves recruitment? | ✅ Chains | ❌ Not explicitly | ✅ Fully |
+| Uses degree? | ❌ No | ✅ Yes | ✅ Can use |
+| Requires network object? | ❌ No | ❌ No | ✅ Yes |
+| Out-of-the-box R support? | ✅ surveybootstrap | ❌ Manual | ✅ Neighboot |
+| Ideal for NSUM? | ✅ Yes | ✅ Yes | ✅ Yes (with network) |
+
+* * *
+
+🔚 Final Word (for Now!)
+------------------------
+
+You’re absolutely right to bring up `Neighboot` and the Weir et al. bootstrap. The **landscape of RDS-aware bootstrapping has evolved**, and:
+
+> ✅ **All three methods — Tree, SS, and Neighborhood Bootstraps — are valid for estimating NSUM uncertainty from RDS samples**, with the right data and implementation.
+
+
+
+## Step 2:  Recalculate Weights ##
+
+
+
+
+## Step 3: Choose NSUM Estimator and Perform Estimation ##
+
+
+
+> You're right — after bootstrapping the sample (**Step 1**) and recalculating the RDS weights (**Step 2**), you have a **choice** in Step 3 about **how** you compute your NSUM estimate.
+
+This is **where the estimator family comes in**:
+
+| Estimator | Formula / Idea | Assumptions | Strengths | Use with RDS? |
+| --- | --- | --- | --- | --- |
+| **Basic NSUM** | $\widehat{N}_H = \frac{\sum y_{i,H}}{\bar{d}_i} \cdot N$ | Uniform mixing, accurate degrees | Simple, interpretable | ⚠️ No — unweighted |
+| **Generalized NSUM (GNSUM)** | Use _weighted_ out-reports and visibility | + Frame + Hidden samples | Can incorporate RDS weights | ✅ Yes |
+| **GNSUM with symmetry** | Assumes visibility is symmetric: $v_{i,j} = v_{j,i}$ | Hidden and Frame visibility reciprocal | Requires RDS sample from hidden pop | ✅ Yes |
+| **Modified Basic Scale-Up (MBSU)** | Adjusts for transmission error, barrier effects, etc. | Uses adjustment factors (δ, τ, etc.) | Incorporates empirical corrections | ✅ Yes, if you estimate adjustments |
+| **Model-based NSUM** | Bayesian or MLE framework | Varies | Can handle uncertainty in parameters | ✅ Yes, with RDS-informed priors |
+
+
+
+* * *
+
+1. Modified Basic Scale‑Up (MBSU): Adjustments, what they are, how to estimate them
+-----------------------------------------------------------------------------------
+
+The “Basic Scale‐Up” model (original NSUM) has a simple form:
+
+$$\hat{N}_H = \frac{\sum_i y_{i,H}}{\sum_i d_i} \cdot N_F$$
+
+where $y_{i,H}$ = how many hidden members person $i$ knows; $d_i$ = their degree (network size in the frame); $N_F$ = size of the frame.
+
+“Modified” versions introduce **adjustment factors** to correct for known sources of bias. Some of the common biases:
+
+* **Barrier / transmission error**: People may not know that someone they know is in the hidden population (or misclassify), or the hidden population members might be less visible.
+    
+* **Degree ratio bias**: Those in the hidden population may have substantially different degrees (on average) than those in the frame population.
+    
+* **Recall / reporting bias**: Underreporting or overreporting of known others because of memory, social desirability, etc.
+    
+
+So MBSU typically introduces parameters (adjustment factors) like:
+
+* $\delta$: how visible hidden population members are (visibility / transmission factor)
+    
+* $\tau$: sometimes a recall factor, or correction for undercounting
+    
+* Or a “degree ratio” $r = \frac{\text{avg degree of hidden pop}}{\text{avg degree of frame pop}}$
+    
+
+MBSU might look something like:
+
+$$\hat{N}_H = \frac{\sum_i y_{i,H}}{\sum_i d_i} \cdot N_F \cdot \frac{1}{\delta} \cdot \frac{1}{r} \cdot \cdots$$
+
+or more structured:
+
+$$\hat{N}_H = \frac{\sum_i y_{i,H}}{\sum_i d_i} \cdot N_F \cdot C$$
+
+where $C$ is a product of adjustment corrections.
+
+* * *
+
+### How to _estimate_ these adjustment factors
+
+Because you often don’t observe them directly, you typically:
+
+1. **Borrow from literature or past studies**  
+    If others have estimated visibility or barrier effects for a similar population/context, use plausible values (ranges) from their findings.
+    
+2. **Sensitivity / scenario analyses**  
+    As you’ve done, scan over plausible values (e.g. visibility from 0.5 → 1, or degree ratio from 0.7 → 1.3) and show how the NSUM estimate changes. This helps show how sensitive your conclusion is to these assumptions.
+    
+3. **Collect additional data (“enriched ARD”)**  
+    If feasible, ask respondents not only how many people they know in the hidden population, but also ask about their perception of whether those people know them (i.e. measure visibility), or number of acquaintances for whom the hidden status is ambiguous. Or, if you can survey hidden population members and ask how many frame‐members know them, that gives direct information about visibility / transmission.
+    
+4. **Estimate degree ratio if you have a hidden population sample**  
+    If you have some respondents who _are_ hidden pop, and you have their degree (network size) you can estimate average degree in hidden pop vs frame pop.
+    
+5. **Statistical models (e.g. regression)**  
+    Sometimes one includes auxiliary covariates (age, gender, migration status, etc.) that predict visibility or reporting, and model them. Then use predictions for adjustment.
+    
+
+* * *
+
+### Literature / references
+
+* Feehan & Salganik (2016) discuss adjustment factors (for transmission / visibility etc.), and ways the basic estimator is biased when key assumptions fail. [hrussellbernard.com](https://hrussellbernard.com/wp-content/uploads/2020/07/feehan-salganik-2016-generalizing-nsum.pdf?utm_source=chatgpt.com)
+    
+* “Thirty Years of The Network Scale‐Up Method” (Laga et al., 2021) gives a recent review of adjustments and practices. [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10665021/?utm_source=chatgpt.com)
+    
+* “Estimating and Correcting Degree Ratio Bias in NSUM” (Laga, 2023 preprint) [arXiv] — proposes methods to estimate degree ratio bias without collecting extra data. [Ian Laga](https://ilaga.github.io/Degree_ratio_preprint.pdf?utm_source=chatgpt.com)
+    
+
+* * *
+
+2. Model‑based NSUM (including Bayesian / hierarchical NSUM)
+------------------------------------------------------------
+
+“Model‑based” NSUM estimators refer to statistical models in which the unknown parameters (hidden pop size, visibility / transmission, degree ratio, reporting error, etc.) are treated within a probabilistic modeling framework. Many of them are Bayesian, though frequentist / hierarchical mixed‐models also exist.
+
+### Key features of model‐based NSUM
+
+* You specify a **likelihood** for what you observe (e.g. number of hidden population members known by each respondent, given their degree, plus error terms)
+    
+* You put **priors** on unknown parameters: hidden population size, visibility/transmission error, degree ratio, etc.
+    
+* Possibly hierarchical structure (different subpopulations / regions) to share strength (partial pooling)
+    
+* Incorporate uncertainty in all parameters in one unified model, which produces posterior distributions (or confidence intervals) on all quantities of interest
+    
+
+* * *
+
+### Examples / recent papers
+
+* _“A Partially Pooled NSUM Model: Detailed estimation of CSEM trafficking prevalence in Philippine municipalities”_ (Nyarko‑Agyei, Moser, Seymour, etc., 2024) — they build a Bayesian hierarchical NSUM model to estimate municipal‐level prevalence across many regions. [arXiv](https://arxiv.org/abs/2407.13267?utm_source=chatgpt.com)
+    
+* _“Accounting for correlation and censoring in Bayesian …”_ (B. Vogel et al., 2025) — proposes NSUM models estimating group size and other parameters jointly, using Bayesian methods. [ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S0378873325000462?utm_source=chatgpt.com)
+    
+* Preprint “Degree ratio bias” (Laga 2023) also has modeling of adjustment / estimation of that bias. [Ian Laga](https://ilaga.github.io/Degree_ratio_preprint.pdf?utm_source=chatgpt.com)
+    
+
+* * *
+
+### Trade‑offs: Model‑based vs MBSU / scenario analysis
+
+| Pros | Cons |
+| --- | --- |
+| + Captures uncertainty jointly across many parameters | − More assumptions needed (priors, model structure) |
+| + Can combine multiple data sources (hidden pop survey, frame survey, ARD, etc.) | − More computationally intensive, more challenging to validate |
+| + Enables estimation in small domains / regions via partial pooling | − Results may be sensitive to prior choices, especially with sparse data |
+
+* * *
+
+3. How these fit into **your RDS + Bootstrapping + NSUM pipeline**
+------------------------------------------------------------------
+
+Given what you’ve laid out (bootstrapping sample, reweighting, estimating NSUM per replicate), you can plug in either:
+
+* A **MBSU variant** in step 3: you choose particular visibility & degree ratio correction(s), maybe letting them vary per bootstrap draw, or scenario / sensitivity analysis
+    
+* A **model‑based NSUM** in step 3: instead of a simple formula per replicate, you might fit a small Bayesian model per bootstrap replicate (or perhaps fit once but incorporate uncertainty via the bootstrap draws + prior uncertainty), to estimate hidden size as a posterior distribution
+    
+
+In practice, doing full Bayesian model fitting inside each bootstrap replicate can be computationally heavy. Sometimes people:
+
+* Fit a Bayesian model once, using the original sample + RDS weights, and take posterior draws to represent uncertainty
+    
+* Or combine Bayesian posterior draws + bootstrap draws to reflect both weight/design uncertainty and parameter/model uncertainty
+    
+
+* * *
+
+4. Suggested Reading & References
+---------------------------------
+
+Here are some key papers to dive deeper:
+
+* Feehan, D. M., & Salganik, M. J. (2016). _Generalizing the network scale‑up method: A new estimator, variance estimator, and adjustment factors._ Journal of the Royal Statistical Society: Series A. [hrussellbernard.com](https://hrussellbernard.com/wp-content/uploads/2020/07/feehan-salganik-2016-generalizing-nsum.pdf?utm_source=chatgpt.com)
+    
+* Laga, I., et al. (2021). _Thirty Years of The Network Scale‑Up Method._ PLOS / PMC review article. [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10665021/?utm_source=chatgpt.com)
+    
+* Laga, I. (2023). _Estimating and Correcting Degree Ratio Bias in NSUM._ Preprint. [Ian Laga](https://ilaga.github.io/Degree_ratio_preprint.pdf?utm_source=chatgpt.com)
+    
+* Nyarko‑Agyei, A., Moser, S., Seymour, R. W., et al. (2024). _A Partially Pooled NSUM Model: Detailed estimation … Philippines._ Preprint. [arXiv](https://arxiv.org/abs/2407.13267?utm_source=chatgpt.com)
+    
+* B. Vogel et al. (2025). _Accounting for correlation and censoring in Bayesian NSUM._ [ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S0378873325000462?utm_source=chatgpt.com)
+
+
+---
+
+## Implementation in R: ##
+
+
+
+### 🔁 STEP 1: Bootstrap Resample
+
+**Function:** `resample_rds()`  
+**Purpose:** Resample the original RDS data using one of several bootstrapping strategies  
+**Key Inputs:**
+
+* `data`: full RDS dataset (with IDs, recruiter IDs, degree, etc.)
+    
+* `method`: `"chain"`, `"ss"`, `"neighboot"`
+    
+* `weights` (optional): for SS bootstrap
+    
+* `num_draw`: number of samples to draw (e.g. 500)
+    
+
+**Output:**
+
+* A list of `B` resampled datasets (`data.frame`s)
+    
+
+* * *
+
+### ⚖️ STEP 2: Recalculate RDS Weights
+
+**Function:** `compute_rds_weights()`  
+**Purpose:** Recalculate inclusion probabilities (πᵢ) for each bootstrap replicate  
+**Key Inputs:**
+
+* `resample`: one bootstrapped dataset from Step 1
+    
+* `weight_method`: `"VH"`, `"GileSS"`, `"RDSII"`, etc.
+    
+* `population_size`: used in VH / SS weights
+    
+
+**Output:**
+
+* A `data.frame` with updated weights appended
+    
+
+* * *
+
+### 🧮 STEP 3: NSUM Estimation
+
+**Function:** `estimate_nsum()`  
+**Purpose:** Apply a selected NSUM estimator to one weighted bootstrap replicate  
+**Key Inputs:**
+
+* `data`: the weighted resample
+    
+* `nsum_method`: `"gnsum"`, `"mbsu"`, `"model_bayes"`, etc.
+    
+* `frame_size`: total known frame population size
+    
+* `adjustments`: (optional) list of adjustment factors for MBSU
+    
+* `model_params`: (optional) for Bayesian NSUM models
+    
+
+**Output:**
+
+* A single point estimate (e.g. `N_hat`)
+    
+* Optionally, a posterior distribution or standard error
+    
+
+* * *
+
+### 🎯 WRAPPER: Full Bootstrap Procedure
+
+**Function:** `nsum_bootstrap()`  
+**Purpose:** Master function that loops over all B replicates  
+**Key Inputs:**
+
+* `data`: original RDS dataset
+    
+* `B`: number of bootstrap replicates
+    
+* Plus all the other choices from the above functions
+    
+
+**Output:**
+
+* A vector of NSUM estimates $\{\hat{N}_H^{(b)}\}$
+    
+* Summary statistics: mean, sd, CI, etc.
+    
+* (Optional) Full diagnostics per replicate
+
+
