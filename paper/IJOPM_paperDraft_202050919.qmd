@@ -20,7 +20,7 @@ format:
     pdf-engine: xelatex
     cite-method: biblatex
     keep-tex: true
-    # Pass options to \usepackage{biblatex} without loading it yourself
+    ## Pass options to \usepackage{biblatex} without loading it yourself
     biblatexoptions:
       - backend=biber
       - natbib = true
@@ -91,17 +91,19 @@ execute:
 ---
 
 
+
+
 ```{r setup, include=FALSE}
 getwd()
-# Ensure fs is available
+## Ensure fs is available
 if (!requireNamespace("fs", quietly = TRUE)) install.packages("fs")
 
-# Define paths
+## Define paths
 home_dir <- Sys.getenv("HOME")
 bib_source <- fs::path(home_dir, "Dropbox", "Bibliog", "scottAll5-BBL-URLdoi2024.bib")
 bib_target <- "references.bib"
 
-# Only copy if target doesn't exist or source is newer
+## Only copy if target doesn't exist or source is newer
 if (!fs::file_exists(bib_target) ||
     fs::file_info(bib_source)$modification_time > fs::file_info(bib_target)$modification_time) {
   fs::file_copy(bib_source, bib_target, overwrite = TRUE)
@@ -110,7 +112,7 @@ if (!fs::file_exists(bib_target) ||
   message("- Bibliography file is up to date")
 }
 
-# Rest of your setup...
+## Rest of your setup...
 css_dir <- fs::path(home_dir, "Dropbox", "LaTeX", "Stationary", "Rmakrdown")
 css_files <- c("columns.css", "seminar_v6.css", "Qmd_noPublished.css")
 
@@ -125,7 +127,7 @@ for (file in css_files) {
   }
 }
 
-# Download CSL file if missing
+## Download CSL file if missing
 if (!fs::file_exists("apa.csl")) {
   download.file(
     "https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl",
@@ -151,7 +153,7 @@ message("Setup complete!")
 \newpage
 
 
-# Introduction
+## Introduction
 
 
 ```{=latex}
@@ -300,7 +302,7 @@ In contrast to overseas factory workers in globally dispersed, product, supply c
 In this paper, we make two specific contributions to the operations and supply chain management literature. First, we demonstrate the use of RDS coupled with Network Scale-up Methods (N-SUM) to reach and sample respondents’ views of their working conditions among these, predominantly female, transnational migrant domestic workers. We use the data we obtain from these respondents to show how such a survey can be used to estimate the proportion of workers experiencing labour exploitation. Second, we begin to capture the nature and extent of modern slavery as voiced by domestic service workers thereby, we believe, expanding the nascent literature on worker voice which has, in the main, focussed primarily upon factory workers (@stephens_theorising_2024). These contributions not only extend our understanding of the risks of labour exploitation and abuse among service workers engaged in domestic settings but also show how it is possible to shed light on the severity of the individuals’ experience of exploitation through the construction of a novel risk index. The remainder of this paper is structured as follows. First, we describe our conceptual framework and introduce the context of our study in more detail, highlighting what is already known about the current population of domestic workers in the UK and the conditions in which they work. Next, we describe our research methods. We review the development of the respondent-driven sampling (RDS) techniques we used and explain why this sampling method is suitable for our study. We then describe our survey methods, including how we designed our survey instrument, contacted our sample seeds and analysed our data. We then present and discuss our findings, detailing the proportional estimate that we calculated and the risk index we constructed. In our discussion, we expand upon the implications of our findings for government policy, enforcement practices and further research, including how these methods may be used in future studies of labour exploitation in other sectoral and geographic contexts. The limitations of our study are outlined, before, finally, we conclude our article.
 
 
-# Conceptualising Labour Exploitation and the Degree of Risk
+### Conceptualising Labour Exploitation and the Degree of Risk
 
 
 Modern slavery has been criticised by some for its overly extensive scope: encapsulating a broad range of divergent sub-categories of exploitation (@oconnell_davidson_margins_2015; @gutierrez-huerter_o_change_2023). For this reason, we used the International Labour Organization’s (@ILO11-indicators)^[CE: No idea if this is the correct reference -- it is my best guess.] ‘Indicators of Forced Labour’ to identify the potential for severe labour exploitation and as a basis for the quantification of our labour exploitation and abuse risk index. The ILO identify eleven indicators designed to help understand how forced labour arises and how it affects victims. These indicators include: abuse of vulnerability; deception; restriction of movement; isolation; physical and sexual violence; intimidation and threats; retention of identity documents; withholding of wages; debt bondage; abusive working and living conditions and excessive overtime. According to the ILO, the presence of a single indicator in any given situation may in some cases imply the existence of forced labour. However, it also suggests that in other cases it may be necessary to look for several indications which, taken together, may point to a case of forced labour. We seek to refine this statement through the construction of a composite index by which means a degree of risk related to the likelihood of a domestic worker experiencing this most severe form of exploitation may be distinguished from the likely occurrence of less severe, though similarly illegal, forms of labour abuse.
@@ -311,7 +313,7 @@ The study of risk management has a long tradition in operations and supply chain
 
 In our study, we conceptualise the risk of labour exploitation from the workers’ perspective. We conceive severe forms of labour exploitation such as forced labour as one end of a spectrum ranging from illegal employment practices that constitute labour abuse, such as wage payments below legal minimum wage levels and health and safety violations, through to the likelihood of criminal exploitation recognized in the UK as modern slavery. Our assessment of this personal risk permits a degree of risk to be assigned to various clusters of forced labour indicators with the more indicators present, the stronger the likelihood that the working conditions may be considered exploitative. Our approach, therefore, includes, but goes beyond, assessing the likelihood of forced labour by simply quantifying the proportion of survivors entering the UK’s National Referral Mechanism (NRM): a government system for survivor support set up to identify whether there are positive grounds for the identification of Modern Slavery. In our method, an NRM referral is used as the strongest indicator of modern slavery risk, with lesser risks assessed according to the degree to which cumulative indicators of forced labour are reported.
 
-# Case Setting: Labour Exploitation Risk Among Transnational Migrant Domestic Workers In The UK
+### Case Setting: Labour Exploitation Risk Among Transnational Migrant Domestic Workers In The UK
 
 Domestic work forms part of a broader industrial category of Personal and Household Service work (PHS). Work in this category includes those employed in ‘social work activities without accommodation’ and ‘activities of households as employers of domestic personnel’ (@european_commission_staff_2012). In 2017, an estimated 980,000 people were engaged in PHS work in the UK (@manoudi_analysis_2018). @manoudi_analysis_2018 highlight that the PHS sector is dominated by women and migrants, with many undeclared foreign workers. Detailed statistics related to the country of origin of domestic workers migrating to work in PHS in the UK are difficult to isolate before 2019. Since that time, annual migration has fluctuated – falling sharply in 2021 due in part to the COVID-19 pandemic, before later rising again above pre-pandemic levels. In the year to December 2022, the UK Home Office reported that it had issued 18,533 Overseas Domestic Worker visas (@home_office_why_2023). These domestic workers came from various countries in South America and Asia, including many from the Philippines.
 
@@ -329,12 +331,12 @@ Against this backdrop, we used respondent driven sampling (RDS) as a sampling te
 
 
 
-# Research Methods 
+## Research Methods 
 
 [Scott- do feel free to edit as you see fit]
 
 
-## Respondent-Driven Sampling (RDS) And Survey Method
+### Respondent-Driven Sampling (RDS) And Survey Method
 
 Comprehensive descriptions and literature reviews of the development and use of RDS to estimate the population size of a hidden population are available elsewhere (@heckathorn_comment_2011; @gile_methods_2018). Suffice it to say, the possibilities of the use of a one-wave snowball sampling to allow researchers to obtain a sample of personal networks was posited by @frank_estimating_1994. Following the identification of a set of original sample members known as seeds, @heckathorn_respondent-driven_1997; @heckathorn_respondent-driven_2002 advocate the use of a double incentive to recompense participants not only for their involvement, but also for their recruitment of further participants in subsequent ‘waves’ of participation by drawing upon the social ties through which members of the hidden population are connected to each other.
 
@@ -344,7 +346,7 @@ RDS has been widely used to sample a variety of hidden populations, including HI
 
 In the following section, we describe our methods, including how we designed our survey, contacted our sample seeds, and analysed our data. Our approach can best be described as Web-based RDS (@wejnert_web-based_2008). We designed a web survey using the JISC online survey interface, suitable for our respondents to complete via a mobile phone. Composite measures to quantify the extent to which respondents were at risk of labour exploitation, including severe forms of exploitation such as forced labour, were constructed from existing exploitation typologies, notably the ILO’s Indicators (@ILO11-indicators). The survey consisted of these 11 composite indicators and included questions related to domestic workers’ level of job satisfaction, employment conditions, and demographic data such as nationality, age, and gender. The main survey was conducted in the five months between February and July 2023.
 
-## Initial Sample Selection
+### Initial Sample Selection
 
 We selected our first wave of participants nonrandomly by convenience sampling. Mobile phone numbers were used both to identify seed participants and to act as a unique identifier for those whom they referred.   To avoid sample homophily, original sample members were selected from three distinct domestic worker communities. This was facilitated by civil society organisations who represented distinct domestic worker communities. One was an exclusively online community of transnational domestic workers working in the UK, the second represented UK domestic workers of Filipino origin, and the third drew its membership from the Latin American community of domestic workers, also in the UK. Along with other academics with expertise in exploitation within domestic work, representatives from these three organisations also contributed to survey question design and facilitated the piloting of an initial version of the survey (which was translated and made available in four languages: English, Spanish, Tagalog, and Portuguese) to selected domestic workers within each community.
 
@@ -353,7 +355,7 @@ We selected our first wave of participants nonrandomly by convenience sampling. 
 
 
 
-## Survey Incentives: Incentive Design and Participation Verification
+### Survey Incentives: Incentive Design and Participation Verification
 
 
 A double incentive scheme rewarded respondents both for completing the questionnaire and for each referral who went on to engage with the survey. The challenge of incentive design is to set the incentive at a level that adequately rewards respondents’ time and participation, but that also avoids the risk of fraudulent participation due to too high a monetary gain (@jordan_overcoming_2020). A sum of £10 was provided for survey completion with a further £5 for each successful nomination. While respondents were asked to nominate up to 10 domestic workers within their existing social network, it was the first three of these from whom participation was requested in subsequent waves. This approach is akin to the use of vouchers in face-to-face studies as advocated by @thompson_new_2020.
@@ -362,9 +364,9 @@ The ethical and practical issues related to the design and effective use of ince
 
 
 
-# Data Analysis
+## Data Analysis
 
-## Descriptive Statistics
+### Descriptive Statistics
 
 In total, we received completed online surveys from 97 respondents. Of these respondents, 90 identified themselves as transnational migrants. Forty-five percent regarded themselves as self-employed, 39% identified themselves as employees, and 16% categorised their employment status as that of a worker.
 
@@ -372,22 +374,22 @@ Of the 97 respondents, 64 (66% of the total), and the largest single nationality
 
 
 
-## Network Structure
+### Network Structure
 
 GRAPH HERE.
 
-# Findings
+## Findings
 
-## Point Estimation and Confidence Intervals
+### Point Estimation and Confidence Intervals
 
-## Risk Index
+### Risk Index
 
 
-# Discussion
+## Discussion
 
 [Scott to add and revise]
 
-## Implications for Policy
+### Implications for Policy
 
 
 The UK Government has proved reluctant to respond to calls to remove the restrictive, tied, visa conditions currently in force for those migrant workers working in the UK on the Overseas Domestic Workers visa (@gower_calls_2016). Maintaining these restrictive conditions prevents the ratification in the UK of C189, the International Convention for Domestic Workers (@ILO11-indicators). If the estimates resulting from our study are correct, these visa conditions place migrant domestic workers at significant risk of serious forms of labour exploitation including, in its most severe form, exploitation that exhibits the characteristics of forced labour—legally considered a form of modern slavery.
@@ -399,23 +401,23 @@ In addition, given the vulnerabilities experienced by workers due to the private
 Finally, given the stigma and very real danger of deportation of those migrant domestic workers who may have fallen out of legal migration status, our evidence suggests that there is an urgent need for the UK Government to enforce a firewall between immigration control and labour exploitation if the true scale of abuse is to be made visible and the perpetrators brought to justice.
 
 
-## Implications for Practice
+### Implications for Practice
 
 The UK Visa and Immigration service already offers rights-based training to migrant domestic workers via UK embassies in certain source countries. To reduce migrant domestic workers vulnerabilities, we advocate the expansion of this training both to include explicit training related to employment and labour rights within the UK and to the rapidly expanding range of new source countries from where migrant domestic workers are now drawn.
 
-## Further Research
+### Further Research
 
 We believe that web-RDS combined with statistical estimators such as NSUM offers an important method for the capture and comparison of relative proportions of labour exploitation and abuse in sectors within and beyond the UK. Network scale up methods, and potential enhancements such as Generalised network scale up estimators offer to enhance understanding, not least within operations and supply chain management research, of the extent of labour exploitation in different sectors and across industries.
 
 
-## Limitations of the Study
+### Limitations of the Study
 
 As with any empirical research, our study is subject to limitations. In terms of nationality, our sample is not representative of the demographics of those domestic workers employed on Overseas Domestic Worker Visas in 2022 the UK. Due to the increasing number of workers on Overseas Domestic Work visas from the Indian sub-continent, attempts were made also to seed respondents from this community. This proved difficult, with anecdotal information suggesting that domestic workers from this community rarely had access to a personal mobile phone. It is not therefore possible to infer the nature and extent of labour exploitation within this sub-section of the domestic worker population.
 
 As the network structure of our sample demonstrates, even with a well-designed incentive scheme it proved difficult to recruit respondents from these communities of domestic workers in subsequent sampling waves in the time available. Most of our respondents are therefore original sample members draw from the three domestic worker communities used to seed the survey.
 
 
-# Conclusion
+## Conclusion
 
 \newpage
 
@@ -426,7 +428,7 @@ As the network structure of our sample demonstrates, even with a well-designed i
 ```
 
 \newpage
-# References
+## References
 ::: {#refs}
 :::
 <!-- This will be populated by Pandoc if you use --citeproc and a .bib file -->
@@ -436,7 +438,7 @@ As the network structure of our sample demonstrates, even with a well-designed i
 \appendix
 ```
 
-# Appendix A
+## Appendix A
 
 
 
@@ -453,7 +455,7 @@ Consider separate analysis for Filipino subgroup
 
 
 
-## The Survey
+### The Survey
 
 (From codebook)
 
@@ -474,7 +476,7 @@ Risk Index Implementation
 
 
 
-# Appendix B
+## Appendix B
 
 ```{r setu, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
@@ -485,12 +487,12 @@ library(plotly)
 library(DT)
 library(gt)
 
-# Load results
+## Load results
 load("output/rds_estimates.RData")
 load("data/processed/prepared_data.RData")
 ```
 
-## Executive Summary
+### Executive Summary
 
 This analysis estimates the prevalence of modern slavery among domestic workers in the UK using multiple RDS methodologies. We examine two primary indicators across various population size assumptions and estimation techniques.
 
@@ -499,9 +501,9 @@ This analysis estimates the prevalence of modern slavery among domestic workers 
 - NRM referral experience (Q80): A.A% - B.B% (95% CI)  
 - Population size estimates: 980,000 - 1.74M domestic workers
 
-## Sample Characteristics
+### Sample Characteristics
 
-### Recruitment Network Structure
+#### Recruitment Network Structure
 
 ```{r network-summary}
 #| label: tbl-network
@@ -516,8 +518,8 @@ network_stats <- tibble(
     round(mean(rd.dd$numRef, na.rm = TRUE), 1),
     round(median(rd.dd$numRef, na.rm = TRUE), 1),
     sum(rd.dd$recruiter.id == -1),
-    "TBD", # Calculate from recruitment chains
-    "TBD"  # Calculate average chain length
+    "TBD", ## Calculate from recruitment chains
+    "TBD"  ## Calculate average chain length
   )
 )
 
@@ -527,13 +529,13 @@ network_stats %>%
   fmt_number(columns = Value, decimals = 1, use_seps = TRUE)
 ```
 
-### Demographic Composition
+#### Demographic Composition
 
 ```{r demographics}
 #| label: fig-demographics
 #| fig-cap: "Sample Composition by Nationality Clusters"
 
-# Create nationality breakdown
+## Create nationality breakdown
 nationality_summary <- rd.dd %>%
   group_by(nationality_cluster) %>%
   summarise(
@@ -552,15 +554,15 @@ ggplot(nationality_summary, aes(x = nationality_cluster, y = percent, fill = nat
   theme(legend.position = "none")
 ```
 
-## RDS Estimation Results
+### RDS Estimation Results
 
-### Model-Assisted Estimates by Population Size
+#### Model-Assisted Estimates by Population Size
 
 ```{r ma-estimates-table}
 #| label: tbl-ma-estimates
 #| tbl-cap: "Model-Assisted Estimates by Population Size and Seed Selection"
 
-# Extract MA results and create comparison table
+## Extract MA results and create comparison table
 ma_comparison <- expand_grid(
   seed_method = c("sample", "random", "degree"),
   pop_size = c(100000, 953000, 1000000, 1500000),
@@ -579,7 +581,7 @@ ma_comparison <- expand_grid(
   ungroup() %>%
   filter(!is.na(estimate))
 
-# Create formatted table
+## Create formatted table
 ma_comparison %>%
   mutate(
     pop_size_f = scales::comma(pop_size),
@@ -599,13 +601,13 @@ ma_comparison %>%
   tab_spanner(label = "Prevalence Estimates (95% CI)", columns = c(q36, q80, composite_risk))
 ```
 
-### Traditional RDS Estimators Comparison
+#### Traditional RDS Estimators Comparison
 
 ```{r rds-comparison}
 #| label: tbl-rds-comparison
 #| tbl-cap: "RDS Estimator Comparison (N=980,000)"
 
-# Extract RDS estimates for standard population size
+## Extract RDS estimates for standard population size
 rds_980k <- rds_results[["980000"]]
 
 rds_table <- tibble(
@@ -626,9 +628,9 @@ rds_table <- tibble(
 
   
   
-# Appendix C:  Bootstrap Estimation for Network Scale-Up Using RDS Data
+## Appendix C:  Bootstrap Estimation for Network Scale-Up Using RDS Data
 
-## Introduction
+### Introduction
 
 When estimating the size or characteristics of a hidden population using the Network Scale-Up Method (NSUM), researchers typically assume a probability sample from the frame population. However, in many applied settings—including hard-to-reach populations—data are collected via **Respondent-Driven Sampling (RDS)**. RDS introduces specific structural dependencies and inclusion probabilities that violate the assumptions of simple random sampling.
 
@@ -641,7 +643,7 @@ To address this challenge, we propose a **three-step bootstrap procedure** for N
 
 ---
 
-## Step 1: Resampling the RDS Sample
+### Step 1: Resampling the RDS Sample
 
 We begin by resampling from the observed RDS sample in a way that mimics the original recruitment structure. Let the original sample be:
 \[
@@ -649,7 +651,7 @@ We begin by resampling from the observed RDS sample in a way that mimics the ori
 \]
 with recruitment chains and wave indicators. Let \( d_i \) denote self-reported degree for respondent \( i \), and let the recruitment tree structure be encoded via seed/recruiter IDs.
 
-### Options for RDS Resampling
+#### Options for RDS Resampling
 
 - **Tree Bootstrap**: Sample entire recruitment trees (originating from seeds) with replacement. This respects the hierarchical recruitment structure and allows design effect estimation [@salg06-variance].
 - **Successive Sampling Bootstrap (SSB)**: Sample with replacement according to inclusion probabilities derived from the SS model (@gile11-improv).
@@ -659,18 +661,18 @@ Let \( \mathcal{S}^{(b)} \) denote the sample drawn in bootstrap replicate \( b 
 
 ---
 
-## Step 2: Recalculating Weights
+### Step 2: Recalculating Weights
 
 NSUM estimators require inclusion weights \( \pi_i \) or their inverses \( w_i = 1 / \pi_i \). Because bootstrap samples differ in composition and recruitment pattern, these weights must be **recomputed for each replicate**.
 
-### General Structure
+#### General Structure
 
 For each replicate \( b \), construct:
 - \( \mathcal{S}^{(b)} \): resampled respondent IDs
 - \( d_i^{(b)} \): degree reports in replicate
 - \( \pi_i^{(b)} \): estimated inclusion probabilities
 
-### Weighting Options
+#### Weighting Options
 
 - **RDS-II Weights** (@volz08-simple):
 \[
@@ -683,13 +685,13 @@ Let \( \mathbf{X}_i \) denote covariates (e.g. traits, degree, indicator of hidd
 
 ---
 
-## Step 3: NSUM Estimation
+### Step 3: NSUM Estimation
 
 This step applies an NSUM estimator to the bootstrap sample \( \mathcal{S}^{(b)} \) using the recalculated weights \( w_i^{(b)} \) and responses \( y_{i,H} \), where \( y_{i,H} \) is the number of known contacts respondent \( i \) has in hidden population \( H \).
 
 Let \( N_F \) denote the frame population size (assumed known), and let \( d_i \) be the degree of respondent \( i \).
 
-### Generalized NSUM Estimator (GNSUM)
+#### Generalized NSUM Estimator (GNSUM)
 
 The weighted GNSUM estimator is:
 
@@ -701,7 +703,7 @@ This estimator assumes proportional mixing and equal visibility.
 
 ---
 
-### Symmetric Visibility Variant
+#### Symmetric Visibility Variant
 
 In our setting, some RDS respondents can be identified *ex post* as members of the hidden population \( H \). Denote this set \( \mathcal{H} \subseteq \mathcal{S} \). Under the assumption of **symmetric visibility**, we define:
 
@@ -713,7 +715,7 @@ That is, the average proportion of alters known by members of \( H \) who are in
 
 ---
 
-## Version 2
+### Version 2
 
 
 Bootstrap-Based Uncertainty Estimation for NSUM with RDS Samples
@@ -750,7 +752,7 @@ This approach is modular, flexible, and compatible with multiple estimators.  At
 2. The Three-Step Bootstrap Procedure
 -------------------------------------
 
-### Step 1: Resampling the RDS Sample
+#### Step 1: Resampling the RDS Sample
 
 RDS is network-dependent and violates IID assumptions. Therefore, resampling must preserve recruitment structure, seed variation, and referral chains.
 
@@ -773,13 +775,13 @@ Each resample produces a new dataset $\mathcal{S}^{(b)}$, which is passed to Ste
 
 * * *
 
-### Step 2: Recalculate Inclusion Probabilities
+#### Step 2: Recalculate Inclusion Probabilities
 
 RDS produces samples with **unknown and unequal probabilities of inclusion**, which must be corrected when used in NSUM estimation. This is achieved by estimating the probability $\pi_i^{(b)}$ that each individual $i$ in bootstrap replicate $b$ is included in the sample, conditional on their degree and position in the recruitment tree.
 
 These probabilities are used to generate **sampling weights** $w_i^{(b)} = 1/\pi_i^{(b)}$, which are passed into NSUM estimators.
 
-#### Estimation Methods
+##### Estimation Methods
 
 **(a) RDS-II (Volz-Heckathorn) Weights**  
 Assumes the probability of selection is proportional to the respondent's degree:
@@ -801,7 +803,7 @@ This method assumes RDS approximates successive sampling without replacement. Th
 **(c) User-Defined or Model-Based Weights**  
 Researchers may define weights using alternative models or Bayesian simulations. This includes post-stratification or fitting full generative models of the RDS process.
 
-#### Software Example (R)
+##### Software Example (R)
 
 ```r
 library(RDS)
@@ -814,11 +816,11 @@ The output is a new dataset with respondent traits, degrees, and updated $\pi_i^
 
 * * *
 
-### Step 3: NSUM Estimation on Resampled and Reweighted Data
+#### Step 3: NSUM Estimation on Resampled and Reweighted Data
 
 Given a bootstrap sample $\mathcal{S}^{(b)}$, we estimate the size of the hidden population $N_H$ using one of several NSUM estimators. All estimators rely on weighted sums of out-reports and degree.
 
-#### (a) Generalized NSUM (GNSUM)
+##### (a) Generalized NSUM (GNSUM)
 
 As described in @feeh16-generaling, GNSUM estimates:
 
@@ -833,7 +835,7 @@ Where:
 * $N_F$: size of the frame population (e.g. domestic workers in UK).
     
 
-#### (b) GNSUM with Symmetric Visibility (for Hidden Members in RDS)
+##### (b) GNSUM with Symmetric Visibility (for Hidden Members in RDS)
 
 In your context, some RDS respondents are ex post identified as members of the hidden population. Under the **symmetric visibility assumption**, if $i \in H$, we assume the probability that $i$ knows $j$ is the same as $j$ knows $i$. This allows **in-reports** to be incorporated.
 
@@ -848,7 +850,7 @@ Then the estimator becomes:
 
 $$\hat{N}_H^{(b)} = \left( \frac{\sum_{i} \frac{y_{i,H} + I_H(i) \cdot y_{i}^{\text{in}}}{\pi_i^{(b)}}}{\sum_{i} \frac{d_i}{\pi_i^{(b)}}} \right) \cdot N_F$$
 
-#### (c) Modified Basic Scale-Up (MBSU)
+##### (c) Modified Basic Scale-Up (MBSU)
 
 This estimator adjusts for key reporting biases via three correction factors:
 
@@ -872,7 +874,7 @@ These values can be:
 * Scanned in **sensitivity analysis**.
     
 
-#### (d) Model-Based NSUM
+##### (d) Model-Based NSUM
 
 Bayesian implementations (e.g. @malt15-estimating) model:
 
@@ -896,7 +898,7 @@ Software:
 
 * * *
 
-### 4. Aggregating Bootstrap Estimates
+#### 4. Aggregating Bootstrap Estimates
 
 After $B$ replicates:
 
@@ -913,7 +915,7 @@ We compute:
 
 * * *
 
-### 5. References
+#### 5. References
 
 * @feeh16-generaling
     
