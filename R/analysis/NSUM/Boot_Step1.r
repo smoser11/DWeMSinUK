@@ -417,35 +417,30 @@ neighb_bootstrap_resamples <- function(neighb_data, original_data, B = 500, verb
     # Step 3: Build bootstrap sample by combining sampled neighborhoods
     bootstrap_sample <- do.call(rbind, neighborhoods[sampled_recruiter_indices])
 
-    # Reset row names and IDs for bootstrap sample
+    # Reset row names but PRESERVE original IDs to maintain duplicates
     rownames(bootstrap_sample) <- NULL
-    bootstrap_sample[[id_col]] <- 1:nrow(bootstrap_sample)
 
-    # Simplify recruitment structure for RDS compatibility
-    # Make all recruiter IDs either -1 (seed) or point to valid IDs in the sample (avoiding self-recruitment)
-    for (i in 1:nrow(bootstrap_sample)) {
-      if (bootstrap_sample[[recruiter_col]][i] == -1) {
-        # Keep as seed
-        bootstrap_sample[[recruiter_col]][i] <- -1
-      } else {
-        # Assign random recruiter (not themselves)
-        potential_recruiters <- setdiff(bootstrap_sample[[id_col]], bootstrap_sample[[id_col]][i])
-        if (length(potential_recruiters) > 0) {
-          bootstrap_sample[[recruiter_col]][i] <- sample(potential_recruiters, 1)
-        } else {
-          # If no potential recruiters, make it a seed
-          bootstrap_sample[[recruiter_col]][i] <- -1
-        }
-      }
-    }
+    # Create a unique bootstrap ID for each row while preserving original ID info
+    bootstrap_sample$bootstrap_row_id <- 1:nrow(bootstrap_sample)
 
-    # Ensure at least one seed exists (to avoid RDS validation errors)
-    if (!any(bootstrap_sample[[recruiter_col]] == -1)) {
-      bootstrap_sample[[recruiter_col]][1] <- -1
-    }
+    # Preserve original IDs in a separate column for reference
+    bootstrap_sample$original_id <- bootstrap_sample[[id_col]]
+
+    # For RDS compatibility, we need unique IDs, so use bootstrap_row_id as the new ID
+    bootstrap_sample[[id_col]] <- bootstrap_sample$bootstrap_row_id
+
+    # Create a mapping for recruiter relationships based on bootstrap IDs
+    # This is complex because duplicates break simple ID mapping
+    # For now, simplify recruitment structure while preserving the sample composition
+    bootstrap_sample[[recruiter_col]] <- ifelse(
+      bootstrap_sample[[recruiter_col]] == -1,
+      -1,
+      -1  # Simplify all to seeds for RDS compatibility with duplicates
+    )
 
     # Note: We preserve duplicates (individuals can appear multiple times)
     # This is correct according to Yauck et al. algorithm
+    # The bootstrap_row_id serves as unique identifier while original_id shows duplicates
 
     bootstrap_samples[[b]] <- bootstrap_sample
   }
@@ -541,10 +536,10 @@ identify_recruitment_chains_simple <- function(data, id_col = "id", recruiter_co
 
 #### TESTING (commented out to prevent auto-execution when sourcing)
 
-B <- 500
+B <- 100
 boot_samples <- bootstrap_rds_sample(
   rds_sample = rd.dd,
-  method = "chain",   # c("tree", "neighboot", "chain", "simple", "ss"),
+  method = "tree",   # c("tree", "neighboot", "chain", "simple", "ss"),
   B = B,
   traits = c("q8_a", "q11", "q5"),
   keep.vars = c("document_withholding_nsum", "pay_issues_nsum"),
