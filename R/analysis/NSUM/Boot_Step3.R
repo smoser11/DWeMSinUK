@@ -839,9 +839,9 @@ if (!SKIP_EXECUTION) {
 # - rho = 0.9: Hidden workers may be slightly less visible in networks (90% visibility)
 mbsu_production <- list(delta = 0.75, tau = 0.8, rho = 0.9)
 
-# result_mbsu <- estimate_nsum(weighted_bootstrap_samples[[1]], 'mbsu', 'excessive_hours_nsum',
-#                             frame_size = 980000, weight_column = 'weight_vh',
-#                             adjustment_factors = mbsu_production)
-# result_gnsum <- estimate_nsum(weighted_bootstrap_samples[[1]], 'gnsum', 'excessive_hours_nsum',
-#                              frame_size = 980000, weight_column = 'weight_rds_ss')
+result_mbsu <- estimate_nsum(weighted_bootstrap_samples[[1]], 'mbsu', 'excessive_hours_nsum',
+                             frame_size = 980000, weight_column = 'weight_vh',
+                             adjustment_factors = mbsu_production)
+result_gnsum <- estimate_nsum(weighted_bootstrap_samples[[1]], 'gnsum', 'excessive_hours_nsum',
+                              frame_size = 980000, weight_column = 'weight_rds_ss')
 

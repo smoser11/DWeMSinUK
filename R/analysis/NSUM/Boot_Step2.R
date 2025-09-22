@@ -1189,4 +1189,4 @@ weighted_bootstrap_samples <- compute_weights_batch(
 )
 
 # Test weight computation
-# test_results <- test_weight_computation(verbose = TRUE)
+test_results <- test_weight_computation(verbose = TRUE)
