@@ -79,17 +79,168 @@ They **don’t provide a one-line formula** for using RDS weights in basic NSUM 
 You _can_ incorporate RDS-derived weights into NSUM estimates using the **generalized scale-up method**. Feehan and Salganik (2016) outline how to do this with relative probability samples such as those produced by RDS. The estimator is consistent under reasonable assumptions, provided you collect the right data (enriched ARD from hidden population).
 
 * * *
+## Gnsum ##
 
-Would you like:
 
-* 🔢 A worked example in R using RDS weights and NSUM?
+
+🧠 Conceptual Clarification
+---------------------------
+
+
+
+### 🔍 Clarifying the Hidden Population Estimation Using NSUM with RDS Samples
+
+You're absolutely right to raise the key question:
+
+> “Aren’t we sampling from the _frame_ population, not the _hidden_ population? So how can we estimate visibility from a sample we didn’t intend to collect from the hidden population?”
+
+Let’s walk through the logic, the assumptions, and a **complete R implementation** for **comparing NSUM and RDS estimates** of exploitation among domestic workers.
+
+* * *
+
+🧩 1. Conceptual Framework
+--------------------------
+
+### 📦 Your Sampling Frame:
+
+* You sample **domestic workers in the UK** via **RDS**
     
-* 📝 A summary of assumptions you’d need to meet?
-    
-* 🧪 Help designing the questionnaire (e.g., probe alters, enriched ARD)?
+* That’s your **frame population** $F$
     
 
-Let me know!
+### 🔍 Your Hidden Populations (H):
+
+* Workers who have been **exploited** (based on various criteria, e.g. document withholding, pay issues, etc.)
+    
+* These are **identified ex post** within your RDS sample using coded responses (e.g. `document_withholding_rds == 1`)
+    
+
+### ⚖️ Estimating Hidden Population Size (via Generalized NSUM):
+
+$$\hat{N}_H = \frac{\hat{y}_{F,H}}{\hat{\bar{v}}_{H,F}} \cdot N_F$$
+
+Where:
+
+* $\hat{y}_{F,H}$: total **out-reports** from the frame population — “How many exploited people do you know?”
+    
+* $\hat{\bar{v}}_{H,F}$: average **visibility** of each hidden population member to the frame (estimated via RDS weights)
+    
+* $N_F$: known size of the **frame population** (e.g. all domestic workers in the UK)
+    
+
+* * *
+
+📌 2. Core Assumptions (per Feehan & Salganik 2016)
+---------------------------------------------------
+
+✅ You can estimate visibility $\bar{v}_{H,F}$ using **a relative probability sample** of the hidden population (i.e., an RDS sample where **you can identify hidden population members and apply RDS weights**)
+
+✅ You use **Q13** ("How many other domestic workers do you know?") as a proxy for the **visibility** of a respondent — under the assumption of **reciprocity/symmetry**.
+
+⚠️ Assumptions involved:
+
+* Accurate reporting of out-reports (e.g., Q71)
+    
+* Symmetric ties (visibility ≈ degree)
+    
+* Homogenous visibility within the hidden population
+    
+* Correct RDS weights (e.g., Volz-Heckathorn or Gile’s SS)
+    
+* No barrier to being named (visibility bias minimized)
+    
+
+* * *
+
+🧪 3. Full R Workflow — Comparing NSUM and RDS
+----------------------------------------------
+
+Here’s a complete example for one indicator: **document withholding**.
+
+* * *
+
+### ✅ Step-by-Step in R
+
+```r
+# ----------------------------------------
+# Setup: Required inputs
+# ----------------------------------------
+
+# Frame population size
+N_F <- 980000  # Total UK domestic workers
+
+# Variable definitions
+rds_var   <- "document_withholding_rds"
+nsum_var  <- "document_withholding_nsum"
+degree_var <- "known_network_size"
+weight_var <- "wt.vh_980k"  # Or wt.SS_980k or wt.RDS1...
+
+# Safety check
+stopifnot(all(c(rds_var, nsum_var, degree_var, weight_var) %in% names(dd)))
+```
+
+* * *
+
+### 🧮 Step 1: Estimate Out-Reports $\hat{y}_{F,H}$
+
+```r
+# Out-reports: How many exploited people each respondent knows
+dd$wts <- dd[[weight_var]]
+dd$out_report <- dd[[nsum_var]]
+
+y_FH <- sum(dd$out_report * dd$wts, na.rm = TRUE)
+```
+
+* * *
+
+### 👁️ Step 2: Estimate Visibility $\hat{\bar{v}}_{H,F}$
+
+```r
+# Filter to hidden pop members (exploited) with non-missing degree and weights
+dd_hidden <- dd %>%
+  filter(!!sym(rds_var) == 1, !is.na(!!sym(degree_var)), !is.na(wts))
+
+# Estimate average visibility (degree) weighted by RDS weights
+numerator   <- sum(dd_hidden[[degree_var]] / dd_hidden$wts)
+denominator <- sum(1 / dd_hidden$wts)
+v_HF <- numerator / denominator
+```
+
+* * *
+
+### 📊 Step 3: Compute NSUM Estimate
+
+```r
+# Generalized NSUM formula
+NSUM_est <- (y_FH / v_HF)  # May or may not need to multiply by N_F
+
+# If v_HF is per respondent and not per population, scale up
+NSUM_count <- NSUM_est * N_F
+```
+
+* * *
+
+### 🎯 Step 4: Compute RDS Estimate (for comparison)
+
+```r
+# RDS prevalence estimate
+rds_prev <- weighted.mean(dd[[rds_var]], w = dd$wts, na.rm = TRUE)
+
+# Scale to population
+rds_count <- rds_prev * N_F
+```
+
+* * *
+
+### 📋 Step 5: Display Results
+
+```r
+cat("Estimate for Document Withholding\n")
+cat("NSUM estimate: ", round(NSUM_count), "\n")
+cat("RDS estimate : ", round(rds_count), "\n")
+```
+
+
 
 * * *
 
