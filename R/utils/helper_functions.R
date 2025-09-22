@@ -245,7 +245,8 @@ get_comparable_indicators <- function() {
       "excessive_hours" = "Excessive working hours",
       "access_to_help" = "Limited access to help",
       "composite_risk" = "Composite risk score",
-      "whether_exploitation" = "Overall exploitation indicator"
+      "whether_exploitation" = "Overall exploitation indicator",
+      "sum_categories" = "Risk exposure scale (ordinal)"
     ),
     confidence_levels = c(
       "document_withholding" = "Highest",
@@ -254,7 +255,8 @@ get_comparable_indicators <- function() {
       "excessive_hours" = "Medium",
       "access_to_help" = "Lowest",
       "composite_risk" = "High",
-      "whether_exploitation" = "High"
+      "whether_exploitation" = "High",
+      "sum_categories" = "High"
     )
   ))
 }

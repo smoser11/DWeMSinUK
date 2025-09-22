@@ -1,4 +1,4 @@
-# 06-MODULAR_estimator_analysis_v4.R
+# 06-modular_estimator_analysis.R
 # Modular RDS Estimator Analysis with Individual Method Functions
 # Domestic Worker Exploitation and Modern Slavery in UK
 #
@@ -47,7 +47,7 @@ modular_config <- list(
   population_labels = c("980K"),
   
   # # All indicators to test
-  indicators = c(get_comparable_indicators()$rds_vars,            "composite_risk", "whether_exploitation"),
+  indicators = c(get_comparable_indicators()$rds_vars, "composite_risk", "whether_exploitation", "sum_categories"),
   #indicators = c("pay_issues_rds"   ,        "threats_abuse_rds"),  # Just one indicator
   ma_iterations = 3,    # Was 3
   ma_M1 = 50,  #1000,        # Was 10000  
@@ -632,6 +632,7 @@ process_final_results <- function(all_results) {
         str_detect(indicator, "_rds$") ~ get_comparable_indicators()$labels[str_remove(indicator, "_rds$")],
         indicator == "composite_risk" ~ "Composite risk score",
         indicator == "whether_exploitation" ~ "Overall exploitation indicator",
+        indicator == "sum_categories" ~ "Risk exposure scale (ordinal)",
         TRUE ~ indicator
       ),
       method_clean = case_when(
@@ -1348,41 +1349,3 @@ if (!exists("skip_execution") || !skip_execution) {
   cat("Use print_usage_examples() to see usage examples\n")
 
 }
-
-
-posteriorsize_analysis <- run_posteriorsize_analysis()
-
-
-
-# ma_analysis <- run_ma_estimates_analysis()
-
-
-
-outcome_var <- "composite_risk"  #composite_risk"  # threats_abuse_rds   excessive_hours_rds
-result <- MA.estimates(
-  rd.dd, 
-  trait.variable = outcome_var,
-  N = 980000,
-  number.of.iterations = 1,                           # Single iteration for speed
-  M1 = 50,                                           # Very small for debugging
-  M2 = 25,                                            # Very small for debugging
-  parallel = 1,                                       # Single-core
-  verbose = TRUE,                                    # Clean output
-  full.output = TRUE,                                # Keep diagnostics
-  seed = 44,                                         # Reproducible
-  # Fast debugging parameters
-  MPLE.samplesize = 50000,                            # Much smaller than default 50000
-  SAN.maxit = 5,                                     # Much smaller than default 5
-  SAN.nsteps = 2^19,                                 # Much smaller than default 2^19
-  sim.interval = 10000                                 # Much smaller than default 10000
-)
-
-print(result)
-
-resultABUSE <- result
-
-
-# [I`  the mean posterior prevelence (e.g. for `threats_abuse_rds==1`) is 
-# stored in `result$estimate$interval[2]`.  Further, the 2.5% quantile (i.e. 
-#                                                                       the 95% lower CI bound) is `result$estimate$interval[4]`.  And the 95% UPPER
-#                                                                       CI bound can be accessed via `result$estimate$interval[6]`.

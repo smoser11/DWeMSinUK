@@ -1,4 +1,4 @@
-# 06-FINAL_bayesian_appendix_sensitivity.R
+# 06-bayesian_sensitivity_analysis.R
 # FINAL Comprehensive RDS Model Comparison with Proper Bayesian Methods
 # Domestic Worker Exploitation and Modern Slavery in UK
 #
@@ -44,7 +44,7 @@ final_config <- list(
   
   # All indicators to test
   indicators = c(get_comparable_indicators()$rds_vars, 
-                 "composite_risk", "whether_exploitation"),
+                 "composite_risk", "whether_exploitation", "sum_categories"),
   
   # Bootstrap parameters (ONLY for frequentist methods)
   n_bootstrap_freq = 5000,  # For RDS-I, RDS-II, RDS-SS
@@ -647,6 +647,7 @@ process_final_results <- function(all_results) {
         str_detect(indicator, "_rds$") ~ get_comparable_indicators()$labels[str_remove(indicator, "_rds$")],
         indicator == "composite_risk" ~ "Composite risk score",
         indicator == "whether_exploitation" ~ "Overall exploitation indicator",
+        indicator == "sum_categories" ~ "Risk exposure scale (ordinal)",
         TRUE ~ indicator
       ),
       method_clean = case_when(
