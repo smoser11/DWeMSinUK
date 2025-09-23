@@ -5,6 +5,10 @@
 # Focus: RDS-SS as preferred method for main text
 # Includes: Basic estimation, model-assisted, sensitivity analysis for appendices
 
+# https://github.com/LJGamble/netclust/tree/main/R
+# library(devtools)
+# devtools::install_github("https://github.com/LJGamble/netclust")
+
 cat("=== RDS Estimation Analysis ===\n")
 cat("Preferred model: RDS-SS with comparable indicators\n")
 cat("Robustness analysis for appendices\n\n")

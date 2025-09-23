@@ -539,7 +539,7 @@ identify_recruitment_chains_simple <- function(data, id_col = "id", recruiter_co
 B <- 100
 boot_samples <- bootstrap_rds_sample(
   rds_sample = rd.dd,
-  method = "tree",   # c("tree", "neighboot", "chain", "simple", "ss"),
+  method = "neighboot",   # c("tree", "neighboot", "chain", "simple", "ss"),
   B = B,
   traits = c("q8_a", "q11", "q5"),
   keep.vars = c("document_withholding_nsum", "pay_issues_nsum"),

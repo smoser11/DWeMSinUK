@@ -168,106 +168,23 @@ estimate_mbsu <- function(data,
 }
 
 # ==============================================================================
-# GENERALIZED NSUM (GNSUM) ESTIMATOR
+# STANDARD GNSUM - NOT IMPLEMENTABLE WITH RDS-NSUM DATA
 # ==============================================================================
 #
-# Standard GNSUM estimator as described in Feehan & Salganik (2016)
-# Formula: N_H = (Σ(y_i,H / π_i) / Σ(d_i / π_i)) * N_F
+# Standard GNSUM requires direct visibility measures between frame and hidden
+# populations, which we do not have in typical RDS-NSUM studies.
+#
+# Standard GNSUM formula: N_H = (Σ(y_i,H / π_i) / Σ(v_i,H / π_i)) * N_F
+#
+# The problem: We have out-reports (y_i,H) but lack visibility measures (v_i,H)
+# from frame population members to hidden population members.
+#
+# Instead, use 'gnsum_symmetric' which estimates visibility from hidden members'
+# degrees under the symmetric visibility assumption.
 # ==============================================================================
 
-estimate_gnsum <- function(data,
-                          outcome_variable,
-                          degree_variable,
-                          frame_size,
-                          weight_column = "inclusion_prob",
-                          validate_inputs = TRUE,
-                          verbose = FALSE) {
-
-  if (verbose) {
-    cat("=== GNSUM Estimation ===\n")
-    cat("Frame size:", format(frame_size, big.mark = ","), "\n")
-  }
-
-  # Input validation
-  if (validate_inputs) {
-    required_vars <- c(outcome_variable, degree_variable, weight_column)
-    missing_vars <- required_vars[!required_vars %in% names(data)]
-
-    if (length(missing_vars) > 0) {
-      stop("Missing required variables: ", paste(missing_vars, collapse = ", "))
-    }
-
-    if (frame_size <= 0) {
-      stop("Frame size must be positive")
-    }
-  }
-
-  # Extract required variables
-  y_iH <- data[[outcome_variable]]  # Out-reports to hidden population
-  d_i <- data[[degree_variable]]    # Network degrees
-  pi_i <- data[[weight_column]]     # Inclusion probabilities
-
-  # Filter valid cases
-  valid_cases <- !is.na(y_iH) & !is.na(d_i) & !is.na(pi_i) & pi_i > 0
-
-  if (sum(valid_cases) == 0) {
-    warning("No valid cases for GNSUM estimation")
-    return(list(
-      N_hat = NA,
-      y_FH_proportion = NA,
-      d_FF_average = NA,
-      n_valid = 0,
-      method = "GNSUM",
-      error = "No valid cases"
-    ))
-  }
-
-  # Work with valid data
-  y_valid <- y_iH[valid_cases]
-  d_valid <- d_i[valid_cases]
-  pi_valid <- pi_i[valid_cases]
-
-  # Calculate weighted sums
-  numerator_y <- sum(y_valid / pi_valid, na.rm = TRUE)
-  numerator_d <- sum(d_valid / pi_valid, na.rm = TRUE)
-
-  if (numerator_d <= 0) {
-    warning("Invalid degree sum (≤0) in GNSUM estimation")
-    return(list(
-      N_hat = NA,
-      y_FH_proportion = NA,
-      d_FF_average = NA,
-      n_valid = sum(valid_cases),
-      method = "GNSUM",
-      error = "Invalid degree sum"
-    ))
-  }
-
-  # GNSUM formula: N_H = (Σ(y_i,H / π_i) / Σ(d_i / π_i)) * N_F
-  N_hat <- (numerator_y / numerator_d) * frame_size
-
-  # For consistency with MBSU output, also calculate proportions
-  denominator <- sum(1 / pi_valid, na.rm = TRUE)
-  y_FH_proportion <- numerator_y / denominator
-  d_FF_average <- numerator_d / denominator
-
-  if (verbose) {
-    cat("Weighted y sum:", round(numerator_y, 2), "\n")
-    cat("Weighted d sum:", round(numerator_d, 2), "\n")
-    cat("Estimate:", format(round(N_hat), big.mark = ","), "\n")
-  }
-
-  return(list(
-    N_hat = N_hat,
-    y_FH_proportion = y_FH_proportion,
-    d_FF_average = d_FF_average,
-    numerator_y = numerator_y,
-    numerator_d = numerator_d,
-    n_valid = sum(valid_cases),
-    method = "GNSUM",
-    error = NA
-  ))
-}
+# Standard GNSUM cannot be implemented - function removed
+# Use estimate_gnsum_symmetric() instead
 
 # ==============================================================================
 # GNSUM WITH SYMMETRIC VISIBILITY
@@ -470,7 +387,8 @@ estimate_model_based_nsum <- function(data,
 #
 # Parameters:
 # - data: Bootstrap sample with RDS weights from Step 2
-# - nsum_method: "mbsu", "gnsum", "gnsum_symmetric", "model_bayes"
+# - nsum_method: "mbsu", "gnsum_symmetric", "model_bayes"
+#   Note: Standard "gnsum" not implementable (lacks visibility measures from frame to hidden pop)
 # - outcome_variable: Column name for out-reports (e.g., "document_withholding_nsum")
 # - degree_variable: Column name for network degrees (default: "known_network_size")
 # - frame_size: Total frame population size (e.g., 980000 for UK domestic workers)
@@ -515,15 +433,9 @@ estimate_nsum <- function(data,
       verbose = verbose
     ),
 
-    "gnsum" = estimate_gnsum(
-      data = data,
-      outcome_variable = outcome_variable,
-      degree_variable = degree_variable,
-      frame_size = frame_size,
-      weight_column = weight_column,
-      validate_inputs = validate_inputs,
-      verbose = verbose
-    ),
+    "gnsum" = {
+      stop("Standard GNSUM cannot be implemented with RDS-NSUM data because we lack direct visibility measures from frame to hidden population. Use 'gnsum_symmetric' with degree-based visibility estimation instead.")
+    },
 
     "gnsum_symmetric" = estimate_gnsum_symmetric(
       data = data,
@@ -711,8 +623,860 @@ estimate_nsum_batch <- function(boot_samples,
 }
 
 # ==============================================================================
+# MBSU ADJUSTMENT FACTOR SWEEP
+# ==============================================================================
+#
+# Sweep across multiple adjustment factor combinations for sensitivity analysis
+# ==============================================================================
+
+estimate_mbsu_sweep <- function(data,
+                               outcome_variable,
+                               degree_variable = "known_network_size",
+                               frame_size,
+                               weight_column = "inclusion_prob",
+                               delta_range = seq(0.5, 1.0, by = 0.1),      # Transmission bias
+                               tau_range = seq(0.6, 1.0, by = 0.1),        # Barrier effect
+                               rho_range = seq(0.8, 1.2, by = 0.1),        # Popularity bias
+                               parallel = TRUE,
+                               n_cores = NULL,
+                               verbose = FALSE) {
+
+  if (verbose) {
+    cat("=== MBSU Adjustment Factor Sweep ===\n")
+    cat("Delta range:", paste(range(delta_range), collapse = " to "), "\n")
+    cat("Tau range:", paste(range(tau_range), collapse = " to "), "\n")
+    cat("Rho range:", paste(range(rho_range), collapse = " to "), "\n")
+  }
+
+  # Create all combinations
+  factor_grid <- expand.grid(
+    delta = delta_range,
+    tau = tau_range,
+    rho = rho_range,
+    stringsAsFactors = FALSE
+  )
+
+  n_combinations <- nrow(factor_grid)
+  if (verbose) {
+    cat("Total combinations:", n_combinations, "\n")
+  }
+
+  # Set up parallel processing if requested
+  if (parallel) {
+    if (is.null(n_cores)) {
+      n_cores <- min(4, parallel::detectCores() - 1)
+    }
+
+    if (verbose) cat("Using", n_cores, "cores\n")
+
+    # Create cluster
+    cl <- parallel::makeCluster(n_cores)
+    on.exit(parallel::stopCluster(cl))
+
+    # Export required functions and variables
+    parallel::clusterExport(cl, c(
+      "estimate_mbsu", "data", "outcome_variable", "degree_variable",
+      "frame_size", "weight_column"
+    ), envir = environment())
+
+    # Load required packages on workers
+    parallel::clusterEvalQ(cl, {
+      library(tidyverse)
+    })
+
+    # Process combinations in parallel
+    results <- parallel::parLapply(cl, 1:n_combinations, function(i) {
+      adjustment_factors <- list(
+        delta = factor_grid$delta[i],
+        tau = factor_grid$tau[i],
+        rho = factor_grid$rho[i]
+      )
+
+      result <- tryCatch({
+        estimate_mbsu(
+          data = data,
+          outcome_variable = outcome_variable,
+          degree_variable = degree_variable,
+          frame_size = frame_size,
+          weight_column = weight_column,
+          adjustment_factors = adjustment_factors,
+          validate_inputs = FALSE,
+          verbose = FALSE
+        )
+      }, error = function(e) {
+        list(N_hat = NA, error = as.character(e))
+      })
+
+      # Add factor combination info
+      result$delta <- factor_grid$delta[i]
+      result$tau <- factor_grid$tau[i]
+      result$rho <- factor_grid$rho[i]
+      result$combination_id <- i
+
+      return(result)
+    })
+  } else {
+    # Sequential processing
+    results <- vector("list", n_combinations)
+
+    for (i in 1:n_combinations) {
+      if (verbose && i %% 50 == 0) {
+        cat("Processing combination", i, "of", n_combinations, "\n")
+      }
+
+      adjustment_factors <- list(
+        delta = factor_grid$delta[i],
+        tau = factor_grid$tau[i],
+        rho = factor_grid$rho[i]
+      )
+
+      results[[i]] <- tryCatch({
+        result <- estimate_mbsu(
+          data = data,
+          outcome_variable = outcome_variable,
+          degree_variable = degree_variable,
+          frame_size = frame_size,
+          weight_column = weight_column,
+          adjustment_factors = adjustment_factors,
+          validate_inputs = FALSE,
+          verbose = FALSE
+        )
+
+        # Add factor combination info
+        result$delta <- factor_grid$delta[i]
+        result$tau <- factor_grid$tau[i]
+        result$rho <- factor_grid$rho[i]
+        result$combination_id <- i
+
+        return(result)
+      }, error = function(e) {
+        list(
+          N_hat = NA,
+          delta = factor_grid$delta[i],
+          tau = factor_grid$tau[i],
+          rho = factor_grid$rho[i],
+          combination_id = i,
+          error = as.character(e)
+        )
+      })
+    }
+  }
+
+  # Extract estimates and create summary
+  estimates <- sapply(results, function(x) x$N_hat %||% NA)
+  valid_estimates <- estimates[!is.na(estimates)]
+
+  if (verbose) {
+    cat("Sweep completed:\n")
+    cat("- Valid estimates:", length(valid_estimates), "/", n_combinations, "\n")
+    cat("- Estimate range:", format(round(range(valid_estimates, na.rm = TRUE)), big.mark = ","), "\n")
+    cat("- Median estimate:", format(round(median(valid_estimates, na.rm = TRUE)), big.mark = ","), "\n")
+  }
+
+  # Convert to data frame for easier analysis
+  results_df <- map_dfr(results, function(r) {
+    tibble(
+      delta = r$delta %||% NA,
+      tau = r$tau %||% NA,
+      rho = r$rho %||% NA,
+      N_hat = r$N_hat %||% NA,
+      basic_estimate = r$basic_estimate %||% NA,
+      adjustment_impact = r$adjustment_impact %||% NA,
+      y_FH_proportion = r$y_FH_proportion %||% NA,
+      d_FF_average = r$d_FF_average %||% NA,
+      combination_id = r$combination_id %||% NA,
+      error = r$error %||% NA
+    )
+  })
+
+  # Calculate summary statistics
+  if (length(valid_estimates) > 0) {
+    summary_stats <- list(
+      min_estimate = min(valid_estimates, na.rm = TRUE),
+      max_estimate = max(valid_estimates, na.rm = TRUE),
+      median_estimate = median(valid_estimates, na.rm = TRUE),
+      mean_estimate = mean(valid_estimates, na.rm = TRUE),
+      q25 = quantile(valid_estimates, 0.25, na.rm = TRUE),
+      q75 = quantile(valid_estimates, 0.75, na.rm = TRUE),
+      sd_estimate = sd(valid_estimates, na.rm = TRUE),
+      cv_estimate = sd(valid_estimates, na.rm = TRUE) / mean(valid_estimates, na.rm = TRUE)
+    )
+  } else {
+    summary_stats <- list(
+      min_estimate = NA, max_estimate = NA, median_estimate = NA,
+      mean_estimate = NA, q25 = NA, q75 = NA, sd_estimate = NA, cv_estimate = NA
+    )
+  }
+
+  return(list(
+    estimates = estimates,
+    valid_estimates = valid_estimates,
+    results_df = results_df,
+    detailed_results = results,
+    summary_stats = summary_stats,
+    factor_grid = factor_grid,
+    n_combinations = n_combinations,
+    n_valid = length(valid_estimates),
+    method = "MBSU_sweep"
+  ))
+}
+
+# ==============================================================================
+# COMPREHENSIVE 3-STEP BOOTSTRAP FOR NSUM ESTIMATION
+# ==============================================================================
+#
+# Complete workflow combining Steps 1-3 with comprehensive parameter sweeps:
+# - Multiple RDS weight methods from Step 2
+# - MBSU with adjustment factor sweeps
+# - GNSUM_Symmetric across different weight schemes
+# - Bootstrap confidence intervals for all combinations
+# ==============================================================================
+
+run_comprehensive_nsum_bootstrap <- function(boot_samples,              # From Step 1
+                                           outcome_variables,          # Vector of NSUM variables
+                                           hidden_indicators,          # Corresponding RDS variables
+                                           degree_variable = "known_network_size",
+                                           frame_size = 980000,
+                                           rds_weight_methods = c("weight_vh", "weight_rds_i", "weight_rds_ii", "weight_rds_ss"),
+                                           mbsu_config = list(
+                                             delta_range = seq(0.5, 1.0, by = 0.1),
+                                             tau_range = seq(0.6, 1.0, by = 0.1),
+                                             rho_range = seq(0.8, 1.2, by = 0.1)
+                                           ),
+                                           confidence_level = 0.95,
+                                           parallel = TRUE,
+                                           n_cores = NULL,
+                                           verbose = TRUE) {
+
+  if (verbose) {
+    cat("=== Comprehensive 3-Step NSUM Bootstrap ===\n")
+    cat("Bootstrap samples:", length(boot_samples), "\n")
+    cat("Outcome variables:", length(outcome_variables), "\n")
+    cat("RDS weight methods:", length(rds_weight_methods), "\n")
+    cat("MBSU factor combinations:",
+        length(mbsu_config$delta_range) * length(mbsu_config$tau_range) * length(mbsu_config$rho_range), "\n")
+    cat("Frame size:", format(frame_size, big.mark = ","), "\n")
+  }
+
+  # Validate inputs
+  if (length(outcome_variables) != length(hidden_indicators)) {
+    stop("outcome_variables and hidden_indicators must be same length")
+  }
+
+  if (!is.list(boot_samples)) {
+    stop("boot_samples must be a list of data frames from Step 1")
+  }
+
+  # Initialize results storage
+  all_results <- list()
+  result_counter <- 1
+
+  # Calculate total number of combinations for progress tracking
+  n_mbsu_factors <- length(mbsu_config$delta_range) * length(mbsu_config$tau_range) * length(mbsu_config$rho_range)
+  total_combinations <- length(outcome_variables) * length(rds_weight_methods) * (n_mbsu_factors + 1) # +1 for GNSUM_Symmetric
+
+  if (verbose) {
+    cat("Total estimation combinations:", format(total_combinations, big.mark = ","), "\n")
+    cat("Total bootstrap replications:", format(length(boot_samples) * total_combinations, big.mark = ","), "\n\n")
+  }
+
+  # Set up parallel processing if requested
+  if (parallel) {
+    if (is.null(n_cores)) {
+      n_cores <- min(6, parallel::detectCores() - 1)
+    }
+    if (verbose) cat("Using", n_cores, "cores for parallel processing\n")
+  }
+
+  # Main analysis loop
+  for (i in seq_along(outcome_variables)) {
+    outcome_var <- outcome_variables[i]
+    hidden_var <- hidden_indicators[i]
+
+    if (verbose) {
+      cat("=== Processing outcome:", outcome_var, "===\n")
+    }
+
+    for (weight_method in rds_weight_methods) {
+      if (verbose) {
+        cat("Weight method:", weight_method, "\n")
+      }
+
+      # === MBSU WITH ADJUSTMENT FACTOR SWEEP ===
+      if (verbose) cat("  Running MBSU sweep...\n")
+
+      mbsu_estimates <- estimate_nsum_batch_sweep(
+        boot_samples = boot_samples,
+        nsum_method = "mbsu",
+        outcome_variable = outcome_var,
+        degree_variable = degree_variable,
+        frame_size = frame_size,
+        weight_column = weight_method,
+        adjustment_factors = mbsu_config,
+        parallel = parallel,
+        n_cores = n_cores,
+        verbose = FALSE
+      )
+
+      # Store MBSU results
+      all_results[[result_counter]] <- list(
+        outcome_variable = outcome_var,
+        hidden_indicator = hidden_var,
+        weight_method = weight_method,
+        nsum_method = "MBSU",
+        estimates = mbsu_estimates$estimates,
+        confidence_intervals = mbsu_estimates$confidence_intervals,
+        summary_stats = mbsu_estimates$summary_stats,
+        parameter_grid = mbsu_estimates$parameter_grid,
+        n_bootstrap = length(boot_samples)
+      )
+      result_counter <- result_counter + 1
+
+      # === GNSUM SYMMETRIC ===
+      if (verbose) cat("  Running GNSUM Symmetric...\n")
+
+      gnsum_estimates <- estimate_nsum_batch(
+        boot_samples = boot_samples,
+        nsum_method = "gnsum_symmetric",
+        outcome_variable = outcome_var,
+        degree_variable = degree_variable,
+        frame_size = frame_size,
+        weight_column = weight_method,
+        hidden_member_indicator = hidden_var,
+        parallel = parallel,
+        n_cores = n_cores,
+        verbose = FALSE
+      )
+
+      # Calculate confidence intervals
+      alpha <- 1 - confidence_level
+      valid_estimates <- gnsum_estimates$valid_estimates
+
+      if (length(valid_estimates) > 10) {
+        ci_lower <- quantile(valid_estimates, alpha/2, na.rm = TRUE)
+        ci_upper <- quantile(valid_estimates, 1 - alpha/2, na.rm = TRUE)
+      } else {
+        ci_lower <- ci_upper <- NA
+      }
+
+      # Store GNSUM_Symmetric results
+      all_results[[result_counter]] <- list(
+        outcome_variable = outcome_var,
+        hidden_indicator = hidden_var,
+        weight_method = weight_method,
+        nsum_method = "GNSUM_Symmetric",
+        estimates = gnsum_estimates$estimates,
+        confidence_intervals = list(
+          ci_lower = ci_lower,
+          ci_upper = ci_upper,
+          confidence_level = confidence_level
+        ),
+        summary_stats = list(
+          mean_estimate = gnsum_estimates$mean_estimate,
+          median_estimate = gnsum_estimates$median_estimate,
+          sd_estimate = sd(valid_estimates, na.rm = TRUE),
+          cv_estimate = sd(valid_estimates, na.rm = TRUE) / mean(valid_estimates, na.rm = TRUE)
+        ),
+        n_bootstrap = length(boot_samples),
+        n_valid = gnsum_estimates$n_valid
+      )
+      result_counter <- result_counter + 1
+
+      if (verbose) {
+        progress_pct <- round(100 * (result_counter - 1) / length(outcome_variables) / length(rds_weight_methods) / 2, 1)
+        cat("  Progress:", progress_pct, "%\n")
+      }
+    }
+  }
+
+  if (verbose) {
+    cat("\n=== Bootstrap Analysis Complete ===\n")
+    cat("Total result combinations:", length(all_results), "\n")
+  }
+
+  # Create comprehensive summary
+  summary_results <- create_nsum_bootstrap_summary(all_results, verbose = verbose)
+
+  return(list(
+    detailed_results = all_results,
+    summary_results = summary_results,
+    configuration = list(
+      outcome_variables = outcome_variables,
+      hidden_indicators = hidden_indicators,
+      rds_weight_methods = rds_weight_methods,
+      mbsu_config = mbsu_config,
+      frame_size = frame_size,
+      confidence_level = confidence_level,
+      n_bootstrap = length(boot_samples)
+    )
+  ))
+}
+
+# ==============================================================================
+# BATCH PROCESSING WITH ADJUSTMENT FACTOR SWEEP
+# ==============================================================================
+
+estimate_nsum_batch_sweep <- function(boot_samples,
+                                     nsum_method,
+                                     outcome_variable,
+                                     degree_variable = "known_network_size",
+                                     frame_size,
+                                     weight_column,
+                                     adjustment_factors = list(
+                                       delta_range = seq(0.5, 1.0, by = 0.2),
+                                       tau_range = seq(0.6, 1.0, by = 0.2),
+                                       rho_range = seq(0.8, 1.2, by = 0.2)
+                                     ),
+                                     parallel = TRUE,
+                                     n_cores = NULL,
+                                     verbose = FALSE) {
+
+  if (nsum_method != "mbsu") {
+    stop("Adjustment factor sweep only available for MBSU method")
+  }
+
+  # Create parameter grid
+  param_grid <- expand.grid(
+    delta = adjustment_factors$delta_range,
+    tau = adjustment_factors$tau_range,
+    rho = adjustment_factors$rho_range,
+    stringsAsFactors = FALSE
+  )
+
+  n_combinations <- nrow(param_grid)
+  n_bootstrap <- length(boot_samples)
+
+  if (verbose) {
+    cat("MBSU batch sweep: ", n_combinations, " parameter combinations × ",
+        n_bootstrap, " bootstrap samples = ",
+        format(n_combinations * n_bootstrap, big.mark = ","), " total estimations\n")
+  }
+
+  # Storage for all estimates
+  all_estimates <- array(NA, dim = c(n_bootstrap, n_combinations))
+  colnames(all_estimates) <- paste0("delta", param_grid$delta, "_tau", param_grid$tau, "_rho", param_grid$rho)
+
+  # Process each parameter combination
+  for (i in 1:n_combinations) {
+    if (verbose && i %% 10 == 0) {
+      cat("Processing parameter combination", i, "of", n_combinations, "\n")
+    }
+
+    adj_factors <- list(
+      delta = param_grid$delta[i],
+      tau = param_grid$tau[i],
+      rho = param_grid$rho[i]
+    )
+
+    # Get estimates for this parameter combination
+    batch_result <- estimate_nsum_batch(
+      boot_samples = boot_samples,
+      nsum_method = nsum_method,
+      outcome_variable = outcome_variable,
+      degree_variable = degree_variable,
+      frame_size = frame_size,
+      weight_column = weight_column,
+      adjustment_factors = adj_factors,
+      parallel = parallel,
+      n_cores = n_cores,
+      verbose = FALSE
+    )
+
+    all_estimates[, i] <- batch_result$estimates
+  }
+
+  # Calculate confidence intervals for each parameter combination
+  confidence_intervals <- apply(all_estimates, 2, function(x) {
+    valid_x <- x[!is.na(x)]
+    if (length(valid_x) > 10) {
+      list(
+        ci_lower = quantile(valid_x, 0.025, na.rm = TRUE),
+        ci_upper = quantile(valid_x, 0.975, na.rm = TRUE),
+        mean_estimate = mean(valid_x, na.rm = TRUE),
+        median_estimate = median(valid_x, na.rm = TRUE),
+        n_valid = length(valid_x)
+      )
+    } else {
+      list(ci_lower = NA, ci_upper = NA, mean_estimate = NA, median_estimate = NA, n_valid = 0)
+    }
+  })
+
+  # Calculate summary statistics across all parameter combinations
+  all_valid_estimates <- as.vector(all_estimates[!is.na(all_estimates)])
+
+  summary_stats <- if (length(all_valid_estimates) > 0) {
+    list(
+      overall_mean = mean(all_valid_estimates),
+      overall_median = median(all_valid_estimates),
+      overall_min = min(all_valid_estimates),
+      overall_max = max(all_valid_estimates),
+      overall_sd = sd(all_valid_estimates),
+      n_total_valid = length(all_valid_estimates),
+      n_total_estimates = length(all_estimates)
+    )
+  } else {
+    list(overall_mean = NA, overall_median = NA, overall_min = NA,
+         overall_max = NA, overall_sd = NA, n_total_valid = 0, n_total_estimates = length(all_estimates))
+  }
+
+  return(list(
+    estimates = all_estimates,
+    confidence_intervals = confidence_intervals,
+    parameter_grid = param_grid,
+    summary_stats = summary_stats,
+    method = paste0(nsum_method, "_sweep"),
+    outcome_variable = outcome_variable,
+    weight_column = weight_column
+  ))
+}
+
+# ==============================================================================
+# RESULTS SUMMARY AND PRESENTATION
+# ==============================================================================
+
+create_nsum_bootstrap_summary <- function(results_list, verbose = TRUE) {
+
+  if (verbose) cat("Creating comprehensive results summary...\n")
+
+  # Convert to data frame for analysis
+  summary_df <- map_dfr(results_list, function(result) {
+
+    if (result$nsum_method == "MBSU") {
+      # MBSU has multiple parameter combinations
+      map_dfr(1:ncol(result$estimates), function(i) {
+        param_info <- result$parameter_grid[i, ]
+        ci_info <- result$confidence_intervals[[i]]
+
+        tibble(
+          outcome_variable = result$outcome_variable,
+          hidden_indicator = result$hidden_indicator,
+          weight_method = result$weight_method,
+          nsum_method = result$nsum_method,
+          delta = param_info$delta,
+          tau = param_info$tau,
+          rho = param_info$rho,
+          mean_estimate = ci_info$mean_estimate %||% NA,
+          median_estimate = ci_info$median_estimate %||% NA,
+          ci_lower = ci_info$ci_lower %||% NA,
+          ci_upper = ci_info$ci_upper %||% NA,
+          n_valid = ci_info$n_valid %||% 0,
+          n_bootstrap = result$n_bootstrap
+        )
+      })
+    } else {
+      # GNSUM_Symmetric has single result
+      tibble(
+        outcome_variable = result$outcome_variable,
+        hidden_indicator = result$hidden_indicator,
+        weight_method = result$weight_method,
+        nsum_method = result$nsum_method,
+        delta = NA,
+        tau = NA,
+        rho = NA,
+        mean_estimate = result$summary_stats$mean_estimate %||% NA,
+        median_estimate = result$summary_stats$median_estimate %||% NA,
+        ci_lower = result$confidence_intervals$ci_lower %||% NA,
+        ci_upper = result$confidence_intervals$ci_upper %||% NA,
+        n_valid = result$n_valid %||% 0,
+        n_bootstrap = result$n_bootstrap
+      )
+    }
+  })
+
+  # Calculate summary statistics by method and weight
+  method_summaries <- summary_df %>%
+    filter(!is.na(mean_estimate)) %>%
+    group_by(outcome_variable, weight_method, nsum_method) %>%
+    summarise(
+      n_parameter_combinations = n(),
+      estimate_range_min = min(mean_estimate, na.rm = TRUE),
+      estimate_range_max = max(mean_estimate, na.rm = TRUE),
+      estimate_median = median(mean_estimate, na.rm = TRUE),
+      estimate_iqr = IQR(mean_estimate, na.rm = TRUE),
+      avg_ci_width = mean((ci_upper - ci_lower), na.rm = TRUE),
+      .groups = "drop"
+    )
+
+  if (verbose) {
+    cat("Summary completed:\n")
+    cat("- Total result rows:", nrow(summary_df), "\n")
+    cat("- Valid estimates:", sum(!is.na(summary_df$mean_estimate)), "\n")
+    cat("- Methods analyzed:", length(unique(summary_df$nsum_method)), "\n")
+    cat("- Weight methods:", length(unique(summary_df$weight_method)), "\n")
+  }
+
+  return(list(
+    detailed_summary = summary_df,
+    method_summaries = method_summaries,
+    overall_stats = list(
+      total_combinations = nrow(summary_df),
+      valid_combinations = sum(!is.na(summary_df$mean_estimate)),
+      outcome_variables = unique(summary_df$outcome_variable),
+      weight_methods = unique(summary_df$weight_method),
+      nsum_methods = unique(summary_df$nsum_method)
+    )
+  ))
+}
+
+# ==============================================================================
+# VISUALIZATION AND COMPARISON FUNCTIONS
+# ==============================================================================
+
+create_nsum_comparison_plots <- function(summary_results,
+                                        save_plots = TRUE,
+                                        output_dir = here("output", "figures"),
+                                        plot_width = 12,
+                                        plot_height = 8) {
+
+  require(ggplot2)
+  require(dplyr)
+  require(scales)
+
+  if (save_plots && !dir.exists(output_dir)) {
+    dir.create(output_dir, recursive = TRUE)
+  }
+
+  detailed_df <- summary_results$detailed_summary
+  plots <- list()
+
+  # 1. Forest plot comparing all estimates with confidence intervals
+  p1 <- detailed_df %>%
+    filter(!is.na(mean_estimate)) %>%
+    mutate(
+      method_param = ifelse(nsum_method == "MBSU",
+                           paste0("MBSU(δ=", delta, ",τ=", tau, ",ρ=", rho, ")"),
+                           "GNSUM_Symmetric"),
+      combo = paste(outcome_variable, weight_method, sep = " + ")
+    ) %>%
+    ggplot(aes(x = mean_estimate, y = reorder(method_param, mean_estimate),
+               color = weight_method)) +
+    geom_point(size = 2) +
+    geom_errorbarh(aes(xmin = ci_lower, xmax = ci_upper), height = 0.2) +
+    facet_wrap(~outcome_variable, scales = "free_x") +
+    scale_x_continuous(labels = comma_format()) +
+    labs(
+      title = "NSUM Population Estimates with 95% Confidence Intervals",
+      subtitle = "Comparison across methods, weight schemes, and parameters",
+      x = "Population Estimate",
+      y = "Method & Parameters",
+      color = "RDS Weight Method"
+    ) +
+    theme_minimal() +
+    theme(axis.text.y = element_text(size = 8))
+
+  plots$forest_plot <- p1
+
+  if (save_plots) {
+    ggsave(file.path(output_dir, "nsum_forest_plot.png"), p1,
+           width = plot_width, height = plot_height, dpi = 300)
+  }
+
+  # 2. MBSU parameter sensitivity plot
+  mbsu_data <- detailed_df %>%
+    filter(nsum_method == "MBSU", !is.na(mean_estimate))
+
+  if (nrow(mbsu_data) > 0) {
+    p2 <- mbsu_data %>%
+      ggplot(aes(x = delta, y = mean_estimate, color = weight_method)) +
+      geom_point(alpha = 0.7) +
+      geom_line(aes(group = interaction(tau, rho, weight_method)), alpha = 0.5) +
+      facet_grid(outcome_variable ~ paste("τ =", tau, ", ρ =", rho)) +
+      scale_y_continuous(labels = comma_format()) +
+      labs(
+        title = "MBSU Parameter Sensitivity Analysis",
+        subtitle = "Population estimates across δ (transmission bias) values",
+        x = "Delta (δ) - Transmission Bias Factor",
+        y = "Population Estimate",
+        color = "RDS Weight Method"
+      ) +
+      theme_minimal()
+
+    plots$parameter_sensitivity <- p2
+
+    if (save_plots) {
+      ggsave(file.path(output_dir, "mbsu_parameter_sensitivity.png"), p2,
+             width = plot_width, height = plot_height, dpi = 300)
+    }
+  }
+
+  # 3. Method comparison by weight scheme
+  p3 <- detailed_df %>%
+    filter(!is.na(mean_estimate)) %>%
+    group_by(outcome_variable, weight_method, nsum_method) %>%
+    summarise(
+      median_estimate = median(mean_estimate, na.rm = TRUE),
+      q25 = quantile(mean_estimate, 0.25, na.rm = TRUE),
+      q75 = quantile(mean_estimate, 0.75, na.rm = TRUE),
+      .groups = "drop"
+    ) %>%
+    ggplot(aes(x = weight_method, y = median_estimate, fill = nsum_method)) +
+    geom_col(position = "dodge", alpha = 0.8) +
+    geom_errorbar(aes(ymin = q25, ymax = q75),
+                  position = position_dodge(width = 0.9), width = 0.2) +
+    facet_wrap(~outcome_variable, scales = "free_y") +
+    scale_y_continuous(labels = comma_format()) +
+    labs(
+      title = "Method Comparison by RDS Weight Scheme",
+      subtitle = "Median estimates with IQR error bars",
+      x = "RDS Weight Method",
+      y = "Median Population Estimate",
+      fill = "NSUM Method"
+    ) +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+  plots$method_comparison <- p3
+
+  if (save_plots) {
+    ggsave(file.path(output_dir, "method_comparison.png"), p3,
+           width = plot_width, height = plot_height, dpi = 300)
+  }
+
+  # 4. Confidence interval width comparison
+  p4 <- detailed_df %>%
+    filter(!is.na(ci_lower), !is.na(ci_upper)) %>%
+    mutate(ci_width = ci_upper - ci_lower,
+           rel_ci_width = ci_width / mean_estimate) %>%
+    ggplot(aes(x = weight_method, y = rel_ci_width, fill = nsum_method)) +
+    geom_boxplot(alpha = 0.8) +
+    facet_wrap(~outcome_variable) +
+    scale_y_continuous(labels = percent_format()) +
+    labs(
+      title = "Confidence Interval Width Analysis",
+      subtitle = "Relative CI width (CI width / point estimate)",
+      x = "RDS Weight Method",
+      y = "Relative CI Width",
+      fill = "NSUM Method"
+    ) +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+  plots$ci_width_analysis <- p4
+
+  if (save_plots) {
+    ggsave(file.path(output_dir, "ci_width_analysis.png"), p4,
+           width = plot_width, height = plot_height, dpi = 300)
+  }
+
+  return(plots)
+}
+
+create_nsum_summary_table <- function(summary_results, save_table = TRUE,
+                                     output_dir = here("output", "tables")) {
+
+  if (save_table && !dir.exists(output_dir)) {
+    dir.create(output_dir, recursive = TRUE)
+  }
+
+  # Create formatted summary table
+  summary_table <- summary_results$detailed_summary %>%
+    filter(!is.na(mean_estimate)) %>%
+    mutate(
+      Method = ifelse(nsum_method == "MBSU",
+                     paste0("MBSU (δ=", delta, ", τ=", tau, ", ρ=", rho, ")"),
+                     "GNSUM Symmetric"),
+      `Point Estimate` = format(round(mean_estimate), big.mark = ","),
+      `95% CI` = paste0("[", format(round(ci_lower), big.mark = ","),
+                       ", ", format(round(ci_upper), big.mark = ","), "]"),
+      `CI Width` = format(round(ci_upper - ci_lower), big.mark = ","),
+      `Valid Samples` = n_valid
+    ) %>%
+    select(outcome_variable, weight_method, Method, `Point Estimate`,
+           `95% CI`, `CI Width`, `Valid Samples`) %>%
+    arrange(outcome_variable, weight_method, Method)
+
+  if (save_table) {
+    write.csv(summary_table,
+              file.path(output_dir, "nsum_bootstrap_summary.csv"),
+              row.names = FALSE)
+  }
+
+  return(summary_table)
+}
+
+# ==============================================================================
 # TESTING AND VALIDATION FUNCTIONS
 # ==============================================================================
+
+test_comprehensive_bootstrap <- function(verbose = TRUE) {
+
+  if (verbose) cat("=== Testing Comprehensive 3-Step Bootstrap ===\n")
+
+  # Create test bootstrap samples (simulating Step 1 output)
+  n_bootstrap <- 10  # Small number for testing
+  set.seed(12345)
+
+  boot_samples <- map(1:n_bootstrap, function(i) {
+    data.frame(
+      id = 1:50,
+      document_withholding_nsum = rbinom(50, 3, 0.1),
+      document_withholding_rds = rbinom(50, 1, 0.15),
+      pay_issues_nsum = rbinom(50, 2, 0.08),
+      pay_issues_rds = rbinom(50, 1, 0.12),
+      known_network_size = rpois(50, 25) + 5,
+      weight_vh = runif(50, 0.001, 0.01),
+      weight_rds_i = runif(50, 0.001, 0.01),
+      weight_rds_ss = runif(50, 0.001, 0.01)
+    )
+  })
+
+  if (verbose) {
+    cat("Created", length(boot_samples), "bootstrap samples with", nrow(boot_samples[[1]]), "observations each\n")
+  }
+
+  # Test with minimal configuration for speed
+  test_config <- list(
+    delta_range = c(0.8, 1.0),
+    tau_range = c(0.9, 1.0),
+    rho_range = c(1.0)
+  )
+
+  if (verbose) {
+    cat("Running comprehensive bootstrap with minimal configuration...\n")
+    cat("MBSU factor combinations:", length(test_config$delta_range) * length(test_config$tau_range) * length(test_config$rho_range), "\n")
+  }
+
+  # Run comprehensive analysis
+  results <- run_comprehensive_nsum_bootstrap(
+    boot_samples = boot_samples,
+    outcome_variables = c("document_withholding_nsum", "pay_issues_nsum"),
+    hidden_indicators = c("document_withholding_rds", "pay_issues_rds"),
+    rds_weight_methods = c("weight_vh", "weight_rds_i"),  # Reduced for testing
+    mbsu_config = test_config,
+    parallel = FALSE,  # Sequential for testing
+    verbose = verbose
+  )
+
+  if (verbose) {
+    cat("\n=== Test Results Summary ===\n")
+    cat("Total result combinations:", length(results$detailed_results), "\n")
+    cat("Summary rows:", nrow(results$summary_results$detailed_summary), "\n")
+    cat("Valid estimates:", results$summary_results$overall_stats$valid_combinations, "\n")
+    cat("Methods tested:", paste(results$summary_results$overall_stats$nsum_methods, collapse = ", "), "\n")
+    cat("Weight methods tested:", paste(results$summary_results$overall_stats$weight_methods, collapse = ", "), "\n")
+
+    # Show sample results
+    valid_results <- results$summary_results$detailed_summary %>%
+      filter(!is.na(mean_estimate)) %>%
+      head(3)
+
+    if (nrow(valid_results) > 0) {
+      cat("\nSample estimates:\n")
+      for (i in 1:nrow(valid_results)) {
+        row <- valid_results[i, ]
+        cat(sprintf("- %s (%s, %s): %s [CI: %s - %s]\n",
+                   row$outcome_variable,
+                   row$nsum_method,
+                   row$weight_method,
+                   format(round(row$mean_estimate), big.mark = ","),
+                   format(round(row$ci_lower), big.mark = ","),
+                   format(round(row$ci_upper), big.mark = ",")))
+      }
+    }
+  }
+
+  return(results)
+}
 
 test_nsum_estimation <- function(verbose = TRUE) {
 
@@ -823,12 +1587,46 @@ if (!SKIP_EXECUTION) {
   cat("mbsu_adj <- list(delta = 0.8, tau = 0.7, rho = 1.2)  # Expert elicitation values\n")
   cat("result_adj <- estimate_nsum(data, 'mbsu', 'outcome_var', frame_size = 980000,\n")
   cat("                           weight_column = 'weight_vh', adjustment_factors = mbsu_adj)\n\n")
-  cat("# Different RDS weight methods from Step 2\n")
-  cat("result_vh <- estimate_nsum(data, 'gnsum', 'outcome_var', frame_size = 980000, weight_column = 'weight_vh')\n")
-  cat("result_rds_ss <- estimate_nsum(data, 'gnsum', 'outcome_var', frame_size = 980000, weight_column = 'weight_rds_ss')\n\n")
-  cat("# Batch processing with adjustment factors\n")
-  cat("batch_results <- estimate_nsum_batch(boot_samples, 'mbsu', 'outcome_var', 980000,\n")
-  cat("                                    weight_column = 'weight_vh', adjustment_factors = mbsu_adj)\n\n")
+  cat("# GNSUM with symmetric visibility (the implementable version)\n")
+  cat("result_gnsum <- estimate_nsum(data, 'gnsum_symmetric', 'outcome_var', frame_size = 980000,\n")
+  cat("                             hidden_member_indicator = 'rds_var', weight_column = 'weight_vh')\n\n")
+  cat("# MBSU sensitivity analysis across multiple adjustment factors\n")
+  cat("sweep_results <- estimate_mbsu_sweep(data, 'outcome_var', frame_size = 980000,\n")
+  cat("                                    weight_column = 'weight_vh',\n")
+  cat("                                    delta_range = seq(0.5, 1.0, by = 0.1),\n")
+  cat("                                    tau_range = seq(0.6, 1.0, by = 0.1),\n")
+  cat("                                    rho_range = seq(0.8, 1.2, by = 0.1))\n\n")
+  cat("# Comprehensive 3-step bootstrap analysis\n")
+  cat("bootstrap_results <- run_comprehensive_nsum_bootstrap(\n")
+  cat("  boot_samples = boot_samples,\n")
+  cat("  outcome_variables = c('document_withholding_nsum', 'pay_issues_nsum'),\n")
+  cat("  hidden_indicators = c('document_withholding_rds', 'pay_issues_rds'),\n")
+  cat("  rds_weight_methods = c('weight_vh', 'weight_rds_i', 'weight_rds_ss'),\n")
+  cat("  mbsu_config = list(\n")
+  cat("    delta_range = seq(0.5, 1.0, by = 0.1),\n")
+  cat("    tau_range = seq(0.6, 1.0, by = 0.1),\n")
+  cat("    rho_range = seq(0.8, 1.2, by = 0.1)\n")
+  cat("  )\n")
+  cat(")\n\n")
+
+  cat("# Create comprehensive visualizations and summary tables\n")
+  cat("plots <- create_nsum_comparison_plots(bootstrap_results$summary_results)\n")
+  cat("summary_table <- create_nsum_summary_table(bootstrap_results$summary_results)\n\n")
+
+  cat("# View specific visualization outputs\n")
+  cat("print(plots$forest_plot)              # All estimates with 95% CIs\n")
+  cat("print(plots$parameter_sensitivity)    # MBSU parameter sensitivity\n")
+  cat("print(plots$method_comparison)        # Method comparison by weight scheme\n")
+  cat("print(plots$ci_width_analysis)        # CI width comparison\n\n")
+
+  cat("# Access structured results for further analysis\n")
+  cat("detailed_df <- bootstrap_results$summary_results$detailed_summary\n")
+  cat("# detailed_df contains: outcome_variable, weight_method, nsum_method,\n")
+  cat("# delta, tau, rho, mean_estimate, ci_lower, ci_upper, n_valid\n\n")
+
+  cat("# Example: Filter to specific combinations for detailed analysis\n")
+  cat("high_precision <- detailed_df %>% filter(ci_upper - ci_lower < 50000)\n")
+  cat("View(high_precision)  # Interactive table view\n\n")
 }
 
 # Example: Using different weight methods and adjustment factors
@@ -840,8 +1638,50 @@ if (!SKIP_EXECUTION) {
 mbsu_production <- list(delta = 0.75, tau = 0.8, rho = 0.9)
 
 # result_mbsu <- estimate_nsum(weighted_bootstrap_samples[[1]], 'mbsu', 'excessive_hours_nsum',
-#                             frame_size = 980000, weight_column = 'weight_vh',
+#                             frame_size = 980000, weight_column = 'weight_rds_ss',
 #                             adjustment_factors = mbsu_production)
-# result_gnsum <- estimate_nsum(weighted_bootstrap_samples[[1]], 'gnsum', 'excessive_hours_nsum',
-#                              frame_size = 980000, weight_column = 'weight_rds_ss')
+# result_gnsum_sym <- estimate_nsum(weighted_bootstrap_samples[[1]], 'gnsum_symmetric', 'excessive_hours_nsum',
+#                                  frame_size = 980000, weight_column = 'weight_rds_ss',
+#                                  hidden_member_indicator = 'excessive_hours_rds')
 
+# Run comprehensive analysis
+bootstrap_results <- run_comprehensive_nsum_bootstrap(
+  boot_samples = boot_samples,              # From Step 1-2
+  outcome_variables = c(                    # NSUM outcome 
+      "document_withholding_nsum",
+      "pay_issues_nsum",
+      "threats_abuse_nsum",
+      "excessive_hours_nsum",
+      "access_to_help_nsum"
+    ),
+    hidden_indicators = c(                    # Corresponding RDS   variables  
+      "document_withholding_rds",
+      "pay_issues_rds",
+      "threats_abuse_rds",
+      "excessive_hours_rds",
+      "access_to_help_rds"
+    ),
+    degree_variable = "known_network_size",   # Network size  variable (default)
+    frame_size = 980000,                      # UK domestic worker population (default)
+    rds_weight_methods = c(                   # All RDS weight   schemes
+      "weight_vh",
+      "weight_rds_i",
+      "weight_rds_ii",
+      "weight_rds_ss"
+    ),
+    mbsu_config = list(                       # MBSU parameter sweep ranges
+      delta_range = seq(0.5, 1.0, by = 0.1), # Transmission bias factors
+      tau_range = seq(0.6, 1.0, by = 0.1),   # Barrier effect   factors  
+      rho_range = seq(0.8, 1.2, by = 0.1)    # Popularity bias   factors
+    ),
+    confidence_level = 0.95,                  # For bootstrap CIs  (default)
+    parallel = TRUE,                          # Use parallel processing (default)
+    n_cores = 4,                             # Number of cores (default: auto-detect)
+    verbose = TRUE                           # Progress messages   (default)
+  )
+
+# Create all visualizations
+plots <-
+  create_nsum_comparison_plots(bootstrap_results$summary_results)
+summary_table <-
+  create_nsum_summary_table(bootstrap_results$summary_results)
