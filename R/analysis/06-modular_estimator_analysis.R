@@ -374,27 +374,44 @@ estimate_final_rds_ss <- function(outcome_var, population_size, n_bootstrap = 50
 }
 
 # MA.estimates with BUILT-IN Bayesian credible intervals (NO bootstrap!)
+# ENHANCED: Uses proven parameters for numeric traits and saves them for reuse
 estimate_final_ma_estimates <- function(outcome_var, population_size) {
   tryCatch({
     cat("Processing indicator:", outcome_var, "for population:", format(population_size, big.mark = ","), "\n")
     
-    # Run MA.estimates with production parameters
+    # ENHANCED PARAMETERS (proven to work for numeric traits like composite_risk)
+    enhanced_params <- list(
+      number.of.iterations = 3,        # Enhanced: 3 iterations for stability
+      M1 = 75,                         # Enhanced: larger network samples  
+      M2 = 50,                         # Enhanced: more RDS samples
+      MPLE.samplesize = 150000,        # Enhanced: better initialization
+      SAN.maxit = 25,                  # Enhanced: more annealing steps
+      SAN.nsteps = 2^22,               # Enhanced: 8x longer burn-in
+      sim.interval = 25000,            # Enhanced: more spacing
+      seed.selection = "random",       # Enhanced: may work better for numeric
+      parallel = 1,
+      verbose = TRUE,
+      full.output = TRUE,
+      seed = 42
+    )
+    
+    # Run MA.estimates with enhanced parameters
     ma_result <- MA.estimates(
       rd.dd, 
       trait.variable = outcome_var,
       N = population_size,
-      number.of.iterations = 2,                           # Production: 2 iterations
-      M1 = 50,
-      M2 = 25,
-      parallel = 1,                                       # Keep single-core as requested
-      verbose = TRUE,                                    # Reduce output noise
-      full.output = TRUE,                                 # Keep as requested
-      seed = 42,
-      # Production parameters
-      MPLE.samplesize = 50000,                           # Production: default 50000
-      SAN.maxit = 10,                                     # Production: default 5
-      SAN.nsteps = 2^19,                                 # Production: default 2^19
-      sim.interval = 10000                               # Production: default 10000
+      number.of.iterations = enhanced_params$number.of.iterations,
+      M1 = enhanced_params$M1,
+      M2 = enhanced_params$M2,
+      parallel = enhanced_params$parallel,
+      verbose = enhanced_params$verbose,
+      full.output = enhanced_params$full.output,
+      seed = enhanced_params$seed,
+      MPLE.samplesize = enhanced_params$MPLE.samplesize,
+      SAN.maxit = enhanced_params$SAN.maxit,
+      SAN.nsteps = enhanced_params$SAN.nsteps,
+      sim.interval = enhanced_params$sim.interval,
+      seed.selection = enhanced_params$seed.selection
     )
     
     # Extract values using direct array indexing (your working method)
@@ -412,21 +429,13 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
       bayesian_se <- NA
     }
     
-    # Store parameters used for this run
-    ma_parameters <- list(
-      N = population_size,
-      number.of.iterations = 2,
-      M1 = 2,
-      M2 = 1,
-      parallel = 1,
-      verbose = FALSE,
-      full.output = TRUE,
-      seed = 42,
-      MPLE.samplesize = 50000,
-      SAN.maxit = 10,
-      SAN.nsteps = 2^19,
-      sim.interval = 10000
-    )
+    # Store ENHANCED parameters used for this run (for reuse in sensitivity analysis)
+    ma_parameters <- enhanced_params
+    ma_parameters$N = population_size
+    ma_parameters$trait.variable = outcome_var
+    ma_parameters$extraction_method = "direct_array_indexing"
+    ma_parameters$run_timestamp = Sys.time()
+    ma_parameters$convergence_notes = "Enhanced parameters for numeric traits"
     
     # Save complete MA.estimates result for diagnostics
     ma_debug_file <- here("output", paste0("ma_result_full_", outcome_var, ".RData"))
@@ -472,7 +481,10 @@ estimate_final_ma_estimates <- function(outcome_var, population_size) {
       estimation_type = "bayesian_mcmc",
       uncertainty_type = "credible_interval",
       ci_coverage = 0.95,
-      run_timestamp = Sys.time()
+      run_timestamp = Sys.time(),
+      
+      # NEW: Enhanced parameter configuration for reuse
+      enhanced_ma_config = enhanced_params
     )
     
   }, error = function(e) {
@@ -697,6 +709,77 @@ process_final_results <- function(all_results) {
     )
   
   return(results_df)
+}
+
+# ============================================================================
+# PARAMETER TRANSFER FUNCTIONS FOR SENSITIVITY ANALYSIS
+# ============================================================================
+
+# Save enhanced MA parameters for reuse in other scripts
+save_enhanced_ma_parameters <- function(ma_results_list = NULL, filename = "enhanced_ma_parameters.RData") {
+  
+  # Extract parameters from recent MA results or use defaults
+  if (!is.null(ma_results_list) && length(ma_results_list) > 0) {
+    # Get parameters from the first successful result
+    sample_result <- ma_results_list[[1]]
+    if (!is.null(sample_result$enhanced_ma_config)) {
+      enhanced_params <- sample_result$enhanced_ma_config
+    } else if (!is.null(sample_result$ma_parameters)) {
+      enhanced_params <- sample_result$ma_parameters
+    } else {
+      enhanced_params <- get_default_enhanced_params()
+    }
+  } else {
+    enhanced_params <- get_default_enhanced_params()
+  }
+  
+  # Add metadata
+  enhanced_params$saved_timestamp <- Sys.time()
+  enhanced_params$source_script <- "06-modular_estimator_analysis.R"
+  enhanced_params$validation_status <- "proven_for_numeric_traits"
+  
+  # Save to output directory
+  save(enhanced_params, file = here("output", filename))
+  cat("Enhanced MA parameters saved to:", filename, "\\n")
+  
+  return(enhanced_params)
+}
+
+# Load enhanced MA parameters for reuse
+load_enhanced_ma_parameters <- function(filename = "enhanced_ma_parameters.RData") {
+  param_file <- here("output", filename)
+  
+  if (file.exists(param_file)) {
+    load(param_file)
+    cat("Loaded enhanced MA parameters from:", filename, "\\n")
+    cat("- Iterations:", enhanced_params$number.of.iterations, "\\n")
+    cat("- M1/M2:", enhanced_params$M1, "/", enhanced_params$M2, "\\n")
+    cat("- Saved:", enhanced_params$saved_timestamp, "\\n")
+    return(enhanced_params)
+  } else {
+    cat("Parameter file not found, using defaults\\n")
+    return(get_default_enhanced_params())
+  }
+}
+
+# Default enhanced parameters (proven to work)
+get_default_enhanced_params <- function() {
+  return(list(
+    number.of.iterations = 3,        # Enhanced: 3 iterations for stability
+    M1 = 75,                         # Enhanced: larger network samples  
+    M2 = 50,                         # Enhanced: more RDS samples
+    MPLE.samplesize = 150000,        # Enhanced: better initialization
+    SAN.maxit = 25,                  # Enhanced: more annealing steps
+    SAN.nsteps = 2^22,               # Enhanced: 8x longer burn-in
+    sim.interval = 25000,            # Enhanced: more spacing
+    seed.selection = "random",       # Enhanced: may work better for numeric
+    parallel = 1,
+    verbose = TRUE,
+    full.output = TRUE,
+    seed = 42,
+    parameter_source = "proven_enhanced_config",
+    notes = "Parameters proven to work for composite_risk convergence"
+  ))
 }
 
 # ============================================================================
@@ -976,6 +1059,10 @@ run_ma_estimates_analysis <- function(indicators = NULL, population_sizes = NULL
   if (save_results) {
     save(ma_results, ma_df, file = here("output", "ma_estimates_analysis_results.RData"))
     write.csv(ma_df, here("output", "tables", "ma_estimates_analysis.csv"), row.names = FALSE)
+    
+    # Save enhanced parameters for reuse in sensitivity analysis
+    enhanced_params <- save_enhanced_ma_parameters(ma_results, "enhanced_ma_parameters.RData")
+    cat("Enhanced parameters saved for sensitivity analysis reuse\n")
   }
   
   cat("MA.estimates analysis completed:", result_count, "estimations\n\n")

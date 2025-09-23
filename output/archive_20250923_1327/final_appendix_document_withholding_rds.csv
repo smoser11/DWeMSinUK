@@ -1,0 +1,4 @@
+"method_clean","uncertainty_clean","method_type","1.74M","100K","50K","980K"
+"RDS-I","Asymptotic","frequentist","49.4% (CI not available)","49.4% (CI not available)","49.4% (CI not available)","49.4% (CI not available)"
+"RDS-II","Bootstrap","frequentist","34.2% (19.6–49.2)","34.2% (19.3–49.7)","34.2% (20.2–49.7)","34.2% (19.8–49.0)"
+"RDS-SS","Bootstrap","frequentist","34.2% (19.8–49.3)","34.2% (19.0–49.5)","34.2% (19.3–49.3)","34.2% (19.5–49.3)"

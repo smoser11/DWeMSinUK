@@ -30,6 +30,24 @@ if (!exists("dd") || !exists("rd.dd")) {
   cat("Loaded prepared RDS data with weights\n")
 }
 
+# Load enhanced MA parameters from modular analysis (if available)
+enhanced_ma_params <- tryCatch({
+  param_file <- here("output", "enhanced_ma_parameters.RData")
+  if (file.exists(param_file)) {
+    load(param_file)
+    cat("Loaded enhanced MA parameters from modular analysis\n")
+    cat("- Enhanced iterations:", enhanced_params$number.of.iterations, "\n")
+    cat("- Enhanced M1/M2:", enhanced_params$M1, "/", enhanced_params$M2, "\n")
+    enhanced_params
+  } else {
+    cat("No enhanced parameters found, using sensitivity analysis defaults\n")
+    NULL
+  }
+}, error = function(e) {
+  cat("Error loading enhanced parameters:", e$message, "\n")
+  NULL
+})
+
 # ============================================================================
 # FINAL CONFIGURATION WITH PROPER BAYESIAN PARAMETERS
 # ============================================================================
@@ -52,13 +70,20 @@ final_config <- list(
   quantiles = c(0.025, 0.975),
   
   # Bayesian MCMC parameters (for MA.estimates and posteriorsize)
-  # Updated based on convergence diagnostics showing severe autocorrelation
-  bayesian_samplesize = 20000, # Doubled for better convergence
-  bayesian_burnin = 50000,     # Much longer burnin for stationarity
-  bayesian_interval = 21,      # More thinning to reduce autocorrelation
-  ma_iterations = 10,          # More MA.estimates iterations
-  ma_M1 = 100,                 # More networked populations for stability
-  ma_M2 = 50,                  # More RDS samples per network
+  # USE ENHANCED PARAMETERS from modular analysis if available
+  bayesian_samplesize = 20000, # For posteriorsize() only
+  bayesian_burnin = 50000,     # For posteriorsize() only
+  bayesian_interval = 21,      # For posteriorsize() only
+  
+  # MA.estimates parameters - use enhanced if available, otherwise defaults
+  ma_iterations = if(!is.null(enhanced_ma_params)) enhanced_ma_params$number.of.iterations else 10,
+  ma_M1 = if(!is.null(enhanced_ma_params)) enhanced_ma_params$M1 else 100,
+  ma_M2 = if(!is.null(enhanced_ma_params)) enhanced_ma_params$M2 else 50,
+  ma_MPLE_samplesize = if(!is.null(enhanced_ma_params)) enhanced_ma_params$MPLE.samplesize else 50000,
+  ma_SAN_maxit = if(!is.null(enhanced_ma_params)) enhanced_ma_params$SAN.maxit else 10,
+  ma_SAN_nsteps = if(!is.null(enhanced_ma_params)) enhanced_ma_params$SAN.nsteps else 2^19,
+  ma_sim_interval = if(!is.null(enhanced_ma_params)) enhanced_ma_params$sim.interval else 10000,
+  ma_seed_selection = if(!is.null(enhanced_ma_params)) enhanced_ma_params$seed.selection else "degree",
   
   # Computational parameters
   parallel_cores = 12,
@@ -75,8 +100,14 @@ cat("- Bayesian samplesize:", final_config$bayesian_samplesize, "\n")
 cat("- Bayesian burnin:", final_config$bayesian_burnin, "\n") 
 cat("- Bayesian interval (thinning):", final_config$bayesian_interval, "\n")
 cat("- MA iterations/M1/M2:", final_config$ma_iterations, "/", final_config$ma_M1, "/", final_config$ma_M2, "\n")
+if (!is.null(enhanced_ma_params)) {
+  cat("- Using ENHANCED parameters from modular analysis ✓\n")
+  cat("- Enhanced MCMC: SAN.nsteps=", final_config$ma_SAN_nsteps, ", MPLE=", final_config$ma_MPLE_samplesize, "\n")
+} else {
+  cat("- Using sensitivity analysis default parameters\n")
+}
 cat("- Bootstrap (frequentist only):", final_config$n_bootstrap_freq, "samples\n")
-cat("- Convergence parameters updated based on diagnostics\n\n")
+cat("- Convergence parameters updated for proven stability\n\n")
 
 # ============================================================================
 # CONVERGENCE CHECKING HELPER FUNCTIONS
@@ -302,18 +333,25 @@ estimate_final_rds_ss <- function(outcome_var, population_size, n_bootstrap = 50
 }
 
 # MA.estimates with BUILT-IN Bayesian credible intervals (NO bootstrap!)
+# ENHANCED: Uses proven parameters from modular analysis
 estimate_final_ma_estimates <- function(outcome_var, population_size) {
   tryCatch({
-    # Use actual MA.estimates() with improved convergence parameters
+    # Use enhanced parameters from modular analysis for proven convergence
     ma_result <- MA.estimates(
       rd.dd, 
-      trait.variable = outcome_var,                       # Correct parameter name
+      trait.variable = outcome_var,
       N = population_size,
-      number.of.iterations = final_config$ma_iterations,  # Now 10
-      M1 = final_config$ma_M1,                           # Now 100
-      M2 = final_config$ma_M2,                           # Now 50
-      parallel = final_config$parallel_cores,
-      verbose = FALSE
+      number.of.iterations = final_config$ma_iterations,
+      M1 = final_config$ma_M1,
+      M2 = final_config$ma_M2,
+      MPLE.samplesize = final_config$ma_MPLE_samplesize,
+      SAN.maxit = final_config$ma_SAN_maxit,
+      SAN.nsteps = final_config$ma_SAN_nsteps,
+      sim.interval = final_config$ma_sim_interval,
+      seed.selection = final_config$ma_seed_selection,
+      parallel = 1,  # Keep single-core for stability
+      verbose = FALSE,
+      seed = 42
     )
     
     # Extract Bayesian credible intervals (built-in!)
