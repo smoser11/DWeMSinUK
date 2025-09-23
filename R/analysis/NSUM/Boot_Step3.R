@@ -488,6 +488,8 @@ estimate_nsum_batch <- function(boot_samples,
                                frame_size,
                                weight_column = "inclusion_prob",
                                adjustment_factors = list(delta = 1.0, tau = 1.0, rho = 1.0),
+                               hidden_member_indicator = NULL,
+                               in_reports_variable = NULL,
                                parallel = TRUE,
                                n_cores = NULL,
                                verbose = FALSE) {
@@ -523,7 +525,8 @@ estimate_nsum_batch <- function(boot_samples,
       "estimate_nsum", "estimate_mbsu", "estimate_gnsum",
       "estimate_gnsum_symmetric", "estimate_model_based_nsum",
       "nsum_method", "outcome_variable", "degree_variable",
-      "frame_size", "weight_column", "adjustment_factors"
+      "frame_size", "weight_column", "adjustment_factors",
+      "hidden_member_indicator", "in_reports_variable"
     ), envir = environment())
 
     # Load required packages on workers
@@ -542,6 +545,8 @@ estimate_nsum_batch <- function(boot_samples,
           frame_size = frame_size,
           weight_column = weight_column,
           adjustment_factors = adjustment_factors,
+          hidden_member_indicator = hidden_member_indicator,
+          in_reports_variable = in_reports_variable,
           validate_inputs = FALSE,  # Skip validation for speed
           verbose = FALSE
         )
@@ -572,6 +577,8 @@ estimate_nsum_batch <- function(boot_samples,
           frame_size = frame_size,
           weight_column = weight_column,
           adjustment_factors = adjustment_factors,
+          hidden_member_indicator = hidden_member_indicator,
+          in_reports_variable = in_reports_variable,
           validate_inputs = FALSE,
           verbose = FALSE
         )
@@ -1239,6 +1246,39 @@ create_nsum_comparison_plots <- function(summary_results,
   detailed_df <- summary_results$detailed_summary
   plots <- list()
 
+  # Check if there are any valid estimates
+  valid_estimates <- detailed_df %>% filter(!is.na(mean_estimate))
+
+  if (nrow(valid_estimates) == 0) {
+    warning("No valid estimates found for plotting. All estimates are NA.")
+    cat("Debugging information:\n")
+    cat("- Total rows in summary:", nrow(detailed_df), "\n")
+    cat("- Valid estimates:", sum(!is.na(detailed_df$mean_estimate)), "\n")
+    cat("- Methods in data:", paste(unique(detailed_df$nsum_method), collapse = ", "), "\n")
+    cat("- Weight methods:", paste(unique(detailed_df$weight_method), collapse = ", "), "\n")
+
+    # Create placeholder plot explaining the issue
+    placeholder_plot <- ggplot() +
+      annotate("text", x = 0.5, y = 0.5,
+               label = "No valid NSUM estimates available for plotting.\nAll estimates returned NA.\nPlease check estimation functions and data quality.",
+               size = 6, hjust = 0.5, vjust = 0.5) +
+      xlim(0, 1) + ylim(0, 1) +
+      labs(title = "NSUM Estimation Results: No Valid Estimates",
+           subtitle = "Check data quality and estimation functions") +
+      theme_void()
+
+    return(list(
+      error_message = "No valid estimates",
+      placeholder_plot = placeholder_plot,
+      debug_info = list(
+        total_rows = nrow(detailed_df),
+        valid_estimates = sum(!is.na(detailed_df$mean_estimate)),
+        methods = unique(detailed_df$nsum_method),
+        weight_methods = unique(detailed_df$weight_method)
+      )
+    ))
+  }
+
   # 1. Forest plot comparing all estimates with confidence intervals
   p1 <- detailed_df %>%
     filter(!is.na(mean_estimate)) %>%
@@ -1368,9 +1408,22 @@ create_nsum_summary_table <- function(summary_results, save_table = TRUE,
     dir.create(output_dir, recursive = TRUE)
   }
 
+  # Check for valid estimates
+  valid_data <- summary_results$detailed_summary %>%
+    filter(!is.na(mean_estimate))
+
+  if (nrow(valid_data) == 0) {
+    warning("No valid estimates found for summary table. All estimates are NA.")
+    return(data.frame(
+      Message = "No valid NSUM estimates available",
+      Total_Combinations = nrow(summary_results$detailed_summary),
+      Valid_Estimates = 0,
+      Note = "Check estimation functions and data quality"
+    ))
+  }
+
   # Create formatted summary table
-  summary_table <- summary_results$detailed_summary %>%
-    filter(!is.na(mean_estimate)) %>%
+  summary_table <- valid_data %>%
     mutate(
       Method = ifelse(nsum_method == "MBSU",
                      paste0("MBSU (δ=", delta, ", τ=", tau, ", ρ=", rho, ")"),
@@ -1578,6 +1631,8 @@ if (!SKIP_EXECUTION) {
   cat("Key functions:\n")
   cat("- estimate_nsum(): Main NSUM estimation function\n")
   cat("- estimate_nsum_batch(): Batch processing for bootstrap samples\n")
+  cat("- run_comprehensive_nsum_bootstrap(): Full 3-step bootstrap analysis\n")
+  cat("- debug_estimation_functions(): Troubleshoot NA estimates\n")
   cat("- test_nsum_estimation(): Test all implementations\n\n")
 
   cat("Usage examples:\n")
@@ -1627,6 +1682,112 @@ if (!SKIP_EXECUTION) {
   cat("# Example: Filter to specific combinations for detailed analysis\n")
   cat("high_precision <- detailed_df %>% filter(ci_upper - ci_lower < 50000)\n")
   cat("View(high_precision)  # Interactive table view\n\n")
+}
+
+# ==============================================================================
+# DEBUGGING FUNCTIONS
+# ==============================================================================
+
+debug_estimation_functions <- function(boot_samples, verbose = TRUE) {
+  if (verbose) cat("=== Debugging NSUM Estimation Functions ===\n")
+
+  # Use first bootstrap sample for testing
+  test_data <- boot_samples[[1]]
+  frame_size <- 980000
+
+  if (verbose) {
+    cat("Test data dimensions:", nrow(test_data), "x", ncol(test_data), "\n")
+    cat("Available columns:", paste(names(test_data), collapse = ", "), "\n")
+  }
+
+  # Check if required variables exist
+  required_vars <- c("document_withholding_nsum", "known_network_size", "weight_vh")
+  missing_vars <- required_vars[!required_vars %in% names(test_data)]
+
+  if (length(missing_vars) > 0) {
+    cat("ERROR: Missing required variables:", paste(missing_vars, collapse = ", "), "\n")
+
+    # Look for weight-related variables that might exist
+    weight_vars <- names(test_data)[grepl("weight|inclusion|prob", names(test_data), ignore.case = TRUE)]
+    if (length(weight_vars) > 0) {
+      cat("Available weight-related variables:", paste(weight_vars, collapse = ", "), "\n")
+    } else {
+      cat("No weight-related variables found. Bootstrap samples missing RDS weights.\n")
+      cat("Expected weight variables: weight_vh, weight_rds_i, weight_rds_ii, weight_rds_ss\n")
+      cat("These should have been added in Steps 1-2 of the bootstrap procedure.\n")
+    }
+    return(NULL)
+  }
+
+  # Test MBSU estimation
+  if (verbose) cat("\n--- Testing MBSU ---\n")
+  mbsu_result <- tryCatch({
+    estimate_mbsu(
+      data = test_data,
+      outcome_variable = "document_withholding_nsum",
+      degree_variable = "known_network_size",
+      frame_size = frame_size,
+      weight_column = "weight_vh",
+      adjustment_factors = list(delta = 1.0, tau = 1.0, rho = 1.0)
+    )
+  }, error = function(e) {
+    if (verbose) cat("MBSU Error:", e$message, "\n")
+    list(N_hat = NA, error = e$message)
+  })
+
+  if (verbose) {
+    cat("MBSU estimate:", mbsu_result$N_hat, "\n")
+    if (!is.null(mbsu_result$error)) cat("MBSU error:", mbsu_result$error, "\n")
+  }
+
+  # Test GNSUM Symmetric estimation
+  if (verbose) cat("\n--- Testing GNSUM Symmetric ---\n")
+  gnsum_result <- tryCatch({
+    estimate_gnsum_symmetric(
+      data = test_data,
+      outcome_variable = "document_withholding_nsum",
+      degree_variable = "known_network_size",
+      frame_size = frame_size,
+      hidden_member_indicator = "document_withholding_rds",
+      weight_column = "weight_vh"
+    )
+  }, error = function(e) {
+    if (verbose) cat("GNSUM Error:", e$message, "\n")
+    list(N_hat = NA, error = e$message)
+  })
+
+  if (verbose) {
+    cat("GNSUM estimate:", gnsum_result$N_hat, "\n")
+    if (!is.null(gnsum_result$error)) cat("GNSUM error:", gnsum_result$error, "\n")
+  }
+
+  # Test data quality
+  if (verbose) cat("\n--- Data Quality Check ---\n")
+  outcome_data <- test_data$document_withholding_nsum
+  degree_data <- test_data$known_network_size
+  weight_data <- test_data$weight_vh
+
+  cat("Outcome variable summary:\n")
+  print(summary(outcome_data))
+  cat("Degree variable summary:\n")
+  print(summary(degree_data))
+  cat("Weight variable summary:\n")
+  print(summary(weight_data))
+
+  cat("Non-missing cases:", sum(!is.na(outcome_data) & !is.na(degree_data) & !is.na(weight_data)), "\n")
+  cat("Zero weight cases:", sum(weight_data == 0, na.rm = TRUE), "\n")
+  cat("Zero degree cases:", sum(degree_data == 0, na.rm = TRUE), "\n")
+
+  return(list(
+    mbsu_result = mbsu_result,
+    gnsum_result = gnsum_result,
+    data_summary = list(
+      n_valid = sum(!is.na(outcome_data) & !is.na(degree_data) & !is.na(weight_data)),
+      outcome_mean = mean(outcome_data, na.rm = TRUE),
+      degree_mean = mean(degree_data, na.rm = TRUE),
+      weight_mean = mean(weight_data, na.rm = TRUE)
+    )
+  ))
 }
 
 # Example: Using different weight methods and adjustment factors
