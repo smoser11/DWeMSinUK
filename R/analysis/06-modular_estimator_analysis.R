@@ -63,6 +63,8 @@ parallel = 1,
 verbose = TRUE,
 full.output = TRUE
 )
+save(ma_result, file = here("output",
+                            "ma_result_composite_risk.RData"))
 
 
   modular_config <- list(
