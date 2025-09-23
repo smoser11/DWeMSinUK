@@ -36,7 +36,38 @@ if (!exists("dd") || !exists("rd.dd")) {
 # MODULAR CONFIGURATION (same as original for compatibility)
 # ============================================================================
 
-modular_config <- list(
+population_size <- 980000
+ma_result <- MA.estimates(
+  rd.dd,
+  trait.variable = "composite_risk",  # or "sum_categories"
+  N = population_size,
+  
+  # Increase iterations for numeric trait stability
+  number.of.iterations = 3,           # From 2 → 5
+  
+  
+# Much larger network samples for numeric traits
+M1 = 75,                          # From 50 → 100
+M2 = 50,                           # From 25 → 75
+
+# Aggressive MCMC convergence parameters
+SAN.maxit = 25,                    # From 10 → 25 (much more annealing)
+SAN.nsteps = 2^22,                 # From 2^19 → 2^22 (8x longer  burn-in)
+MPLE.samplesize = 150000,          # From 50K → 150K (better  initialization)
+sim.interval = 25000,              # From 10K → 25K (more spacing)
+
+# Try different seed selection for numeric traits
+seed.selection = "random",         # May work better than "degree"
+
+parallel = 1,
+verbose = TRUE,
+full.output = TRUE
+)
+save(ma_result, file = here("output",
+                            "ma_result_composite_risk.RData"))
+
+
+  modular_config <- list(
   # Methods available for individual analysis
   available_methods = c("RDS_I", "RDS_II", "RDS_SS", "MA_estimates", "posteriorsize"),
   
