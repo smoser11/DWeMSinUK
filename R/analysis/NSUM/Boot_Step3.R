@@ -18,6 +18,7 @@
 
 library(tidyverse)
 library(here)
+library(RDS)
 
 # Set execution control
 SKIP_EXECUTION <- FALSE
@@ -25,6 +26,184 @@ if (exists("skip_step3") && skip_step3) SKIP_EXECUTION <- TRUE
 
 if (!SKIP_EXECUTION) {
   cat("=== Loading Step 3: NSUM Estimation Functions ===\n")
+}
+
+# ==============================================================================
+# FIX MISSING RDS WEIGHTS IN BOOTSTRAP SAMPLES
+# ==============================================================================
+
+add_rds_weights_to_bootstrap_samples <- function(boot_samples, original_data = NULL) {
+  cat("=== Adding Missing RDS Weights to Bootstrap Samples ===\n")
+
+  # Handle both single data frame and list of bootstrap samples
+  is_list_samples <- is.list(boot_samples) && !is.data.frame(boot_samples)
+
+  if (is_list_samples) {
+    cat("Processing list of", length(boot_samples), "bootstrap samples\n")
+    first_sample <- boot_samples[[1]]
+  } else {
+    cat("Processing single bootstrap sample\n")
+    first_sample <- boot_samples
+  }
+
+  # Check if weights already exist in first sample
+  weight_cols <- c("weight_vh", "weight_rds_i", "weight_rds_ii", "weight_rds_ss")
+  missing_weights <- setdiff(weight_cols, colnames(first_sample))
+
+  if (length(missing_weights) == 0) {
+    cat("All RDS weights already present in bootstrap samples.\n")
+    return(boot_samples)
+  }
+
+  cat("Missing weight columns:", paste(missing_weights, collapse = ", "), "\n")
+
+  # For RDS bootstrap samples, calculate weights directly from each sample
+  if (class(first_sample)[1] == "rds.data.frame") {
+    cat("Bootstrap samples are RDS objects - calculating weights directly\n")
+
+    if (is_list_samples) {
+      # Process each bootstrap sample in the list
+      cat("Adding RDS weights to", length(boot_samples), "bootstrap samples...\n")
+
+      boot_samples_with_weights <- lapply(seq_along(boot_samples), function(i) {
+        if (i %% 20 == 0 || i == length(boot_samples)) {
+          cat("Processing sample", i, "of", length(boot_samples), "\n")
+        }
+
+        sample <- boot_samples[[i]]
+
+        tryCatch({
+          # Calculate RDS weights for this bootstrap sample
+          weights_vh <- vh.weights(sample)
+          weights_rds_i <- rds.I.weights(sample)
+          weights_rds_ii <- rds.II.weights(sample)
+          weights_rds_ss <- compute.weights(sample, weight.type = "Gille's SS")
+
+          # Add weights as new columns
+          sample$weight_vh <- as.numeric(weights_vh)
+          sample$weight_rds_i <- as.numeric(weights_rds_i)
+          sample$weight_rds_ii <- as.numeric(weights_rds_ii)
+          sample$weight_rds_ss <- as.numeric(weights_rds_ss)
+
+          return(sample)
+        }, error = function(e) {
+          cat("Error processing sample", i, ":", e$message, "\n")
+          # Fallback to simple weights based on network size
+          if ("network.size" %in% colnames(sample)) {
+            sample$weight_vh <- 1/sample$network.size
+            sample$weight_rds_i <- 1/sample$network.size
+            sample$weight_rds_ii <- 1/sample$network.size
+            sample$weight_rds_ss <- 1/sample$network.size
+            cat("Using simple inclusion probability weights for sample", i, "\n")
+          } else {
+            # Last resort: equal weights
+            sample$weight_vh <- 1
+            sample$weight_rds_i <- 1
+            sample$weight_rds_ii <- 1
+            sample$weight_rds_ss <- 1
+            cat("Using equal weights for sample", i, "\n")
+          }
+          return(sample)
+        })
+      })
+
+      cat("Successfully processed all bootstrap samples\n")
+      return(boot_samples_with_weights)
+
+    } else {
+      # Single RDS sample
+      cat("Calculating RDS weights for single sample...\n")
+      weights_vh <- rds.i.weights(boot_samples)
+      weights_rds_i <- rds.i.weights(boot_samples)
+      weights_rds_ii <- rds.iI.weights(boot_samples)
+      weights_rds_ss <- RDS.SS.weights(boot_samples)
+
+      boot_samples$weight_vh <- as.numeric(weights_vh)
+      boot_samples$weight_rds_i <- as.numeric(weights_rds_i)
+      boot_samples$weight_rds_ii <- as.numeric(weights_rds_ii)
+      boot_samples$weight_rds_ss <- as.numeric(weights_rds_ss)
+
+      return(boot_samples)
+    }
+  }
+
+  # Fallback: try to load original data for weight calculation
+  if (is.null(original_data)) {
+    cat("Loading original RDS data to calculate weights...\n")
+    possible_files <- c(
+      here("data", "processed", "prepared_data.RData"),
+      here("data", "processed", "rds_object.RData"),
+      here("data", "processed", "clean_data.RData")
+    )
+
+    loaded_data <- NULL
+    for (file in possible_files) {
+      if (file.exists(file)) {
+        cat("Loading:", file, "\n")
+        load(file)
+        if (exists("prepared_data")) {
+          loaded_data <- prepared_data
+          break
+        } else if (exists("rds_object")) {
+          loaded_data <- rds_object
+          break
+        } else if (exists("clean_data")) {
+          loaded_data <- clean_data
+          break
+        }
+      }
+    }
+
+    if (is.null(loaded_data)) {
+      stop("Cannot find original data file to calculate RDS weights. Please provide original_data parameter.")
+    }
+    original_data <- loaded_data
+  }
+
+  # Use original data approach if bootstrap samples are not RDS objects
+  if (class(original_data)[1] == "rds.data.frame") {
+    cat("Calculating RDS weights from original RDS object...\n")
+    weights_vh <- rds.i.weights(original_data)
+    weights_rds_i <- rds.i.weights(original_data)
+    weights_rds_ii <- rds.iI.weights(original_data)
+    weights_rds_ss <- RDS.SS.weights(original_data)
+
+    weight_df <- data.frame(
+      id = as.numeric(row.names(original_data)),
+      weight_vh = as.numeric(weights_vh),
+      weight_rds_i = as.numeric(weights_rds_i),
+      weight_rds_ii = as.numeric(weights_rds_ii),
+      weight_rds_ss = as.numeric(weights_rds_ss)
+    )
+  } else {
+    # Simple weights from data frame
+    weight_df <- original_data %>%
+      select(id, network.size) %>%
+      mutate(
+        weight_vh = 1/network.size,
+        weight_rds_i = 1/network.size,
+        weight_rds_ii = 1/network.size,
+        weight_rds_ss = 1/network.size
+      ) %>%
+      select(id, starts_with("weight_"))
+  }
+
+  # Merge with bootstrap samples
+  if (is_list_samples) {
+    boot_samples_with_weights <- lapply(boot_samples, function(sample) {
+      if (!"id" %in% colnames(sample) && "original_id" %in% colnames(sample)) {
+        sample$id <- sample$original_id
+      }
+      sample %>% left_join(weight_df, by = "id")
+    })
+  } else {
+    if (!"id" %in% colnames(boot_samples) && "original_id" %in% colnames(boot_samples)) {
+      boot_samples$id <- boot_samples$original_id
+    }
+    boot_samples_with_weights <- boot_samples %>% left_join(weight_df, by = "id")
+  }
+
+  return(boot_samples_with_weights)
 }
 
 # ==============================================================================
@@ -1788,6 +1967,110 @@ debug_estimation_functions <- function(boot_samples, verbose = TRUE) {
       weight_mean = mean(weight_data, na.rm = TRUE)
     )
   ))
+}
+
+# Enhanced debugging function to trace the issue step-by-step
+deep_debug_nsum <- function(boot_samples, verbose = TRUE) {
+  cat("=== DEEP DEBUGGING NSUM ESTIMATION ===\n")
+
+  # Handle both list of bootstrap samples and single data frame
+  if (is.list(boot_samples) && !is.data.frame(boot_samples)) {
+    cat("Boot samples is a list with", length(boot_samples), "elements\n")
+    test_data <- boot_samples[[1]]
+  } else if (is.data.frame(boot_samples)) {
+    cat("Boot samples is a single data frame\n")
+    test_data <- boot_samples
+  } else {
+    cat("ERROR: boot_samples must be a data frame or list of data frames\n")
+    return(invisible(NULL))
+  }
+
+  # 1. Check data structure
+  cat("1. DATA STRUCTURE CHECK\n")
+  cat("Test data class:", class(test_data), "\n")
+  cat("Dimensions:", nrow(test_data), "x", ncol(test_data), "\n")
+
+  # 2. Check key variables
+  cat("\n2. KEY VARIABLES CHECK\n")
+  key_vars <- c("id", "known_network_size", "document_withholding_nsum", "weight_vh", "weight_rds_i")
+  for (var in key_vars) {
+    if (var %in% colnames(test_data)) {
+      n_na <- sum(is.na(test_data[[var]]))
+      n_zero <- sum(test_data[[var]] == 0, na.rm = TRUE)
+      n_valid <- sum(!is.na(test_data[[var]]) & test_data[[var]] != 0)
+      cat(sprintf("  %s: %d valid, %d zeros, %d NAs (range: %s to %s)\n",
+                  var, n_valid, n_zero, n_na,
+                  min(test_data[[var]], na.rm = TRUE),
+                  max(test_data[[var]], na.rm = TRUE)))
+    } else {
+      cat(sprintf("  %s: MISSING\n", var))
+    }
+  }
+
+  # 3. Check for valid estimation sample
+  cat("\n3. VALID ESTIMATION SAMPLE CHECK\n")
+  valid_sample <- test_data %>%
+    filter(!is.na(known_network_size) & known_network_size > 0 &
+           !is.na(weight_vh) & weight_vh > 0 &
+           !is.na(document_withholding_nsum))
+
+  cat("Valid sample size:", nrow(valid_sample), "out of", nrow(test_data), "\n")
+
+  if (nrow(valid_sample) == 0) {
+    cat("ERROR: No valid samples for estimation!\n")
+    return(invisible(NULL))
+  }
+
+  # 4. Test basic NSUM calculation manually
+  cat("\n4. MANUAL NSUM CALCULATION TEST\n")
+  test_sample <- valid_sample[1:min(5, nrow(valid_sample)), ]
+  cat("Test sample:\n")
+  print(test_sample[, c("id", "known_network_size", "document_withholding_nsum", "weight_vh")])
+
+  # Basic NSUM formula: sum(y_i * w_i) / sum(d_i * w_i) * frame_size
+  y_weighted <- sum(test_sample$document_withholding_nsum * test_sample$weight_vh, na.rm = TRUE)
+  d_weighted <- sum(test_sample$known_network_size * test_sample$weight_vh, na.rm = TRUE)
+  frame_size <- 100000
+
+  cat("y_weighted (numerator):", y_weighted, "\n")
+  cat("d_weighted (denominator):", d_weighted, "\n")
+  cat("Frame size:", frame_size, "\n")
+
+  if (d_weighted == 0) {
+    cat("ERROR: Zero denominator in NSUM calculation!\n")
+  } else {
+    manual_estimate <- (y_weighted / d_weighted) * frame_size
+    cat("Manual NSUM estimate:", manual_estimate, "\n")
+  }
+
+  # 5. Test estimate_mbsu function step by step
+  cat("\n5. STEP-BY-STEP MBSU FUNCTION TEST\n")
+  tryCatch({
+    cat("Calling estimate_mbsu with test sample...\n")
+    mbsu_result <- estimate_mbsu(
+      data = test_sample,
+      outcome_variable = "document_withholding_nsum",
+      degree_variable = "known_network_size",
+      frame_size = frame_size,
+      weight_column = "weight_vh",
+      adjustment_factors = list(delta = 1.0, tau = 1.0, rho = 1.0)
+    )
+    cat("MBSU function result:", mbsu_result, "\n")
+
+    if (is.na(mbsu_result)) {
+      cat("MBSU returned NA - investigating inside function...\n")
+    }
+
+  }, error = function(e) {
+    cat("MBSU function error:", e$message, "\n")
+    cat("Full error:", toString(e), "\n")
+  })
+
+  return(invisible(list(
+    test_data = test_data,
+    valid_sample = valid_sample,
+    test_sample = test_sample
+  )))
 }
 
 # Example: Using different weight methods and adjustment factors
