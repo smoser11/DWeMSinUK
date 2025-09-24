@@ -2024,6 +2024,7 @@ deep_debug_nsum <- function(boot_samples, verbose = TRUE) {
   # 4. Test basic NSUM calculation manually
   cat("\n4. MANUAL NSUM CALCULATION TEST\n")
   test_sample <- valid_sample[1:min(5, nrow(valid_sample)), ]
+
   cat("Test sample (first 5 valid rows):\n")
 
   # Handle RDS data frame indexing properly
@@ -2039,6 +2040,7 @@ deep_debug_nsum <- function(boot_samples, verbose = TRUE) {
     cat("Error displaying test sample:", e$message, "\n")
     cat("Sample dimensions:", nrow(test_sample), "x", ncol(test_sample), "\n")
   })
+
 
   # Basic NSUM formula: sum(y_i * w_i) / sum(d_i * w_i) * frame_size
   y_weighted <- sum(test_sample$document_withholding_nsum * test_sample$weight_vh, na.rm = TRUE)
@@ -2069,6 +2071,7 @@ deep_debug_nsum <- function(boot_samples, verbose = TRUE) {
       adjustment_factors = list(delta = 1.0, tau = 1.0, rho = 1.0)
     )
 
+
     cat("MBSU function result:\n")
     if (is.list(mbsu_result)) {
       print(mbsu_result)
@@ -2089,6 +2092,7 @@ deep_debug_nsum <- function(boot_samples, verbose = TRUE) {
       cat("MBSU returned NA - investigating inside function...\n")
     } else {
       cat("MBSU estimate extracted:", estimate_value, "\n")
+
     }
 
   }, error = function(e) {
