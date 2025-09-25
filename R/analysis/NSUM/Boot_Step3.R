@@ -1518,7 +1518,7 @@ create_nsum_comparison_plots <- function(summary_results,
     }
   }
 
-  # 3. Method comparison by weight scheme
+  # 3. Method comparison by weight scheme - FIXED VERSION
   p3 <- detailed_df %>%
     filter(!is.na(mean_estimate)) %>%
     group_by(outcome_variable, weight_method, nsum_method) %>%
@@ -1528,12 +1528,20 @@ create_nsum_comparison_plots <- function(summary_results,
       q75 = quantile(mean_estimate, 0.75, na.rm = TRUE),
       .groups = "drop"
     ) %>%
+    # Ensure weight_method is treated as factor with proper levels
+    mutate(
+      weight_method = factor(weight_method,
+                           levels = c("weight_vh", "weight_rds_i", "weight_rds_ii", "weight_rds_ss"),
+                           labels = c("VH", "RDS-I", "RDS-II", "RDS-SS")),
+      nsum_method = factor(nsum_method)
+    ) %>%
     ggplot(aes(x = weight_method, y = median_estimate, fill = nsum_method)) +
-    geom_col(position = "dodge", alpha = 0.8) +
+    geom_col(position = position_dodge(width = 0.8), alpha = 0.8) +
     geom_errorbar(aes(ymin = q25, ymax = q75),
-                  position = position_dodge(width = 0.9), width = 0.2) +
+                  position = position_dodge(width = 0.8), width = 0.25) +
     facet_wrap(~outcome_variable, scales = "free_y") +
     scale_y_continuous(labels = comma_format()) +
+    scale_fill_manual(values = c("GNSUM_Symmetric" = "#F8766D", "MBSU" = "#00BFC4")) +
     labs(
       title = "Method Comparison by RDS Weight Scheme",
       subtitle = "Median estimates with IQR error bars",
@@ -1542,7 +1550,11 @@ create_nsum_comparison_plots <- function(summary_results,
       fill = "NSUM Method"
     ) +
     theme_minimal() +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      legend.position = "bottom",
+      strip.text = element_text(size = 10)
+    )
 
   plots$method_comparison <- p3
 
@@ -1551,24 +1563,37 @@ create_nsum_comparison_plots <- function(summary_results,
            width = plot_width, height = plot_height, dpi = 300)
   }
 
-  # 4. Confidence interval width comparison
+  # 4. Confidence interval width comparison - CORRECTED VERSION
+  # This plot should show the distribution of CI widths, not individual point estimates
   p4 <- detailed_df %>%
-    filter(!is.na(ci_lower), !is.na(ci_upper)) %>%
-    mutate(ci_width = ci_upper - ci_lower,
-           rel_ci_width = ci_width / mean_estimate) %>%
+    filter(!is.na(ci_lower), !is.na(ci_upper), !is.na(mean_estimate), mean_estimate > 0) %>%
+    mutate(
+      ci_width = ci_upper - ci_lower,
+      rel_ci_width = pmin(ci_width / mean_estimate, 2),  # Cap at 200% for display
+      # Ensure weight_method is treated as factor with proper levels
+      weight_method = factor(weight_method,
+                           levels = c("weight_vh", "weight_rds_i", "weight_rds_ii", "weight_rds_ss"),
+                           labels = c("VH", "RDS-I", "RDS-II", "RDS-SS")),
+      nsum_method = factor(nsum_method)
+    ) %>%
     ggplot(aes(x = weight_method, y = rel_ci_width, fill = nsum_method)) +
-    geom_boxplot(alpha = 0.8) +
-    facet_wrap(~outcome_variable) +
-    scale_y_continuous(labels = percent_format()) +
+    geom_boxplot(alpha = 0.8, position = position_dodge(width = 0.8)) +
+    facet_wrap(~outcome_variable, scales = "free_y") +
+    scale_y_continuous(labels = percent_format(), limits = c(0, NA)) +
+    scale_fill_manual(values = c("GNSUM_Symmetric" = "#F8766D", "MBSU" = "#00BFC4")) +
     labs(
       title = "Confidence Interval Width Analysis",
-      subtitle = "Relative CI width (CI width / point estimate)",
+      subtitle = "Distribution of relative CI widths across parameter combinations",
       x = "RDS Weight Method",
-      y = "Relative CI Width",
+      y = "Relative CI Width (CI Width / Point Estimate)",
       fill = "NSUM Method"
     ) +
     theme_minimal() +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      legend.position = "bottom",
+      strip.text = element_text(size = 9)
+    )
 
   plots$ci_width_analysis <- p4
 
@@ -1969,6 +1994,125 @@ debug_estimation_functions <- function(boot_samples, verbose = TRUE) {
   ))
 }
 
+# Debug the actual values being plotted
+debug_plot_values <- function(bootstrap_results, verbose = TRUE) {
+  cat("=== DEBUGGING ACTUAL PLOT VALUES ===\n")
+
+  summary_df <- bootstrap_results$summary_results$detailed_summary
+
+  # Check a specific example - first outcome, first weight method
+  test_subset <- summary_df %>%
+    filter(outcome_variable == unique(summary_df$outcome_variable)[1],
+           weight_method == unique(summary_df$weight_method)[1]) %>%
+    arrange(nsum_method, delta, tau, rho)
+
+  cat("TEST SUBSET for", unique(test_subset$outcome_variable)[1], "with", unique(test_subset$weight_method)[1], ":\n")
+  print(test_subset %>%
+        select(nsum_method, delta, tau, rho, mean_estimate, ci_lower, ci_upper) %>%
+        head(10))
+
+  # Check if MBSU and GNSUM have same values (they shouldn't!)
+  mbsu_vals <- test_subset %>% filter(nsum_method == "MBSU") %>% pull(mean_estimate)
+  gnsum_vals <- test_subset %>% filter(nsum_method == "GNSUM_Symmetric") %>% pull(mean_estimate)
+
+  cat("\nMBSU values range:", round(range(mbsu_vals, na.rm = TRUE)), "\n")
+  cat("GNSUM values range:", round(range(gnsum_vals, na.rm = TRUE)), "\n")
+  cat("Are MBSU and GNSUM identical?", identical(mbsu_vals[1], gnsum_vals[1]), "\n")
+
+  # Check CI widths
+  gnsum_ci_widths <- test_subset %>%
+    filter(nsum_method == "GNSUM_Symmetric") %>%
+    mutate(ci_width = ci_upper - ci_lower) %>%
+    pull(ci_width)
+
+  cat("GNSUM CI widths:", round(gnsum_ci_widths, 2), "\n")
+
+  # Check what the plot aggregation does
+  cat("\n=== PLOT AGGREGATION TEST ===\n")
+  plot_data_p3 <- summary_df %>%
+    filter(!is.na(mean_estimate)) %>%
+    group_by(outcome_variable, weight_method, nsum_method) %>%
+    summarise(
+      n_rows = n(),
+      median_estimate = median(mean_estimate, na.rm = TRUE),
+      q25 = quantile(mean_estimate, 0.25, na.rm = TRUE),
+      q75 = quantile(mean_estimate, 0.75, na.rm = TRUE),
+      .groups = "drop"
+    )
+
+  cat("Plot aggregation sample:\n")
+  print(plot_data_p3 %>% head(6))
+
+  return(list(
+    test_subset = test_subset,
+    plot_data_p3 = plot_data_p3
+  ))
+}
+
+# Debug visualization data filtering
+debug_plot_data <- function(bootstrap_results, verbose = TRUE) {
+  cat("=== DEBUGGING PLOT DATA FILTERING ===\n")
+
+  # Check the summary results structure
+  summary_df <- bootstrap_results$summary_results$detailed_summary
+
+  if (verbose) {
+    cat("Total rows in detailed_summary:", nrow(summary_df), "\n")
+    cat("Columns:", paste(names(summary_df), collapse = ", "), "\n\n")
+
+    # Check unique values for key grouping variables
+    cat("Unique outcome_variable:", paste(unique(summary_df$outcome_variable), collapse = ", "), "\n")
+    cat("Unique weight_method:", paste(unique(summary_df$weight_method), collapse = ", "), "\n")
+    cat("Unique nsum_method:", paste(unique(summary_df$nsum_method), collapse = ", "), "\n\n")
+
+    # Check for valid estimates by weight method
+    cat("=== VALID ESTIMATES BY WEIGHT METHOD ===\n")
+    valid_by_weight <- summary_df %>%
+      group_by(weight_method) %>%
+      summarise(
+        total_rows = n(),
+        valid_estimates = sum(!is.na(mean_estimate)),
+        pct_valid = round(100 * valid_estimates / total_rows, 1),
+        mean_est_range = if(valid_estimates > 0) paste(round(range(mean_estimate, na.rm = TRUE)), collapse = " to ") else "No valid estimates",
+        .groups = "drop"
+      )
+
+    print(valid_by_weight)
+
+    # Check for valid estimates by outcome and weight method
+    cat("\n=== VALID ESTIMATES BY OUTCOME AND WEIGHT METHOD ===\n")
+    valid_by_outcome_weight <- summary_df %>%
+      group_by(outcome_variable, weight_method) %>%
+      summarise(
+        valid_estimates = sum(!is.na(mean_estimate)),
+        mean_estimate_avg = mean(mean_estimate, na.rm = TRUE),
+        .groups = "drop"
+      ) %>%
+      filter(valid_estimates > 0)  # Only show combinations with valid estimates
+
+    print(valid_by_outcome_weight)
+
+    # Check filtering that plots use
+    cat("\n=== FILTERED DATA FOR PLOTS ===\n")
+    plot_data <- summary_df %>%
+      filter(!is.na(mean_estimate))
+
+    cat("Rows after filtering NA estimates:", nrow(plot_data), "\n")
+
+    if (nrow(plot_data) > 0) {
+      cat("Weight methods in filtered data:", paste(unique(plot_data$weight_method), collapse = ", "), "\n")
+      cat("NSUM methods in filtered data:", paste(unique(plot_data$nsum_method), collapse = ", "), "\n")
+    }
+  }
+
+  return(list(
+    summary_df = summary_df,
+    valid_by_weight = valid_by_weight,
+    valid_by_outcome_weight = valid_by_outcome_weight,
+    plot_data = plot_data
+  ))
+}
+
 # Enhanced debugging function to trace the issue step-by-step
 deep_debug_nsum <- function(boot_samples, verbose = TRUE) {
   cat("=== DEEP DEBUGGING NSUM ESTIMATION ===\n")
@@ -2107,6 +2251,25 @@ deep_debug_nsum <- function(boot_samples, verbose = TRUE) {
   )))
 }
 
+
+library(tidyverse)
+
+# Check what data the plot is using
+plot_data <- bootstrap_results$summary_results$detailed_summary
+%>%
+  filter(!is.na(mean_estimate)) %>%
+  group_by(outcome_variable, weight_method, nsum_method) %>%
+  summarise(
+    median_estimate = median(mean_estimate, na.rm = TRUE),
+    q25 = quantile(mean_estimate, 0.25, na.rm = TRUE),
+    q75 = quantile(mean_estimate, 0.75, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+# Check if all weight methods are present
+table(plot_data$weight_method)
+table(plot_data$nsum_method)
+
 # Example: Using different weight methods and adjustment factors
 #
 # Production MBSU with expert-elicited adjustment factors:
@@ -2160,18 +2323,46 @@ bootstrap_results <- run_comprehensive_nsum_bootstrap(
 
 summary(bootstrap_results$summary_results$mean_estimate)
 
-# Create all visualizations
-plots <-
-  create_nsum_comparison_plots(bootstrap_results$summary_results)
-summary_table <-
-  create_nsum_summary_table(bootstrap_results$summary_results)
+# Regenerate the fixed plots
+plots <-  create_nsum_comparison_plots(bootstrap_results$summary_results)
 
-# Assume 'plots' is a list of ggplot objects
+plots
+
+# Save them again
 for (i in seq_along(plots)) {
-  # Create a filename for each plot
-  fname <- paste0("comparison_plot_", i, ".png")
-  # Save the plot
-  ggsave(filename = fname, plot = plots[[i]], width = 8, height = 6, dpi = 300)
+  fname <- paste0("comparison_plot_fixed_", i, ".png")
+  ggsave(filename = fname, plot = plots[[i]], width = 8, height =
+           6, dpi = 300)
 }
 
 
+summary_table <-  create_nsum_summary_table(bootstrap_results$summary_results)
+
+summary_table
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Check what data the plot is using
+plot_data <- bootstrap_results$summary_results$detailed_summary %>%
+  filter(!is.na(mean_estimate)) %>%
+  group_by(outcome_variable, weight_method, nsum_method) %>%
+  summarise(
+    median_estimate = median(mean_estimate, na.rm = TRUE),
+    q25 = quantile(mean_estimate, 0.25, na.rm = TRUE),
+    q75 = quantile(mean_estimate, 0.75, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+# Check if all weight methods are present
+table(plot_data$weight_method)
+table(plot_data$nsum_method)
