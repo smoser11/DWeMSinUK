@@ -2255,8 +2255,7 @@ deep_debug_nsum <- function(boot_samples, verbose = TRUE) {
 library(tidyverse)
 
 # Check what data the plot is using
-plot_data <- bootstrap_results$summary_results$detailed_summary
-%>%
+plot_data <- bootstrap_results$summary_results$detailed_summary %>%
   filter(!is.na(mean_estimate)) %>%
   group_by(outcome_variable, weight_method, nsum_method) %>%
   summarise(
