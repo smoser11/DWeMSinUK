@@ -32,7 +32,121 @@ if (!SKIP_EXECUTION) {
 # FIX MISSING RDS WEIGHTS IN BOOTSTRAP SAMPLES
 # ==============================================================================
 
-add_rds_weights_to_bootstrap_samples <- function(boot_samples, original_data = NULL) {
+add_rds_weights_to_bootstrap_samples_SIMPLE <- function(boot_samples, original_data_path = NULL) {
+  cat("=== SIMPLE RDS WEIGHT MAPPING APPROACH ===\n")
+
+  # Load original RDS data if path provided
+  if (!is.null(original_data_path) && file.exists(original_data_path)) {
+    cat("Loading original RDS data from:", original_data_path, "\n")
+    load(original_data_path)
+
+    # Try to find the RDS object
+    if (exists("prepared_data")) {
+      original_rds <- prepared_data
+    } else if (exists("rds_object")) {
+      original_rds <- rds_object
+    } else {
+      stop("Could not find RDS object in loaded data")
+    }
+  } else {
+    # Try to find existing RDS data
+    possible_files <- c(
+      here::here("data", "processed", "prepared_data.RData"),
+      here::here("data", "processed", "rds_object.RData")
+    )
+
+    original_rds <- NULL
+    for (file in possible_files) {
+      if (file.exists(file)) {
+        cat("Loading:", file, "\n")
+        load(file)
+        if (exists("prepared_data")) {
+          original_rds <- prepared_data
+          break
+        } else if (exists("rds_object")) {
+          original_rds <- rds_object
+          break
+        }
+      }
+    }
+
+    if (is.null(original_rds)) {
+      stop("Could not find original RDS data file")
+    }
+  }
+
+  cat("Original RDS data class:", class(original_rds)[1], "\n")
+  cat("Original RDS data dimensions:", nrow(original_rds), "x", ncol(original_rds), "\n")
+
+  # Calculate weights from original RDS object
+  cat("Calculating RDS weights from original data...\n")
+  tryCatch({
+    weights_vh <- vh.weights(original_rds)
+    weights_rds_i <- rds.I.weights(original_rds)
+    weights_rds_ii <- rds.II.weights(original_rds)
+    weights_rds_ss <- compute.weights(original_rds, weight.type = "Gile's SS")
+
+    cat("Successfully calculated all RDS weight types\n")
+
+    # Create weight lookup table
+    weight_lookup <- data.frame(
+      id = as.numeric(row.names(original_rds)),
+      weight_vh = as.numeric(weights_vh),
+      weight_rds_i = as.numeric(weights_rds_i),
+      weight_rds_ii = as.numeric(weights_rds_ii),
+      weight_rds_ss = as.numeric(weights_rds_ss)
+    )
+
+    cat("Weight lookup table created with", nrow(weight_lookup), "rows\n")
+    cat("Sample weight values:\n")
+    print(head(weight_lookup))
+
+  }, error = function(e) {
+    stop("Failed to calculate RDS weights from original data: ", e$message)
+  })
+
+  # Map weights to bootstrap samples
+  cat("Mapping weights to", length(boot_samples), "bootstrap samples...\n")
+
+  boot_samples_with_weights <- lapply(seq_along(boot_samples), function(i) {
+    sample <- boot_samples[[i]]
+
+    # Merge weights by ID
+    if ("id" %in% names(sample)) {
+      sample_with_weights <- merge(sample, weight_lookup, by = "id", all.x = TRUE, suffixes = c("", "_new"))
+
+      # Replace old weight columns if they exist
+      sample_with_weights$weight_vh <- sample_with_weights$weight_vh_new %||% sample_with_weights$weight_vh
+      sample_with_weights$weight_rds_i <- sample_with_weights$weight_rds_i_new %||% sample_with_weights$weight_rds_i
+      sample_with_weights$weight_rds_ii <- sample_with_weights$weight_rds_ii_new %||% sample_with_weights$weight_rds_ii
+      sample_with_weights$weight_rds_ss <- sample_with_weights$weight_rds_ss_new %||% sample_with_weights$weight_rds_ss
+
+      # Remove temporary columns
+      temp_cols <- grep("_new$", names(sample_with_weights), value = TRUE)
+      sample_with_weights[temp_cols] <- NULL
+
+      return(sample_with_weights)
+    } else {
+      warning("Bootstrap sample ", i, " missing 'id' column - cannot map weights")
+      return(sample)
+    }
+  })
+
+  cat("Successfully mapped weights to all bootstrap samples\n")
+  return(boot_samples_with_weights)
+}
+
+add_rds_weights_to_bootstrap_samples <- function(boot_samples, original_data = NULL, force_recalculate = FALSE) {
+  cat("=== Adding RDS Weights to Bootstrap Samples ===\n")
+
+  # First, check what we're working with
+  if (is.list(boot_samples) && !is.data.frame(boot_samples)) {
+    cat("Processing", length(boot_samples), "bootstrap samples\n")
+    sample_classes <- sapply(boot_samples[1:min(3, length(boot_samples))], function(x) class(x)[1])
+    cat("Sample classes:", paste(unique(sample_classes), collapse = ", "), "\n")
+  } else {
+    cat("Processing single data frame\n")
+  }
   cat("=== Adding Missing RDS Weights to Bootstrap Samples ===\n")
 
   # Handle both single data frame and list of bootstrap samples
@@ -50,9 +164,14 @@ add_rds_weights_to_bootstrap_samples <- function(boot_samples, original_data = N
   weight_cols <- c("weight_vh", "weight_rds_i", "weight_rds_ii", "weight_rds_ss")
   missing_weights <- setdiff(weight_cols, colnames(first_sample))
 
-  if (length(missing_weights) == 0) {
+  if (length(missing_weights) == 0 && !force_recalculate) {
     cat("All RDS weights already present in bootstrap samples.\n")
+    cat("Use force_recalculate = TRUE to recalculate existing weights.\n")
     return(boot_samples)
+  }
+
+  if (force_recalculate) {
+    cat("Force recalculation enabled - will recalculate all RDS weights.\n")
   }
 
   cat("Missing weight columns:", paste(missing_weights, collapse = ", "), "\n")
@@ -77,7 +196,7 @@ add_rds_weights_to_bootstrap_samples <- function(boot_samples, original_data = N
           weights_vh <- vh.weights(sample)
           weights_rds_i <- rds.I.weights(sample)
           weights_rds_ii <- rds.II.weights(sample)
-          weights_rds_ss <- compute.weights(sample, weight.type = "Gille's SS")
+          weights_rds_ss <- compute.weights(sample, weight.type = "Gile's SS")
 
           # Add weights as new columns
           sample$weight_vh <- as.numeric(weights_vh)
@@ -163,10 +282,10 @@ add_rds_weights_to_bootstrap_samples <- function(boot_samples, original_data = N
   # Use original data approach if bootstrap samples are not RDS objects
   if (class(original_data)[1] == "rds.data.frame") {
     cat("Calculating RDS weights from original RDS object...\n")
-    weights_vh <- rds.i.weights(original_data)
-    weights_rds_i <- rds.i.weights(original_data)
-    weights_rds_ii <- rds.iI.weights(original_data)
-    weights_rds_ss <- RDS.SS.weights(original_data)
+    weights_vh <- vh.weights(original_data)
+    weights_rds_i <- rds.I.weights(original_data)
+    weights_rds_ii <- rds.II.weights(original_data)
+    weights_rds_ss <- compute.weights(original_data, weight.type = "Gile's SS")
 
     weight_df <- data.frame(
       id = as.numeric(row.names(original_data)),
@@ -1994,6 +2113,50 @@ debug_estimation_functions <- function(boot_samples, verbose = TRUE) {
   ))
 }
 
+# Debug weight columns in bootstrap samples
+debug_weight_columns <- function(boot_samples, verbose = TRUE) {
+  cat("=== DEBUGGING WEIGHT COLUMNS IN BOOTSTRAP SAMPLES ===\n")
+
+  # Check first bootstrap sample
+  sample1 <- boot_samples[[1]]
+
+  cat("Sample 1 dimensions:", nrow(sample1), "x", ncol(sample1), "\n")
+  cat("Available columns:", paste(names(sample1), collapse = ", "), "\n")
+
+  # Check for weight columns
+  weight_cols <- c("weight_vh", "weight_rds_i", "weight_rds_ii", "weight_rds_ss")
+  available_weights <- weight_cols[weight_cols %in% names(sample1)]
+
+  cat("Available weight columns:", paste(available_weights, collapse = ", "), "\n")
+
+  if (length(available_weights) > 0) {
+    cat("\nWeight statistics for first 5 observations:\n")
+    for (wcol in available_weights) {
+      weight_vals <- sample1[[wcol]][1:5]
+      cat(wcol, ":", paste(round(weight_vals, 6), collapse = ", "), "\n")
+    }
+
+    # Check if all weight methods have identical values
+    cat("\nChecking if weight methods are identical:\n")
+    for (i in 1:(length(available_weights)-1)) {
+      for (j in (i+1):length(available_weights)) {
+        col1 <- available_weights[i]
+        col2 <- available_weights[j]
+        are_identical <- all(sample1[[col1]] == sample1[[col2]], na.rm = TRUE)
+        cat(col1, "==", col2, ":", are_identical, "\n")
+      }
+    }
+  } else {
+    cat("ERROR: No weight columns found in bootstrap samples!\n")
+  }
+
+  return(list(
+    sample_dims = dim(sample1),
+    columns = names(sample1),
+    available_weights = available_weights
+  ))
+}
+
 # Debug the actual values being plotted
 debug_plot_values <- function(bootstrap_results, verbose = TRUE) {
   cat("=== DEBUGGING ACTUAL PLOT VALUES ===\n")
@@ -2365,3 +2528,7 @@ plot_data <- bootstrap_results$summary_results$detailed_summary %>%
 # Check if all weight methods are present
 table(plot_data$weight_method)
 table(plot_data$nsum_method)
+
+
+debug_values <- debug_plot_values(bootstrap_results)
+debug_values
