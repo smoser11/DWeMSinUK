@@ -2165,3 +2165,13 @@ plots <-
   create_nsum_comparison_plots(bootstrap_results$summary_results)
 summary_table <-
   create_nsum_summary_table(bootstrap_results$summary_results)
+
+# Assume 'plots' is a list of ggplot objects
+for (i in seq_along(plots)) {
+  # Create a filename for each plot
+  fname <- paste0("comparison_plot_", i, ".png")
+  # Save the plot
+  ggsave(filename = fname, plot = plots[[i]], width = 8, height = 6, dpi = 300)
+}
+
+
