@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Caroline Emberson">
+<meta name="author" content="Scott Moser">
+
+<title>Quantifying Hidden Exploitation: Dual-Method Prevalence Estimates of Modern Slavery Risk Among UK Domestic Workers</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="IJOPM_paperDraft_202050926_files/libs/clipboard/clipboard.min.js"></script>
+<script src="IJOPM_paperDraft_202050926_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="IJOPM_paperDraft_202050926_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="IJOPM_paperDraft_202050926_files/libs/quarto-html/popper.min.js"></script>
+<script src="IJOPM_paperDraft_202050926_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="IJOPM_paperDraft_202050926_files/libs/quarto-html/anchor.min.js"></script>
+<link href="IJOPM_paperDraft_202050926_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="IJOPM_paperDraft_202050926_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="IJOPM_paperDraft_202050926_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="IJOPM_paperDraft_202050926_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="IJOPM_paperDraft_202050926_files/libs/bootstrap/bootstrap-4696fb83efba3c5271bb3c7b671a2c88.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#conceptualising-labour-exploitation-and-the-degree-of-risk" id="toc-conceptualising-labour-exploitation-and-the-degree-of-risk" class="nav-link" data-scroll-target="#conceptualising-labour-exploitation-and-the-degree-of-risk">Conceptualising Labour Exploitation and the Degree of Risk</a></li>
+  </ul></li>
+  <li><a href="#evaluating-the-degree-of-risk" id="toc-evaluating-the-degree-of-risk" class="nav-link" data-scroll-target="#evaluating-the-degree-of-risk">Evaluating the Degree of Risk</a>
+  <ul class="collapse">
+  <li><a href="#case-setting-labour-exploitation-risk-among-transnational-migrant-domestic-workers-in-the-uk" id="toc-case-setting-labour-exploitation-risk-among-transnational-migrant-domestic-workers-in-the-uk" class="nav-link" data-scroll-target="#case-setting-labour-exploitation-risk-among-transnational-migrant-domestic-workers-in-the-uk">Case Setting: Labour Exploitation Risk Among Transnational Migrant Domestic Workers In The UK</a></li>
+  </ul></li>
+  <li><a href="#research-methods" id="toc-research-methods" class="nav-link" data-scroll-target="#research-methods">Research Methods</a>
+  <ul class="collapse">
+  <li><a href="#respondent-driven-sampling-rds-and-survey-method" id="toc-respondent-driven-sampling-rds-and-survey-method" class="nav-link" data-scroll-target="#respondent-driven-sampling-rds-and-survey-method">Respondent-Driven Sampling (RDS) And Survey Method</a></li>
+  <li><a href="#initial-sample-selection" id="toc-initial-sample-selection" class="nav-link" data-scroll-target="#initial-sample-selection">Initial Sample Selection</a></li>
+  <li><a href="#survey-incentives-incentive-design-and-participation-verification" id="toc-survey-incentives-incentive-design-and-participation-verification" class="nav-link" data-scroll-target="#survey-incentives-incentive-design-and-participation-verification">Survey Incentives: Incentive Design and Participation Verification</a></li>
+  </ul></li>
+  <li><a href="#data-analysis" id="toc-data-analysis" class="nav-link" data-scroll-target="#data-analysis">Data Analysis</a>
+  <ul class="collapse">
+  <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics">Descriptive Statistics</a></li>
+  <li><a href="#network-structure" id="toc-network-structure" class="nav-link" data-scroll-target="#network-structure">Network Structure</a></li>
+  </ul></li>
+  <li><a href="#findings" id="toc-findings" class="nav-link" data-scroll-target="#findings">Findings</a>
+  <ul class="collapse">
+  <li><a href="#point-estimation-and-confidence-intervals" id="toc-point-estimation-and-confidence-intervals" class="nav-link" data-scroll-target="#point-estimation-and-confidence-intervals">Point Estimation and Confidence Intervals</a></li>
+  <li><a href="#risk-index" id="toc-risk-index" class="nav-link" data-scroll-target="#risk-index">Risk Index</a></li>
+  </ul></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a>
+  <ul class="collapse">
+  <li><a href="#implications-for-policy" id="toc-implications-for-policy" class="nav-link" data-scroll-target="#implications-for-policy">Implications for Policy</a></li>
+  <li><a href="#implications-for-practice" id="toc-implications-for-practice" class="nav-link" data-scroll-target="#implications-for-practice">Implications for Practice</a></li>
+  <li><a href="#further-research" id="toc-further-research" class="nav-link" data-scroll-target="#further-research">Further Research</a></li>
+  <li><a href="#limitations-of-the-study" id="toc-limitations-of-the-study" class="nav-link" data-scroll-target="#limitations-of-the-study">Limitations of the Study</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#appendix-a" id="toc-appendix-a" class="nav-link" data-scroll-target="#appendix-a">Appendix A</a>
+  <ul class="collapse">
+  <li><a href="#the-survey" id="toc-the-survey" class="nav-link" data-scroll-target="#the-survey">The Survey</a></li>
+  </ul></li>
+  <li><a href="#appendix-b" id="toc-appendix-b" class="nav-link" data-scroll-target="#appendix-b">Appendix B</a>
+  <ul class="collapse">
+  <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link" data-scroll-target="#executive-summary">Executive Summary</a></li>
+  <li><a href="#sample-characteristics" id="toc-sample-characteristics" class="nav-link" data-scroll-target="#sample-characteristics">Sample Characteristics</a></li>
+  <li><a href="#rds-estimation-results" id="toc-rds-estimation-results" class="nav-link" data-scroll-target="#rds-estimation-results">RDS Estimation Results</a></li>
+  </ul></li>
+  <li><a href="#appendix-c-bootstrap-estimation-for-network-scale-up-using-rds-data" id="toc-appendix-c-bootstrap-estimation-for-network-scale-up-using-rds-data" class="nav-link" data-scroll-target="#appendix-c-bootstrap-estimation-for-network-scale-up-using-rds-data">Appendix C: Bootstrap Estimation for Network Scale-Up Using RDS Data</a>
+  <ul class="collapse">
+  <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1">Introduction</a></li>
+  <li><a href="#step-1-resampling-the-rds-sample" id="toc-step-1-resampling-the-rds-sample" class="nav-link" data-scroll-target="#step-1-resampling-the-rds-sample">Step 1: Resampling the RDS Sample</a></li>
+  <li><a href="#step-2-recalculating-weights" id="toc-step-2-recalculating-weights" class="nav-link" data-scroll-target="#step-2-recalculating-weights">Step 2: Recalculating Weights</a></li>
+  <li><a href="#step-3-nsum-estimation" id="toc-step-3-nsum-estimation" class="nav-link" data-scroll-target="#step-3-nsum-estimation">Step 3: NSUM Estimation</a></li>
+  <li><a href="#version-2" id="toc-version-2" class="nav-link" data-scroll-target="#version-2">Version 2</a></li>
+  </ul></li>
+  <li><a href="#bootstrap-based-uncertainty-estimation-for-nsum-with-rds-samples" id="toc-bootstrap-based-uncertainty-estimation-for-nsum-with-rds-samples" class="nav-link" data-scroll-target="#bootstrap-based-uncertainty-estimation-for-nsum-with-rds-samples">Bootstrap-Based Uncertainty Estimation for NSUM with RDS Samples</a>
+  <ul class="collapse">
+  <li><a href="#introduction-2" id="toc-introduction-2" class="nav-link" data-scroll-target="#introduction-2">1. Introduction</a></li>
+  <li><a href="#the-three-step-bootstrap-procedure" id="toc-the-three-step-bootstrap-procedure" class="nav-link" data-scroll-target="#the-three-step-bootstrap-procedure">2. The Three-Step Bootstrap Procedure</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="IJOPM_paperDraft_202050926.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="IJOPM_paperDraft_202050926.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Quantifying Hidden Exploitation: Dual-Method Prevalence Estimates of Modern Slavery Risk Among UK Domestic Workers<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h1>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Authors</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Caroline Emberson </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            UoN
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Scott Moser </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            UoN
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">26, September 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- NOTES: (1)custom placement of Endnotes only works for `html_document(2)` -- not pdf_document   (2) boxes added -> uses `\usepackage{framed}` for LaTeX-ing -- see https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html  (3)    -->
+<!-- As discussed in the [this footnote](#footnote1)  the results are significant.[^11] -->
+<!-- [^11]: <a name="footnote1"></a>Your detailed footnote text goes here. -->
+<!-- https://tex.stackexchange.com/questions/452552/algorithm-pseudocode-in-markdown -->
+<div style="page-break-after: always;"></div>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Labour exploitation has been defined as ‘work situations that deviate significantly from standard working conditions as defined by legislation or other binding legal regulations, concerning in particular remuneration, working hours, leave entitlements, health and safety standards and decent treatment’ <span class="citation" data-cites="european_union_for_fundamental_rights_severe_2015">(<a href="#ref-european_union_for_fundamental_rights_severe_2015" role="doc-biblioref">European Union for Fundamental Rights 2015, 10</a>)</span>. In the operations and supply chain management literature, businesses’ respect for these kinds of employee labour rights began with studies focused upon labour rights transgressions related to risk reduction and risk communication and considered how to improve employees’ health and safety <span class="citation" data-cites="chinander_aligning_2001 wolf_operationalizing_2001">(<a href="#ref-chinander_aligning_2001" role="doc-biblioref">Chinander 2001</a>; <a href="#ref-wolf_operationalizing_2001" role="doc-biblioref">Wolf 2001</a>)</span>. Recently, more serious labour rights abuses have come to the fore with studies examining the challenges of severe labour abuse under the umbrella term ‘modern slavery’ <span class="citation" data-cites="gold_modern_2015 new_modern_2015 benstead_horizontal_2018 stevenson_modern_2018">(<a href="#ref-gold_modern_2015" role="doc-biblioref">Gold, Trautrims, and Trodd 2015</a>; <a href="#ref-new_modern_2015" role="doc-biblioref">New 2015</a>; <a href="#ref-benstead_horizontal_2018" role="doc-biblioref">Benstead, Hendry, and Stevenson 2018</a>; <a href="#ref-stevenson_modern_2018" role="doc-biblioref">Stevenson and Cole 2018</a>)</span>. While this literature offers important insights into these severe forms of labour exploitation in global supply chains, the wider social sustainability literature has been criticised for taking a de-humanised approach to the understanding of workers and their working conditions (<span class="citation" data-cites="soundararajan_humanizing_2021">Soundararajan, Wilhelm, and Crane (<a href="#ref-soundararajan_humanizing_2021" role="doc-biblioref">2021</a>)</span>). Perhaps as a result, little attention has been paid to workers’ experiences of severe forms of labour exploitation in the literature to date. While recent projects seek to examine the phenomenon of worker voice in factory settings (<span class="citation" data-cites="leverhulme_trust_research_2022">Leverhulme Trust (<a href="#ref-leverhulme_trust_research_2022" role="doc-biblioref">2022</a>)</span>), nowhere are the realities of individual workers’ experiences of employer exploitation brought into sharper relief than in the setting of domestic work in private households.</p>
+<p>The authors of the Global Slavery Index estimate that there are seventy-six million people employed in domestic work worldwide (<span class="citation" data-cites="international_labour_organization_global_2022">International Labour Organization, Walk Free, and Institute of Migration (<a href="#ref-international_labour_organization_global_2022" role="doc-biblioref">2022</a>)</span>).<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> According to <span class="citation" data-cites="bonnet_domestic_2022">Bonnet, Carre, and Vanek (<a href="#ref-bonnet_domestic_2022" role="doc-biblioref">2022</a>)</span>, eighty percent of this domestic work is unregulated and informal. Labour exploitation has been identified as an extensive global problem within the sector, with domestic work identified as one of five private sector groupings which contribute the most to forced labour. Defined in the ILO Forced Labour Convention, 1930 No.29, forced or compulsory labour is ‘all work or service which is exacted from a person under the threat of a penalty and for which the person has not offered himself or herself voluntarily’ (<span class="citation" data-cites="international_labour_organization_global_2022">International Labour Organization, Walk Free, and Institute of Migration (<a href="#ref-international_labour_organization_global_2022" role="doc-biblioref">2022</a>)</span>). Seventy-six percent of domestic workers are women, and these workers represent four percent of the total female workforce (<span class="citation" data-cites="international_labour_organization_global_2022">International Labour Organization, Walk Free, and Institute of Migration (<a href="#ref-international_labour_organization_global_2022" role="doc-biblioref">2022</a>)</span>). Indeed, women in forced labour are much more likely to be in domestic work than in any other occupation <span class="citation" data-cites="international_labour_organization_global_2022">(<a href="#ref-international_labour_organization_global_2022" role="doc-biblioref">International Labour Organization, Walk Free, and Institute of Migration 2022</a>)</span>. The ILO suggest that female domestic workers may be coerced through non-payment of wages; abuse of vulnerability; subjected to physical and sexual violence or experience threats against their family members. Such severe forms of labour exploitation may be present alongside other, perhaps less severe but equally illegal, practices which constitute various forms of labour abuse. The criminalisation of both labour exploitation and abuse in a domestic setting has developed in recent times, with legislation enacted in the United Kingdom (UK), Europe, Australia and Norway to criminalise such severe exploitation under the term ‘modern slavery’. However, even where modern slavery laws are in place, reliance on traditional, inspection-led, approaches to detection designed primarily to ensure labour rights compliance within communal workplaces such as factories mean that the number of reported cases of labour exploitation in private dwellings may well severely underestimate actual exploitation levels. This article aims to contribute to a more nuanced understanding of how survey techniques may be developed to improve understanding of the realities of workers’ conditions by demonstrating the use of a statistically robust estimation of the nature and proportion of labour exploitation and abuse among domestic workers in the UK. This setting was chosen due to long-standing national legislation criminalising modern slavery introduced to the UK in 2015. Despite, or perhaps because of this legislation, in recent years the number of potential victims entering the UK’s National Referral Mechanism (NRM), a scheme which provides government support for those suspected to be modern slavery survivors, has continued to increase. Nineteen thousand, one hundred and twenty-five potential victims were recorded in 2024: the highest annual figure since the NRM began <span class="citation" data-cites="home_office_modern_2025">(<a href="#ref-home_office_modern_2025" role="doc-biblioref">Home Office 2025</a>)</span>. In 2024, for the first time the number of cases of potential modern slavery among females handled by the charity Unseen, who run the UK’s modern slavery helpline, were more prevalent than those among men (<span class="citation" data-cites="carter_women_2025">Carter (<a href="#ref-carter_women_2025" role="doc-biblioref">2025</a>)</span>). Despite these worrying headline statistics, and the persistence of specific concerns about high levels of exploitation among domestic workers in the grey literature (<span class="citation" data-cites="kalayaan_new_2008">Kalayaan (<a href="#ref-kalayaan_new_2008" role="doc-biblioref">2008</a>)</span>; <span class="citation" data-cites="mantouvalou_modern_2016">Mantouvalou (<a href="#ref-mantouvalou_modern_2016" role="doc-biblioref">2016</a>)</span>; <span class="citation" data-cites="latin_american_womens_rights_service_behind_2023">Latin American Women’s Rights Service (<a href="#ref-latin_american_womens_rights_service_behind_2023" role="doc-biblioref">2023</a>)</span>), to our knowledge no-one has yet estimated the nature and extent of labour exploitation and abuse that may exist among domestic workers in the UK.</p>
+<p>In contrast to overseas factory workers in globally dispersed, product, supply chains, many service workers engaged in domestic work have migrated to work in the UK. These transnational workers enter on restricted visas where their employment—and their right to remain in the country—is tied to their continuing employment. It is now ten years since the UK’s Modern Slavery Act was enacted. During its passage through parliament, those advocating for the rights of domestic workers were successful in expanding the final category boundaries of the legislation to include, in Section 53, the specific definition of (overseas) domestic workers as modern slavery victims (<span class="citation" data-cites="caruana_boundaries_2025">Caruana, Crane, and Ingram (<a href="#ref-caruana_boundaries_2025" role="doc-biblioref">2025</a>)</span>). These transnational migrants are at particular risk of exploitation due to regulatory visa restrictions and intersecting structural issues related to their gender, the relative isolation of domestic work and a lack of supportive social networks. This can mean that they fall out of legal migratory status. Due to the social stigma attached to such illegal working, transnational workers remaining in the UK without the right to work may be considered a hidden, hard-to-reach, population. Extracting a sample of domestic workers which includes this group raises difficulties when trying to employ the normal statistical sampling methods considered necessary for robust prevalence estimation. Perhaps due to these sampling difficulties, we know relatively little about the nature of labour exploitation among this particularly at-risk group of workers. Fortunately, there has been significant interest in the development of alternative methods for prevalence estimation which include such hard-to-reach groups, with many scholars advocating and developing the use of respondent-driven sampling (RDS) techniques to support statistically robust estimators.</p>
+<p>In this paper, we make two specific contributions to the operations and supply chain management literature. First, we demonstrate the use of RDS coupled with Network Scale-up Methods (N-SUM) to reach and sample respondents’ views of their working conditions among these, predominantly female, transnational migrant domestic workers. We use the data we obtain from these respondents to show how such a survey can be used to estimate the proportion of workers experiencing labour exploitation. Second, we begin to capture the nature and extent of modern slavery as voiced by domestic service workers thereby, we believe, expanding the nascent literature on worker voice which has, in the main, focussed primarily upon factory workers (<span class="citation" data-cites="stephens_theorising_2024">Stephens et al. (<a href="#ref-stephens_theorising_2024" role="doc-biblioref">2024</a>)</span>). These contributions not only extend our understanding of the risks of labour exploitation and abuse among service workers engaged in domestic settings but also show how it is possible to shed light on the severity of the individuals’ experience of exploitation through the construction of a novel risk index. The remainder of this paper is structured as follows. First, we describe our conceptual framework and introduce the context of our study in more detail, highlighting what is already known about the current population of domestic workers in the UK and the conditions in which they work. Next, we describe our research methods. We review the development of the respondent-driven sampling (RDS) techniques we used and explain why this sampling method is suitable for our study. We then describe our survey methods, including how we designed our survey instrument, contacted our sample seeds and analysed our data. We then present and discuss our findings, detailing the proportional estimate that we calculated and the risk index we constructed. In our discussion, we expand upon the implications of our findings for government policy, enforcement practices and further research, including how these methods may be used in future studies of labour exploitation in other sectoral and geographic contexts. The limitations of our study are outlined, before, finally, we conclude our article.</p>
+<section id="conceptualising-labour-exploitation-and-the-degree-of-risk" class="level3">
+<h3 class="anchored" data-anchor-id="conceptualising-labour-exploitation-and-the-degree-of-risk">Conceptualising Labour Exploitation and the Degree of Risk</h3>
+<p>Modern slavery has been criticised by some for its overly extensive scope: encapsulating a broad range of divergent sub-categories of exploitation (<span class="citation" data-cites="oconnell_davidson_margins_2015">O’Connell Davidson (<a href="#ref-oconnell_davidson_margins_2015" role="doc-biblioref">2015</a>)</span>; <span class="citation" data-cites="gutierrez-huerter_o_change_2023">Gutierrez-Huerter O, Gold, and Trautrims (<a href="#ref-gutierrez-huerter_o_change_2023" role="doc-biblioref">2023</a>)</span>). For this reason, we used the International Labour Organization’s (<span class="citation" data-cites="ILO11-indicators">I.L.O. (<a href="#ref-ILO11-indicators" role="doc-biblioref">2012</a>)</span>)<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> ‘Indicators of Forced Labour’ to identify the potential for severe labour exploitation and as a basis for the quantification of our labour exploitation and abuse risk index. The ILO identify eleven indicators designed to help understand how forced labour arises and how it affects victims. These indicators include: abuse of vulnerability; deception; restriction of movement; isolation; physical and sexual violence; intimidation and threats; retention of identity documents; withholding of wages; debt bondage; abusive working and living conditions and excessive overtime. According to the ILO, the presence of a single indicator in any given situation may in some cases imply the existence of forced labour. However, it also suggests that in other cases it may be necessary to look for several indications which, taken together, may point to a case of forced labour. We seek to refine this statement through the construction of a composite index by which means a degree of risk related to the likelihood of a domestic worker experiencing this most severe form of exploitation may be distinguished from the likely occurrence of less severe, though similarly illegal, forms of labour abuse.</p>
+</section>
+</section>
+<section id="evaluating-the-degree-of-risk" class="level2">
+<h2 class="anchored" data-anchor-id="evaluating-the-degree-of-risk">Evaluating the Degree of Risk</h2>
+<p>The study of risk management has a long tradition in operations and supply chain management. Initially, the risks under consideration were primarily related to ensuring continuity of the supply of goods and services (see for example, <span class="citation" data-cites="juttner_supply_2003">Jüttner, Peck, and Christopher (<a href="#ref-juttner_supply_2003" role="doc-biblioref">2003</a>)</span>). Beginning with <span class="citation" data-cites="anderson_critical_2006">Anderson (<a href="#ref-anderson_critical_2006" role="doc-biblioref">2006</a>)</span> and <span class="citation" data-cites="anderson_sustainability_2009">Anderson and Anderson (<a href="#ref-anderson_sustainability_2009" role="doc-biblioref">2009</a>)</span>, however, a literature stream of sustainability-related supply chain risk management developed related specifically to the risks associated with the environment and social justice. A normative consensus related to the main stages of supply chain risk management has developed in the literature, with a five-stage sequential model typically presented. There have also been empirical studies of risk management within various industrial supply chains in the United States and India (<span class="citation" data-cites="tarei_hybrid_2018">Tarei, Thakkar, and Nag (<a href="#ref-tarei_hybrid_2018" role="doc-biblioref">2018</a>)</span>; <span class="citation" data-cites="dellana_scale_2021">Dellana, Rowe, and Liao (<a href="#ref-dellana_scale_2021" role="doc-biblioref">2021</a>)</span>), including the quantification of a risk index for the petroleum supply chain (<span class="citation" data-cites="tarei_hybrid_2018">Tarei, Thakkar, and Nag (<a href="#ref-tarei_hybrid_2018" role="doc-biblioref">2018</a>)</span>). Yet, while these authors recognize the need for responsible management and its effect on societal values, in line with other literature in the field they view risk from the perspective of the corporate supply chain rather than examining the risk of harm to the worker.</p>
+<p>In our study, we conceptualise the risk of labour exploitation from the workers’ perspective. We conceive severe forms of labour exploitation such as forced labour as one end of a spectrum ranging from illegal employment practices that constitute labour abuse, such as wage payments below legal minimum wage levels and health and safety violations, through to the likelihood of criminal exploitation recognized in the UK as modern slavery. Our assessment of this personal risk permits a degree of risk to be assigned to various clusters of forced labour indicators with the more indicators present, the stronger the likelihood that the working conditions may be considered exploitative. Our approach, therefore, includes, but goes beyond, assessing the likelihood of forced labour by simply quantifying the proportion of survivors entering the UK’s National Referral Mechanism (NRM): a government system for survivor support set up to identify whether there are positive grounds for the identification of Modern Slavery. In our method, an NRM referral is used as the strongest indicator of modern slavery risk, with lesser risks assessed according to the degree to which cumulative indicators of forced labour are reported.</p>
+<section id="case-setting-labour-exploitation-risk-among-transnational-migrant-domestic-workers-in-the-uk" class="level3">
+<h3 class="anchored" data-anchor-id="case-setting-labour-exploitation-risk-among-transnational-migrant-domestic-workers-in-the-uk">Case Setting: Labour Exploitation Risk Among Transnational Migrant Domestic Workers In The UK</h3>
+<p>Domestic work forms part of a broader industrial category of Personal and Household Service work (PHS). Work in this category includes those employed in ‘social work activities without accommodation’ and ‘activities of households as employers of domestic personnel’ (<span class="citation" data-cites="european_commission_staff_2012">European Commission (<a href="#ref-european_commission_staff_2012" role="doc-biblioref">2012</a>)</span>). In 2017, an estimated 980,000 people were engaged in PHS work in the UK (<span class="citation" data-cites="manoudi_analysis_2018">Manoudi et al. (<a href="#ref-manoudi_analysis_2018" role="doc-biblioref">2018</a>)</span>). <span class="citation" data-cites="manoudi_analysis_2018">Manoudi et al. (<a href="#ref-manoudi_analysis_2018" role="doc-biblioref">2018</a>)</span> highlight that the PHS sector is dominated by women and migrants, with many undeclared foreign workers. Detailed statistics related to the country of origin of domestic workers migrating to work in PHS in the UK are difficult to isolate before 2019. Since that time, annual migration has fluctuated – falling sharply in 2021 due in part to the COVID-19 pandemic, before later rising again above pre-pandemic levels. In the year to December 2022, the UK Home Office reported that it had issued 18,533 Overseas Domestic Worker visas (<span class="citation" data-cites="home_office_why_2023">Home Office (<a href="#ref-home_office_why_2023" role="doc-biblioref">2023</a>)</span>). These domestic workers came from various countries in South America and Asia, including many from the Philippines.</p>
+<p>In 2023, <span class="citation" data-cites="strauss_britain_2023">Strauss and Cocco (<a href="#ref-strauss_britain_2023" role="doc-biblioref">2023</a>)</span> reported a big shift in the source countries of migrants arriving in the UK on the Overseas Domestic Worker and other types of worker visas. Transnational domestic workers from the Philippines and India accounted for the single largest number of applications granted (10,186 and 3,858 visas respectively), followed by smaller, but still significant, numbers of workers arriving from Bangladesh (465), Nigeria (446), Sri Lanka (444), Egypt (422), and Ethiopia (285). In the same period, smaller numbers of visa applications to work as a domestic worker in the UK were also accepted from workers from other source countries including, but not limited to, the Sudan, Nepal, Ghana, Kenya, Lebanon, Eritrea, Iran, Turkey, Yemen, Malaysia, Thailand, and Morocco. This post-Brexit increase in the diversity of source countries from which transnational workers are drawn makes a more detailed analysis of the risk of labour exploitation in the sector both timely and more urgent.</p>
+<p>There is a long history of reports of exploitation in the domestic work sector in the UK. In 2008, the civil society organisation Kalayaan, which was formed to campaign for the formal recognition of migrant domestic workers’ rights in the UK, reported on the impact of proposed changes to the UK immigration system on migrant domestic workers (<span class="citation" data-cites="kalayaan_new_2008">Kalayaan (<a href="#ref-kalayaan_new_2008" role="doc-biblioref">2008</a>)</span>). Their report highlights government recognition of documented and unacceptable levels of abuse and exploitation among domestic workers in the UK as early as 1996. At this stage, new policies, including the development of a specialised visa allowing domestic workers to change employer during their stay were introduced. However, in 2012, these visa conditions were modified, tying domestic workers to a single employer and restricting the length of time that they are permitted to remain in the country to a period of six months (<span class="citation" data-cites="gower_calls_2016">Gower (<a href="#ref-gower_calls_2016" role="doc-biblioref">2016</a>)</span>). Overseas domestic worker visa holders are now, again, permitted to change employers, but not to apply to renew their six-month long visa unless they receive a positive ‘Conclusive Grounds’ decision related to exploitation considered to be modern slavery through the UK’s National Referral Mechanism (NRM) (<span class="citation" data-cites="romero_blueprint_2025">Romero and Fisher (<a href="#ref-romero_blueprint_2025" role="doc-biblioref">2025</a>)</span>).</p>
+<p>These reports highlight the underlying reasons for migrant domestic workers’ vulnerability, including workers’ relative desperation for work; their lack of social ties; unfamiliarity with English language and culture; long working hours; lack of knowledge of their legal rights; a lack of oversight of the private home as a workplace; their work forming part of the informal economy; their reliance on their employer for permission to work in the UK; and their lack of recourse to public funds. As a result, migrant domestic workers are vulnerable to abuse ranging from minor breaches of employment and health and safety law, to physical and sexual violence, slavery, forced labour and trafficking.</p>
+<p>That these conditions may persist is evidenced by a report from another civil society organisation, the Latin American Women’s Rights Service, which describes the results from twelve in-depth interviews with Latin American domestic workers in the UK. This report depicts high levels of isolation, exploitation and abuse including a failure by employers to provide written contracts or payslips; breaches of verbal agreements; a requirement to perform different tasks from those indicated during recruitment; increasing working hours with little or no time off; excessive work days; a lack of paid holiday; many domestic workers not registered with a GP; sexual harassment in the workplace; verbal or physical abuse; employer surveillance; a lack of opportunity to change working conditions; isolation and fear of seeking help; and high reported levels of trafficking for labour exploitation (<span class="citation" data-cites="latin_american_womens_rights_service_behind_2023">Latin American Women’s Rights Service (<a href="#ref-latin_american_womens_rights_service_behind_2023" role="doc-biblioref">2023</a>)</span>).</p>
+<p>Against this backdrop, we used respondent driven sampling (RDS) as a sampling technique to recruit and survey domestic workers in the UK about the working conditions they were experiencing to estimate the nature and scale of abuse and exploitation based upon reports of their conditions by domestic workers themselves.</p>
+</section>
+</section>
+<section id="research-methods" class="level2">
+<h2 class="anchored" data-anchor-id="research-methods">Research Methods</h2>
+<p>[Scott- do feel free to edit as you see fit]</p>
+<section id="respondent-driven-sampling-rds-and-survey-method" class="level3">
+<h3 class="anchored" data-anchor-id="respondent-driven-sampling-rds-and-survey-method">Respondent-Driven Sampling (RDS) And Survey Method</h3>
+<p>Comprehensive descriptions and literature reviews of the development and use of RDS to estimate the population size of a hidden population are available elsewhere (<span class="citation" data-cites="heckathorn_comment_2011">Heckathorn (<a href="#ref-heckathorn_comment_2011" role="doc-biblioref">2011</a>)</span>; <span class="citation" data-cites="gile_methods_2018">Gile et al. (<a href="#ref-gile_methods_2018" role="doc-biblioref">2018</a>)</span>). Suffice it to say, the possibilities of the use of a one-wave snowball sampling to allow researchers to obtain a sample of personal networks was posited by <span class="citation" data-cites="frank_estimating_1994">Frank and Snijders (<a href="#ref-frank_estimating_1994" role="doc-biblioref">1994</a>)</span>. Following the identification of a set of original sample members known as seeds, <span class="citation" data-cites="heckathorn_respondent-driven_1997">Heckathorn (<a href="#ref-heckathorn_respondent-driven_1997" role="doc-biblioref">1997</a>)</span>; <span class="citation" data-cites="heckathorn_respondent-driven_2002">Heckathorn (<a href="#ref-heckathorn_respondent-driven_2002" role="doc-biblioref">2002</a>)</span> advocate the use of a double incentive to recompense participants not only for their involvement, but also for their recruitment of further participants in subsequent ‘waves’ of participation by drawing upon the social ties through which members of the hidden population are connected to each other.</p>
+<p>The typical number of original sample seeds is between two and ten: chosen as heterogeneously as possible (<span class="citation" data-cites="gile_methods_2018">Gile et al. (<a href="#ref-gile_methods_2018" role="doc-biblioref">2018</a>)</span>). Though they may be subject to both systematic and non-systematic errors, the use of snowballing methods for the study of hidden populations, with the support of monetary or symbolic rewards, has been advocated as a way of creating robust recruitment embodying diversity in characteristics such as ethnicity, gender and geographical location (<span class="citation" data-cites="heckathorn_respondent-driven_1997">Heckathorn (<a href="#ref-heckathorn_respondent-driven_1997" role="doc-biblioref">1997</a>)</span>; <span class="citation" data-cites="heckathorn_respondent-driven_2002">Heckathorn (<a href="#ref-heckathorn_respondent-driven_2002" role="doc-biblioref">2002</a>)</span>). In these papers, Heckathorn advances the development of RDS to include self-reported network size as a population estimator and bootstrapping techniques to support the development of an estimator’s confidence intervals, an approach that has since been refined by others (<span class="citation" data-cites="gile_network_2015">Gile and Handcock (<a href="#ref-gile_network_2015" role="doc-biblioref">2015</a>)</span>). Such developments derive a new class of indicators for the population mean and define a corresponding bootstrap method to estimate the errors in RDS. The resulting ‘network working model’ permits the individual’s connectedness in the network to be tested, while reducing bias with respect to the composition of the seeds. Snowball sampling is based upon the initial recruitment of the original sample selection by means of convenience. RDS also takes a non-random approach to seed selection, but relies upon the social network structure that exists between participants to produce a non-probabilistic sample (<span class="citation" data-cites="goodman_comment_2011">Goodman (<a href="#ref-goodman_comment_2011" role="doc-biblioref">2011</a>)</span>). Incentive structure is important—though this weakness is not a feature of our target hidden population, some researchers have identified that younger men with higher socio-economic status are less likely to participate (<span class="citation" data-cites="mccreesh_respondent_2013">N. McCreesh et al. (<a href="#ref-mccreesh_respondent_2013" role="doc-biblioref">2013</a>)</span>). Perhaps of more concern, RDS has been described as a risky strategy since researchers cannot be sure whether enough respondents have been recruited through subsequent waves to eliminate bias within the original sample members (<span class="citation" data-cites="vincent_estimating_2017">Vincent and Thompson (<a href="#ref-vincent_estimating_2017" role="doc-biblioref">2017</a>)</span>).</p>
+<p>RDS has been widely used to sample a variety of hidden populations, including HIV prevalence, rape and client-initiated gender-based violence among sex workers (<span class="citation" data-cites="mccreesh_evaluation_2012">Nicky McCreesh et al. (<a href="#ref-mccreesh_evaluation_2012" role="doc-biblioref">2012</a>)</span>; <span class="citation" data-cites="schwitters_prevalence_2012">Schwitters, Swaminathan, and Serwadda (<a href="#ref-schwitters_prevalence_2012" role="doc-biblioref">2012</a>)</span>). While the RDS method has proved limited when seeking to provide population heterogeneity by geographical location (<span class="citation" data-cites="mccreesh_evaluation_2011">N. McCreesh, Johnston, and Copas (<a href="#ref-mccreesh_evaluation_2011" role="doc-biblioref">2011</a>)</span>), where these population features are of lesser importance, such methods have been used successfully. RDS methods have been used to survey other migrant populations (<span class="citation" data-cites="tyldum_surveying_2021">Tyldum (<a href="#ref-tyldum_surveying_2021" role="doc-biblioref">2021</a>)</span>), while such network-based referrals have been described as the only viable method to reach many types of labour trafficking victims (<span class="citation" data-cites="zhang_measuring_2012">Zhang (<a href="#ref-zhang_measuring_2012" role="doc-biblioref">2012</a>)</span>) and have been used to research exploitation among low-wage workers in three American cities (<span class="citation" data-cites="bernhardt_broken_2009">Bernhardt, Milkman, and N. (<a href="#ref-bernhardt_broken_2009" role="doc-biblioref">2009</a>)</span>); a study of labour trafficking in migrant communities in the city of San Diego (<span class="citation" data-cites="vincent_estimating_2017">Vincent and Thompson (<a href="#ref-vincent_estimating_2017" role="doc-biblioref">2017</a>)</span>); examination of the worst forms of child labour in the Indian state of Bihar (<span class="citation" data-cites="zhang_victims_2019">Zhang et al. (<a href="#ref-zhang_victims_2019" role="doc-biblioref">2019</a>)</span>); and the commercial sexual exploitation of children in Nepal (<span class="citation" data-cites="jordan_overcoming_2020">Jordan et al. (<a href="#ref-jordan_overcoming_2020" role="doc-biblioref">2020</a>)</span>).</p>
+<p>In the following section, we describe our methods, including how we designed our survey, contacted our sample seeds, and analysed our data. Our approach can best be described as Web-based RDS (<span class="citation" data-cites="wejnert_web-based_2008">Wejnert and Heckathorn (<a href="#ref-wejnert_web-based_2008" role="doc-biblioref">2008</a>)</span>). We designed a web survey using the JISC online survey interface, suitable for our respondents to complete via a mobile phone. Composite measures to quantify the extent to which respondents were at risk of labour exploitation, including severe forms of exploitation such as forced labour, were constructed from existing exploitation typologies, notably the ILO’s Indicators (<span class="citation" data-cites="ILO11-indicators">I.L.O. (<a href="#ref-ILO11-indicators" role="doc-biblioref">2012</a>)</span>). The survey consisted of these 11 composite indicators and included questions related to domestic workers’ level of job satisfaction, employment conditions, and demographic data such as nationality, age, and gender. The main survey was conducted in the five months between February and July 2023.</p>
+</section>
+<section id="initial-sample-selection" class="level3">
+<h3 class="anchored" data-anchor-id="initial-sample-selection">Initial Sample Selection</h3>
+<p>We selected our first wave of participants nonrandomly by convenience sampling. Mobile phone numbers were used both to identify seed participants and to act as a unique identifier for those whom they referred. To avoid sample homophily, original sample members were selected from three distinct domestic worker communities. This was facilitated by civil society organisations who represented distinct domestic worker communities. One was an exclusively online community of transnational domestic workers working in the UK, the second represented UK domestic workers of Filipino origin, and the third drew its membership from the Latin American community of domestic workers, also in the UK. Along with other academics with expertise in exploitation within domestic work, representatives from these three organisations also contributed to survey question design and facilitated the piloting of an initial version of the survey (which was translated and made available in four languages: English, Spanish, Tagalog, and Portuguese) to selected domestic workers within each community.</p>
+</section>
+<section id="survey-incentives-incentive-design-and-participation-verification" class="level3">
+<h3 class="anchored" data-anchor-id="survey-incentives-incentive-design-and-participation-verification">Survey Incentives: Incentive Design and Participation Verification</h3>
+<p>A double incentive scheme rewarded respondents both for completing the questionnaire and for each referral who went on to engage with the survey. The challenge of incentive design is to set the incentive at a level that adequately rewards respondents’ time and participation, but that also avoids the risk of fraudulent participation due to too high a monetary gain (<span class="citation" data-cites="jordan_overcoming_2020">Jordan et al. (<a href="#ref-jordan_overcoming_2020" role="doc-biblioref">2020</a>)</span>). A sum of £10 was provided for survey completion with a further £5 for each successful nomination. While respondents were asked to nominate up to 10 domestic workers within their existing social network, it was the first three of these from whom participation was requested in subsequent waves. This approach is akin to the use of vouchers in face-to-face studies as advocated by <span class="citation" data-cites="thompson_new_2020">Thompson (<a href="#ref-thompson_new_2020" role="doc-biblioref">2020</a>)</span>.</p>
+<p>The ethical and practical issues related to the design and effective use of incentives for RDS among vulnerable populations has been much discussed in the literature; see, for example, <span class="citation" data-cites="wang_respondent-driven_2005">Wang et al. (<a href="#ref-wang_respondent-driven_2005" role="doc-biblioref">2005</a>)</span>; <span class="citation" data-cites="abdul-quader_effectiveness_2006">Abdul-Quader et al. (<a href="#ref-abdul-quader_effectiveness_2006" role="doc-biblioref">2006</a>)</span>; <span class="citation" data-cites="singer_incentives_2006">Singer and Bossarte (<a href="#ref-singer_incentives_2006" role="doc-biblioref">2006</a>)</span>; <span class="citation" data-cites="dejong_ethical_2009">DeJong et al. (<a href="#ref-dejong_ethical_2009" role="doc-biblioref">2009</a>)</span>; <span class="citation" data-cites="semaan_ethical_2009">Semaan et al. (<a href="#ref-semaan_ethical_2009" role="doc-biblioref">2009</a>)</span>; <span class="citation" data-cites="brunovskis_untold_2010">Brunovskis and Surtees (<a href="#ref-brunovskis_untold_2010" role="doc-biblioref">2010</a>)</span>; <span class="citation" data-cites="semaan_time-space_2010">Semaan (<a href="#ref-semaan_time-space_2010" role="doc-biblioref">2010</a>)</span>; <span class="citation" data-cites="platt_adapting_2015">Platt, Luthra, and Frere-Smith (<a href="#ref-platt_adapting_2015" role="doc-biblioref">2015</a>)</span>, including the specificities of incentive use within web-based surveys (<span class="citation" data-cites="cobanoglu_effect_2003">Cobanoglu and Cobanoglu (<a href="#ref-cobanoglu_effect_2003" role="doc-biblioref">2003</a>)</span>). Following the principles of lottery use established by <span class="citation" data-cites="brown_you_2006">Brown, Schonfeld, and Gordon (<a href="#ref-brown_you_2006" role="doc-biblioref">2006</a>)</span> and <span class="citation" data-cites="laguilles_can_2011">Laguilles, Williams, and Saunders (<a href="#ref-laguilles_can_2011" role="doc-biblioref">2011</a>)</span>, we also designed our survey to encourage the maximum extent of participation by entering all respondents completing the questionnaire into a free prize draw for £150. Research suggests that a high lottery provides the most cost-effective incentive for obtaining complete responses (<span class="citation" data-cites="gajic_cost-effectiveness_2012">Gajic, Cameron, and Hurley (<a href="#ref-gajic_cost-effectiveness_2012" role="doc-biblioref">2012</a>)</span>). While using incentives to encourage participation would seem to be desirable, it is worth noting the potential downside of respondents fabricating responses to increase their remuneration (<span class="citation" data-cites="robinson_sampling_2014">Robinson (<a href="#ref-robinson_sampling_2014" role="doc-biblioref">2014</a>)</span>). To minimise this risk, mobile phone numbers for each respondent and those whom they referred were collated, and each of these numbers was called by one of the authors of the paper to ascertain the veracity of the respondent as a migrant domestic worker.</p>
+</section>
+</section>
+<section id="data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="data-analysis">Data Analysis</h2>
+<section id="descriptive-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="descriptive-statistics">Descriptive Statistics</h3>
+<p>In total, we received completed online surveys from 97 respondents. Of these respondents, 90 identified themselves as transnational migrants. Forty-five percent regarded themselves as self-employed, 39% identified themselves as employees, and 16% categorised their employment status as that of a worker.</p>
+<p>Of the 97 respondents, 64 (66% of the total), and the largest single nationality group, reported that they had a Filipina background. Other nationalities represented included Dominican, Brazilian, Spanish, Colombian, Bolivian, Venezuelan, Cuban, and Panamanian. Female domestic workers made up 97% of the sample, with 3% of the sample comprised of male domestic workers. The age structure of the domestic workers was skewed towards those over 45 years old, with such workers representing over half of the sample (see Table 1).</p>
+</section>
+<section id="network-structure" class="level3">
+<h3 class="anchored" data-anchor-id="network-structure">Network Structure</h3>
+<p>GRAPH HERE.</p>
+</section>
+</section>
+<section id="findings" class="level2">
+<h2 class="anchored" data-anchor-id="findings">Findings</h2>
+<section id="point-estimation-and-confidence-intervals" class="level3">
+<h3 class="anchored" data-anchor-id="point-estimation-and-confidence-intervals">Point Estimation and Confidence Intervals</h3>
+</section>
+<section id="risk-index" class="level3">
+<h3 class="anchored" data-anchor-id="risk-index">Risk Index</h3>
+</section>
+</section>
+<section id="discussion" class="level2">
+<h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
+<p>[Scott to add and revise]</p>
+<section id="implications-for-policy" class="level3">
+<h3 class="anchored" data-anchor-id="implications-for-policy">Implications for Policy</h3>
+<p>The UK Government has proved reluctant to respond to calls to remove the restrictive, tied, visa conditions currently in force for those migrant workers working in the UK on the Overseas Domestic Workers visa (<span class="citation" data-cites="gower_calls_2016">Gower (<a href="#ref-gower_calls_2016" role="doc-biblioref">2016</a>)</span>). Maintaining these restrictive conditions prevents the ratification in the UK of C189, the International Convention for Domestic Workers (<span class="citation" data-cites="ILO11-indicators">I.L.O. (<a href="#ref-ILO11-indicators" role="doc-biblioref">2012</a>)</span>). If the estimates resulting from our study are correct, these visa conditions place migrant domestic workers at significant risk of serious forms of labour exploitation including, in its most severe form, exploitation that exhibits the characteristics of forced labour—legally considered a form of modern slavery.</p>
+<p>To reduce the vulnerability of transnational domestic workers to this—and other—forms of labour exploitation, we urge policy-makers to reconsider these discriminatory visa conditions and offer the same freedoms to domestic workers that are enjoyed by other groups of workers under UK law.</p>
+<p>In addition, given the vulnerabilities experienced by workers due to the private nature of the workplace, we would urge the UK government to consider the regulation of domestic worker employers.</p>
+<p>Finally, given the stigma and very real danger of deportation of those migrant domestic workers who may have fallen out of legal migration status, our evidence suggests that there is an urgent need for the UK Government to enforce a firewall between immigration control and labour exploitation if the true scale of abuse is to be made visible and the perpetrators brought to justice.</p>
+</section>
+<section id="implications-for-practice" class="level3">
+<h3 class="anchored" data-anchor-id="implications-for-practice">Implications for Practice</h3>
+<p>The UK Visa and Immigration service already offers rights-based training to migrant domestic workers via UK embassies in certain source countries. To reduce migrant domestic workers vulnerabilities, we advocate the expansion of this training both to include explicit training related to employment and labour rights within the UK and to the rapidly expanding range of new source countries from where migrant domestic workers are now drawn.</p>
+</section>
+<section id="further-research" class="level3">
+<h3 class="anchored" data-anchor-id="further-research">Further Research</h3>
+<p>We believe that web-RDS combined with statistical estimators such as NSUM offers an important method for the capture and comparison of relative proportions of labour exploitation and abuse in sectors within and beyond the UK. Network scale up methods, and potential enhancements such as Generalised network scale up estimators offer to enhance understanding, not least within operations and supply chain management research, of the extent of labour exploitation in different sectors and across industries.</p>
+</section>
+<section id="limitations-of-the-study" class="level3">
+<h3 class="anchored" data-anchor-id="limitations-of-the-study">Limitations of the Study</h3>
+<p>As with any empirical research, our study is subject to limitations. In terms of nationality, our sample is not representative of the demographics of those domestic workers employed on Overseas Domestic Worker Visas in 2022 the UK. Due to the increasing number of workers on Overseas Domestic Work visas from the Indian sub-continent, attempts were made also to seed respondents from this community. This proved difficult, with anecdotal information suggesting that domestic workers from this community rarely had access to a personal mobile phone. It is not therefore possible to infer the nature and extent of labour exploitation within this sub-section of the domestic worker population.</p>
+<p>As the network structure of our sample demonstrates, even with a well-designed incentive scheme it proved difficult to recruit respondents from these communities of domestic workers in subsequent sampling waves in the time available. Most of our respondents are therefore original sample members draw from the three domestic worker communities used to seed the survey.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<div style="page-break-after: always;"></div>
+<div style="page-break-after: always;"></div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-abdul-quader_effectiveness_2006" class="csl-entry" role="listitem">
+Abdul-Quader, A. S., Douglas D. Heckathorn, C. McKnight, H. Bramson, C. Nemeth, K. Sabin, K. Gallagher, and D. C. Jarlais. 2006. <span>“Effectiveness of Respondent-Driven Sampling for Recruiting Drug Users in New York City: Findings from a Pilot Study.”</span> <em>Journal of Urban Health</em> 83 (3): 459–76.
+</div>
+<div id="ref-anderson_critical_2006" class="csl-entry" role="listitem">
+Anderson, Dan R. 2006. <span>“The Critical Importance of Sustainability Risk Management.”</span> <em>Risk Management (00355593)</em> 53 (4): 66–74. <a href="https://search.ebscohost.com/login.aspx?direct=true&amp;db=buh&amp;AN=20781527&amp;site=ehost-live">https://search.ebscohost.com/login.aspx?direct=true&amp;db=buh&amp;AN=20781527&amp;site=ehost-live</a>.
+</div>
+<div id="ref-anderson_sustainability_2009" class="csl-entry" role="listitem">
+Anderson, Dan R., and Kenneth E. Anderson. 2009. <span>“Sustainability Risk Management.”</span> <em>Risk Management and Insurance Review</em> 12 (1): 25–38. <a href="https://doi.org/10.1111/j.1540-6296.2009.01152.x">https://doi.org/10.1111/j.1540-6296.2009.01152.x</a>.
+</div>
+<div id="ref-benstead_horizontal_2018" class="csl-entry" role="listitem">
+Benstead, Amy V., Linda C. Hendry, and Mark Stevenson. 2018. <span>“Horizontal Collaboration in Response to Modern Slavery Legislation: An Action Research Project.”</span> <em>International Journal of Operations &amp;Amp; Production Management</em> 38 (12): 2286–2312. <a href="https://doi.org/10.1108/IJOPM-10-2017-0611">https://doi.org/10.1108/IJOPM-10-2017-0611</a>.
+</div>
+<div id="ref-bernhardt_broken_2009" class="csl-entry" role="listitem">
+Bernhardt, A., R.Theodore Milkman, and N. 2009. <span>“Broken Laws, Unprotected Workers: Violations of Employment and Labor Laws in America’s Cities.”</span> {UCLA} {IRLE} Report.
+</div>
+<div id="ref-bonnet_domestic_2022" class="csl-entry" role="listitem">
+Bonnet, Florence, Francoise Carre, and Joann Vanek. 2022. <span>“Domestic Workers in the World: A Statistical Profile. <span>WIEGO</span>.”</span> 2022. <a href="https://www.wiego.org/research-library-publications/domestic-workers-world-statistical-profile/">https://www.wiego.org/research-library-publications/domestic-workers-world-statistical-profile/</a>.
+</div>
+<div id="ref-brown_you_2006" class="csl-entry" role="listitem">
+Brown, J. S., T. L. Schonfeld, and B. G. Gordon. 2006. <span>“You May Have Already Won...”: An Examination of the Use of Lottery Payments in Research.”</span> <em><span>IRB</span>: Ethics &amp; Human Research</em> 28 (1): 12–16.
+</div>
+<div id="ref-brunovskis_untold_2010" class="csl-entry" role="listitem">
+Brunovskis, A., and R. Surtees. 2010. <span>“Untold Stories: Biases and Selection Effects in Research with Victims of Trafficking for Sexual Exploitation.”</span> <em>International Migration</em> 48 (4): 1–37.
+</div>
+<div id="ref-carter_women_2025" class="csl-entry" role="listitem">
+Carter, Justine. 2025. <span>“Women and Girls at Growing Risk of Modern Slavery, Data Reveals. Unseen.”</span> April 30, 2025. <a href="https://www.unseenuk.org/latest-modern-slavery-helpline-data/">https://www.unseenuk.org/latest-modern-slavery-helpline-data/</a>.
+</div>
+<div id="ref-caruana_boundaries_2025" class="csl-entry" role="listitem">
+Caruana, Robert, Andrew Crane, and Claire Ingram. 2025. <span>“The Boundaries of Modern Slavery: The Role of Exemplars in New Category Formation.”</span> <em>Academy of Management Journal</em> 68 (3): 507–39. <a href="https://doi.org/10.5465/amj.2022.0210">https://doi.org/10.5465/amj.2022.0210</a>.
+</div>
+<div id="ref-chinander_aligning_2001" class="csl-entry" role="listitem">
+Chinander, Karen R. 2001. <span>“Aligning Accountability and Awaress for Environmental Performance in Operations.”</span> <em>Production and Operations Management</em> 10 (3): 276–91. <a href="https://doi.org/10.1111/j.1937-5956.2001.tb00375.x">https://doi.org/10.1111/j.1937-5956.2001.tb00375.x</a>.
+</div>
+<div id="ref-cobanoglu_effect_2003" class="csl-entry" role="listitem">
+Cobanoglu, C., and N. Cobanoglu. 2003. <span>“The Effect of Incentives in Web Surveys: Application and Ethical Considerations.”</span> <em>International Journal of Market Research</em> 45 (4): 1–13.
+</div>
+<div id="ref-dejong_ethical_2009" class="csl-entry" role="listitem">
+DeJong, J., Z. Mahfoud, D. Khoury, F. Barbir, and R. A. Afifi. 2009. <span>“Ethical Considerations in <span>HIV</span>/<span>AIDS</span> Biobehavioral Surveys That Use Respondent-Driven Sampling: Illustrations from Lebanon.”</span> <em>American Journal of Public Health</em> 99 (9): 1562–67.
+</div>
+<div id="ref-dellana_scale_2021" class="csl-entry" role="listitem">
+Dellana, Scott, William J. Rowe, and Ying Liao. 2021. <span>“A Scale for Measuring Organizational Risk Management Maturity in the Supply Chain.”</span> <em>Benchmarking: An International Journal</em> 29 (3): 905–30. <a href="https://doi.org/10.1108/BIJ-11-2020-0578">https://doi.org/10.1108/BIJ-11-2020-0578</a>.
+</div>
+<div id="ref-european_commission_staff_2012" class="csl-entry" role="listitem">
+European Commission. 2012. <span>“Staff Working Docuemnt on Exploitating the Employment Potential of the Personal and Household Services, <span>SWD</span> (2012) Final.”</span>
+</div>
+<div id="ref-european_union_for_fundamental_rights_severe_2015" class="csl-entry" role="listitem">
+European Union for Fundamental Rights. 2015. <span>“Severe Labour Exploitation: Workers Moving Within or into the European Union.”</span> <a href="https://doi.org/10.1163/2210-7975_HRD-9992-2016018">https://doi.org/10.1163/2210-7975_HRD-9992-2016018</a>.
+</div>
+<div id="ref-frank_estimating_1994" class="csl-entry" role="listitem">
+Frank, O., and T. Snijders. 1994. <span>“Estimating the Size of Hidden Populations Using Snowball Sampling.”</span> <em>Journal of Official Statistics-Stockholm</em> 10: 53–53.
+</div>
+<div id="ref-gajic_cost-effectiveness_2012" class="csl-entry" role="listitem">
+Gajic, A., D. Cameron, and J. Hurley. 2012. <span>“The Cost-Effectiveness of Cash Versus Lottery Incentives for a Web-Based, Stated-Preference Community Survey.”</span> <em>The European Journal of Health Economics</em> 13 (6): 789–99.
+</div>
+<div id="ref-gile_methods_2018" class="csl-entry" role="listitem">
+Gile, Krista J., Isabelle S. Beaudry, Mark S. Handcock, and Miles Q. Ott. 2018. <span>“Methods for Inference from Respondent-Driven Sampling Data.”</span> <em>Annual Review of Statistics and Its Application</em> 5 (March): 65–93. <a href="https://doi.org/10.1146/annurev-statistics-031017-100704">https://doi.org/10.1146/annurev-statistics-031017-100704</a>.
+</div>
+<div id="ref-gile_network_2015" class="csl-entry" role="listitem">
+Gile, Krista J., and Mark S. Handcock. 2015. <span>“Network Model-Assisted Inference from Respondent-Driven Sampling Data.”</span> <em>Journal of the Royal Statistical Society: Series A (Statistics in Society)</em> 178 (3): 619–39. <a href="https://doi.org/10.1111/rssa.12091">https://doi.org/10.1111/rssa.12091</a>.
+</div>
+<div id="ref-gold_modern_2015" class="csl-entry" role="listitem">
+Gold, Stefan, Alexander Trautrims, and Zoe Trodd. 2015. <span>“Modern Slavery Challenges to Supply Chain Management.”</span> <em>Supply Chain Management: An International Journal</em> 20 (5): 485–94. <a href="https://doi.org/10.1108/SCM-02-2015-0046">https://doi.org/10.1108/SCM-02-2015-0046</a>.
+</div>
+<div id="ref-goodman_comment_2011" class="csl-entry" role="listitem">
+Goodman, L. A. 2011. <span>“Comment: On Respondent-Driven Sampling and Snowball Sampling in Hard-to-Reach Populations and Snowball Sampling Not in Hard-to-Reach Populations.”</span> <em>Sociological Methodology</em> 41 (1): 347–53.
+</div>
+<div id="ref-gower_calls_2016" class="csl-entry" role="listitem">
+Gower, M. 2016. <span>“Calls to Change Overseas Domestic Worker Visa Conditions.”</span> <a href="https://researchbriefings.files.parliament.uk/documents/SN04786/SN04786.pdf">https://researchbriefings.files.parliament.uk/documents/SN04786/SN04786.pdf</a>.
+</div>
+<div id="ref-gutierrez-huerter_o_change_2023" class="csl-entry" role="listitem">
+Gutierrez-Huerter O, Gabriela, Stefan Gold, and Alexander Trautrims. 2023. <span>“Change in Rhetoric but Not in Action? Framing of the Ethical Issue of Modern Slavery in a <span>UK</span> Sector at High Risk of Labor Exploitation.”</span> <em>Journal of Business Ethics</em> 182 (1): 35–58. <a href="https://doi.org/10.1007/s10551-021-05013-w">https://doi.org/10.1007/s10551-021-05013-w</a>.
+</div>
+<div id="ref-heckathorn_respondent-driven_1997" class="csl-entry" role="listitem">
+Heckathorn, Douglas D. 1997. <span>“Respondent-Driven Sampling: A New Approach to the Study of Hidden Populations.”</span> <em>Social Problems</em> 44 (2): 174–99. <a href="https://doi.org/10.2307/3096941">https://doi.org/10.2307/3096941</a>.
+</div>
+<div id="ref-heckathorn_respondent-driven_2002" class="csl-entry" role="listitem">
+———. 2002. <span>“Respondent-driven sampling <span>II</span>: deriving valid population estimates from chain-referral samples of hidden populations.”</span> <em>Social Problems</em> 49 (1): 11–34.
+</div>
+<div id="ref-heckathorn_comment_2011" class="csl-entry" role="listitem">
+———. 2011. <span>“Comment: Snowball Versus Respondent-Driven Sampling.”</span> <em>Sociological Methodology</em> 41 (1): 355–66.
+</div>
+<div id="ref-home_office_why_2023" class="csl-entry" role="listitem">
+Home Office. 2023. <span>“Why Do People Come to the <span>UK</span> to Work?”</span> <a href="https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-june-2023/why-do-people-come-to-the-uk-to-work">https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-june-2023/why-do-people-come-to-the-uk-to-work</a>.
+</div>
+<div id="ref-home_office_modern_2025" class="csl-entry" role="listitem">
+———. 2025. <span>“Modern Slavery: National Referral Mechanism and Duty to Notify Statistics <span>UK</span>, End of Year Summary 2024. <span>GOV</span>.<span>UK</span>.”</span> 2025. <a href="https://www.gov.uk/government/statistics/modern-slavery-nrm-and-dtn-statistics-end-of-year-summary-2024/modern-slavery-national-referral-mechanism-and-duty-to-notify-statistics-uk-end-of-year-summary-2024">https://www.gov.uk/government/statistics/modern-slavery-nrm-and-dtn-statistics-end-of-year-summary-2024/modern-slavery-national-referral-mechanism-and-duty-to-notify-statistics-uk-end-of-year-summary-2024</a>.
+</div>
+<div id="ref-ILO11-indicators" class="csl-entry" role="listitem">
+I.L.O. 2012. <span>“<span>ILO</span> Indicators of Forced Labour.”</span> <a href="https://www.ilo.org/global/topics/forced-labour/publications/WCMS_203832/lang--en/index.htm">https://www.ilo.org/global/topics/forced-labour/publications/WCMS_203832/lang--en/index.htm</a>.
+</div>
+<div id="ref-international_labour_organization_global_2022" class="csl-entry" role="listitem">
+International Labour Organization, Walk Free, and Institute of Migration. 2022. <span>“Global Estimates of Modern Slavery Forced Labour and Forced Marriage.”</span>
+</div>
+<div id="ref-jordan_overcoming_2020" class="csl-entry" role="listitem">
+Jordan, L., C. H. K. Chui, S. Larmar, and P. O’Leary. 2020. <span>“Overcoming Methodological Challenges in Prevalence Studies in Developing Contexts with Vulnerable Children.”</span> <em>International Social Work</em> 63 (3): 371–85.
+</div>
+<div id="ref-juttner_supply_2003" class="csl-entry" role="listitem">
+Jüttner, Uta, Helen Peck, and Martin Christopher. 2003. <span>“Supply Chain Risk Management: Outlining an Agenda for Future Research.”</span> <em>International Journal of Logistics Research and Applications</em> 6 (4): 197–210. <a href="https://doi.org/10.1080/13675560310001627016">https://doi.org/10.1080/13675560310001627016</a>.
+</div>
+<div id="ref-kalayaan_new_2008" class="csl-entry" role="listitem">
+Kalayaan. 2008. <span>“The New Bonded Labour?”</span> <a href="http://www.kalayaan.org.uk/documents/Kalayaan%20Oxfam%20report.pdf">http://www.kalayaan.org.uk/documents/Kalayaan%20Oxfam%20report.pdf</a>.
+</div>
+<div id="ref-laguilles_can_2011" class="csl-entry" role="listitem">
+Laguilles, J. S., E. A. Williams, and D. B. Saunders. 2011. <span>“Can Lottery Incentives Boost Web Survey Response Rates? Findings from Four Experiments.”</span> <em>Research in Higher Education</em> 52 (5): 537–53.
+</div>
+<div id="ref-latin_american_womens_rights_service_behind_2023" class="csl-entry" role="listitem">
+Latin American Women’s Rights Service. 2023. <span>“Behind Closed Doors: Experiences of Latin American Domestic Workers in the <span>UK</span>.”</span> <a href="https://lawrs.org.uk/wp-content/uploads/2023/08/Behind-closed-doors_domestic_work.pdf">https://lawrs.org.uk/wp-content/uploads/2023/08/Behind-closed-doors_domestic_work.pdf</a>.
+</div>
+<div id="ref-leverhulme_trust_research_2022" class="csl-entry" role="listitem">
+Leverhulme Trust. 2022. <span>“Research Project Grants. Grant Listings.”</span> 2022. <a href="https://www.leverhulme.ac.uk/listings?field_grant_scheme_target_id=15">https://www.leverhulme.ac.uk/listings?field_grant_scheme_target_id=15</a>.
+</div>
+<div id="ref-malt15-estimating" class="csl-entry" role="listitem">
+Maltiel, Rachael, Adrian E. Raftery, Tyler H. McCormick, and Aaron J. Baraff. 2015. <span>“Estimating Population Size Using the Network Scale up Method.”</span> <em>The Annals of Applied Statistics</em> 9 (3): 1247–77. <a href="https://doi.org/10.1214/15-AOAS827">https://doi.org/10.1214/15-AOAS827</a>.
+</div>
+<div id="ref-manoudi_analysis_2018" class="csl-entry" role="listitem">
+Manoudi, A., T. Weber, D. Scott, and J. Hawley Woodall. 2018. <span>“An Analysis of Personal and Household Services to Support Work Life Balance for Working Parents and Carers - Google Search.”</span> Synthesis Report {ECE} Thematic Review. European Commission. <a href="https://www.google.com/search?q=An+analysis+of+Personal+and+Household+Services+to+support+work+life+balance+for+working+parents+and+carers&amp;rlz=1C1GCEB_enGB932GB935&amp;oq=An+analysis+of+Personal+and+Household+Services+to+support+work+life+balance+for+working+parents+and+carers&amp;gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCDIzNjNqMGo3qAIAsAIA&amp;sourceid=chrome&amp;ie=UTF-8">https://www.google.com/search?q=An+analysis+of+Personal+and+Household+Services+to+support+work+life+balance+for+working+parents+and+carers&amp;rlz=1C1GCEB_enGB932GB935&amp;oq=An+analysis+of+Personal+and+Household+Services+to+support+work+life+balance+for+working+parents+and+carers&amp;gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCDIzNjNqMGo3qAIAsAIA&amp;sourceid=chrome&amp;ie=UTF-8</a>.
+</div>
+<div id="ref-mantouvalou_modern_2016" class="csl-entry" role="listitem">
+Mantouvalou, V. 2016. <span>“Modern Slavery? The <span>UK</span> Visa System and the Exploitation of Migrant Domestic Workers.”</span> In <em>British Politics and Policy at <span>LSE</span></em>. <a href="https://blogs.lse.ac.uk/politicsandpolicy/exploitation-of-migrant-domestic-workers-in-the-uk/.">https://blogs.lse.ac.uk/politicsandpolicy/exploitation-of-migrant-domestic-workers-in-the-uk/.</a>
+</div>
+<div id="ref-mccreesh_respondent_2013" class="csl-entry" role="listitem">
+McCreesh, N., A. Copas, J. Seeley, L. G. Johnston, P. Sonnenberg, and R. J. Hayes. 2013. <span>“Respondent Driven Sampling: Determinants of Recruitment and a Method to Improve Point Estimation.”</span> <em><span>PLoS</span> <span>ONE</span></em> 8 (10).
+</div>
+<div id="ref-mccreesh_evaluation_2012" class="csl-entry" role="listitem">
+McCreesh, Nicky, Simon D. W. Frost, Janet Seeley, Joseph Katongole, Matilda N. Tarsh, Richard Ndunguse, Fatima Jichi, et al. 2012. <span>“Evaluation of Respondent-Driven Sampling.”</span> <em>Epidemiology</em> 23 (1): 138–47. <a href="https://www.jstor.org/stable/23214188">https://www.jstor.org/stable/23214188</a>.
+</div>
+<div id="ref-mccreesh_evaluation_2011" class="csl-entry" role="listitem">
+McCreesh, N., L. G. Johnston, and A. Copas. 2011. <span>“Evaluation of the Role of Location and Distance in Recruitment in Respondent-Driven Sampling.”</span> <em>International Journal of Health Geography</em> 10 (56).
+</div>
+<div id="ref-new_modern_2015" class="csl-entry" role="listitem">
+New, Stephen John. 2015. <span>“Modern Slavery and the Supply Chain: The Limits of Corporate Social Responsibility?”</span> <em>Supply Chain Management</em> 20 (6): 697–707. <a href="https://doi.org/10.1108/SCM-06-2015-0201">https://doi.org/10.1108/SCM-06-2015-0201</a>.
+</div>
+<div id="ref-oconnell_davidson_margins_2015" class="csl-entry" role="listitem">
+O’Connell Davidson, Julia. 2015. <em>The Margins of Freedom: Modern Slavery</em>. Palgrave.
+</div>
+<div id="ref-platt_adapting_2015" class="csl-entry" role="listitem">
+Platt, L., R. Luthra, and T. Frere-Smith. 2015. <span>“Adapting Chain Referral Methods to Sample New Migrants: Possibilities and Limitations.”</span> <em>Demographic Research</em> 33: 665–700.
+</div>
+<div id="ref-rao88-resampling" class="csl-entry" role="listitem">
+Rao, J. N. K., and C. F. J. Wu. 1988. <span>“Resampling <span>Inference With Complex Survey Data</span>.”</span> <em>Journal of the American Statistical Association</em> 83 (401): 231–41. <a href="https://doi.org/10.2307/2288945">https://doi.org/10.2307/2288945</a>.
+</div>
+<div id="ref-robinson_sampling_2014" class="csl-entry" role="listitem">
+Robinson, O. C. 2014. <span>“Sampling in Interview-Based Qualitative Research: A Theoretical and Practical Guide.”</span> <em>Qualitative Research in Psychology</em> 11 (1): 25–41.
+</div>
+<div id="ref-romero_blueprint_2025" class="csl-entry" role="listitem">
+Romero, Angeli, and Oliver Fisher. 2025. <span>“Blueprint for Safer and Fairer Migration for Low-Paid Work.”</span> Focus on Labour Exploitation. <a href="https://labourexploitation.org/app/uploads/2025/06/Flex-Report-Blueprint-for-safer-and-fairer-migration-for-low-paid-work_final_30_June-.pdf">https://labourexploitation.org/app/uploads/2025/06/Flex-Report-Blueprint-for-safer-and-fairer-migration-for-low-paid-work_final_30_June-.pdf</a>.
+</div>
+<div id="ref-schwitters_prevalence_2012" class="csl-entry" role="listitem">
+Schwitters, A., M. Swaminathan, and D. Serwadda. 2012. <span>“Prevalence of Rape and Client-Initiated Gender-Based Violence Among Female Sex Workers: Kampala, Uganda.”</span> <em><span>AIDS</span> Behaviour</em> 19: 68–76.
+</div>
+<div id="ref-semaan_time-space_2010" class="csl-entry" role="listitem">
+Semaan, S. 2010. <span>“Time-Space Sampling and Respondent-Driven Sampling with Hard-to-Reach Populations.”</span> <em>Methodological Innovations Online</em> 5 (2): 60–75.
+</div>
+<div id="ref-semaan_ethical_2009" class="csl-entry" role="listitem">
+Semaan, S., S. Santibanez, R. S. Garfein, D. D. Heckathorn, and D. C. Jarlais. 2009. <span>“Ethical and Regulatory Considerations in <span>HIV</span> Prevention Studies Employing Respondent-Driven Sampling.”</span> <em>International Journal of Drug Policy</em> 20 (1): 14–27.
+</div>
+<div id="ref-singer_incentives_2006" class="csl-entry" role="listitem">
+Singer, E., and R. M. Bossarte. 2006. <span>“Incentives for Survey Participation: When Are They <span>‘Coercive’</span>?”</span> <em>American Journal of Preventive Medicine</em> 31 (5): 411–18.
+</div>
+<div id="ref-soundararajan_humanizing_2021" class="csl-entry" role="listitem">
+Soundararajan, Vivek, Miriam M. Wilhelm, and Andrew Crane. 2021. <span>“Humanizing Research on Working Conditions in Supply Chains: Building a Path to Decent Work.”</span> <em>Journal of Supply Chain Management</em> 57 (2): 3–13. <a href="https://doi.org/10.1111/jscm.12260">https://doi.org/10.1111/jscm.12260</a>.
+</div>
+<div id="ref-stephens_theorising_2024" class="csl-entry" role="listitem">
+Stephens, Victoria, Amy Victoria Benstead, Helen Goworek, Erica Charles, and Dane Lukic. 2024. <span>“Theorising Worker Voice for Supply Chain Justice – Communication, Representation and Recognition.”</span> <em>International Journal of Operations &amp;Amp; Production Management</em> 45 (3): 653–76. <a href="https://doi.org/10.1108/IJOPM-06-2023-0528">https://doi.org/10.1108/IJOPM-06-2023-0528</a>.
+</div>
+<div id="ref-stevenson_modern_2018" class="csl-entry" role="listitem">
+Stevenson, Mark, and Rosanna Cole. 2018. <span>“Modern Slavery in Supply Chains: A Secondary Data Analysis of Detection, Remediation and Disclosure.”</span> <em>Supply Chain Management: An International Journal</em> 23 (April). <a href="https://doi.org/10.1108/SCM-11-2017-0382">https://doi.org/10.1108/SCM-11-2017-0382</a>.
+</div>
+<div id="ref-strauss_britain_2023" class="csl-entry" role="listitem">
+Strauss, D., and F. Cocco. 2023. <span>“Britain After Brexit: The Surprising Surge in Skilled Migrants.”</span>
+</div>
+<div id="ref-tarei_hybrid_2018" class="csl-entry" role="listitem">
+Tarei, Pradeep Kumar, Jitesh J. Thakkar, and Barnali Nag. 2018. <span>“A Hybrid Approach for Quantifying Supply Chain Risk and Prioritizing the Risk Drivers: A Case of Indian Petroleum Supply Chain.”</span> <em>Journal of Manufacturing Technology Management</em> 29 (3): 533–69. <a href="https://doi.org/10.1108/JMTM-10-2017-0218">https://doi.org/10.1108/JMTM-10-2017-0218</a>.
+</div>
+<div id="ref-thompson_new_2020" class="csl-entry" role="listitem">
+Thompson, S. 2020. <span>“New Estimates for Network Sampling.”</span>
+</div>
+<div id="ref-tyldum_surveying_2021" class="csl-entry" role="listitem">
+Tyldum, G. 2021. <span>“Surveying Migrant Populations with Respondent-Driven Sampling. Experiences from Surveys of East-West Migration in Europe.”</span> <em>International Journal of Social Research Methodology</em> 24 (3): 341–35.
+</div>
+<div id="ref-vincent_estimating_2017" class="csl-entry" role="listitem">
+Vincent, Kyle, and Steve Thompson. 2017. <span>“Estimating Population Size with Link-Tracing Sampling.”</span> <em>Journal of the American Statistical Association</em> 112 (519): 1286–95. <a href="https://doi.org/10.1080/01621459.2016.1212712">https://doi.org/10.1080/01621459.2016.1212712</a>.
+</div>
+<div id="ref-wang_respondent-driven_2005" class="csl-entry" role="listitem">
+Wang, J., R. G. Carlson, R. S. Falck, H. A. Siegal, A. Rahman, and L. Li. 2005. <span>“Respondent-Driven Sampling to Recruit <span>MDMA</span> Users: A Methodological Assessment.”</span> <em>Drug and Alcohol Dependence</em> 78 (2): 147–57.
+</div>
+<div id="ref-wejnert_web-based_2008" class="csl-entry" role="listitem">
+Wejnert, C., and Douglas D. Heckathorn. 2008. <span>“Web-Based Network Sampling: Efficiency and Efficacy of Respondent-Driven Sampling for Online Research.”</span> <em>Sociological Methods &amp; Research</em> 37 (1): 105–34.
+</div>
+<div id="ref-wolf_operationalizing_2001" class="csl-entry" role="listitem">
+Wolf, Frederick G. 2001. <span>“Operationalizing and Testing Normal Accident Theory in Petrochemical Plants and Refineries.”</span> <em>Production and Operations Management</em> 10 (3): 292–305. <a href="https://doi.org/10.1111/j.1937-5956.2001.tb00376.x">https://doi.org/10.1111/j.1937-5956.2001.tb00376.x</a>.
+</div>
+<div id="ref-yauc22-neighboot" class="csl-entry" role="listitem">
+Yauck, Mamadou, and Erica E. M. Moodie. 2022. <span>“Neighboot: <span>Neighborhood Bootstrap Method</span> for <span>RDS</span>.”</span>
+</div>
+<div id="ref-zhang_measuring_2012" class="csl-entry" role="listitem">
+Zhang, S. X. 2012. <span>“Measuring Labour Trafficking: A Research Note.”</span> <em>Crime, Law and Social Change</em> 58: 469–82.
+</div>
+<div id="ref-zhang_victims_2019" class="csl-entry" role="listitem">
+Zhang, S. X., M. Dank, K. Vincent, P. Narayanan, S. Bharadwaj, and S. M. Balasubramaniam. 2019. <span>“Victims Without a Voice: Measuring Worst Forms of Child Labor in the Indian State of Bihar.”</span> <em>Victims &amp; Offenders</em> 14 (7): 832–58.
+</div>
+</div>
+<!-- This will be populated by Pandoc if you use --citeproc and a .bib file -->
+<div style="page-break-after: always;"></div>
+</section>
+<section id="appendix-a" class="level2">
+<h2 class="anchored" data-anchor-id="appendix-a">Appendix A</h2>
+<p>Population Parameters</p>
+<p>Use ~980,000 as UK domestic worker population estimate (EU data) Use 44,360 as NRM adult referrals baseline Address treatment of “don’t know” responses and zero network size claims Consider separate analysis for Filipino subgroup</p>
+<section id="the-survey" class="level3">
+<h3 class="anchored" data-anchor-id="the-survey">The Survey</h3>
+<p>(From codebook)</p>
+<p>Compare corresponding survey questions between RDS and NSUM methods:</p>
+<ul>
+<li>Q70/Q71 (document withholding)</li>
+<li>Q39+Q42/Q43 (pay issues)</li>
+<li>Q45+Q47+Q48/Q49 (abuse/threats)</li>
+<li>Q61+Q62/Q64 (excessive hours)</li>
+<li>Q78/Q79 (access to help)</li>
+</ul>
+<p>Risk Index Implementation</p>
+<ul>
+<li>Clean coding for 13 risk categories with proper weightings</li>
+<li>NRM referral (0.35)</li>
+<li>Forced labor indicators (0.55 total)</li>
+<li>Below minimum wage (0.10)</li>
+</ul>
+</section>
+</section>
+<section id="appendix-b" class="level2">
+<h2 class="anchored" data-anchor-id="appendix-b">Appendix B</h2>
+<section id="executive-summary" class="level3">
+<h3 class="anchored" data-anchor-id="executive-summary">Executive Summary</h3>
+<p>This analysis estimates the prevalence of modern slavery among domestic workers in the UK using multiple RDS methodologies. We examine two primary indicators across various population size assumptions and estimation techniques.</p>
+<p><strong>Key Findings:</strong> - Below minimum wage prevalence (Q36): X.X% - Y.Y% (95% CI) - NRM referral experience (Q80): A.A% - B.B% (95% CI)<br>
+- Population size estimates: 980,000 - 1.74M domestic workers</p>
+</section>
+<section id="sample-characteristics" class="level3">
+<h3 class="anchored" data-anchor-id="sample-characteristics">Sample Characteristics</h3>
+<section id="recruitment-network-structure" class="level4">
+<h4 class="anchored" data-anchor-id="recruitment-network-structure">Recruitment Network Structure</h4>
+<div id="tbl-network" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-network-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: RDS Sample Network Characteristics
+</figcaption>
+<div aria-describedby="tbl-network-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>network_stats <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Characteristic =</span> <span class="fu">c</span>(<span class="st">"Total Sample Size"</span>, <span class="st">"Recruitment Waves"</span>, <span class="st">"Average Degree"</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Median Degree"</span>, <span class="st">"Seeds"</span>, <span class="st">"Longest Chain"</span>, <span class="st">"Mean Chain Length"</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Value =</span> <span class="fu">c</span>(</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">nrow</span>(rd.dd),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">max</span>(rd.dd<span class="sc">$</span>wave, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">mean</span>(rd.dd<span class="sc">$</span>numRef, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">1</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">median</span>(rd.dd<span class="sc">$</span>numRef, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">1</span>),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(rd.dd<span class="sc">$</span>recruiter.id <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span>),</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"TBD"</span>, <span class="do">## Calculate from recruitment chains</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"TBD"</span>  <span class="do">## Calculate average chain length</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>network_stats <span class="sc">%&gt;%</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Network Characteristics"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(<span class="at">columns =</span> Value, <span class="at">decimals =</span> <span class="dv">1</span>, <span class="at">use_seps =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</figure>
+</div>
+</section>
+<section id="demographic-composition" class="level4">
+<h4 class="anchored" data-anchor-id="demographic-composition">Demographic Composition</h4>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Create nationality breakdown</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>nationality_summary <span class="ot">&lt;-</span> rd.dd <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(nationality_cluster) <span class="sc">%&gt;%</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">percent =</span> <span class="fu">round</span>(<span class="fu">n</span>() <span class="sc">/</span> <span class="fu">nrow</span>(rd.dd) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">'drop'</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nationality_summary, <span class="fu">aes</span>(<span class="at">x =</span> nationality_cluster, <span class="at">y =</span> percent, <span class="at">fill =</span> nationality_cluster)) <span class="sc">+</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste0</span>(n, <span class="st">"</span><span class="sc">\n</span><span class="st">("</span>, percent, <span class="st">"%)"</span>)), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Nationality Cluster"</span>, <span class="at">y =</span> <span class="st">"Percentage"</span>, </span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Sample Distribution by Nationality"</span>) <span class="sc">+</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="rds-estimation-results" class="level3">
+<h3 class="anchored" data-anchor-id="rds-estimation-results">RDS Estimation Results</h3>
+<section id="model-assisted-estimates-by-population-size" class="level4">
+<h4 class="anchored" data-anchor-id="model-assisted-estimates-by-population-size">Model-Assisted Estimates by Population Size</h4>
+<div id="tbl-ma-estimates" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ma-estimates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Model-Assisted Estimates by Population Size and Seed Selection
+</figcaption>
+<div aria-describedby="tbl-ma-estimates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Extract MA results and create comparison table</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ma_comparison <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed_method =</span> <span class="fu">c</span>(<span class="st">"sample"</span>, <span class="st">"random"</span>, <span class="st">"degree"</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">pop_size =</span> <span class="fu">c</span>(<span class="dv">100000</span>, <span class="dv">953000</span>, <span class="dv">1000000</span>, <span class="dv">1500000</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">indicator =</span> <span class="fu">c</span>(<span class="st">"q36"</span>, <span class="st">"q80"</span>, <span class="st">"composite_risk"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">key =</span> <span class="fu">paste0</span>(seed_method, <span class="st">"_"</span>, pop_size),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">estimate =</span> <span class="fu">ifelse</span>(key <span class="sc">%in%</span> <span class="fu">names</span>(ma_results),</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                     ma_results[[key]][[indicator]]<span class="sc">$</span>estimate, <span class="cn">NA</span>),</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">ci_lower =</span> <span class="fu">ifelse</span>(key <span class="sc">%in%</span> <span class="fu">names</span>(ma_results),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                     ma_results[[key]][[indicator]]<span class="sc">$</span>conf.int[<span class="dv">1</span>], <span class="cn">NA</span>),</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">ci_upper =</span> <span class="fu">ifelse</span>(key <span class="sc">%in%</span> <span class="fu">names</span>(ma_results),</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                     ma_results[[key]][[indicator]]<span class="sc">$</span>conf.int[<span class="dv">2</span>], <span class="cn">NA</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(estimate))</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Create formatted table</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>ma_comparison <span class="sc">%&gt;%</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">pop_size_f =</span> scales<span class="sc">::</span><span class="fu">comma</span>(pop_size),</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">estimate_ci =</span> <span class="fu">sprintf</span>(<span class="st">"%.3f (%.3f, %.3f)"</span>, estimate, ci_lower, ci_upper)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(seed_method, pop_size_f, indicator, estimate_ci) <span class="sc">%&gt;%</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> indicator, <span class="at">values_from =</span> estimate_ci) <span class="sc">%&gt;%</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Model-Assisted Estimates by Method"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">seed_method =</span> <span class="st">"Seed Selection"</span>,</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">pop_size_f =</span> <span class="st">"Population Size"</span>,</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">q36 =</span> <span class="st">"Below Min Wage"</span>,</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">q80 =</span> <span class="st">"NRM Experience"</span>, </span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">composite_risk =</span> <span class="st">"Composite Risk"</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(<span class="at">label =</span> <span class="st">"Prevalence Estimates (95% CI)"</span>, <span class="at">columns =</span> <span class="fu">c</span>(q36, q80, composite_risk))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</figure>
+</div>
+</section>
+<section id="traditional-rds-estimators-comparison" class="level4">
+<h4 class="anchored" data-anchor-id="traditional-rds-estimators-comparison">Traditional RDS Estimators Comparison</h4>
+<div id="tbl-rds-comparison" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-rds-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: RDS Estimator Comparison (N=980,000)
+</figcaption>
+<div aria-describedby="tbl-rds-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Extract RDS estimates for standard population size</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>rds_980k <span class="ot">&lt;-</span> rds_results[[<span class="st">"980000"</span>]]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>rds_table <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Method =</span> <span class="fu">c</span>(<span class="st">"RDS-I"</span>, <span class="st">"RDS-II"</span>, <span class="st">"Successive Sampling"</span>),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Q36 Estimate</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    rds_980k<span class="sc">$</span>rds_i<span class="sc">$</span>q36<span class="sc">$</span>estimate,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    rds_980k<span class="sc">$</span>rds_ii<span class="sc">$</span>q36<span class="sc">$</span>estimate,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    rds_980k<span class="sc">$</span>rds_ss<span class="sc">$</span>q36<span class="sc">$</span>estimate</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Q36 95% CI</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sprintf</span>(<span class="st">"(%.3f, %.3f)"</span>, rds_980k<span class="sc">$</span>rds_i<span class="sc">$</span>q36<span class="sc">$</span>conf.int[<span class="dv">1</span>], rds_980k<span class="sc">$</span>rds_i<span class="sc">$</span>q36<span class="sc">$</span>conf.int[<span class="dv">2</span>]),</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sprintf</span>(<span class="st">"(%.3f, %.3f)"</span>, rds_980k<span class="sc">$</span>rds_ii<span class="sc">$</span>q36<span class="sc">$</span>conf.int[<span class="dv">1</span>], rds_980k<span class="sc">$</span>rds_ii<span class="sc">$</span>q36<span class="sc">$</span>conf.int[<span class="dv">2</span>]),</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sprintf</span>(<span class="st">"(%.3f, %.3f)"</span>, rds_980k<span class="sc">$</span>rds_ss<span class="sc">$</span>q36<span class="sc">$</span>conf.int[<span class="dv">1</span>], rds_980k<span class="sc">$</span>rds_ss<span class="sc">$</span>q36<span class="sc">$</span>conf.int[<span class="dv">2</span>])</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="co">#...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="appendix-c-bootstrap-estimation-for-network-scale-up-using-rds-data" class="level2">
+<h2 class="anchored" data-anchor-id="appendix-c-bootstrap-estimation-for-network-scale-up-using-rds-data">Appendix C: Bootstrap Estimation for Network Scale-Up Using RDS Data</h2>
+<section id="introduction-1" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-1">Introduction</h3>
+<p>When estimating the size or characteristics of a hidden population using the Network Scale-Up Method (NSUM), researchers typically assume a probability sample from the frame population. However, in many applied settings—including hard-to-reach populations—data are collected via <strong>Respondent-Driven Sampling (RDS)</strong>. RDS introduces specific structural dependencies and inclusion probabilities that violate the assumptions of simple random sampling.</p>
+<p>This presents a challenge: <strong>how can we correctly estimate uncertainty for NSUM estimates derived from an RDS sample?</strong> As shown in <span class="citation" data-cites="feeh16-generali">(<a href="#ref-feeh16-generali" role="doc-biblioref"><strong>feeh16-generali?</strong></a>)</span> and <span class="citation" data-cites="salg06-variance">(<a href="#ref-salg06-variance" role="doc-biblioref"><strong>salg06-variance?</strong></a>)</span>, the NSUM estimator depends crucially on inclusion weights ( _i ), which must reflect the sampling design. When data are RDS-based, these weights are typically derived from known degree-based estimators such as RDS-II or Gile’s Successive Sampling (SS) weights.</p>
+<p>To address this challenge, we propose a <strong>three-step bootstrap procedure</strong> for NSUM estimation using RDS data. This approach is flexible, modular, and applicable across several classes of NSUM estimators. It separates the issues of: 1. How to resample an RDS chain (Step 1), 2. How to recalculate sample-specific weights (Step 2), and 3. How to apply a chosen NSUM estimator (Step 3).</p>
+<hr>
+</section>
+<section id="step-1-resampling-the-rds-sample" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-resampling-the-rds-sample">Step 1: Resampling the RDS Sample</h3>
+<p>We begin by resampling from the observed RDS sample in a way that mimics the original recruitment structure. Let the original sample be: [ = {i_1, i_2, , i_n} ] with recruitment chains and wave indicators. Let ( d_i ) denote self-reported degree for respondent ( i ), and let the recruitment tree structure be encoded via seed/recruiter IDs.</p>
+<section id="options-for-rds-resampling" class="level4">
+<h4 class="anchored" data-anchor-id="options-for-rds-resampling">Options for RDS Resampling</h4>
+<ul>
+<li><strong>Tree Bootstrap</strong>: Sample entire recruitment trees (originating from seeds) with replacement. This respects the hierarchical recruitment structure and allows design effect estimation <span class="citation" data-cites="salg06-variance">(<a href="#ref-salg06-variance" role="doc-biblioref"><strong>salg06-variance?</strong></a>)</span>.</li>
+<li><strong>Successive Sampling Bootstrap (SSB)</strong>: Sample with replacement according to inclusion probabilities derived from the SS model (<span class="citation" data-cites="gile11-improv">(<a href="#ref-gile11-improv" role="doc-biblioref"><strong>gile11-improv?</strong></a>)</span>).</li>
+<li><strong>Neighborhood Bootstrap</strong>: Use ego-network topology to preserve recruitment ties and neighborhood structure (<span class="citation" data-cites="yauc22-neighboor">(<a href="#ref-yauc22-neighboor" role="doc-biblioref"><strong>yauc22-neighboor?</strong></a>)</span>).</li>
+</ul>
+<p>Let ( ^{(b)} ) denote the sample drawn in bootstrap replicate ( b ).</p>
+<hr>
+</section>
+</section>
+<section id="step-2-recalculating-weights" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-recalculating-weights">Step 2: Recalculating Weights</h3>
+<p>NSUM estimators require inclusion weights ( _i ) or their inverses ( w_i = 1 / _i ). Because bootstrap samples differ in composition and recruitment pattern, these weights must be <strong>recomputed for each replicate</strong>.</p>
+<section id="general-structure" class="level4">
+<h4 class="anchored" data-anchor-id="general-structure">General Structure</h4>
+<p>For each replicate ( b ), construct: - ( ^{(b)} ): resampled respondent IDs - ( d_i^{(b)} ): degree reports in replicate - ( _i^{(b)} ): estimated inclusion probabilities</p>
+</section>
+<section id="weighting-options" class="level4">
+<h4 class="anchored" data-anchor-id="weighting-options">Weighting Options</h4>
+<ul>
+<li><p><strong>RDS-II Weights</strong> (<span class="citation" data-cites="volz08-simple">(<a href="#ref-volz08-simple" role="doc-biblioref"><strong>volz08-simple?</strong></a>)</span>): [ w_i^{(b)} ]</p></li>
+<li><p><strong>SS Weights</strong> (<span class="citation" data-cites="gile11-improv">(<a href="#ref-gile11-improv" role="doc-biblioref"><strong>gile11-improv?</strong></a>)</span>): Incorporate sampling fraction and frame size ( N_F ). Computed numerically via successive sampling approximation.</p></li>
+</ul>
+<p>Let ( _i ) denote covariates (e.g.&nbsp;traits, degree, indicator of hidden population membership), which are retained from the original data and passed to Step 3.</p>
+<hr>
+</section>
+</section>
+<section id="step-3-nsum-estimation" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-nsum-estimation">Step 3: NSUM Estimation</h3>
+<p>This step applies an NSUM estimator to the bootstrap sample ( ^{(b)} ) using the recalculated weights ( w_i^{(b)} ) and responses ( y_{i,H} ), where ( y_{i,H} ) is the number of known contacts respondent ( i ) has in hidden population ( H ).</p>
+<p>Let ( N_F ) denote the frame population size (assumed known), and let ( d_i ) be the degree of respondent ( i ).</p>
+<section id="generalized-nsum-estimator-gnsum" class="level4">
+<h4 class="anchored" data-anchor-id="generalized-nsum-estimator-gnsum">Generalized NSUM Estimator (GNSUM)</h4>
+<p>The weighted GNSUM estimator is:</p>
+<p>[ _H^{(b)} = N_F ]</p>
+<p>This estimator assumes proportional mixing and equal visibility.</p>
+<hr>
+</section>
+<section id="symmetric-visibility-variant" class="level4">
+<h4 class="anchored" data-anchor-id="symmetric-visibility-variant">Symmetric Visibility Variant</h4>
+<p>In our setting, some RDS respondents can be identified <em>ex post</em> as members of the hidden population ( H ). Denote this set ( ). Under the assumption of <strong>symmetric visibility</strong>, we define:</p>
+<p>[ <em>{H} = </em>{j } ]</p>
+<p>That is, the average proportion of alters known by members of ( H ) who are in the frame population ( F ). Incorporating this, the symmetric visibility GNSUM becomes:</p>
+<hr>
+</section>
+</section>
+<section id="version-2" class="level3">
+<h3 class="anchored" data-anchor-id="version-2">Version 2</h3>
+</section>
+</section>
+<section id="bootstrap-based-uncertainty-estimation-for-nsum-with-rds-samples" class="level1">
+<h1>Bootstrap-Based Uncertainty Estimation for NSUM with RDS Samples</h1>
+<section id="introduction-2" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-2">1. Introduction</h2>
+<p>The <strong>Network Scale-Up Method (NSUM)</strong> is a powerful tool for estimating the size of hidden populations. By asking respondents about the number of people they know who belong to a hidden group, and calibrating by their social network size, we can estimate the total size of that group within a known frame population.</p>
+<p>However, NSUM typically assumes a <strong>simple random sample</strong> of the frame population. In practice, researchers often rely on <strong>Respondent-Driven Sampling (RDS)</strong> to access hard-to-reach populations. RDS is a non-probability sampling method based on peer referral chains, and it introduces significant complexity due to:</p>
+<ul>
+<li><p>Unknown inclusion probabilities,</p></li>
+<li><p>Dependencies in the recruitment process,</p></li>
+<li><p>Homophily on hidden traits,</p></li>
+<li><p>Non-uniform degree distributions.</p></li>
+</ul>
+<p>To adapt NSUM for use with RDS data, we must <strong>adjust for the non-uniform sampling process</strong>. This requires estimating each respondent’s <strong>inclusion probability</strong> <span class="math inline">\(\pi_i\)</span>, as outlined in <span class="citation" data-cites="feeh16-generaling">(<a href="#ref-feeh16-generaling" role="doc-biblioref"><strong>feeh16-generaling?</strong></a>)</span> and earlier in <span class="citation" data-cites="salf06-variance">(<a href="#ref-salf06-variance" role="doc-biblioref"><strong>salf06-variance?</strong></a>)</span>. Moreover, because these inclusion probabilities vary across bootstrap samples, we must <strong>recompute weights</strong> for each resample.</p>
+<p>We propose a three-step bootstrap method for estimating uncertainty in NSUM from RDS samples:</p>
+<p>Step 1: Resampling the RDS Sample Step 2: Recalculate Inclusion Probabilities Step 3: NSUM Estimation on Resampled and Reweighted Data</p>
+<p>This approach is modular, flexible, and compatible with multiple estimators. At each step, the researcher has multiple decisions to make (e.g.&nbsp;<em>how</em> to resample, which RDS weights to use, which version of NSUM estimator to use).</p>
+<hr>
+</section>
+<section id="the-three-step-bootstrap-procedure" class="level2">
+<h2 class="anchored" data-anchor-id="the-three-step-bootstrap-procedure">2. The Three-Step Bootstrap Procedure</h2>
+<section id="step-1-resampling-the-rds-sample-1" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-resampling-the-rds-sample-1">Step 1: Resampling the RDS Sample</h4>
+<p>RDS is network-dependent and violates IID assumptions. Therefore, resampling must preserve recruitment structure, seed variation, and referral chains.</p>
+<p>We consider four strategies:</p>
+<ol type="1">
+<li><p><strong>Tree Bootstrap</strong><br>
+Entire recruitment trees rooted in seeds are resampled with replacement. Each tree <span class="math inline">\(T_j\)</span> consists of all respondents traced to seed <span class="math inline">\(j\)</span>. This preserves hierarchical dependencies and captures between-tree heterogeneity (<span class="citation" data-cites="salg06-variance">(<a href="#ref-salg06-variance" role="doc-biblioref"><strong>salg06-variance?</strong></a>)</span>).</p></li>
+<li><p><strong>Successive Sampling Bootstrap</strong><br>
+Mimics the RDS process as a form of successive sampling from a finite population. Each respondent is selected without replacement, with probabilities proportional to degree <span class="math inline">\(d_i\)</span>. Requires an assumed frame population size <span class="math inline">\(N\)</span>. Implemented in <code>RDS::gile.ss.weights()</code> (<span class="citation" data-cites="gile11-inference">(<a href="#ref-gile11-inference" role="doc-biblioref"><strong>gile11-inference?</strong></a>)</span>).</p></li>
+<li><p><strong>Neighborhood Bootstrap</strong><br>
+Introduced by <span class="citation" data-cites="yauc22-neighboot">Yauck and Moodie (<a href="#ref-yauc22-neighboot" role="doc-biblioref">2022</a>)</span>, this method resamples by selecting respondents and replacing them with their <strong>neighbors</strong> in the recruitment graph. This maintains local network dependencies and simulates resampling from the underlying contact network.</p></li>
+<li><p><strong>Chain Bootstrap</strong><br>
+Each bootstrap replicate samples chains or subchains with replacement, preserving recruiter–recruitee links. This is implemented in <code>surveybootstrap::rds.boot.draw.chain()</code> and used in studies like <span class="citation" data-cites="weir12-comparison">(<a href="#ref-weir12-comparison" role="doc-biblioref"><strong>weir12-comparison?</strong></a>)</span>.</p></li>
+</ol>
+<p>Each resample produces a new dataset <span class="math inline">\(\mathcal{S}^{(b)}\)</span>, which is passed to Step 2.</p>
+<hr>
+</section>
+<section id="step-2-recalculate-inclusion-probabilities" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-recalculate-inclusion-probabilities">Step 2: Recalculate Inclusion Probabilities</h4>
+<p>RDS produces samples with <strong>unknown and unequal probabilities of inclusion</strong>, which must be corrected when used in NSUM estimation. This is achieved by estimating the probability <span class="math inline">\(\pi_i^{(b)}\)</span> that each individual <span class="math inline">\(i\)</span> in bootstrap replicate <span class="math inline">\(b\)</span> is included in the sample, conditional on their degree and position in the recruitment tree.</p>
+<p>These probabilities are used to generate <strong>sampling weights</strong> <span class="math inline">\(w_i^{(b)} = 1/\pi_i^{(b)}\)</span>, which are passed into NSUM estimators.</p>
+<section id="estimation-methods" class="level5">
+<h5 class="anchored" data-anchor-id="estimation-methods">Estimation Methods</h5>
+<p><strong>(a) RDS-II (Volz-Heckathorn) Weights</strong><br>
+Assumes the probability of selection is proportional to the respondent’s degree:</p>
+<p><span class="math display">\[\pi_i \propto d_i \quad \Rightarrow \quad w_i = \frac{1}{d_i}\]</span></p>
+<p>These weights are normalized post hoc. This method is simple but does not account for homophily or finite population correction (<span class="citation" data-cites="volz08-rds">(<a href="#ref-volz08-rds" role="doc-biblioref"><strong>volz08-rds?</strong></a>)</span>).</p>
+<p><strong>(b) Gile’s Successive Sampling (SS) Weights</strong><br>
+This method assumes RDS approximates successive sampling without replacement. The inclusion probabilities are computed by simulating from a known or assumed population size <span class="math inline">\(N\)</span>. This method is implemented in <code>RDS::gile.ss.weights()</code> and adjusts for:</p>
+<ul>
+<li><p>Finite population effects,</p></li>
+<li><p>Degree-based sampling,</p></li>
+<li><p>Sample depletion over waves.</p></li>
+</ul>
+<p><strong>(c) User-Defined or Model-Based Weights</strong><br>
+Researchers may define weights using alternative models or Bayesian simulations. This includes post-stratification or fitting full generative models of the RDS process.</p>
+</section>
+<section id="software-example-r" class="level5">
+<h5 class="anchored" data-anchor-id="software-example-r">Software Example (R)</h5>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RDS)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>rd <span class="ot">&lt;-</span> <span class="fu">as.rds.data.frame</span>(boot_sample, <span class="at">id =</span> <span class="st">"id"</span>, <span class="at">recruiter.id =</span> <span class="st">"recruiter.id"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>boot_sample<span class="sc">$</span>ss_weight <span class="ot">&lt;-</span> <span class="fu">gile.ss.weights</span>(rd, <span class="at">N =</span> <span class="dv">980000</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>boot_sample<span class="sc">$</span>vh_weight <span class="ot">&lt;-</span> <span class="fu">rds.weights</span>(rd, <span class="at">weight.type =</span> <span class="st">"RDS-II"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The output is a new dataset with respondent traits, degrees, and updated <span class="math inline">\(\pi_i^{(b)}\)</span>, which are used in Step 3.</p>
+<hr>
+</section>
+</section>
+<section id="step-3-nsum-estimation-on-resampled-and-reweighted-data" class="level4">
+<h4 class="anchored" data-anchor-id="step-3-nsum-estimation-on-resampled-and-reweighted-data">Step 3: NSUM Estimation on Resampled and Reweighted Data</h4>
+<p>Given a bootstrap sample <span class="math inline">\(\mathcal{S}^{(b)}\)</span>, we estimate the size of the hidden population <span class="math inline">\(N_H\)</span> using one of several NSUM estimators. All estimators rely on weighted sums of out-reports and degree.</p>
+<section id="a-generalized-nsum-gnsum" class="level5">
+<h5 class="anchored" data-anchor-id="a-generalized-nsum-gnsum">(a) Generalized NSUM (GNSUM)</h5>
+<p>As described in <span class="citation" data-cites="feeh16-generaling">(<a href="#ref-feeh16-generaling" role="doc-biblioref"><strong>feeh16-generaling?</strong></a>)</span>, GNSUM estimates:</p>
+<p><span class="math display">\[\hat{N}_H^{(b)} = \left( \frac{\sum_{i} \frac{y_{i,H}}{\pi_i^{(b)}}}{\sum_{i} \frac{d_i}{\pi_i^{(b)}}} \right) \cdot N_F\]</span></p>
+<p>Where:</p>
+<ul>
+<li><p><span class="math inline">\(y_{i,H}\)</span>: number of known alters in the hidden population,</p></li>
+<li><p><span class="math inline">\(d_i\)</span>: degree (known network size, e.g.&nbsp;from Q13),</p></li>
+<li><p><span class="math inline">\(N_F\)</span>: size of the frame population (e.g.&nbsp;domestic workers in UK).</p></li>
+</ul>
+</section>
+<section id="b-gnsum-with-symmetric-visibility-for-hidden-members-in-rds" class="level5">
+<h5 class="anchored" data-anchor-id="b-gnsum-with-symmetric-visibility-for-hidden-members-in-rds">(b) GNSUM with Symmetric Visibility (for Hidden Members in RDS)</h5>
+<p>In your context, some RDS respondents are ex post identified as members of the hidden population. Under the <strong>symmetric visibility assumption</strong>, if <span class="math inline">\(i \in H\)</span>, we assume the probability that <span class="math inline">\(i\)</span> knows <span class="math inline">\(j\)</span> is the same as <span class="math inline">\(j\)</span> knows <span class="math inline">\(i\)</span>. This allows <strong>in-reports</strong> to be incorporated.</p>
+<p>Let:</p>
+<ul>
+<li><p><span class="math inline">\(I_H(i) = 1\)</span> if <span class="math inline">\(i \in H\)</span>, 0 otherwise</p></li>
+<li><p><span class="math inline">\(y_{i}^{\text{in}}\)</span>: number of other hidden members who report knowing <span class="math inline">\(i\)</span></p></li>
+</ul>
+<p>Then the estimator becomes:</p>
+<p><span class="math display">\[\hat{N}_H^{(b)} = \left( \frac{\sum_{i} \frac{y_{i,H} + I_H(i) \cdot y_{i}^{\text{in}}}{\pi_i^{(b)}}}{\sum_{i} \frac{d_i}{\pi_i^{(b)}}} \right) \cdot N_F\]</span></p>
+</section>
+<section id="c-modified-basic-scale-up-mbsu" class="level5">
+<h5 class="anchored" data-anchor-id="c-modified-basic-scale-up-mbsu">(c) Modified Basic Scale-Up (MBSU)</h5>
+<p>This estimator adjusts for key reporting biases via three correction factors:</p>
+<p><span class="math display">\[\hat{N}_H^{(b)} = \left( \frac{\sum_{i} \frac{y_{i,H}}{\pi_i^{(b)}}}{\sum_{i} \frac{d_i}{\pi_i^{(b)}}} \right) \cdot N_F \cdot \frac{1}{\delta \cdot \tau \cdot \rho}\]</span></p>
+<p>Where:</p>
+<ul>
+<li><p><span class="math inline">\(\delta\)</span>: <strong>Transmission bias</strong> (probability respondent is aware of alter’s status),</p></li>
+<li><p><span class="math inline">\(\tau\)</span>: <strong>Barrier effect</strong> (social mixing between hidden and frame population),</p></li>
+<li><p><span class="math inline">\(\rho\)</span>: <strong>Popularity bias</strong> (relative visibility of hidden population members).</p></li>
+</ul>
+<p>These values can be:</p>
+<ul>
+<li><p>Estimated using <strong>known subpopulations</strong> (e.g., alter groups with known size),</p></li>
+<li><p>Set by expert <strong>elicitation</strong>,</p></li>
+<li><p>Scanned in <strong>sensitivity analysis</strong>.</p></li>
+</ul>
+</section>
+<section id="d-model-based-nsum" class="level5">
+<h5 class="anchored" data-anchor-id="d-model-based-nsum">(d) Model-Based NSUM</h5>
+<p>Bayesian implementations (e.g. <span class="citation" data-cites="malt15-estimating">Maltiel et al. (<a href="#ref-malt15-estimating" role="doc-biblioref">2015</a>)</span>) model:</p>
+<ul>
+<li><p>Degree distributions,</p></li>
+<li><p>Reporting error,</p></li>
+<li><p>Group visibility,</p></li>
+<li><p>Hidden population size.</p></li>
+</ul>
+<p>They yield a <strong>posterior distribution</strong> over <span class="math inline">\(N_H\)</span>, and uncertainty is embedded within the model.</p>
+<p>Software:</p>
+<ul>
+<li><p><code>NSUMBayes</code> (in <code>R</code>)</p></li>
+<li><p>Custom MCMC in <code>stan</code> or <code>JAGS</code></p></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="aggregating-bootstrap-estimates" class="level4">
+<h4 class="anchored" data-anchor-id="aggregating-bootstrap-estimates">4. Aggregating Bootstrap Estimates</h4>
+<p>After <span class="math inline">\(B\)</span> replicates:</p>
+<p><span class="math display">\[\hat{N}_H^{(1)}, \dots, \hat{N}_H^{(B)}\]</span></p>
+<p>We compute:</p>
+<ul>
+<li><p><strong>Point estimate</strong>: <span class="math inline">\(\bar{N}_H = \frac{1}{B} \sum_b \hat{N}_H^{(b)}\)</span></p></li>
+<li><p><strong>Standard error</strong>: sample SD</p></li>
+<li><p><strong>95% CI</strong>: empirical percentiles (e.g., 2.5%, 97.5%)</p></li>
+</ul>
+<hr>
+</section>
+<section id="references-1" class="level4">
+<h4 class="anchored" data-anchor-id="references-1">5. References</h4>
+<ul>
+<li><p><span class="citation" data-cites="feeh16-generaling">(<a href="#ref-feeh16-generaling" role="doc-biblioref"><strong>feeh16-generaling?</strong></a>)</span></p></li>
+<li><p><span class="citation" data-cites="salf06-variance">(<a href="#ref-salf06-variance" role="doc-biblioref"><strong>salf06-variance?</strong></a>)</span></p></li>
+<li><p><span class="citation" data-cites="gile11-inference">(<a href="#ref-gile11-inference" role="doc-biblioref"><strong>gile11-inference?</strong></a>)</span></p></li>
+<li><p><span class="citation" data-cites="volz08-rds">(<a href="#ref-volz08-rds" role="doc-biblioref"><strong>volz08-rds?</strong></a>)</span></p></li>
+<li><p><span class="citation" data-cites="malt15-estimating">Maltiel et al. (<a href="#ref-malt15-estimating" role="doc-biblioref">2015</a>)</span></p></li>
+<li><p><span class="citation" data-cites="yauc22-neighboot">Yauck and Moodie (<a href="#ref-yauc22-neighboot" role="doc-biblioref">2022</a>)</span></p></li>
+<li><p><span class="citation" data-cites="weir12-comparison">(<a href="#ref-weir12-comparison" role="doc-biblioref"><strong>weir12-comparison?</strong></a>)</span></p></li>
+<li><p><span class="citation" data-cites="salg06-variance">(<a href="#ref-salg06-variance" role="doc-biblioref"><strong>salg06-variance?</strong></a>)</span></p></li>
+<li><p><span class="citation" data-cites="rust96-rescaled">(<a href="#ref-rust96-rescaled" role="doc-biblioref"><strong>rust96-rescaled?</strong></a>)</span></p></li>
+<li><p><span class="citation" data-cites="rao88-resampling">Rao and Wu (<a href="#ref-rao88-resampling" role="doc-biblioref">1988</a>)</span></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Authors’ names are listed in alphabetical order.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>CE: IS THIS THE CORRECT REFERENCE?<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>CE: No idea if this is the correct reference – it is my best guess.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

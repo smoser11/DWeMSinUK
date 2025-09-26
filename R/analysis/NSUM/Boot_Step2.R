@@ -1268,3 +1268,24 @@ rdsi_direct <- compute_rds_i_weights(rds_data, verbose = TRUE)
 cat("VH direct (first 5):", round(vh_direct[1:5], 6), "\n")
 cat("RDS-I direct (first 5):", round(rdsi_direct[1:5], 6), "\n")
 
+
+# Re-run Step 2 with the corrected function to get properly weighted samples
+boot_samples_corrected <- compute_weights_batch(
+  bootstrap_samples = boot_samples,  # Your original bootstrap samples from   Step 1
+  weight_method = "SS",  # This doesn't matter since all methods are  calculated
+  population_size = 980000,
+  outcome_variable = "document_withholding_rds",
+  parallel = FALSE,  # For debugging
+  verbose = TRUE
+)
+
+
+# Test the corrected samples
+sample1_corrected <- boot_samples_corrected[[1]]
+cat("Corrected VH weights (first 5):", round(sample1_corrected$weight_vh[1:5],
+                                             6), "\n")
+cat("Corrected RDS-I weights (first 5):",
+    round(sample1_corrected$weight_rds_i[1:5], 6), "\n")
+cat("Corrected RDS-SS weights (first 5):",
+    round(sample1_corrected$weight_rds_ss[1:5], 6), "\n")
+

@@ -78,6 +78,39 @@ Based on the documents and upcoming meeting, here are the key priorities to focu
 
 Would you like me to elaborate on any of these areas?
 
+# Modern Slavery in the UK #
+
+
+<https://www.thebureauinvestigates.com/stories/2025-06-03/farms-and-supermarkets-could-pay-seasonal-workers-recruitment-costs-says-report>
+
+<https://hopeforjustice.org/news/uk-record-number-of-potential-victims-of-modern-slavery-identified/>
+
+<https://www.business-humanrights.org/en/from-us/media-centre/hotel-sector-failing-to-combat-modern-slavery-and-sexual-exploitation-finds-new-study/>
+
+<https://researchonline.lshtm.ac.uk/id/eprint/2537484/>
+
+<https://workersupportcentre.org.uk/2024/01/29/largest-independent-study-ever-published-on-treatment-of-seasonal-agricultural-workers-finds-worker-welfare-and-safeguarding-concerns/>
+
+<https://labourexploitation.org/publications/assessment-of-the-risks-of-human-trafficking-for-forced-labour-on-the-uk-seasonal-workers-pilot/>
+
+
+<https://www.antislavery.org/slavery-today/slavery-uk/>
+
+<https://www.modernslaverypec.org/research-projects/modern-slavery-risks-in-the-uk-construction-sector>
+
+<https://www.gla.gov.uk/who-we-are/modern-slavery/industry-profiles-nail-bars-2020>
+
+<https://workersupportcentre.org.uk/2024/01/29/largest-independent-study-ever-published-on-treatment-of-seasonal-agricultural-workers-finds-worker-welfare-and-safeguarding-concerns/>
+
+<https://publicservices.international/resources/news/unison-survey-exposes-exploitation-of-migrant-care-workers-in-uk?id=15620&lang=en>
+
+<https://www.antislavery.org/slavery-today/slavery-uk/>
+
+<https://www.pbctoday.co.uk/news/planning-construction-news/construction-glaa-exploitation/57384/>
+
+<https://www.gla.gov.uk/whats-new/latest-press-releases>
+
+
 
 # RDS + NSUM Comparison #
 
