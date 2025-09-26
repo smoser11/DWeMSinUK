@@ -97,6 +97,17 @@ compute_rds_weights <- function(resample,
     })
     sample_data$weight_rds_ii <- rds_ii_weights
 
+    # DEBUG: Check what weights were actually calculated
+    cat("DEBUG after weight calculation:\n")
+    cat("  VH weights (first 5):", round(vh_weights[1:5], 6), "\n")
+    cat("  RDS-I weights (first 5):", round(rds_i_weights[1:5], 6),
+        "\n")
+    cat("  sample_data$weight_vh (first 5):",
+        round(sample_data$weight_vh[1:5], 6), "\n")
+    cat("  sample_data$weight_rds_i (first 5):",
+        round(sample_data$weight_rds_i[1:5], 6), "\n")
+    
+    
     # Always compute RDS-SS weights (may use fallback if insufficient data)
     if (verbose) cat("  Computing RDS-SS weights...\n")
     rds_ss_weights <- tryCatch({
@@ -1190,4 +1201,70 @@ weighted_bootstrap_samples <- compute_weights_batch(
 
 # Test weight computation
 test_results <- test_weight_computation(verbose = TRUE)
+
+
+
+# Check if Step 2 output has actually different values (before  fallback)
+sample1 <- boot_samples[[1]]
+cat("VH weights (first 5):", round(sample1$weight_vh[1:5], 6),    "\n")
+cat("RDS-I weights (first 5):", round(sample1$weight_rds_i[1:5],                                      6), "\n")
+cat("RDS-II weights (first 5):", round(sample1$weight_rds_ii[1:5],                                       6), "\n")
+cat("RDS-SS weights (first 5):", round(sample1$weight_rds_ss[1:5], 6), "\n")
+
+
+
+
+# RDS-I weights: inversely proportional to network size  
+# weights <- 1 / degrees
+# weights <- weights / sum(weights, na.rm = TRUE)
+# 
+# This explains why all four methods produce identical values:
+#   1/network.size normalized.
+# 
+# The solution: We need to check what errors are occurring in the
+# individual RDS weight functions. Let me test one:
+  
+  # Test if individual weight functions are working
+  sample1 <- boot_samples[[1]]
+
+# Convert to RDS data frame (this might be failing)
+rds_data <- convert_to_rds_dataframe(sample1,
+                                     population_size = 980000,
+                                     verbose = TRUE)
+
+# Test each weight function individually  
+vh_result <- tryCatch({
+  compute_enhanced_vh_weights(rds_data, 980000, verbose = TRUE)
+}, error = function(e) {
+  cat("VH Error:", e$message, "\n")
+  return(NA)
+})
+
+rdsi_result <- tryCatch({
+  compute_rds_i_weights(rds_data, verbose = TRUE)
+}, error = function(e) {
+  cat("RDS-I Error:", e$message, "\n")
+  return(NA)
+})
+
+
+
+
+###
+# Check what's actually in the bootstrap sample weights
+sample1 <- boot_samples[[1]]
+cat("VH weights (first 5):", round(sample1$weight_vh[1:5], 6),
+    "\n")
+cat("RDS-I weights (first 5):", round(sample1$weight_rds_i[1:5],
+                                      6), "\n")
+
+# And compare to what the individual functions produce
+rds_data <- convert_to_rds_dataframe(sample1, population_size =
+                                       980000, verbose = TRUE)
+vh_direct <- compute_enhanced_vh_weights(rds_data, 980000, verbose
+                                         = TRUE)
+rdsi_direct <- compute_rds_i_weights(rds_data, verbose = TRUE)
+
+cat("VH direct (first 5):", round(vh_direct[1:5], 6), "\n")
+cat("RDS-I direct (first 5):", round(rdsi_direct[1:5], 6), "\n")
 
