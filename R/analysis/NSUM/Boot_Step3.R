@@ -2525,6 +2525,8 @@ plot_data <- bootstrap_results$summary_results$detailed_summary %>%
     .groups = "drop"
   )
 
+plot_data
+
 # Check if all weight methods are present
 table(plot_data$weight_method)
 table(plot_data$nsum_method)
