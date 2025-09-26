@@ -32,7 +32,121 @@ if (!SKIP_EXECUTION) {
 # FIX MISSING RDS WEIGHTS IN BOOTSTRAP SAMPLES
 # ==============================================================================
 
-add_rds_weights_to_bootstrap_samples <- function(boot_samples, original_data = NULL) {
+add_rds_weights_to_bootstrap_samples_SIMPLE <- function(boot_samples, original_data_path = NULL) {
+  cat("=== SIMPLE RDS WEIGHT MAPPING APPROACH ===\n")
+
+  # Load original RDS data if path provided
+  if (!is.null(original_data_path) && file.exists(original_data_path)) {
+    cat("Loading original RDS data from:", original_data_path, "\n")
+    load(original_data_path)
+
+    # Try to find the RDS object
+    if (exists("prepared_data")) {
+      original_rds <- prepared_data
+    } else if (exists("rds_object")) {
+      original_rds <- rds_object
+    } else {
+      stop("Could not find RDS object in loaded data")
+    }
+  } else {
+    # Try to find existing RDS data
+    possible_files <- c(
+      here::here("data", "processed", "prepared_data.RData"),
+      here::here("data", "processed", "rds_object.RData")
+    )
+
+    original_rds <- NULL
+    for (file in possible_files) {
+      if (file.exists(file)) {
+        cat("Loading:", file, "\n")
+        load(file)
+        if (exists("prepared_data")) {
+          original_rds <- prepared_data
+          break
+        } else if (exists("rds_object")) {
+          original_rds <- rds_object
+          break
+        }
+      }
+    }
+
+    if (is.null(original_rds)) {
+      stop("Could not find original RDS data file")
+    }
+  }
+
+  cat("Original RDS data class:", class(original_rds)[1], "\n")
+  cat("Original RDS data dimensions:", nrow(original_rds), "x", ncol(original_rds), "\n")
+
+  # Calculate weights from original RDS object
+  cat("Calculating RDS weights from original data...\n")
+  tryCatch({
+    weights_vh <- vh.weights(original_rds)
+    weights_rds_i <- rds.I.weights(original_rds)
+    weights_rds_ii <- rds.II.weights(original_rds)
+    weights_rds_ss <- compute.weights(original_rds, weight.type = "Gile's SS")
+
+    cat("Successfully calculated all RDS weight types\n")
+
+    # Create weight lookup table
+    weight_lookup <- data.frame(
+      id = as.numeric(row.names(original_rds)),
+      weight_vh = as.numeric(weights_vh),
+      weight_rds_i = as.numeric(weights_rds_i),
+      weight_rds_ii = as.numeric(weights_rds_ii),
+      weight_rds_ss = as.numeric(weights_rds_ss)
+    )
+
+    cat("Weight lookup table created with", nrow(weight_lookup), "rows\n")
+    cat("Sample weight values:\n")
+    print(head(weight_lookup))
+
+  }, error = function(e) {
+    stop("Failed to calculate RDS weights from original data: ", e$message)
+  })
+
+  # Map weights to bootstrap samples
+  cat("Mapping weights to", length(boot_samples), "bootstrap samples...\n")
+
+  boot_samples_with_weights <- lapply(seq_along(boot_samples), function(i) {
+    sample <- boot_samples[[i]]
+
+    # Merge weights by ID
+    if ("id" %in% names(sample)) {
+      sample_with_weights <- merge(sample, weight_lookup, by = "id", all.x = TRUE, suffixes = c("", "_new"))
+
+      # Replace old weight columns if they exist
+      sample_with_weights$weight_vh <- sample_with_weights$weight_vh_new %||% sample_with_weights$weight_vh
+      sample_with_weights$weight_rds_i <- sample_with_weights$weight_rds_i_new %||% sample_with_weights$weight_rds_i
+      sample_with_weights$weight_rds_ii <- sample_with_weights$weight_rds_ii_new %||% sample_with_weights$weight_rds_ii
+      sample_with_weights$weight_rds_ss <- sample_with_weights$weight_rds_ss_new %||% sample_with_weights$weight_rds_ss
+
+      # Remove temporary columns
+      temp_cols <- grep("_new$", names(sample_with_weights), value = TRUE)
+      sample_with_weights[temp_cols] <- NULL
+
+      return(sample_with_weights)
+    } else {
+      warning("Bootstrap sample ", i, " missing 'id' column - cannot map weights")
+      return(sample)
+    }
+  })
+
+  cat("Successfully mapped weights to all bootstrap samples\n")
+  return(boot_samples_with_weights)
+}
+
+add_rds_weights_to_bootstrap_samples <- function(boot_samples, original_data = NULL, force_recalculate = FALSE) {
+  cat("=== Adding RDS Weights to Bootstrap Samples ===\n")
+
+  # First, check what we're working with
+  if (is.list(boot_samples) && !is.data.frame(boot_samples)) {
+    cat("Processing", length(boot_samples), "bootstrap samples\n")
+    sample_classes <- sapply(boot_samples[1:min(3, length(boot_samples))], function(x) class(x)[1])
+    cat("Sample classes:", paste(unique(sample_classes), collapse = ", "), "\n")
+  } else {
+    cat("Processing single data frame\n")
+  }
   cat("=== Adding Missing RDS Weights to Bootstrap Samples ===\n")
 
   # Handle both single data frame and list of bootstrap samples
@@ -50,9 +164,14 @@ add_rds_weights_to_bootstrap_samples <- function(boot_samples, original_data = N
   weight_cols <- c("weight_vh", "weight_rds_i", "weight_rds_ii", "weight_rds_ss")
   missing_weights <- setdiff(weight_cols, colnames(first_sample))
 
-  if (length(missing_weights) == 0) {
+  if (length(missing_weights) == 0 && !force_recalculate) {
     cat("All RDS weights already present in bootstrap samples.\n")
+    cat("Use force_recalculate = TRUE to recalculate existing weights.\n")
     return(boot_samples)
+  }
+
+  if (force_recalculate) {
+    cat("Force recalculation enabled - will recalculate all RDS weights.\n")
   }
 
   cat("Missing weight columns:", paste(missing_weights, collapse = ", "), "\n")
@@ -77,7 +196,7 @@ add_rds_weights_to_bootstrap_samples <- function(boot_samples, original_data = N
           weights_vh <- vh.weights(sample)
           weights_rds_i <- rds.I.weights(sample)
           weights_rds_ii <- rds.II.weights(sample)
-          weights_rds_ss <- compute.weights(sample, weight.type = "Gille's SS")
+          weights_rds_ss <- compute.weights(sample, weight.type = "Gile's SS")
 
           # Add weights as new columns
           sample$weight_vh <- as.numeric(weights_vh)
@@ -163,10 +282,10 @@ add_rds_weights_to_bootstrap_samples <- function(boot_samples, original_data = N
   # Use original data approach if bootstrap samples are not RDS objects
   if (class(original_data)[1] == "rds.data.frame") {
     cat("Calculating RDS weights from original RDS object...\n")
-    weights_vh <- rds.i.weights(original_data)
-    weights_rds_i <- rds.i.weights(original_data)
-    weights_rds_ii <- rds.iI.weights(original_data)
-    weights_rds_ss <- RDS.SS.weights(original_data)
+    weights_vh <- vh.weights(original_data)
+    weights_rds_i <- rds.I.weights(original_data)
+    weights_rds_ii <- rds.II.weights(original_data)
+    weights_rds_ss <- compute.weights(original_data, weight.type = "Gile's SS")
 
     weight_df <- data.frame(
       id = as.numeric(row.names(original_data)),
@@ -1518,7 +1637,7 @@ create_nsum_comparison_plots <- function(summary_results,
     }
   }
 
-  # 3. Method comparison by weight scheme
+  # 3. Method comparison by weight scheme - FIXED VERSION
   p3 <- detailed_df %>%
     filter(!is.na(mean_estimate)) %>%
     group_by(outcome_variable, weight_method, nsum_method) %>%
@@ -1528,12 +1647,20 @@ create_nsum_comparison_plots <- function(summary_results,
       q75 = quantile(mean_estimate, 0.75, na.rm = TRUE),
       .groups = "drop"
     ) %>%
+    # Ensure weight_method is treated as factor with proper levels
+    mutate(
+      weight_method = factor(weight_method,
+                           levels = c("weight_vh", "weight_rds_i", "weight_rds_ii", "weight_rds_ss"),
+                           labels = c("VH", "RDS-I", "RDS-II", "RDS-SS")),
+      nsum_method = factor(nsum_method)
+    ) %>%
     ggplot(aes(x = weight_method, y = median_estimate, fill = nsum_method)) +
-    geom_col(position = "dodge", alpha = 0.8) +
+    geom_col(position = position_dodge(width = 0.8), alpha = 0.8) +
     geom_errorbar(aes(ymin = q25, ymax = q75),
-                  position = position_dodge(width = 0.9), width = 0.2) +
+                  position = position_dodge(width = 0.8), width = 0.25) +
     facet_wrap(~outcome_variable, scales = "free_y") +
     scale_y_continuous(labels = comma_format()) +
+    scale_fill_manual(values = c("GNSUM_Symmetric" = "#F8766D", "MBSU" = "#00BFC4")) +
     labs(
       title = "Method Comparison by RDS Weight Scheme",
       subtitle = "Median estimates with IQR error bars",
@@ -1542,7 +1669,11 @@ create_nsum_comparison_plots <- function(summary_results,
       fill = "NSUM Method"
     ) +
     theme_minimal() +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      legend.position = "bottom",
+      strip.text = element_text(size = 10)
+    )
 
   plots$method_comparison <- p3
 
@@ -1551,24 +1682,37 @@ create_nsum_comparison_plots <- function(summary_results,
            width = plot_width, height = plot_height, dpi = 300)
   }
 
-  # 4. Confidence interval width comparison
+  # 4. Confidence interval width comparison - CORRECTED VERSION
+  # This plot should show the distribution of CI widths, not individual point estimates
   p4 <- detailed_df %>%
-    filter(!is.na(ci_lower), !is.na(ci_upper)) %>%
-    mutate(ci_width = ci_upper - ci_lower,
-           rel_ci_width = ci_width / mean_estimate) %>%
+    filter(!is.na(ci_lower), !is.na(ci_upper), !is.na(mean_estimate), mean_estimate > 0) %>%
+    mutate(
+      ci_width = ci_upper - ci_lower,
+      rel_ci_width = pmin(ci_width / mean_estimate, 2),  # Cap at 200% for display
+      # Ensure weight_method is treated as factor with proper levels
+      weight_method = factor(weight_method,
+                           levels = c("weight_vh", "weight_rds_i", "weight_rds_ii", "weight_rds_ss"),
+                           labels = c("VH", "RDS-I", "RDS-II", "RDS-SS")),
+      nsum_method = factor(nsum_method)
+    ) %>%
     ggplot(aes(x = weight_method, y = rel_ci_width, fill = nsum_method)) +
-    geom_boxplot(alpha = 0.8) +
-    facet_wrap(~outcome_variable) +
-    scale_y_continuous(labels = percent_format()) +
+    geom_boxplot(alpha = 0.8, position = position_dodge(width = 0.8)) +
+    facet_wrap(~outcome_variable, scales = "free_y") +
+    scale_y_continuous(labels = percent_format(), limits = c(0, NA)) +
+    scale_fill_manual(values = c("GNSUM_Symmetric" = "#F8766D", "MBSU" = "#00BFC4")) +
     labs(
       title = "Confidence Interval Width Analysis",
-      subtitle = "Relative CI width (CI width / point estimate)",
+      subtitle = "Distribution of relative CI widths across parameter combinations",
       x = "RDS Weight Method",
-      y = "Relative CI Width",
+      y = "Relative CI Width (CI Width / Point Estimate)",
       fill = "NSUM Method"
     ) +
     theme_minimal() +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      legend.position = "bottom",
+      strip.text = element_text(size = 9)
+    )
 
   plots$ci_width_analysis <- p4
 
@@ -1969,6 +2113,169 @@ debug_estimation_functions <- function(boot_samples, verbose = TRUE) {
   ))
 }
 
+# Debug weight columns in bootstrap samples
+debug_weight_columns <- function(boot_samples, verbose = TRUE) {
+  cat("=== DEBUGGING WEIGHT COLUMNS IN BOOTSTRAP SAMPLES ===\n")
+
+  # Check first bootstrap sample
+  sample1 <- boot_samples[[1]]
+
+  cat("Sample 1 dimensions:", nrow(sample1), "x", ncol(sample1), "\n")
+  cat("Available columns:", paste(names(sample1), collapse = ", "), "\n")
+
+  # Check for weight columns
+  weight_cols <- c("weight_vh", "weight_rds_i", "weight_rds_ii", "weight_rds_ss")
+  available_weights <- weight_cols[weight_cols %in% names(sample1)]
+
+  cat("Available weight columns:", paste(available_weights, collapse = ", "), "\n")
+
+  if (length(available_weights) > 0) {
+    cat("\nWeight statistics for first 5 observations:\n")
+    for (wcol in available_weights) {
+      weight_vals <- sample1[[wcol]][1:5]
+      cat(wcol, ":", paste(round(weight_vals, 6), collapse = ", "), "\n")
+    }
+
+    # Check if all weight methods have identical values
+    cat("\nChecking if weight methods are identical:\n")
+    for (i in 1:(length(available_weights)-1)) {
+      for (j in (i+1):length(available_weights)) {
+        col1 <- available_weights[i]
+        col2 <- available_weights[j]
+        are_identical <- all(sample1[[col1]] == sample1[[col2]], na.rm = TRUE)
+        cat(col1, "==", col2, ":", are_identical, "\n")
+      }
+    }
+  } else {
+    cat("ERROR: No weight columns found in bootstrap samples!\n")
+  }
+
+  return(list(
+    sample_dims = dim(sample1),
+    columns = names(sample1),
+    available_weights = available_weights
+  ))
+}
+
+# Debug the actual values being plotted
+debug_plot_values <- function(bootstrap_results, verbose = TRUE) {
+  cat("=== DEBUGGING ACTUAL PLOT VALUES ===\n")
+
+  summary_df <- bootstrap_results$summary_results$detailed_summary
+
+  # Check a specific example - first outcome, first weight method
+  test_subset <- summary_df %>%
+    filter(outcome_variable == unique(summary_df$outcome_variable)[1],
+           weight_method == unique(summary_df$weight_method)[1]) %>%
+    arrange(nsum_method, delta, tau, rho)
+
+  cat("TEST SUBSET for", unique(test_subset$outcome_variable)[1], "with", unique(test_subset$weight_method)[1], ":\n")
+  print(test_subset %>%
+        select(nsum_method, delta, tau, rho, mean_estimate, ci_lower, ci_upper) %>%
+        head(10))
+
+  # Check if MBSU and GNSUM have same values (they shouldn't!)
+  mbsu_vals <- test_subset %>% filter(nsum_method == "MBSU") %>% pull(mean_estimate)
+  gnsum_vals <- test_subset %>% filter(nsum_method == "GNSUM_Symmetric") %>% pull(mean_estimate)
+
+  cat("\nMBSU values range:", round(range(mbsu_vals, na.rm = TRUE)), "\n")
+  cat("GNSUM values range:", round(range(gnsum_vals, na.rm = TRUE)), "\n")
+  cat("Are MBSU and GNSUM identical?", identical(mbsu_vals[1], gnsum_vals[1]), "\n")
+
+  # Check CI widths
+  gnsum_ci_widths <- test_subset %>%
+    filter(nsum_method == "GNSUM_Symmetric") %>%
+    mutate(ci_width = ci_upper - ci_lower) %>%
+    pull(ci_width)
+
+  cat("GNSUM CI widths:", round(gnsum_ci_widths, 2), "\n")
+
+  # Check what the plot aggregation does
+  cat("\n=== PLOT AGGREGATION TEST ===\n")
+  plot_data_p3 <- summary_df %>%
+    filter(!is.na(mean_estimate)) %>%
+    group_by(outcome_variable, weight_method, nsum_method) %>%
+    summarise(
+      n_rows = n(),
+      median_estimate = median(mean_estimate, na.rm = TRUE),
+      q25 = quantile(mean_estimate, 0.25, na.rm = TRUE),
+      q75 = quantile(mean_estimate, 0.75, na.rm = TRUE),
+      .groups = "drop"
+    )
+
+  cat("Plot aggregation sample:\n")
+  print(plot_data_p3 %>% head(6))
+
+  return(list(
+    test_subset = test_subset,
+    plot_data_p3 = plot_data_p3
+  ))
+}
+
+# Debug visualization data filtering
+debug_plot_data <- function(bootstrap_results, verbose = TRUE) {
+  cat("=== DEBUGGING PLOT DATA FILTERING ===\n")
+
+  # Check the summary results structure
+  summary_df <- bootstrap_results$summary_results$detailed_summary
+
+  if (verbose) {
+    cat("Total rows in detailed_summary:", nrow(summary_df), "\n")
+    cat("Columns:", paste(names(summary_df), collapse = ", "), "\n\n")
+
+    # Check unique values for key grouping variables
+    cat("Unique outcome_variable:", paste(unique(summary_df$outcome_variable), collapse = ", "), "\n")
+    cat("Unique weight_method:", paste(unique(summary_df$weight_method), collapse = ", "), "\n")
+    cat("Unique nsum_method:", paste(unique(summary_df$nsum_method), collapse = ", "), "\n\n")
+
+    # Check for valid estimates by weight method
+    cat("=== VALID ESTIMATES BY WEIGHT METHOD ===\n")
+    valid_by_weight <- summary_df %>%
+      group_by(weight_method) %>%
+      summarise(
+        total_rows = n(),
+        valid_estimates = sum(!is.na(mean_estimate)),
+        pct_valid = round(100 * valid_estimates / total_rows, 1),
+        mean_est_range = if(valid_estimates > 0) paste(round(range(mean_estimate, na.rm = TRUE)), collapse = " to ") else "No valid estimates",
+        .groups = "drop"
+      )
+
+    print(valid_by_weight)
+
+    # Check for valid estimates by outcome and weight method
+    cat("\n=== VALID ESTIMATES BY OUTCOME AND WEIGHT METHOD ===\n")
+    valid_by_outcome_weight <- summary_df %>%
+      group_by(outcome_variable, weight_method) %>%
+      summarise(
+        valid_estimates = sum(!is.na(mean_estimate)),
+        mean_estimate_avg = mean(mean_estimate, na.rm = TRUE),
+        .groups = "drop"
+      ) %>%
+      filter(valid_estimates > 0)  # Only show combinations with valid estimates
+
+    print(valid_by_outcome_weight)
+
+    # Check filtering that plots use
+    cat("\n=== FILTERED DATA FOR PLOTS ===\n")
+    plot_data <- summary_df %>%
+      filter(!is.na(mean_estimate))
+
+    cat("Rows after filtering NA estimates:", nrow(plot_data), "\n")
+
+    if (nrow(plot_data) > 0) {
+      cat("Weight methods in filtered data:", paste(unique(plot_data$weight_method), collapse = ", "), "\n")
+      cat("NSUM methods in filtered data:", paste(unique(plot_data$nsum_method), collapse = ", "), "\n")
+    }
+  }
+
+  return(list(
+    summary_df = summary_df,
+    valid_by_weight = valid_by_weight,
+    valid_by_outcome_weight = valid_by_outcome_weight,
+    plot_data = plot_data
+  ))
+}
+
 # Enhanced debugging function to trace the issue step-by-step
 deep_debug_nsum <- function(boot_samples, verbose = TRUE) {
   cat("=== DEEP DEBUGGING NSUM ESTIMATION ===\n")
@@ -2107,6 +2414,24 @@ deep_debug_nsum <- function(boot_samples, verbose = TRUE) {
   )))
 }
 
+
+library(tidyverse)
+
+# Check what data the plot is using
+plot_data <- bootstrap_results$summary_results$detailed_summary %>%
+  filter(!is.na(mean_estimate)) %>%
+  group_by(outcome_variable, weight_method, nsum_method) %>%
+  summarise(
+    median_estimate = median(mean_estimate, na.rm = TRUE),
+    q25 = quantile(mean_estimate, 0.25, na.rm = TRUE),
+    q75 = quantile(mean_estimate, 0.75, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+# Check if all weight methods are present
+table(plot_data$weight_method)
+table(plot_data$nsum_method)
+
 # Example: Using different weight methods and adjustment factors
 #
 # Production MBSU with expert-elicited adjustment factors:
@@ -2160,18 +2485,50 @@ bootstrap_results <- run_comprehensive_nsum_bootstrap(
 
 summary(bootstrap_results$summary_results$mean_estimate)
 
-# Create all visualizations
-plots <-
-  create_nsum_comparison_plots(bootstrap_results$summary_results)
-summary_table <-
-  create_nsum_summary_table(bootstrap_results$summary_results)
+# Regenerate the fixed plots
+plots <-  create_nsum_comparison_plots(bootstrap_results$summary_results)
 
-# Assume 'plots' is a list of ggplot objects
+plots
+
+# Save them again
 for (i in seq_along(plots)) {
-  # Create a filename for each plot
-  fname <- paste0("comparison_plot_", i, ".png")
-  # Save the plot
-  ggsave(filename = fname, plot = plots[[i]], width = 8, height = 6, dpi = 300)
+  fname <- paste0("comparison_plot_fixed_", i, ".png")
+  ggsave(filename = fname, plot = plots[[i]], width = 8, height =
+           6, dpi = 300)
 }
 
 
+summary_table <-  create_nsum_summary_table(bootstrap_results$summary_results)
+
+summary_table
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Check what data the plot is using
+plot_data <- bootstrap_results$summary_results$detailed_summary %>%
+  filter(!is.na(mean_estimate)) %>%
+  group_by(outcome_variable, weight_method, nsum_method) %>%
+  summarise(
+    median_estimate = median(mean_estimate, na.rm = TRUE),
+    q25 = quantile(mean_estimate, 0.25, na.rm = TRUE),
+    q75 = quantile(mean_estimate, 0.75, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+# Check if all weight methods are present
+table(plot_data$weight_method)
+table(plot_data$nsum_method)
+
+
+debug_values <- debug_plot_values(bootstrap_results)
+debug_values
