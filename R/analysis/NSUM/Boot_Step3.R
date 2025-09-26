@@ -2534,3 +2534,202 @@ table(plot_data$nsum_method)
 
 debug_values <- debug_plot_values(bootstrap_results)
 debug_values
+
+
+#####################################################
+## PLOT
+# Load required libraries
+library(tidyverse)
+library(ggplot2)
+
+# Corrected function to create method comparison plot
+create_method_comparison_plot <- function(bootstrap_results, save_plot
+                                          = FALSE, filename = "comparison_plot.png") {
+  
+  # Use the detailed_summary data and aggregate it for plotting
+  plot_data <- bootstrap_results$summary_results$detailed_summary %>%
+    group_by(outcome_variable, weight_method, nsum_method) %>%
+    summarise(
+      median_estimate = median(median_estimate, na.rm = TRUE),
+      q25 = quantile(median_estimate, 0.25, na.rm = TRUE),
+      q75 = quantile(median_estimate, 0.75, na.rm = TRUE),
+      .groups = 'drop'
+    )
+  
+  # Create the comparison plot
+  p <<- ggplot(plot_data, aes(x = weight_method, y = median_estimate,
+                             fill = nsum_method)) +
+    geom_col(position = position_dodge(width = 0.8), width = 0.7) +
+    geom_errorbar(aes(ymin = q25, ymax = q75),
+                  position = position_dodge(width = 0.8), width = 0.2)  +
+    facet_wrap(~ outcome_variable, scales = "free_y", ncol = 3) +
+    scale_fill_manual(values = c("GNSUM_Symmetric" = "#FF6B6B", "MBSU"
+                                 = "#4ECDC4")) +
+    scale_x_discrete(labels = function(x) gsub("weight_", "", x)) +
+    theme_minimal() +
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      strip.text = element_text(size = 10),
+      legend.position = "bottom"
+    ) +
+    labs(
+      title = "Method Comparison by RDS Weight Scheme (CORRECTED)",
+      subtitle = "Median estimates with IQR error bars",
+      x = "RDS Weight Method",
+      y = "Median Population Estimate",
+      fill = "NSUM Method"
+    )
+  
+  if (save_plot) {
+    ggsave(filename, plot = p, width = 12, height = 8, dpi = 300)
+    cat("Plot saved as:", filename, "\n")
+  }
+  
+  return(p)
+}
+
+# Corrected function to create confidence interval width analysis plot
+create_confidence_interval_plot <- function(bootstrap_results,
+                                            save_plot = FALSE, filename = "ci_width_plot.png") {
+  
+  # Calculate CI widths from detailed summary
+  ci_data <- bootstrap_results$summary_results$detailed_summary %>%
+    mutate(ci_width = ci_upper - ci_lower,
+           relative_width = ci_width / mean_estimate) %>%
+    filter(!is.na(ci_width) & ci_width > 0 & !is.na(relative_width) &
+             is.finite(relative_width))
+  
+  # Create the CI width analysis plot
+  pp <<- ggplot(ci_data, aes(x = weight_method, y = relative_width, fill
+                           = nsum_method)) +
+    geom_boxplot(position = position_dodge(width = 0.8), width = 0.6)  +
+    facet_wrap(~ outcome_variable, scales = "free_y", ncol = 3) +
+    scale_fill_manual(values = c("GNSUM_Symmetric" = "#FF6B6B", "MBSU"
+                                 = "#4ECDC4")) +
+    scale_x_discrete(labels = function(x) gsub("weight_", "", x)) +
+    theme_minimal() +
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      strip.text = element_text(size = 10),
+      legend.position = "bottom"
+    ) +
+    labs(
+      title = "Confidence Interval Width Analysis (CORRECTED)",
+      subtitle = "Relative CI width (CI width / point estimate)",
+      x = "RDS Weight Method",
+      y = "Relative CI Width",
+      fill = "NSUM Method"
+    )
+  
+  if (save_plot) {
+    ggsave(filename, plot = pp, width = 12, height = 8, dpi = 300)
+    cat("Plot saved as:", filename, "\n")
+  }
+  
+  return(pp)
+}
+
+# Now generate the corrected plots
+create_method_comparison_plot(bootstrap_results, save_plot = TRUE,
+                              filename =
+                                'comparison_plot_corrected.png')
+
+
+p
+
+
+create_confidence_interval_plot(bootstrap_results, save_plot = TRUE,
+                                filename =
+                                  'ci_width_plot_corrected.png')
+
+
+pp
+
+
+
+
+
+# Check if the bootstrap_results actually contains the corrected data
+cat("=== DEBUGGING BOOTSTRAP RESULTS DATA ===\n")
+
+# Look at detailed_summary structure
+detailed_data <- bootstrap_results$summary_results$detailed_summary
+cat("Total rows in detailed_summary:", nrow(detailed_data), "\n")
+cat("Unique weight methods:", unique(detailed_data$weight_method),
+    "\n")
+cat("Unique NSUM methods:", unique(detailed_data$nsum_method), "\n")
+
+# Check if different weight methods actually have different estimates
+test_outcome <- "document_withholding_nsum"
+test_method <- "GNSUM_Symmetric"
+
+test_data <- detailed_data %>%
+  filter(outcome_variable == test_outcome, nsum_method == test_method) %>%
+  select(weight_method, mean_estimate, median_estimate)
+
+cat("\nTest data for", test_outcome, "with", test_method, ":\n")
+print(test_data)
+
+# Check if the estimates are actually different across weight methods
+cat("\nAre estimates different across weight methods?\n")
+for(method in unique(test_data$weight_method)) {
+  subset_data <- test_data[test_data$weight_method == method, ]
+  cat(method, "- mean_estimate:", unique(subset_data$mean_estimate),
+      "\n")
+}
+
+# Check the aggregated plot data
+plot_data_test <- detailed_data %>%
+  group_by(outcome_variable, weight_method, nsum_method) %>%
+  summarise(
+    median_estimate = median(median_estimate, na.rm = TRUE),
+    q25 = quantile(median_estimate, 0.25, na.rm = TRUE),
+    q75 = quantile(median_estimate, 0.75, na.rm = TRUE),
+    n_obs = n(),
+    .groups = 'drop'
+  ) %>%
+  filter(outcome_variable == test_outcome, nsum_method == test_method)
+
+cat("\nAggregated plot data for", test_outcome, "with", test_method,
+    ":\n")
+print(plot_data_test)
+
+
+
+############
+# Run Step 3 with the corrected bootstrap samples
+cat("Running NSUM analysis with corrected bootstrap samples...\n")
+
+bootstrap_results_corrected <- run_comprehensive_nsum_bootstrap(
+  boot_samples = boot_samples_corrected,
+  outcome_variables = c("document_withholding_nsum",
+                        "pay_issues_nsum", "threats_abuse_nsum", "excessive_hours_nsum",
+                        "access_to_help_nsum"),
+  hidden_indicators = c("document_withholding_rds", "pay_issues_rds",
+                        "threats_abuse_rds", "excessive_hours_rds", "access_to_help_rds"),
+  rds_weight_methods = c("weight_vh", "weight_rds_i", "weight_rds_ii",
+                         "weight_rds_ss"),
+  verbose = TRUE
+)
+
+cat("Analysis completed!\n")
+
+# Quick verification that we now have different weight values
+test_data_corrected <-
+  bootstrap_results_corrected$summary_results$detailed_summary %>%
+  filter(outcome_variable == "document_withholding_nsum", nsum_method
+         == "GNSUM_Symmetric") %>%
+  select(weight_method, mean_estimate, median_estimate)
+
+cat("Corrected results for document_withholding_nsum with 
+  GNSUM_Symmetric:\n")
+print(test_data_corrected)
+
+# Check if estimates are now different
+cat("\nAre estimates now different across weight methods?\n")
+for(method in unique(test_data_corrected$weight_method)) {
+  subset_data <- test_data_corrected[test_data_corrected$weight_method
+                                     == method, ]
+  cat(method, "- mean_estimate:", unique(subset_data$mean_estimate),
+      "\n")
+}
