@@ -146,13 +146,98 @@ get_sensitivity_parameters <- function(indicator, seed_selection_method) {
 }
 
 # ============================================================================
+# UTILITY FUNCTIONS FOR EXISTING RESULTS
+# ============================================================================
+
+check_existing_result <- function(indicator, population_size, seed_selection) {
+  combination_id <- paste(indicator, format(population_size, scientific = FALSE), seed_selection, sep = "_")
+  result_file <- here("output", paste0("ma_sensitivity_", combination_id, ".RData"))
+  return(file.exists(result_file))
+}
+
+load_existing_result <- function(indicator, population_size, seed_selection) {
+  combination_id <- paste(indicator, format(population_size, scientific = FALSE), seed_selection, sep = "_")
+  result_file <- here("output", paste0("ma_sensitivity_", combination_id, ".RData"))
+
+  if (file.exists(result_file)) {
+    tryCatch({
+      load(result_file)
+
+      # Extract values from loaded ma_result
+      if (!is.null(ma_result$estimate) && inherits(ma_result$estimate, "rds.interval.estimate")) {
+        point_estimate <- ma_result$estimate$interval[2]  # Point estimate
+        ci_lower <- ma_result$estimate$interval[4]        # Lower 95% CI
+        ci_upper <- ma_result$estimate$interval[6]        # Upper 95% CI
+        bayesian_se <- if(length(ma_result$estimate$interval) >= 3) ma_result$estimate$interval[3] else NA
+      } else {
+        point_estimate <- ci_lower <- ci_upper <- bayesian_se <- NA
+      }
+
+      # Determine parameter type based on indicator
+      params <- get_sensitivity_parameters(indicator, seed_selection)
+
+      return(list(
+        method = "MA_estimates",
+        indicator = indicator,
+        population_size = population_size,
+        pop_label = sensitivity_config$population_labels[which(sensitivity_config$population_sizes == population_size)],
+        seed_selection = seed_selection,
+        estimate = point_estimate,
+        se = bayesian_se,
+        ci_lower = ci_lower,
+        ci_upper = ci_upper,
+        uncertainty_method = "bayesian_credible_interval",
+        method_type = "bayesian",
+
+        # Sensitivity parameters
+        parameter_type = params$param_type,
+        iterations = params$number.of.iterations,
+        M1 = params$M1,
+        M2 = params$M2,
+        MPLE_samplesize = params$MPLE.samplesize,
+        SAN_maxit = params$SAN.maxit,
+        SAN_nsteps = params$SAN.nsteps,
+
+        # Metadata
+        combination_id = combination_id,
+        run_timestamp = file.mtime(result_file),
+        convergence_status = if(!is.na(point_estimate)) "success" else "failed",
+        loaded_from_file = TRUE
+      ))
+
+    }, error = function(e) {
+      cat("    ERROR loading existing result for", combination_id, ":", e$message, "\n")
+      return(NULL)
+    })
+  } else {
+    return(NULL)
+  }
+}
+
+# ============================================================================
 # SENSITIVITY ESTIMATION FUNCTION
 # ============================================================================
 
 estimate_ma_sensitivity <- function(indicator, population_size, seed_selection) {
-  
+
   combination_id <- paste(indicator, format(population_size, scientific = FALSE), seed_selection, sep = "_")
-  
+
+  # Check if result already exists
+  if (check_existing_result(indicator, population_size, seed_selection)) {
+    cat("  SKIPPING (exists):", indicator, "- Pop:", format(population_size, big.mark = ","),
+        "Seed:", seed_selection, "\n")
+    existing_result <- load_existing_result(indicator, population_size, seed_selection)
+    if (!is.null(existing_result)) {
+      if (!is.na(existing_result$estimate)) {
+        cat("    Loaded result:", sprintf("%.1f%% (%.1f–%.1f)",
+                                        existing_result$estimate * 100,
+                                        existing_result$ci_lower * 100,
+                                        existing_result$ci_upper * 100), "\n")
+      }
+      return(existing_result)
+    }
+  }
+
   tryCatch({
     # Get appropriate parameters
     params <- get_sensitivity_parameters(indicator, seed_selection)
@@ -255,48 +340,79 @@ estimate_ma_sensitivity <- function(indicator, population_size, seed_selection) 
 # ============================================================================
 
 run_sensitivity_analysis <- function() {
-  
+
   cat("=== Running MA.estimates Sensitivity Analysis ===\n")
-  cat("Processing", total_combinations, "combinations...\n\n")
-  
+  cat("Processing", total_combinations, "combinations...\n")
+
+  # Count existing results
+  existing_count <- 0
+  for (indicator in all_indicators) {
+    if (!(indicator %in% names(rd.dd))) next
+    for (pop_size in sensitivity_config$population_sizes) {
+      for (seed_method in sensitivity_config$seed_selection_methods) {
+        if (check_existing_result(indicator, pop_size, seed_method)) {
+          existing_count <- existing_count + 1
+        }
+      }
+    }
+  }
+
+  cat("Found", existing_count, "existing results that will be loaded\n")
+  cat("Need to compute", total_combinations - existing_count, "new combinations\n\n")
+
   all_results <- list()
   result_count <- 0
   successful_count <- 0
-  
+  skipped_count <- 0
+  computed_count <- 0
+
   for (indicator in all_indicators) {
     if (!(indicator %in% names(rd.dd))) {
       cat("Warning: Indicator", indicator, "not found in data\n")
       next
     }
-    
+
     cat("Processing indicator:", indicator, "\n")
-    
+
     for (pop_size in sensitivity_config$population_sizes) {
       for (seed_method in sensitivity_config$seed_selection_methods) {
-        
+
         result_count <- result_count + 1
+
+        # Check if we're loading existing or computing new
+        if (check_existing_result(indicator, pop_size, seed_method)) {
+          skipped_count <- skipped_count + 1
+        } else {
+          computed_count <- computed_count + 1
+        }
+
         result <- estimate_ma_sensitivity(indicator, pop_size, seed_method)
         all_results[[result_count]] <- result
-        
+
         if (!is.na(result$estimate)) {
           successful_count <- successful_count + 1
         }
-        
-        # Memory management
+
+        # Memory management and progress reporting
         if (result_count %% 10 == 0) {
           gc()  # Garbage collection every 10 results
-          cat("  Processed", result_count, "combinations,", successful_count, "successful\n")
+          cat("  Progress:", result_count, "/", total_combinations,
+              "- Successful:", successful_count,
+              "Skipped:", skipped_count,
+              "Computed:", computed_count, "\n")
         }
       }
     }
     cat("\n")
   }
-  
+
   cat("Sensitivity analysis completed:\n")
   cat("- Total combinations:", result_count, "\n")
   cat("- Successful estimations:", successful_count, "\n")
+  cat("- Skipped (existing):", skipped_count, "\n")
+  cat("- Newly computed:", computed_count, "\n")
   cat("- Success rate:", round(successful_count/result_count*100, 1), "%\n\n")
-  
+
   return(all_results)
 }
 
