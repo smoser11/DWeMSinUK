@@ -1266,15 +1266,7 @@ if (file.exists(nsum_file)) {
     
 ###  Comparative Interpretation
 
-```{r}
-#| label: fig-method-comparison
-#| fig-cap: "Method Comparison: RDS vs Bayesian Estimators. Point estimates and uncertainty intervals for prevalence of exploitation indicators across different estimation methods. RDS methods show 95% confidence intervals (bootstrap); Bayesian methods show 95% credible intervals (MCMC). Baseline population assumption: 980,000 domestic workers. Source: Authors' own work."
-#| fig-width: 12
-#| fig-height: 8
-#| echo: false
 
-knitr::include_graphics(here::here("output", "figures", "method_comparison.png"))
-```
 
 Table 1 summarises prevalence estimates across both methods, highlighting points of convergence and divergence. While absolute values differ slightly across RDS and NSUM (reflecting differences in ego- versus alter-based assumptions), the overall pattern is remarkably stable. @fig-method-comparison demonstrates the comparison between frequentist RDS estimators (RDS-I, RDS-II, RDS-SS) and Bayesian model-assisted methods across all exploitation indicators. The horizontal spacing of estimates allows clear visual comparison of point estimates and uncertainty intervals, with RDS methods showing bootstrap confidence intervals and Bayesian methods showing credible intervals from MCMC estimation. Both approaches identify similar patterns of exploitation prevalence, with excessive hours showing the highest prevalence across all methods, followed by threats/abuse and pay-related issues.
 
@@ -1303,15 +1295,6 @@ knitr::include_graphics(here::here("output", "figures", "method_comparison.png")
 ### Robustness Checks 
 
 
-```{r}
-#| label: fig-forest-plot
-#| fig-cap: "Forest Plot of Exploitation Prevalence Estimates. Comprehensive comparison of prevalence estimates across all indicators and estimation methods, displayed as a forest plot with 95% confidence/credible intervals. Each row represents a different exploitation indicator, with points showing method-specific estimates and horizontal lines indicating uncertainty bounds. Demonstrates consistency of findings across different analytical approaches. Source: Authors' own work."
-#| fig-width: 12
-#| fig-height: 10
-#| echo: false
-
-knitr::include_graphics(here::here("output", "figures", "model_comparison_forest_plot.png"))
-```
 
 A series of robustness checks were performed to assess the stability of the findings. @fig-forest-plot presents a comprehensive forest plot comparing all prevalence estimates across indicators and methods, demonstrating remarkable consistency across different analytical approaches. Bootstrap resampling confirmed that the RDS and NSUM estimates remained stable across repeated draws. Sensitivity analyses excluding suspicious datapoints did not materially alter subgroup rankings. Analyses restricted to single subgroups confirmed that the elevated prevalence among Latinx workers was not an artifact of recruitment dynamics.
 
@@ -1362,25 +1345,16 @@ The UK Visa and Immigration service already offers rights-based training to migr
 
 This study makes several methodological contributions to the estimation of prevalence in hidden and hard-to-reach populations:
 
-```{r}
-#| label: fig-parameter-comparison
-#| fig-cap: "Bayesian Parameter Sensitivity Analysis. Comparison of prevalence estimates using enhanced vs standard MCMC parameters for Bayesian model-assisted estimation. Enhanced parameters use longer burn-in periods and more iterations, particularly important for numeric and ordinal variables like composite risk scores. Error bars represent 95% Bayesian credible intervals. Source: Authors' own work."
-#| fig-width: 10
-#| fig-height: 6
-#| echo: false
 
-knitr::include_graphics(here::here("output", "figures", "parameter_comparison.png"))
-```
+**Dual conceptualisation of exploitation**: We introduce two distinct approaches to operationalising exploitation. First, we treat exploitation as a binary outcome (exploited versus not exploited), enabling direct comparison of prevalence estimates across RDS and NSUM methods. Second, we construct a continuous risk index, acknowledging that all domestic workers may be exposed to some degree of exploitation risk. To our knowledge, this is the first application of model-assisted RDS estimators to quantify a continuous measure of exploitation risk.
 
-Dual conceptualisation of exploitation: We introduce two distinct approaches to operationalising exploitation. First, we treat exploitation as a binary outcome (exploited versus not exploited), enabling direct comparison of prevalence estimates across RDS and NSUM methods. Second, we construct a continuous risk index, acknowledging that all domestic workers may be exposed to some degree of exploitation risk. To our knowledge, this is the first application of model-assisted RDS estimators to quantify a continuous measure of exploitation risk.
+**Bayesian parameter sensitivity**: @fig-parameter-comparison demonstrates the importance of appropriate MCMC parameter selection for Bayesian model-assisted estimation. Our analysis shows that enhanced parameters (featuring longer burn-in periods and more iterations) are particularly crucial for numeric and ordinal variables, where standard parameters may suffer from convergence issues. This methodological innovation ensures robust credible interval estimation for continuous risk measures.
 
-Bayesian parameter sensitivity: @fig-parameter-comparison demonstrates the importance of appropriate MCMC parameter selection for Bayesian model-assisted estimation. Our analysis shows that enhanced parameters (featuring longer burn-in periods and more iterations) are particularly crucial for numeric and ordinal variables, where standard parameters may suffer from convergence issues. This methodological innovation ensures robust credible interval estimation for continuous risk measures.
+*Combining RDS and NSUM on the same survey instrument*: By designing a survey that captures both ego and alter information, we are able to apply RDS and NSUM to the same sample. This dual approach has rarely been implemented in studies of labour exploitation. It provides an opportunity to cross-validate results and assess the robustness of prevalence estimates.
 
-Combining RDS and NSUM on the same survey instrument: By designing a survey that captures both ego and alter information, we are able to apply RDS and NSUM to the same sample. This dual approach has rarely been implemented in studies of labour exploitation. It provides an opportunity to cross-validate results and assess the robustness of prevalence estimates.
+_Novel bootstrap procedure for NSUM_: Recognising the non-random nature of an RDS sample, we developed a three-step bootstrap procedure tailored for NSUM estimation. This resamples respondents, recalculates weights, and re-estimates NSUM prevalence at each iteration. The procedure captures multiple layers of uncertainty and produces more reliable confidence intervals than conventional methods, particularly in small samples.
 
-Novel bootstrap procedure for NSUM: Recognising the non-random nature of an RDS sample, we developed a three-step bootstrap procedure tailored for NSUM estimation. This resamples respondents, recalculates weights, and re-estimates NSUM prevalence at each iteration. The procedure captures multiple layers of uncertainty and produces more reliable confidence intervals than conventional methods, particularly in small samples.
-
-Application to domestic workers in the UK: Finally, by applying these methods to a population that is both highly stigmatised and under-researched, we demonstrate the feasibility of using advanced network-based estimation techniques in contexts where traditional sampling is impossible. This methodological innovation has potential applications in studies of other hidden labour markets and vulnerable populations.
+_Application to domestic workers in the UK_: Finally, by applying these methods to a population that is both highly stigmatised and under-researched, we demonstrate the feasibility of using advanced network-based estimation techniques in contexts where traditional sampling is impossible. This methodological innovation has potential applications in studies of other hidden labour markets and vulnerable populations.
 
 
 ### Limitations of the Study
