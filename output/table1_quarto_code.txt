@@ -1,0 +1,23 @@
+```{r}
+#| label: tbl-subgroup-prevalence
+#| tbl-cap: "Prevalence of labour exploitation among domestic workers, by method and subgroup. Values represent percentage of workers experiencing exploitation with 95% confidence intervals. Source: Authors' own work."
+#| echo: false
+
+library(kableExtra)
+library(here)
+
+# Load the table data
+table1_data <- read.csv(here("output", "tables", "table1_publication_ready.csv"))
+
+table1_data %>%
+  kable(col.names = c("Subgroup", "RDS Estimate (%)", "NSUM Estimate (%)", "Sample Size"),
+        format = "html",
+        booktabs = TRUE,
+        escape = FALSE) %>%
+  kable_styling(latex_options = c("striped", "hold_position"),
+                font_size = 12) %>%
+  footnote(general = "RDS estimates use bootstrap confidence intervals. NSUM estimates to be added.",
+           general_title = "Note:",
+           footnote_as_chunk = TRUE)
+```
+

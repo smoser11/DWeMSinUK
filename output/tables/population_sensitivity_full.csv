@@ -1,22 +1,3 @@
-<<<<<<< HEAD
-"indicator_clean","method_clean","980K","1.74M","100K","50K"
-"Composite risk score","MA.estimates","7.2% (0.0–37.9)",NA,NA,NA
-"Document withholding","MA.estimates","34.3% (16.4–52.2)",NA,NA,NA
-"Document withholding","RDS-I","49.4% (25.3–56.3)","49.4% (25.4–56.1)","49.4% (25.2–55.9)","49.4% (25.5–56.2)"
-"Document withholding","RDS-SS","34.2% (25.2–56.0)","34.2% (25.3–56.5)","34.2% (25.1–56.5)","34.2% (25.6–56.2)"
-"Excessive working hours","MA.estimates","83.7% (71.9–95.6)",NA,NA,NA
-"Excessive working hours","RDS-I","92.8% (71.4–92.9)","92.8% (71.7–92.8)","92.8% (71.8–92.5)","92.8% (71.8–92.8)"
-"Excessive working hours","RDS-SS","83.7% (71.5–93.0)","83.7% (71.6–92.8)","83.7% (71.5–93.0)","83.7% (71.5–93.0)"
-"Limited access to help","MA.estimates","58.3% (46.1–70.6)",NA,NA,NA
-"Limited access to help","RDS-I","57.7% (55.1–80.3)","57.7% (54.9–80.0)","57.7% (54.8–79.8)","57.7% (54.7–80.0)"
-"Limited access to help","RDS-SS","59.4% (54.7–80.2)","59.4% (54.8–80.1)","59.4% (55.1–80.2)","59.4% (54.9–80.1)"
-"Overall exploitation indicator","MA.estimates","95.0% (62.2–100.0)",NA,NA,NA
-"Pay-related issues","MA.estimates","49.5% (35.6–63.5)",NA,NA,NA
-"Pay-related issues","RDS-I","59.3% (34.2–63.5)","59.3% (34.2–63.6)","59.3% (34.8–63.0)","59.3% (34.5–63.5)"
-"Pay-related issues","RDS-SS","49.7% (34.8–63.4)","49.7% (34.6–63.5)","49.7% (34.2–64.1)","49.7% (34.0–63.8)"
-"Risk exposure scale (ordinal)","MA.estimates","7.2% (0.0–37.9)",NA,NA,NA
-"Threats and abuse","MA.estimates","57.3% (35.4–79.3)",NA,NA,NA
-=======
 "Indicator","Method","980K","1.74M","100K","50K"
 "Composite risk score","Bayesian MA","7.2% (0.0–37.9)",NA,NA,NA
 "Document withholding","Bayesian MA","34.3% (16.4–52.2)",NA,NA,NA
@@ -34,6 +15,5 @@
 "Pay-related issues","RDS-SS","49.7% (34.8–63.4)","49.7% (34.6–63.5)","49.7% (34.2–64.1)","49.7% (34.0–63.8)"
 "Risk exposure scale (ordinal)","Bayesian MA","7.2% (0.0–37.9)",NA,NA,NA
 "Threats and abuse","Bayesian MA","57.3% (35.4–79.3)",NA,NA,NA
->>>>>>> 29180d1afe306503cf53b767e3310e341951083c
 "Threats and abuse","RDS-I","65.2% (40.5–72.1)","65.2% (40.6–72.1)","65.2% (40.2–72.0)","65.2% (40.3–71.7)"
 "Threats and abuse","RDS-SS","57.2% (40.1–72.3)","57.2% (40.6–72.6)","57.2% (40.9–72.0)","57.2% (40.9–72.5)"

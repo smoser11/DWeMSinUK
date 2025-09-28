@@ -855,13 +855,9 @@ cat("- Complete results: comprehensive_comparison_results.RData\n\n")
 
 cat("=== READY FOR PUBLICATION! ===\n")
 cat("All method comparisons, sensitivity analyses, and publication tables complete.\n")
-<<<<<<< HEAD
-cat("Use the visualization plots and CSV tables for your manuscript.\n")
 
-=======
 cat("Use the following for your Quarto manuscript:\n")
 cat("- GT tables: Include .html files in Quarto or use .tex files for LaTeX\n")
 cat("- Kable tables: Direct LaTeX inclusion with .tex files\n")
 cat("- Visualizations: PNG files for figures\n")
 cat("- Raw data: CSV files for custom formatting\n")
->>>>>>> 29180d1afe306503cf53b767e3310e341951083c
