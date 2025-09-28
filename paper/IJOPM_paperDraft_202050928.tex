@@ -940,6 +940,8 @@ Nationality Cluster and Recruitment Wave. Source: Authors' Own Work.}
 \centering
 \caption{\label{tab:tbl-sample-characteristics}Sample Characteristics by Nationality Cluster}
 \centering
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\fontsize{9}{11}\selectfont
 \begin{tabular}[t]{lrrrrrr}
 \toprule
 Nationality & N & \% & Seeds & Recruits & Mean Degree & Median Degree\\
@@ -949,7 +951,7 @@ Latinx & 17 & 20.0 & 13 & 4 & 6.9 & 5\\
 \cellcolor{gray!10}{Other} & \cellcolor{gray!10}{6} & \cellcolor{gray!10}{7.1} & \cellcolor{gray!10}{2} & \cellcolor{gray!10}{4} & \cellcolor{gray!10}{7.5} & \cellcolor{gray!10}{4}\\
 \bottomrule
 \multicolumn{7}{l}{\rule{0pt}{1em}\textit{Note:} Degree refers to reported network size (Q13: number of domestic workers known).}\\
-\end{tabular}
+\end{tabular}}
 
 }
 
@@ -1132,44 +1134,6 @@ while permitting reliable estimation of means and distributions of
 continuous outcomes (Gile, 2011; Gile and Handcock, 2010; Gile, Beaudry,
 and Handcock, 2018).
 
-\begin{verbatim}
-
-=== Model-Assisted Risk Index Estimates ===
-\end{verbatim}
-
-\begin{verbatim}
-Sample Statistics:
-\end{verbatim}
-
-\begin{verbatim}
-  Mean: 0.3752 
-\end{verbatim}
-
-\begin{verbatim}
-  SD: 0.2322 
-\end{verbatim}
-
-\begin{verbatim}
-  Range: 0 - 0.795 
-\end{verbatim}
-
-\begin{verbatim}
-
-Population-Adjusted Estimates (Model-Assisted):
-\end{verbatim}
-
-\begin{verbatim}
-  Mean: 0.0124 
-\end{verbatim}
-
-\begin{verbatim}
-  SD: 0.0445 
-\end{verbatim}
-
-\begin{verbatim}
-  Bias Correction: -0.3629 
-\end{verbatim}
-
 \begin{figure}[H]
 
 \centering{
@@ -1252,23 +1216,6 @@ Document Withholding & 34.3\% (16.4-52.2\%)\\
 
 \end{table}%
 
-\begin{verbatim}
-
-=== Model-Assisted Binary Indicator Summary ===
-\end{verbatim}
-
-\begin{verbatim}
-Available indicators: 6 
-\end{verbatim}
-
-\begin{verbatim}
-Highest prevalence: 94.96992 %
-\end{verbatim}
-
-\begin{verbatim}
-Lowest prevalence: 34.2817 %
-\end{verbatim}
-
 \begin{figure}[H]
 
 \centering{
@@ -1297,7 +1244,7 @@ intervals. Source: Authors' Own Work.}
 \centering{
 
 \begin{verbatim}
-RDS results not found in expected format.
+NULL
 \end{verbatim}
 
 }
@@ -1317,7 +1264,7 @@ Authors' Own Work.}
 \centering{
 
 \begin{verbatim}
-NSUM results object not found.
+NULL
 \end{verbatim}
 
 }
@@ -1354,6 +1301,23 @@ British & xx.x & (x--x) & xx.x & (x--x) \\
 \textbf{Figure 2 (proposed):} Side-by-side bar chart comparing RDS and
 NSUM estimates with confidence intervals for each subgroup.
 
+\begin{figure}[H]
+
+\centering{
+
+\includegraphics[width=12in,height=\textheight,keepaspectratio]{../output/figures/method_comparison.png}
+
+}
+
+\caption{\label{fig-method-comparison}Method Comparison: RDS vs Bayesian
+Estimators. Point estimates and uncertainty intervals for prevalence of
+exploitation indicators across different estimation methods. RDS methods
+show 95\% confidence intervals (bootstrap); Bayesian methods show 95\%
+credible intervals (MCMC). Baseline population assumption: 980,000
+domestic workers. Source: Authors' own work.}
+
+\end{figure}%
+
 \subsection{Robustness Checks}\label{robustness-checks}
 
 A series of robustness checks were performed to assess the stability of
@@ -1366,6 +1330,43 @@ recruitment dynamics. Model comparisons also indicate that traditional
 RDS estimators (RDS-I and RDS-II) produced results consistent with the
 model-assisted and NSUM estimates, albeit with wider confidence
 intervals. Full technical details are reported in Appendices B and C.
+
+\begin{figure}[H]
+
+\centering{
+
+\includegraphics[width=10in,height=\textheight,keepaspectratio]{../output/figures/parameter_comparison.png}
+
+}
+
+\caption{\label{fig-parameter-comparison}Bayesian Parameter Sensitivity
+Analysis. Comparison of prevalence estimates using enhanced vs standard
+MCMC parameters for Bayesian model-assisted estimation. Enhanced
+parameters use longer burn-in periods and more iterations, particularly
+important for numeric and ordinal variables like composite risk scores.
+Error bars represent 95\% Bayesian credible intervals. Source: Authors'
+own work.}
+
+\end{figure}%
+
+\begin{figure}[H]
+
+\centering{
+
+\includegraphics[width=12in,height=\textheight,keepaspectratio]{../output/figures/model_comparison_forest_plot.png}
+
+}
+
+\caption{\label{fig-forest-plot}Forest Plot of Exploitation Prevalence
+Estimates. Comprehensive comparison of prevalence estimates across all
+indicators and estimation methods, displayed as a forest plot with 95\%
+confidence/credible intervals. Each row represents a different
+exploitation indicator, with points showing method-specific estimates
+and horizontal lines indicating uncertainty bounds. Demonstrates
+consistency of findings across different analytical approaches. Source:
+Authors' own work.}
+
+\end{figure}%
 
 \section{Discussion}\label{discussion}
 
@@ -1482,10 +1483,6 @@ across industries.
 \section{Conclusion}\label{conclusion}
 
 \newpage
-
-\newpage
-
-\printbibliography
 
 \newpage
 
@@ -1610,11 +1607,11 @@ Size and Seed Selection. Source: Authors' Own Work.}
   margin-left: auto;
   margin-right: auto;
   color: #333333;
-  font-size: 16px;
+  font-size: 9px;
   font-weight: normal;
   font-style: normal;
   background-color: #FFFFFF;
-  width: auto;
+  width: 90%;
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #A8A8A8;
@@ -2133,7 +2130,7 @@ Indicators. Source: Authors' Own Work.}
 \centering{
 
 \begin{verbatim}
-RDS results not found in expected format.
+NULL
 \end{verbatim}
 
 }

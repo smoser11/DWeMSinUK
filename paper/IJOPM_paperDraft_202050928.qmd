@@ -1107,8 +1107,7 @@ if (file.exists(here("output", "rds_estimates.RData"))) {
         footnote_as_chunk = TRUE
       )
 
-        round(min(rds_summary$rds_ss_est) * 100, 1), "% to",
-        round(max(rds_summary$rds_ss_est) * 100, 1), "%\n")
+    #    round(min(rds_summary$rds_ss_est) * 100, 1), "% to", round(max(rds_summary$rds_ss_est) * 100, 1), "%\n")
 
   } else {
   }
@@ -1206,8 +1205,7 @@ if (file.exists(nsum_file)) {
           footnote_as_chunk = TRUE
         )
 
-          round(min(nsum_summary$prevalence) * 100, 1), "% to",
-          round(max(nsum_summary$prevalence) * 100, 1), "%\n")
+#          round(min(nsum_summary$prevalence) * 100, 1), "% to",  round(max(nsum_summary$prevalence) * 100, 1), "%\n")
 
     } else {
     }
@@ -1281,12 +1279,41 @@ Table 1 summarises prevalence estimates across both methods, highlighting points
 
 **Figure 2 (proposed):** Side-by-side bar chart comparing RDS and NSUM estimates with confidence intervals for each subgroup.
 
-    
+```{r}
+#| label: fig-method-comparison
+#| fig-cap: "Method Comparison: RDS vs Bayesian Estimators. Point estimates and uncertainty intervals for prevalence of exploitation indicators across different estimation methods. RDS methods show 95% confidence intervals (bootstrap); Bayesian methods show 95% credible intervals (MCMC). Baseline population assumption: 980,000 domestic workers. Source: Authors' own work."
+#| fig-width: 12
+#| fig-height: 8
+#| echo: false
+
+knitr::include_graphics(here::here("output", "figures", "method_comparison.png"))
+```
+
 ### Robustness Checks 
 
 
 A series of robustness checks were performed to assess the stability of the findings. Bootstrap resampling confirmed that the RDS and NSUM estimates remained stable across repeated draws. Sensitivity analyses excluding suspicious datapoints did not materially alter subgroup rankings. Analyses restricted to single subgroups confirmed that the elevated prevalence among Latinx workers was not an artifact of recruitment dynamics. Model comparisons also indicate that traditional RDS estimators (RDS-I and RDS-II) produced results consistent with the model-assisted and NSUM estimates, albeit with wider confidence intervals. Full technical details are reported in Appendices B and C.
 
+```{r}
+#| label: fig-parameter-comparison
+#| fig-cap: "Bayesian Parameter Sensitivity Analysis. Comparison of prevalence estimates using enhanced vs standard MCMC parameters for Bayesian model-assisted estimation. Enhanced parameters use longer burn-in periods and more iterations, particularly important for numeric and ordinal variables like composite risk scores. Error bars represent 95% Bayesian credible intervals. Source: Authors' own work."
+#| fig-width: 10
+#| fig-height: 6
+#| echo: false
+
+knitr::include_graphics(here::here("output", "figures", "parameter_comparison.png"))
+```
+
+
+```{r}
+#| label: fig-forest-plot
+#| fig-cap: "Forest Plot of Exploitation Prevalence Estimates. Comprehensive comparison of prevalence estimates across all indicators and estimation methods, displayed as a forest plot with 95% confidence/credible intervals. Each row represents a different exploitation indicator, with points showing method-specific estimates and horizontal lines indicating uncertainty bounds. Demonstrates consistency of findings across different analytical approaches. Source: Authors' own work."
+#| fig-width: 12
+#| fig-height: 10
+#| echo: false
+
+knitr::include_graphics(here::here("output", "figures", "model_comparison_forest_plot.png"))
+```
 
 ## Discussion
 
@@ -1340,11 +1367,11 @@ We believe that web-RDS combined with statistical estimators such as NSUM offers
 
 \newpage
 
-\newpage
-```{=latex}
-\printbibliography
+<!-- \newpage -->
+<!-- ```{=latex} -->
+<!-- \printbibliography -->
 
-```
+<!-- ``` -->
 
 \newpage
 ## References
