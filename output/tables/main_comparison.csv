@@ -1,0 +1,14 @@
+"indicator_clean","method_type","source","param_group","MA.estimates","RDS-I","RDS-SS"
+"Composite risk score","bayesian","bayesian_core","enhanced","7.2% (0.0–37.9)",NA,NA
+"Document withholding","bayesian","bayesian_core","standard","34.3% (16.4–52.2)",NA,NA
+"Document withholding","frequentist","frequentist","standard",NA,"49.4% (25.3–56.3)","34.2% (25.2–56.0)"
+"Excessive working hours","bayesian","bayesian_core","standard","83.7% (71.9–95.6)",NA,NA
+"Excessive working hours","frequentist","frequentist","standard",NA,"92.8% (71.4–92.9)","83.7% (71.5–93.0)"
+"Limited access to help","bayesian","bayesian_core","standard","58.3% (46.1–70.6)",NA,NA
+"Limited access to help","frequentist","frequentist","standard",NA,"57.7% (55.1–80.3)","59.4% (54.7–80.2)"
+"Overall exploitation indicator","bayesian","bayesian_core","standard","95.0% (62.2–100.0)",NA,NA
+"Pay-related issues","bayesian","bayesian_core","standard","49.5% (35.6–63.5)",NA,NA
+"Pay-related issues","frequentist","frequentist","standard",NA,"59.3% (34.2–63.5)","49.7% (34.8–63.4)"
+"Risk exposure scale (ordinal)","bayesian","bayesian_core","enhanced","7.2% (0.0–37.9)",NA,NA
+"Threats and abuse","bayesian","bayesian_core","standard","57.3% (35.4–79.3)",NA,NA
+"Threats and abuse","frequentist","frequentist","standard",NA,"65.2% (40.5–72.1)","57.2% (40.1–72.3)"

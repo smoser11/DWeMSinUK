@@ -13,6 +13,17 @@
 # - Population sensitivity analysis
 # - Parameter sensitivity analysis
 
+
+
+# Create color palette
+method_colors <- c(
+  "RDS-I" = "#E31A1C",
+  "RDS-II" = "#1F78B4", 
+  "RDS-SS" = "#33A02C",
+  "MA.estimates" = "#FF7F00"
+)
+
+
 cat("=== COMPREHENSIVE RESULTS COMPARISON (Production) ===\n")
 cat("Comparing results from 06a (Frequentist) + 06b (Bayesian) + 06c (Sensitivity)\n")
 cat("Outputs: Visualizations + Publication tables\n\n")
