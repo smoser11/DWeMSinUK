@@ -1510,16 +1510,14 @@ create_nsum_bootstrap_summary <- function(results_list, verbose = TRUE) {
   summary_df <- summary_df %>%
     group_by(outcome_variable, weight_method, nsum_method) %>%
     mutate(
-      ci_lower = if (nsum_method == "GNSUM_Symmetric" && !all(is.na(mean_estimate))) {
-        quantile(mean_estimate, 0.025, na.rm = TRUE)
-      } else {
-        ci_lower
-      },
-      ci_upper = if (nsum_method == "GNSUM_Symmetric" && !all(is.na(mean_estimate))) {
-        quantile(mean_estimate, 0.975, na.rm = TRUE)
-      } else {
-        ci_upper
-      }
+      ci_lower = case_when(
+        nsum_method[1] == "GNSUM_Symmetric" && !all(is.na(mean_estimate)) ~ quantile(mean_estimate, 0.025, na.rm = TRUE),
+        TRUE ~ ci_lower
+      ),
+      ci_upper = case_when(
+        nsum_method[1] == "GNSUM_Symmetric" && !all(is.na(mean_estimate)) ~ quantile(mean_estimate, 0.975, na.rm = TRUE),
+        TRUE ~ ci_upper
+      )
     ) %>%
     ungroup()
 
