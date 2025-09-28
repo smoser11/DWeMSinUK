@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 "indicator_clean","enhanced (3 iter, M1=75, M2=50)","standard (2 iter, M1=50, M2=25)"
+=======
+"Indicator","enhanced (3 iter, M1=75, M2=50)","standard (2 iter, M1=50, M2=25)"
+>>>>>>> 29180d1afe306503cf53b767e3310e341951083c
 "Composite risk score","7.2% (0.0–37.9)",NA
 "Document withholding",NA,"34.3% (16.4–52.2)"
 "Excessive working hours",NA,"83.7% (71.9–95.6)"

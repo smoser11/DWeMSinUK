@@ -1,0 +1,27 @@
+\begin{table}[t]
+\caption*{
+{\large Bayesian Parameter Sensitivity Analysis} \\ 
+{\small Enhanced vs Standard MCMC parameters for Bayesian estimation}
+} 
+\fontsize{8.2pt}{9.9pt}\selectfont
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcc}
+\toprule
+ & \multicolumn{2}{c}{Parameter Configurations\textsuperscript{\textit{1}}} \\ 
+\cmidrule(lr){2-3}
+{\bfseries Indicator} & {\bfseries enhanced (3 iter, M1=75, M2=50)} & {\bfseries standard (2 iter, M1=50, M2=25)} \\ 
+\midrule\addlinespace[2.5pt]
+Composite risk score & 7.2\% (0.0–37.9) & NA \\ 
+Document withholding & NA & 34.3\% (16.4–52.2) \\ 
+Excessive working hours & NA & 83.7\% (71.9–95.6) \\ 
+Limited access to help & NA & 58.3\% (46.1–70.6) \\ 
+Overall exploitation indicator & NA & 95.0\% (62.2–100.0) \\ 
+Pay-related issues & NA & 49.5\% (35.6–63.5) \\ 
+Risk exposure scale (ordinal) & 7.2\% (0.0–37.9) & NA \\ 
+Threats and abuse & NA & 57.3\% (35.4–79.3) \\ 
+\bottomrule
+\end{tabular*}
+\begin{minipage}{\linewidth}
+\textsuperscript{\textit{1}}Enhanced parameters use longer burn-in (SAN.nsteps = 2\textasciicircum{}22) and more iterations for numeric/ordinal variables\\
+\end{minipage}
+\end{table}
+

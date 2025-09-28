@@ -1,0 +1,24 @@
+\begin{table}[!h]
+\centering
+\caption{Bayesian Parameter Sensitivity Analysis}
+\centering
+\fontsize{11}{13}\selectfont
+\begin{tabular}[t]{lcc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Parameter Configurations} \\
+\cmidrule(l{3pt}r{3pt}){2-3}
+Indicator & enhanced (3 iter, M1=75, M2=50) & standard (2 iter, M1=50, M2=25)\\
+\midrule
+\cellcolor{gray!10}{Composite risk score} & \cellcolor{gray!10}{7.2% (0.0–37.9)} & \cellcolor{gray!10}{NA}\\
+Document withholding & NA & 34.3% (16.4–52.2)\\
+\cellcolor{gray!10}{Excessive working hours} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{83.7% (71.9–95.6)}\\
+Limited access to help & NA & 58.3% (46.1–70.6)\\
+\cellcolor{gray!10}{Overall exploitation indicator} & \cellcolor{gray!10}{NA} & \cellcolor{gray!10}{95.0% (62.2–100.0)}\\
+\addlinespace
+Pay-related issues & NA & 49.5% (35.6–63.5)\\
+\cellcolor{gray!10}{Risk exposure scale (ordinal)} & \cellcolor{gray!10}{7.2% (0.0–37.9)} & \cellcolor{gray!10}{NA}\\
+Threats and abuse & NA & 57.3% (35.4–79.3)\\
+\bottomrule
+\multicolumn{3}{l}{\rule{0pt}{1em}\textit{Note:} Enhanced parameters use longer burn-in (SAN.nsteps = 2\textasciicircum{}22) and more iterations for numeric/ordinal variables. All values show prevalence estimates (\%) with 95\% Bayesian credible intervals.}\\
+\end{tabular}
+\end{table}

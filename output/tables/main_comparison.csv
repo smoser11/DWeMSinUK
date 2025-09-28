@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 "indicator_clean","method_type","source","param_group","MA.estimates","RDS-I","RDS-SS"
+=======
+"Indicator","method_type","source","param_group","Bayesian MA","RDS-I","RDS-SS"
+>>>>>>> 29180d1afe306503cf53b767e3310e341951083c
 "Composite risk score","bayesian","bayesian_core","enhanced","7.2% (0.0–37.9)",NA,NA
 "Document withholding","bayesian","bayesian_core","standard","34.3% (16.4–52.2)",NA,NA
 "Document withholding","frequentist","frequentist","standard",NA,"49.4% (25.3–56.3)","34.2% (25.2–56.0)"
