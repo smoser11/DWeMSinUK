@@ -1469,24 +1469,59 @@ create_nsum_bootstrap_summary <- function(results_list, verbose = TRUE) {
         )
       })
     } else {
-      # GNSUM_Symmetric has single result
-      tibble(
-        outcome_variable = result$outcome_variable,
-        hidden_indicator = result$hidden_indicator,
-        weight_method = result$weight_method,
-        nsum_method = result$nsum_method,
-        delta = NA,
-        tau = NA,
-        rho = NA,
-        mean_estimate = result$summary_stats$mean_estimate %||% NA,
-        median_estimate = result$summary_stats$median_estimate %||% NA,
-        ci_lower = result$confidence_intervals$ci_lower %||% NA,
-        ci_upper = result$confidence_intervals$ci_upper %||% NA,
-        n_valid = result$n_valid %||% 0,
-        n_bootstrap = result$n_bootstrap
-      )
+      # GNSUM_Symmetric: Create one row per bootstrap estimate (like MBSU does per parameter)
+      if (length(result$estimates) > 0) {
+        map_dfr(1:length(result$estimates), function(i) {
+          tibble(
+            outcome_variable = result$outcome_variable,
+            hidden_indicator = result$hidden_indicator,
+            weight_method = result$weight_method,
+            nsum_method = result$nsum_method,
+            delta = NA,
+            tau = NA,
+            rho = NA,
+            mean_estimate = result$estimates[i],    # Individual bootstrap estimate
+            median_estimate = result$estimates[i],  # Same value for individual estimates
+            ci_lower = NA,   # Will be calculated later from all bootstrap estimates
+            ci_upper = NA,   # Will be calculated later from all bootstrap estimates
+            n_valid = 1,     # Each individual estimate is valid
+            n_bootstrap = result$n_bootstrap,
+            bootstrap_id = i # Track which bootstrap sample this is
+          )
+        })
+      } else {
+        # Fallback for empty results
+        tibble(
+          outcome_variable = result$outcome_variable,
+          hidden_indicator = result$hidden_indicator,
+          weight_method = result$weight_method,
+          nsum_method = result$nsum_method,
+          delta = NA, tau = NA, rho = NA,
+          mean_estimate = NA, median_estimate = NA,
+          ci_lower = NA, ci_upper = NA,
+          n_valid = 0, n_bootstrap = result$n_bootstrap,
+          bootstrap_id = NA
+        )
+      }
     }
   })
+
+  # Calculate confidence intervals for GNSUM_Symmetric from individual bootstrap estimates
+  summary_df <- summary_df %>%
+    group_by(outcome_variable, weight_method, nsum_method) %>%
+    mutate(
+      ci_lower = if (nsum_method == "GNSUM_Symmetric" && !all(is.na(mean_estimate))) {
+        quantile(mean_estimate, 0.025, na.rm = TRUE)
+      } else {
+        ci_lower
+      },
+      ci_upper = if (nsum_method == "GNSUM_Symmetric" && !all(is.na(mean_estimate))) {
+        quantile(mean_estimate, 0.975, na.rm = TRUE)
+      } else {
+        ci_upper
+      }
+    ) %>%
+    ungroup()
 
   # Calculate summary statistics by method and weight
   method_summaries <- summary_df %>%
@@ -2629,107 +2664,3 @@ create_confidence_interval_plot <- function(bootstrap_results,
   return(pp)
 }
 
-# Now generate the corrected plots
-create_method_comparison_plot(bootstrap_results, save_plot = TRUE,
-                              filename =
-                                'comparison_plot_corrected.png')
-
-
-p
-
-
-create_confidence_interval_plot(bootstrap_results, save_plot = TRUE,
-                                filename =
-                                  'ci_width_plot_corrected.png')
-
-
-pp
-
-
-
-
-
-# Check if the bootstrap_results actually contains the corrected data
-cat("=== DEBUGGING BOOTSTRAP RESULTS DATA ===\n")
-
-# Look at detailed_summary structure
-detailed_data <- bootstrap_results$summary_results$detailed_summary
-cat("Total rows in detailed_summary:", nrow(detailed_data), "\n")
-cat("Unique weight methods:", unique(detailed_data$weight_method),
-    "\n")
-cat("Unique NSUM methods:", unique(detailed_data$nsum_method), "\n")
-
-# Check if different weight methods actually have different estimates
-test_outcome <- "document_withholding_nsum"
-test_method <- "GNSUM_Symmetric"
-
-test_data <- detailed_data %>%
-  filter(outcome_variable == test_outcome, nsum_method == test_method) %>%
-  select(weight_method, mean_estimate, median_estimate)
-
-cat("\nTest data for", test_outcome, "with", test_method, ":\n")
-print(test_data)
-
-# Check if the estimates are actually different across weight methods
-cat("\nAre estimates different across weight methods?\n")
-for(method in unique(test_data$weight_method)) {
-  subset_data <- test_data[test_data$weight_method == method, ]
-  cat(method, "- mean_estimate:", unique(subset_data$mean_estimate),
-      "\n")
-}
-
-# Check the aggregated plot data
-plot_data_test <- detailed_data %>%
-  group_by(outcome_variable, weight_method, nsum_method) %>%
-  summarise(
-    median_estimate = median(median_estimate, na.rm = TRUE),
-    q25 = quantile(median_estimate, 0.25, na.rm = TRUE),
-    q75 = quantile(median_estimate, 0.75, na.rm = TRUE),
-    n_obs = n(),
-    .groups = 'drop'
-  ) %>%
-  filter(outcome_variable == test_outcome, nsum_method == test_method)
-
-cat("\nAggregated plot data for", test_outcome, "with", test_method,
-    ":\n")
-print(plot_data_test)
-
-
-
-############
-# Run Step 3 with the corrected bootstrap samples
-cat("Running NSUM analysis with corrected bootstrap samples...\n")
-
-bootstrap_results_corrected <- run_comprehensive_nsum_bootstrap(
-  boot_samples = boot_samples_corrected,
-  outcome_variables = c("document_withholding_nsum",
-                        "pay_issues_nsum", "threats_abuse_nsum", "excessive_hours_nsum",
-                        "access_to_help_nsum"),
-  hidden_indicators = c("document_withholding_rds", "pay_issues_rds",
-                        "threats_abuse_rds", "excessive_hours_rds", "access_to_help_rds"),
-  rds_weight_methods = c("weight_vh", "weight_rds_i", "weight_rds_ii",
-                         "weight_rds_ss"),
-  verbose = TRUE
-)
-
-cat("Analysis completed!\n")
-
-# Quick verification that we now have different weight values
-test_data_corrected <-
-  bootstrap_results_corrected$summary_results$detailed_summary %>%
-  filter(outcome_variable == "document_withholding_nsum", nsum_method
-         == "GNSUM_Symmetric") %>%
-  select(weight_method, mean_estimate, median_estimate)
-
-cat("Corrected results for document_withholding_nsum with 
-  GNSUM_Symmetric:\n")
-print(test_data_corrected)
-
-# Check if estimates are now different
-cat("\nAre estimates now different across weight methods?\n")
-for(method in unique(test_data_corrected$weight_method)) {
-  subset_data <- test_data_corrected[test_data_corrected$weight_method
-                                     == method, ]
-  cat(method, "- mean_estimate:", unique(subset_data$mean_estimate),
-      "\n")
-}
