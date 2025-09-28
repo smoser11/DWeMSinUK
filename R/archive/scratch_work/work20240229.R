@@ -221,8 +221,12 @@ print(seed_recruiter_ids)
 
 dd %>% filter(recruiter.id == seed_recruiter_ids) %>% View()
 
+data(fauxmadrona)
+data(faux)
+reingold.tilford.plot(faux)
+reingold.tilford.plot(fauxmadrona,vertex.color="disease")
 
-
+reingold.tilford.plot(rd.dd)
 reingold.tilford.plot(rd.dd, 
 					  vertex.label="id", 
 					  vertex.size="degree",

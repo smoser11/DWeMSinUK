@@ -129,6 +129,7 @@ prepare_data <- function() {
   # Add legacy indicators for backward compatibility
   dd <- prepare_legacy_indicators(dd)
   
+  dd <- create_nationality_clusters(dd)
   # Create RDS data frame object
   cat("Creating RDS data frame...\n")
   rd.dd <- as.rds.data.frame(dd, 

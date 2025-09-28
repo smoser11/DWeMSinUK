@@ -854,3 +854,9 @@ if (!exists("skip_execution") || !skip_execution) {
   cat("RESULTS analysis and comparison tools loaded\n")
   cat("Use print_results_analysis_examples() to see usage examples\n")
 }
+
+
+
+
+all_results <- load_all_available_results()
+
