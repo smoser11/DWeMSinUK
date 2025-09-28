@@ -555,6 +555,8 @@ p <- ggraph(g, layout = "fr") +
 tryCatch({
   print(p)
 }, error = function(e) {
+  cat("Error rendering network plot:", e$message, "\n")
+  cat("Falling back to simple network summary.\n")
 
   # Simple fallback plot
   library(ggplot2)
@@ -607,11 +609,10 @@ sample_summary %>%
     align = c("l", "r", "r", "r", "r", "r", "r")
   ) %>%
   kableExtra::kable_styling(
-    latex_options = c("striped", "hold_position", "scale_down"),
+    latex_options = c("striped", "hold_position"),
     bootstrap_options = c("striped", "hover", "condensed"),
     full_width = FALSE,
-    position = "center",
-    font_size = 9
+    position = "center"
   ) %>%
   kableExtra::footnote(
     general = "Degree refers to reported network size (Q13: number of domestic workers known).",
@@ -1095,11 +1096,10 @@ if (file.exists(here("output", "rds_estimates.RData"))) {
         align = c("l", "r", "r")
       ) %>%
       kableExtra::kable_styling(
-        latex_options = c("striped", "hold_position", "scale_down"),
+        latex_options = c("striped", "hold_position"),
         bootstrap_options = c("striped", "hover", "condensed"),
         full_width = FALSE,
-        position = "center",
-        font_size = 9
+        position = "center"
       ) %>%
       kableExtra::footnote(
         general = "RDS-II: Volz-Heckathorn estimator. RDS-SS: Gile's Successive Sampling estimator. Population size assumed: 980,000.",
@@ -1107,12 +1107,17 @@ if (file.exists(here("output", "rds_estimates.RData"))) {
         footnote_as_chunk = TRUE
       )
 
+    cat("\n=== RDS Binary Indicator Summary ===\n")
+    cat("Number of indicators:", nrow(rds_summary), "\n")
+    cat("RDS-SS estimates range:",
         round(min(rds_summary$rds_ss_est) * 100, 1), "% to",
         round(max(rds_summary$rds_ss_est) * 100, 1), "%\n")
 
   } else {
+    cat("RDS results not found in expected format.\n")
   }
 } else {
+  cat("RDS results file not found.\n")
 }
 ```
 
@@ -1132,7 +1137,8 @@ if (file.exists(nsum_file)) {
 
   # Check what NSUM results are available
   if (exists("nsum_results")) {
-    # Structure available for processing
+    cat("NSUM results structure:\n")
+    print(names(nsum_results))
 
     # Try to extract comparable estimates
     nsum_indicators <- c(
@@ -1206,14 +1212,20 @@ if (file.exists(nsum_file)) {
           footnote_as_chunk = TRUE
         )
 
+      cat("\n=== NSUM Binary Indicator Summary ===\n")
+      cat("Number of indicators:", nrow(nsum_summary), "\n")
+      cat("Population prevalence range:",
           round(min(nsum_summary$prevalence) * 100, 1), "% to",
           round(max(nsum_summary$prevalence) * 100, 1), "%\n")
 
     } else {
+      cat("No NSUM indicator estimates found in expected format.\n")
     }
   } else {
+    cat("NSUM results object not found.\n")
   }
 } else {
+  cat("NSUM results file not found. Checking alternative files...\n")
 
   # Try the bootstrap summary file
   bootstrap_file <- here("output", "tables", "nsum_bootstrap_summary.csv")
@@ -1580,11 +1592,7 @@ if (nrow(ma_comparison) > 0) {
       seed_method = "Seed Selection",
       pop_size_f = "Population Size"
     ) %>%
-    fmt_missing(columns = everything(), missing_text = "—") %>%
-    tab_options(
-      table.font.size = px(9),
-      table.width = pct(90)
-    )
+    fmt_missing(columns = everything(), missing_text = "—")
 
   # Only add spanner if we have indicator columns
   if (length(indicator_cols) > 0) {
@@ -1595,6 +1603,8 @@ if (nrow(ma_comparison) > 0) {
   print(ma_table)
 
 } else {
+  cat("No MA sensitivity analysis results found with the expected structure.\n")
+  cat("Available files suggest different naming convention or structure.\n")
 }
 ```
 
@@ -1677,17 +1687,16 @@ if (file.exists(rds_file)) {
         cols_label(Method = "RDS Method") %>%
         tab_spanner(label = "Prevalence Estimates (95% CI)",
                    columns = -Method) %>%
-        fmt_missing(columns = everything(), missing_text = "—") %>%
-        tab_options(
-          table.font.size = px(9),
-          table.width = pct(90)
-        )
+        fmt_missing(columns = everything(), missing_text = "—")
 
     } else {
+      cat("No compatible RDS indicators found in results.\n")
     }
   } else {
+    cat("RDS results not found in expected format.\n")
   }
 } else {
+  cat("RDS results file not available. Analysis would show comparison of RDS-I, RDS-II, and RDS-SS estimators for binary exploitation indicators.\n")
 }
 ```
 
