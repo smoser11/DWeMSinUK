@@ -41,9 +41,19 @@ create_nationality_clusters <- function(data) {
   data %>%
     mutate(
       nationality_cluster = case_when(
-        str_detect(tolower(q8_a), "filipin|pilip|asia") ~ "Filipino",
-        str_detect(tolower(q8_a), "latin|spain|spai|brazil|colombia|mexico|peru|ecuador") ~ "Latinx", 
+        # Filipino cluster - includes Asian (Filipino) responses
+        str_detect(tolower(q8_a), "filipin|pilip") ~ "Filipino",
+
+        # Latinx cluster - comprehensive Spanish/Latin American countries
+        str_detect(tolower(q8_a),
+                  "latin|españa|espa|spanish|brazil|brasil|colombia|boliv|
+                   mexico|mexica|peru|ecuador|venezolan|dominican|cuba|panama|
+                   latín|latin american") ~ "Latinx",
+
+        # British cluster - UK nationals
         q8 == 0 | str_detect(tolower(q8_a), "british|uk|united kingdom") ~ "British",
+
+        # Other cluster - remaining categories including Asian (non-Filipino)
         TRUE ~ "Other"
       )
     )

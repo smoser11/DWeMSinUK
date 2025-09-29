@@ -58,7 +58,7 @@ subgroup_config <- list(
 
   # RDS estimation methods
   estimation_methods = c("MA", "RDS_SS", "RDS_I", "RDS_II"),
-  preferred_method = "RDS_SS",
+  preferred_method = "MA",
 
   # Bootstrap parameters
   n_bootstrap = 500,  # Reasonable number for RDS bootstrap
@@ -140,15 +140,12 @@ calculate_rds_estimate <- function(rds_data, indicator, method = "RDS_SS",
   result <- tryCatch({
 
     if (method == "MA") {
-      # Model-Assisted estimates (Generalized VH)
-      # Note: MA.estimates uses different parameter name
-      ma_result <- MA.estimates(rds.data = indicator_data)
-      # Extract point estimate
-      estimate_val <- if (indicator %in% names(ma_result$estimate)) {
-        as.numeric(ma_result$estimate[indicator])
-      } else {
-        as.numeric(ma_result$estimate[1])  # First estimate if name doesn't match
-      }
+      # Model-Assisted estimates
+      # Note: MA.estimates uses 'trait.variable' parameter (not 'outcome.variable')
+      ma_result <- MA.estimates(rds.data = indicator_data,
+                               trait.variable = indicator)
+      # Extract point estimate from rds.interval.estimate object
+      estimate_val <- as.numeric(ma_result$estimate[1])
       list(estimate = estimate_val, error = NULL)
 
     } else if (method == "RDS_SS") {

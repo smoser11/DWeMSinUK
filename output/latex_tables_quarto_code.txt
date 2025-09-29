@@ -1,6 +1,6 @@
 ```{r}
 #| label: tbl-subgroup-prevalence
-#| tbl-cap: "Prevalence of labour exploitation among domestic workers by nationality subgroup"
+#| tbl-cap: "Prevalence of labour exploitation among domestic workers by nationality subgroup. Estimates based on RDS-SS methodology with neighborhood bootstrap confidence intervals."
 #| echo: false
 #| warning: false
 
@@ -8,10 +8,23 @@ library(knitr)
 library(kableExtra)
 library(here)
 
-# Load results and create table
+# Load the results data
 load(here("output", "rds_subgroup_analysis_results_FIXED.RData"))
-source(here("R", "analysis", "create_latex_tables.R"))
-latex_table1 <- create_latex_table1_standalone(cluster_summary)
+
+# Create and display main table
+latex_table1 <- create_latex_table1(cluster_summary)
 latex_table1
 ```
+
+```{r}
+#| label: tbl-detailed-subgroup-prevalence
+#| tbl-cap: "Detailed prevalence estimates by subgroup and exploitation indicator. All estimates use RDS-SS methodology with bootstrap confidence intervals."
+#| echo: false
+#| warning: false
+
+# Create and display detailed table
+detailed_latex_table <- create_detailed_latex_table(rds_subgroup_results$summary_df)
+detailed_latex_table
+```
+
 
