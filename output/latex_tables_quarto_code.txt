@@ -1,0 +1,17 @@
+```{r}
+#| label: tbl-subgroup-prevalence
+#| tbl-cap: "Prevalence of labour exploitation among domestic workers by nationality subgroup"
+#| echo: false
+#| warning: false
+
+library(knitr)
+library(kableExtra)
+library(here)
+
+# Load results and create table
+load(here("output", "rds_subgroup_analysis_results_FIXED.RData"))
+source(here("R", "analysis", "create_latex_tables.R"))
+latex_table1 <- create_latex_table1_standalone(cluster_summary)
+latex_table1
+```
+

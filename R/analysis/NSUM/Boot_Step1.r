@@ -536,7 +536,7 @@ identify_recruitment_chains_simple <- function(data, id_col = "id", recruiter_co
 
 #### TESTING (commented out to prevent auto-execution when sourcing)
 
-B <- 100
+B <- 1000
 boot_samples <- bootstrap_rds_sample(
   rds_sample = rd.dd,
   method = "neighboot",   # c("tree", "neighboot", "chain", "simple", "ss"),

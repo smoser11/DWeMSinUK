@@ -1204,6 +1204,11 @@ test_results <- test_weight_computation(verbose = TRUE)
 
 
 
+
+
+
+
+
 # Check if Step 2 output has actually different values (before  fallback)
 sample1 <- boot_samples[[1]]
 cat("VH weights (first 5):", round(sample1$weight_vh[1:5], 6),    "\n")

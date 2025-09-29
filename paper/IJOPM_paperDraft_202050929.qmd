@@ -673,6 +673,31 @@ wave_summary %>%
   )
 ```
 
+### Indicators
+
+creating comparable variables to bridge the Respondent-Driven Sampling (RDS) and Network Scale-Up Method (NSUM) estimations is a key methodological challenge the research team is actively working to solve. The core issue is that the two methods rely on differently framed questions:
+• RDS estimation uses "egocentric" questions, which focus on the respondent's personal experiences (e.g., "Have you been forced to work?").
+• NSUM estimation uses questions about the respondent's knowledge of others in their network (e.g., "How many domestic workers do you know who have experienced...").
+The survey questions designed for these two purposes do not always match up directly, making a fair comparison between the estimates difficult.
+The Strategy: Creating "Linking" Variables
+To overcome this, the team's strategy is to identify and group questions that cover the same underlying themes, even if they are worded differently for each method. The goal is to aggregate some of the specific "egocentric" questions to make them comparable to the broader "how many do you know" NSUM questions.
+Based on your sources, several sets of "linking" questions have been identified with varying degrees of confidence in their comparability:
+• Document Withholding (High Confidence):
+    ◦ RDS Question: Q70 asks if the employer has withheld the respondent's travel and identity documents.
+    ◦ NSUM Question: Q71 asks how many other domestic workers the respondent knows who do not have access to their own documents.
+• Debt and Pay Issues (High Confidence):
+    ◦ RDS Questions: This involves combining Q39 (having to pay off debt to someone who helped find work) and Q42 (has your pay ever been withheld?).
+    ◦ NSUM Question: Q43 asks how many others the respondent knows who have experienced problems with debt or pay.
+• Abuse and Threats (Medium Confidence):
+    ◦ RDS Questions: This requires grouping Q45 (forced, deceived, or threatened into poor working conditions), Q47 (employer intimidation or threats), and Q48 (verbal abuse).
+    ◦ NSUM Question: Q49 asks how many others the respondent knows who have experienced the use of threat or force.
+• Excessive Hours (Lower Confidence):
+    ◦ RDS Questions: Q61 (weekly rest does not last 24 hours) and Q62 (working excessive overtime) are combined.
+    ◦ NSUM Question: Q64 asks about knowing others who work excessive overtime, lack breaks, or lack annual leave. The comparison here is considered "flakier" because the RDS questions do not ask about annual leave, creating a partial mismatch.
+• Access to Help (Lower Confidence):
+    ◦ RDS Question: Q78 asks if the respondent knows who might help them (coded for "No" answers).
+    ◦ NSUM Question: Q79 asks how many other domestic workers the respondent knows who do NOT know where to go for help.
+By creating these comparable variables, even if just for one or two highly confident themes like debt bondage or document withholding, the team hopes to perform a fair comparison between the estimates derived from the two different methodologies. This process is considered a crucial step to integrate the RDS and NSUM approaches and to produce more robust findings.
 
 ### Ethical Approval
 
@@ -691,7 +716,25 @@ We analysed the survey sample using multiple estimation models in order to asses
 
 RDS estimators use ego-based information. Each participant reported the number of other domestic workers they knew, and this degree information was used to adjust for the over-representation of highly connected individuals in the sample. We implemented RDS-II and Gile’s successive sampling (SS) estimator, the latter of which accounts for finite population effects and improves performance when the sample fraction is relatively large (Gile, 2011; Gile and Handcock, 2010). These estimators were used to generate prevalence estimates for binary indicators of exploitation.
 
-For continuous traits, such as the exploitation risk index, we applied model-assisted inference approaches (Gile, 2011; Gile, Beaudry, and Handcock, 2018). These approaches combine design-based adjustments with regression models that incorporate auxiliary covariates, producing valid estimates of sample means and distributions of continuous outcomes under the RDS design.
+For continuous traits, such as the exploitation risk index, we applied model-assisted inference approaches (@gile15-network, Gile, 2011; Gile, Beaudry, and Handcock, 2018). These approaches combine design-based adjustments with regression models that incorporate auxiliary covariates, producing valid estimates of sample means and distributions of continuous outcomes under the RDS design.
+
+### Estimation Strategy
+
+Given that our data were collected using a respondent-driven sampling (RDS) design, the choice of estimator is critical. We considered several well-established RDS estimators, each with distinct assumptions and applicability.
+
+First, the **RDS-I estimator** @salg04-samplin provides an early design-based approach. However, it performs poorly in small samples, is highly sensitive to seed dependence, and requires strong assumptions about equilibrium. Since our sample comprises fewer than 100 respondents recruited from multiple seeds, we regard RDS-I primarily as a historical benchmark rather than a viable option for inference.
+
+Second, the **Volz–Heckathorn (VH) estimator** @volz08-probabi offers a probability-based refinement of RDS-I. It is more robust but assumes a large population relative to the sample size and does not adjust for finite-population effects. Although our diagnostic checks indicated approximate equilibrium across key demographics, the VH estimator is best used here as a robustness check rather than the primary estimator.
+
+Third, the **Successive Sampling (RDS-SS) estimator** (also called RDS-II) @gile11-improve accounts for finite population effects, adjusting for the non-negligible sampling fraction that arises when the target population is not extremely large relative to the sample. This property makes RDS-SS particularly appropriate for our study of migrant domestic workers, and we therefore use it as our primary estimator for binary outcomes (e.g., presence or absence of exploitation).
+
+Fourth, to estimate **continuous outcomes** such as our exploitation risk index, we employ the **Model-Assisted (MA-RDS) estimator** @gile15-network. This approach integrates regression modelling with RDS weights, thereby extending inference beyond binary outcomes and improving efficiency by leveraging auxiliary covariates.
+
+Finally, although recent work on **Clustered Successive Sampling Population Size Estimation (Clustered SS-PSE)** @gamb23-clustered extends RDS-based methods to estimating the size of clustered hidden populations, our study does not attempt to estimate the absolute number of domestic workers. Instead, we focus on the prevalence and severity of exploitation. As such, Clustered SS-PSE is not central to our analysis, though it remains a promising avenue for future research.
+
+In summary, we rely primarily on **RDS-SS** for binary outcomes and MA-RDS for continuous outcomes, with **VH** used for robustness checks. This combined strategy balances methodological rigor with the substantive goals of our study.
+
+We use model-assisted RDS estimators (@gile15-network) because they are design-based yet leverage a working ERGM (with degree and homophily terms) to approximate inclusion probabilities conditional on our observed seeds. This approach directly addresses seed bias and homophily that conventional RDS estimators cannot correct, accommodates finite-population effects through successive-sampling logic, and supports valid estimation of both binary and continuous outcomes. By conditioning on the actual seed composition and subgroup structure in our data, the method reduces bias, improves efficiency, and provides design-compatible bootstrap uncertainty, making it particularly well-suited to our small, heterogeneous sample of domestic workers.”
 
 ### Network Scale-Up Methods (NSUM)
 
@@ -1429,7 +1472,26 @@ Risk Index Implementation
 - Forced labor indicators (0.55 total)
 - Below minimum wage (0.10)
 
+### Data Processing {#app-dataprep}
 
+the process of coding variables to make them comparable across the Respondent-Driven Sampling (RDS) and Network Scale-Up Method (NSUM) estimations is a multi-step procedure that moves from conceptual mapping to specific data transformations. The core challenge is bridging the "egocentric" questions (about the respondent's own experiences, used for RDS) with the network-based questions (about how many others the respondent knows with certain experiences, used for NSUM).
+Yes, the sources provide extensive detail on the coding of variables to make them comparable for RDS and NSUM estimation. The fundamental challenge is to create a fair comparison between the "egocentric" RDS questions (about personal experience) and the broader "how many do you know" NSUM questions. This was accomplished by first identifying thematic links between questions and then implementing a specific coding scheme to transform them into a consistent format.
+Conceptual Mapping of Variables
+The team first identified sets of questions that cover the same underlying themes, even if their wording differed. These "linking" questions were categorized by the team's confidence in their comparability.
+Thematic Groups for Comparison:
+• Document Withholding (Most Confident): Comparing personal experience (Q70) with knowing others who lack access to their documents (Q71).
+• Pay/Debt Issues (High Confidence): Linking personal experience with debt (Q39) and withheld pay (Q42) to knowing others with such problems (Q43).
+• Threats/Abuse (High Confidence): Aggregating personal experiences of being forced, threatened, intimidated, or verbally abused (Q45, Q47, Q48) and comparing them to knowing others who experienced threats or force (Q49).
+• Excessive Hours (Lower Confidence): Combining questions about inadequate weekly rest (Q61) and excessive overtime (Q62) to compare with knowing others who face similar labor rights issues (Q64). The confidence is lower because the NSUM question (Q64) also asks about annual leave, which is not covered in the corresponding RDS questions.
+• Access to Help (Least Confident): Matching whether the respondent personally knows where to go for help (Q78) with knowing others who do not (Q79).
+Coding and Transformation Process
+The conceptual mapping was then put into practice through a detailed coding process, which is explicitly documented in the project's R script. The primary goal was to convert all variables into a binary (0/1) format, representing "No" or "Yes" to experiencing or knowing someone who experienced the issue.
+Key Coding Steps:
+1. Handling Ambiguous Answers: For most RDS questions, responses like "I don’t know" or "Prefer not to say" were recoded as NA (missing) to exclude them from the binary analysis.
+2. Converting Categorical RDS Variables to Binary: Questions with multiple response options (e.g., "Always," "Often," "Sometimes," "Never") were recoded into a 0/1 format. For instance, for Q70 (document withholding), the answers "Always," "Often," and "Sometimes" were all coded as 1 (indicating the presence of the issue), while "Never" was coded as 0.
+3. Aggregating Multiple RDS Questions: For themes covered by multiple egocentric questions (like "Threats/Abuse"), each individual question was first recoded into a binary 0/1 variable. These binary variables were then combined using a logical OR (|). This means if a respondent answered "Yes" to any of the grouped questions (e.g., experiencing threats OR intimidation OR verbal abuse), the final composite RDS variable would be coded as 1. This aggregation was necessary to match the broader scope of the single corresponding NSUM question.
+4. Converting NSUM Count Variables to Binary: The NSUM questions, which asked for a numerical count (e.g., "how many do you know?"), were also converted to binary. If a respondent knew one or more people (> 0), their answer was coded as 1; if they knew zero, it remained 0.
+Through this systematic process of recoding, handling missing data, and aggregating variables, the team created a set of parallel binary indicators suitable for a direct comparison between the RDS and NSUM estimation frameworks.
 
 ## Appendix B {#app-b}
 
