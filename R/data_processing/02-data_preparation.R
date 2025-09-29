@@ -9,6 +9,9 @@ library(car)
 library(psych)
 library(here)
 
+# Load helper functions for nationality clustering
+source(here("R", "utils", "helper_functions.R"))
+
 # Load cleaned data
 if (!exists("data_final") || !exists("data_nonzero")) {
   load(here("data", "processed", "cleaned_data.RData"))
@@ -130,12 +133,21 @@ prepare_data <- function() {
   dd <- prepare_legacy_indicators(dd)
   
   dd <- create_nationality_clusters(dd)
+
+  # Fix recruiter.id for seeds (MA.estimates requirement)
+  # All seeds should have the same recruiter.id (e.g., "0")
+  cat("Standardizing seed recruiter IDs for MA.estimates compatibility...\n")
+  dd <- dd %>%
+    mutate(
+      recruiter.id = ifelse(recruiter.id == "-1", "0", as.character(recruiter.id))
+    )
+
   # Create RDS data frame object
   cat("Creating RDS data frame...\n")
-  rd.dd <- as.rds.data.frame(dd, 
-                             id="id", 
-                             recruiter.id="recruiter.id", 
-                             max.coupons = 5, 
+  rd.dd <- as.rds.data.frame(dd,
+                             id="id",
+                             recruiter.id="recruiter.id",
+                             max.coupons = 5,
                              check.valid = FALSE)
   
   # Calculate RDS and VH/SS weights for different population sizes

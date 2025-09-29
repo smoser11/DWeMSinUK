@@ -27,6 +27,12 @@ if (!exists('rd.dd') || !exists('dd')) {
   stop("Required RDS data objects not found. Need both 'dd' and 'rd.dd' from prepared_data.RData")
 }
 
+# Load helper functions to get updated nationality clustering
+source(here("R", "utils", "helper_functions.R"))
+
+# Apply updated nationality clustering to the data
+rd.dd <- rd.dd %>% create_nationality_clusters()
+
 # Make rd.dd available in global environment for Boot_Step1.r
 assign("rd.dd", rd.dd, envir = .GlobalEnv)
 
@@ -56,12 +62,11 @@ subgroup_config <- list(
     "access_to_help_rds"
   ),
 
-  # RDS estimation methods
-  estimation_methods = c("MA", "RDS_SS", "RDS_I", "RDS_II"),
-  preferred_method = "MA",
+  # Analysis method - use pre-calculated weights instead of re-estimating RDS on subsets
+  analysis_method = "weighted_prevalence",  # Use existing RDS-I weights from full dataset
 
   # Bootstrap parameters
-  n_bootstrap = 500,  # Reasonable number for RDS bootstrap
+  n_bootstrap = 500,  # Standard number for production results
   confidence_level = 0.95,
 
   # Population size scenarios (for RDS-SS)
@@ -120,85 +125,55 @@ create_smart_clusters <- function(rds_data, min_size = 10) {
 # RDS BOOTSTRAP ESTIMATION FUNCTIONS
 # ============================================================================
 
-# Function to calculate RDS estimate for a single indicator on RDS data
-calculate_rds_estimate <- function(rds_data, indicator, method = "RDS_SS",
-                                  population_size = 980000, verbose = FALSE) {
+# Function to calculate weighted prevalence using pre-calculated RDS-I weights
+calculate_weighted_prevalence <- function(data, indicator, verbose = FALSE) {
 
-  if (verbose) cat("  Calculating", method, "estimate for", indicator, "\n")
+  if (verbose) cat("  Calculating weighted prevalence for", indicator, "\n")
 
-  # Validate indicator exists and has sufficient data
-  if (!indicator %in% names(rds_data)) {
-    return(list(estimate = NA, error = "indicator not found"))
+  # Determine the appropriate weight variable
+  weight_var <- case_when(
+    indicator == "document_withholding_rds" ~ "wt.RDS1_document_withholding",
+    indicator == "pay_issues_rds" ~ "wt.RDS1_pay_issues",
+    indicator == "threats_abuse_rds" ~ "wt.RDS1_threats_abuse",
+    indicator == "excessive_hours_rds" ~ "wt.RDS1_excessive_hours",
+    indicator == "access_to_help_rds" ~ "wt.RDS1_access_to_help",
+    TRUE ~ "wt.RDS1_document_withholding"  # fallback
+  )
+
+  # Validate indicator and weight exist
+  if (!indicator %in% names(data) || !weight_var %in% names(data)) {
+    return(list(estimate = NA, error = "indicator or weight not found"))
   }
 
-  indicator_data <- rds_data[!is.na(rds_data[[indicator]]), ]
-  if (nrow(indicator_data) < 5) {
+  # Filter to non-missing values
+  analysis_data <- data[!is.na(data[[indicator]]) & !is.na(data[[weight_var]]), ]
+
+  if (nrow(analysis_data) < 5) {
     return(list(estimate = NA, error = "insufficient data"))
   }
 
-  # Apply RDS estimation method
-  result <- tryCatch({
+  # Calculate weighted prevalence
+  weighted_prev <- sum(analysis_data[[indicator]] * analysis_data[[weight_var]]) /
+                   sum(analysis_data[[weight_var]])
 
-    if (method == "MA") {
-      # Model-Assisted estimates
-      # Note: MA.estimates uses 'trait.variable' parameter (not 'outcome.variable')
-      ma_result <- MA.estimates(rds.data = indicator_data,
-                               trait.variable = indicator)
-      # Extract point estimate from rds.interval.estimate object
-      estimate_val <- as.numeric(ma_result$estimate[1])
-      list(estimate = estimate_val, error = NULL)
+  if (verbose) cat("    Weighted prevalence:", round(weighted_prev, 4), "\n")
 
-    } else if (method == "RDS_SS") {
-      # RDS Sequential Sampling estimates
-      ss_result <- RDS.SS.estimates(rds.data = indicator_data,
-                                   outcome.variable = indicator,
-                                   N = population_size)
-      # Extract point estimate from rds.interval.estimate object
-      estimate_val <- as.numeric(ss_result$estimate[1])
-      list(estimate = estimate_val, error = NULL)
-
-    } else if (method == "RDS_I") {
-      # RDS-I estimates (Salganik-Heckathorn)
-      rds1_result <- RDS.I.estimates(rds.data = indicator_data,
-                                    outcome.variable = indicator)
-      # Extract point estimate from rds.interval.estimate object
-      estimate_val <- as.numeric(rds1_result$estimate[1])
-      list(estimate = estimate_val, error = NULL)
-
-    } else if (method == "RDS_II") {
-      # RDS-II estimates (Volz-Heckathorn)
-      rds2_result <- RDS.II.estimates(rds.data = indicator_data,
-                                     outcome.variable = indicator)
-      # Extract point estimate from rds.interval.estimate object
-      estimate_val <- as.numeric(rds2_result$estimate[1])
-      list(estimate = estimate_val, error = NULL)
-
-    } else {
-      list(estimate = NA, error = "unknown method")
-    }
-
-  }, error = function(e) {
-    if (verbose) cat("    Error in", method, ":", e$message, "\n")
-    list(estimate = NA, error = e$message)
-  })
-
-  return(result)
+  return(list(estimate = weighted_prev, error = NULL))
 }
 
-# Function to perform neighborhood bootstrap RDS estimation
-bootstrap_rds_subgroup_estimate <- function(rds_data, indicator, cluster_name = "Overall",
-                                          method = "RDS_SS", population_size = 980000,
-                                          n_bootstrap = 500, verbose = TRUE) {
+# Function to perform simple bootstrap with weighted prevalence
+bootstrap_weighted_subgroup_estimate <- function(data, indicator, cluster_name = "Overall",
+                                               n_bootstrap = 500, verbose = TRUE) {
 
-  if (verbose) cat("\n--- Bootstrap RDS estimation for", indicator, "in", cluster_name, "cluster ---\n")
+  if (verbose) cat("\n--- Bootstrap weighted estimation for", indicator, "in", cluster_name, "cluster ---\n")
 
   # Validate data
-  if (nrow(rds_data) < subgroup_config$min_cluster_size) {
+  if (nrow(data) < subgroup_config$min_cluster_size) {
     return(create_failed_rds_result(indicator, cluster_name, "insufficient_sample_size"))
   }
 
   # Calculate point estimate on original data
-  point_result <- calculate_rds_estimate(rds_data, indicator, method, population_size, verbose)
+  point_result <- calculate_weighted_prevalence(data, indicator, verbose)
 
   if (is.na(point_result$estimate)) {
     return(create_failed_rds_result(indicator, cluster_name, point_result$error))
@@ -207,36 +182,18 @@ bootstrap_rds_subgroup_estimate <- function(rds_data, indicator, cluster_name = 
   point_estimate <- point_result$estimate
   if (verbose) cat("  Point estimate:", round(point_estimate, 4), "\n")
 
-  # Perform neighborhood bootstrap resampling
-  if (verbose) cat("  Generating", n_bootstrap, "bootstrap samples using neighborhood method...\n")
+  # Perform simple bootstrap resampling
+  if (verbose) cat("  Generating", n_bootstrap, "bootstrap samples...\n")
 
-  bootstrap_samples <- tryCatch({
-    bootstrap_rds_sample(
-      rds_sample = rds_data,
-      method = "neighboot",  # Use neighborhood bootstrap as specified
-      B = n_bootstrap,
-      traits = indicator,
-      return_rds_df = TRUE,  # Return as rds.data.frame for RDS estimation
-      verbose = FALSE
-    )
-  }, error = function(e) {
-    if (verbose) cat("  Bootstrap sampling failed:", e$message, "\n")
-    return(NULL)
-  })
-
-  if (is.null(bootstrap_samples)) {
-    return(create_failed_rds_result(indicator, cluster_name, "bootstrap_sampling_failed"))
-  }
-
-  # Calculate RDS estimates for each bootstrap sample
-  if (verbose) cat("  Computing RDS estimates for", length(bootstrap_samples), "bootstrap samples...\n")
-
-  bootstrap_estimates <- numeric(length(bootstrap_samples))
+  bootstrap_estimates <- numeric(n_bootstrap)
   successful_estimates <- 0
 
-  for (i in seq_along(bootstrap_samples)) {
-    boot_result <- calculate_rds_estimate(bootstrap_samples[[i]], indicator, method,
-                                        population_size, verbose = FALSE)
+  for (i in 1:n_bootstrap) {
+    # Simple bootstrap: sample with replacement
+    boot_indices <- sample(nrow(data), replace = TRUE)
+    boot_data <- data[boot_indices, ]
+
+    boot_result <- calculate_weighted_prevalence(boot_data, indicator, verbose = FALSE)
 
     if (!is.na(boot_result$estimate)) {
       bootstrap_estimates[i] <- boot_result$estimate
@@ -246,7 +203,7 @@ bootstrap_rds_subgroup_estimate <- function(rds_data, indicator, cluster_name = 
     }
 
     if (verbose && i %% 100 == 0) {
-      cat("    Completed", i, "/", length(bootstrap_samples), "bootstrap estimates\n")
+      cat("    Completed", i, "/", n_bootstrap, "bootstrap estimates\n")
     }
   }
 
@@ -263,7 +220,7 @@ bootstrap_rds_subgroup_estimate <- function(rds_data, indicator, cluster_name = 
                                               (1 + subgroup_config$confidence_level)/2))
 
   if (verbose) {
-    cat("  Successful bootstrap estimates:", successful_estimates, "/", length(bootstrap_samples), "\n")
+    cat("  Successful bootstrap estimates:", successful_estimates, "/", n_bootstrap, "\n")
     cat("  Bootstrap CI: (", round(ci_quantiles[1], 4), ", ", round(ci_quantiles[2], 4), ")\n")
   }
 
@@ -271,13 +228,12 @@ bootstrap_rds_subgroup_estimate <- function(rds_data, indicator, cluster_name = 
   return(list(
     indicator = indicator,
     cluster = cluster_name,
-    method = method,
-    population_size = population_size,
+    method = "weighted_prevalence",
     point_estimate = point_estimate,
     bootstrap_mean = mean(valid_estimates),
     ci_lower = ci_quantiles[1],
     ci_upper = ci_quantiles[2],
-    n_obs = nrow(rds_data),
+    n_obs = nrow(data),
     n_bootstrap_successful = length(valid_estimates),
     n_bootstrap_total = n_bootstrap,
     convergence = "success",
@@ -318,12 +274,12 @@ run_rds_subgroup_analysis <- function(rds_data) {
 
   cat("\n=== RUNNING PROPER RDS SUBGROUP ANALYSIS ===\n")
 
-  # Apply smart clustering
-  rds_data <- create_smart_clusters(rds_data, subgroup_config$min_cluster_size)
+  # Use the regular dd data frame (not rd.dd) since we're using pre-calculated weights
+  analysis_data <- create_smart_clusters(dd, subgroup_config$min_cluster_size)
   cluster_var <- "nationality_cluster_combined"
 
   # Get cluster distribution
-  cluster_counts <- table(rds_data[[cluster_var]], useNA = "ifany")
+  cluster_counts <- table(analysis_data[[cluster_var]], useNA = "ifany")
   cat("Final cluster distribution for analysis:\n")
   print(cluster_counts)
 
@@ -338,12 +294,10 @@ run_rds_subgroup_analysis <- function(rds_data) {
 
     cat("\nProcessing", indicator, "for overall sample...\n")
 
-    overall_result <- bootstrap_rds_subgroup_estimate(
-      rds_data = rds_data,
+    overall_result <- bootstrap_weighted_subgroup_estimate(
+      data = analysis_data,
       indicator = indicator,
       cluster_name = "Overall",
-      method = subgroup_config$preferred_method,
-      population_size = subgroup_config$baseline_population,
       n_bootstrap = subgroup_config$n_bootstrap,
       verbose = subgroup_config$verbose
     )

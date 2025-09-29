@@ -1,0 +1,10 @@
+load("/Users/sm38679/Documents/GitHub/DWeMSinUK/output/simple_subgroup_analysis_results.RData")
+load("/Users/sm38679/Documents/GitHub/DWeMSinUK/output/netclust_subgroup_analysis_results.RData")
+ls()
+subgroup_results
+ls()
+netclust_results
+load("/Users/sm38679/Documents/GitHub/DWeMSinUK/output/netclust_subgroup_analysis_results.RData")
+str(netclust_results)
+exit()
+quit()
