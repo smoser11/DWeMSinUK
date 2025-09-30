@@ -1,0 +1,2189 @@
+---
+title: "Quantifying Hidden Exploitation: Dual-Method Prevalence Estimates of Modern Slavery Risk Among UK Domestic Workers^[Authors' names are listed in alphabetical order.]"
+author:
+  - name: Caroline Emberson
+    affiliation: UoN
+  - name: Scott Moser
+    affiliation: UoN
+date: today
+date-format: "DD, MMMM YYYY"
+abstract: |
+  **Purpose**
+  
+  The purpose of this article is to demonstrate a quantitative approach to the construction of a risk index of labour exploitation and alternative estimators of the prevalence of exploitation.
+  
+  **Design/ Methodology/ Approach**
+  
+  Using data from a survey of domestic workers based in the United Kingdom (UK), we use statistical techniques, including Respondent Driven Sampling (RDS) methods RDS-I and RDS-II and Network Scale Up (NSUM) methods, to produce an index of labour exploitation risk and estimators of the prevalence of labour exploitation.
+  
+  **Findings**
+  
+  The labour exploitation risk index shows a reverse correlation between the increasing seriousness of exploitation and the number of exploitation cases reported.
+  The various prevalence estimators examined show significant differences in population level exploitation.
+  
+  **Research implications/ limitations**
+  
+  Further research into the application of different quantitative statistical estimators of the prevalence of labour exploitation is urgently required. 
+  
+  **Practical implications**
+  
+  Robust estimators are necessary if policy makers are to make informed choices about the appropriate allocation of scarce resources to help to eradicate severe forms of labour exploitation and labour abuse.
+  
+  **Social implications**
+
+    Even by more conservative estimates, thousands of domestic workers in the UK are subject to labour exploitation. Urgent policy attention is needed if structural vulnerabilities are to be removed.
+
+  **Originality**
+
+  We believe this paper is the first to compare the use of RDS and NSUM methods in the quantitative estimation of the prevalence of labour exploitation and to construct a quantitative, composite index of labour exploitation risk. 
+
+  
+bibliography: 
+  - references.bib
+  - MyLibrary2025-08-25.bib
+
+fontsize: 12pt
+geometry: margin=1in
+subparagraph: true
+format:
+  pdf:
+    pdf-engine: xelatex
+    cite-method: biblatex
+    keep-tex: true
+    biblatexoptions:
+      - backend=biber
+      - natbib = true
+      - style=apa
+      - sorting=nyt
+      - maxcitenames=2
+    include-in-header:
+      text: |
+        % Do NOT load biblatex here.
+        \DeclareLanguageMapping{english}{english-apa}
+        \usepackage{amsthm}
+        \usepackage{amsmath}
+        \usepackage{amsfonts}
+        \usepackage{amssymb}
+        \usepackage{float}
+        \usepackage{caption}
+        \usepackage{subcaption}
+        \usepackage{stmaryrd}
+        \usepackage{pdflscape}  % ADD THIS for landscape pages
+        \theoremstyle{plain}
+        \newtheorem{theorem}{Theorem}[section]
+        \newtheorem{proposition}[theorem]{Proposition}
+        \theoremstyle{definition}
+        \newtheorem{definition}{Definition}
+        \newtheorem{corollary}{Corollary}
+        \newtheorem{example}{Example}
+        \renewenvironment{proof}
+           {\par\noindent\textbf{Proof.}\ }
+           {\hfill$\blacksquare$\par}
+        \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+    number-sections: true
+    toc: true
+    toc-depth: 3
+    colorlinks: true
+    linkcolor: black
+    citecolor: RoyalBlue
+    urlcolor: BrickRed
+    link-citations: true
+    fig-pos: "H"
+    fig-width: 6.5    # Good default
+    fig-height: 4     # Good default
+    df-print: kable
+    pandoc:
+      from: markdown+tex_math_dollars+tex_math_single_backslash
+  docx:
+    number-sections: true
+    highlight-style: github
+    fig-width: 6      # CHANGE to 6 for DOCX
+    fig-height: 4
+    fig-dpi: 300      # ADD this
+    df-print: kable   # ADD this
+    prefer-html: true  # ADD THIS LINE
+  html:
+    code-fold: true
+    toc: true
+    toc-depth: 3
+    theme: cosmo
+    fig-width: 10
+    fig-height: 6
+editor:
+  markdown:
+    wrap: sentence
+execute:
+  warning: false
+  message: false
+  eval: true
+---
+
+```{r setup, include=FALSE}
+getwd()
+## Ensure fs is available
+if (!requireNamespace("fs", quietly = TRUE)) install.packages("fs")
+
+# Set PDF-friendly graphics options
+if (knitr::is_latex_output()) {
+  # Set device to cairo_pdf for better font handling
+  knitr::opts_chunk$set(
+    dev = "cairo_pdf",
+    dev.args = list(family = "", fallback_resolution = 300),
+    fig.retina = 1
+  )
+
+  # Set ggplot2 default theme with safe fonts
+  if (requireNamespace("ggplot2", quietly = TRUE)) {
+    ggplot2::theme_set(ggplot2::theme_minimal(base_family = ""))
+  }
+} else {
+  # For HTML output
+  knitr::opts_chunk$set(
+    dev = "png",
+    dpi = 300
+  )
+}
+
+## Define paths
+home_dir <- Sys.getenv("HOME")
+bib_source <- fs::path(home_dir, "Dropbox", "Bibliog", "scottAll5-BBL-URLdoi2024.bib")
+bib_target <- "references.bib"
+
+## Only copy if target doesn't exist or source is newer
+if (!fs::file_exists(bib_target) ||
+    fs::file_info(bib_source)$modification_time > fs::file_info(bib_target)$modification_time) {
+  fs::file_copy(bib_source, bib_target, overwrite = TRUE)
+  message("- Updated bibliography file")
+} else {
+  message("- Bibliography file is up to date")
+}
+
+## Rest of your setup...
+css_dir <- fs::path(home_dir, "Dropbox", "LaTeX", "Stationary", "Rmakrdown")
+css_files <- c("columns.css", "seminar_v6.css", "Qmd_noPublished.css")
+
+fs::dir_create("css")
+for (file in css_files) {
+  source <- fs::path(css_dir, file)
+  target <- fs::path("css", file)
+  if (!fs::file_exists(target) ||
+      fs::file_info(source)$modification_time > fs::file_info(target)$modification_time) {
+    fs::file_copy(source, target, overwrite = TRUE)
+    message(paste("- Updated", file))
+  }
+}
+
+## Download CSL file if missing
+if (!fs::file_exists("apa.csl")) {
+  download.file(
+    "https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl",
+    "apa.csl"
+  )
+  message("- Downloaded APA citation style")
+}
+
+message("Setup complete!")
+
+library(here)
+load(here("data", "processed", "prepared_data.RData"))
+prepared_data <- dd
+```
+
+<!-- NOTES: (1)custom placement of Endnotes only works for `html_document(2)` -- not pdf_document   (2) boxes added -> uses `\usepackage{framed}` for LaTeX-ing -- see https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html  (3)    -->
+
+<!-- As discussed in the [this footnote](#footnote1)  the results are significant.[^11] -->
+
+<!-- [^11]: <a name="footnote1"></a>Your detailed footnote text goes here. -->
+
+<!-- https://tex.stackexchange.com/questions/452552/algorithm-pseudocode-in-markdown -->
+
+\newpage
+
+## Introduction
+
+```         
+* Why study labour exploitation among UK domestic workers?
+    
+* Gap in existing research.
+    
+* Contributions: (1) Conceptualisation of exploitation (binary vs. continuous, risk index), (2) Novel use of dual methods (RDS & NSUM), (3) Policy relevance.
+```
+
+```{=latex}
+
+\section{Introduction}\label{introduction}
+
+Labour exploitation has been defined as `work situations that deviate 
+significantly from standard working conditions as defined by legislation
+or other binding legal regulations, concerning in particular
+remuneration, working hours, leave entitlements, health and safety
+standards and decent treatment'\autocite[10]{european_union_for_fundamental_rights_severe_2015}. In the operations and supply chain management literature,
+interest in businesses' respect for these kinds of employee labour rights began with
+studies focused upon labour rights transgressions related to risk
+reduction and risk communication and how to improve
+employees' health and safety \autocite{chinander_aligning_2001,wolf_operationalizing_2001}. More recently, 
+serious labour rights abuses have come to the fore with studies
+examining the challenges of severe labour exploitation under the umbrella term `modern slavery' \autocite{gold_modern_2015,new_modern_2015,benstead_horizontal_2018,stevenson_modern_2018}. While this literature
+offers important insights into severe forms of labour exploitation, particularly
+in global supply chains, this and the wider social sustainability literature has
+been criticised for its de-humanised approach to the understanding
+of workers and their working conditions \autocite{soundararajan_humanizing_2021}. While at least one current
+project seeks to examine the phenomenon of worker voice in factory
+settings  \autocite{leverhulme_trust_research_2022}, there appears to be little attention paid to severe forms of labour exploitation from the workers' perspective in the private sphere. Nowhere are the realities of individual workers' experiences of employer exploitation brought into sharper relief than in the setting of domestic
+work in private households.
+
+The authors of the Global Slavery Index estimate that there are
+seventy-six million people employed in domestic work worldwide
+\autocite{international_labour_organization_global_2022}).
+According to \textcite{bonnet_domestic_2022}, eighty percent of this domestic work is unregulated and informal. Labour
+exploitation has been identified as an extensive global problem within
+the sector, with domestic work identified as one of five private sector
+groupings which contribute the most to forced labour. Defined in the ILO
+Forced Labour Convention, 1930 No.29, forced or compulsory labour is
+`all work or service which is exacted from a person under the threat of
+a penalty and for which the person has not offered himself or herself
+voluntarily' \autocite{ilo_what_2024}. Seventy-six
+percent of domestic workers are women, and these workers represent four
+percent of the total female workforce \autocite{international_labour_organization_global_2022}. Indeed, women in forced labour are much more likely to be in domestic
+work than in any other occupation \autocite{international_labour_organization_global_2022}.
+The ILO suggest that female domestic workers may be coerced through
+non-payment of wages; abuse of vulnerability; subjected to physical and
+sexual violence or experience threats against their family members. Such
+severe forms of labour exploitation may be present alongside other,
+perhaps less severe but equally illegal, practices which constitute
+various forms of labour abuse. The criminalisation of both labour
+exploitation and abuse in a domestic setting has developed in recent
+times, with legislation enacted in the United Kingdom (UK), Europe,
+Australia and Norway to criminalise such severe exploitation under the
+term `modern slavery'. However, even where modern slavery laws are in
+place, reliance on traditional, inspection-led, approaches to detection
+designed primarily to ensure labour rights compliance within communal
+workplaces such as factories mean that the number of reported cases of
+labour exploitation in private dwellings may well severely underestimate
+actual exploitation levels. Though an exploration of labour exploitation within private residences, our research seeks to redress the paucity of rigorous quantitative research in the modern slavery field.  Specifically, this article aims to contribute to a more
+nuanced understanding of how quantitative methodologies may be deployed to
+improve understanding of the realities of workers' conditions by
+demonstrating the use of a statistically robust estimation of the nature
+and proportion of labour exploitation and abuse among domestic workers in the UK. This setting was chosen due to long-standing national
+legislation criminalising modern slavery introduced to the UK in 2015.
+Despite, or perhaps because of this legislation, in recent years the
+number of potential victims entering the UK's National Referral
+Mechanism (NRM), a scheme which provides government support for those
+suspected to be modern slavery survivors, has continued to increase.
+Nineteen thousand, one hundred and twenty-five potential victims were
+recorded in 2024: the highest annual figure since the NRM began
+\autocite{home_office_modern_2025}. In 2024, for the
+first time the number of cases of potential modern slavery among females
+handled by the charity Unseen, who run the UK's modern slavery helpline,
+were more prevalent than those among men 
+(\cite{carter_women_2025}). Despite these worrying
+headline statistics, and the persistence of specific concerns about high
+levels of exploitation among domestic workers in the grey literature
+\autocite{kalayaan_new_2008, mantouvalou_modern_2016, latin_american_womens_rights_service_behind_2023}, to our knowledge no-one has yet estimated the nature and extent of labour exploitation and abuse that may exist among domestic workers in the UK.
+
+In contrast to overseas factory workers in globally dispersed, product,
+supply chains, many service workers engaged in domestic work have
+migrated to work in the UK. These transnational workers enter on
+restricted visas where their employment---and their right to remain in
+the country---is tied to their continuing employment. It is now ten
+years since the UK's Modern Slavery Act was enacted. During its passage
+through parliament, those advocating for the rights of domestic workers
+were successful in expanding the final category boundaries of the
+legislation to include, in Section 53, the specific definition of
+(overseas) domestic workers as modern slavery victims 
+\autocite{caruana_boundaries_2025}. These transnational
+migrants are at particular risk of exploitation due to regulatory visa
+restrictions and intersecting structural issues related to their gender,
+the relative isolation of domestic work and a lack of supportive social
+networks. This can mean that they fall out of legal migratory status.
+Due to the social stigma attached to such illegal working, transnational
+workers remaining in the UK without the right to work may be considered
+a hidden, hard-to-reach, population. Extracting a sample of domestic
+workers which includes this group raises difficulties when trying to
+employ the normal statistical sampling methods considered necessary for
+robust prevalence estimation. Perhaps due to these sampling
+difficulties, we know relatively little about the nature of labour
+exploitation among this particularly at-risk group of workers.
+Fortunately, there has been significant interest in the development of
+alternative methods for prevalence estimation which include such
+hard-to-reach groups, with many scholars advocating and developing the
+use of respondent-driven sampling (RDS) techniques to support
+statistically robust estimators.
+
+In this paper, we make two specific contributions to the operations and
+supply chain management literature. First, we demonstrate the use of RDS
+coupled with Network Scale-up Methods (N-SUM) to reach and sample
+respondents' views of their working conditions among these,
+predominantly female, transnational migrant domestic workers. We use the
+data we obtain from these respondents to show how quantitative survey data can be
+used to estimate the proportion of workers experiencing labour
+exploitation. Second, we begin to capture the nature and extent of
+modern slavery as voiced by domestic workers, thus, we
+believe, expanding the nascent literature on worker voice which has, in
+the main, focused primarily on factory workers
+\autocite{stephens_theorising_2024}. These contributions
+not only extend our understanding of the risks of labour exploitation
+and abuse among service workers engaged in domestic settings but also
+show how it is possible to shed light on the severity of the
+individuals' experience of exploitation through the construction of a
+novel risk index. The remainder of this paper is structured as follows.
+our study in more detail, highlighting what is already known about the
+current population of domestic workers in the UK and the conditions in
+which they work. Next, we describe our research methods. We review the
+development of the respondent-driven sampling (RDS) techniques we used
+and explain why this sampling method is suitable for our study. We then
+describe our survey methods, including how we designed our survey
+instrument, contacted our sample seeds and analysed our data. We then
+present and discuss our findings, detailing the proportional estimate
+that we calculated and the risk index we constructed. In our discussion,
+we expand upon the implications of our findings for government policy,
+enforcement practices and further research, including how these methods
+may be used in future studies of labour exploitation in other sectoral
+and geographic contexts. The limitations of our study are outlined,
+before, finally, we conclude our article.
+```
+
+### Conceptualising Labour Exploitation and the Degree of Risk
+
+
+* Binary vs. continuous definitions.
+    
+* Risk index construction and theoretical justification.
+    
+    
+
+
+Modern slavery has been criticised by some for its overly extensive scope: encapsulating a broad range of divergent sub-categories of exploitation (@oconnell_davidson_margins_2015; @gutierrez-huerter_o_change_2023).
+For this reason, we used the International Labour Organization’s (@ILO11-indicators)[^2] ‘Indicators of Forced Labour’ to identify the potential for severe labour exploitation and as a basis for the quantification of our labour exploitation and abuse risk index.
+The ILO identify eleven indicators designed to help understand how forced labour arises and how it affects victims.
+These indicators include: abuse of vulnerability; deception; restriction of movement; isolation; physical and sexual violence; intimidation and threats; retention of identity documents; withholding of wages; debt bondage; abusive working and living conditions and excessive overtime.
+According to the ILO, the presence of a single indicator in any given situation may in some cases imply the existence of forced labour.
+However, it also suggests that in other cases it may be necessary to look for several indications which, taken together, may point to a case of forced labour.
+We seek to refine this statement through the construction of a composite index by which means a degree of risk related to the likelihood of a domestic worker experiencing this most severe form of exploitation may be distinguished from the likely occurrence of less severe, though similarly illegal, forms of labour abuse.
+
+[^2]: CE: No idea if this is the correct reference -- it is my best guess.
+
+## Evaluating the Degree of Risk
+
+The study of risk management has a long tradition in operations and supply chain management.
+Initially, the risks under consideration were primarily related to ensuring continuity of the supply of goods and services (see for example, @juttner_supply_2003).
+Beginning with @anderson_critical_2006 and @anderson_sustainability_2009, however, a literature stream of sustainability-related supply chain risk management developed related specifically to the risks associated with the environment and social justice.
+A normative consensus related to the main stages of supply chain risk management has developed in the literature, with a five-stage sequential model typically presented.
+There have also been empirical studies of risk management within various industrial supply chains in the United States and India (@tarei_hybrid_2018; @dellana_scale_2021), including the quantification of a risk index for the petroleum supply chain (@tarei_hybrid_2018).
+Yet, while these authors recognize the need for responsible management and its effect on societal values, in line with other literature in the field they view risk from the perspective of the corporate supply chain rather than examining the risk of harm to the worker.
+
+In our study, we conceptualise the risk of labour exploitation from the workers’ perspective.
+We conceive severe forms of labour exploitation such as forced labour as one end of a spectrum ranging from illegal employment practices that constitute labour abuse, such as wage payments below legal minimum wage levels and health and safety violations, through to the likelihood of criminal exploitation recognized in the UK as modern slavery.
+Our assessment of this personal risk permits a degree of risk to be assigned to various clusters of forced labour indicators with the more indicators present, the stronger the likelihood that the working conditions may be considered exploitative.
+Our approach, therefore, includes, but goes beyond, assessing the likelihood of forced labour by simply quantifying the proportion of survivors entering the UK’s National Referral Mechanism (NRM): a government system for survivor support set up to identify whether there are positive grounds for the identification of Modern Slavery.
+In our method, an NRM referral is used as the strongest indicator of modern slavery risk, with lesser risks assessed according to the degree to which cumulative indicators of forced labour are reported.
+
+### Case Setting: Labour Exploitation Risk Among Transnational Migrant Domestic Workers In The UK
+
+Domestic work forms part of a broader industrial category of Personal and Household Service work (PHS).
+Work in this category includes those employed in ‘social work activities without accommodation’ and ‘activities of households as employers of domestic personnel’ (@european_commission_staff_2012).
+In 2017, an estimated 980,000 people were engaged in PHS work in the UK (@manoudi_analysis_2018).
+@manoudi_analysis_2018 highlight that the PHS sector is dominated by women and migrants, with many undeclared foreign workers.
+Detailed statistics related to the country of origin of domestic workers migrating to work in PHS in the UK are difficult to isolate before 2019.
+Since that time, annual migration has fluctuated – falling sharply in 2021 due in part to the COVID-19 pandemic, before later rising again above pre-pandemic levels.
+In the year to December 2022, the UK Home Office reported that it had issued 18,533 Overseas Domestic Worker visas (@home_office_why_2023).
+These domestic workers came from various countries in South America and Asia, including many from the Philippines.
+
+In 2023, @strauss_britain_2023 reported a big shift in the source countries of migrants arriving in the UK on the Overseas Domestic Worker and other types of worker visas.
+Transnational domestic workers from the Philippines and India accounted for the single largest number of applications granted (10,186 and 3,858 visas respectively), followed by smaller, but still significant, numbers of workers arriving from Bangladesh (465), Nigeria (446), Sri Lanka (444), Egypt (422), and Ethiopia (285).
+In the same period, smaller numbers of visa applications to work as a domestic worker in the UK were also accepted from workers from other source countries including, but not limited to, the Sudan, Nepal, Ghana, Kenya, Lebanon, Eritrea, Iran, Turkey, Yemen, Malaysia, Thailand, and Morocco.
+This post-Brexit increase in the diversity of source countries from which transnational workers are drawn makes a more detailed analysis of the risk of labour exploitation in the sector both timely and more urgent.
+
+There is a long history of reports of exploitation in the domestic work sector in the UK.
+In 2008, the civil society organisation Kalayaan, which was formed to campaign for the formal recognition of migrant domestic workers’ rights in the UK, reported on the impact of proposed changes to the UK immigration system on migrant domestic workers (@kalayaan_new_2008).
+Their report highlights government recognition of documented and unacceptable levels of abuse and exploitation among domestic workers in the UK as early as 1996.
+At this stage, new policies, including the development of a specialised visa allowing domestic workers to change employer during their stay were introduced.
+However, in 2012, these visa conditions were modified, tying domestic workers to a single employer and restricting the length of time that they are permitted to remain in the country to a period of six months (@gower_calls_2016).
+Overseas domestic worker visa holders are now, again, permitted to change employers, but not to apply to renew their six-month long visa unless they receive a positive ‘Conclusive Grounds’ decision related to exploitation considered to be modern slavery through the UK’s National Referral Mechanism (NRM) (@romero_blueprint_2025).
+
+These reports highlight the underlying reasons for migrant domestic workers’ vulnerability, including workers’ relative desperation for work; their lack of social ties; unfamiliarity with English language and culture; long working hours; lack of knowledge of their legal rights; a lack of oversight of the private home as a workplace; their work forming part of the informal economy; their reliance on their employer for permission to work in the UK; and their lack of recourse to public funds.
+As a result, migrant domestic workers are vulnerable to abuse ranging from minor breaches of employment and health and safety law, to physical and sexual violence, slavery, forced labour and trafficking.
+
+That these conditions may persist is evidenced by a report from another civil society organisation, the Latin American Women’s Rights Service, which describes the results from twelve in-depth interviews with Latin American domestic workers in the UK.
+This report depicts high levels of isolation, exploitation and abuse including a failure by employers to provide written contracts or payslips; breaches of verbal agreements; a requirement to perform different tasks from those indicated during recruitment; increasing working hours with little or no time off; excessive work days; a lack of paid holiday; many domestic workers not registered with a GP; sexual harassment in the workplace; verbal or physical abuse; employer surveillance; a lack of opportunity to change working conditions; isolation and fear of seeking help; and high reported levels of trafficking for labour exploitation (@latin_american_womens_rights_service_behind_2023).
+
+Against this backdrop, we used respondent driven sampling (RDS) as a sampling technique to recruit and survey domestic workers in the UK about the working conditions they were experiencing to estimate the nature and scale of abuse and exploitation based upon reports of their conditions by domestic workers themselves.
+
+## Research Methods
+
+```         
+* Survey and RDS design.
+    
+* Sample recruitment and incentives.
+    
+* Estimation methods (RDS estimators, NSUM, bootstrap).
+```
+
+### Respondent-Driven Sampling (RDS) And Survey Method
+
+Comprehensive descriptions and literature reviews of the development and use of RDS to estimate the population size of a hidden population are available elsewhere (@heckathorn_comment_2011; @gile_methods_2018).
+Suffice it to say, the possibilities of the use of a one-wave snowball sampling to allow researchers to obtain a sample of personal networks was posited by @frank_estimating_1994.
+Following the identification of a set of original sample members known as seeds, @heckathorn_respondent-driven_1997; @heckathorn_respondent-driven_2002 advocate the use of a double incentive to recompense participants not only for their involvement, but also for their recruitment of further participants in subsequent ‘waves’ of participation by drawing upon the social ties through which members of the hidden population are connected to each other.
+
+The typical number of original sample seeds is between two and ten: chosen as heterogeneously as possible (@gile_methods_2018).
+Though they may be subject to both systematic and non-systematic errors, the use of snowballing methods for the study of hidden populations, with the support of monetary or symbolic rewards, has been advocated as a way of creating robust recruitment embodying diversity in characteristics such as ethnicity, gender and geographical location (@heckathorn_respondent-driven_1997; @heckathorn_respondent-driven_2002).
+In these papers, Heckathorn advances the development of RDS to include self-reported network size as a population estimator and bootstrapping techniques to support the development of an estimator’s confidence intervals, an approach that has since been refined by others (@gile_network_2015).
+Such developments derive a new class of indicators for the population mean and define a corresponding bootstrap method to estimate the errors in RDS.
+The resulting ‘network working model’ permits the individual’s connectedness in the network to be tested, while reducing bias with respect to the composition of the seeds.
+Snowball sampling is based upon the initial recruitment of the original sample selection by means of convenience.
+RDS also takes a non-random approach to seed selection, but relies upon the social network structure that exists between participants to produce a non-probabilistic sample (@goodman_comment_2011).
+Incentive structure is important—though this weakness is not a feature of our target hidden population, some researchers have identified that younger men with higher socio-economic status are less likely to participate (@mccreesh_respondent_2013).
+Perhaps of more concern, RDS has been described as a risky strategy since researchers cannot be sure whether enough respondents have been recruited through subsequent waves to eliminate bias within the original sample members (@vincent_estimating_2017).
+
+RDS has been widely used to sample a variety of hidden populations, including HIV prevalence, rape and client-initiated gender-based violence among sex workers (@mccreesh_evaluation_2012; @schwitters_prevalence_2012).
+While the RDS method has proved limited when seeking to provide population heterogeneity by geographical location (@mccreesh_evaluation_2011), where these population features are of lesser importance, such methods have been used successfully.
+RDS methods have been used to survey other migrant populations (@tyldum_surveying_2021), while such network-based referrals have been described as the only viable method to reach many types of labour trafficking victims (@zhang_measuring_2012) and have been used to research exploitation among low-wage workers in three American cities (@bernhardt_broken_2009); a study of labour trafficking in migrant communities in the city of San Diego (@vincent_estimating_2017); examination of the worst forms of child labour in the Indian state of Bihar (@zhang_victims_2019); and the commercial sexual exploitation of children in Nepal (@jordan_overcoming_2020).
+
+The survey instrument included modules on demographic and employment characteristics, social network size and composition, and indicators of labour exploitation.
+The exploitation indicators were based on the International Labour Organization’s framework of forced labour, adapted for the UK domestic work context.
+These indicators allowed us to operationalise exploitation in two ways.
+First, we constructed binary indicators classifying respondents as exploited or not exploited, based on threshold criteria.
+Second, we developed a continuous risk index, designed to capture gradations of vulnerability across the full sample.
+
+In the following section, we describe our methods, including how we designed our survey, contacted our sample seeds, and analysed our data.
+Our approach can best be described as Web-based RDS (@wejnert_web-based_2008).
+We designed a web survey using the JISC online survey interface, suitable for our respondents to complete via a mobile phone.
+Composite measures to quantify the extent to which respondents were at risk of labour exploitation, including severe forms of exploitation such as forced labour, were constructed from existing exploitation typologies, notably the ILO’s Indicators (@ILO11-indicators).
+The survey consisted of these 11 composite indicators and included questions related to domestic workers’ level of job satisfaction, employment conditions, and demographic data such as nationality, age, and gender.
+The main survey was conducted in the five months between February and July 2023.
+
+### Initial Sample Selection
+
+We selected our first wave of participants nonrandomly by convenience sampling.
+Mobile phone numbers were used both to identify seed participants and to act as a unique identifier for those whom they referred.
+To avoid sample homophily, original sample members were selected from three distinct domestic worker communities.
+This was facilitated by civil society organisations who represented distinct domestic worker communities.
+One was an exclusively online community of transnational domestic workers working in the UK, the second represented UK domestic workers of Filipino origin, and the third drew its membership from the Latin American community of domestic workers, also in the UK.
+Along with other academics with expertise in exploitation within domestic work, representatives from these three organisations also contributed to survey question design and facilitated the piloting of an initial version of the survey (which was translated and made available in four languages: English, Spanish, Tagalog, and Portuguese) to selected domestic workers within each community.
+
+### Survey Incentives: Incentive Design and Participation Verification
+
+A double incentive scheme rewarded respondents both for completing the questionnaire and for each referral who went on to engage with the survey.
+The challenge of incentive design is to set the incentive at a level that adequately rewards respondents’ time and participation, but that also avoids the risk of fraudulent participation due to too high a monetary gain (@jordan_overcoming_2020).
+A sum of £10 was provided for survey completion with a further £5 for each successful nomination.
+While respondents were asked to nominate up to 10 domestic workers within their existing social network, it was the first three of these from whom participation was requested in subsequent waves.
+This approach is akin to the use of vouchers in face-to-face studies as advocated by @thompson_new_2020.
+
+The ethical and practical issues related to the design and effective use of incentives for RDS among vulnerable populations has been much discussed in the literature; see, for example, @wang_respondent-driven_2005; @abdul-quader_effectiveness_2006; @singer_incentives_2006; @dejong_ethical_2009; @semaan_ethical_2009; @brunovskis_untold_2010; @semaan_time-space_2010; @platt_adapting_2015, including the specificities of incentive use within web-based surveys (@cobanoglu_effect_2003).
+Following the principles of lottery use established by @brown_you_2006 and @laguilles_can_2011, we also designed our survey to encourage the maximum extent of participation by entering all respondents completing the questionnaire into a free prize draw for £150.
+Research suggests that a high lottery provides the most cost-effective incentive for obtaining complete responses (@gajic_cost-effectiveness_2012).
+While using incentives to encourage participation would seem to be desirable, it is worth noting the potential downside of respondents fabricating responses to increase their remuneration (@robinson_sampling_2014).
+To minimise this risk, mobile phone numbers for each respondent and those whom they referred were collated, and each of these numbers was called by one of the authors of the paper to ascertain the veracity of the respondent as a migrant domestic worker.
+
+### Descriptive Statistics
+
+In total, we received completed online surveys from 97 respondents.
+Of these respondents, 90 identified themselves as transnational migrants.
+Forty-five percent regarded themselves as self-employed, 39% identified themselves as employees, and 16% categorised their employment status as that of a worker.
+
+Of the 97 respondents, 64 (66% of the total), and the largest single nationality group, reported that they had a Filipina background.
+Other nationalities represented included Dominican, Brazilian, Spanish, Colombian, Bolivian, Venezuelan, Cuban, and Panamanian.
+Female domestic workers made up 97% of the sample, with 3% of the sample comprised of male domestic workers.
+The age structure of the domestic workers was skewed towards those over 45 years old, with such workers representing over half of the sample (see Table 1).
+
+Recruitment diagnostics indicate that equilibrium was reached across key demographic variables by wave X.
+Reported personal network sizes ranged from X to X, with a mean of X and a standard deviation of X.
+Figure 1 presents the recruitment tree, showing that Latinx respondents generated longer referral chains, while British respondents tended to form shorter, more fragmented networks.
+
+```{r}
+#| label: fig-rds-network
+#| fig-cap: "RDS Network Structure: Recruitment chains showing seed nodes (triangles) and recruitment waves. Node colors represent nationality clusters, with node size proportional to reported network degree (Q13). Lines show recruiter-recruit relationships. Source: Authors' Own Work."
+#| fig-width: 9      # REDUCE from 12
+#| fig-height: 6     # REDUCE from 8
+#| out-width: "95%"  # ADD this
+#| echo: false
+
+# Load packages individually to avoid namespace conflicts
+suppressPackageStartupMessages({
+  library(dplyr)
+  library(stringr)
+  library(igraph)
+  library(ggraph)
+  library(ggplot2)
+  library(RColorBrewer)
+  library(here)
+})
+
+# Load the prepared data
+load(here("data", "processed", "prepared_data.RData"))
+
+# Set PDF-friendly options for this chunk
+if (knitr::is_latex_output()) {
+  # Use cairo for PDF output to handle fonts better
+  old_theme <- ggplot2::theme_get()
+  ggplot2::theme_set(ggplot2::theme_void(base_family = ""))
+}
+
+# Create nationality clusters from q8_a
+data_viz <- prepared_data %>%
+  dplyr::mutate(
+    nationality_cluster = dplyr::case_when(
+      stringr::str_detect(q8_a, "Filipino") ~ "Filipino",
+      stringr::str_detect(q8_a, "Boliviana|Brasileira|Brazilian|Colombiana|Dominicana|Ecuadorian|Española|Latin American|Latín spanish|Mexicana|Panama|Spanish|Venezolana") ~ "Latinx",
+      stringr::str_detect(q8_a, "British|English|UK") ~ "British",
+      is.na(q8_a) | q8_a == "" ~ "Other",
+      TRUE ~ "Other"
+    ),
+    # Clean network size variable (q13)
+    network_size = pmin(q13, 50, na.rm = TRUE), # Cap at 50 for visualization
+    network_size = pmax(network_size, 1, na.rm = TRUE), # Minimum size 1
+    # Create recruitment tree info
+    is_seed = (recruiter.id == -1),
+    wave_factor = factor(wave, levels = 1:5, labels = paste("Wave", 1:5))
+  )
+
+# Create edge list for network graph
+edges <- data_viz %>%
+  dplyr::filter(!is_seed, !is.na(recruiter.id)) %>%
+  dplyr::select(from = recruiter.id, to = id) %>%
+  dplyr::filter(from %in% data_viz$id) # Ensure recruiter exists in dataset
+
+# Create nodes dataframe
+nodes <- data_viz %>%
+  dplyr::select(id, nationality_cluster, network_size, wave, is_seed) %>%
+  dplyr::mutate(
+    node_size = dplyr::case_when(
+      is_seed ~ 8,  # Larger size for seeds
+      TRUE ~ 3 + (network_size / 10) # Scale size by network degree
+    ),
+    node_alpha = ifelse(is_seed, 0.9, 0.7)
+  )
+
+# Create igraph object
+if(nrow(edges) > 0) {
+  g <- graph_from_data_frame(edges, directed = TRUE, vertices = nodes)
+} else {
+  # If no edges, create graph from vertices only
+  g <- graph_from_data_frame(data.frame(from=character(0),
+to=character(0)),
+                             directed = TRUE, vertices = nodes)
+}
+
+# Set up colors for nationality clusters
+n_clusters <- length(unique(nodes$nationality_cluster))
+colors <- RColorBrewer::brewer.pal(min(n_clusters, 8), 
+"Set2")[1:n_clusters]
+names(colors) <- sort(unique(nodes$nationality_cluster))
+
+# Create the network plot
+set.seed(42) # For reproducible layout
+
+p <- ggraph(g, layout = "fr") + 
+  geom_edge_link(
+    arrow = arrow(length = unit(0.1, "inches"), type = "closed"),
+    alpha = 0.6,
+    color = "gray50",
+    width = 0.5
+  ) +
+  geom_node_point(
+    aes(
+      size = node_size,
+      color = nationality_cluster,
+      alpha = node_alpha,
+      shape = is_seed
+    )
+  ) +
+  scale_size_identity() +
+  scale_color_manual(
+    values = colors,
+    name = "Nationality\nCluster"
+  ) +
+  scale_alpha_identity() +
+  scale_shape_manual(
+    values = c("TRUE" = 17, "FALSE" = 16), # Triangle for seeds, circle for recruits
+    name = "Node Type",
+    labels = c("Recruit", "Seed")
+  ) +
+  theme_graph() +
+  theme(
+    legend.position = "right",
+    legend.box = "vertical",
+    legend.margin = margin(t = 0, r = 0, b = 0, l = 10),
+    plot.title = element_text(size = 14, hjust = 0.5),
+    plot.subtitle = element_text(size = 12, hjust = 0.5, color = "gray60"),
+    text = element_text(family = ""),
+    legend.text = element_text(family = ""),
+    legend.title = element_text(family = "")
+  ) +
+  labs(
+    title = "RDS Recruitment Network Structure",
+    subtitle = paste("Sample size: n =", nrow(nodes),
+                     "| Seeds:", sum(nodes$is_seed),
+                     "| Recruitment chains:", nrow(edges))
+  ) +
+  guides(
+    color = guide_legend(override.aes = list(size = 5)),
+    shape = guide_legend(override.aes = list(size = 5))
+  )
+
+# Print the plot with error handling
+tryCatch({
+  print(p)
+}, error = function(e) {
+
+  # Simple fallback plot
+  library(ggplot2)
+  fallback_plot <- data_viz %>%
+    ggplot(aes(x = nationality_cluster, fill = nationality_cluster)) +
+    geom_bar() +
+    labs(
+      title = "Sample Distribution by Nationality Cluster",
+      x = "Nationality Cluster",
+      y = "Count"
+    ) +
+    theme_minimal() +
+    theme(
+      text = element_text(family = ""),
+      legend.position = "none"
+    )
+
+  print(fallback_plot)
+})
+```
+
+```{r}
+#| label: tbl-sample-characteristics
+#| tbl-cap: "RDS Sample Characteristics by Nationality Cluster and Recruitment Wave. Source: Authors' Own Work."
+#| echo: false
+
+# Load kableExtra for professional table formatting
+library(kableExtra)
+
+# Create sample characteristics table
+sample_summary <- data_viz %>%
+  dplyr::group_by(nationality_cluster) %>%
+  dplyr::summarise(
+    n = dplyr::n(),
+    percentage = round(dplyr::n() / nrow(data_viz) * 100, 1),
+    seeds = sum(is_seed),
+    recruits = sum(!is_seed),
+    mean_network_size = round(mean(q13, na.rm = TRUE), 1),
+    median_network_size = round(median(q13, na.rm = TRUE), 1),
+    .groups = 'drop'
+  ) %>%
+  dplyr::arrange(desc(n))
+
+# Format table
+sample_summary %>%
+  kableExtra::kbl(
+    col.names = c("Nationality", "N", "%", "Seeds", "Recruits", "Mean Degree", "Median Degree"),
+    caption = "Sample Characteristics by Nationality Cluster",
+    booktabs = TRUE,
+    align = c("l", "r", "r", "r", "r", "r", "r")
+  ) %>%
+  kableExtra::kable_styling(
+    latex_options = c("striped", "hold_position", "scale_down"),
+    bootstrap_options = c("striped", "hover", "condensed"),
+    full_width = FALSE,
+    position = "center",
+    font_size = 9
+  ) %>%
+  kableExtra::footnote(
+    general = "Degree refers to reported network size (Q13: number of domestic workers known).",
+    general_title = "Note:",
+    footnote_as_chunk = TRUE
+  )
+```
+
+```{r}
+#| label: tbl-wave-distribution
+#| tbl-cap: "Distribution of Sample Across Recruitment Waves. Source: Authors' Own Work."
+#| echo: false
+
+# Create wave distribution table
+wave_summary <- data_viz %>%
+  dplyr::group_by(wave) %>%
+  dplyr::summarise(
+    n = dplyr::n(),
+    percentage = round(dplyr::n() / nrow(data_viz) * 100, 1),
+    seeds = sum(is_seed),
+    recruits = sum(!is_seed),
+    .groups = 'drop'
+  ) %>%
+  dplyr::mutate(
+    wave_label = paste("Wave", wave)
+  ) %>%
+  dplyr::select(wave_label, n, percentage, seeds, recruits)
+
+# Add totals row
+totals <- data.frame(
+  wave_label = "Total",
+  n = nrow(data_viz),
+  percentage = 100.0,
+  seeds = sum(data_viz$is_seed),
+  recruits = sum(!data_viz$is_seed)
+)
+
+wave_summary <- rbind(wave_summary, totals)
+
+# Format table
+wave_summary %>%
+  kableExtra::kbl(
+    col.names = c("Recruitment Wave", "N", "%", "Seeds", "Recruits"),
+    caption = "Recruitment Wave Distribution",
+    booktabs = TRUE,
+    align = c("l", "r", "r", "r", "r")
+  ) %>%
+  kableExtra::kable_styling(
+    latex_options = c("striped", "hold_position", "scale_down"),
+    bootstrap_options = c("striped", "hover", "condensed"),
+    full_width = FALSE,
+    position = "center"
+  ) %>%
+  kableExtra::row_spec(nrow(wave_summary), bold = TRUE, background = "lightgray") %>%
+  kableExtra::footnote(
+    general = "Seeds are initial participants (recruiter.id = -1). Recruits are referred participants.",
+    general_title = "Note:",
+    footnote_as_chunk = TRUE
+  )
+```
+
+### Indicators
+
+creating comparable variables to bridge the Respondent-Driven Sampling (RDS) and Network Scale-Up Method (NSUM) estimations is a key methodological challenge the research team is actively working to solve.
+The core issue is that the two methods rely on differently framed questions: • RDS estimation uses "egocentric" questions, which focus on the respondent's personal experiences (e.g., "Have you been forced to work?").
+• NSUM estimation uses questions about the respondent's knowledge of others in their network (e.g., "How many domestic workers do you know who have experienced...").
+The survey questions designed for these two purposes do not always match up directly, making a fair comparison between the estimates difficult.
+The Strategy: Creating "Linking" Variables To overcome this, the team's strategy is to identify and group questions that cover the same underlying themes, even if they are worded differently for each method.
+The goal is to aggregate some of the specific "egocentric" questions to make them comparable to the broader "how many do you know" NSUM questions.
+Based on your sources, several sets of "linking" questions have been identified with varying degrees of confidence in their comparability: • Document Withholding (High Confidence): ◦ RDS Question: Q70 asks if the employer has withheld the respondent's travel and identity documents.
+◦ NSUM Question: Q71 asks how many other domestic workers the respondent knows who do not have access to their own documents.
+• Debt and Pay Issues (High Confidence): ◦ RDS Questions: This involves combining Q39 (having to pay off debt to someone who helped find work) and Q42 (has your pay ever been withheld?).
+◦ NSUM Question: Q43 asks how many others the respondent knows who have experienced problems with debt or pay.
+• Abuse and Threats (Medium Confidence): ◦ RDS Questions: This requires grouping Q45 (forced, deceived, or threatened into poor working conditions), Q47 (employer intimidation or threats), and Q48 (verbal abuse).
+◦ NSUM Question: Q49 asks how many others the respondent knows who have experienced the use of threat or force.
+• Excessive Hours (Lower Confidence): ◦ RDS Questions: Q61 (weekly rest does not last 24 hours) and Q62 (working excessive overtime) are combined.
+◦ NSUM Question: Q64 asks about knowing others who work excessive overtime, lack breaks, or lack annual leave.
+The comparison here is considered "flakier" because the RDS questions do not ask about annual leave, creating a partial mismatch.
+• Access to Help (Lower Confidence): ◦ RDS Question: Q78 asks if the respondent knows who might help them (coded for "No" answers).
+◦ NSUM Question: Q79 asks how many other domestic workers the respondent knows who do NOT know where to go for help.
+By creating these comparable variables, even if just for one or two highly confident themes like debt bondage or document withholding, the team hopes to perform a fair comparison between the estimates derived from the two different methodologies.
+This process is considered a crucial step to integrate the RDS and NSUM approaches and to produce more robust findings.
+
+### Ethical Approval
+
+The data collection that underpins the analysis presented in this paper was given favourable ethical approval by the lead author’s School Research Ethics Committee in January 2023.
+All participants were informed about the aims of the study, provided informed consent, and were assured that participation was voluntary and confidential.
+
+### Use of Artificial Intelligence in Research
+
+Large Language Models (LLMs) were used for brainstorming the organisation of the paper and editing of text.
+Code co-pilot (Claude Code) was used to test and debug R scripts employed in the statistical analysis.
+No generative models were used to generate or simulate data.
+
+## Estimation Methods
+
+We analysed the survey sample using multiple estimation models in order to assess robustness and conduct sensitivity analyses (see Appendix XX).
+The survey instrument contained both ego questions (which capture information about respondents and their personal network ties) and alter questions (which capture information about the people respondents know).
+These two types of network data enable two fundamentally different estimation strategies: respondent-driven sampling (RDS) estimators and network scale-up methods (NSUM).
+In addition, we developed and implemented a novel three-step bootstrap procedure to address uncertainty in NSUM estimates, which we describe in more detail below.
+
+### RDS-Based Estimation
+
+RDS estimators use ego-based information.
+Each participant reported the number of other domestic workers they knew, and this degree information was used to adjust for the over-representation of highly connected individuals in the sample.
+We implemented RDS-II and Gile’s successive sampling (SS) estimator, the latter of which accounts for finite population effects and improves performance when the sample fraction is relatively large (Gile, 2011; Gile and Handcock, 2010).
+These estimators were used to generate prevalence estimates for binary indicators of exploitation.
+
+For continuous traits, such as the exploitation risk index, we applied model-assisted inference approaches (@gile15-network, Gile, 2011; Gile, Beaudry, and Handcock, 2018).
+These approaches combine design-based adjustments with regression models that incorporate auxiliary covariates, producing valid estimates of sample means and distributions of continuous outcomes under the RDS design.
+
+### Estimation Strategy
+
+Given that our data were collected using a respondent-driven sampling (RDS) design, the choice of estimator is critical.
+We considered several well-established RDS estimators, each with distinct assumptions and applicability.
+
+First, the **RDS-I estimator** @salg04-samplin provides an early design-based approach.
+However, it performs poorly in small samples, is highly sensitive to seed dependence, and requires strong assumptions about equilibrium.
+Since our sample comprises fewer than 100 respondents recruited from multiple seeds, we regard RDS-I primarily as a historical benchmark rather than a viable option for inference.
+
+Second, the **Volz–Heckathorn (VH) estimator** @volz08-probabi offers a probability-based refinement of RDS-I.
+It is more robust but assumes a large population relative to the sample size and does not adjust for finite-population effects.
+Although our diagnostic checks indicated approximate equilibrium across key demographics, the VH estimator is best used here as a robustness check rather than the primary estimator.
+
+Third, the **Successive Sampling (RDS-SS) estimator** (also called RDS-II) @gile11-improve accounts for finite population effects, adjusting for the non-negligible sampling fraction that arises when the target population is not extremely large relative to the sample.
+This property makes RDS-SS particularly appropriate for our study of migrant domestic workers, and we therefore use it as our primary estimator for binary outcomes (e.g., presence or absence of exploitation).
+
+Fourth, to estimate **continuous outcomes** such as our exploitation risk index, we employ the **Model-Assisted (MA-RDS) estimator** @gile15-network.
+This approach integrates regression modelling with RDS weights, thereby extending inference beyond binary outcomes and improving efficiency by leveraging auxiliary covariates.
+
+Finally, although recent work on **Clustered Successive Sampling Population Size Estimation (Clustered SS-PSE)** @gamb23-clustered extends RDS-based methods to estimating the size of clustered hidden populations, our study does not attempt to estimate the absolute number of domestic workers.
+Instead, we focus on the prevalence and severity of exploitation.
+As such, Clustered SS-PSE is not central to our analysis, though it remains a promising avenue for future research.
+
+In summary, we rely primarily on **RDS-SS** for binary outcomes and MA-RDS for continuous outcomes, with **VH** used for robustness checks.
+This combined strategy balances methodological rigor with the substantive goals of our study.
+
+We use model-assisted RDS estimators (@gile15-network) because they are design-based yet leverage a working ERGM (with degree and homophily terms) to approximate inclusion probabilities conditional on our observed seeds.
+This approach directly addresses seed bias and homophily that conventional RDS estimators cannot correct, accommodates finite-population effects through successive-sampling logic, and supports valid estimation of both binary and continuous outcomes.
+By conditioning on the actual seed composition and subgroup structure in our data, the method reduces bias, improves efficiency, and provides design-compatible bootstrap uncertainty, making it particularly well-suited to our small, heterogeneous sample of domestic workers.”
+
+### Network Scale-Up Methods (NSUM)
+
+NSUM relies on alter-based information.
+Rather than depending on respondents’ own position in the referral network and their reported degree, NSUM uses information about alters—other people in respondents’ networks.
+Participants reported on the number and characteristics of people they knew who met specific exploitation criteria.
+These reports were aggregated to estimate prevalence in the wider population of domestic workers.
+
+The key methodological distinction between RDS and NSUM lies in how the social network is used.
+RDS leverages ego-level network size and recruitment paths to adjust for biases in the referral process.
+NSUM treats respondents as informants about a larger social universe, using alter data to infer prevalence.
+RDS depends on accurate self-reporting of degree and on the properties of recruitment chains, while NSUM depends on the accuracy of respondents’ knowledge about others and the representativeness of their social networks
+
+### Bootstrap Procedure for NSUM
+
+To appropriately characterise uncertainty in NSUM estimates, we developed a novel three-step bootstrap procedure.
+This approach resamples respondents, their reported alters, and the exploitation classifications simultaneously, thereby capturing uncertainty at each stage of the inference process.
+This procedure provides more realistic confidence intervals than those generated by conventional variance estimators, particularly for small samples such as ours.
+Details of the bootstrap implementation and diagnostic checks are provided in Appendix @app-3step.
+
+### Comparative Rationale
+
+Respondent-driven sampling (RDS) and network scale-up methods (NSUM) both rely on social network structures, but they exploit different aspects of those structures for inference.
+
+RDS uses ego-based information.
+Each participant reports the size of their personal network of eligible individuals, and these degree reports are combined with the wave at which respondents were recruited to adjust for unequal inclusion probabilities.
+The underlying logic is that individuals with larger networks are more likely to be recruited earlier and more often, creating a bias toward highly connected respondents.
+RDS estimators, including Gile’s successive sampling estimator, explicitly correct for this bias by weighting observations according to network degree and recruitment path.
+For continuous traits, such as our risk index, RDS model-assisted estimators incorporate auxiliary covariates into this weighting process to further reduce bias.
+
+In contrast, NSUM uses alter-based information.
+Rather than focusing on the ego’s probability of inclusion, NSUM treats respondents as informants about the wider hidden population.
+Respondents are asked how many people they know with a given trait (for example, “How many domestic workers do you know who have experienced exploitation?”).
+These responses are then scaled up, using assumptions about network size and visibility, to infer prevalence in the broader population.
+This method does not depend on recruitment chains but instead on the accuracy of respondents’ knowledge about others in their social networks.
+
+The practical difference is therefore twofold.
+RDS estimates are anchored in “who recruited whom” and “how many do you know,” while NSUM estimates are anchored in “how many of your alters fit this category.” RDS leverages inclusion probabilities tied to ego network size; NSUM leverages alter reports to extend beyond the sample.
+Applying both methods to the same dataset allows for triangulation across two fundamentally different inferential logics.
+
+Applying both RDS and NSUM to the same survey allows triangulation across two fundamentally different inferential paradigms.
+For continuous outcomes, such as the exploitation risk index, only model-assisted RDS estimators are appropriate.
+For binary outcomes, both RDS and NSUM can be applied, enabling direct comparison of results.
+This dual approach strengthens the empirical credibility of our findings, highlights the conceptual value of considering exploitation both as a binary threshold and as a continuum, and demonstrates the methodological trade-offs involved in studying hidden populations.
+
+## Results
+
+### Model-Assisted Estimates of the Risk Index (Continuous Conceptualisation)
+
+One of the central contributions of this study is the introduction of a continuous risk index to measure degrees of exposure to labour exploitation.
+The index was constructed from multiple indicators aligned with the International Labour Organization’s forced labour framework, weighted inductively and refined through expert consultation.
+Rather than treating exploitation as a dichotomy, the risk index conceptualises all domestic workers as facing some degree of potential exploitation, albeit with significant variation in intensity.
+
+Because continuous traits cannot be estimated directly with conventional RDS estimators or NSUM, we employed model-assisted inference methods.
+These methods adjust for the non-random structure of RDS recruitment while permitting reliable estimation of means and distributions of continuous outcomes (Gile, 2011; Gile and Handcock, 2010; Gile, Beaudry, and Handcock, 2018).
+
+```{r}
+#| label: fig-ma-risk-estimates
+#| fig-cap: "Model-Assisted Estimates of Composite Risk Index: Distribution comparison between observed sample data and population-adjusted estimates. The left panel shows the empirical distribution of risk scores in the RDS sample, while the right panel presents the model-assisted population proportion estimates for specific risk categories with uncertainty bounds (the light band shows confidence intervals around the proportion estimates). Source: Authors' Own Work."
+#| fig-width: 12     # REDUCE from 14
+#| fig-height: 5     # REDUCE from 6
+#| out-width: "100%" # ADD this
+#| echo: false
+#| warning: false
+#| message: false
+
+# Load required packages
+suppressPackageStartupMessages({
+  library(dplyr)
+  library(ggplot2)
+  library(patchwork)
+  library(scales)
+  library(here)
+})
+
+# Load data and MA results
+load(here("data", "processed", "prepared_data.RData"))
+load(here("output", "ma_result_composite_risk.RData"))
+
+# Extract MA estimates - the estimate object contains the population-adjusted distribution
+ma_estimates <- ma_result$estimate$estimate
+ma_intervals <- ma_result$estimate$interval[1:length(ma_estimates)]
+
+# Create data for plots
+risk_values <- as.numeric(names(ma_estimates))
+estimated_proportions <- as.numeric(ma_estimates)
+
+# Calculate sample statistics
+sample_mean <- mean(prepared_data$composite_risk, na.rm = TRUE)
+sample_sd <- sd(prepared_data$composite_risk, na.rm = TRUE)
+
+# Population-weighted mean and SD from MA estimates
+pop_mean <- sum(risk_values * estimated_proportions)
+pop_variance <- sum((risk_values - pop_mean)^2 * estimated_proportions)
+pop_sd <- sqrt(pop_variance)
+
+# Create sample data plot
+p1 <- prepared_data %>%
+  dplyr::filter(!is.na(composite_risk)) %>%
+  ggplot(aes(x = composite_risk)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 bins = 20, fill = "steelblue", alpha = 0.7, color = "white") +
+  geom_density(color = "darkblue", linewidth = 1.2) +
+  geom_vline(xintercept = sample_mean, color = "red", linetype = "dashed", linewidth = 1) +
+  labs(
+    title = "A. Observed Sample Distribution",
+    subtitle = paste("n =", sum(!is.na(prepared_data$composite_risk))),
+    x = "Composite Risk Index",
+    y = "Density"
+  ) +
+  annotate("text", x = sample_mean + 0.02, y = Inf,
+           label = paste("Sample Mean =", round(sample_mean, 3)),
+           vjust = 2, hjust = 0, color = "red", size = 3.5) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 12, face = "bold"),
+    plot.subtitle = element_text(size = 10),
+    axis.title = element_text(size = 10),
+    panel.grid.minor = element_blank()
+  )
+
+# Create MA estimates plot with uncertainty
+# For composite risk, construct CI for each category proportion using SE
+se <- sqrt(ma_result$varest)
+ma_data <- data.frame(
+  risk_score = risk_values,
+  estimate = estimated_proportions,
+  lower_ci = pmax(0, estimated_proportions - 1.96 * se),
+  upper_ci = pmin(1, estimated_proportions + 1.96 * se)
+)
+
+p2 <- ma_data %>%
+  ggplot(aes(x = risk_score)) +
+  geom_ribbon(aes(ymin = lower_ci, ymax = upper_ci),
+              fill = "orange", alpha = 0.3) +
+  geom_line(aes(y = estimate), color = "darkorange", linewidth = 1.5) +
+  geom_point(aes(y = estimate), color = "darkorange", size = 2) +
+  geom_vline(xintercept = pop_mean, color = "red", linetype = "dashed", linewidth = 1) +
+  labs(
+    title = "B. Model-Assisted Population Estimates",
+    subtitle = "Population-adjusted with uncertainty bands",
+    x = "Composite Risk Index",
+    y = "Estimated Population Proportion"
+  ) +
+  annotate("text", x = pop_mean + 0.02, y = Inf,
+           label = paste("Pop. Mean =", round(pop_mean, 3)),
+           vjust = 2, hjust = 0, color = "red", size = 3.5) +
+  scale_y_continuous(labels = scales::percent_format()) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 12, face = "bold"),
+    plot.subtitle = element_text(size = 10),
+    axis.title = element_text(size = 10),
+    panel.grid.minor = element_blank()
+  )
+
+# Combine plots
+combined_plot <- p1 + p2 +
+  plot_layout(ncol = 2) +
+  plot_annotation(
+    title = "Composite Risk Index: Sample vs. Population-Adjusted Estimates",
+    theme = theme(plot.title = element_text(size = 14, face = "bold", hjust = 0.5))
+  )
+
+print(combined_plot)
+
+# Summary statistics are now integrated into the inline text below
+```
+
+The MA estimate suggests that approximately $92.8\%$ of the population has zero exploitation risk, while $~7.2\%$ has moderate risk (0.1725)
+
+The population-weighted average risk is $0.0124$ This represents the Model-Assisted estimate of mean exploitation risk in the population, adjusted for RDS sampling bias.
+It is a design-based estimate that corrects for the non-random recruitment process in RDS.
+The population-adjusted distribution shows less concentration in the lower risk categories compared to the raw sample, suggesting that the RDS process may have under-recruited higher-risk individuals.
+@fig-ma-risk-estimates presents the comparison between the observed sample distribution and the model-assisted population estimates, demonstrating how the bias correction affects our understanding of exploitation risk in the broader domestic worker population.
+This pattern reinforces the conceptual claim that exploitation is best understood as a continuum rather than a simple binary condition.
+
+### Binary Exploitation Indicators (Exploited or Not Exploited)
+
+To complement the continuous measure, we also operationalised exploitation as a binary outcome.
+Respondents were classified as exploited if they met threshold indicators consistent with ILO definitions.
+This allows estimation using both respondent-driven sampling estimators, which rely on ego-based network data, and network scale-up methods, which rely on alter-based information.
+
+#### Model-Assisted (MA) Estimates
+
+```{r}
+#| label: tbl-ma-binary-indicators
+#| tbl-cap: "Model-Assisted Estimates of Binary Exploitation Indicators: Population prevalence estimates adjusted for RDS sampling bias. Values represent the estimated proportion of domestic workers experiencing each form of exploitation. Source: Authors' Own Work."
+#| echo: false
+#| warning: false
+#| message: false
+
+# Load required packages
+suppressPackageStartupMessages({
+  library(dplyr)
+  library(kableExtra)
+  library(here)
+})
+
+# Define indicator files and labels
+ma_files <- c(
+  "document_withholding_rds" = "Document Withholding",
+  "pay_issues_rds" = "Pay-Related Issues",
+  "threats_abuse_rds" = "Threats/Abuse",
+  "excessive_hours_rds" = "Excessive Hours",
+  "access_to_help_rds" = "Limited Access to Help",
+  "whether_exploitation" = "Any Exploitation"
+)
+
+# Function to extract MA estimates
+extract_ma_estimate <- function(file_path) {
+  if (file.exists(file_path)) {
+    load(file_path)
+    if (exists("ma_result") && !is.null(ma_result$estimate)) {
+      # Extract prevalence (proportion with indicator = 1)
+      estimates <- ma_result$estimate$estimate
+      if ("1" %in% names(estimates)) {
+        prevalence <- estimates["1"]
+
+        # Construct confidence interval using variance estimate
+        if (!is.null(ma_result$varest) && !is.na(ma_result$varest)) {
+          se <- sqrt(ma_result$varest)
+          ci_lower <- prevalence - 1.96 * se
+          ci_upper <- prevalence + 1.96 * se
+
+          # Ensure CI is within [0,1] bounds for proportions
+          ci_lower <- pmax(0, ci_lower)
+          ci_upper <- pmin(1, ci_upper)
+        } else {
+          ci_lower <- NA
+          ci_upper <- NA
+        }
+        return(list(
+          prevalence = as.numeric(prevalence),
+          ci_lower = as.numeric(ci_lower),
+          ci_upper = as.numeric(ci_upper)
+        ))
+      }
+    }
+  }
+  return(list(prevalence = NA, ci_lower = NA, ci_upper = NA))
+}
+
+# Extract all MA results
+ma_results <- data.frame(
+  indicator = names(ma_files),
+  label = as.character(ma_files),
+  stringsAsFactors = FALSE
+)
+
+for (i in 1:nrow(ma_results)) {
+  file_path <- here("output", paste0("ma_result_", ma_results$indicator[i], ".RData"))
+  result <- extract_ma_estimate(file_path)
+  ma_results$prevalence[i] <- result$prevalence
+  ma_results$ci_lower[i] <- result$ci_lower
+  ma_results$ci_upper[i] <- result$ci_upper
+}
+
+# Format results table
+ma_results_formatted <- ma_results %>%
+  dplyr::mutate(
+    prevalence_pct = round(prevalence * 100, 1),
+    ci_lower_pct = round(ci_lower * 100, 1),
+    ci_upper_pct = round(ci_upper * 100, 1),
+    estimate_ci = ifelse(
+      !is.na(prevalence_pct),
+      sprintf("%.1f%% (%.1f-%.1f%%)", prevalence_pct, ci_lower_pct, ci_upper_pct),
+      "Not available"
+    )
+  ) %>%
+  dplyr::select(label, estimate_ci) %>%
+  dplyr::arrange(desc(ma_results$prevalence))
+
+# Create professional table
+ma_results_formatted %>%
+  kableExtra::kbl(
+    col.names = c("Exploitation Indicator", "Population Prevalence (95% CI)"),
+    caption = "Model-Assisted Estimates of Binary Exploitation Indicators",
+    booktabs = TRUE,
+    align = c("l", "r")
+  ) %>%
+  kableExtra::kable_styling(
+    latex_options = c("striped", "hold_position", "scale_down"),
+    bootstrap_options = c("striped", "hover", "condensed"),
+    full_width = FALSE,
+    position = "center"
+  ) %>%
+  kableExtra::footnote(
+    general = "Estimates adjusted for RDS sampling bias using model-assisted inference. Confidence intervals reflect design-based uncertainty.",
+    general_title = "Note:",
+    footnote_as_chunk = TRUE
+  )
+```
+
+```{r}
+#| label: fig-ma-binary-forest
+#| fig-cap: "Forest Plot of Model-Assisted Binary Exploitation Estimates: Population prevalence estimates with 95% confidence intervals for each exploitation indicator, ordered by prevalence magnitude. Error bars represent design-based uncertainty in the estimates. Source: Authors' Own Work."
+#| fig-width: 8      # REDUCE from 10
+#| fig-height: 5     # REDUCE from 6
+#| out-width: "95%"  # ADD this
+#| echo: false
+#| warning: false
+#| message: false
+
+library(ggplot2)
+
+# Create forest plot data (CI already calculated correctly in extraction function)
+forest_data <- ma_results %>%
+  dplyr::filter(!is.na(prevalence)) %>%
+  dplyr::mutate(
+    prevalence_pct = prevalence * 100,
+    ci_lower_pct = ci_lower * 100,
+    ci_upper_pct = ci_upper * 100,
+    label_clean = factor(label, levels = label[order(prevalence)])
+  )
+
+# Create forest plot
+forest_plot <- forest_data %>%
+  ggplot(aes(x = prevalence_pct, y = label_clean)) +
+  geom_errorbarh(aes(xmin = ci_lower_pct, xmax = ci_upper_pct),
+                 height = 0.2, color = "steelblue", linewidth = 1) +
+  geom_point(size = 3, color = "darkblue") +
+  geom_text(aes(label = sprintf("%.1f%%", prevalence_pct)),
+            hjust = -0.3, size = 3.5, color = "darkblue") +
+  labs(
+    title = "Model-Assisted Estimates of Exploitation Prevalence",
+    subtitle = "Population estimates adjusted for RDS sampling bias",
+    x = "Estimated Prevalence (%)",
+    y = "Exploitation Indicator"
+  ) +
+  scale_x_continuous(
+    labels = scales::percent_format(scale = 1),
+    limits = c(0, max(forest_data$ci_upper_pct, na.rm = T) * 1.1)
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 12, face = "bold"),
+    plot.subtitle = element_text(size = 10),
+    axis.title = element_text(size = 10),
+    axis.text.y = element_text(size = 9),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.y = element_blank()
+  )
+
+print(forest_plot)
+
+# Summary information integrated into the narrative text
+```
+
+#### RDS Estimates
+
+```{r}
+#| label: tbl-rds-binary-indicators
+#| tbl-cap: "RDS Estimates of Binary Exploitation Indicators: Population prevalence estimates using RDS-II and Successive Sampling (SS) estimators with bootstrap confidence intervals. Source: Authors' Own Work."
+#| echo: false
+#| warning: false
+#| message: false
+
+# Load RDS results
+if (file.exists(here("output", "rds_estimates.RData"))) {
+  load(here("output", "rds_estimates.RData"))
+
+  # Define the indicators we want to extract
+  rds_indicators <- c(
+    "document_withholding_rds" = "Document Withholding",
+    "pay_issues_rds" = "Pay-Related Issues",
+    "threats_abuse_rds" = "Threats/Abuse",
+    "excessive_hours_rds" = "Excessive Hours",
+    "access_to_help_rds" = "Limited Access to Help"
+  )
+
+  # Extract RDS estimates (assuming standard population size of 980,000)
+  if (exists("rds_results") && "980000" %in% names(rds_results)) {
+    rds_980k <- rds_results[["980000"]]
+
+    rds_summary <- data.frame(
+      indicator = character(0),
+      label = character(0),
+      rds_ii_est = numeric(0),
+      rds_ii_ci_lower = numeric(0),
+      rds_ii_ci_upper = numeric(0),
+      rds_ss_est = numeric(0),
+      rds_ss_ci_lower = numeric(0),
+      rds_ss_ci_upper = numeric(0),
+      stringsAsFactors = FALSE
+    )
+
+    for (ind in names(rds_indicators)) {
+      if (ind %in% names(rds_980k$rds_ii)) {
+        rds_ii_res <- rds_980k$rds_ii[[ind]]
+        rds_ss_res <- rds_980k$rds_ss[[ind]]
+
+        rds_summary <- rbind(rds_summary, data.frame(
+          indicator = ind,
+          label = rds_indicators[ind],
+          rds_ii_est = rds_ii_res$estimate,
+          rds_ii_ci_lower = rds_ii_res$conf.int[1],
+          rds_ii_ci_upper = rds_ii_res$conf.int[2],
+          rds_ss_est = rds_ss_res$estimate,
+          rds_ss_ci_lower = rds_ss_res$conf.int[1],
+          rds_ss_ci_upper = rds_ss_res$conf.int[2],
+          stringsAsFactors = FALSE
+        ))
+      }
+    }
+
+    # Format for display
+    rds_display <- rds_summary %>%
+      dplyr::mutate(
+        rds_ii_formatted = sprintf("%.1f%% (%.1f-%.1f%%)",
+                                   rds_ii_est * 100,
+                                   rds_ii_ci_lower * 100,
+                                   rds_ii_ci_upper * 100),
+        rds_ss_formatted = sprintf("%.1f%% (%.1f-%.1f%%)",
+                                   rds_ss_est * 100,
+                                   rds_ss_ci_lower * 100,
+                                   rds_ss_ci_upper * 100)
+      ) %>%
+      dplyr::select(label, rds_ii_formatted, rds_ss_formatted) %>%
+      dplyr::arrange(desc(rds_summary$rds_ss_est))
+
+    # Create table
+    rds_display %>%
+      kableExtra::kbl(
+        col.names = c("Exploitation Indicator", "RDS-II Estimate (95% CI)", "RDS-SS Estimate (95% CI)"),
+        caption = "RDS Estimates of Binary Exploitation Indicators",
+        booktabs = TRUE,
+        align = c("l", "r", "r")
+      ) %>%
+      kableExtra::kable_styling(
+        latex_options = c("striped", "hold_position", "scale_down"),
+        bootstrap_options = c("striped", "hover", "condensed"),
+        full_width = FALSE,
+        position = "center",
+        font_size = 9
+      ) %>%
+      kableExtra::footnote(
+        general = "RDS-II: Volz-Heckathorn estimator. RDS-SS: Gile's Successive Sampling estimator. Population size assumed: 980,000.",
+        general_title = "Note:",
+        footnote_as_chunk = TRUE
+      )
+
+    #    round(min(rds_summary$rds_ss_est) * 100, 1), "% to", round(max(rds_summary$rds_ss_est) * 100, 1), "%\n")
+
+  } else {
+  }
+} else {
+}
+```
+
+#### NSUM Estimates
+
+```{r}
+#| label: tbl-nsum-binary-indicators
+#| tbl-cap: "NSUM Estimates of Binary Exploitation Indicators: Population prevalence estimates using Network Scale-Up Methods with bootstrap confidence intervals. Estimates represent population size of exploited domestic workers. Source: Authors' Own Work."
+#| echo: false
+#| warning: false
+#| message: false
+
+# Load NSUM results
+nsum_file <- here("output", "enhanced_nsum_results.RData")
+if (file.exists(nsum_file)) {
+  load(nsum_file)
+
+  # Check what NSUM results are available
+  if (exists("nsum_results")) {
+    # Structure available for processing
+
+    # Try to extract comparable estimates
+    nsum_indicators <- c(
+      "document_withholding_nsum" = "Document Withholding",
+      "pay_issues_nsum" = "Pay-Related Issues",
+      "threats_abuse_nsum" = "Threats/Abuse",
+      "excessive_hours_nsum" = "Excessive Hours",
+      "access_to_help_nsum" = "Limited Access to Help"
+    )
+
+    nsum_summary <- data.frame(
+      indicator = character(0),
+      label = character(0),
+      gnsum_est = numeric(0),
+      gnsum_ci_lower = numeric(0),
+      gnsum_ci_upper = numeric(0),
+      stringsAsFactors = FALSE
+    )
+
+    # Extract estimates if available in the results structure
+    for (ind in names(nsum_indicators)) {
+      if (ind %in% names(nsum_results)) {
+        result <- nsum_results[[ind]]
+        if (!is.null(result) && "estimate" %in% names(result)) {
+          nsum_summary <- rbind(nsum_summary, data.frame(
+            indicator = ind,
+            label = nsum_indicators[ind],
+            gnsum_est = result$estimate,
+            gnsum_ci_lower = ifelse("conf.int" %in% names(result), result$conf.int[1], NA),
+            gnsum_ci_upper = ifelse("conf.int" %in% names(result), result$conf.int[2], NA),
+            stringsAsFactors = FALSE
+          ))
+        }
+      }
+    }
+
+    if (nrow(nsum_summary) > 0) {
+      # Convert to prevalence if estimates are population counts
+      population_size <- 980000
+      nsum_display <- nsum_summary %>%
+        dplyr::mutate(
+          prevalence = gnsum_est / population_size,
+          prev_ci_lower = gnsum_ci_lower / population_size,
+          prev_ci_upper = gnsum_ci_upper / population_size,
+          formatted = sprintf("%.1f%% (%.1f-%.1f%%) [%s]",
+                             prevalence * 100,
+                             prev_ci_lower * 100,
+                             prev_ci_upper * 100,
+                             scales::comma(gnsum_est))
+        ) %>%
+        dplyr::select(label, formatted) %>%
+        dplyr::arrange(desc(nsum_summary$prevalence))
+
+      # Create table
+      nsum_display %>%
+        kableExtra::kbl(
+          col.names = c("Exploitation Indicator", "Prevalence (95% CI) [Population Count]"),
+          caption = "NSUM Estimates of Binary Exploitation Indicators",
+          booktabs = TRUE,
+          align = c("l", "r")
+        ) %>%
+        kableExtra::kable_styling(
+          latex_options = c("striped", "hold_position", "scale_down"),
+          bootstrap_options = c("striped", "hover", "condensed"),
+          full_width = FALSE,
+          position = "center"
+        ) %>%
+        kableExtra::footnote(
+          general = "GNSUM: Generalized Network Scale-Up Method. Population size assumed: 980,000 domestic workers.",
+          general_title = "Note:",
+          footnote_as_chunk = TRUE
+        )
+
+#          round(min(nsum_summary$prevalence) * 100, 1), "% to",  round(max(nsum_summary$prevalence) * 100, 1), "%\n")
+
+    } else {
+    }
+  } else {
+  }
+} else {
+
+  # Try the bootstrap summary file
+  bootstrap_file <- here("output", "tables", "nsum_bootstrap_summary.csv")
+  if (file.exists(bootstrap_file)) {
+    nsum_bootstrap <- read.csv(bootstrap_file, stringsAsFactors = FALSE)
+
+    # Filter for relevant indicators and methods
+    nsum_filtered <- nsum_bootstrap %>%
+      dplyr::filter(
+        stringr::str_detect(outcome_variable, "nsum"),
+        Method == "GNSUM Symmetric",
+        weight_method == "weight_rds_i"
+      ) %>%
+      dplyr::mutate(
+        indicator_clean = case_when(
+          stringr::str_detect(outcome_variable, "access_to_help") ~ "Limited Access to Help",
+          stringr::str_detect(outcome_variable, "document_withholding") ~ "Document Withholding",
+          stringr::str_detect(outcome_variable, "pay_issues") ~ "Pay-Related Issues",
+          stringr::str_detect(outcome_variable, "threats_abuse") ~ "Threats/Abuse",
+          stringr::str_detect(outcome_variable, "excessive_hours") ~ "Excessive Hours",
+          TRUE ~ outcome_variable
+        )
+      ) %>%
+      dplyr::filter(!is.na(indicator_clean)) %>%
+      dplyr::select(indicator_clean, Point.Estimate, X95..CI) %>%
+      dplyr::distinct()
+
+    if (nrow(nsum_filtered) > 0) {
+      nsum_filtered %>%
+        kableExtra::kbl(
+          col.names = c("Exploitation Indicator", "Population Estimate", "95% CI"),
+          caption = "NSUM Bootstrap Estimates of Binary Exploitation Indicators",
+          booktabs = TRUE,
+          align = c("l", "r", "r")
+        ) %>%
+        kableExtra::kable_styling(
+          latex_options = c("striped", "hold_position", "scale_down"),
+          bootstrap_options = c("striped", "hover", "condensed"),
+          full_width = FALSE,
+          position = "center"
+        ) %>%
+        kableExtra::footnote(
+          general = "Bootstrap estimates using GNSUM Symmetric method with RDS-I weights.",
+          general_title = "Note:",
+          footnote_as_chunk = TRUE
+        )
+    }
+  }
+}
+```
+
+### Comparative Interpretation
+
+Table 1 summarises prevalence estimates across both methods, highlighting points of convergence and divergence.
+While absolute values differ slightly across RDS and NSUM (reflecting differences in ego- versus alter-based assumptions), the overall pattern is remarkably stable.
+@fig-method-comparison demonstrates the comparison between frequentist RDS estimators (RDS-I, RDS-II, RDS-SS) and Bayesian model-assisted methods across all exploitation indicators.
+The horizontal spacing of estimates allows clear visual comparison of point estimates and uncertainty intervals, with RDS methods showing bootstrap confidence intervals and Bayesian methods showing credible intervals from MCMC estimation.
+Both approaches identify similar patterns of exploitation prevalence, with excessive hours showing the highest prevalence across all methods, followed by threats/abuse and pay-related issues.
+
+**Table 1 (proposed):** Prevalence of labour exploitation among domestic workers, by method and subgroup
+
+| Subgroup       | RDS Estimate (%) | 95% CI | NSUM Estimate (%) | 95% CI |
+|----------------|------------------|--------|-------------------|--------|
+| Overall sample | xx.x             | (x–x)  | xx.x              | (x–x)  |
+| Latinx         | xx.x             | (x–x)  | xx.x              | (x–x)  |
+| Filipino       | xx.x             | (x–x)  | xx.x              | (x–x)  |
+| British        | xx.x             | (x–x)  | xx.x              | (x–x)  |
+
+```{r eval=FALSE}
+#| label: tbl-subgroup-prevalence
+#| tbl-cap: "Prevalence of labour exploitation among domestic workers by nationality subgroup"
+#| echo: false
+#| warning: false
+
+library(knitr)
+library(kableExtra)
+library(here)
+
+# Load results and create table
+load(here("output", "rds_subgroup_analysis_results_FIXED.RData"))
+source(here("R", "analysis", "create_latex_tables.R"))
+latex_table1 <- create_latex_table1_standalone(cluster_summary)
+latex_table1
+```
+
+**Figure 2 (proposed):** Side-by-side bar chart comparing RDS and NSUM estimates with confidence intervals for each subgroup.
+
+```{r}
+#| label: fig-method-comparison
+#| fig-cap: "Method Comparison: RDS vs Bayesian Estimators. Point estimates and uncertainty intervals for prevalence of exploitation indicators across different estimation methods. RDS methods show 95% confidence intervals (bootstrap); Bayesian methods show 95% credible intervals (MCMC). Baseline population assumption: 980,000 domestic workers. Source: Authors' own work."
+#| fig-width: 10     # REDUCE from 12
+#| fig-height: 7     # REDUCE from 8
+#| out-width: "100%" # ADD this
+#| echo: false
+
+knitr::include_graphics(here::here("output", "figures", "method_comparison.png"))
+```
+
+### Robustness Checks
+
+A series of robustness checks were performed to assess the stability of the findings.
+@fig-forest-plot presents a comprehensive forest plot comparing all prevalence estimates across indicators and methods, demonstrating remarkable consistency across different analytical approaches.
+Bootstrap resampling confirmed that the RDS and NSUM estimates remained stable across repeated draws.
+Sensitivity analyses excluding suspicious datapoints did not materially alter subgroup rankings.
+Analyses restricted to single subgroups confirmed that the elevated prevalence among Latinx workers was not an artifact of recruitment dynamics.
+
+The forest plot visualization clearly shows that traditional RDS estimators (RDS-I and RDS-II) produced results consistent with the model-assisted and Bayesian estimates, albeit with wider confidence intervals in some cases.
+The pattern of estimates is remarkably stable across methods, with excessive hours consistently showing the highest prevalence, followed by threats/abuse and pay-related issues, while document withholding shows more moderate prevalence levels.
+This cross-method validation strengthens confidence in our findings and demonstrates the robustness of the dual estimation approach.
+Full technical details are reported in Appendices B and C.
+
+```{r}
+#| label: fig-parameter-comparison
+#| fig-cap: "Bayesian Parameter Sensitivity Analysis. Comparison of prevalence estimates using enhanced vs standard MCMC parameters for Bayesian model-assisted estimation. Enhanced parameters use longer burn-in periods and more iterations, particularly important for numeric and ordinal variables like composite risk scores. Error bars represent 95% Bayesian credible intervals. Source: Authors' own work."
+#| fig-width: 9      # REDUCE from 10
+#| fig-height: 5     # REDUCE from 6
+#| out-width: "95%"  # ADD this
+#| echo: false
+
+knitr::include_graphics(here::here("output", "figures", "parameter_comparison.png"))
+```
+
+```{r}
+#| label: fig-forest-plot
+#| fig-cap: "Forest Plot of Exploitation Prevalence Estimates. Comprehensive comparison of prevalence estimates across all indicators and estimation methods, displayed as a forest plot with 95% confidence/credible intervals. Each row represents a different exploitation indicator, with points showing method-specific estimates and horizontal lines indicating uncertainty bounds. Demonstrates consistency of findings across different analytical approaches. Source: Authors' own work."
+#| fig-width: 10     # REDUCE from 12
+#| fig-height: 8     # REDUCE from 10
+#| out-width: "100%" # ADD this
+#| echo: false
+
+knitr::include_graphics(here::here("output", "figures", "model_comparison_forest_plot.png"))
+```
+
+## Discussion
+
+### Implications for Policy
+
+The UK Government has proved reluctant to respond to calls to remove the restrictive, tied, visa conditions currently in force for those migrant workers working in the UK on the Overseas Domestic Workers visa (@gower_calls_2016).
+Maintaining these restrictive conditions prevents the ratification in the UK of C189, the International Convention for Domestic Workers (@ILO11-indicators).
+If the estimates resulting from our study are correct, these visa conditions place migrant domestic workers at significant risk of serious forms of labour exploitation including, in its most severe form, exploitation that exhibits the characteristics of forced labour—legally considered a form of modern slavery.
+
+To reduce the vulnerability of transnational domestic workers to this—and other—forms of labour exploitation, we urge policy-makers to reconsider these discriminatory visa conditions and offer the same freedoms to domestic workers that are enjoyed by other groups of workers under UK law.
+
+In addition, given the vulnerabilities experienced by workers due to the private nature of the workplace, we would urge the UK government to consider the regulation of domestic worker employers.
+
+Finally, given the stigma and very real danger of deportation of those migrant domestic workers who may have fallen out of legal migration status, our evidence suggests that there is an urgent need for the UK Government to enforce a firewall between immigration control and labour exploitation if the true scale of abuse is to be made visible and the perpetrators brought to justice.
+
+### Implications for Practice
+
+The UK Visa and Immigration service already offers rights-based training to migrant domestic workers via UK embassies in certain source countries.
+To reduce migrant domestic workers vulnerabilities, we advocate the expansion of this training both to include explicit training related to employment and labour rights within the UK and to the rapidly expanding range of new source countries from where migrant domestic workers are now drawn.
+
+### Methodological Contributions
+
+This study makes several methodological contributions to the estimation of prevalence in hidden and hard-to-reach populations:
+
+**Dual conceptualisation of exploitation**: We introduce two distinct approaches to operationalising exploitation.
+First, we treat exploitation as a binary outcome (exploited versus not exploited), enabling direct comparison of prevalence estimates across RDS and NSUM methods.
+Second, we construct a continuous risk index, acknowledging that all domestic workers may be exposed to some degree of exploitation risk.
+To our knowledge, this is the first application of model-assisted RDS estimators to quantify a continuous measure of exploitation risk.
+
+**Bayesian parameter sensitivity**: @fig-parameter-comparison demonstrates the importance of appropriate MCMC parameter selection for Bayesian model-assisted estimation.
+Our analysis shows that enhanced parameters (featuring longer burn-in periods and more iterations) are particularly crucial for numeric and ordinal variables, where standard parameters may suffer from convergence issues.
+This methodological innovation ensures robust credible interval estimation for continuous risk measures.
+
+*Combining RDS and NSUM on the same survey instrument*: By designing a survey that captures both ego and alter information, we are able to apply RDS and NSUM to the same sample.
+This dual approach has rarely been implemented in studies of labour exploitation.
+It provides an opportunity to cross-validate results and assess the robustness of prevalence estimates.
+
+*Novel bootstrap procedure for NSUM*: Recognising the non-random nature of an RDS sample, we developed a three-step bootstrap procedure tailored for NSUM estimation.
+This resamples respondents, recalculates weights, and re-estimates NSUM prevalence at each iteration.
+The procedure captures multiple layers of uncertainty and produces more reliable confidence intervals than conventional methods, particularly in small samples.
+
+*Application to domestic workers in the UK*: Finally, by applying these methods to a population that is both highly stigmatised and under-researched, we demonstrate the feasibility of using advanced network-based estimation techniques in contexts where traditional sampling is impossible.
+This methodological innovation has potential applications in studies of other hidden labour markets and vulnerable populations.
+
+### Limitations of the Study
+
+As with any empirical research, our study is subject to limitations.
+In terms of nationality, our sample is not representative of the demographics of those domestic workers employed on Overseas Domestic Worker Visas in 2022 the UK.
+Due to the increasing number of workers on Overseas Domestic Work visas from the Indian sub-continent, attempts were made also to seed respondents from this community.
+This proved difficult, with anecdotal information suggesting that domestic workers from this community rarely had access to a personal mobile phone.
+It is not therefore possible to infer the nature and extent of labour exploitation within this sub-section of the domestic worker population.
+
+As the network structure of our sample demonstrates, even with a well-designed incentive scheme it proved difficult to recruit respondents from these communities of domestic workers in subsequent sampling waves in the time available.
+Most of our respondents are therefore original sample members draw from the three domestic worker communities used to seed the survey.
+
+### Further Research
+
+We believe that web-RDS combined with statistical estimators such as NSUM offers an important method for the capture and comparison of relative proportions of labour exploitation and abuse in sectors within and beyond the UK.
+Network scale up methods, and potential enhancements such as Generalised network scale up estimators offer to enhance understanding, not least within operations and supply chain management research, of the extent of labour exploitation in different sectors and across industries.
+
+## Conclusion
+
+\newpage
+
+<!-- \newpage -->
+
+<!-- ```{=latex} -->
+
+<!-- \printbibliography -->
+
+<!-- ``` -->
+
+\newpage
+
+## References
+
+::: {#refs}
+:::
+
+<!-- This will be populated by Pandoc if you use --citeproc and a .bib file -->
+
+\newpage
+
+```{=latex}
+\appendix
+```
+
+## Appendix A {#app-a}
+
+Population Parameters
+
+Use \~980,000 as UK domestic worker population estimate (EU data)
+
+Use 44,360 as NRM adult referrals baseline Address treatment of "don't know" responses and zero network size claims Consider separate analysis for Filipino subgroup
+
+### The Survey
+
+(From codebook)
+
+Compare corresponding survey questions between RDS and NSUM methods:
+
+-   Q70/Q71 (document withholding)
+-   Q39+Q42/Q43 (pay issues)
+-   Q45+Q47+Q48/Q49 (abuse/threats)
+-   Q61+Q62/Q64 (excessive hours)
+-   Q78/Q79 (access to help)
+
+Risk Index Implementation
+
+-   Clean coding for 13 risk categories with proper weightings
+-   NRM referral (0.35)
+-   Forced labor indicators (0.55 total)
+-   Below minimum wage (0.10)
+
+### Data Processing {#app-dataprep}
+
+The process of coding variables to make them comparable across the Respondent-Driven Sampling (RDS) and Network Scale-Up Method (NSUM) estimations is a multi-step procedure that moves from conceptual mapping to specific data transformations.
+The core challenge is bridging the "egocentric" questions (about the respondent's own experiences, used for RDS) with the network-based questions (about how many others the respondent knows with certain experiences, used for NSUM).
+Yes, the sources provide extensive detail on the coding of variables to make them comparable for RDS and NSUM estimation.
+The fundamental challenge is to create a fair comparison between the "egocentric" RDS questions (about personal experience) and the broader "how many do you know" NSUM questions.
+This was accomplished by first identifying thematic links between questions and then implementing a specific coding scheme to transform them into a consistent format.
+Conceptual Mapping of Variables The team first identified sets of questions that cover the same underlying themes, even if their wording differed.
+These "linking" questions were categorized by the team's confidence in their comparability.
+Thematic Groups for Comparison: • Document Withholding (Most Confident): Comparing personal experience (Q70) with knowing others who lack access to their documents (Q71).
+• Pay/Debt Issues (High Confidence): Linking personal experience with debt (Q39) and withheld pay (Q42) to knowing others with such problems (Q43).
+• Threats/Abuse (High Confidence): Aggregating personal experiences of being forced, threatened, intimidated, or verbally abused (Q45, Q47, Q48) and comparing them to knowing others who experienced threats or force (Q49).
+• Excessive Hours (Lower Confidence): Combining questions about inadequate weekly rest (Q61) and excessive overtime (Q62) to compare with knowing others who face similar labor rights issues (Q64).
+The confidence is lower because the NSUM question (Q64) also asks about annual leave, which is not covered in the corresponding RDS questions.
+• Access to Help (Least Confident): Matching whether the respondent personally knows where to go for help (Q78) with knowing others who do not (Q79).
+Coding and Transformation Process The conceptual mapping was then put into practice through a detailed coding process, which is explicitly documented in the project's R script.
+The primary goal was to convert all variables into a binary (0/1) format, representing "No" or "Yes" to experiencing or knowing someone who experienced the issue.
+
+Key Coding Steps:
+
+1.  Handling Ambiguous Answers: For most RDS questions, responses like "I don’t know" or "Prefer not to say" were recoded as NA (missing) to exclude them from the binary analysis.
+2.  Converting Categorical RDS Variables to Binary: Questions with multiple response options (e.g., "Always," "Often," "Sometimes," "Never") were recoded into a 0/1 format. For instance, for Q70 (document withholding), the answers "Always," "Often," and "Sometimes" were all coded as 1 (indicating the presence of the issue), while "Never" was coded as 0.
+3.  Aggregating Multiple RDS Questions: For themes covered by multiple egocentric questions (like "Threats/Abuse"), each individual question was first recoded into a binary 0/1 variable. These binary variables were then combined using a logical OR (\|). This means if a respondent answered "Yes" to any of the grouped questions (e.g., experiencing threats OR intimidation OR verbal abuse), the final composite RDS variable would be coded as 1. This aggregation was necessary to match the broader scope of the single corresponding NSUM question.
+4.  Converting NSUM Count Variables to Binary: The NSUM questions, which asked for a numerical count (e.g., "how many do you know?"), were also converted to binary. If a respondent knew one or more people (\> 0), their answer was coded as 1; if they knew zero, it remained 0. Through this systematic process of recoding, handling missing data, and aggregating variables, the team created a set of parallel binary indicators suitable for a direct comparison between the RDS and NSUM estimation frameworks.
+
+## Appendix B {#app-b}
+
+```{r setu, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(tidyverse)
+library(kableExtra)
+library(ggplot2)
+library(plotly)
+library(DT)
+library(gt)
+
+## Load results
+#load("output/rds_estimates.RData")
+#load("data/processed/prepared_data.RData")
+load(here("data", "processed", "prepared_data.RData"))
+
+```
+
+
+
+This analysis estimates the prevalence of modern slavery among domestic workers in the UK using multiple RDS methodologies.
+We examine two primary indicators across various population size assumptions and estimation techniques.
+
+### Sample Characteristics
+
+#### Recruitment Network Structure
+
+```{r eval=FALSE}
+#| label: tbl-network
+#| tbl-cap: "RDS Sample Network Characteristics"
+
+network_stats <- tibble(
+  Characteristic = c("Total Sample Size", "Recruitment Waves", "Average Degree", 
+                    "Median Degree", "Seeds", "Longest Chain", "Mean Chain Length"),
+  Value = c(
+    nrow(rd.dd),
+    max(rd.dd$wave, na.rm = TRUE),
+    round(mean(rd.dd$numRef, na.rm = TRUE), 1),
+    round(median(rd.dd$numRef, na.rm = TRUE), 1),
+    sum(rd.dd$recruiter.id == -1),
+    "TBD", ## Calculate from recruitment chains
+    "TBD"  ## Calculate average chain length
+  )
+)
+
+network_stats %>%
+  gt() %>%
+  tab_header(title = "Network Characteristics") %>%
+  fmt_number(columns = Value, decimals = 1, use_seps = TRUE)
+```
+
+#### Demographic Composition
+
+```{r}
+#| label: fig-demographics
+#| fig-cap: "Sample Composition by Nationality Clusters"
+
+## Create nationality breakdown
+nationality_summary <- rd.dd %>%
+  group_by(nationality_cluster) %>%
+  summarise(
+    n = n(),
+    percent = round(n() / nrow(rd.dd) * 100, 1),
+    .groups = 'drop'
+  )
+
+ggplot(nationality_summary, aes(x = nationality_cluster, y = percent, fill = nationality_cluster)) +
+  geom_col() +
+  geom_text(aes(label = paste0(n, "\n(", percent, "%)")), vjust = -0.5) +
+  scale_fill_viridis_d() +
+  theme_minimal() +
+  labs(x = "Nationality Cluster", y = "Percentage", 
+       title = "Sample Distribution by Nationality") +
+  theme(legend.position = "none")
+```
+
+### RDS Estimation Results
+
+#### Model-Assisted Estimates by Population Size
+
+```{r}
+#| label: tbl-ma-estimates
+#| tbl-cap: "Model-Assisted Estimates by Population Size and Seed Selection. Source: Authors' Own Work."
+#| echo: false
+#| warning: false
+#| message: false
+
+# Load required packages
+library(dplyr)
+library(tidyr)
+library(gt)
+library(scales)
+library(here)
+
+# Function to extract MA sensitivity results
+extract_ma_sensitivity <- function(indicator, pop_size, seed_method) {
+  file_path <- here("output", paste0("ma_sensitivity_", indicator, "_", pop_size, "_", seed_method, ".RData"))
+
+  if (file.exists(file_path)) {
+    tryCatch({
+      load(file_path)
+
+      # The MA result should be in ma_result variable
+      if (exists("ma_result") && !is.null(ma_result$estimate)) {
+        estimates <- ma_result$estimate$estimate
+        if ("1" %in% names(estimates)) {
+          prevalence <- estimates["1"]
+
+          # Construct CI using variance estimate
+          if (!is.null(ma_result$varest) && !is.na(ma_result$varest)) {
+            se <- sqrt(ma_result$varest)
+            ci_lower <- pmax(0, prevalence - 1.96 * se)
+            ci_upper <- pmin(1, prevalence + 1.96 * se)
+          } else {
+            ci_lower <- NA
+            ci_upper <- NA
+          }
+
+          return(list(
+            estimate = as.numeric(prevalence),
+            ci_lower = as.numeric(ci_lower),
+            ci_upper = as.numeric(ci_upper)
+          ))
+        }
+      }
+      return(list(estimate = NA, ci_lower = NA, ci_upper = NA))
+    }, error = function(e) {
+      return(list(estimate = NA, ci_lower = NA, ci_upper = NA))
+    })
+  }
+
+  return(list(estimate = NA, ci_lower = NA, ci_upper = NA))
+}
+
+# Create comparison table using available sensitivity analysis results
+ma_comparison <- expand_grid(
+  seed_method = c("sample", "random", "degree"),
+  pop_size = c(50000, 100000, 980000, 1740000),
+  indicator = c("document_withholding_rds", "pay_issues_rds", "excessive_hours_rds", "threats_abuse_rds")
+) %>%
+  rowwise() %>%
+  mutate(
+    result = list(extract_ma_sensitivity(indicator, pop_size, seed_method)),
+    estimate = result$estimate,
+    ci_lower = result$ci_lower,
+    ci_upper = result$ci_upper
+  ) %>%
+  ungroup() %>%
+  select(-result) %>%
+  filter(!is.na(estimate))
+
+# Check if we have any data
+if (nrow(ma_comparison) > 0) {
+  # Create formatted table
+  ma_formatted <- ma_comparison %>%
+    mutate(
+      pop_size_f = scales::comma(pop_size),
+      estimate_ci = sprintf("%.1f%% (%.1f%%, %.1f%%)",
+                           estimate * 100, ci_lower * 100, ci_upper * 100),
+      indicator_clean = case_when(
+        indicator == "document_withholding_rds" ~ "Document Withholding",
+        indicator == "pay_issues_rds" ~ "Pay Issues",
+        indicator == "excessive_hours_rds" ~ "Excessive Hours",
+        indicator == "threats_abuse_rds" ~ "Threats/Abuse",
+        TRUE ~ indicator
+      )
+    ) %>%
+    select(seed_method, pop_size_f, indicator_clean, estimate_ci) %>%
+    pivot_wider(names_from = indicator_clean, values_from = estimate_ci)
+
+  # Get column names after pivot
+  indicator_cols <- setdiff(names(ma_formatted), c("seed_method", "pop_size_f"))
+
+  # Create table
+  ma_table <- ma_formatted %>%
+    gt() %>%
+    tab_header(title = "Model-Assisted Estimates by Population Size and Seed Selection") %>%
+    cols_label(
+      seed_method = "Seed Selection",
+      pop_size_f = "Population Size"
+    ) %>%
+    fmt_missing(columns = everything(), missing_text = "—") %>%
+    tab_options(
+      table.font.size = px(9),
+      table.width = pct(85),
+      column_labels.font.size = px(8)  # ADD this
+    )
+
+  # Only add spanner if we have indicator columns
+  if (length(indicator_cols) > 0) {
+    ma_table <- ma_table %>%
+      tab_spanner(label = "Prevalence Estimates (95% CI)", columns = all_of(indicator_cols))
+  }
+
+  print(ma_table)
+
+} else {
+}
+```
+
+#### Traditional RDS Estimators Comparison
+
+```{r}
+#| label: tbl-rds-comparison
+#| tbl-cap: "RDS Estimator Comparison for Binary Indicators. Source: Authors' Own Work."
+#| echo: false
+#| warning: false
+#| message: false
+
+# Create a placeholder table for RDS results
+# This would normally load from saved RDS estimation results
+
+# Check if RDS results are available
+rds_file <- here("output", "rds_estimates.RData")
+
+if (file.exists(rds_file)) {
+  load(rds_file)
+
+  if (exists("rds_results") && "980000" %in% names(rds_results)) {
+    rds_980k <- rds_results[["980000"]]
+
+    # Get available indicators
+    available_indicators <- intersect(
+      names(rds_980k$rds_i),
+      c("document_withholding_rds", "pay_issues_rds", "threats_abuse_rds", "excessive_hours_rds", "access_to_help_rds")
+    )
+
+    if (length(available_indicators) > 0) {
+      # Create table with available indicators
+      rds_comparison_data <- tibble(
+        Method = rep(c("RDS-I", "RDS-II", "RDS-SS"), length(available_indicators)),
+        Indicator = rep(available_indicators, each = 3)
+      )
+
+      rds_comparison_data <- rds_comparison_data %>%
+        rowwise() %>%
+        mutate(
+          estimate = case_when(
+            Method == "RDS-I" ~ rds_980k$rds_i[[Indicator]]$estimate,
+            Method == "RDS-II" ~ rds_980k$rds_ii[[Indicator]]$estimate,
+            Method == "RDS-SS" ~ rds_980k$rds_ss[[Indicator]]$estimate,
+            TRUE ~ NA_real_
+          ),
+          ci_lower = case_when(
+            Method == "RDS-I" ~ rds_980k$rds_i[[Indicator]]$conf.int[1],
+            Method == "RDS-II" ~ rds_980k$rds_ii[[Indicator]]$conf.int[1],
+            Method == "RDS-SS" ~ rds_980k$rds_ss[[Indicator]]$conf.int[1],
+            TRUE ~ NA_real_
+          ),
+          ci_upper = case_when(
+            Method == "RDS-I" ~ rds_980k$rds_i[[Indicator]]$conf.int[2],
+            Method == "RDS-II" ~ rds_980k$rds_ii[[Indicator]]$conf.int[2],
+            Method == "RDS-SS" ~ rds_980k$rds_ss[[Indicator]]$conf.int[2],
+            TRUE ~ NA_real_
+          )
+        ) %>%
+        ungroup() %>%
+        mutate(
+          estimate_ci = sprintf("%.1f%% (%.1f%%, %.1f%%)",
+                               estimate * 100, ci_lower * 100, ci_upper * 100),
+          indicator_clean = case_when(
+            Indicator == "document_withholding_rds" ~ "Document Withholding",
+            Indicator == "pay_issues_rds" ~ "Pay Issues",
+            Indicator == "threats_abuse_rds" ~ "Threats/Abuse",
+            Indicator == "excessive_hours_rds" ~ "Excessive Hours",
+            Indicator == "access_to_help_rds" ~ "Access to Help",
+            TRUE ~ Indicator
+          )
+        ) %>%
+        select(Method, indicator_clean, estimate_ci) %>%
+        pivot_wider(names_from = indicator_clean, values_from = estimate_ci)
+
+      # Create table
+      rds_comparison_data %>%
+        gt() %>%
+        tab_header(title = "RDS Estimator Comparison (Population: 980,000)") %>%
+        cols_label(Method = "RDS Method") %>%
+        tab_spanner(label = "Prevalence Estimates (95% CI)",
+                   columns = -Method) %>%
+        fmt_missing(columns = everything(), missing_text = "—") %>%
+        tab_options(
+          table.font.size = px(9),
+          table.width = pct(85),
+          column_labels.font.size = px(8)
+
+        )
+
+    } else {
+    }
+  } else {
+  }
+} else {
+}
+```
+
+## Appendix C: Bootstrap Estimation for Network Scale-Up Using RDS Data {#app-3step}
+
+### Introduction
+
+When estimating the size or characteristics of a hidden population using the Network Scale-Up Method (NSUM), researchers typically assume a probability sample from the frame population.
+However, in many applied settings—including hard-to-reach populations—data are collected via\*Respondent-Driven Sampling (RDS).
+RDS introduces specific structural dependencies and inclusion probabilities that violate the assumptions of simple random sampling.
+
+This presents a challenge: how can we correctly estimate uncertainty for NSUM estimates derived from an RDS sample?
+As shown in @feeh16-generalized and @salg06-variance, the NSUM estimator depends crucially on inclusion weights $\pi_i$, which must reflect the sampling design.
+When data are RDS-based, these weights are typically derived from known degree-based estimators such as RDS-II or Gile’s Successive Sampling (SS) weights.
+
+To address this challenge, we propose a **three-step bootstrap procedure** for NSUM estimation using RDS data.
+This approach is flexible, modular, and applicable across several classes of NSUM estimators.
+It separates the issues of: 1.
+How to resample an RDS chain (Step 1), 2.
+How to recalculate sample-specific weights (Step 2), and 3.
+How to apply a chosen NSUM estimator (Step 3).
+
+------------------------------------------------------------------------
+
+### Step 1: Resampling the RDS Sample
+
+We begin by resampling from the observed RDS sample in a way that mimics the original recruitment structure.
+Let the original sample be: $$
+\mathcal{S} = \{i_1, i_2, \dots, i_n\}
+$$ with recruitment chains and wave indicators.
+Let $d_i$ denote self-reported degree for respondent $i$, and let the recruitment tree structure be encoded via seed/recruiter IDs.
+
+#### Options for RDS Resampling
+
+-   **Tree Bootstrap**: Sample entire recruitment trees (originating from seeds) with replacement. This respects the hierarchical recruitment structure and allows design effect estimation [@salg06-variance].
+-   **Successive Sampling Bootstrap (SSB)**: Sample with replacement according to inclusion probabilities derived from the SS model (@gile11-improv).
+-   **Neighborhood Bootstrap**: Use ego-network topology to preserve recruitment ties and neighborhood structure (@yauc22-neighboor).
+-   **Chain Bootstrap:** Each bootstrap replicate samples chains or subchains with replacement, preserving recruiter–recruitee links. This is implemented in `surveybootstrap::rds.boot.draw.chain()` and used in studies like @weir12-comparison.
+
+Let $\mathcal{S}^{(b)}$ denote the sample drawn in bootstrap replicate $b$.
+
+------------------------------------------------------------------------
+
+### Step 2: Recalculating Weights
+
+NSUM estimators require inclusion weights $\pi_i$ or their inverses $w_i = 1 / \pi_i$.
+Because bootstrap samples differ in composition and recruitment pattern, these weights must be **recomputed for each replicate**.
+
+#### General Structure
+
+For each replicate $b$, construct: - $\mathcal{S}^{(b)}$: resampled respondent IDs - $d_i^{(b)}$: degree reports in replicate - $\pi_i^{(b)}$: estimated inclusion probabilities
+
+#### Weighting Options
+
+-   **RDS-II Weights** (@volz08-simple): $$
+    w_i^{(b)} \propto \frac{1}{d_i^{(b)}}
+    $$
+
+-   **SS Weights** (@gile11-improv): Incorporate sampling fraction and frame size $N_F$.
+    Computed numerically via successive sampling approximation.
+
+Let $\mathbf{X}_i$ denote covariates (e.g. traits, degree, indicator of hidden population membership), which are retained from the original data and passed to Step 3.
+
+------------------------------------------------------------------------
+
+### Step 3: NSUM Estimation
+
+#### Step 3: NSUM Estimation on Resampled and Reweighted Data
+
+Given a bootstrap sample $\mathcal{S}^{(b)}$, we estimate the size of the hidden population $N_H$ using one of several NSUM estimators.
+All estimators rely on weighted sums of out-reports and degree.
+
+##### (a) Generalized NSUM (GNSUM)
+
+As described in @feeh16-generaling, GNSUM estimates:
+
+$$\hat{N}_H^{(b)} = \left( \frac{\sum_{i} \frac{y_{i,H}}{\pi_i^{(b)}}}{\sum_{i} \frac{d_i}{\pi_i^{(b)}}} \right) \cdot N_F$$
+
+Where:
+
+-   $y_{i,H}$: number of known alters in the hidden population,
+
+-   $d_i$: degree (known network size, e.g. from Q13),
+
+-   $N_F$: size of the frame population (e.g. domestic workers in UK).
+
+##### (b) GNSUM with Symmetric Visibility (for Hidden Members in RDS)
+
+In your context, some RDS respondents are ex post identified as members of the hidden population.
+Under the **symmetric visibility assumption**, if $i \in H$, we assume the probability that $i$ knows $j$ is the same as $j$ knows $i$.
+This allows **in-reports** to be incorporated.
+
+Let:
+
+-   $I_H(i) = 1$ if $i \in H$, 0 otherwise
+
+-   $y_{i}^{\text{in}}$: number of other hidden members who report knowing $i$
+
+Then the estimator becomes:
+
+$$\hat{N}_H^{(b)} = \left( \frac{\sum_{i} \frac{y_{i,H} + I_H(i) \cdot y_{i}^{\text{in}}}{\pi_i^{(b)}}}{\sum_{i} \frac{d_i}{\pi_i^{(b)}}} \right) \cdot N_F$$
+
+##### (c) Modified Basic Scale-Up (MBSU)
+
+This estimator adjusts for key reporting biases via three correction factors:
+
+$$\hat{N}_H^{(b)} = \left( \frac{\sum_{i} \frac{y_{i,H}}{\pi_i^{(b)}}}{\sum_{i} \frac{d_i}{\pi_i^{(b)}}} \right) \cdot N_F \cdot \frac{1}{\delta \cdot \tau \cdot \rho}$$
+
+Where:
+
+-   $\delta$: **Transmission bias** (probability respondent is aware of alter’s status),
+
+-   $\tau$: **Barrier effect** (social mixing between hidden and frame population),
+
+-   $\rho$: **Popularity bias** (relative visibility of hidden population members).
+
+These values can be:
+
+-   Estimated using **known subpopulations** (e.g., alter groups with known size),
+
+-   Set by expert **elicitation**,
+
+-   Scanned in **sensitivity analysis**.
+
+##### (d) Model-Based NSUM
+
+Bayesian implementations (e.g. @malt15-estimating) model:
+
+-   Degree distributions,
+
+-   Reporting error,
+
+-   Group visibility,
+
+-   Hidden population size.
+
+They yield a **posterior distribution** over $N_H$, and uncertainty is embedded within the model.
+
+------------------------------------------------------------------------
+
+This step applies an NSUM estimator to the bootstrap sample $\mathcal{S}^{(b)}$ using the recalculated weights $w_i^{(b)}$ and responses $y_{i,H}$, where $y_{i,H}$ is the number of known contacts respondent $i$ has in hidden population $H$.
+
+Let $N_F$ denote the frame population size (assumed known), and let $d_i$ be the degree of respondent $i$.
+
+#### Generalized NSUM Estimator (GNSUM)
+
+The weighted GNSUM estimator is:
+
+$$
+\hat{N}_H^{(b)} = \frac{\sum_{i \in \mathcal{S}^{(b)}} \frac{y_{i,H}}{\pi_i^{(b)}}}{\sum_{i \in \mathcal{S}^{(b)}} \frac{d_i}{\pi_i^{(b)}}} \cdot N_F
+$$
+
+This estimator assumes proportional mixing and equal visibility.
+
+------------------------------------------------------------------------
+
+#### Symmetric Visibility Variant
+
+In our setting, some RDS respondents can be identified *ex post* as members of the hidden population $H$.
+Denote this set $\mathcal{H} \subseteq \mathcal{S}$.
+Under the assumption of **symmetric visibility**, we define:
+
+$$
+\hat{v}_{H} = \frac{1}{|\mathcal{H}|} \sum_{j \in \mathcal{H}} \frac{y_{j,F}}{d_j}
+$$
+
+That is, the average proportion of alters known by members of $H$ who are in the frame population $F$.
+Incorporating this, the symmetric visibility GNSUM becomes:
+
+#### Step 4: Aggregating Bootstrap Estimates
+
+After $B$ replicates:
+
+$$\hat{N}_H^{(1)}, \dots, \hat{N}_H^{(B)}$$
+
+We compute:
+
+-   **Point estimate**: $\bar{N}_H = \frac{1}{B} \sum_b \hat{N}_H^{(b)}$
+
+-   **Standard error**: sample SD
+
+-   **95% CI**: empirical percentiles (e.g., 2.5%, 97.5%)
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+#### Step 2: Recalculate Inclusion Probabilities
+
+RDS produces samples with **unknown and unequal probabilities of inclusion**, which must be corrected when used in NSUM estimation.
+This is achieved by estimating the probability $\pi_i^{(b)}$ that each individual $i$ in bootstrap replicate $b$ is included in the sample, conditional on their degree and position in the recruitment tree.
+
+These probabilities are used to generate **sampling weights** $w_i^{(b)} = 1/\pi_i^{(b)}$, which are passed into NSUM estimators.
+
+##### Estimation Methods
+
+**(a) RDS-II (Volz-Heckathorn) Weights**\
+Assumes the probability of selection is proportional to the respondent's degree:
+
+$$\pi_i \propto d_i \quad \Rightarrow \quad w_i = \frac{1}{d_i}$$
+
+These weights are normalized post hoc.
+This method is simple but does not account for homophily or finite population correction (@volz08-rds).
+
+**(b) Gile’s Successive Sampling (SS) Weights**\
+This method assumes RDS approximates successive sampling without replacement.
+The inclusion probabilities are computed by simulating from a known or assumed population size $N$.
+This method is implemented in `RDS::gile.ss.weights()` and adjusts for:
+
+-   Finite population effects,
+
+-   Degree-based sampling,
+
+-   Sample depletion over waves.
+
+**(c) User-Defined or Model-Based Weights**\
+Researchers may define weights using alternative models or Bayesian simulations.
+This includes post-stratification or fitting full generative models of the RDS process.
+
+##### Software Example (R)
+
+``` r
+library(RDS)
+rd <- as.rds.data.frame(boot_sample, id = "id", recruiter.id = "recruiter.id")
+boot_sample$ss_weight <- gile.ss.weights(rd, N = 980000)
+boot_sample$vh_weight <- rds.weights(rd, weight.type = "RDS-II")
+```
+
+The output is a new dataset with respondent traits, degrees, and updated $\pi_i^{(b)}$, which are used in Step 3.
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+#### 5. References
+
+-   @feeh16-generalizing
+
+-   @salf06-variance
+
+-   @gile11-inference
+
+-   @volz08-rds
+
+-   @malt15-estimating
+
+-   @yauc22-neighboot
+
+-   @weir12-comparison
+
+-   @salg06-variance
+
+-   @rust96-rescaled
+
+-   @rao88-resampling

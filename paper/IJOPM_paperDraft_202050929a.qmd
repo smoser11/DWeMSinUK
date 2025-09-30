@@ -9,10 +9,14 @@ date: today
 date-format: "DD, MMMM YYYY"
 abstract: |
   Purpose
+  
   The purpose of this article is to demonstrate a quantitative approach to the construction of a risk index of labour exploitation and alternative estimators of the prevalence of exploitation.
   Design/ Methodology/ Approach
+  
   Using data from a survey of domestic workers based in the United Kingdom (UK), we use statistical techniques, including Respondent Driven Sampling (RDS) methods RDS-I and RDS-II and Network Scale Up (NSUM) methods, to produce an index of labour exploitation risk and estimators of the prevalence of labour exploitation.
+  
   Findings
+  
   The labour exploitation risk index shows a reverse correlation between the increasing seriousness of exploitation and the number of exploitation cases reported.
   The various prevalence estimators examined show significant differences in population level exploitation.
   Research implications/ limitations
@@ -1476,7 +1480,7 @@ Both approaches identify similar patterns of exploitation prevalence, with exces
 | Filipino       | xx.x             | (x–x)  | xx.x              | (x–x)  |
 | British        | xx.x             | (x–x)  | xx.x              | (x–x)  |
 
-```{r}
+```{r eval=FALSE}
 #| label: tbl-subgroup-prevalence
 #| tbl-cap: "Prevalence of labour exploitation among domestic workers by nationality subgroup"
 #| echo: false
@@ -2106,9 +2110,7 @@ Bayesian implementations (e.g. @malt15-estimating) model:
 
 They yield a **posterior distribution** over $N_H$, and uncertainty is embedded within the model.
 
-
----
-
+------------------------------------------------------------------------
 
 This step applies an NSUM estimator to the bootstrap sample $\mathcal{S}^{(b)}$ using the recalculated weights $w_i^{(b)}$ and responses $y_{i,H}$, where $y_{i,H}$ is the number of known contacts respondent $i$ has in hidden population $H$.
 
@@ -2154,7 +2156,6 @@ We compute:
 -   **95% CI**: empirical percentiles (e.g., 2.5%, 97.5%)
 
 ------------------------------------------------------------------------
-
 
 ------------------------------------------------------------------------
 
@@ -2202,8 +2203,6 @@ boot_sample$vh_weight <- rds.weights(rd, weight.type = "RDS-II")
 The output is a new dataset with respondent traits, degrees, and updated $\pi_i^{(b)}$, which are used in Step 3.
 
 ------------------------------------------------------------------------
-
-
 
 ------------------------------------------------------------------------
 
