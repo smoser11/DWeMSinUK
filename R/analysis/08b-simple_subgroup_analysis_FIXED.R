@@ -33,14 +33,8 @@ source(here("R", "utils", "helper_functions.R"))
 # Apply updated nationality clustering to the data
 rd.dd <- rd.dd %>% create_nationality_clusters()
 
-# Make rd.dd available in global environment for Boot_Step1.r
-assign("rd.dd", rd.dd, envir = .GlobalEnv)
-
-# Now source bootstrap functions from Boot_Step1.r (test code will run with rd.dd available)
-source(here("R", "analysis", "NSUM", "Boot_Step1.r"))
-
-# Use rd.dd as primary (it's the rds.data.frame class)
-rds_data <- rd.dd
+# We'll use the regular dd data frame with pre-calculated RDS weights
+# No need to load the neighborhood bootstrap functions since we're using simple bootstrap
 
 cat("RDS data loaded:", nrow(rds_data), "observations\n")
 cat("Data class:", class(rds_data), "\n")
@@ -334,12 +328,10 @@ run_rds_subgroup_analysis <- function(rds_data) {
 
       cat("\nProcessing", indicator, "for", cluster_name, "cluster...\n")
 
-      cluster_result <- bootstrap_rds_subgroup_estimate(
-        rds_data = cluster_data,
+      cluster_result <- bootstrap_weighted_subgroup_estimate(
+        data = cluster_data,
         indicator = indicator,
         cluster_name = cluster_name,
-        method = subgroup_config$preferred_method,
-        population_size = subgroup_config$baseline_population,
         n_bootstrap = subgroup_config$n_bootstrap,
         verbose = subgroup_config$verbose
       )
