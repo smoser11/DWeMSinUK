@@ -7,7 +7,28 @@ author:
     affiliation: UoN
 date: today
 date-format: "DD, MMMM YYYY"
+abstract: |
+  Purpose
+  
+  The purpose of this article is to demonstrate a quantitative approach to the construction of a risk index of labour exploitation and alternative estimators of the prevalence of exploitation.
+  Design/ Methodology/ Approach
+  
+  Using data from a survey of domestic workers based in the United Kingdom (UK), we use statistical techniques, including Respondent Driven Sampling (RDS) methods RDS-I and RDS-II and Network Scale Up (NSUM) methods, to produce an index of labour exploitation risk and estimators of the prevalence of labour exploitation.
+  
+  Findings
+  
+  The labour exploitation risk index shows a reverse correlation between the increasing seriousness of exploitation and the number of exploitation cases reported.
+  The various prevalence estimators examined show significant differences in population level exploitation.
+  Research implications/ limitations
+  Further research into the application of different quantitative statistical estimators of the prevalence of labour exploitation is urgently required. 
+  Practical implications
+  Robust estimators are necessary if policy makers are to make informed choices about the appropriate allocation of scarce resources to help to eradicate severe forms of labour exploitation and labour abuse.
+  Social implications
+  Even by more conservative estimates, thousands of domestic workers in the UK are subject to labour exploitation. Urgent policy attention is needed if structural vulnerabilities are to be removed.
+  Originality
+  We believe this paper is the first to compare the use of RDS and NSUM methods in the quantitative estimation of the prevalence of labour exploitation and to construct a quantitative, composite index of labour exploitation risk. 
 
+  
 bibliography: 
   - references.bib
   - MyLibrary2025-08-25.bib
@@ -1459,7 +1480,7 @@ Both approaches identify similar patterns of exploitation prevalence, with exces
 | Filipino       | xx.x             | (x–x)  | xx.x              | (x–x)  |
 | British        | xx.x             | (x–x)  | xx.x              | (x–x)  |
 
-```{r}
+```{r eval=FALSE}
 #| label: tbl-subgroup-prevalence
 #| tbl-cap: "Prevalence of labour exploitation among domestic workers by nationality subgroup"
 #| echo: false
@@ -1611,7 +1632,9 @@ Network scale up methods, and potential enhancements such as Generalised network
 
 Population Parameters
 
-Use \~980,000 as UK domestic worker population estimate (EU data) Use 44,360 as NRM adult referrals baseline Address treatment of "don't know" responses and zero network size claims Consider separate analysis for Filipino subgroup
+Use \~980,000 as UK domestic worker population estimate (EU data)
+
+Use 44,360 as NRM adult referrals baseline Address treatment of "don't know" responses and zero network size claims Consider separate analysis for Filipino subgroup
 
 ### The Survey
 
@@ -1634,7 +1657,7 @@ Risk Index Implementation
 
 ### Data Processing {#app-dataprep}
 
-the process of coding variables to make them comparable across the Respondent-Driven Sampling (RDS) and Network Scale-Up Method (NSUM) estimations is a multi-step procedure that moves from conceptual mapping to specific data transformations.
+The process of coding variables to make them comparable across the Respondent-Driven Sampling (RDS) and Network Scale-Up Method (NSUM) estimations is a multi-step procedure that moves from conceptual mapping to specific data transformations.
 The core challenge is bridging the "egocentric" questions (about the respondent's own experiences, used for RDS) with the network-based questions (about how many others the respondent knows with certain experiences, used for NSUM).
 Yes, the sources provide extensive detail on the coding of variables to make them comparable for RDS and NSUM estimation.
 The fundamental challenge is to create a fair comparison between the "egocentric" RDS questions (about personal experience) and the broader "how many do you know" NSUM questions.
@@ -1649,20 +1672,13 @@ The confidence is lower because the NSUM question (Q64) also asks about annual l
 • Access to Help (Least Confident): Matching whether the respondent personally knows where to go for help (Q78) with knowing others who do not (Q79).
 Coding and Transformation Process The conceptual mapping was then put into practice through a detailed coding process, which is explicitly documented in the project's R script.
 The primary goal was to convert all variables into a binary (0/1) format, representing "No" or "Yes" to experiencing or knowing someone who experienced the issue.
-Key Coding Steps: 1.
-Handling Ambiguous Answers: For most RDS questions, responses like "I don’t know" or "Prefer not to say" were recoded as NA (missing) to exclude them from the binary analysis.
-2.
-Converting Categorical RDS Variables to Binary: Questions with multiple response options (e.g., "Always," "Often," "Sometimes," "Never") were recoded into a 0/1 format.
-For instance, for Q70 (document withholding), the answers "Always," "Often," and "Sometimes" were all coded as 1 (indicating the presence of the issue), while "Never" was coded as 0.
-3.
-Aggregating Multiple RDS Questions: For themes covered by multiple egocentric questions (like "Threats/Abuse"), each individual question was first recoded into a binary 0/1 variable.
-These binary variables were then combined using a logical OR (\|).
-This means if a respondent answered "Yes" to any of the grouped questions (e.g., experiencing threats OR intimidation OR verbal abuse), the final composite RDS variable would be coded as 1.
-This aggregation was necessary to match the broader scope of the single corresponding NSUM question.
-4.
-Converting NSUM Count Variables to Binary: The NSUM questions, which asked for a numerical count (e.g., "how many do you know?"), were also converted to binary.
-If a respondent knew one or more people (\> 0), their answer was coded as 1; if they knew zero, it remained 0.
-Through this systematic process of recoding, handling missing data, and aggregating variables, the team created a set of parallel binary indicators suitable for a direct comparison between the RDS and NSUM estimation frameworks.
+
+Key Coding Steps:
+
+1.  Handling Ambiguous Answers: For most RDS questions, responses like "I don’t know" or "Prefer not to say" were recoded as NA (missing) to exclude them from the binary analysis.
+2.  Converting Categorical RDS Variables to Binary: Questions with multiple response options (e.g., "Always," "Often," "Sometimes," "Never") were recoded into a 0/1 format. For instance, for Q70 (document withholding), the answers "Always," "Often," and "Sometimes" were all coded as 1 (indicating the presence of the issue), while "Never" was coded as 0.
+3.  Aggregating Multiple RDS Questions: For themes covered by multiple egocentric questions (like "Threats/Abuse"), each individual question was first recoded into a binary 0/1 variable. These binary variables were then combined using a logical OR (\|). This means if a respondent answered "Yes" to any of the grouped questions (e.g., experiencing threats OR intimidation OR verbal abuse), the final composite RDS variable would be coded as 1. This aggregation was necessary to match the broader scope of the single corresponding NSUM question.
+4.  Converting NSUM Count Variables to Binary: The NSUM questions, which asked for a numerical count (e.g., "how many do you know?"), were also converted to binary. If a respondent knew one or more people (\> 0), their answer was coded as 1; if they knew zero, it remained 0. Through this systematic process of recoding, handling missing data, and aggregating variables, the team created a set of parallel binary indicators suitable for a direct comparison between the RDS and NSUM estimation frameworks.
 
 ## Appendix B {#app-b}
 
@@ -1964,10 +1980,11 @@ if (file.exists(rds_file)) {
 ### Introduction
 
 When estimating the size or characteristics of a hidden population using the Network Scale-Up Method (NSUM), researchers typically assume a probability sample from the frame population.
-However, in many applied settings—including hard-to-reach populations—data are collected via **Respondent-Driven Sampling (RDS)**.
+However, in many applied settings—including hard-to-reach populations—data are collected via\*Respondent-Driven Sampling (RDS).
 RDS introduces specific structural dependencies and inclusion probabilities that violate the assumptions of simple random sampling.
 
-This presents a challenge: **how can we correctly estimate uncertainty for NSUM estimates derived from an RDS sample?** As shown in @feeh16-generali and @salg06-variance, the NSUM estimator depends crucially on inclusion weights $\pi_i$, which must reflect the sampling design.
+This presents a challenge: how can we correctly estimate uncertainty for NSUM estimates derived from an RDS sample?
+As shown in @feeh16-generalized and @salg06-variance, the NSUM estimator depends crucially on inclusion weights $\pi_i$, which must reflect the sampling design.
 When data are RDS-based, these weights are typically derived from known degree-based estimators such as RDS-II or Gile’s Successive Sampling (SS) weights.
 
 To address this challenge, we propose a **three-step bootstrap procedure** for NSUM estimation using RDS data.
@@ -1992,6 +2009,7 @@ Let $d_i$ denote self-reported degree for respondent $i$, and let the recruitmen
 -   **Tree Bootstrap**: Sample entire recruitment trees (originating from seeds) with replacement. This respects the hierarchical recruitment structure and allows design effect estimation [@salg06-variance].
 -   **Successive Sampling Bootstrap (SSB)**: Sample with replacement according to inclusion probabilities derived from the SS model (@gile11-improv).
 -   **Neighborhood Bootstrap**: Use ego-network topology to preserve recruitment ties and neighborhood structure (@yauc22-neighboor).
+-   **Chain Bootstrap:** Each bootstrap replicate samples chains or subchains with replacement, preserving recruiter–recruitee links. This is implemented in `surveybootstrap::rds.boot.draw.chain()` and used in studies like @weir12-comparison.
 
 Let $\mathcal{S}^{(b)}$ denote the sample drawn in bootstrap replicate $b$.
 
@@ -2020,148 +2038,6 @@ Let $\mathbf{X}_i$ denote covariates (e.g. traits, degree, indicator of hidden p
 ------------------------------------------------------------------------
 
 ### Step 3: NSUM Estimation
-
-This step applies an NSUM estimator to the bootstrap sample $\mathcal{S}^{(b)}$ using the recalculated weights $w_i^{(b)}$ and responses $y_{i,H}$, where $y_{i,H}$ is the number of known contacts respondent $i$ has in hidden population $H$.
-
-Let $N_F$ denote the frame population size (assumed known), and let $d_i$ be the degree of respondent $i$.
-
-#### Generalized NSUM Estimator (GNSUM)
-
-The weighted GNSUM estimator is:
-
-$$
-\hat{N}_H^{(b)} = \frac{\sum_{i \in \mathcal{S}^{(b)}} \frac{y_{i,H}}{\pi_i^{(b)}}}{\sum_{i \in \mathcal{S}^{(b)}} \frac{d_i}{\pi_i^{(b)}}} \cdot N_F
-$$
-
-This estimator assumes proportional mixing and equal visibility.
-
-------------------------------------------------------------------------
-
-#### Symmetric Visibility Variant
-
-In our setting, some RDS respondents can be identified *ex post* as members of the hidden population $H$.
-Denote this set $\mathcal{H} \subseteq \mathcal{S}$.
-Under the assumption of **symmetric visibility**, we define:
-
-$$
-\hat{v}_{H} = \frac{1}{|\mathcal{H}|} \sum_{j \in \mathcal{H}} \frac{y_{j,F}}{d_j}
-$$
-
-That is, the average proportion of alters known by members of $H$ who are in the frame population $F$.
-Incorporating this, the symmetric visibility GNSUM becomes:
-
-------------------------------------------------------------------------
-
-### Version 2
-
-# Bootstrap-Based Uncertainty Estimation for NSUM with RDS Samples
-
-## 1. Introduction
-
-The **Network Scale-Up Method (NSUM)** is a powerful tool for estimating the size of hidden populations.
-By asking respondents about the number of people they know who belong to a hidden group, and calibrating by their social network size, we can estimate the total size of that group within a known frame population.
-
-However, NSUM typically assumes a **simple random sample** of the frame population.
-In practice, researchers often rely on **Respondent-Driven Sampling (RDS)** to access hard-to-reach populations.
-RDS is a non-probability sampling method based on peer referral chains, and it introduces significant complexity due to:
-
--   Unknown inclusion probabilities,
-
--   Dependencies in the recruitment process,
-
--   Homophily on hidden traits,
-
--   Non-uniform degree distributions.
-
-To adapt NSUM for use with RDS data, we must **adjust for the non-uniform sampling process**.
-This requires estimating each respondent’s **inclusion probability** $\pi_i$, as outlined in @feeh16-generaling and earlier in @salf06-variance.
-Moreover, because these inclusion probabilities vary across bootstrap samples, we must **recompute weights** for each resample.
-
-We propose a three-step bootstrap method for estimating uncertainty in NSUM from RDS samples:
-
-Step 1: Resampling the RDS Sample Step 2: Recalculate Inclusion Probabilities Step 3: NSUM Estimation on Resampled and Reweighted Data
-
-This approach is modular, flexible, and compatible with multiple estimators.
-At each step, the researcher has multiple decisions to make (e.g. *how* to resample, which RDS weights to use, which version of NSUM estimator to use).
-
-------------------------------------------------------------------------
-
-## 2. The Three-Step Bootstrap Procedure
-
-#### Step 1: Resampling the RDS Sample
-
-RDS is network-dependent and violates IID assumptions.
-Therefore, resampling must preserve recruitment structure, seed variation, and referral chains.
-
-We consider four strategies:
-
-1.  **Tree Bootstrap**\
-    Entire recruitment trees rooted in seeds are resampled with replacement.
-    Each tree $T_j$ consists of all respondents traced to seed $j$.
-    This preserves hierarchical dependencies and captures between-tree heterogeneity (@salg06-variance).
-
-2.  **Successive Sampling Bootstrap**\
-    Mimics the RDS process as a form of successive sampling from a finite population.
-    Each respondent is selected without replacement, with probabilities proportional to degree $d_i$.
-    Requires an assumed frame population size $N$.
-    Implemented in `RDS::gile.ss.weights()` (@gile11-inference).
-
-3.  **Neighborhood Bootstrap**\
-    Introduced by @yauc22-neighboot, this method resamples by selecting respondents and replacing them with their **neighbors** in the recruitment graph.
-    This maintains local network dependencies and simulates resampling from the underlying contact network.
-
-4.  **Chain Bootstrap**\
-    Each bootstrap replicate samples chains or subchains with replacement, preserving recruiter–recruitee links.
-    This is implemented in `surveybootstrap::rds.boot.draw.chain()` and used in studies like @weir12-comparison.
-
-Each resample produces a new dataset $\mathcal{S}^{(b)}$, which is passed to Step 2.
-
-------------------------------------------------------------------------
-
-#### Step 2: Recalculate Inclusion Probabilities
-
-RDS produces samples with **unknown and unequal probabilities of inclusion**, which must be corrected when used in NSUM estimation.
-This is achieved by estimating the probability $\pi_i^{(b)}$ that each individual $i$ in bootstrap replicate $b$ is included in the sample, conditional on their degree and position in the recruitment tree.
-
-These probabilities are used to generate **sampling weights** $w_i^{(b)} = 1/\pi_i^{(b)}$, which are passed into NSUM estimators.
-
-##### Estimation Methods
-
-**(a) RDS-II (Volz-Heckathorn) Weights**\
-Assumes the probability of selection is proportional to the respondent's degree:
-
-$$\pi_i \propto d_i \quad \Rightarrow \quad w_i = \frac{1}{d_i}$$
-
-These weights are normalized post hoc.
-This method is simple but does not account for homophily or finite population correction (@volz08-rds).
-
-**(b) Gile’s Successive Sampling (SS) Weights**\
-This method assumes RDS approximates successive sampling without replacement.
-The inclusion probabilities are computed by simulating from a known or assumed population size $N$.
-This method is implemented in `RDS::gile.ss.weights()` and adjusts for:
-
--   Finite population effects,
-
--   Degree-based sampling,
-
--   Sample depletion over waves.
-
-**(c) User-Defined or Model-Based Weights**\
-Researchers may define weights using alternative models or Bayesian simulations.
-This includes post-stratification or fitting full generative models of the RDS process.
-
-##### Software Example (R)
-
-``` r
-library(RDS)
-rd <- as.rds.data.frame(boot_sample, id = "id", recruiter.id = "recruiter.id")
-boot_sample$ss_weight <- gile.ss.weights(rd, N = 980000)
-boot_sample$vh_weight <- rds.weights(rd, weight.type = "RDS-II")
-```
-
-The output is a new dataset with respondent traits, degrees, and updated $\pi_i^{(b)}$, which are used in Step 3.
-
-------------------------------------------------------------------------
 
 #### Step 3: NSUM Estimation on Resampled and Reweighted Data
 
@@ -2234,15 +2110,38 @@ Bayesian implementations (e.g. @malt15-estimating) model:
 
 They yield a **posterior distribution** over $N_H$, and uncertainty is embedded within the model.
 
-Software:
+------------------------------------------------------------------------
 
--   `NSUMBayes` (in `R`)
+This step applies an NSUM estimator to the bootstrap sample $\mathcal{S}^{(b)}$ using the recalculated weights $w_i^{(b)}$ and responses $y_{i,H}$, where $y_{i,H}$ is the number of known contacts respondent $i$ has in hidden population $H$.
 
--   Custom MCMC in `stan` or `JAGS`
+Let $N_F$ denote the frame population size (assumed known), and let $d_i$ be the degree of respondent $i$.
+
+#### Generalized NSUM Estimator (GNSUM)
+
+The weighted GNSUM estimator is:
+
+$$
+\hat{N}_H^{(b)} = \frac{\sum_{i \in \mathcal{S}^{(b)}} \frac{y_{i,H}}{\pi_i^{(b)}}}{\sum_{i \in \mathcal{S}^{(b)}} \frac{d_i}{\pi_i^{(b)}}} \cdot N_F
+$$
+
+This estimator assumes proportional mixing and equal visibility.
 
 ------------------------------------------------------------------------
 
-#### 4. Aggregating Bootstrap Estimates
+#### Symmetric Visibility Variant
+
+In our setting, some RDS respondents can be identified *ex post* as members of the hidden population $H$.
+Denote this set $\mathcal{H} \subseteq \mathcal{S}$.
+Under the assumption of **symmetric visibility**, we define:
+
+$$
+\hat{v}_{H} = \frac{1}{|\mathcal{H}|} \sum_{j \in \mathcal{H}} \frac{y_{j,F}}{d_j}
+$$
+
+That is, the average proportion of alters known by members of $H$ who are in the frame population $F$.
+Incorporating this, the symmetric visibility GNSUM becomes:
+
+#### Step 4: Aggregating Bootstrap Estimates
 
 After $B$ replicates:
 
@@ -2255,6 +2154,55 @@ We compute:
 -   **Standard error**: sample SD
 
 -   **95% CI**: empirical percentiles (e.g., 2.5%, 97.5%)
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+#### Step 2: Recalculate Inclusion Probabilities
+
+RDS produces samples with **unknown and unequal probabilities of inclusion**, which must be corrected when used in NSUM estimation.
+This is achieved by estimating the probability $\pi_i^{(b)}$ that each individual $i$ in bootstrap replicate $b$ is included in the sample, conditional on their degree and position in the recruitment tree.
+
+These probabilities are used to generate **sampling weights** $w_i^{(b)} = 1/\pi_i^{(b)}$, which are passed into NSUM estimators.
+
+##### Estimation Methods
+
+**(a) RDS-II (Volz-Heckathorn) Weights**\
+Assumes the probability of selection is proportional to the respondent's degree:
+
+$$\pi_i \propto d_i \quad \Rightarrow \quad w_i = \frac{1}{d_i}$$
+
+These weights are normalized post hoc.
+This method is simple but does not account for homophily or finite population correction (@volz08-rds).
+
+**(b) Gile’s Successive Sampling (SS) Weights**\
+This method assumes RDS approximates successive sampling without replacement.
+The inclusion probabilities are computed by simulating from a known or assumed population size $N$.
+This method is implemented in `RDS::gile.ss.weights()` and adjusts for:
+
+-   Finite population effects,
+
+-   Degree-based sampling,
+
+-   Sample depletion over waves.
+
+**(c) User-Defined or Model-Based Weights**\
+Researchers may define weights using alternative models or Bayesian simulations.
+This includes post-stratification or fitting full generative models of the RDS process.
+
+##### Software Example (R)
+
+``` r
+library(RDS)
+rd <- as.rds.data.frame(boot_sample, id = "id", recruiter.id = "recruiter.id")
+boot_sample$ss_weight <- gile.ss.weights(rd, N = 980000)
+boot_sample$vh_weight <- rds.weights(rd, weight.type = "RDS-II")
+```
+
+The output is a new dataset with respondent traits, degrees, and updated $\pi_i^{(b)}$, which are used in Step 3.
+
+------------------------------------------------------------------------
 
 ------------------------------------------------------------------------
 

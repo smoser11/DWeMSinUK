@@ -400,7 +400,7 @@ baseline_pop <- netclust_config$baseline_population
 
 for (indicator in netclust_config$indicators) {
 
-  cat("\n" <- "Processing", indicator, "---\n")
+  cat("\n--- Processing", indicator, "---\n")
 
   # Run netclust analysis
   netclust_result <- estimate_netclust_indicator_fixed(clean_data, indicator, baseline_pop)
@@ -505,3 +505,8 @@ if (nrow(successful_results) > 0) {
 }
 
 cat("\n✓ Fixed Clustered SS-PSE analysis completed!\n")
+
+
+
+
+####################################################################

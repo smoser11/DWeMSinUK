@@ -1,0 +1,18 @@
+---
+title: "Quantifying Hidden Exploitation"
+author: "Caroline Emberson and Scott Moser"
+date: 2025-09-30
+format:
+  pdf:
+    fig-width: 6
+    fig-height: 4
+    fig-align: center
+  html:
+    self-contained: true
+  docx:
+    prefer-html: true
+execute:
+  echo: false
+  warning: false
+  message: false
+---

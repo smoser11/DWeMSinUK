@@ -1,0 +1,18 @@
+Package: netclust
+Type: Package
+Title: Estimate the Size of Clustered Hidden Populations Using Respondent-
+       Driven Sampling Data: an Extension of SS-PSE
+Version: 0.1.0
+Author: Laura J. Gamble and Katherine R. McLaughlin
+Maintainer: Laura J. Gamble <gamblel@oregonstate.edu>
+Date: March 1st, 2021
+Description: Extends SS-PSE methods created by Handcock, Gile, and
+    Mar (2014) and implemented in the sspse package by Handcock and
+    Gile (2014). This package allows for population size estimation
+    of a clustered or disconnected networked population using 
+    respondent-driven sampling data collected from each cluster.
+License: What license is it under?
+Imports: RDS, scam, coda, ggplot2, gridExtra, network, Matrix, statnet, RDStreeboot, resample, sspse
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
