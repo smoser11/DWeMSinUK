@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.3)  30 SEP 2025 18:17
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.3)  1 OCT 2025 20:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2378,343 +2378,52 @@ aphic file (type pdf)
 
 [19]
 
-LaTeX Warning: Reference `fig-method-comparison' on page 20 undefined on input 
-line 1287.
-
-
-
 [20]
-File: ../output/figures/method_comparison.png Graphic file (type bmp)
-<../output/figures/method_comparison.png>
+
+LaTeX Warning: Citation 'gamb23-estimating' on page 21 undefined on input line 
+1338.
+
+
+LaTeX Warning: Citation '' on page 21 undefined on input line 1338.
+
+
+LaTeX Warning: Citation 'netclust21-ljgamble' on page 21 undefined on input lin
+e 1340.
+
+
+LaTeX Warning: Citation '' on page 21 undefined on input line 1340.
+
+Missing character: There is no π (U+03C0) in font [lmroman12-regular]:mapping=t
+ex-text;!
+
+Underfull \hbox (badness 2020) in paragraph at lines 1338--1344
+[]\TU/lmr/m/n/12 The [][] approach addresses clustering through
+ []
+
+
+Overfull \hbox (52.04375pt too wide) in paragraph at lines 1338--1344
+\TU/lmr/m/n/12 e.g. Clustered SS-PSE Method (implemented in \TU/lmtt/m/n/12 net
+clust [][]\TU/lmr/m/n/12 ):
+ []
+
 
 
 [21]
-
-LaTeX Warning: Reference `fig-forest-plot' on page 22 undefined on input line 1
-352.
-
-
-
-[22]
-File: ../output/figures/parameter_comparison.png Graphic file (type bmp)
-<../output/figures/parameter_comparison.png>
-File: ../output/figures/model_comparison_forest_plot.png Graphic file (type bmp
-)
-<../output/figures/model_comparison_forest_plot.png>
-
-
-[23]
-
-LaTeX Warning: Citation 'gower_calls_2016' on page 24 undefined on input line 1
-417.
-
-
-LaTeX Warning: Citation '' on page 24 undefined on input line 1417.
-
-
-LaTeX Warning: Citation 'ILO11-indicators' on page 24 undefined on input line 1
-419.
-
-
-LaTeX Warning: Citation '' on page 24 undefined on input line 1419.
-
-
-
-[24]
-
-LaTeX Warning: Reference `fig-parameter-comparison' on page 25 undefined on inp
-ut line 1469.
-
-
-
-[25]
-
-[26]
-
-[27]
-
-LaTeX Warning: Empty bibliography on input line 1539.
-
-
-
-[28]
-
-[29]
-
-[30]
-File: IJOPM_paperDraft_202050930_files/figure-pdf/fig-demographics-1.pdf Graphi
-c file (type pdf)
-<use IJOPM_paperDraft_202050930_files/figure-pdf/fig-demographics-1.pdf>
-
-Overfull \hbox (500.50496pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <div id="dtdhhlplrj" style="padding-left:0px;padding-right:0p
-x;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:au
-to;height:auto;">[] 
- []
-
-
-Overfull \hbox (475.78464pt too wide) in paragraph at lines 2236--2236
-[]  \TU/lmtt/m/n/12 font-family: system-ui, []Segoe UI[], Roboto, Helvetica, Ar
-ial, sans-serif, []Apple Color Emoji[], []Segoe UI Emoji[], []Segoe UI Symbol[]
-, []Noto Color Emoji[];[] 
- []
-
-
-Overfull \hbox (179.1449pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 #dtdhhlplrj thead, #dtdhhlplrj tbody, #dtdhhlplrj tfoot, #dtd
-hhlplrj tr, #dtdhhlplrj td, #dtdhhlplrj th {[] 
- []
-
-
-Overfull \hbox (222.4049pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 #dtdhhlplrj div.Reactable > div.rt-table > div.rt-thead > div
-.rt-tr.rt-tr-group-header > div.rt-th-group:after {[] 
- []
-
-
-Overfull \hbox (117.34494pt too wide) in paragraph at lines 2236--2236
-[]  \TU/lmtt/m/n/12 <table class="gt_table" data-quarto-disable-processing="fal
-se" data-quarto-bootstrap="false">[] 
- []
-
-
-Overfull \hbox (488.13284pt too wide) in paragraph at lines 2236--2236
-[]      \TU/lmtt/m/n/12 <td colspan="6" class="gt_heading gt_title gt_font_norm
-al gt_bottom_border" style>Model-Assisted Estimates by Population Size and Seed
- Selection</td>[] 
- []
-
-
-Overfull \hbox (383.08492pt too wide) in paragraph at lines 2236--2236
-[]      \TU/lmtt/m/n/12 <th class="gt_col_heading gt_columns_bottom_border gt_l
-eft" rowspan="2" colspan="1" scope="col" id="seed_method">Seed Selection</th>[]
- 
- []
-
-
-Overfull \hbox (389.26492pt too wide) in paragraph at lines 2236--2236
-[]      \TU/lmtt/m/n/12 <th class="gt_col_heading gt_columns_bottom_border gt_r
-ight" rowspan="2" colspan="1" scope="col" id="pop_size_f">Population Size</th>[
-] 
- []
-
-
-Overfull \hbox (457.23291pt too wide) in paragraph at lines 2236--2236
-[]      \TU/lmtt/m/n/12 <th class="gt_center gt_columns_top_border gt_column_sp
-anner_outer" rowspan="1" colspan="4" scope="colgroup" id="Prevalence Estimates 
-(95% CI)">[] 
- []
-
-
-Overfull \hbox (481.96492pt too wide) in paragraph at lines 2236--2236
-[]      \TU/lmtt/m/n/12 <th class="gt_col_heading gt_columns_bottom_border gt_r
-ight" rowspan="1" colspan="1" scope="col" id="Document-Withholding">Document Wi
-thholding</th>[] 
- []
-
-
-Overfull \hbox (358.36491pt too wide) in paragraph at lines 2236--2236
-[]      \TU/lmtt/m/n/12 <th class="gt_col_heading gt_columns_bottom_border gt_r
-ight" rowspan="1" colspan="1" scope="col" id="Pay-Issues">Pay Issues</th>[] 
- []
-
-
-Overfull \hbox (420.1649pt too wide) in paragraph at lines 2236--2236
-[]      \TU/lmtt/m/n/12 <th class="gt_col_heading gt_columns_bottom_border gt_r
-ight" rowspan="1" colspan="1" scope="col" id="Excessive-Hours">Excessive Hours<
-/th>[] 
- []
-
-
-Overfull \hbox (395.44493pt too wide) in paragraph at lines 2236--2236
-[]      \TU/lmtt/m/n/12 <th class="gt_col_heading gt_columns_bottom_border gt_r
-ight" rowspan="1" colspan="1" scope="col" id="Threats/Abuse">Threats/Abuse</th>
-[] 
- []
-
-
-Overfull \hbox (49.35294pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Document Withholding" class="gt_row gt_right">34
-.1% (16.1%, 52.1%)</td>[] 
- []
-
-
-Overfull \hbox (18.45294pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Excessive Hours" class="gt_row gt_right">84.0% (
-72.3%, 95.8%)</td>[] 
- []
-
-
-Overfull \hbox (36.96893pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Threats/Abuse" class="gt_row gt_right">57.1% (34
-.6%, 79.6%)</td></tr>[] 
- []
-
-
-Overfull \hbox (49.35294pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Document Withholding" class="gt_row gt_right">34
-.3% (16.4%, 52.2%)</td>[] 
- []
-
-
-Overfull \hbox (18.42894pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Excessive Hours" class="gt_row gt_right">83.7% (
-71.9%, 95.6%)</td>[] 
- []
-
-
-Overfull \hbox (36.99294pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Threats/Abuse" class="gt_row gt_right">57.3% (35
-.4%, 79.3%)</td></tr>[] 
- []
-
-
-Overfull \hbox (49.35294pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Document Withholding" class="gt_row gt_right">34
-.3% (16.0%, 52.7%)</td>[] 
- []
-
-
-Overfull \hbox (18.44093pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Excessive Hours" class="gt_row gt_right">83.8% (
-72.1%, 95.6%)</td>[] 
- []
-
-
-Overfull \hbox (36.99294pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Threats/Abuse" class="gt_row gt_right">57.0% (34
-.7%, 79.3%)</td></tr>[] 
- []
-
-
-Overfull \hbox (49.35294pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Document Withholding" class="gt_row gt_right">34
-.1% (16.1%, 52.1%)</td>[] 
- []
-
-
-Overfull \hbox (18.45294pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Excessive Hours" class="gt_row gt_right">84.0% (
-72.3%, 95.8%)</td>[] 
- []
-
-
-Overfull \hbox (36.96893pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Threats/Abuse" class="gt_row gt_right">57.1% (34
-.6%, 79.6%)</td></tr>[] 
- []
-
-
-Overfull \hbox (49.35294pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Document Withholding" class="gt_row gt_right">34
-.3% (16.4%, 52.2%)</td>[] 
- []
-
-
-Overfull \hbox (18.42894pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Excessive Hours" class="gt_row gt_right">83.7% (
-71.9%, 95.6%)</td>[] 
- []
-
-
-Overfull \hbox (36.99294pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Threats/Abuse" class="gt_row gt_right">57.3% (35
-.4%, 79.3%)</td></tr>[] 
- []
-
-
-Overfull \hbox (49.35294pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Document Withholding" class="gt_row gt_right">34
-.3% (16.0%, 52.7%)</td>[] 
- []
-
-
-Overfull \hbox (18.44093pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Excessive Hours" class="gt_row gt_right">83.8% (
-72.1%, 95.6%)</td>[] 
- []
-
-
-Overfull \hbox (36.99294pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Threats/Abuse" class="gt_row gt_right">57.0% (34
-.7%, 79.3%)</td></tr>[] 
- []
-
-
-Overfull \hbox (49.35294pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Document Withholding" class="gt_row gt_right">34
-.1% (16.1%, 52.1%)</td>[] 
- []
-
-
-Overfull \hbox (18.45294pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Excessive Hours" class="gt_row gt_right">84.0% (
-72.3%, 95.8%)</td>[] 
- []
-
-
-Overfull \hbox (36.96893pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Threats/Abuse" class="gt_row gt_right">57.1% (34
-.6%, 79.6%)</td></tr>[] 
- []
-
-
-Overfull \hbox (49.35294pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Document Withholding" class="gt_row gt_right">34
-.3% (16.4%, 52.2%)</td>[] 
- []
-
-
-Overfull \hbox (18.42894pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Excessive Hours" class="gt_row gt_right">83.7% (
-71.9%, 95.6%)</td>[] 
- []
-
-
-Overfull \hbox (36.99294pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Threats/Abuse" class="gt_row gt_right">57.3% (35
-.4%, 79.3%)</td></tr>[] 
- []
-
-
-Overfull \hbox (49.35294pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Document Withholding" class="gt_row gt_right">34
-.3% (16.0%, 52.7%)</td>[] 
- []
-
-
-Overfull \hbox (18.44093pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Excessive Hours" class="gt_row gt_right">83.8% (
-72.1%, 95.6%)</td>[] 
- []
-
-
-Overfull \hbox (36.99294pt too wide) in paragraph at lines 2236--2236
-[]\TU/lmtt/m/n/12 <td headers="Threats/Abuse" class="gt_row gt_right">57.0% (34
-.7%, 79.3%)</td></tr>[] 
- []
-
-
-LaTeX Warning: Float too large for page by 7079.04196pt on input line 2240.
-
-! Undefined control sequence.
-\@sharp ...ustered Sequential Sampling\Population 
-                                                  Size Estimation (Clustered...
-l.2275 ...ed) and network structure in RDS data.}}
-                                                  \\
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+! Misplaced \noalign.
+\addlinespace ->\noalign 
+                         {\ifnum 0=`}\fi \@ifnextchar [{\@addspace }{\@addsp...
+l.1377 \addlinespace
+                    [0.3em]
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
 
  
 Here is how much of TeX's memory you used:
- 35404 strings out of 473832
- 680542 string characters out of 5729482
- 1982224 words of memory out of 5000000
- 57990 multiletter control sequences out of 15000+600000
+ 35331 strings out of 473832
+ 678269 string characters out of 5729482
+ 1943222 words of memory out of 5000000
+ 57923 multiletter control sequences out of 15000+600000
  571302 words of font info for 127 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  108i,11n,114p,10940b,5050s stack positions out of 10000i,1000n,20000p,200000b,200000s
-Output written on IJOPM_paperDraft_202050930.pdf (30 pages).
+Output written on IJOPM_paperDraft_202050930.pdf (21 pages).

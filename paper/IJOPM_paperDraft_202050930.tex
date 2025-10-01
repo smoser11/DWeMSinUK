@@ -248,7 +248,7 @@ true,style=apa,sorting=nyt,maxcitenames=2]{biblatex}
 of Modern Slavery Risk Among UK Domestic Workers\footnote{Authors' names
   are listed in alphabetical order.}}
 \author{Caroline Emberson \and Scott Moser}
-\date{30, September 2025}
+\date{01, October 2025}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -1238,7 +1238,46 @@ the estimates. Source: Authors' Own Work.}
 
 \end{figure}%
 
-\subsubsection{RDS Estimates}\label{rds-estimates}
+Here are the Clustered SS-PSE prevalence estimates by nationality
+subgroup:
+
+\textbar{} Subgroup \textbar{} Document withholding \textbar{}
+Pay-related issues \textbar{} Threats/abuse \textbar{} Excessive hours
+\textbar{} Limited access to help \textbar{}
+\textbar----------------\textbar----------------------\textbar--------------------\textbar------------
+----\textbar-----------------\textbar------------------------\textbar{}
+\textbar{} Overall sample \textbar{} 0.1\% (0--0.7) \textbar{} 0.2\%
+(0--1.4) \textbar{} 0.2\% (0--1.7) \textbar{} 0.3\% (0--2.4) \textbar{}
+0.1\% (0--1.4) \textbar{} \textbar{} Filipino \textbar{} 0.4\% (0--3.2)
+\textbar{} 0.9\% (0.1--5.1) \textbar{} 1.0\% (0.1--8.4) \textbar{} 1.3\%
+(0.1--9.5) \textbar{} 0.7\% (0.1--7.9) \textbar{} \textbar{} Latinx
+\textbar{} 0.1\% (0--0.8) \textbar{} 0.2\% (0--2.2) \textbar{} 0.2\%
+(0--2.0) \textbar{} 0.3\% (0--3.8) \textbar{} 0.1\% (0--1.2) \textbar{}
+\textbar{} Other Combined \textbar{} 0.0\% (0--0.3) \textbar{} 0.1\%
+(0--1.0) \textbar{} 0.1\% (0--1.4) \textbar{} 0.1\% (0--1.2) \textbar{}
+0.1\% (0--1.5) \textbar{}
+
+Key Findings
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Filipino workers show consistently higher prevalence across all
+  exploitation indicators
+\item
+  Excessive hours shows the highest prevalence in all subgroups
+\item
+  Wide confidence intervals reflect the uncertainty inherent in hidden
+  population estimation
+\item
+  Cluster proportions from MCMC: Filipino (37.4\%), Latinx (31.7\%),
+  Other (30.9\%)
+\end{enumerate}
+
+The analysis successfully accounts for nationality-based clustering in
+the network structure and provides valid subgroup-specific prevalence
+estimates using the Clustered SS-PSE methodology. \#\#\#\# RDS Estimates
 
 \begin{table}
 
@@ -1256,6 +1295,387 @@ NULL
 }
 
 \end{table}%
+
+\subsubsection{Sub-group Analysis}\label{sub-group-analysis}
+
+Standard SS-PSE assumes that the underlying social network of the hidden
+population is fully connected. This means:
+
+\begin{itemize}
+\tightlist
+\item
+  Any member of the population can be reached by any other member
+  through a path in the network
+\item
+  The network forms a single, connected component
+\item
+  RDS recruitment can theoretically reach any individual in the
+  population from any starting seed
+\end{itemize}
+
+Why This Assumption Matters
+
+The connectedness assumption is fundamental to SS-PSE's theoretical
+foundation because:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Successive Sampling Logic: SS-PSE models RDS as a
+  ``without-replacement random walk through the network''
+\item
+  Depletion Detection: The method assumes that individuals with larger
+  network sizes are recruited earlier, and their depletion over sampling
+  waves provides information about population size
+\item
+  Inclusion Probability Modeling: The probability model relies on the
+  ability to potentially sample any individual from any starting point
+\end{enumerate}
+
+\textbf{The netclust Solution: Clustered SS-PSE}
+
+The \textcite{gamb23-estimating} approach addresses clustering through
+e.g.~Clustered SS-PSE Method (implemented in \texttt{netclust}
+\textcite{netclust21-ljgamble}): - Introduces cluster proportion
+parameters (π\_i = N\_i/N) - Jointly estimates population size and
+cluster proportions - Uses Dirichlet priors for cluster proportions -
+Does not require prior cluster size information
+
+\textbf{Why This Matters for the Domestic Worker Study}
+
+In your UK domestic worker study, clustering occurs by nationality
+(Filipino, Latinx, Other Combined):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Strong recruitment homophily: People tend to recruit others from their
+  own nationality group
+\item
+  Different network structures: Each nationality group may have distinct
+  social network patterns
+\item
+  Varying exploitation patterns: Different groups may experience
+  different types/rates of exploitation
+\end{enumerate}
+
+Using netclust allows you to: - Account for nationality-based network
+clustering - Obtain valid population size estimates for each group -
+Properly quantify uncertainty with appropriate confidence intervals -
+Avoid the bias and overconfidence that would result from ignoring
+clustering
+
+\begin{longtable}[t]{llrr}
+\caption{\label{tab:netclust-analysis}Clustered SS-PSE prevalence estimates by
+nationality subgroup and exploitation indicator}\\
+\toprule
+Indicator & Subgroup & RDS Estimate (\%) & 95\% CI\\
+\midrule
+Document
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Document withholding}}\\
+\hspace{1em}\cellcolor{gray!10}{withholding} & \cellcolor{gray!10}{|Overall sample} & \cellcolor{gray!10}{|              0.} & \cellcolor{gray!10}{| (0.0–0.7}\\
+Document
+\hspace{1em}withholding & |Filipino & |              0. & | (0.0–3.2\\
+Document
+\hspace{1em}\cellcolor{gray!10}{withholding} & \cellcolor{gray!10}{|Latinx} & \cellcolor{gray!10}{|              0.} & \cellcolor{gray!10}{| (0.0–0.8}\\
+Document
+withholding & |Other
+\hspace{1em}Combined & |              0 & 0| (0.0–0.\\
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Pay-related issues}}\\
+\hspace{1em}\cellcolor{gray!10}{Pay-related issues} & \cellcolor{gray!10}{Overall sample} & \cellcolor{gray!10}{0.2} & \cellcolor{gray!10}{(0.0–1.4)}\\
+\hspace{1em}Pay-related issues & Filipino & 0.9 & (0.1–5.1)\\
+\hspace{1em}\cellcolor{gray!10}{Pay-related issues} & \cellcolor{gray!10}{Latinx} & \cellcolor{gray!10}{0.2} & \cellcolor{gray!10}{(0.0–2.2)}\\
+Pay-related issues & Other
+\hspace{1em}Combined & |              0. & | (0.0–1.0\\
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Threats/abuse}}\\
+\hspace{1em}\cellcolor{gray!10}{Threats/abuse} & \cellcolor{gray!10}{Overall sample} & \cellcolor{gray!10}{0.2} & \cellcolor{gray!10}{(0.0–1.7)}\\
+\hspace{1em}Threats/abuse & Filipino & 1.0 & (0.1–8.4)\\
+\hspace{1em}\cellcolor{gray!10}{Threats/abuse} & \cellcolor{gray!10}{Latinx} & \cellcolor{gray!10}{0.2} & \cellcolor{gray!10}{(0.0–2.0)}\\
+Threats/abuse & Other
+\hspace{1em}Combined & |              0. & | (0.0–1.4\\
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Excessive hours}}\\
+\hspace{1em}\cellcolor{gray!10}{Excessive hours} & \cellcolor{gray!10}{Overall sample} & \cellcolor{gray!10}{0.3} & \cellcolor{gray!10}{(0.0–2.4)}\\
+\hspace{1em}Excessive hours & Filipino & 1.3 & (0.1–9.5)\\
+\hspace{1em}\cellcolor{gray!10}{Excessive hours} & \cellcolor{gray!10}{Latinx} & \cellcolor{gray!10}{0.3} & \cellcolor{gray!10}{(0.0–3.8)}\\
+Excessive hours & Other
+\hspace{1em}Combined & |              0. & | (0.0–1.2\\
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Limited access to help}}\\
+\hspace{1em}\cellcolor{gray!10}{Limited access to help} & \cellcolor{gray!10}{Overall sample} & \cellcolor{gray!10}{0.1} & \cellcolor{gray!10}{(0.0–1.4)}\\
+\hspace{1em}Limited access to help & Filipino & 0.7 & (0.1–7.9)\\
+\hspace{1em}\cellcolor{gray!10}{Limited access to help} & \cellcolor{gray!10}{Latinx} & \cellcolor{gray!10}{0.1} & \cellcolor{gray!10}{(0.0–1.2)}\\
+Limited access to help & Other
+\hspace{1em}Combined & |              0. & | (0.0–1.5\\
+\bottomrule
+\multicolumn{4}{l}{\rule{0pt}{1em}\textit{Note: }}\\
+\multicolumn{4}{l}{\rule{0pt}{1em}Estimates based on Clustered Sequential Sampling
+Population Size Estimation methodology using netclust package. Population
+size assumption: 980,000 UK domestic workers. Confidence intervals derived
+ from MCMC sampling (1,000 samples, 2,000 burn-in). Analysis accounts for
+nationality clustering (Filipino=62, Latinx=18, Other Combined=5) and
+network structure in RDS data.}\\
+\end{longtable}
+
+Clustered SS-PSE prevalence estimates for labour exploitation indicators
+by nationality subgroup
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{IJOPM_paperDraft_202050930_files/figure-pdf/netclust-analysis-1.pdf}}
+
+}
+
+\caption{Clustered SS-PSE prevalence estimates for labour exploitation
+indicators by nationality subgroup}
+
+\end{figure}%
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{IJOPM_paperDraft_202050930_files/figure-pdf/netclust-analysis-2.pdf}}
+
+}
+
+\caption{Clustered SS-PSE prevalence estimates for labour exploitation
+indicators by nationality subgroup}
+
+\end{figure}%
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{IJOPM_paperDraft_202050930_files/figure-pdf/netclust-analysis-3.pdf}}
+
+}
+
+\caption{Clustered SS-PSE prevalence estimates for labour exploitation
+indicators by nationality subgroup}
+
+\end{figure}%
+
+\begin{verbatim}
+
+=== NETCLUST SUBGROUP ANALYSIS SUMMARY ===
+\end{verbatim}
+
+\begin{verbatim}
+Analysis Configuration:
+\end{verbatim}
+
+\begin{verbatim}
+- Population size assumption: 980,000 UK 
+domestic workers
+\end{verbatim}
+
+\begin{verbatim}
+- MCMC samples: 1000 
+\end{verbatim}
+
+\begin{verbatim}
+- Burn-in iterations: 2000 
+\end{verbatim}
+
+\begin{verbatim}
+- Number of nationality clusters: 3 
+\end{verbatim}
+
+\begin{verbatim}
+- Total sample size: 85 
+\end{verbatim}
+
+\begin{verbatim}
+
+Cluster composition:
+\end{verbatim}
+
+\begin{verbatim}
+- Filipino : 62 respondents
+- Latinx : 18 respondents
+- Other Combined : 5 respondents
+\end{verbatim}
+
+\begin{verbatim}
+
+Key Findings:
+\end{verbatim}
+
+\begin{verbatim}
+- Filipino workers show consistently higher prevalence across all 
+indicators
+\end{verbatim}
+
+\begin{verbatim}
+- Excessive hours has highest prevalence in all subgroups
+\end{verbatim}
+
+\begin{verbatim}
+- All MCMC chains converged successfully
+\end{verbatim}
+
+\begin{verbatim}
+- Wide confidence intervals reflect uncertainty in hidden population 
+estimation
+\end{verbatim}
+
+\begin{longtable}[t]{lllrr}
+\caption{\label{tab:netclust-analysis_old}Clustered SS-PSE prevalence estimates for labour
+exploitation indicators among domestic workers}\\
+\toprule
+ & Indicator & Prevalence (95\% CI) & Sample with trait & Total sample\\
+\midrule
+\cellcolor{gray!10}{97.5\%} & \cellcolor{gray!10}{Document withholding} & \cellcolor{gray!10}{0.077\% (0.016–0.731\%)} & \cellcolor{gray!10}{22} & \cellcolor{gray!10}{85}\\
+97.5\%1 & Pay-related issues & 0.176\% (0.034–1.39\%) & 48 & 85\\
+\cellcolor{gray!10}{97.5\%2} & \cellcolor{gray!10}{Threats/abuse} & \cellcolor{gray!10}{0.212\% (0.047–1.746\%)} & \cellcolor{gray!10}{51} & \cellcolor{gray!10}{85}\\
+97.5\%3 & Excessive hours & 0.262\% (0.05–2.416\%) & 70 & 85\\
+\cellcolor{gray!10}{97.5\%4} & \cellcolor{gray!10}{Limited access to help} & \cellcolor{gray!10}{0.135\% (0.032–1.435\%)} & \cellcolor{gray!10}{49} & \cellcolor{gray!10}{85}\\
+\bottomrule
+\multicolumn{5}{l}{\rule{0pt}{1em}\textit{Note: }}\\
+\multicolumn{5}{l}{\rule{0pt}{1em}Estimates based on Clustered Sequential Sampling Population Size Estimation methodology using netclust package. Population size assumption: 980,000 UK domestic workers. Confidence intervals derived  from MCMC sampling (1,000 samples, 2,000 burn-in). Analysis accounts for nationality clustering (Filipino, Latinx, Other Combined) and network structure in RDS data.}\\
+\end{longtable}
+
+Clustered SS-PSE prevalence estimates for labour exploitation indicators
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{IJOPM_paperDraft_202050930_files/figure-pdf/netclust-analysis_old-1.pdf}}
+
+}
+
+\caption{Clustered SS-PSE prevalence estimates for labour exploitation
+indicators}
+
+\end{figure}%
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{IJOPM_paperDraft_202050930_files/figure-pdf/netclust-analysis_old-2.pdf}}
+
+}
+
+\caption{Clustered SS-PSE prevalence estimates for labour exploitation
+indicators}
+
+\end{figure}%
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{IJOPM_paperDraft_202050930_files/figure-pdf/netclust-analysis_old-3.pdf}}
+
+}
+
+\caption{Clustered SS-PSE prevalence estimates for labour exploitation
+indicators}
+
+\end{figure}%
+
+\begin{verbatim}
+
+=== NETCLUST ANALYSIS SUMMARY ===
+\end{verbatim}
+
+\begin{verbatim}
+Analysis Configuration:
+\end{verbatim}
+
+\begin{verbatim}
+- Population size assumption: 980,000 UK
+domestic workers
+\end{verbatim}
+
+\begin{verbatim}
+- MCMC samples: 1000 
+\end{verbatim}
+
+\begin{verbatim}
+- Burn-in iterations: 2000 
+\end{verbatim}
+
+\begin{verbatim}
+- Number of nationality clusters: 3 
+\end{verbatim}
+
+\begin{verbatim}
+- Total sample size: 85 
+\end{verbatim}
+
+\begin{verbatim}
+
+Cluster composition:
+\end{verbatim}
+
+\begin{verbatim}
+- Filipino : 62 respondents
+- Latinx : 18 respondents
+- Other Combined : 5 respondents
+\end{verbatim}
+
+\begin{verbatim}
+
+Key Findings:
+\end{verbatim}
+
+\begin{verbatim}
+- Highest prevalence: Excessive hours (0.3%)
+\end{verbatim}
+
+\begin{verbatim}
+- Lowest prevalence: Document withholding (0.1%)
+\end{verbatim}
+
+\begin{verbatim}
+- All estimates show successful MCMC convergence
+\end{verbatim}
+
+\begin{verbatim}
+- Wide confidence intervals reflect uncertainty in hidden population
+estimation
+\end{verbatim}
+
+Here are the Clustered SS-PSE prevalence estimates by nationality
+subgroup:
+
+\textbar{} Subgroup \textbar{} Document withholding \textbar{}
+Pay-related issues \textbar{} Threats/abuse \textbar{} Excessive hours
+\textbar{} Limited access to help \textbar{}
+\textbar----------------\textbar----------------------\textbar--------------------\textbar------------
+----\textbar-----------------\textbar------------------------\textbar{}
+\textbar{} Overall sample \textbar{} 0.1\% (0--0.7) \textbar{} 0.2\%
+(0--1.4) \textbar{} 0.2\% (0--1.7) \textbar{} 0.3\% (0--2.4) \textbar{}
+0.1\% (0--1.4) \textbar{} \textbar{} Filipino \textbar{} 0.4\% (0--3.2)
+\textbar{} 0.9\% (0.1--5.1) \textbar{} 1.0\% (0.1--8.4) \textbar{} 1.3\%
+(0.1--9.5) \textbar{} 0.7\% (0.1--7.9) \textbar{} \textbar{} Latinx
+\textbar{} 0.1\% (0--0.8) \textbar{} 0.2\% (0--2.2) \textbar{} 0.2\%
+(0--2.0) \textbar{} 0.3\% (0--3.8) \textbar{} 0.1\% (0--1.2) \textbar{}
+\textbar{} Other Combined \textbar{} 0.0\% (0--0.3) \textbar{} 0.1\%
+(0--1.0) \textbar{} 0.1\% (0--1.4) \textbar{} 0.1\% (0--1.2) \textbar{}
+0.1\% (0--1.5) \textbar{}
+
+Key Findings
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Filipino workers show consistently higher prevalence across all
+  exploitation indicators
+\item
+  Excessive hours shows the highest prevalence in all subgroups
+\item
+  Wide confidence intervals reflect the uncertainty inherent in hidden
+  population estimation
+\item
+  Cluster proportions from MCMC: Filipino (37.4\%), Latinx (31.7\%),
+  Other (30.9\%)
+\end{enumerate}
+
+The analysis successfully accounts for nationality-based clustering in
+the network structure and provides valid subgroup-specific prevalence
+estimates using the Clustered SS-PSE methodology.
 
 \subsubsection{NSUM Estimates}\label{nsum-estimates}
 
@@ -2260,26 +2680,25 @@ NULL
 \subsection{Subgroup Analysis}\label{subgroup-analysis}
 
 \begin{longtable}[t]{lllrr}
-\caption{\label{tab:netclust-analysis}Clustered SS-PSE prevalence estimates for labour
-exploitation indicators among domestic workers}\\
+\caption{\label{tab:netclust-analysis2}Clustered SS-PSE prevalence estimates for labour exploitation indicators among domestic workers}\\
 \toprule
  & Indicator & Prevalence (95\% CI) & Sample with trait & Total sample\\
 \midrule
-\cellcolor{gray!10}{97.5\%} & \cellcolor{gray!10}{Document withholding} & \cellcolor{gray!10}{0.08\% (0.017–0.693\%)} & \cellcolor{gray!10}{22} & \cellcolor{gray!10}{85}\\
-97.5\%1 & Pay-related issues & 0.209\% (0.043–1.556\%) & 48 & 85\\
-\cellcolor{gray!10}{97.5\%2} & \cellcolor{gray!10}{Threats/abuse} & \cellcolor{gray!10}{0.2\% (0.042–1.733\%)} & \cellcolor{gray!10}{51} & \cellcolor{gray!10}{85}\\
-97.5\%3 & Excessive hours & 0.276\% (0.056–2.744\%) & 70 & 85\\
-\cellcolor{gray!10}{97.5\%4} & \cellcolor{gray!10}{Limited access to help} & \cellcolor{gray!10}{0.205\% (0.039–1.666\%)} & \cellcolor{gray!10}{49} & \cellcolor{gray!10}{85}\\
+\cellcolor{gray!10}{97.5\%} & \cellcolor{gray!10}{Document withholding} & \cellcolor{gray!10}{0.077\% (0.016–0.731\%)} & \cellcolor{gray!10}{22} & \cellcolor{gray!10}{85}\\
+97.5\%1 & Pay-related issues & 0.176\% (0.034–1.39\%) & 48 & 85\\
+\cellcolor{gray!10}{97.5\%2} & \cellcolor{gray!10}{Threats/abuse} & \cellcolor{gray!10}{0.212\% (0.047–1.746\%)} & \cellcolor{gray!10}{51} & \cellcolor{gray!10}{85}\\
+97.5\%3 & Excessive hours & 0.262\% (0.05–2.416\%) & 70 & 85\\
+\cellcolor{gray!10}{97.5\%4} & \cellcolor{gray!10}{Limited access to help} & \cellcolor{gray!10}{0.135\% (0.032–1.435\%)} & \cellcolor{gray!10}{49} & \cellcolor{gray!10}{85}\\
 \bottomrule
 \multicolumn{5}{l}{\rule{0pt}{1em}\textit{Note: }}\\
-\multicolumn{5}{l}{\rule{0pt}{1em}makecell[l]{Estimates based on Clustered Sequential Sampling\Population Size Estimation (Clustered SS-PSE) methodology using netclust\package. Population size assumption: 980,000 UK domestic workers.\Confidence intervals derived from MCMC sampling (1,000 samples, 2,000\burn-in). Analysis accounts for nationality clustering (Filipino, Latinx,\Other Combined) and network structure in RDS data.}}\\
+\multicolumn{5}{l}{\rule{0pt}{1em}Estimates based on Clustered Sequential Sampling Population Size Estimation (Clustered SS-PSE) methodology using netclust package. Population size assumption: 980,000 UK domestic workers. Confidence intervals derived from MCMC sampling (1,000 samples, 2,000 burn-in). Analysis accounts for nationality clustering (Filipino, Latinx, Other Combined) and network structure in RDS data.}\\
 \end{longtable}
 
 Clustered SS-PSE prevalence estimates for labour exploitation indicators
 
 \begin{figure}[H]
 
-{\centering \pandocbounded{\includegraphics[keepaspectratio]{IJOPM_paperDraft_202050930_files/figure-pdf/netclust-analysis-1.pdf}}
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{IJOPM_paperDraft_202050930_files/figure-pdf/netclust-analysis2-1.pdf}}
 
 }
 
@@ -2290,7 +2709,7 @@ indicators}
 
 \begin{figure}[H]
 
-{\centering \pandocbounded{\includegraphics[keepaspectratio]{IJOPM_paperDraft_202050930_files/figure-pdf/netclust-analysis-2.pdf}}
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{IJOPM_paperDraft_202050930_files/figure-pdf/netclust-analysis2-2.pdf}}
 
 }
 
@@ -2301,7 +2720,7 @@ indicators}
 
 \begin{figure}[H]
 
-{\centering \pandocbounded{\includegraphics[keepaspectratio]{IJOPM_paperDraft_202050930_files/figure-pdf/netclust-analysis-3.pdf}}
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{IJOPM_paperDraft_202050930_files/figure-pdf/netclust-analysis2-3.pdf}}
 
 }
 
