@@ -41,13 +41,15 @@ DWeMSinUK/
 
 ### Key Analysis Files
 - `R/00-main_pipeline.R` - Master script that runs the complete analysis pipeline
+- `R/config.R` - Centralized global configuration for all analyses
 - `R/data_processing/01-data_cleaning.R` - Raw data import, cleaning, and network size calculation
 - `R/data_processing/02-data_preparation.R` - CE's comparable indicators and RDS weight calculation
 - `R/analysis/03-rds_estimation.R` - RDS-I/II/SS estimation with configurable bootstrap confidence intervals
 - `R/analysis/04-bootstrap_analysis.R` - Standalone bootstrap analysis (can be integrated or separate)
 - `R/analysis/05-nsum_estimation.R` - Network scale-up method population estimates
-- `R/analysis/06-*.R` - Extended sensitivity analysis and method comparison scripts  
-- `R/analysis/07-*.R` - Convergence diagnostics and visualization utilities
+- `R/analysis/06-*.R` - Extended sensitivity analysis, Bayesian methods, and result comparisons
+- `R/analysis/07-*.R` - Convergence diagnostics and comprehensive visualization
+- `R/analysis/08-*.R` - Netclust clustered SS-PSE and nationality subgroup analyses
 - `R/utils/helper_functions.R` - Shared utility functions with proper path handling
 
 ### Data Processing Pipeline
@@ -98,11 +100,11 @@ save(processed_data, file = "data/processed/prepared_data.RData")
 
 ### Paper Generation
 ```r
-# Render Quarto manuscripts
-quarto::quarto_render("paper/IJOPM_paperDraft_202050817.qmd")
-quarto::quarto_render("paper/BJMMcorner-draft.qmd")
+# Render current Quarto manuscript (main paper)
+quarto::quarto_render("paper/IJOPM_paperDraft_202050930.qmd")
 
-# Render R Markdown
+# Alternative papers
+quarto::quarto_render("paper/BJMMcorner-draft.qmd")
 rmarkdown::render("paper/DWeMSinUK.Rmd")
 ```
 
@@ -155,8 +157,12 @@ All indicators are binary (0/1) with logical OR for composite RDS measures and p
 ### Environment Setup
 ```r
 # Install required packages if not available
-install.packages(c("tidyverse", "janitor", "here", "RDS", "igraph", 
-                   "boot", "parallel", "ggplot2", "scales", "viridis"))
+install.packages(c("tidyverse", "janitor", "here", "RDS", "igraph",
+                   "boot", "parallel", "ggplot2", "scales", "viridis",
+                   "sspse"))
+
+# Optional: Install netclust for clustered SS-PSE subgroup analysis
+devtools::install_github('LJGamble/netclust')
 
 # Load project with proper path setup
 library(here)
@@ -165,22 +171,23 @@ setup_project_environment()
 ```
 
 ### Project Configuration
-The main pipeline uses a configuration-driven approach:
-- Pipeline settings in `R/00-main_pipeline.R` control which analyses run:
+The main pipeline uses a centralized configuration-driven approach:
+- Global configuration defined in `R/config.R` via `get_global_config()`:
   ```r
-  pipeline_config <- list(
-    run_data_cleaning = TRUE,
-    run_data_preparation = TRUE, 
-    run_rds_estimation = TRUE,
-    run_bootstrap_analysis = FALSE,  # Integrated in RDS by default
-    run_nsum_estimation = TRUE,
+  global_config <- list(
     preferred_rds_method = "RDS_SS",
-    n_bootstrap = 1000,
+    preferred_nsum_method = "weighted",
     population_sizes = c(50000, 100000, 980000, 1740000),
-    main_population_size = 980000
+    main_population_size = 980000,
+    include_bootstrap = TRUE,
+    n_bootstrap = 1000,
+    parallel_cores = 4,
+    save_tables = TRUE,
+    save_plots = TRUE
   )
   ```
-- Individual analysis configuration in each `R/analysis/*.R` script
+- Pipeline settings in `R/00-main_pipeline.R` control which analyses run
+- Individual analysis scripts have local configuration that inherits from global config
 - Skip execution flags prevent scripts from running when sourced
 - Results are cached to avoid recomputation via `force_recompute = FALSE` parameters
 
@@ -211,9 +218,16 @@ Analysis modules can be selectively enabled/disabled via configuration flags in 
 
 #### Extended Analysis Capabilities
 Recent extensions provide additional analysis options:
-- `06-*.R` scripts: Multiple versions for sensitivity analysis, Bayesian approaches, and modular estimator comparisons
-- `07-*.R` scripts: Convergence diagnostics and enhanced visualization capabilities
-- Modular estimator analysis with version control (v1, v2, v3, v4) for iterative development
+- `06-*.R` scripts: Sensitivity analysis, Bayesian methods, and result comparison tables
+  - `06-bayesian_sensitivity_analysis.R` - Bayesian SS-PSE sensitivity tests
+  - `06-modular_estimator_analysis.R` - Modular estimator comparison framework
+  - `06-RESULTS_analysis_comparison.R` - Consolidated results comparison
+- `07-*.R` scripts: Convergence diagnostics and comprehensive visualizations
+  - `07-comprehensive_comparison.R` - Full method comparison across estimators
+  - `07-convergence_diagnostics_and_visualization.R` - MCMC convergence checks
+- `08-*.R` scripts: Subgroup and nationality cluster analysis
+  - `08-netclust_subgroup_analysis_FIXED.R` - Clustered SS-PSE by nationality (requires netclust package)
+  - `08b-simple_subgroup_analysis_FIXED.R` - Standard RDS estimates by nationality cluster
 - Enhanced appendix materials generation for academic publications
 
 ### Technical Requirements
@@ -237,6 +251,7 @@ Recent extensions provide additional analysis options:
 - **Bootstrap convergence warnings** - Adjust `bootstrap_samples` parameter or check network topology
 - **Memory issues with large populations** - Reduce population size scenarios or use parallel processing
 - **Missing RDS network connections** - Validate recruiter.id column for -1 values and network structure
+- **netclust package errors** - netclust 0.1.0 (2021) has compatibility issues with R 4.5.0+. Use alternative subgroup methods in `08b-simple_subgroup_analysis_FIXED.R` or install from source with fixes
 
 #### Checking Results
 ```r
@@ -253,7 +268,8 @@ readRDS(here("output", "rds_convergence_diagnostics.RDS"))
 
 #### Performance Optimization
 - Set `force_recompute = FALSE` to use cached results (available in most analysis scripts)
-- Adjust `parallel_cores` parameter for bootstrap methods (default: 4)
+- Adjust `parallel_cores` parameter in `R/config.R` for bootstrap methods (default: 4)
 - Use smaller population size scenarios for testing: `c(50000, 100000)`
-- Disable expensive analyses in configuration: `run_model_assisted = FALSE`, `run_bootstrap_analysis = FALSE`
+- Disable expensive analyses in pipeline configuration: `run_bootstrap_analysis = FALSE`
 - Use pipeline configuration to skip completed steps during development
+- For subgroup analysis, combine small nationality clusters to meet minimum sample size requirements (see `08-netclust_subgroup_analysis_FIXED.R` configuration)

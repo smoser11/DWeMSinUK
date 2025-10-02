@@ -28,3 +28,16 @@ detailed_latex_table
 ```
 
 
+
+
+ Second, the NSUM - RDS comparison is striking.  The
+  estimates are an order of magnitude different!  I think the next step is
+  to utilize different RDS weighting scheemes in the NSUM esimtaion.  To
+  that end, please carefully review the data-processing scripts that use
+  functions such as `gile.ss.weights()`, `hv.weights()`, etc.  Please also
+  review Boot_step2.R which calculates different weights 'manually.'  The
+  goal in this step is to calculate different RDS weights that are suitable
+  for use as 'inclusion probabilities' (the $\pi_i$ in Feehan and Slaganik
+  2016)  in NSUM estimation (Basic, Modified, GNSUM, etc.).
+  
+  
