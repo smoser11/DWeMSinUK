@@ -1176,34 +1176,40 @@ disable_rds_weight_debug <- function() {
 # EXAMPLE USAGE (commented out to prevent auto-execution)
 # ============================================================================
 
-# Example: Compute weights for a single bootstrap sample
-# (assuming bootstrap_sample is from Boot_Step1.R)
+# Only run examples if explicitly requested
+if (exists("run_boot_step2_examples") && run_boot_step2_examples) {
+  # Example: Compute weights for a single bootstrap sample
+  # (assuming bootstrap_sample is from Boot_Step1.R)
 
-weighted_sample <- compute_rds_weights(
-  resample = boot_samples[[1]],
-  weight_method = "SS",              # RDS-SS weights
-  population_size = 980000,          # UK domestic worker population
-  outcome_variable = "document_withholding_rds",
-  verbose = TRUE
-)
+  weighted_sample <- compute_rds_weights(
+    resample = boot_samples[[1]],
+    weight_method = "SS",              # RDS-SS weights
+    population_size = 980000,          # UK domestic worker population
+    outcome_variable = "document_withholding_rds",
+    verbose = TRUE
+  )
 
-# Example: Batch compute weights for all bootstrap samples
-# All covariates from Step 1 will be preserved
-weighted_bootstrap_samples <- compute_weights_batch(
-  bootstrap_samples = boot_samples,   # From Boot_Step1.R
-  weight_method = "SS",
-  population_size = 980000,
-  outcome_variable = "document_withholding_rds",
-  parallel = TRUE,
-  n_cores = 4,
-  verbose = TRUE
-)
+  # Example: Batch compute weights for all bootstrap samples
+  # All covariates from Step 1 will be preserved
+  weighted_bootstrap_samples <- compute_weights_batch(
+    bootstrap_samples = boot_samples,   # From Boot_Step1.R
+    weight_method = "SS",
+    population_size = 980000,
+    outcome_variable = "document_withholding_rds",
+    parallel = TRUE,
+    n_cores = 4,
+    verbose = TRUE
+  )
 
-# Test weight computation
-test_results <- test_weight_computation(verbose = TRUE)
+  # Test weight computation
+  test_results <- test_weight_computation(verbose = TRUE)
+}
 
+# ============================================================================
+# DEBUGGING / TESTING CODE (only runs if explicitly requested)
+# ============================================================================
 
-
+if (exists("run_boot_step2_debug") && run_boot_step2_debug) {
 
 
 
@@ -1294,3 +1300,4 @@ cat("Corrected RDS-I weights (first 5):",
 cat("Corrected RDS-SS weights (first 5):",
     round(sample1_corrected$weight_rds_ss[1:5], 6), "\n")
 
+}

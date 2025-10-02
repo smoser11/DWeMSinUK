@@ -17,6 +17,7 @@ library(here)
 # Source helper functions and configuration
 source(here("R", "utils", "helper_functions.R"))
 source(here("R", "config.R"))
+source(here("R", "analysis", "nsum_core_estimators.R"))  # Core NSUM estimators
 global_config <- get_global_config()
 
 # Load prepared data
@@ -69,35 +70,28 @@ cat("- Population scenarios:", length(nsum_config$total_population_sizes), "\n")
 cat("- Preferred method:", nsum_config$preferred_method, "\n\n")
 
 # ============================================================================
-# INPUT VALIDATION
+# WRAPPER FOR CORE NSUM ESTIMATOR
 # ============================================================================
+# Note: validate_nsum_variables() is now in nsum_core_estimators.R
+# Note: Core estimation logic is in estimate_mbsu() in nsum_core_estimators.R
 
-validate_nsum_variables <- function(data, hidden_var, degree_var) {
-  missing_vars <- character(0)
-  
-  if (!(hidden_var %in% names(data))) {
-    missing_vars <- c(missing_vars, hidden_var)
-  }
-  
-  if (!(degree_var %in% names(data))) {
-    missing_vars <- c(missing_vars, degree_var)
-  }
-  
-  if (length(missing_vars) > 0) {
-    return(list(
-      valid = FALSE,
-      missing_vars = missing_vars,
-      error = paste("Missing required variables:", paste(missing_vars, collapse = ", "))
-    ))
-  }
-  
-  return(list(valid = TRUE, missing_vars = character(0)))
-}
-
-# ============================================================================
-# CORE NSUM ESTIMATION (Modified Basic Scale-Up)
-# ============================================================================
-
+#' Estimate NSUM Population (Wrapper for Core Estimators)
+#'
+#' Wrapper function that calls core estimators with proper π_i-based weighting.
+#' Maintains backward compatibility with existing code while using new
+#' Horvitz-Thompson estimation framework.
+#'
+#' @param data Data frame
+#' @param weights RDS weights (optional)
+#' @param hidden_connections_var Character, alter report variable name
+#' @param degree_var Character, network size variable name
+#' @param total_population_size Numeric, frame population size
+#' @param method Character, "basic" or "weighted" (for backward compatibility)
+#' @param weighting_scheme Character, name of weighting scheme
+#' @param verbose Logical, print messages
+#'
+#' @return List with NSUM estimates and metadata
+#'
 estimate_nsum_population <- function(data,
                                      weights = NULL,
                                      hidden_connections_var,
@@ -106,74 +100,32 @@ estimate_nsum_population <- function(data,
                                      method = "basic",
                                      weighting_scheme = "unweighted",
                                      verbose = TRUE) {
-  
-  # Validate
-  var_check <- validate_nsum_variables(data, hidden_connections_var, degree_var)
-  if (!var_check$valid) {
-    return(list(N_H_estimate = NA, error = var_check$error))
-  }
-  
-  # Handle weights
-  if (is.null(weights)) {
-    weights <- rep(1, nrow(data))
-    if (verbose) cat("  Unweighted\n")
-  } else {
-    if (verbose) cat("  Weighted (", weighting_scheme, ")\n", sep="")
-  }
-  
-  if (length(weights) != nrow(data)) {
-    warning("Weight length mismatch. Using unweighted.")
-    weights <- rep(1, nrow(data))
-  }
-  
-  # Remove missing
-  complete_cases <- complete.cases(data[[hidden_connections_var]], 
-                                   data[[degree_var]], weights)
-  data_c <- data[complete_cases, ]
-  weights_c <- weights[complete_cases]
-  
-  if (nrow(data_c) == 0) {
-    return(list(N_H_estimate = NA, error = "No complete cases"))
-  }
-  
-  if (verbose) cat("  Complete:", nrow(data_c), "/", nrow(data), "\n")
-  
-  # Calculate y_F,H (alter reports)
-  y_conn <- data_c[[hidden_connections_var]]
-  if (method == "weighted") {
-    y_FH <- sum(y_conn * weights_c, na.rm=TRUE) / sum(weights_c, na.rm=TRUE)
-  } else {
-    y_FH <- mean(y_conn, na.rm=TRUE)
-  }
-  
-  # Calculate d_F,F (network size)
-  net_sizes <- data_c[[degree_var]]
-  if (method == "weighted") {
-    d_FF <- sum(net_sizes * weights_c, na.rm=TRUE) / sum(weights_c, na.rm=TRUE)
-  } else {
-    d_FF <- mean(net_sizes, na.rm=TRUE)
-  }
-  
-  if (d_FF <= 0) {
-    return(list(N_H_estimate = NA, error = "Network size <= 0"))
-  }
-  
-  # NSUM estimate: N_H = (y_F,H / d_F,F) × N_F
-  N_H <- (y_FH / d_FF) * total_population_size
-  
-  return(list(
-    N_H_estimate = N_H,
-    prevalence_rate = N_H / total_population_size,
-    y_F_H = y_FH,
-    d_F_F = d_FF,
-    total_population_size = total_population_size,
-    sample_size = nrow(data_c),
-    n_missing = nrow(data) - nrow(data_c),
-    method = method,
-    weighting_scheme = weighting_scheme,
-    hidden_variable = hidden_connections_var,
-    degree_variable = degree_var
-  ))
+
+  # Call core estimator (estimate_mbsu with proper π_i weighting)
+  result <- tryCatch({
+    estimate_mbsu(
+      data = data,
+      hidden_var = hidden_connections_var,
+      degree_var = degree_var,
+      N_F = total_population_size,
+      weights = weights,
+      use_inclusion_probs = TRUE,  # Always use π_i weighting
+      verbose = verbose
+    )
+  }, error = function(e) {
+    # Return error structure compatible with old code
+    return(list(
+      N_H_estimate = NA,
+      error = e$message
+    ))
+  })
+
+  # Add backward compatibility fields
+  result$total_population_size <- total_population_size
+  result$weighting_scheme <- weighting_scheme
+  result$hidden_variable <- hidden_connections_var
+
+  return(result)
 }
 
 # ============================================================================
@@ -210,23 +162,23 @@ run_nsum_estimation <- function(outcome_vars = nsum_config$outcome_vars,
   
   for (outcome_var in outcome_vars) {
     cat("Processing:", outcome_var, "\n")
-    
-    if (!(outcome_var %in% names(rd.dd))) {
+
+    if (!(outcome_var %in% names(dd))) {
       warning("Variable not found: ", outcome_var)
       next
     }
-    
+
     var_results <- list()
-    
+
     for (pop_size in population_sizes) {
       pop_results <- list()
-      
+
       for (scheme in weighting_schemes) {
-        weights <- get_weights_for_scheme(rd.dd, scheme)
-        
+        weights <- get_weights_for_scheme(dd, scheme)
+
         result <- tryCatch({
           estimate_nsum_population(
-            data = rd.dd,
+            data = dd,
             weights = weights,
             hidden_connections_var = outcome_var,
             degree_var = nsum_config$degree_var,

@@ -20,12 +20,21 @@ library(tidyverse)
 library(here)
 library(RDS)
 
+# Source core NSUM estimators
+source(here("R", "analysis", "nsum_core_estimators.R"))
+
+# Save references to core estimators before they get shadowed by wrappers
+core_estimate_mbsu <- estimate_mbsu
+core_estimate_basic_nsum <- estimate_basic_nsum
+core_estimate_symmetric_gnsum <- estimate_symmetric_gnsum
+
 # Set execution control
 SKIP_EXECUTION <- FALSE
 if (exists("skip_step3") && skip_step3) SKIP_EXECUTION <- TRUE
 
 if (!SKIP_EXECUTION) {
   cat("=== Loading Step 3: NSUM Estimation Functions ===\n")
+  cat("Core NSUM estimators loaded from nsum_core_estimators.R\n")
 }
 
 # ==============================================================================
@@ -338,6 +347,17 @@ add_rds_weights_to_bootstrap_samples <- function(boot_samples, original_data = N
 # Formula: N_H = (y_F,H / d_F,F) * N_F * (1/δ) * (1/τ) * ρ
 # ==============================================================================
 
+# ==============================================================================
+# WRAPPER FOR CORE MBSU ESTIMATOR
+# ==============================================================================
+#
+# This function wraps the core estimate_mbsu() from nsum_core_estimators.R
+# to maintain backward compatibility with Boot_Step3.R parameter names.
+#
+# The core estimator now handles all the Horvitz-Thompson weighting logic,
+# adjustment factors, and different methods of providing inclusion probabilities.
+# ==============================================================================
+
 estimate_mbsu <- function(data,
                          outcome_variable,
                          degree_variable,
@@ -352,14 +372,14 @@ estimate_mbsu <- function(data,
                          verbose = FALSE) {
 
   if (verbose) {
-    cat("=== MBSU Estimation ===\n")
+    cat("=== MBSU Estimation (using core estimator) ===\n")
     cat("Frame size:", format(frame_size, big.mark = ","), "\n")
     cat("Adjustment factors: δ =", adjustment_factors$delta,
         ", τ =", adjustment_factors$tau,
         ", ρ =", adjustment_factors$rho, "\n")
   }
 
-  # Input validation
+  # Input validation (quick check before calling core estimator)
   if (validate_inputs) {
     required_vars <- c(outcome_variable, degree_variable, weight_column)
     missing_vars <- required_vars[!required_vars %in% names(data)]
@@ -377,16 +397,24 @@ estimate_mbsu <- function(data,
     }
   }
 
-  # Extract required variables
-  y_iH <- data[[outcome_variable]]  # Out-reports to hidden population
-  d_i <- data[[degree_variable]]    # Network degrees
-  pi_i <- data[[weight_column]]     # Inclusion probabilities
+  # Call core estimator with parameter name translation
+  tryCatch({
+    result <- core_estimate_mbsu(
+      data = data,
+      hidden_var = outcome_variable,        # Translate parameter name
+      degree_var = degree_variable,         # Translate parameter name
+      N_F = frame_size,                     # Translate parameter name
+      pi_column = weight_column,            # Use pre-calculated π_i from column
+      adjustment_factors = adjustment_factors,
+      verbose = verbose
+    )
 
-  # Filter valid cases
-  valid_cases <- !is.na(y_iH) & !is.na(d_i) & !is.na(pi_i) & pi_i > 0
+    # Core estimator already returns compatible structure with aliases
+    # (N_hat, y_FH_proportion, d_FF_average, n_valid, etc.)
+    return(result)
 
-  if (sum(valid_cases) == 0) {
-    warning("No valid cases for MBSU estimation")
+  }, error = function(e) {
+    warning("MBSU estimation failed: ", e$message)
     return(list(
       N_hat = NA,
       y_FH_proportion = NA,
@@ -395,74 +423,9 @@ estimate_mbsu <- function(data,
       adjustment_impact = NA,
       n_valid = 0,
       method = "MBSU",
-      error = "No valid cases"
+      error = e$message
     ))
-  }
-
-  # Work with valid data
-  y_valid <- y_iH[valid_cases]
-  d_valid <- d_i[valid_cases]
-  pi_valid <- pi_i[valid_cases]
-
-  # STEP 1: Calculate weighted proportion of out-reports (y_F,H)
-  # Using Horvitz-Thompson estimator: y_F,H = Σ(Y_i / π_i) / Σ(1 / π_i)
-  numerator_y <- sum(y_valid / pi_valid, na.rm = TRUE)
-  denominator <- sum(1 / pi_valid, na.rm = TRUE)
-  y_FH_proportion <- numerator_y / denominator
-
-  # STEP 2: Calculate weighted average degree (d_F,F)
-  numerator_d <- sum(d_valid / pi_valid, na.rm = TRUE)
-  d_FF_average <- numerator_d / denominator
-
-  if (d_FF_average <= 0) {
-    warning("Invalid average degree (≤0) in MBSU estimation")
-    return(list(
-      N_hat = NA,
-      y_FH_proportion = y_FH_proportion,
-      d_FF_average = d_FF_average,
-      basic_estimate = NA,
-      adjustment_impact = NA,
-      n_valid = sum(valid_cases),
-      method = "MBSU",
-      error = "Invalid average degree"
-    ))
-  }
-
-  # STEP 3: Calculate basic NSUM estimate
-  basic_estimate <- (y_FH_proportion / d_FF_average) * frame_size
-
-  # STEP 4: Apply MBSU adjustment factors
-  # Formula: N_H = basic * (1/δ) * (1/τ) * ρ
-  delta_adjustment <- 1 / adjustment_factors$delta
-  tau_adjustment <- 1 / adjustment_factors$tau
-  rho_adjustment <- adjustment_factors$rho
-
-  adjusted_estimate <- basic_estimate * delta_adjustment * tau_adjustment * rho_adjustment
-
-  # Calculate adjustment impact
-  total_adjustment <- delta_adjustment * tau_adjustment * rho_adjustment
-
-  if (verbose) {
-    cat("y_F,H proportion:", round(y_FH_proportion, 4), "\n")
-    cat("d_F,F average:", round(d_FF_average, 2), "\n")
-    cat("Basic estimate:", format(round(basic_estimate), big.mark = ","), "\n")
-    cat("Total adjustment factor:", round(total_adjustment, 3), "\n")
-    cat("Adjusted estimate:", format(round(adjusted_estimate), big.mark = ","), "\n")
-  }
-
-  return(list(
-    N_hat = adjusted_estimate,
-    y_FH_proportion = y_FH_proportion,
-    d_FF_average = d_FF_average,
-    basic_estimate = basic_estimate,
-    adjustment_impact = total_adjustment,
-    delta_factor = delta_adjustment,
-    tau_factor = tau_adjustment,
-    rho_factor = rho_adjustment,
-    n_valid = sum(valid_cases),
-    method = "MBSU",
-    error = NA
-  ))
+  })
 }
 
 # ==============================================================================
@@ -2448,6 +2411,10 @@ deep_debug_nsum <- function(boot_samples, verbose = TRUE) {
 }
 
 
+# ==============================================================================
+# OLD TEST CODE - Wrapped to prevent execution
+# ==============================================================================
+if (FALSE) {
 library(tidyverse)
 
 # Check what data the plot is using
@@ -2464,6 +2431,7 @@ plot_data <- bootstrap_results$summary_results$detailed_summary %>%
 # Check if all weight methods are present
 table(plot_data$weight_method)
 table(plot_data$nsum_method)
+}
 
 # Example: Using different weight methods and adjustment factors
 #
@@ -2480,17 +2448,25 @@ mbsu_production <- list(delta = 0.75, tau = 0.8, rho = 0.9)
 #                                  frame_size = 980000, weight_column = 'weight_rds_ss',
 #                                  hidden_member_indicator = 'excessive_hours_rds')
 
+# ==============================================================================
+# EXAMPLE USAGE / TEST CODE
+# ==============================================================================
+# This code is commented out to prevent execution when sourcing this file.
+# Uncomment to run comprehensive bootstrap analysis.
+
+if (FALSE) {  # Set to TRUE to run example code
+
 # Run comprehensive analysis
 bootstrap_results <- run_comprehensive_nsum_bootstrap(
   boot_samples = boot_samples,              # From Step 1-2
-  outcome_variables = c(                    # NSUM outcome 
+  outcome_variables = c(                    # NSUM outcome
       "document_withholding_nsum",
       "pay_issues_nsum",
       "threats_abuse_nsum",
       "excessive_hours_nsum",
       "access_to_help_nsum"
     ),
-    hidden_indicators = c(                    # Corresponding RDS   variables  
+    hidden_indicators = c(                    # Corresponding RDS   variables
       "document_withholding_rds",
       "pay_issues_rds",
       "threats_abuse_rds",
@@ -2507,7 +2483,7 @@ bootstrap_results <- run_comprehensive_nsum_bootstrap(
     ),
     mbsu_config = list(                       # MBSU parameter sweep ranges
       delta_range = seq(0.5, 1.0, by = 0.1), # Transmission bias factors
-      tau_range = seq(0.6, 1.0, by = 0.1),   # Barrier effect   factors  
+      tau_range = seq(0.6, 1.0, by = 0.1),   # Barrier effect   factors
       rho_range = seq(0.8, 1.2, by = 0.1)    # Popularity bias   factors
     ),
     confidence_level = 0.95,                  # For bootstrap CIs  (default)
@@ -2535,18 +2511,6 @@ summary_table <-  create_nsum_summary_table(bootstrap_results$summary_results)
 
 summary_table
 
-
-
-
-
-
-
-
-
-
-
-
-
 # Check what data the plot is using
 plot_data <- bootstrap_results$summary_results$detailed_summary %>%
   filter(!is.na(mean_estimate)) %>%
@@ -2564,9 +2528,10 @@ plot_data
 table(plot_data$weight_method)
 table(plot_data$nsum_method)
 
-
 debug_values <- debug_plot_values(bootstrap_results)
 debug_values
+
+}  # End of example code block
 
 
 #####################################################

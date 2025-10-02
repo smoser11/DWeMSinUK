@@ -139,53 +139,67 @@ prepare_data <- function() {
   cat("Standardizing seed recruiter IDs for MA.estimates compatibility...\n")
   dd <- dd %>%
     mutate(
-      recruiter.id = ifelse(recruiter.id == "-1", "0", as.character(recruiter.id))
+      recruiter.id = ifelse(recruiter.id == "-1", "0", as.character(recruiter.id)),
+      # Fix zero network sizes (minimum degree for recruited individuals is 1)
+      known_network_size = ifelse(known_network_size == 0, 1, known_network_size)
     )
+
+  # Remove list columns before creating RDS object (causes issues with weight functions)
+  cat("Removing list columns for RDS compatibility...\n")
+  list_cols <- sapply(dd, is.list)
+  if (any(list_cols)) {
+    cat("  Removing:", paste(names(dd)[list_cols], collapse = ", "), "\n")
+    dd <- dd[, !list_cols]
+  }
 
   # Create RDS data frame object
   cat("Creating RDS data frame...\n")
   rd.dd <- as.rds.data.frame(dd,
                              id="id",
                              recruiter.id="recruiter.id",
+                             network.size="known_network_size",
                              max.coupons = 5,
                              check.valid = FALSE)
   
-  # Calculate RDS and VH/SS weights for different population sizes
-  cat("Calculating RDS and population weights...\n")
-  dd <- dd %>%
-    mutate(
-      # RDS-I weights for comparable indicators
-      wt.RDS1_document_withholding = rds.I.weights(rd.dd, "document_withholding_rds"),
-      wt.RDS1_pay_issues = rds.I.weights(rd.dd, "pay_issues_rds"),
-      wt.RDS1_threats_abuse = rds.I.weights(rd.dd, "threats_abuse_rds"),
-      wt.RDS1_excessive_hours = rds.I.weights(rd.dd, "excessive_hours_rds"),
-      wt.RDS1_access_to_help = rds.I.weights(rd.dd, "access_to_help_rds"),
-      
-      # Legacy RDS-I weights
-      wt.RDS1_zQ36 = rds.I.weights(rd.dd, "zQ36"),
-      wt.RDS1_zQ80 = rds.I.weights(rd.dd, "zQ80"),
-      wt.RDS1_sum_categories_factor = rds.I.weights(rd.dd, "sum_categories_factor"),
-      
-      # Volz-Heckathorn weights for different population sizes
-      wt.vh_980k = vh.weights(numRef, N = 980000),   # EU baseline estimate
-      wt.vh_100k = vh.weights(numRef, N = 100000),   # Conservative estimate
-      wt.vh_050k = vh.weights(numRef, N = 50000),    # Very conservative
-      wt.vh_1740k = vh.weights(numRef, N = 1740000), # Upper bound estimate
-      
-      # Gile's SS weights for different population sizes
-      wt.SS_980k = gile.ss.weights(numRef, N = 980000),
-      wt.SS_100k = gile.ss.weights(numRef, N = 100000),
-      wt.SS_050k = gile.ss.weights(numRef, N = 50000),
-      wt.SS_1740k = gile.ss.weights(numRef, N = 1740000)
-    )
+  # Calculate RDS weights using Boot_Step2.R functions (more robust than RDS package functions)
+  cat("Calculating RDS and population weights using manual implementations...\n")
+  # Source Boot_Step2.R functions only (prevent example code from running)
+  boot_step2_env <- new.env()
+  source(here("R", "analysis", "NSUM", "Boot_Step2.R"), local = boot_step2_env)
+  # Import specific functions we need
+  compute_enhanced_vh_weights <- boot_step2_env$compute_enhanced_vh_weights
+  compute_rds_ss_weights <- boot_step2_env$compute_rds_ss_weights
+
+  # RDS-I weights for comparable indicators (using RDS package - these work)
+  cat("  Calculating RDS-I weights...\n")
+  dd$wt.RDS1_document_withholding <- rds.I.weights(rd.dd, "document_withholding_rds")
+  dd$wt.RDS1_pay_issues <- rds.I.weights(rd.dd, "pay_issues_rds")
+  dd$wt.RDS1_threats_abuse <- rds.I.weights(rd.dd, "threats_abuse_rds")
+  dd$wt.RDS1_excessive_hours <- rds.I.weights(rd.dd, "excessive_hours_rds")
+  dd$wt.RDS1_access_to_help <- rds.I.weights(rd.dd, "access_to_help_rds")
+  dd$wt.RDS1_zQ36 <- rds.I.weights(rd.dd, "zQ36")
+  dd$wt.RDS1_zQ80 <- rds.I.weights(rd.dd, "zQ80")
+  dd$wt.RDS1_sum_categories_factor <- rds.I.weights(rd.dd, "sum_categories_factor")
+
+  # VH and SS weights using manual implementations from Boot_Step2.R
+  cat("  Calculating VH weights (manual implementation)...\n")
+  dd$wt.vh_980k <- compute_enhanced_vh_weights(rd.dd, population_size = 980000, verbose = FALSE)
+  dd$wt.vh_100k <- compute_enhanced_vh_weights(rd.dd, population_size = 100000, verbose = FALSE)
+  dd$wt.vh_050k <- compute_enhanced_vh_weights(rd.dd, population_size = 50000, verbose = FALSE)
+  dd$wt.vh_1740k <- compute_enhanced_vh_weights(rd.dd, population_size = 1740000, verbose = FALSE)
+
+  cat("  Calculating RDS-SS weights (manual implementation)...\n")
+  dd$wt.SS_980k <- compute_rds_ss_weights(rd.dd, population_size = 980000, verbose = FALSE)
+  dd$wt.SS_100k <- compute_rds_ss_weights(rd.dd, population_size = 100000, verbose = FALSE)
+  dd$wt.SS_050k <- compute_rds_ss_weights(rd.dd, population_size = 50000, verbose = FALSE)
+  dd$wt.SS_1740k <- compute_rds_ss_weights(rd.dd, population_size = 1740000, verbose = FALSE)
   
   # Save prepared data
   cat("Saving prepared data...\n")
   save(dd, rd.dd, file = here("data", "processed", "prepared_data.RData"))
-  
-  # Export CSV for external use (remove list columns first)
-  dd_csv <- dd %>% select(-NonEmptyValues)
-  write.csv(dd_csv, here("data", "processed", "prepared_data.csv"), row.names = FALSE)
+
+  # Export CSV for external use (list columns already removed)
+  write.csv(dd, here("data", "processed", "prepared_data.csv"), row.names = FALSE)
   
   cat("Data preparation completed successfully!\n")
   cat("- Prepared data:", nrow(dd), "observations\n")
