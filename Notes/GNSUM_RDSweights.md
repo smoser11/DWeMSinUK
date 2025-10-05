@@ -31,9 +31,9 @@ $$\hat{N}_H = \frac{\hat{y}_{F,H}}{\hat{\bar{v}}_{H,F}}$$
 Where:
 
 * $\hat{y}_{F,H}$ = estimated total out-reports from frame population (usually a standard probability sample)
-    
+
 * $\hat{\bar{v}}_{H,F}$ = average _in-reports_ from hidden population members (requires a sample of the hidden pop)
-    
+
 
 **2. Incorporating RDS Samples into NSUM**
 
@@ -51,9 +51,9 @@ $$\hat{\bar{v}}_{H,F} = \frac{N_F}{N_A} \cdot \frac{\sum_{i \in s_H} \sum_j \til
 Where:
 
 * $\tilde{v}_{i,A_j}$ is the respondent's report of their visibility to group $A_j$
-    
+
 * $c\pi_i$ are the **relative inclusion probabilities** (as given by e.g., RDS-II weights)
-    
+
 
 So: **RDS weights ($\pi_i$) can be directly incorporated into the estimation.**
 
@@ -62,9 +62,9 @@ So: **RDS weights ($\pi_i$) can be directly incorporated into the estimation.**
 ### 🧩 Important Notes:
 
 * They require you to **know or estimate** each participant’s **degree**, and that sampling probabilities are **proportional to degree** (as in Volz-Heckathorn RDS estimator).
-    
+
 * Assumptions like **accurate reporting of visibility**, and **representative probe alters**, still apply.
-    
+
 
 * * *
 
@@ -104,16 +104,16 @@ Let’s walk through the logic, the assumptions, and a **complete R implementati
 ### 📦 Your Sampling Frame:
 
 * You sample **domestic workers in the UK** via **RDS**
-    
+
 * That’s your **frame population** $F$
-    
+
 
 ### 🔍 Your Hidden Populations (H):
 
 * Workers who have been **exploited** (based on various criteria, e.g. document withholding, pay issues, etc.)
-    
+
 * These are **identified ex post** within your RDS sample using coded responses (e.g. `document_withholding_rds == 1`)
-    
+
 
 ### ⚖️ Estimating Hidden Population Size (via Generalized NSUM):
 
@@ -122,11 +122,11 @@ $$\hat{N}_H = \frac{\hat{y}_{F,H}}{\hat{\bar{v}}_{H,F}} \cdot N_F$$
 Where:
 
 * $\hat{y}_{F,H}$: total **out-reports** from the frame population — “How many exploited people do you know?”
-    
+
 * $\hat{\bar{v}}_{H,F}$: average **visibility** of each hidden population member to the frame (estimated via RDS weights)
-    
+
 * $N_F$: known size of the **frame population** (e.g. all domestic workers in the UK)
-    
+
 
 * * *
 
@@ -140,15 +140,15 @@ Where:
 ⚠️ Assumptions involved:
 
 * Accurate reporting of out-reports (e.g., Q71)
-    
+
 * Symmetric ties (visibility ≈ degree)
-    
+
 * Homogenous visibility within the hidden population
-    
+
 * Correct RDS weights (e.g., Volz-Heckathorn or Gile’s SS)
-    
+
 * No barrier to being named (visibility bias minimized)
-    
+
 
 * * *
 
@@ -198,7 +198,7 @@ y_FH <- sum(dd$out_report * dd$wts, na.rm = TRUE)
 ```r
 # Filter to hidden pop members (exploited) with non-missing degree and weights
 dd_hidden <- dd %>%
-  filter(!!sym(rds_var) == 1, !is.na(!!sym(degree_var)), !is.na(wts))
+filter(!!sym(rds_var) == 1, !is.na(!!sym(degree_var)), !is.na(wts))
 
 # Estimate average visibility (degree) weighted by RDS weights
 numerator   <- sum(dd_hidden[[degree_var]] / dd_hidden$wts)
@@ -265,188 +265,188 @@ library(here)
 
 # Load cleaned data
 if (!exists("data_final") || !exists("data_nonzero")) {
-  load(here("data", "processed", "cleaned_data.RData"))
+load(here("data", "processed", "cleaned_data.RData"))
 }
 
 # Create comparable RDS/NSUM indicators following CE's specifications
 create_comparable_indicators <- function(data) {
-  
-  cat("Creating comparable RDS/NSUM indicators...\n")
-  
-  # CE's mappings from most confident to least confident:
-  
-  # 1. Document withholding (MOST CONFIDENT): Q70 5f2 = Q71 5f3
-  # Q70: Has employer withheld travel/identity documents?
-  data$zQ70 <- recode(data$q70, "4=NA")  # Set don't know to NA
-  data$zQ70 <- recode(data$q70, "c(0,1,2) = 1; c(3,4)=0")  # Always/often/sometimes = 1, never = 0
-  
-  # Q71: Know others without access to documents? (already numeric count)
-  data$document_withholding_rds <- data$zQ70
-  data$document_withholding_nsum <- ifelse(data$q71 > 0, 1, 0)  # Any known others = 1
-  data$document_withholding_nsum[is.na(data$q71)] <- NA
-  
-  # 2. Pay/debt issues (HIGH CONFIDENCE): Q39 5b4 and Q42 5b7 = Q43 5b8
-  # Q39: Have to pay debt to someone who helped find work?
-  data$zQ39 <- recode(data$q39, "2=NA")  # Don't know to NA
-  data$zQ39 <- recode(data$q39, "0 = 1; c(1,2)=0")  # Yes = 1, No = 0
-  
-  # Q42: Has pay ever been withheld?
-  data$zQ42 <- recode(data$q42, "4=NA")  # Don't know to NA
-  data$zQ42 <- recode(data$q42, "c(0,1,2) = 1; c(3,4)=0")  # Always/often/sometimes = 1, never = 0
-  
-  # Q43: Know others with debt/pay problems? (already numeric count)
-  data$pay_issues_rds <- ifelse(data$zQ39 == 1 | data$zQ42 == 1, 1, 0)  # Logical OR
-  data$pay_issues_rds[is.na(data$zQ39) & is.na(data$zQ42)] <- NA  # NA if both missing
-  data$pay_issues_nsum <- ifelse(data$q43 > 0, 1, 0)  # Any known others = 1
-  data$pay_issues_nsum[is.na(data$q43)] <- NA
-  
-  # 3. Threats/abuse/force (HIGH CONFIDENCE): Q45 5c2 and Q47 5c4 and Q48 5c5 = Q49 5c6
-  # Q45: Forced, deceived or threatened into poor conditions?
-  data$zQ45 <- recode(data$q45, "2=NA")  # Prefer not to say to NA
-  data$zQ45 <- recode(data$q45, "0 = 1; c(1,2)=0")  # Yes = 1, No = 0
-  
-  # Q47: Has employer threatened or intimidated you?
-  data$zQ47 <- recode(data$q47, "4=NA")  # Don't know to NA
-  data$zQ47 <- recode(data$q47, "c(0,1,2) = 1; c(3,4)=0")  # Yes/often/sometimes = 1, never = 0
-  
-  # Q48: Has employer verbally abused you?
-  data$zQ48 <- recode(data$q48, "4=NA")  # Don't know to NA
-  data$zQ48 <- recode(data$q48, "c(0,1,2) = 1; c(3,4)=0")  # Yes often/sometimes/maybe = 1, never = 0
-  
-  # Q49: Know others with threat/force experiences? (already numeric count)
-  data$threats_abuse_rds <- ifelse(data$zQ45 == 1 | data$zQ47 == 1 | data$zQ48 == 1, 1, 0)  # Logical OR
-  data$threats_abuse_rds[is.na(data$zQ45) & is.na(data$zQ47) & is.na(data$zQ48)] <- NA  # NA if all missing
-  data$threats_abuse_nsum <- ifelse(data$q49 > 0, 1, 0)  # Any known others = 1
-  data$threats_abuse_nsum[is.na(data$q49)] <- NA
-  
-  # 4. Excessive hours (LOWER CONFIDENCE): Q61 5d8 and Q62 5d9 = Q64 5d11
-  # NOTE: Q64 includes annual leave which RDS questions don't cover
-  # Q61: Weekly rest longer than 24 hours consecutively?
-  data$zQ61 <- recode(data$q61, "4=NA")  # Don't know to NA  
-  data$zQ61 <- recode(data$q61, "c(2,3) = 1; c(0,1,4)=0")  # Sometimes/never = 1 (inadequate rest), always/often = 0
-  
-  # Q62: Worked overtime that felt excessive?
-  data$zQ62 <- recode(data$q62, "4=NA")  # Don't know to NA
-  data$zQ62 <- recode(data$q62, "c(0,1,2) = 1; c(3,4)=0")  # Always/often/sometimes = 1, never = 0
-  
-  # Q64: Know others with labour rights issues? (includes excessive hours + annual leave)
-  data$excessive_hours_rds <- ifelse(data$zQ61 == 1 | data$zQ62 == 1, 1, 0)  # Logical OR
-  data$excessive_hours_rds[is.na(data$zQ61) & is.na(data$zQ62)] <- NA  # NA if both missing
-  data$excessive_hours_nsum <- ifelse(data$q64 > 0, 1, 0)  # Any known others = 1
-  data$excessive_hours_nsum[is.na(data$q64)] <- NA
-  
-  # 5. Access to help (LEAST CONFIDENT): Q78 5f10 (coded as No) = Q79 5f11
-  # Q78: Do you know who might help if not properly paid/treated? (reverse coded)
-  data$zQ78 <- recode(data$q78, "1 = 0; 0 = 1")  # No = 1 (vulnerable), Yes = 0
-  data$Q78rev <- data$zQ78  # Reversed version to align with Q79
-  
-  # Q79: Know others who don't know where to go for help? (already numeric count)
-  data$access_to_help_rds <- data$Q78rev  # Higher values = more vulnerable
-  data$access_to_help_nsum <- ifelse(data$q79 > 0, 1, 0)  # Any known others = 1
-  data$access_to_help_nsum[is.na(data$q79)] <- NA
-  
-  # Additional: Known network size variable (from CE's note)
-  # Q13 2f: Number of domestic workers for whom you have contact details in phone
-  data$known_network_size <- as.numeric(data$q13)
-  
-  return(data)
+
+cat("Creating comparable RDS/NSUM indicators...\n")
+
+# CE's mappings from most confident to least confident:
+
+# 1. Document withholding (MOST CONFIDENT): Q70 5f2 = Q71 5f3
+# Q70: Has employer withheld travel/identity documents?
+data$zQ70 <- recode(data$q70, "4=NA")  # Set don't know to NA
+data$zQ70 <- recode(data$q70, "c(0,1,2) = 1; c(3,4)=0")  # Always/often/sometimes = 1, never = 0
+
+# Q71: Know others without access to documents? (already numeric count)
+data$document_withholding_rds <- data$zQ70
+data$document_withholding_nsum <- ifelse(data$q71 > 0, 1, 0)  # Any known others = 1
+data$document_withholding_nsum[is.na(data$q71)] <- NA
+
+# 2. Pay/debt issues (HIGH CONFIDENCE): Q39 5b4 and Q42 5b7 = Q43 5b8
+# Q39: Have to pay debt to someone who helped find work?
+data$zQ39 <- recode(data$q39, "2=NA")  # Don't know to NA
+data$zQ39 <- recode(data$q39, "0 = 1; c(1,2)=0")  # Yes = 1, No = 0
+
+# Q42: Has pay ever been withheld?
+data$zQ42 <- recode(data$q42, "4=NA")  # Don't know to NA
+data$zQ42 <- recode(data$q42, "c(0,1,2) = 1; c(3,4)=0")  # Always/often/sometimes = 1, never = 0
+
+# Q43: Know others with debt/pay problems? (already numeric count)
+data$pay_issues_rds <- ifelse(data$zQ39 == 1 | data$zQ42 == 1, 1, 0)  # Logical OR
+data$pay_issues_rds[is.na(data$zQ39) & is.na(data$zQ42)] <- NA  # NA if both missing
+data$pay_issues_nsum <- ifelse(data$q43 > 0, 1, 0)  # Any known others = 1
+data$pay_issues_nsum[is.na(data$q43)] <- NA
+
+# 3. Threats/abuse/force (HIGH CONFIDENCE): Q45 5c2 and Q47 5c4 and Q48 5c5 = Q49 5c6
+# Q45: Forced, deceived or threatened into poor conditions?
+data$zQ45 <- recode(data$q45, "2=NA")  # Prefer not to say to NA
+data$zQ45 <- recode(data$q45, "0 = 1; c(1,2)=0")  # Yes = 1, No = 0
+
+# Q47: Has employer threatened or intimidated you?
+data$zQ47 <- recode(data$q47, "4=NA")  # Don't know to NA
+data$zQ47 <- recode(data$q47, "c(0,1,2) = 1; c(3,4)=0")  # Yes/often/sometimes = 1, never = 0
+
+# Q48: Has employer verbally abused you?
+data$zQ48 <- recode(data$q48, "4=NA")  # Don't know to NA
+data$zQ48 <- recode(data$q48, "c(0,1,2) = 1; c(3,4)=0")  # Yes often/sometimes/maybe = 1, never = 0
+
+# Q49: Know others with threat/force experiences? (already numeric count)
+data$threats_abuse_rds <- ifelse(data$zQ45 == 1 | data$zQ47 == 1 | data$zQ48 == 1, 1, 0)  # Logical OR
+data$threats_abuse_rds[is.na(data$zQ45) & is.na(data$zQ47) & is.na(data$zQ48)] <- NA  # NA if all missing
+data$threats_abuse_nsum <- ifelse(data$q49 > 0, 1, 0)  # Any known others = 1
+data$threats_abuse_nsum[is.na(data$q49)] <- NA
+
+# 4. Excessive hours (LOWER CONFIDENCE): Q61 5d8 and Q62 5d9 = Q64 5d11
+# NOTE: Q64 includes annual leave which RDS questions don't cover
+# Q61: Weekly rest longer than 24 hours consecutively?
+data$zQ61 <- recode(data$q61, "4=NA")  # Don't know to NA  
+data$zQ61 <- recode(data$q61, "c(2,3) = 1; c(0,1,4)=0")  # Sometimes/never = 1 (inadequate rest), always/often = 0
+
+# Q62: Worked overtime that felt excessive?
+data$zQ62 <- recode(data$q62, "4=NA")  # Don't know to NA
+data$zQ62 <- recode(data$q62, "c(0,1,2) = 1; c(3,4)=0")  # Always/often/sometimes = 1, never = 0
+
+# Q64: Know others with labour rights issues? (includes excessive hours + annual leave)
+data$excessive_hours_rds <- ifelse(data$zQ61 == 1 | data$zQ62 == 1, 1, 0)  # Logical OR
+data$excessive_hours_rds[is.na(data$zQ61) & is.na(data$zQ62)] <- NA  # NA if both missing
+data$excessive_hours_nsum <- ifelse(data$q64 > 0, 1, 0)  # Any known others = 1
+data$excessive_hours_nsum[is.na(data$q64)] <- NA
+
+# 5. Access to help (LEAST CONFIDENT): Q78 5f10 (coded as No) = Q79 5f11
+# Q78: Do you know who might help if not properly paid/treated? (reverse coded)
+data$zQ78 <- recode(data$q78, "1 = 0; 0 = 1")  # No = 1 (vulnerable), Yes = 0
+data$Q78rev <- data$zQ78  # Reversed version to align with Q79
+
+# Q79: Know others who don't know where to go for help? (already numeric count)
+data$access_to_help_rds <- data$Q78rev  # Higher values = more vulnerable
+data$access_to_help_nsum <- ifelse(data$q79 > 0, 1, 0)  # Any known others = 1
+data$access_to_help_nsum[is.na(data$q79)] <- NA
+
+# Additional: Known network size variable (from CE's note)
+# Q13 2f: Number of domestic workers for whom you have contact details in phone
+data$known_network_size <- as.numeric(data$q13)
+
+return(data)
 }
 
 # Prepare legacy indicators for backward compatibility
 prepare_legacy_indicators <- function(data) {
-  
-  cat("Preparing legacy indicators for backward compatibility...\n")
-  
-  # Legacy Q36 and Q80 indicators (remove D/K responses)
-  data$zQ36 <- recode(data$q36, "5=NA")
-  data$zQ36 <- recode(data$q36, "c(0,1,2,3) = 1; c(4,5)=0")
-  
-  data$zQ80 <- recode(data$q80, "4=NA")
-  data$zQ80 <- recode(data$q80, "c(0,1) = 1; c(2,3,4,5)=0")
-  
-  # Risk categories
-  data$sum_categories_factor <- as.factor(data$sum_categories)
-  data$sum_categories_cut <- cut_interval(data$sum_categories, n = 10)
-  
-  return(data)
+
+cat("Preparing legacy indicators for backward compatibility...\n")
+
+# Legacy Q36 and Q80 indicators (remove D/K responses)
+data$zQ36 <- recode(data$q36, "5=NA")
+data$zQ36 <- recode(data$q36, "c(0,1,2,3) = 1; c(4,5)=0")
+
+data$zQ80 <- recode(data$q80, "4=NA")
+data$zQ80 <- recode(data$q80, "c(0,1) = 1; c(2,3,4,5)=0")
+
+# Risk categories
+data$sum_categories_factor <- as.factor(data$sum_categories)
+data$sum_categories_cut <- cut_interval(data$sum_categories, n = 10)
+
+return(data)
 }
 
 # Main data preparation function
 prepare_data <- function() {
-  
-  # Start with non-zero degree data
-  dd <- data_nonzero
-  
-  # Create comparable indicators using CE's specifications
-  dd <- create_comparable_indicators(dd)
-  
-  # Add legacy indicators for backward compatibility
-  dd <- prepare_legacy_indicators(dd)
-  
-  # Create RDS data frame object
-  cat("Creating RDS data frame...\n")
-  rd.dd <- as.rds.data.frame(dd, 
-                             id="id", 
-                             recruiter.id="recruiter.id", 
-                             max.coupons = 5, 
-                             check.valid = FALSE)
-  
-  # Calculate RDS and VH/SS weights for different population sizes
-  cat("Calculating RDS and population weights...\n")
-  dd <- dd %>%
-    mutate(
-      # RDS-I weights for comparable indicators
-      wt.RDS1_document_withholding = rds.I.weights(rd.dd, "document_withholding_rds"),
-      wt.RDS1_pay_issues = rds.I.weights(rd.dd, "pay_issues_rds"),
-      wt.RDS1_threats_abuse = rds.I.weights(rd.dd, "threats_abuse_rds"),
-      wt.RDS1_excessive_hours = rds.I.weights(rd.dd, "excessive_hours_rds"),
-      wt.RDS1_access_to_help = rds.I.weights(rd.dd, "access_to_help_rds"),
-      
-      # Legacy RDS-I weights
-      wt.RDS1_zQ36 = rds.I.weights(rd.dd, "zQ36"),
-      wt.RDS1_zQ80 = rds.I.weights(rd.dd, "zQ80"),
-      wt.RDS1_sum_categories_factor = rds.I.weights(rd.dd, "sum_categories_factor"),
-      
-      # Volz-Heckathorn weights for different population sizes
-      wt.vh_980k = vh.weights(numRef, N = 980000),   # EU baseline estimate
-      wt.vh_100k = vh.weights(numRef, N = 100000),   # Conservative estimate
-      wt.vh_050k = vh.weights(numRef, N = 50000),    # Very conservative
-      wt.vh_1740k = vh.weights(numRef, N = 1740000), # Upper bound estimate
-      
-      # Gile's SS weights for different population sizes
-      wt.SS_980k = gile.ss.weights(numRef, N = 980000),
-      wt.SS_100k = gile.ss.weights(numRef, N = 100000),
-      wt.SS_050k = gile.ss.weights(numRef, N = 50000),
-      wt.SS_1740k = gile.ss.weights(numRef, N = 1740000)
-    )
-  
-  # Save prepared data
-  cat("Saving prepared data...\n")
-  save(dd, rd.dd, file = here("data", "processed", "prepared_data.RData"))
-  
-  # Export CSV for external use (remove list columns first)
-  dd_csv <- dd %>% select(-NonEmptyValues)
-  write.csv(dd_csv, here("data", "processed", "prepared_data.csv"), row.names = FALSE)
-  
-  cat("Data preparation completed successfully!\n")
-  cat("- Prepared data:", nrow(dd), "observations\n")
-  cat("- RDS data object created\n")
-  cat("- Comparable indicators created following CE's specifications\n")
-  cat("- Multiple population size weights calculated\n")
-  cat("- Files saved to data/processed/\n")
-  
-  return(list(
-    dd = dd,
-    rd.dd = rd.dd
-  ))
+
+# Start with non-zero degree data
+dd <- data_nonzero
+
+# Create comparable indicators using CE's specifications
+dd <- create_comparable_indicators(dd)
+
+# Add legacy indicators for backward compatibility
+dd <- prepare_legacy_indicators(dd)
+
+# Create RDS data frame object
+cat("Creating RDS data frame...\n")
+rd.dd <- as.rds.data.frame(dd, 
+                     id="id", 
+                     recruiter.id="recruiter.id", 
+                     max.coupons = 5, 
+                     check.valid = FALSE)
+
+# Calculate RDS and VH/SS weights for different population sizes
+cat("Calculating RDS and population weights...\n")
+dd <- dd %>%
+mutate(
+# RDS-I weights for comparable indicators
+wt.RDS1_document_withholding = rds.I.weights(rd.dd, "document_withholding_rds"),
+wt.RDS1_pay_issues = rds.I.weights(rd.dd, "pay_issues_rds"),
+wt.RDS1_threats_abuse = rds.I.weights(rd.dd, "threats_abuse_rds"),
+wt.RDS1_excessive_hours = rds.I.weights(rd.dd, "excessive_hours_rds"),
+wt.RDS1_access_to_help = rds.I.weights(rd.dd, "access_to_help_rds"),
+
+# Legacy RDS-I weights
+wt.RDS1_zQ36 = rds.I.weights(rd.dd, "zQ36"),
+wt.RDS1_zQ80 = rds.I.weights(rd.dd, "zQ80"),
+wt.RDS1_sum_categories_factor = rds.I.weights(rd.dd, "sum_categories_factor"),
+
+# Volz-Heckathorn weights for different population sizes
+wt.vh_980k = vh.weights(numRef, N = 980000),   # EU baseline estimate
+wt.vh_100k = vh.weights(numRef, N = 100000),   # Conservative estimate
+wt.vh_050k = vh.weights(numRef, N = 50000),    # Very conservative
+wt.vh_1740k = vh.weights(numRef, N = 1740000), # Upper bound estimate
+
+# Gile's SS weights for different population sizes
+wt.SS_980k = gile.ss.weights(numRef, N = 980000),
+wt.SS_100k = gile.ss.weights(numRef, N = 100000),
+wt.SS_050k = gile.ss.weights(numRef, N = 50000),
+wt.SS_1740k = gile.ss.weights(numRef, N = 1740000)
+)
+
+# Save prepared data
+cat("Saving prepared data...\n")
+save(dd, rd.dd, file = here("data", "processed", "prepared_data.RData"))
+
+# Export CSV for external use (remove list columns first)
+dd_csv <- dd %>% select(-NonEmptyValues)
+write.csv(dd_csv, here("data", "processed", "prepared_data.csv"), row.names = FALSE)
+
+cat("Data preparation completed successfully!\n")
+cat("- Prepared data:", nrow(dd), "observations\n")
+cat("- RDS data object created\n")
+cat("- Comparable indicators created following CE's specifications\n")
+cat("- Multiple population size weights calculated\n")
+cat("- Files saved to data/processed/\n")
+
+return(list(
+dd = dd,
+rd.dd = rd.dd
+))
 }
 
 # Execute data preparation if running this script directly
 if (!exists("skip_execution")) {
-  prepared_data <- prepare_data()
-  # Make dd and rd.dd available in global environment
-  dd <<- prepared_data$dd
-  rd.dd <<- prepared_data$rd.dd
+prepared_data <- prepare_data()
+# Make dd and rd.dd available in global environment
+dd <<- prepared_data$dd
+rd.dd <<- prepared_data$rd.dd
 }
 """
 
@@ -489,9 +489,9 @@ $$\hat{N}_H = \frac{\hat{y}_{F,H}}{\hat{\bar{v}}_{H,F}}$$
 Where:
 
 * $\hat{y}_{F,H}$: **Out-reports** — how many people the frame population (your RDS sample) reports **knowing** in the hidden population
-    
+
 * $\hat{\bar{v}}_{H,F}$: **Average visibility** — how many **times a hidden population member** would be mentioned by someone in the frame
-    
+
 
 * * *
 
@@ -502,7 +502,7 @@ This is the **sum of known others** in the hidden population from your survey (e
 #### Options:
 
 * **If using binary indicators (as in your code):**
-    
+
 
 You can sum the weighted out-reports like so:
 
@@ -526,11 +526,11 @@ $$\hat{\bar{v}}_{H,F} = \frac{N_F}{N_A} \cdot \frac{\sum_{i \in s_H} \sum_j \til
 Where:
 
 * $s_H$: the sample of people **in the hidden population**
-    
+
 * $\tilde{v}_{i,A_j}$: the number of **times the respondent thinks they are known** by group $A_j$ (visibility)
-    
+
 * $c\pi_i$: sampling weights for each respondent in $s_H$
-    
+
 
 #### In practice:
 
@@ -545,7 +545,7 @@ So you can estimate $\hat{\bar{v}}_{H,F}$ as:
 ```r
 # Subset to hidden population members
 hidden_doc <- dd %>%
-  filter(document_withholding_rds == 1 & !is.na(known_network_size))
+filter(document_withholding_rds == 1 & !is.na(known_network_size))
 
 # Weighted mean degree
 v_HF_doc <- with(hidden_doc, sum(known_network_size / wt.vh_980k) / sum(1 / wt.vh_980k))
@@ -562,7 +562,7 @@ $$\hat{N}_H = \frac{\hat{y}_{F,H}}{\hat{\bar{v}}_{H,F}} \cdot N_F$$
 Where:
 
 * $N_F$: size of frame population (e.g., 980,000 for all domestic workers in the UK)
-    
+
 
 ```r
 N_F <- 980000  # or your alternative size
@@ -593,9 +593,9 @@ You’ll generate one NSUM estimate for each:
 Based on your `sum_categories`, `sum_categories_factor`, and the risk index (from the PDF), you could:
 
 * Create a **weighted index of exploitation** (e.g., combining multiple indicators)
-    
+
 * Run the estimator over the combined category
-    
+
 
 * * *
 
@@ -621,11 +621,11 @@ NSUM_doc <- y_FH_doc / v_HF_doc
 Would you like help with:
 
 * 🧪 Bootstrapped confidence intervals?
-    
+
 * 📦 Packaging this into an R function for your project?
-    
+
 * 📉 Visualizations for comparing NSUM vs RDS prevalence estimates?
-    
+
 
 Just say the word! 😊
 
@@ -663,11 +663,11 @@ $$\hat{N}_H = \frac{\hat{y}_{F,H}}{\hat{\bar{v}}_{H,F}} \cdot N_F$$
 Where:
 
 * $\hat{y}_{F,H}$: how many _other_ domestic workers the sample reports knowing who are in the **hidden population**
-    
+
 * $\hat{\bar{v}}_{H,F}$: how visible each _hidden_ domestic worker is to the frame population (i.e., other domestic workers)
-    
+
 * $N_F$: total number of domestic workers in the UK (your known frame population size)
-    
+
 
 * * *
 
@@ -682,11 +682,11 @@ In classic NSUM (Killworth, Bernard, et al.), you need **known-size alter groups
 That means:
 
 * You’re asking about **within-frame degree** directly.
-    
+
 * You **don’t need to estimate it** indirectly using known groups.
-    
+
 * You can treat Q13 as a **direct estimate of personal network size** in the **frame population**.
-    
+
 
 This is exactly what Feehan & Salganik (2016) refer to when they say:
 
@@ -711,11 +711,11 @@ If your frame population were broader (e.g., "all adults in the UK"), then yes �
 But in your case:
 
 * The frame population = domestic workers
-    
+
 * Degree question = “how many domestic workers do you know?” ✅
-    
+
 * Hidden population = exploited domestic workers
-    
+
 
 Everything is consistent 💡
 
@@ -730,31 +730,31 @@ Would you like a quick visual diagram of this logic or a tidy table showing the 
 Excellent!  Absolutely excellent! Ultimately, I want to compare the RDS estimate to the NSUM estimate.  To do this I had to aggregate some variables so they are comparable (e.g. 
 
 # 1. Document withholding (MOST CONFIDENT): Q70 5f2 = Q71 5f3
-  # Q70: Has employer withheld travel/identity documents?
-  data$zQ70 <- recode(data$q70, "4=NA")  # Set don't know to NA
-  data$zQ70 <- recode(data$q70, "c(0,1,2) = 1; c(3,4)=0")  # Always/often/sometimes = 1, never = 0
-  
-  # Q71: Know others without access to documents? (already numeric count)
-  data$document_withholding_rds <- data$zQ70
-  data$document_withholding_nsum <- ifelse(data$q71 > 0, 1, 0)  # Any known others = 1
-  data$document_withholding_nsum[is.na(data$q71)] <- NA
+# Q70: Has employer withheld travel/identity documents?
+data$zQ70 <- recode(data$q70, "4=NA")  # Set don't know to NA
+data$zQ70 <- recode(data$q70, "c(0,1,2) = 1; c(3,4)=0")  # Always/often/sometimes = 1, never = 0
+
+# Q71: Know others without access to documents? (already numeric count)
+data$document_withholding_rds <- data$zQ70
+data$document_withholding_nsum <- ifelse(data$q71 > 0, 1, 0)  # Any known others = 1
+data$document_withholding_nsum[is.na(data$q71)] <- NA
 
 and
 
 # 2. Pay/debt issues (HIGH CONFIDENCE): Q39 5b4 and Q42 5b7 = Q43 5b8
-  # Q39: Have to pay debt to someone who helped find work?
-  data$zQ39 <- recode(data$q39, "2=NA")  # Don't know to NA
-  data$zQ39 <- recode(data$q39, "0 = 1; c(1,2)=0")  # Yes = 1, No = 0
-  
-  # Q42: Has pay ever been withheld?
-  data$zQ42 <- recode(data$q42, "4=NA")  # Don't know to NA
-  data$zQ42 <- recode(data$q42, "c(0,1,2) = 1; c(3,4)=0")  # Always/often/sometimes = 1, never = 0
-  
-  # Q43: Know others with debt/pay problems? (already numeric count)
-  data$pay_issues_rds <- ifelse(data$zQ39 == 1 | data$zQ42 == 1, 1, 0)  # Logical OR
-  data$pay_issues_rds[is.na(data$zQ39) & is.na(data$zQ42)] <- NA  # NA if both missing
-  data$pay_issues_nsum <- ifelse(data$q43 > 0, 1, 0)  # Any known others = 1
-  data$pay_issues_nsum[is.na(data$q43)] <- NA
+# Q39: Have to pay debt to someone who helped find work?
+data$zQ39 <- recode(data$q39, "2=NA")  # Don't know to NA
+data$zQ39 <- recode(data$q39, "0 = 1; c(1,2)=0")  # Yes = 1, No = 0
+
+# Q42: Has pay ever been withheld?
+data$zQ42 <- recode(data$q42, "4=NA")  # Don't know to NA
+data$zQ42 <- recode(data$q42, "c(0,1,2) = 1; c(3,4)=0")  # Always/often/sometimes = 1, never = 0
+
+# Q43: Know others with debt/pay problems? (already numeric count)
+data$pay_issues_rds <- ifelse(data$zQ39 == 1 | data$zQ42 == 1, 1, 0)  # Logical OR
+data$pay_issues_rds[is.na(data$zQ39) & is.na(data$zQ42)] <- NA  # NA if both missing
+data$pay_issues_nsum <- ifelse(data$q43 > 0, 1, 0)  # Any known others = 1
+data$pay_issues_nsum[is.na(data$q43)] <- NA
 
 With this in mind, and given your previous answers, please can you suggest  comprehensive R: workflow to perform the NSUM estimation, using the sample from the 'hidden population.'  Then again, this approach strikes me as very odd. To wit, we are _not_ sampling from the hidden population.  We are sampling fromthe Frame.  It just so happens that some of these respondents _are_ members of the hidden population.  But we only know that ex post, e.g. after asking question q71 or q39, etc.  Doesn't that make calculating the survey weights ($\pi_i$) infeasable?
 
@@ -815,18 +815,18 @@ This is what **Feehan & Salganik (2016)** allow. They say (p. 827):
 That describes your situation:
 
 * Your RDS sample **includes** members of the hidden population
-    
+
 * You compute **RDS-derived weights** for _all_ respondents (e.g., Volz-Heckathorn or Gile’s SS)
-    
+
 * You can apply those weights **to just the hidden respondents** to estimate $\bar{v}_{H,F}$
-    
+
 
 👉 This is **valid** as long as:
 
 * Hidden population members **have the same recruitment process** (i.e. RDS)
-    
+
 * You use **relative weights**, e.g. RDS-II weights (based on degree)
-    
+
 
 * * *
 
@@ -936,9 +936,9 @@ Yes! You can wrap this in a function and iterate over:
 
 ```r
 exploitation_list <- list(
-  "document_withholding" = list("rds" = "document_withholding_rds", "nsum" = "document_withholding_nsum"),
-  "pay_issues" = list("rds" = "pay_issues_rds", "nsum" = "pay_issues_nsum"),
-  ...
+"document_withholding" = list("rds" = "document_withholding_rds", "nsum" = "document_withholding_nsum"),
+"pay_issues" = list("rds" = "pay_issues_rds", "nsum" = "pay_issues_nsum"),
+...
 )
 ```
 
@@ -961,11 +961,11 @@ Therefore: ✅ **It _is_ valid to use your embedded hidden population sample to 
 Would you like:
 
 * 🧪 Bootstrapping for confidence intervals?
-    
+
 * 📦 Full R function version of the estimator?
-    
+
 * 📉 A side-by-side plot of NSUM vs RDS prevalence?
-    
+
 
 Let’s keep building this tool! 🚀
 
@@ -991,11 +991,11 @@ While the response was solid and conceptually accurate, **there are areas where 
 ### ✅ **What Worked Well**
 
 * **Accurate conceptual framing**: The distinction between sampling the frame vs. the hidden population was well explained.
-    
+
 * **Correct use of Feehan & Salganik (2016)**: The justification for using RDS weights for the embedded hidden population was sound.
-    
+
 * **Code scaffolding**: A reasonable step-by-step estimation process in R was provided.
-    
+
 
 * * *
 
@@ -1032,16 +1032,16 @@ Let’s walk through the logic, the assumptions, and a **complete R implementati
 ### 📦 Your Sampling Frame:
 
 * You sample **domestic workers in the UK** via **RDS**
-    
+
 * That’s your **frame population** $F$
-    
+
 
 ### 🔍 Your Hidden Populations (H):
 
 * Workers who have been **exploited** (based on various criteria, e.g. document withholding, pay issues, etc.)
-    
+
 * These are **identified ex post** within your RDS sample using coded responses (e.g. `document_withholding_rds == 1`)
-    
+
 
 ### ⚖️ Estimating Hidden Population Size (via Generalized NSUM):
 
@@ -1050,11 +1050,11 @@ $$\hat{N}_H = \frac{\hat{y}_{F,H}}{\hat{\bar{v}}_{H,F}} \cdot N_F$$
 Where:
 
 * $\hat{y}_{F,H}$: total **out-reports** from the frame population — “How many exploited people do you know?”
-    
+
 * $\hat{\bar{v}}_{H,F}$: average **visibility** of each hidden population member to the frame (estimated via RDS weights)
-    
+
 * $N_F$: known size of the **frame population** (e.g. all domestic workers in the UK)
-    
+
 
 * * *
 
@@ -1068,15 +1068,15 @@ Where:
 ⚠️ Assumptions involved:
 
 * Accurate reporting of out-reports (e.g., Q71)
-    
+
 * Symmetric ties (visibility ≈ degree)
-    
+
 * Homogenous visibility within the hidden population
-    
+
 * Correct RDS weights (e.g., Volz-Heckathorn or Gile’s SS)
-    
+
 * No barrier to being named (visibility bias minimized)
-    
+
 
 * * *
 
@@ -1126,7 +1126,7 @@ y_FH <- sum(dd$out_report * dd$wts, na.rm = TRUE)
 ```r
 # Filter to hidden pop members (exploited) with non-missing degree and weights
 dd_hidden <- dd %>%
-  filter(!!sym(rds_var) == 1, !is.na(!!sym(degree_var)), !is.na(wts))
+filter(!!sym(rds_var) == 1, !is.na(!!sym(degree_var)), !is.na(wts))
 
 # Estimate average visibility (degree) weighted by RDS weights
 numerator   <- sum(dd_hidden[[degree_var]] / dd_hidden$wts)
@@ -1177,24 +1177,24 @@ You can build this into a function:
 
 ```r
 compare_nsum_rds <- function(data, rds_var, nsum_var, degree_var, weight_var, N_F) {
-  data$wts <- data[[weight_var]]
-  data$out_report <- data[[nsum_var]]
-  
-  y_FH <- sum(data$out_report * data$wts, na.rm = TRUE)
-  
-  data_hidden <- data %>%
-    filter(!!sym(rds_var) == 1, !is.na(!!sym(degree_var)), !is.na(wts))
-  
-  v_HF <- with(data_hidden, sum(!!sym(degree_var) / wts) / sum(1 / wts))
-  NSUM_est <- y_FH / v_HF * N_F
-  rds_prev <- weighted.mean(data[[rds_var]], w = data$wts, na.rm = TRUE)
-  RDS_est <- rds_prev * N_F
-  
-  return(tibble(
-    indicator = rds_var,
-    NSUM_estimate = round(NSUM_est),
-    RDS_estimate = round(RDS_est)
-  ))
+data$wts <- data[[weight_var]]
+data$out_report <- data[[nsum_var]]
+
+y_FH <- sum(data$out_report * data$wts, na.rm = TRUE)
+
+data_hidden <- data %>%
+filter(!!sym(rds_var) == 1, !is.na(!!sym(degree_var)), !is.na(wts))
+
+v_HF <- with(data_hidden, sum(!!sym(degree_var) / wts) / sum(1 / wts))
+NSUM_est <- y_FH / v_HF * N_F
+rds_prev <- weighted.mean(data[[rds_var]], w = data$wts, na.rm = TRUE)
+RDS_est <- rds_prev * N_F
+
+return(tibble(
+indicator = rds_var,
+NSUM_estimate = round(NSUM_est),
+RDS_estimate = round(RDS_est)
+))
 }
 
 # Example
@@ -1219,20 +1219,20 @@ compare_nsum_rds(dd, "document_withholding_rds", "document_withholding_nsum", "k
 --------------
 
 * ✅ Your situation is **valid** for estimating visibility from the hidden population embedded in your RDS sample, **as long as you apply the correct RDS weights**.
-    
+
 * ❗ If visibility is **not symmetric** or **not evenly distributed**, estimates may be biased — you can correct this with **enriched ARD** if you collect it.
-    
+
 
 * * *
 
 Would you like:
 
 * 🧪 Bootstrapped confidence intervals?
-    
+
 * 📦 A full R package template for this estimator?
-    
+
 * 📈 Side-by-side visualizations of RDS vs NSUM by indicator?
-    
+
 
 Just let me know how far you'd like to take this! 😊
 
@@ -1263,13 +1263,13 @@ $$\hat{\bar{v}}_{H,F} = \frac{N_F}{N_A} \cdot \frac{\sum_{i \in s_H} \tilde{v}_{
 Where:
 
 * $\tilde{v}_{i,F}$: the number of _frame population members_ who know hidden population member $i$ (i.e., visibility)
-    
+
 * $\pi_i$: the **(relative)** inclusion probability of individual $i$ in the hidden population sample $s_H$
-    
+
 * $N_F$: size of the frame population
-    
+
 * $N_A$: size of the hidden population sample (or more generally, the sum of weights)
-    
+
 
 This is a **Horvitz–Thompson estimator** for the _weighted mean_, used when your sampling design does **not provide absolute probabilities**, only **relative inclusion probabilities**, such as in RDS.
 
@@ -1285,9 +1285,9 @@ $$\hat{\bar{v}} = \frac{\sum w_i \cdot x_i}{\sum w_i}$$
 This is the standard form of a **weighted average**. Now, plug in the GNSUM context:
 
 * $x_i = \tilde{v}_{i,F}$: visibility (approx. Q13 in your case)
-    
+
 * $w_i = \frac{1}{\pi_i}$: weight = inverse of (relative) inclusion probability
-    
+
 
 So we get:
 
@@ -1298,9 +1298,9 @@ This is **exactly** the structure of a **weighted mean**, where you're averaging
 ### 🛑 If you omit the denominator:
 
 * You’d get a **weighted total**, not an average.
-    
+
 * Your estimate would depend on the sample size of hidden individuals, not the **distribution** of visibility across the hidden population.
-    
+
 
 * * *
 
@@ -1318,9 +1318,9 @@ $$\hat{\bar{v}}_{H,F} = \frac{\text{Weighted Sum of Visibility}}{\text{Weighted 
 The weights **correct for bias** in your sample due to:
 
 * Oversampling high-degree nodes (common in RDS)
-    
+
 * Underrepresentation of less connected individuals
-    
+
 
 This correction **requires** weights in both the numerator (to weight visibility appropriately) and the denominator (to compute the correct average).
 
@@ -1336,11 +1336,11 @@ $$\text{GPA} = \frac{\sum \text{grade} \times \text{credits}}{\sum \text{credits
 Same logic:
 
 * Visibility = grade
-    
+
 * RDS weight = credit hours
-    
+
 * Without the denominator, the result is meaningless
-    
+
 
 * * *
 
@@ -1348,11 +1348,11 @@ Same logic:
 ----------
 
 * The **weights appear in both numerator and denominator** to compute a **weighted mean visibility**
-    
+
 * This ensures **design-unbiased estimation** under **relative probability sampling** (like RDS)
-    
+
 * It’s the same principle as a **Horvitz–Thompson estimator** for a mean or proportion
-    
+
 
 * * *
 
@@ -1375,11 +1375,11 @@ You’re very welcome! 😊 I'm glad it was helpful — you're asking **deep, te
 If you need next steps, here are a few suggestions you can just ask for:
 
 * 📦 **Function packaging**: Turn the full estimation into an R function for reuse across multiple indicators.
-    
+
 * 🧪 **Bootstrap CIs**: Estimate confidence intervals for both NSUM and RDS estimates using bootstrapping.
-    
+
 * 📈 **Comparison plots**: Visualize NSUM vs RDS estimates with uncertainty bands.
-    
+
 * 📚 **Reporting templates**: Markdown or LaTeX templates for writing up your methodology section.
 
 
@@ -1418,17 +1418,17 @@ Here is the outline let’s call this the **Three-Step Framework**, as you descr
 Because:
 
 * RDS weights (e.g., Volz–Heckathorn or Gile SS weights) are **functions of the sample itself**
-    
+
 * They depend on:
-    
-    * Degree estimates
-        
-    * Sample size
-        
-    * Recruitment paths (in some estimators)
-        
+
+* Degree estimates
+
+* Sample size
+
+* Recruitment paths (in some estimators)
+
 * If you reused weights from the original sample, you would **understate variance** (and be invalid)
-    
+
 
 So:
 
@@ -1443,25 +1443,25 @@ So:
 ✅ Yes — this is where you:
 
 * Compute weighted sum of **out-reports** from the frame population:
-    
-    $$\widehat{y}_{F,H}^{(b)} = \sum_{i \in s^{(b)}} \frac{y_{i,H}}{\pi_i^{(b)}}$$
+
+$$\widehat{y}_{F,H}^{(b)} = \sum_{i \in s^{(b)}} \frac{y_{i,H}}{\pi_i^{(b)}}$$
 * Compute weighted mean visibility **among hidden population** (those reporting self-experience):
-    
-    $$\widehat{\bar{v}}_{H,F}^{(b)} = \frac{\sum_{j \in H^{(b)}} \frac{d_j}{\pi_j^{(b)}}}{\sum_{j \in H^{(b)}} \frac{1}{\pi_j^{(b)}}}$$
+
+$$\widehat{\bar{v}}_{H,F}^{(b)} = \frac{\sum_{j \in H^{(b)}} \frac{d_j}{\pi_j^{(b)}}}{\sum_{j \in H^{(b)}} \frac{1}{\pi_j^{(b)}}}$$
 * Then estimate:
-    
-    $$\widehat{N}_H^{(b)} = \frac{\widehat{y}_{F,H}^{(b)}}{\widehat{\bar{v}}_{H,F}^{(b)}} \cdot N_F$$
+
+$$\widehat{N}_H^{(b)} = \frac{\widehat{y}_{F,H}^{(b)}}{\widehat{\bar{v}}_{H,F}^{(b)}} \cdot N_F$$
 
 And finally:
 
 * Store $\widehat{N}_H^{(b)}$ for all $B$ bootstrap replicates
-    
+
 * Summarize:
-    
-    * Point estimate: $\bar{N}_H = \frac{1}{B} \sum \widehat{N}_H^{(b)}$
-        
-    * Confidence intervals: quantiles or bias-corrected methods
-        
+
+* Point estimate: $\bar{N}_H = \frac{1}{B} \sum \widehat{N}_H^{(b)}$
+
+* Confidence intervals: quantiles or bias-corrected methods
+
 
 * * *
 
@@ -1471,11 +1471,11 @@ And finally:
 This pipeline:
 
 * 📉 Accounts for **uncertainty in both recruitment** and **weight estimation**
-    
+
 * 🧮 Keeps the estimation **internally consistent**: weights and estimates arise from the _same sample_
-    
+
 * 📈 Ensures that **bootstrap variability reflects real sample design variance**
-    
+
 
 * * *
 
@@ -1485,11 +1485,11 @@ This pipeline:
 If you resample (Step 1) but don’t reweight (Step 2), then:
 
 * You implicitly assume weights are **fixed constants**
-    
+
 * This **understates variability**, because in reality, inclusion probabilities are **modeled, not known**
-    
+
 * Your **CIs will be too narrow**, especially for small or structurally uneven networks
-    
+
 
 * * *
 
@@ -1500,7 +1500,7 @@ If you resample (Step 1) but don’t reweight (Step 2), then:
 | --- | --- | --- | --- |
 | 1️⃣ Bootstrap the sample | Tree, SS, or neighborhood resampling | ✅ | Models recruitment variability |
 | 2️⃣ Recalculate RDS weights | VH, Gile SS, or others | ✅ | Keeps weights aligned with sample |
-| 3️⃣ Re-estimate NSUM | Use boot sample + weights | ✅ | Reflects combined uncertainty |
+| 3️⃣ Re-estimate NSUM | Use boot sample + weights + estimator (Basic NSUM, MBSU, symmetric-GNSUM)| ✅ | Reflects combined uncertainty |
 
 💡 You understood and articulated the structure exactly right. This is the foundation of a valid NSUM inference pipeline using RDS data.
 
@@ -1512,9 +1512,8 @@ If you resample (Step 1) but don’t reweight (Step 2), then:
 
 
 🔄 Updated Framework: RDS-Aware Bootstrap Methods
-=================================================
 
-Let’s revise and structure the main **RDS-specific bootstrap approaches** you can consider for NSUM uncertainty estimation:
+
 
 | Method | Core Idea | Key Citation | Supported in R? | NSUM-Suitable? |
 | --- | --- | --- | --- | --- |
@@ -1526,124 +1525,128 @@ Let’s go into each one now — this time with proper references and updated un
 
 * * *
 
-📦 1. Chain Bootstrap (Weir et al., Salganik)
----------------------------------------------
+### 📦 1. Chain Bootstrap (Weir et al., Salganik)
 
-### Core Idea:
+
+#### Core Idea:
 
 Treat **each recruitment chain** as a **Primary Sampling Unit (PSU)** and resample chains with replacement.
 
 * Developed originally in **Salganik (2006)** to estimate RDS variances
-    
-* **Weir et al. (2012)** used it empirically and provided **supporting online material** with code, which is the basis for:
-    
-    > 🔧 `surveybootstrap::rds.boot.draw.chain()`
-    
 
-### How It Works:
+* **Weir et al. (2012)** used it empirically and provided **supporting online material** with code, which is the basis for:
+
+> 🔧 `surveybootstrap::rds.boot.draw.chain()`
+
+
+#### How It Works:
 
 * Identify unique recruitment trees or seeds
-    
-* Sample trees with replacement
-    
-* Recombine and reweight for each replicate
-    
 
-### Good For:
+* Sample trees with replacement
+
+* Recombine and reweight for each replicate
+
+
+#### Good For:
 
 * Simple variance estimation in **binary outcome** RDS surveys
-    
-* Use with **Volz–Heckathorn weights**
-    
-* Can be extended to NSUM (if you compute NSUM estimate per replicate)
-    
 
-### Limitation:
+* Use with **Volz–Heckathorn weights**
+
+* Can be extended to NSUM (if you compute NSUM estimate per replicate)
+
+
+#### Limitation:
 
 * Doesn’t fully model **network dependencies** (just trees)
-    
+
 
 * * *
 
-🧬 2. Successive Sampling Bootstrap (SSB)
+### 🧬 2. Successive Sampling Bootstrap (SSB)
+
 -----------------------------------------
 
-### Core Idea:
+#### Core Idea:
 
 Use **Successive Sampling theory** (without replacement) to estimate each respondent’s inclusion probability $\pi_i$, and then **resample based on those probabilities**.
 
-### Key Paper:
+#### Key Paper:
 
 * **Gile (2011)** — _Improved Inference for Respondent-Driven Sampling Data with the Successive Sampling Estimator_  
-    DOI:10.1214/11-AOAS513
-    
+DOI:10.1214/11-AOAS513
 
-### Implementation:
+
+#### Implementation:
 
 * Estimate inclusion probabilities $\hat{\pi}_i \propto \text{degree}_i$
-    
-* Resample individuals with probabilities $\propto 1 / \hat{\pi}_i$
-    
-* Recompute weights and NSUM per bootstrap draw
-    
 
-### R Support:
+* Resample individuals with probabilities $\propto 1 / \hat{\pi}_i$
+
+* Recompute weights and NSUM per bootstrap draw
+
+
+#### R Support:
 
 * No out-of-the-box implementation, but can be coded manually (see previous messages)
-    
-* Compatible with `gile.ss.weights()`
-    
 
-### Use For:
+* Compatible with `gile.ss.weights()`
+
+
+#### Use For:
 
 * NSUM with **SS weights**
-    
+
 * When you believe sampling without replacement is more realistic
-    
+
 
 * * *
 
-🧱 3. Neighborhood Bootstrap (`Neighboot`; Yauck et al., 2022)
+### 🧱 3. Neighborhood Bootstrap (`Neighboot`; Yauck et al., 2022)
+
+
 --------------------------------------------------------------
 
-### Core Idea:
+#### Core Idea:
 
 Model the **local network structure** of RDS recruitment and **bootstrap ego-networks** rather than individuals or chains.
 
 > It's a **network-aware, dependency-preserving bootstrap** that accounts for the **actual structure of the recruitment network**.
 
-### Key Citation:
+#### Key Citation:
 
 > Yauck, M., Moodie, E. E. M., Apelian, H., et al. (2022).  
 > _Neighborhood Bootstrap for Respondent-Driven Sampling._  
 > [Journal of Survey Statistics and Methodology](https://doi.org/10.1093/jssam/smab057)
 
-### Package:
+#### Package:
 
 * ✅ **R package**: `Neighboot`
-    
-* ✅ Functions: `neighboot::neighboot()`
-    
 
-### Implementation Details:
+* ✅ Functions: `neighboot::neighboot()`
+
+
+#### Implementation Details:
 
 * Bootstrap draws ego networks centered on sampled nodes
-    
-* Designed to preserve **recruitment-induced network dependencies**
-    
-* Provides **improved variance estimates** over chain bootstraps
-    
 
-### Use For:
+* Designed to preserve **recruitment-induced network dependencies**
+
+* Provides **improved variance estimates** over chain bootstraps
+
+
+#### Use For:
 
 * NSUM with **RDS** where you have a **network object** or full recruitment tree
-    
+
 * Works well when applied to **networked traits** like visibility
-    
+
 
 * * *
 
-🧠 Which One Should _You_ Use?
+### 🧠 Which One Should _You_ Use?
+
 ------------------------------
 
 | Use Case | Best Method |
@@ -1655,7 +1658,9 @@ Model the **local network structure** of RDS recruitment and **bootstrap ego-net
 
 * * *
 
-🔍 Key Differences: Tree vs SS vs Neighborhood Bootstrap
+### 🔍 Key Differences: Tree vs SS vs Neighborhood Bootstrap
+
+
 --------------------------------------------------------
 
 | Feature | Chain Bootstrap | SS Bootstrap | Neighborhood Bootstrap |
@@ -1668,7 +1673,8 @@ Model the **local network structure** of RDS recruitment and **bootstrap ego-net
 
 * * *
 
-🔚 Final Word (for Now!)
+### 🔚 Final Word (for Now!)
+
 ------------------------
 
 You’re absolutely right to bring up `Neighboot` and the Weir et al. bootstrap. The **landscape of RDS-aware bootstrapping has evolved**, and:
@@ -1678,6 +1684,7 @@ You’re absolutely right to bring up `Neighboot` and the Weir et al. bootstrap.
 
 
 ## Step 2:  Recalculate Weights ##
+
 
 
 
@@ -1702,7 +1709,9 @@ This is **where the estimator family comes in**:
 
 * * *
 
-1. Modified Basic Scale‑Up (MBSU): Adjustments, what they are, how to estimate them
+### 1. Modified Basic Scale‑Up (MBSU): Adjustments, what they are, how to estimate them
+
+
 -----------------------------------------------------------------------------------
 
 The “Basic Scale‐Up” model (original NSUM) has a simple form:
@@ -1714,20 +1723,20 @@ where $y_{i,H}$ = how many hidden members person $i$ knows; $d_i$ = their degree
 “Modified” versions introduce **adjustment factors** to correct for known sources of bias. Some of the common biases:
 
 * **Barrier / transmission error**: People may not know that someone they know is in the hidden population (or misclassify), or the hidden population members might be less visible.
-    
+
 * **Degree ratio bias**: Those in the hidden population may have substantially different degrees (on average) than those in the frame population.
-    
+
 * **Recall / reporting bias**: Underreporting or overreporting of known others because of memory, social desirability, etc.
-    
+
 
 So MBSU typically introduces parameters (adjustment factors) like:
 
 * $\delta$: how visible hidden population members are (visibility / transmission factor)
-    
+
 * $\tau$: sometimes a recall factor, or correction for undercounting
-    
+
 * Or a “degree ratio” $r = \frac{\text{avg degree of hidden pop}}{\text{avg degree of frame pop}}$
-    
+
 
 MBSU might look something like:
 
@@ -1746,35 +1755,37 @@ where $C$ is a product of adjustment corrections.
 Because you often don’t observe them directly, you typically:
 
 1. **Borrow from literature or past studies**  
-    If others have estimated visibility or barrier effects for a similar population/context, use plausible values (ranges) from their findings.
-    
+If others have estimated visibility or barrier effects for a similar population/context, use plausible values (ranges) from their findings.
+
 2. **Sensitivity / scenario analyses**  
-    As you’ve done, scan over plausible values (e.g. visibility from 0.5 → 1, or degree ratio from 0.7 → 1.3) and show how the NSUM estimate changes. This helps show how sensitive your conclusion is to these assumptions.
-    
+As you’ve done, scan over plausible values (e.g. visibility from 0.5 → 1, or degree ratio from 0.7 → 1.3) and show how the NSUM estimate changes. This helps show how sensitive your conclusion is to these assumptions.
+
 3. **Collect additional data (“enriched ARD”)**  
-    If feasible, ask respondents not only how many people they know in the hidden population, but also ask about their perception of whether those people know them (i.e. measure visibility), or number of acquaintances for whom the hidden status is ambiguous. Or, if you can survey hidden population members and ask how many frame‐members know them, that gives direct information about visibility / transmission.
-    
+If feasible, ask respondents not only how many people they know in the hidden population, but also ask about their perception of whether those people know them (i.e. measure visibility), or number of acquaintances for whom the hidden status is ambiguous. Or, if you can survey hidden population members and ask how many frame‐members know them, that gives direct information about visibility / transmission.
+
 4. **Estimate degree ratio if you have a hidden population sample**  
-    If you have some respondents who _are_ hidden pop, and you have their degree (network size) you can estimate average degree in hidden pop vs frame pop.
-    
+If you have some respondents who _are_ hidden pop, and you have their degree (network size) you can estimate average degree in hidden pop vs frame pop.
+
 5. **Statistical models (e.g. regression)**  
-    Sometimes one includes auxiliary covariates (age, gender, migration status, etc.) that predict visibility or reporting, and model them. Then use predictions for adjustment.
-    
+Sometimes one includes auxiliary covariates (age, gender, migration status, etc.) that predict visibility or reporting, and model them. Then use predictions for adjustment.
+
 
 * * *
 
 ### Literature / references
 
 * Feehan & Salganik (2016) discuss adjustment factors (for transmission / visibility etc.), and ways the basic estimator is biased when key assumptions fail. [hrussellbernard.com](https://hrussellbernard.com/wp-content/uploads/2020/07/feehan-salganik-2016-generalizing-nsum.pdf?utm_source=chatgpt.com)
-    
+
 * “Thirty Years of The Network Scale‐Up Method” (Laga et al., 2021) gives a recent review of adjustments and practices. [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10665021/?utm_source=chatgpt.com)
-    
+
 * “Estimating and Correcting Degree Ratio Bias in NSUM” (Laga, 2023 preprint) [arXiv] — proposes methods to estimate degree ratio bias without collecting extra data. [Ian Laga](https://ilaga.github.io/Degree_ratio_preprint.pdf?utm_source=chatgpt.com)
-    
+
 
 * * *
 
-2. Model‑based NSUM (including Bayesian / hierarchical NSUM)
+### 2. Model‑based NSUM (including Bayesian / hierarchical NSUM)
+
+
 ------------------------------------------------------------
 
 “Model‑based” NSUM estimators refer to statistical models in which the unknown parameters (hidden pop size, visibility / transmission, degree ratio, reporting error, etc.) are treated within a probabilistic modeling framework. Many of them are Bayesian, though frequentist / hierarchical mixed‐models also exist.
@@ -1782,24 +1793,24 @@ Because you often don’t observe them directly, you typically:
 ### Key features of model‐based NSUM
 
 * You specify a **likelihood** for what you observe (e.g. number of hidden population members known by each respondent, given their degree, plus error terms)
-    
+
 * You put **priors** on unknown parameters: hidden population size, visibility/transmission error, degree ratio, etc.
-    
+
 * Possibly hierarchical structure (different subpopulations / regions) to share strength (partial pooling)
-    
+
 * Incorporate uncertainty in all parameters in one unified model, which produces posterior distributions (or confidence intervals) on all quantities of interest
-    
+
 
 * * *
 
 ### Examples / recent papers
 
 * _“A Partially Pooled NSUM Model: Detailed estimation of CSEM trafficking prevalence in Philippine municipalities”_ (Nyarko‑Agyei, Moser, Seymour, etc., 2024) — they build a Bayesian hierarchical NSUM model to estimate municipal‐level prevalence across many regions. [arXiv](https://arxiv.org/abs/2407.13267?utm_source=chatgpt.com)
-    
+
 * _“Accounting for correlation and censoring in Bayesian …”_ (B. Vogel et al., 2025) — proposes NSUM models estimating group size and other parameters jointly, using Bayesian methods. [ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S0378873325000462?utm_source=chatgpt.com)
-    
+
 * Preprint “Degree ratio bias” (Laga 2023) also has modeling of adjustment / estimation of that bias. [Ian Laga](https://ilaga.github.io/Degree_ratio_preprint.pdf?utm_source=chatgpt.com)
-    
+
 
 * * *
 
@@ -1813,38 +1824,40 @@ Because you often don’t observe them directly, you typically:
 
 * * *
 
-3. How these fit into **your RDS + Bootstrapping + NSUM pipeline**
+### 3. How these fit into **your RDS + Bootstrapping + NSUM pipeline**
+
 ------------------------------------------------------------------
 
 Given what you’ve laid out (bootstrapping sample, reweighting, estimating NSUM per replicate), you can plug in either:
 
 * A **MBSU variant** in step 3: you choose particular visibility & degree ratio correction(s), maybe letting them vary per bootstrap draw, or scenario / sensitivity analysis
-    
+
 * A **model‑based NSUM** in step 3: instead of a simple formula per replicate, you might fit a small Bayesian model per bootstrap replicate (or perhaps fit once but incorporate uncertainty via the bootstrap draws + prior uncertainty), to estimate hidden size as a posterior distribution
-    
+
 
 In practice, doing full Bayesian model fitting inside each bootstrap replicate can be computationally heavy. Sometimes people:
 
 * Fit a Bayesian model once, using the original sample + RDS weights, and take posterior draws to represent uncertainty
-    
+
 * Or combine Bayesian posterior draws + bootstrap draws to reflect both weight/design uncertainty and parameter/model uncertainty
-    
+
 
 * * *
 
-4. Suggested Reading & References
+### 4. Suggested Reading & References
+
 ---------------------------------
 
 Here are some key papers to dive deeper:
 
 * Feehan, D. M., & Salganik, M. J. (2016). _Generalizing the network scale‑up method: A new estimator, variance estimator, and adjustment factors._ Journal of the Royal Statistical Society: Series A. [hrussellbernard.com](https://hrussellbernard.com/wp-content/uploads/2020/07/feehan-salganik-2016-generalizing-nsum.pdf?utm_source=chatgpt.com)
-    
+
 * Laga, I., et al. (2021). _Thirty Years of The Network Scale‑Up Method._ PLOS / PMC review article. [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10665021/?utm_source=chatgpt.com)
-    
+
 * Laga, I. (2023). _Estimating and Correcting Degree Ratio Bias in NSUM._ Preprint. [Ian Laga](https://ilaga.github.io/Degree_ratio_preprint.pdf?utm_source=chatgpt.com)
-    
+
 * Nyarko‑Agyei, A., Moser, S., Seymour, R. W., et al. (2024). _A Partially Pooled NSUM Model: Detailed estimation … Philippines._ Preprint. [arXiv](https://arxiv.org/abs/2407.13267?utm_source=chatgpt.com)
-    
+
 * B. Vogel et al. (2025). _Accounting for correlation and censoring in Bayesian NSUM._ [ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S0378873325000462?utm_source=chatgpt.com)
 
 
@@ -1861,18 +1874,18 @@ Here are some key papers to dive deeper:
 **Key Inputs:**
 
 * `data`: full RDS dataset (with IDs, recruiter IDs, degree, etc.)
-    
+
 * `method`: `"chain"`, `"ss"`, `"neighboot"`
-    
+
 * `weights` (optional): for SS bootstrap
-    
+
 * `num_draw`: number of samples to draw (e.g. 500)
-    
+
 
 **Output:**
 
 * A list of `B` resampled datasets (`data.frame`s)
-    
+
 
 * * *
 
@@ -1883,16 +1896,16 @@ Here are some key papers to dive deeper:
 **Key Inputs:**
 
 * `resample`: one bootstrapped dataset from Step 1
-    
+
 * `weight_method`: `"VH"`, `"GileSS"`, `"RDSII"`, etc.
-    
+
 * `population_size`: used in VH / SS weights
-    
+
 
 **Output:**
 
 * A `data.frame` with updated weights appended
-    
+
 
 * * *
 
@@ -1903,22 +1916,22 @@ Here are some key papers to dive deeper:
 **Key Inputs:**
 
 * `data`: the weighted resample
-    
+
 * `nsum_method`: `"gnsum"`, `"mbsu"`, `"model_bayes"`, etc.
-    
+
 * `frame_size`: total known frame population size
-    
+
 * `adjustments`: (optional) list of adjustment factors for MBSU
-    
+
 * `model_params`: (optional) for Bayesian NSUM models
-    
+
 
 **Output:**
 
 * A single point estimate (e.g. `N_hat`)
-    
+
 * Optionally, a posterior distribution or standard error
-    
+
 
 * * *
 
@@ -1929,18 +1942,19 @@ Here are some key papers to dive deeper:
 **Key Inputs:**
 
 * `data`: original RDS dataset
-    
+
 * `B`: number of bootstrap replicates
-    
+
 * Plus all the other choices from the above functions
-    
+
 
 **Output:**
 
 * A vector of NSUM estimates $\{\hat{N}_H^{(b)}\}$
-    
+
 * Summary statistics: mean, sd, CI, etc.
-    
+
 * (Optional) Full diagnostics per replicate
 
 
+---
