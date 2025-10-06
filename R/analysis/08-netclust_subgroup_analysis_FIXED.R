@@ -95,7 +95,7 @@ netclust_config <- list(
 
   # MCMC parameters - more conservative for better convergence
   burnin = 2000,
-  samplesize = 1000,
+  samplesize = 5000,
   interval = 10,
 
   # Analysis parameters
