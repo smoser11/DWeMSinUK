@@ -461,6 +461,7 @@ This is **true in form**, but it fails to explain **why** NSUM and RDS produce *
 
 You’re estimating **different margins**. The RDS is "conditioned on being in the hidden population," whereas NSUM is "marginal across all domestic workers."
 
+
 * * *
 
 ### 2. **Visibility / Transmission Bias in NSUM**
