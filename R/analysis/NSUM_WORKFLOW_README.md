@@ -259,14 +259,23 @@ config$save_bootstrap_samples <- FALSE
 
 ### Slow Performance
 
+**Option 1:** Enable parallel processing (already enabled by default)
 ```r
-# Enable parallel processing
 config$use_parallel <- TRUE
 config$n_cores <- 4  # Adjust based on your CPU
+```
 
-# Reduce bootstrap samples for testing
+**Option 2:** If parallel causes issues, use sequential version
+```r
+source("R/analysis/NSUM_workflow_SEQUENTIAL.R")
+```
+
+**Option 3:** Reduce bootstrap samples for testing
+```r
 config$bootstrap_samples <- 100
 ```
+
+**Note:** Parallel processing is now fixed to properly load all required functions on worker nodes.
 
 ### Missing Packages
 

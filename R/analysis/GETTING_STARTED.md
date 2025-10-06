@@ -174,11 +174,18 @@ save_bootstrap_samples = FALSE
 
 ### ❌ Problem: Parallel processing errors
 
-**Solution:** Disable parallel
+**Solution 1:** Use sequential version (safest)
+```r
+source("R/analysis/NSUM_workflow_SEQUENTIAL.R")
+```
+
+**Solution 2:** Disable parallel manually
 ```r
 # In NSUM_complete_workflow.R, change:
 use_parallel = FALSE
 ```
+
+**Note:** The parallel processing now properly sources all required scripts on each worker node, so it should work correctly. If you still encounter issues, use the sequential version.
 
 ## Understanding Your Results
 
@@ -211,7 +218,7 @@ use_parallel = FALSE
 
 ## Summary
 
-You're all set! Just run:
+You're all set! The workflow has been debugged and fixed. Just run:
 
 ```r
 source("R/analysis/RUN_NSUM_ANALYSIS.R")
@@ -219,8 +226,19 @@ source("R/analysis/RUN_NSUM_ANALYSIS.R")
 
 Wait ~10-15 minutes, then check `output/nsum_complete/` for your results table.
 
+### Recent Fixes Applied
+
+✅ Fixed function name collision between core and wrapper functions
+✅ Fixed bootstrap sample extraction (was showing 0 samples)
+✅ Fixed test code executing on source
+✅ Fixed parallel processing variable exports
+✅ Fixed column name mapping in bootstrap samples
+
+**See `WORKFLOW_FIXES_APPLIED.md` for detailed fix documentation.**
+
 ---
 
-**Created:** 2025-01-XX
+**Created:** 2025-01-XX (Updated with fixes)
 **Analysis:** NSUM with Neighborhood Bootstrap + Gile's SS Weights
 **Indicators:** 5 (Document Withholding, Pay Issues, Threats/Abuse, Excessive Hours, Access to Help)
+**Status:** ✅ Ready to run

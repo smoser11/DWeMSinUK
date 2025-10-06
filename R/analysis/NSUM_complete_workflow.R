@@ -89,11 +89,19 @@ if (!dir.exists(config$output_dir)) {
 # ==============================================================================
 
 cat("\n=== Loading required scripts ===\n")
+
+# Load core estimators FIRST and save reference
 source(here("R", "analysis", "nsum_core_estimators.R"))
+core_estimate_mbsu <- estimate_mbsu  # Save core function before it gets shadowed
+
+# Load bootstrap scripts
 source(here("R", "analysis", "NSUM", "Boot_Step1.r"))
 source(here("R", "analysis", "NSUM", "Boot_Step2.R"))
-source(here("R", "analysis", "NSUM", "Boot_Step3.R"))
-cat("✓ All scripts loaded\n")
+
+# DON'T source Boot_Step3.R here - it shadows estimate_mbsu()
+# We'll load it only on parallel workers where we need the wrappers
+
+cat("✓ Core estimators and bootstrap scripts loaded\n")
 
 # ==============================================================================
 # LOAD DATA
@@ -146,9 +154,9 @@ for (indicator in config$nsum_indicators) {
   # Extract weights
   ss_weights <- dd[[ss_weight_col]]
 
-  # Estimate using core estimator
+  # Estimate using core estimator (saved before Boot_Step3 shadowed it)
   result <- tryCatch({
-    estimate_mbsu(
+    core_estimate_mbsu(
       data = dd,
       hidden_var = indicator,
       degree_var = config$degree_variable,
@@ -196,7 +204,17 @@ boot_samples <- bootstrap_rds_sample(
 
 boot_step1_time <- as.numeric(difftime(Sys.time(), boot_step1_start, units = "secs"))
 
-cat("✓ Generated", length(boot_samples$bootstrap_samples), "bootstrap samples\n")
+# Extract bootstrap samples from result
+if (is.list(boot_samples) && "bootstrap_samples" %in% names(boot_samples)) {
+  boot_samples_list <- boot_samples$bootstrap_samples
+} else if (is.list(boot_samples)) {
+  # If boot_samples is already a list of samples
+  boot_samples_list <- boot_samples
+} else {
+  stop("Unexpected bootstrap_rds_sample() return structure")
+}
+
+cat("✓ Generated", length(boot_samples_list), "bootstrap samples\n")
 cat("  Time elapsed:", round(boot_step1_time, 1), "seconds\n")
 
 # ==============================================================================
@@ -210,7 +228,7 @@ boot_step2_start <- Sys.time()
 
 # Function to reweight a single bootstrap sample
 reweight_sample <- function(sample_idx) {
-  sample <- boot_samples$bootstrap_samples[[sample_idx]]
+  sample <- boot_samples_list[[sample_idx]]
 
   # Compute SS weights
   weighted_sample <- compute_rds_weights(
@@ -230,12 +248,22 @@ reweight_sample <- function(sample_idx) {
 if (config$use_parallel && config$bootstrap_samples > 100) {
   library(parallel)
   cl <- makeCluster(config$n_cores)
-  clusterExport(cl, c("boot_samples", "compute_rds_weights", "config"),
-                envir = environment())
+
+  # Load all required scripts and data on each worker
   clusterEvalQ(cl, {
     library(RDS)
     library(dplyr)
+    library(here)
   })
+
+  # Source Boot_Step2.R on each worker to get all helper functions
+  clusterEvalQ(cl, {
+    source(here::here("R", "analysis", "NSUM", "Boot_Step2.R"))
+  })
+
+  # Export required data
+  clusterExport(cl, c("boot_samples_list", "config", "reweight_sample"),
+                envir = environment())
 
   cat("Using parallel processing with", config$n_cores, "cores...\n")
   weighted_samples <- parLapply(cl, 1:config$bootstrap_samples, reweight_sample)
@@ -273,13 +301,13 @@ for (indicator in config$nsum_indicators) {
     sample <- weighted_samples[[sample_idx]]
 
     result <- tryCatch({
-      estimate_nsum(
+      # Call core estimator directly with pi_column
+      core_estimate_mbsu(
         data = sample,
-        nsum_method = "mbsu",
-        outcome_variable = indicator,
-        degree_variable = config$degree_variable,
-        frame_size = config$frame_population,
-        weight_column = "inclusion_prob",  # From Step 2
+        hidden_var = indicator,
+        degree_var = config$degree_variable,
+        N_F = config$frame_population,
+        pi_column = "inclusion_prob",  # Read from column (Step 2 output)
         adjustment_factors = config$adjustment_factors,
         verbose = FALSE
       )
@@ -294,12 +322,23 @@ for (indicator in config$nsum_indicators) {
   if (config$use_parallel && config$bootstrap_samples > 100) {
     library(parallel)
     cl <- makeCluster(config$n_cores)
-    clusterExport(cl, c("weighted_samples", "estimate_nsum", "estimate_mbsu",
-                       "core_estimate_mbsu", "indicator", "config"),
-                  envir = environment())
+
+    # Load required libraries on each worker
     clusterEvalQ(cl, {
       library(tidyverse)
+      library(here)
     })
+
+    # Source ONLY core estimators (not Boot_Step3.R which shadows functions)
+    clusterEvalQ(cl, {
+      source(here::here("R", "analysis", "nsum_core_estimators.R"))
+      # Save reference to core function
+      core_estimate_mbsu <- estimate_mbsu
+    })
+
+    # Export required data
+    clusterExport(cl, c("weighted_samples", "indicator", "config", "estimate_one_sample"),
+                  envir = environment())
 
     estimates <- parLapply(cl, 1:config$bootstrap_samples, estimate_one_sample)
     stopCluster(cl)

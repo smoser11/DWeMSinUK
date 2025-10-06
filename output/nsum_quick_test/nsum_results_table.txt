@@ -1,0 +1,20 @@
+NSUM POPULATION SIZE ESTIMATES
+===============================
+Analysis Date: 2025-10-05 22:02:33 
+Resampling: Neighborhood Bootstrap (B = 50 )
+Weighting: Gile's Sequential Sampling (SS)
+Frame Population: 980,000 
+Confidence Level: 95 %
+
+
+
+        Indicator               N (Point Est.)   Prevalence (%)  95% CI              Bootstrap Mean   Bootstrap SD
+------  ---------------------  ---------------  ---------------  -----------------  ---------------  -------------
+2.5%3   Excessive Hours                 26,244             2.68  [13,811, 42,759]            21,982          7,823
+2.5%1   Pay Issues                      24,457             2.50  [14,653, 41,367]            23,474          8,518
+2.5%2   Threats Abuse                   23,914             2.44  [14,398, 42,114]            22,418          8,083
+2.5%4   Access to Help                  17,417             1.78  [ 5,342, 30,366]            14,738          8,190
+2.5%    Document Withholding            10,249             1.05  [   641, 12,027]             3,690          2,937
+
+
+Total runtime: 1.7 seconds

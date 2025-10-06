@@ -536,6 +536,7 @@ identify_recruitment_chains_simple <- function(data, id_col = "id", recruiter_co
 
 #### TESTING (commented out to prevent auto-execution when sourcing)
 
+if (FALSE) {  # Wrap in if(FALSE) to prevent execution when sourcing
 B <- 1000
 boot_samples <- bootstrap_rds_sample(
   rds_sample = rd.dd,
@@ -545,6 +546,7 @@ boot_samples <- bootstrap_rds_sample(
   keep.vars = c("document_withholding_nsum", "pay_issues_nsum"),
   save_path = here::here("output", paste0("bootstrap_chain_",B,".rds") )
 )
+}  # End test code
 
 
 
