@@ -828,6 +828,16 @@ RDS leverages ego-level network size and recruitment paths to adjust for biases 
 NSUM treats respondents as informants about a larger social universe, using alter data to infer prevalence.
 RDS depends on accurate self-reporting of degree and on the properties of recruitment chains, while NSUM depends on the accuracy of respondents’ knowledge about others and the representativeness of their social networks
 
+#### How RDS and NSUM Use Social Network Information
+
+Respondent-driven sampling (RDS) and network scale-up methods (NSUM) both rely on social network structures, but they exploit different aspects of those structures for inference.
+
+RDS uses **ego-based information**. Each participant reports the size of their personal network of eligible individuals, and these degree reports are combined with the wave at which respondents were recruited to adjust for unequal inclusion probabilities. The underlying logic is that individuals with larger networks are more likely to be recruited earlier and more often, creating a bias toward highly connected respondents. RDS estimators, including Gile’s successive sampling estimator, explicitly correct for this bias by weighting observations according to network degree and recruitment path. For continuous traits, such as our risk index, RDS model-assisted estimators incorporate auxiliary covariates into this weighting process to further reduce bias.
+
+In contrast, NSUM uses **alter-based information**. Rather than focusing on the ego’s probability of inclusion, NSUM treats respondents as informants about the wider hidden population. Respondents are asked how many people they know with a given trait (for example, “How many domestic workers do you know who have experienced exploitation?”). These responses are then scaled up, using assumptions about network size and visibility, to infer prevalence in the broader population. This method does not depend on recruitment chains but instead on the accuracy of respondents’ knowledge about others in their social circles.
+
+The practical difference is therefore twofold. RDS estimates are anchored in “who recruited whom” and “how many do you know,” while NSUM estimates are anchored in “how many of your alters fit this category.” RDS leverages inclusion probabilities tied to ego network size; NSUM leverages alter reports to extend beyond the sample. Applying both methods to the same dataset allows for triangulation across two fundamentally different inferential logics.
+
 ### Bootstrap Procedure for NSUM
 
 To appropriately characterise uncertainty in NSUM estimates, we developed a novel three-step bootstrap procedure.
