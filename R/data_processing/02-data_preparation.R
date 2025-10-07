@@ -160,18 +160,12 @@ prepare_data <- function() {
                              network.size="known_network_size",
                              max.coupons = 5,
                              check.valid = FALSE)
-  
-  # Calculate RDS weights using Boot_Step2.R functions (more robust than RDS package functions)
-  cat("Calculating RDS and population weights using manual implementations...\n")
-  # Source Boot_Step2.R functions only (prevent example code from running)
-  boot_step2_env <- new.env()
-  source(here("R", "analysis", "NSUM", "Boot_Step2.R"), local = boot_step2_env)
-  # Import specific functions we need
-  compute_enhanced_vh_weights <- boot_step2_env$compute_enhanced_vh_weights
-  compute_rds_ss_weights <- boot_step2_env$compute_rds_ss_weights
 
-  # RDS-I weights for comparable indicators (using RDS package - these work)
-  cat("  Calculating RDS-I weights...\n")
+  # Calculate RDS weights using STANDARD RDS package functions
+  cat("Calculating RDS and population weights using standard RDS package...\n")
+
+  # RDS-I weights for comparable indicators (outcome-specific)
+  cat("  Calculating RDS-I weights (outcome-specific)...\n")
   dd$wt.RDS1_document_withholding <- rds.I.weights(rd.dd, "document_withholding_rds")
   dd$wt.RDS1_pay_issues <- rds.I.weights(rd.dd, "pay_issues_rds")
   dd$wt.RDS1_threats_abuse <- rds.I.weights(rd.dd, "threats_abuse_rds")
@@ -181,18 +175,39 @@ prepare_data <- function() {
   dd$wt.RDS1_zQ80 <- rds.I.weights(rd.dd, "zQ80")
   dd$wt.RDS1_sum_categories_factor <- rds.I.weights(rd.dd, "sum_categories_factor")
 
-  # VH and SS weights using manual implementations from Boot_Step2.R
-  cat("  Calculating VH weights (manual implementation)...\n")
-  dd$wt.vh_980k <- compute_enhanced_vh_weights(rd.dd, population_size = 980000, verbose = FALSE)
-  dd$wt.vh_100k <- compute_enhanced_vh_weights(rd.dd, population_size = 100000, verbose = FALSE)
-  dd$wt.vh_050k <- compute_enhanced_vh_weights(rd.dd, population_size = 50000, verbose = FALSE)
-  dd$wt.vh_1740k <- compute_enhanced_vh_weights(rd.dd, population_size = 1740000, verbose = FALSE)
+  # RDS-II (VH) weights using standard RDS package
+  # Note: Using a reference outcome variable to get weights (weights are based on network structure, not outcome)
+  cat("  Calculating RDS-II/VH weights (population-specific)...\n")
+  reference_outcome <- "document_withholding_rds"  # Any binary outcome works
 
-  cat("  Calculating RDS-SS weights (manual implementation)...\n")
-  dd$wt.SS_980k <- compute_rds_ss_weights(rd.dd, population_size = 980000, verbose = FALSE)
-  dd$wt.SS_100k <- compute_rds_ss_weights(rd.dd, population_size = 100000, verbose = FALSE)
-  dd$wt.SS_050k <- compute_rds_ss_weights(rd.dd, population_size = 50000, verbose = FALSE)
-  dd$wt.SS_1740k <- compute_rds_ss_weights(rd.dd, population_size = 1740000, verbose = FALSE)
+  rds_ii_980k <- RDS.II.estimates(rd.dd, reference_outcome, N = 980000)
+  dd$wt.vh_980k <- rds_ii_980k$weights / sum(rds_ii_980k$weights)  # Normalize to sum=1
+
+  rds_ii_100k <- RDS.II.estimates(rd.dd, reference_outcome, N = 100000)
+  dd$wt.vh_100k <- rds_ii_100k$weights / sum(rds_ii_100k$weights)
+
+  rds_ii_050k <- RDS.II.estimates(rd.dd, reference_outcome, N = 50000)
+  dd$wt.vh_050k <- rds_ii_050k$weights / sum(rds_ii_050k$weights)
+
+  rds_ii_1740k <- RDS.II.estimates(rd.dd, reference_outcome, N = 1740000)
+  dd$wt.vh_1740k <- rds_ii_1740k$weights / sum(rds_ii_1740k$weights)
+
+  # RDS-SS weights using standard RDS package
+  cat("  Calculating RDS-SS weights (population-specific)...\n")
+
+  rds_ss_980k <- RDS.SS.estimates(rd.dd, reference_outcome, N = 980000)
+  dd$wt.SS_980k <- rds_ss_980k$weights / sum(rds_ss_980k$weights)  # Normalize to sum=1
+
+  rds_ss_100k <- RDS.SS.estimates(rd.dd, reference_outcome, N = 100000)
+  dd$wt.SS_100k <- rds_ss_100k$weights / sum(rds_ss_100k$weights)
+
+  rds_ss_050k <- RDS.SS.estimates(rd.dd, reference_outcome, N = 50000)
+  dd$wt.SS_050k <- rds_ss_050k$weights / sum(rds_ss_050k$weights)
+
+  rds_ss_1740k <- RDS.SS.estimates(rd.dd, reference_outcome, N = 1740000)
+  dd$wt.SS_1740k <- rds_ss_1740k$weights / sum(rds_ss_1740k$weights)
+
+  cat("  Weight calculation complete. All weights normalized to sum=1 for NSUM use.\n")
   
   # Save prepared data
   cat("Saving prepared data...\n")

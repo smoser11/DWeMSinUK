@@ -1174,31 +1174,6 @@ print(forest_plot)
 # Summary information integrated into the narrative text
 ```
 
-Here are the Clustered SS-PSE prevalence estimates by nationality subgroup:
-
-| Subgroup \| Document withholding \| Pay-related issues \|
-| 
-
-| Threats/abuse  | Excessive hours   | Limited access to help   |      |
-|----------------|-------------------|--------------------------|------|
-| ----           | ----------------- | ------------------------ |      |
-| Overall sample | 0.1% (0–0.7)      | 0.2% (0–1.4)             | 0.2% |
-| (0–1.7)        | 0.3% (0–2.4)      | 0.1% (0–1.4)             |      |
-| Filipino       | 0.4% (0–3.2)      | 0.9% (0.1–5.1)           | 1.0% |
-| (0.1–8.4)      | 1.3% (0.1–9.5)    | 0.7% (0.1–7.9)           |      |
-| Latinx         | 0.1% (0–0.8)      | 0.2% (0–2.2)             | 0.2% |
-| (0–2.0)        | 0.3% (0–3.8)      | 0.1% (0–1.2)             |      |
-| Other Combined | 0.0% (0–0.3)      | 0.1% (0–1.0)             | 0.1% |
-| (0–1.4)        | 0.1% (0–1.2)      | 0.1% (0–1.5)             |      |
-
-Key Findings
-
-1.  Filipino workers show consistently higher prevalence across all exploitation indicators
-2.  Excessive hours shows the highest prevalence in all subgroups
-3.  Wide confidence intervals reflect the uncertainty inherent in hidden population estimation
-4.  Cluster proportions from MCMC: Filipino (37.4%), Latinx (31.7%), Other (30.9%)
-
-The analysis successfully accounts for nationality-based clustering in the network structure and provides valid subgroup-specific prevalence estimates using the Clustered SS-PSE methodology.
 
 #### RDS Estimates
 
