@@ -6,6 +6,20 @@ The previous NSUM estimates used custom manual weight implementations from `Boot
 
 The corrected workflow now uses **standard RDS package functions** for all weight calculations.
 
+## Two Workflow Options
+
+### 1. **REGENERATE_NSUM_ESTIMATES.R** - Single Configuration
+- Fast, focused analysis with one set of parameters
+- Good for initial results or testing
+- ~10-30 minutes runtime
+
+### 2. **REGENERATE_NSUM_COMPREHENSIVE.R** - Multiple Configurations ⭐
+- Tests multiple RDS weights, NSUM methods, population sizes
+- Includes adjustment factors (Feehan & Salganik 2016)
+- Creates comparative plots showing prevalence (%)
+- ~2-4 hours runtime for full analysis
+- **Recommended for publication**
+
 ## What Changed
 
 ### Before (Incorrect)
@@ -18,15 +32,45 @@ The corrected workflow now uses **standard RDS package functions** for all weigh
 - **Standard RDS-SS weights**: From `RDS.SS.estimates()` (normalized) ✓
 - **Standard RDS-I weights**: From `RDS.I.estimates()` (normalized) ✓
 
-## Quick Start: Run the Complete Workflow
+## Quick Start: Comprehensive Analysis (Recommended)
 
-### Option 1: Run with Default Settings
+### Run All Configurations
 
 ```r
 # Set working directory to project root
 setwd("/Users/sm38679/Documents/GitHub/DWeMSinUK")
 
-# Run the complete recalculation
+# Run comprehensive analysis
+source("R/analysis/NSUM/REGENERATE_NSUM_COMPREHENSIVE.R")
+```
+
+**This will test:**
+- **RDS Weights**: VH (RDS-II) and SS (RDS-SS)
+- **NSUM Methods**:
+  - MBSU with no adjustment (δ=1, τ=1, ρ=1)
+  - MBSU conservative (δ=0.8, τ=0.7, ρ=1.0)
+  - MBSU moderate (δ=0.9, τ=0.85, ρ=1.0)
+  - GNSUM Symmetric
+- **Population Sizes**: 50K, 100K, 980K, 1.74M
+- **Total**: 32 configurations × 5 outcomes = 160 estimates
+
+**Output:**
+- `nsum_comprehensive_summary.csv` - Complete results table
+- `prevalence_forest_*.png` - Forest plots by outcome (prevalence %)
+- `prevalence_all_outcomes.png` - All outcomes comparison
+- `population_sensitivity.png` - Population size sensitivity
+
+---
+
+## Quick Start: Single Configuration (Faster)
+
+### Run with Default Settings
+
+```r
+# Set working directory to project root
+setwd("/Users/sm38679/Documents/GitHub/DWeMSinUK")
+
+# Run single configuration
 source("R/analysis/NSUM/REGENERATE_NSUM_ESTIMATES.R")
 ```
 

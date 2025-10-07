@@ -230,8 +230,10 @@ compute_weights_batch_standard <- function(bootstrap_samples,
       library(dplyr)
     })
 
-    # Export function to cluster
-    clusterExport(cl, c("compute_rds_weights_standard"),
+    # Export function AND variables to cluster
+    clusterExport(cl,
+                  c("compute_rds_weights_standard",
+                    "weight_method", "population_size", "outcome_variable"),
                   envir = environment())
 
     weighted_samples <- parLapply(cl, bootstrap_samples, function(sample) {

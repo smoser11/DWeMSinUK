@@ -2020,8 +2020,8 @@ debug_estimation_functions <- function(boot_samples, verbose = TRUE) {
   }
 
   # Check if required variables exist
-  required_vars <- c("document_withholding_nsum", "known_network_size", "weight_vh")
-  missing_vars <- required_vars[!required_vars %in% names(test_data)]
+  required_vars <<- c("document_withholding_nsum", "known_network_size", "weight_vh")
+  missing_vars <<- required_vars[!required_vars %in% names(test_data)]
 
   if (length(missing_vars) > 0) {
     cat("ERROR: Missing required variables:", paste(missing_vars, collapse = ", "), "\n")
