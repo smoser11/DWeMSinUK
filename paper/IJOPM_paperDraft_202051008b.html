@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Caroline Emberson">
+<meta name="author" content="Scott Moser">
+
+<title>Quantifying Hidden Exploitation: Dual-Method Prevalence Estimates of Modern Slavery Risk Among UK Domestic Workers</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="IJOPM_paperDraft_202051008b_files/libs/clipboard/clipboard.min.js"></script>
+<script src="IJOPM_paperDraft_202051008b_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="IJOPM_paperDraft_202051008b_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="IJOPM_paperDraft_202051008b_files/libs/quarto-html/popper.min.js"></script>
+<script src="IJOPM_paperDraft_202051008b_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="IJOPM_paperDraft_202051008b_files/libs/quarto-html/anchor.min.js"></script>
+<link href="IJOPM_paperDraft_202051008b_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="IJOPM_paperDraft_202051008b_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="IJOPM_paperDraft_202051008b_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="IJOPM_paperDraft_202051008b_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="IJOPM_paperDraft_202051008b_files/libs/bootstrap/bootstrap-4696fb83efba3c5271bb3c7b671a2c88.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#conceptualising-labour-exploitation-and-the-degree-of-risk" id="toc-conceptualising-labour-exploitation-and-the-degree-of-risk" class="nav-link active" data-scroll-target="#conceptualising-labour-exploitation-and-the-degree-of-risk">Conceptualising Labour Exploitation and the Degree of Risk</a></li>
+  <li><a href="#evaluating-the-degree-of-risk" id="toc-evaluating-the-degree-of-risk" class="nav-link" data-scroll-target="#evaluating-the-degree-of-risk">Evaluating the Degree of Risk</a>
+  <ul class="collapse">
+  <li><a href="#case-setting-labour-exploitation-risk-among-transnational-migrant-domestic-workers-in-the-uk" id="toc-case-setting-labour-exploitation-risk-among-transnational-migrant-domestic-workers-in-the-uk" class="nav-link" data-scroll-target="#case-setting-labour-exploitation-risk-among-transnational-migrant-domestic-workers-in-the-uk">Case Setting: Labour Exploitation Risk Among Transnational Migrant Domestic Workers In The UK</a></li>
+  </ul></li>
+  <li><a href="#methods-and-estimation-strategy" id="toc-methods-and-estimation-strategy" class="nav-link" data-scroll-target="#methods-and-estimation-strategy">Methods and Estimation Strategy</a>
+  <ul class="collapse">
+  <li><a href="#study-design-and-sampling" id="toc-study-design-and-sampling" class="nav-link" data-scroll-target="#study-design-and-sampling">Study Design and Sampling</a></li>
+  <li><a href="#survey-instrument-and-indicators" id="toc-survey-instrument-and-indicators" class="nav-link" data-scroll-target="#survey-instrument-and-indicators">Survey Instrument and Indicators</a></li>
+  <li><a href="#sample-characteristics" id="toc-sample-characteristics" class="nav-link" data-scroll-target="#sample-characteristics">Sample Characteristics</a></li>
+  <li><a href="#ethical-approval" id="toc-ethical-approval" class="nav-link" data-scroll-target="#ethical-approval">Ethical Approval</a></li>
+  <li><a href="#use-of-artificial-intelligence-in-research" id="toc-use-of-artificial-intelligence-in-research" class="nav-link" data-scroll-target="#use-of-artificial-intelligence-in-research">Use of Artificial Intelligence in Research</a></li>
+  <li><a href="#estimation-framework" id="toc-estimation-framework" class="nav-link" data-scroll-target="#estimation-framework">Estimation Framework</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="IJOPM_paperDraft_202051008b.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="IJOPM_paperDraft_202051008b.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Quantifying Hidden Exploitation: Dual-Method Prevalence Estimates of Modern Slavery Risk Among UK Domestic Workers<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h1>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Authors</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Caroline Emberson </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            UoN
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Scott Moser </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            UoN
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">08, October 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>Purpose</p>
+    <p>The purpose of this article is to demonstrate a quantitative approach to the construction of a risk index of labour exploitation and alternative estimators of the prevalence of exploitation.</p>
+    <p>Design/ Methodology/ Approach</p>
+    <p>Using data from a survey of domestic workers based in the United Kingdom (UK), we use statistical techniques, including Respondent Driven Sampling (RDS) methods RDS-I and RDS-II and Network Scale Up (NSUM) methods, to produce an index of labour exploitation risk and estimators of the prevalence of labour exploitation.</p>
+    <p>Findings</p>
+    <p>The labour exploitation risk index shows a reverse correlation between the increasing seriousness of exploitation and the number of exploitation cases reported. The various prevalence estimators examined show significant differences in population level exploitation.</p>
+    <p>Research implications/ limitations</p>
+    <p>Further research into the application of different quantitative statistical estimators of the prevalence of labour exploitation is urgently required.</p>
+    <p>Practical implications</p>
+    <p>Robust estimators are necessary if policy makers are to make informed choices about the appropriate allocation of scarce resources to help to eradicate severe forms of labour exploitation and labour abuse.</p>
+    <p>Social implications</p>
+    <p>Even by more conservative estimates, thousands of domestic workers in the UK are subject to labour exploitation. Urgent policy attention is needed if structural vulnerabilities are to be removed.</p>
+    <p>Originality</p>
+    <p>We believe this paper is the first to compare the use of RDS and NSUM methods in the quantitative estimation of the prevalence of labour exploitation and to construct a quantitative, composite index of labour exploitation risk.</p>
+  </div>
+</div>
+
+
+</header>
+
+
+<!-- NOTES: (1)custom placement of Endnotes only works for `html_document(2)` -- not pdf_document   (2) boxes added -> uses `\usepackage{framed}` for LaTeX-ing -- see https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html  (3)    -->
+<!-- As discussed in the [this footnote](#footnote1)  the results are significant.[^11] -->
+<!-- [^11]: <a name="footnote1"></a>Your detailed footnote text goes here. -->
+<!-- https://tex.stackexchange.com/questions/452552/algorithm-pseudocode-in-markdown -->
+<div style="page-break-after: always;"></div>
+<!-- ```          -->
+<!-- * Why study labour exploitation among UK domestic workers? -->
+<!-- * Gap in existing research. -->
+<!-- * Contributions: (1) Conceptualisation of exploitation (binary vs. continuous, risk index), (2) Novel use of dual methods (RDS & NSUM), (3) Policy relevance. -->
+<!-- ``` -->
+<section id="conceptualising-labour-exploitation-and-the-degree-of-risk" class="level3">
+<h3 class="anchored" data-anchor-id="conceptualising-labour-exploitation-and-the-degree-of-risk">Conceptualising Labour Exploitation and the Degree of Risk</h3>
+<ul>
+<li><p>Binary vs.&nbsp;continuous definitions.</p></li>
+<li><p>Risk index construction and theoretical justification.</p></li>
+</ul>
+<p>Modern slavery has been criticised by some for its overly extensive scope: encapsulating a broad range of divergent sub-categories of exploitation (<span class="citation" data-cites="oconnell_davidson_margins_2015">O’Connell Davidson (<a href="#ref-oconnell_davidson_margins_2015" role="doc-biblioref">2015</a>)</span>; <span class="citation" data-cites="gutierrez-huerter_o_change_2023">Gutierrez-Huerter O, Gold, and Trautrims (<a href="#ref-gutierrez-huerter_o_change_2023" role="doc-biblioref">2023</a>)</span>). For this reason, we used the International Labour Organization’s (<span class="citation" data-cites="ILO11-indicators">I.L.O. (<a href="#ref-ILO11-indicators" role="doc-biblioref">2012</a>)</span>) ‘Indicators of Forced Labour’ to identify the potential for severe labour exploitation and as a basis for the quantification of our labour exploitation and abuse risk index. The ILO identify eleven indicators designed to help understand how forced labour arises and how it affects victims. These indicators include: abuse of vulnerability; deception; restriction of movement; isolation; physical and sexual violence; intimidation and threats; retention of identity documents; withholding of wages; debt bondage; abusive working and living conditions and excessive overtime. According to the ILO, the presence of a single indicator in any given situation may in some cases imply the existence of forced labour. However, it also suggests that in other cases it may be necessary to look for several indications which, taken together, may point to a case of forced labour. We seek to refine this statement through the construction of a composite index by which means a degree of risk related to the likelihood of a domestic worker experiencing this most severe form of exploitation may be distinguished from the likely occurrence of less severe, though similarly illegal, forms of labour abuse.</p>
+</section>
+<section id="evaluating-the-degree-of-risk" class="level2">
+<h2 class="anchored" data-anchor-id="evaluating-the-degree-of-risk">Evaluating the Degree of Risk</h2>
+<p>The study of risk management has a long tradition in operations and supply chain management. Initially, the risks under consideration were primarily related to ensuring continuity of the supply of goods and services (see for example, <span class="citation" data-cites="juttner_supply_2003">Jüttner, Peck, and Christopher (<a href="#ref-juttner_supply_2003" role="doc-biblioref">2003</a>)</span>). Beginning with <span class="citation" data-cites="anderson_critical_2006">Anderson (<a href="#ref-anderson_critical_2006" role="doc-biblioref">2006</a>)</span> and <span class="citation" data-cites="anderson_sustainability_2009">Anderson and Anderson (<a href="#ref-anderson_sustainability_2009" role="doc-biblioref">2009</a>)</span>, however, a literature stream of sustainability-related supply chain risk management developed related specifically to the risks associated with the environment and social justice. A normative consensus related to the main stages of supply chain risk management has developed in the literature, with a five-stage sequential model typically presented. There have also been empirical studies of risk management within various industrial supply chains in the United States and India (<span class="citation" data-cites="tarei_hybrid_2018">Tarei, Thakkar, and Nag (<a href="#ref-tarei_hybrid_2018" role="doc-biblioref">2018</a>)</span>; <span class="citation" data-cites="dellana_scale_2021">Dellana, Rowe, and Liao (<a href="#ref-dellana_scale_2021" role="doc-biblioref">2021</a>)</span>), including the quantification of a risk index for the petroleum supply chain (<span class="citation" data-cites="tarei_hybrid_2018">Tarei, Thakkar, and Nag (<a href="#ref-tarei_hybrid_2018" role="doc-biblioref">2018</a>)</span>). Yet, while these authors recognize the need for responsible management and its effect on societal values, in line with other literature in the field they view risk from the perspective of the corporate supply chain rather than examining the risk of harm to the worker.</p>
+<p>In our study, we conceptualise the risk of labour exploitation from the workers’ perspective. We conceive severe forms of labour exploitation such as forced labour as one end of a spectrum ranging from illegal employment practices that constitute labour abuse, such as wage payments below legal minimum wage levels and health and safety violations, through to the likelihood of criminal exploitation recognized in the UK as modern slavery. Our assessment of this personal risk permits a degree of risk to be assigned to various clusters of forced labour indicators with the more indicators present, the stronger the likelihood that the working conditions may be considered exploitative. Our approach, therefore, includes, but goes beyond, assessing the likelihood of forced labour by simply quantifying the proportion of survivors entering the UK’s National Referral Mechanism (NRM): a government system for survivor support set up to identify whether there are positive grounds for the identification of Modern Slavery. In our method, an NRM referral is used as the strongest indicator of modern slavery risk, with lesser risks assessed according to the degree to which cumulative indicators of forced labour are reported.</p>
+<section id="case-setting-labour-exploitation-risk-among-transnational-migrant-domestic-workers-in-the-uk" class="level3">
+<h3 class="anchored" data-anchor-id="case-setting-labour-exploitation-risk-among-transnational-migrant-domestic-workers-in-the-uk">Case Setting: Labour Exploitation Risk Among Transnational Migrant Domestic Workers In The UK</h3>
+<p>Domestic work forms part of a broader industrial category of Personal and Household Service work (PHS). Work in this category includes those employed in ‘social work activities without accommodation’ and ‘activities of households as employers of domestic personnel’ (<span class="citation" data-cites="european_commission_staff_2012">European Commission (<a href="#ref-european_commission_staff_2012" role="doc-biblioref">2012</a>)</span>). In 2017, an estimated 980,000 people were engaged in PHS work in the UK (<span class="citation" data-cites="manoudi_analysis_2018">Manoudi et al. (<a href="#ref-manoudi_analysis_2018" role="doc-biblioref">2018</a>)</span>). <span class="citation" data-cites="manoudi_analysis_2018">Manoudi et al. (<a href="#ref-manoudi_analysis_2018" role="doc-biblioref">2018</a>)</span> highlight that the PHS sector is dominated by women and migrants, with many undeclared foreign workers. Detailed statistics related to the country of origin of domestic workers migrating to work in PHS in the UK are difficult to isolate before 2019. Since that time, annual migration has fluctuated – falling sharply in 2021 due in part to the COVID-19 pandemic, before later rising again above pre-pandemic levels. In the year to December 2022, the UK Home Office reported that it had issued 18,533 Overseas Domestic Worker visas (<span class="citation" data-cites="home_office_why_2023">Home Office (<a href="#ref-home_office_why_2023" role="doc-biblioref">2023</a>)</span>). These domestic workers came from various countries in South America and Asia, including many from the Philippines.</p>
+<p>In 2023, <span class="citation" data-cites="strauss_britain_2023">Strauss and Cocco (<a href="#ref-strauss_britain_2023" role="doc-biblioref">2023</a>)</span> reported a big shift in the source countries of migrants arriving in the UK on the Overseas Domestic Worker and other types of worker visas. Transnational domestic workers from the Philippines and India accounted for the single largest number of applications granted (10,186 and 3,858 visas respectively), followed by smaller, but still significant, numbers of workers arriving from Bangladesh (465), Nigeria (446), Sri Lanka (444), Egypt (422), and Ethiopia (285). In the same period, smaller numbers of visa applications to work as a domestic worker in the UK were also accepted from workers from other source countries including, but not limited to, the Sudan, Nepal, Ghana, Kenya, Lebanon, Eritrea, Iran, Turkey, Yemen, Malaysia, Thailand, and Morocco. This post-Brexit increase in the diversity of source countries from which transnational workers are drawn makes a more detailed analysis of the risk of labour exploitation in the sector both timely and more urgent.</p>
+<p>There is a long history of reports of exploitation in the domestic work sector in the UK. In 2008, the civil society organisation Kalayaan, which was formed to campaign for the formal recognition of migrant domestic workers’ rights in the UK, reported on the impact of proposed changes to the UK immigration system on migrant domestic workers (<span class="citation" data-cites="kalayaan_new_2008">Kalayaan (<a href="#ref-kalayaan_new_2008" role="doc-biblioref">2008</a>)</span>). Their report highlights government recognition of documented and unacceptable levels of abuse and exploitation among domestic workers in the UK as early as 1996. At this stage, new policies, including the development of a specialised visa allowing domestic workers to change employer during their stay were introduced. However, in 2012, these visa conditions were modified, tying domestic workers to a single employer and restricting the length of time that they are permitted to remain in the country to a period of six months (<span class="citation" data-cites="gower_calls_2016">Gower (<a href="#ref-gower_calls_2016" role="doc-biblioref">2016</a>)</span>). Overseas domestic worker visa holders are now, again, permitted to change employers, but not to apply to renew their six-month long visa unless they receive a positive ‘Conclusive Grounds’ decision related to exploitation considered to be modern slavery through the UK’s National Referral Mechanism (NRM) (<span class="citation" data-cites="romero_blueprint_2025">Romero and Fisher (<a href="#ref-romero_blueprint_2025" role="doc-biblioref">2025</a>)</span>).</p>
+<p>These reports highlight the underlying reasons for migrant domestic workers’ vulnerability, including workers’ relative desperation for work; their lack of social ties; unfamiliarity with English language and culture; long working hours; lack of knowledge of their legal rights; a lack of oversight of the private home as a workplace; their work forming part of the informal economy; their reliance on their employer for permission to work in the UK; and their lack of recourse to public funds. As a result, migrant domestic workers are vulnerable to abuse ranging from minor breaches of employment and health and safety law, to physical and sexual violence, slavery, forced labour and trafficking.</p>
+<p>That these conditions may persist is evidenced by a report from another civil society organisation, the Latin American Women’s Rights Service, which describes the results from twelve in-depth interviews with Latin American domestic workers in the UK. This report depicts high levels of isolation, exploitation and abuse including a failure by employers to provide written contracts or payslips; breaches of verbal agreements; a requirement to perform different tasks from those indicated during recruitment; increasing working hours with little or no time off; excessive work days; a lack of paid holiday; many domestic workers not registered with a GP; sexual harassment in the workplace; verbal or physical abuse; employer surveillance; a lack of opportunity to change working conditions; isolation and fear of seeking help; and high reported levels of trafficking for labour exploitation (<span class="citation" data-cites="latin_american_womens_rights_service_behind_2023">Latin American Women’s Rights Service (<a href="#ref-latin_american_womens_rights_service_behind_2023" role="doc-biblioref">2023</a>)</span>).</p>
+<p>Against this backdrop, we used respondent driven sampling (RDS) as a sampling technique to recruit and survey domestic workers in the UK about the working conditions they were experiencing to estimate the nature and scale of abuse and exploitation based upon reports of their conditions by domestic workers themselves.</p>
+</section>
+</section>
+<section id="methods-and-estimation-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="methods-and-estimation-strategy">Methods and Estimation Strategy</h2>
+<section id="study-design-and-sampling" class="level3">
+<h3 class="anchored" data-anchor-id="study-design-and-sampling">Study Design and Sampling</h3>
+<p>Data for this study were collected through a bespoke respondent-driven sampling (RDS) survey conducted among domestic workers in the United Kingdom. RDS was selected as the most appropriate sampling strategy because it is specifically designed for reaching hidden or hard-to-access populations where no comprehensive sampling frame exists. The approach builds on peer-to-peer recruitment through existing social networks and allows the derivation of statistically valid population estimates once appropriate adjustments are made for network size and recruitment patterns.</p>
+<p>The survey began with a small set of initial “seed” participants. These seeds were identified through community organisations and support networks that regularly interact with domestic workers. Care was taken to ensure that the seeds reflected variation across the three principal subgroups of the study—Latinx, Filipino, and British workers—as well as diversity in gender, employment arrangements (live-in and live-out), and geographical location within the UK. Each seed received a limited number of uniquely coded recruitment coupons and was instructed to recruit peers who also met the eligibility criteria for the study. Recruitment proceeded in successive waves, as each new participant was given coupons to recruit additional respondents from within their own networks.</p>
+<p>To encourage participation, a dual-incentive structure was implemented. Participants received a small cash or electronic payment upon completion of the survey and an additional incentive for each eligible person they successfully recruited into the study. Incentive amounts were set in consultation with partner organisations to ensure they were modest yet sufficient to motivate participation without coercion.</p>
+<p>Data integrity and verification were central to the design. Each survey record was associated with a unique coupon code that linked recruiters and recruits, enabling tracking of referral chains. Duplicate entries were prevented through real-time monitoring of coupon codes and checks of contact details. In addition, data patterns were examined during fieldwork to identify irregular recruitment activity or potential fabrication. Verification protocols were informed by best practice guidelines in RDS implementation and ensured that the final dataset consisted of unique, valid respondents.</p>
+<p>Recruitment continued until equilibrium was reached on key demographic and employment variables, indicating that the sample composition had stabilised across successive waves. In total, the study achieved a final analytic sample of <em>N = XX</em> respondents distributed across <em>X</em> recruitment waves. The length and structure of the recruitment chains varied by subgroup, with Latinx respondents typically forming longer and denser referral trees, while British respondents tended to have shorter recruitment paths. This pattern reflects known differences in the density and cohesion of social networks within the domestic work sector.</p>
+<p>Overall, the RDS approach provided a practical and statistically defensible means of accessing a population for which no comprehensive administrative or membership lists exist. The resulting sample formed the basis for subsequent estimation procedures, including both RDS-based and network scale-up (NSUM) estimations.</p>
+</section>
+<section id="survey-instrument-and-indicators" class="level3">
+<h3 class="anchored" data-anchor-id="survey-instrument-and-indicators">Survey Instrument and Indicators</h3>
+<p>The survey instrument was designed specifically for this study to capture both the characteristics of domestic workers in the United Kingdom and the structure of their social networks. The questionnaire was developed in consultation with sector organisations, including migrant worker support groups and labour rights charities, to ensure that it was culturally appropriate and reflected the realities of domestic work in the UK. The survey was administered in English, Spanish, and Tagalog, with bilingual facilitators available to assist respondents when necessary.</p>
+<p>The survey consisted of four core modules: (1) demographic and employment characteristics, (2) social network size and composition, (3) indicators of labour exploitation, and (4) knowledge of employment rights and working conditions. The instrument was structured to allow both <strong>ego-based</strong> and <strong>alter-based</strong> information to be collected, which later enabled the use of both respondent-driven sampling (RDS) and network scale-up (NSUM) estimation methods.</p>
+<p>The <strong>demographic and employment</strong> module included items on age, gender, country of origin, migration history, visa status (where relevant), length of residence in the UK, type of domestic work performed, hours worked, and employment arrangements (live-in or live-out). These data were used to describe the sample and to explore subgroup differences across Latinx, Filipino, and British domestic workers.</p>
+<p>The <strong>social network</strong> module gathered ego-based information necessary for RDS estimation. Respondents were asked to report the number of other domestic workers they personally knew in the UK who also owned a mobile phone and with whom they had been in contact during the past month. This network size variable was used to estimate each respondent’s degree, which forms a key input for RDS weighting procedures. Respondents were also asked to report information about who recruited them into the study, allowing construction of complete recruitment trees and verification of recruitment wave progression.</p>
+<p>The <strong>alter-based network questions</strong> were designed to capture information suitable for NSUM estimation. Respondents were asked questions of the form, “How many domestic workers do you know who have experienced any of the following situations?” followed by a list of specific indicators of exploitation. These questions provided estimates of the proportion of alters within each respondent’s network who met defined criteria related to exploitation, thereby enabling inference to the broader population of domestic workers.</p>
+<p>Indicators of labour exploitation were adapted from the International Labour Organization’s (ILO) framework of forced labour and included domains such as excessive working hours, non-payment or delayed payment of wages, restriction of movement, confiscation of documents, and threats or intimidation by employers. These indicators were used in two distinct ways.</p>
+<p>First, they were used to construct a <strong>binary classification</strong> of exploitation. Respondents were classified as exploited if they reported experiencing one or more of the defined ILO indicators above a specified threshold. This binary outcome allowed for prevalence estimation using both RDS and NSUM methods.</p>
+<p>Second, the same set of indicators formed the basis of a <strong>continuous risk index</strong> that measured the degree of exposure to exploitation. Each indicator was coded and weighted based on its severity and frequency, and the weighted sum was normalised to create a continuous measure ranging from low to high risk. This index allowed the study to move beyond a simple dichotomy of exploited versus non-exploited workers and instead conceptualise exploitation as a spectrum of vulnerability. The weighting and normalisation procedures were guided by expert consultation and reference to prior studies on forced labour measurement.</p>
+<p>Finally, the <strong>knowledge and rights</strong> module included questions on awareness of employment rights, access to legal recourse, and perceptions of fairness at work. While not directly used in the prevalence estimation, these variables were important for contextual interpretation of the results and for linking quantitative findings to the qualitative insights reported in the companion paper by Yilmaz and Emberson (2023).</p>
+<p>Together, these modules provided the foundation for the dual-method analysis. The inclusion of both ego and alter network questions was intentional, enabling a direct comparison of RDS- and NSUM-based prevalence estimates within a single, coherent survey design.</p>
+</section>
+<section id="sample-characteristics" class="level3">
+<h3 class="anchored" data-anchor-id="sample-characteristics">Sample Characteristics</h3>
+<p>The final respondent-driven sampling (RDS) survey produced an analytic sample of <em>N = XX</em> domestic workers in the United Kingdom. Participants were recruited through peer referral chains that extended for up to <em>X</em> waves from the initial seeds. Recruitment chains differed by subgroup, reflecting variations in social network structure and cohesion across the domestic work population.</p>
+<p>The sample included three principal subgroups: Latinx (<em>n = XX</em>), Filipino (<em>n = XX</em>), and British (<em>n = XX</em>) domestic workers. These subgroups were chosen because they represent the most prominent national and linguistic groups within the UK domestic work sector. Latinx respondents included workers primarily from Colombia, Bolivia, and Ecuador; Filipino respondents were predominantly from Metro Manila and surrounding provinces; and British respondents comprised individuals engaged in domestic work either as part-time cleaners or caregivers. Although these subgroups differ in migration histories and employment arrangements, they share exposure to similar working environments and structural vulnerabilities inherent in domestic employment.</p>
+<p>Across the full sample, the majority of respondents were women (<em>X percent</em>), consistent with broader patterns in the feminisation of domestic labour. The mean age of participants was <em>XX years</em> (SD = X). Over half reported working in live-in arrangements, while the remainder were employed as live-out workers or part-time cleaners. The distribution of employment types varied by subgroup: Latinx and Filipino respondents were more likely to be employed as live-in domestic workers, whereas British respondents were disproportionately represented among part-time or hourly cleaning roles.</p>
+<p>Network characteristics also differed across subgroups. Latinx respondents tended to report larger average network sizes, with a mean of <em>X</em> known domestic workers, while British respondents reported smaller and less interconnected networks. Filipino respondents occupied an intermediate position, reflecting the long-established but socially clustered Filipino domestic worker communities in several UK cities. These differences are visible in the recruitment trees (Figure X), which show longer, denser referral chains among Latinx respondents and shorter, more fragmented structures among British participants. Such variations are consistent with known differences in the density of migrant community networks and have implications for both RDS weighting and NSUM inference.</p>
+<p>The geographic distribution of respondents was concentrated in London and the South East of England, with smaller clusters in Manchester, Birmingham, and Glasgow. This distribution reflects the spatial concentration of private household employment in major metropolitan areas. Many participants reported long working hours, limited rest periods, and overlapping roles that combined cleaning, childcare, and eldercare responsibilities. Among live-in workers, isolation from external social networks was commonly reported.</p>
+<p>Equilibrium diagnostics were conducted during recruitment to ensure representativeness within the RDS framework. By the final wave, equilibrium had been reached on key demographic and employment variables, including subgroup identity, gender, and live-in status. The convergence of sample proportions across waves indicated that the final sample had stabilised with respect to these attributes, supporting the validity of subsequent prevalence estimation.</p>
+<p>Overall, the resulting sample provided a balanced representation of the diversity within the UK domestic work sector. The composition of the sample, combined with the use of network-based estimation methods, allows for both quantitative assessment of exploitation prevalence and a nuanced understanding of how risk varies across interconnected yet distinct communities of domestic workers.</p>
+</section>
+<section id="ethical-approval" class="level3">
+<h3 class="anchored" data-anchor-id="ethical-approval">Ethical Approval</h3>
+<p>The data collection that underpins the analysis presented in this paper was given favourable ethical approval by the lead author’s School Research Ethics Committee in January 2023. All participants were informed about the aims of the study, provided informed consent, and were assured that participation was voluntary and confidential.</p>
+</section>
+<section id="use-of-artificial-intelligence-in-research" class="level3">
+<h3 class="anchored" data-anchor-id="use-of-artificial-intelligence-in-research">Use of Artificial Intelligence in Research</h3>
+<p>Large Language Models (LLMs) were used for brainstorming the organisation of the paper and editing of text. Code co-pilot (Claude Code) was used to test and debug R scripts employed in the statistical analysis. No generative models were used to generate or simulate data.</p>
+</section>
+<section id="estimation-framework" class="level3">
+<h3 class="anchored" data-anchor-id="estimation-framework">Estimation Framework</h3>
+<section id="rds-estimation" class="level4">
+<h4 class="anchored" data-anchor-id="rds-estimation">RDS Estimation</h4>
+<p>RDS estimators use ego-based information to correct for unequal inclusion probabilities. Each participant reports the size of their network of other domestic workers, and estimators such as RDS-II and Gile’s successive sampling (SS) estimator (Gile 2011; Gile &amp; Handcock 2010) use this degree information and recruitment wave to weight observations. For continuous traits, model-assisted inference approaches (Gile 2011; Gile, Beaudry &amp; Handcock 2018) are applied to estimate means and distributions of continuous outcomes.</p>
+</section>
+<section id="nsum-estimation" class="level4">
+<h4 class="anchored" data-anchor-id="nsum-estimation">NSUM Estimation</h4>
+<p>NSUM relies on alter-based information, where respondents report how many people they know who meet given criteria (e.g., “How many domestic workers do you know who have experienced exploitation?”). These alter counts are used to infer prevalence across the population. Unlike RDS, which corrects for recruitment bias, NSUM depends on the accuracy of respondents’ knowledge about their social contacts.</p>
+</section>
+<section id="comparative-rationale" class="level4">
+<h4 class="anchored" data-anchor-id="comparative-rationale">Comparative Rationale</h4>
+<p>RDS and NSUM rely on distinct uses of network data: RDS focuses on “who recruited whom” and degree-based weighting, while NSUM relies on “how many alters fit a criterion.” Applying both methods to the same dataset allows triangulation across these inferential logics.</p>
+</section>
+<section id="bootstrap-and-sensitivity" class="level4">
+<h4 class="anchored" data-anchor-id="bootstrap-and-sensitivity">Bootstrap and Sensitivity</h4>
+<p>To quantify uncertainty in NSUM estimates, we implemented a three-step bootstrap procedure that resamples respondents, alters, and exploitation classifications simultaneously, producing robust confidence intervals (see Appendix C). Sensitivity analyses and model comparisons are discussed in the Results section.</p>
+
+</section>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-anderson_critical_2006" class="csl-entry" role="listitem">
+Anderson, Dan R. 2006. <span>“The Critical Importance of Sustainability Risk Management.”</span> <em>Risk Management (00355593)</em> 53 (4): 66–74. <a href="https://search.ebscohost.com/login.aspx?direct=true&amp;db=buh&amp;AN=20781527&amp;site=ehost-live">https://search.ebscohost.com/login.aspx?direct=true&amp;db=buh&amp;AN=20781527&amp;site=ehost-live</a>.
+</div>
+<div id="ref-anderson_sustainability_2009" class="csl-entry" role="listitem">
+Anderson, Dan R., and Kenneth E. Anderson. 2009. <span>“Sustainability Risk Management.”</span> <em>Risk Management and Insurance Review</em> 12 (1): 25–38. <a href="https://doi.org/10.1111/j.1540-6296.2009.01152.x">https://doi.org/10.1111/j.1540-6296.2009.01152.x</a>.
+</div>
+<div id="ref-dellana_scale_2021" class="csl-entry" role="listitem">
+Dellana, Scott, William J. Rowe, and Ying Liao. 2021. <span>“A Scale for Measuring Organizational Risk Management Maturity in the Supply Chain.”</span> <em>Benchmarking: An International Journal</em> 29 (3): 905–30. <a href="https://doi.org/10.1108/BIJ-11-2020-0578">https://doi.org/10.1108/BIJ-11-2020-0578</a>.
+</div>
+<div id="ref-european_commission_staff_2012" class="csl-entry" role="listitem">
+European Commission. 2012. <span>“Staff Working Docuemnt on Exploitating the Employment Potential of the Personal and Household Services, <span>SWD</span> (2012) Final.”</span>
+</div>
+<div id="ref-gower_calls_2016" class="csl-entry" role="listitem">
+Gower, M. 2016. <span>“Calls to Change Overseas Domestic Worker Visa Conditions.”</span> <a href="https://researchbriefings.files.parliament.uk/documents/SN04786/SN04786.pdf">https://researchbriefings.files.parliament.uk/documents/SN04786/SN04786.pdf</a>.
+</div>
+<div id="ref-gutierrez-huerter_o_change_2023" class="csl-entry" role="listitem">
+Gutierrez-Huerter O, Gabriela, Stefan Gold, and Alexander Trautrims. 2023. <span>“Change in Rhetoric but Not in Action? Framing of the Ethical Issue of Modern Slavery in a <span>UK</span> Sector at High Risk of Labor Exploitation.”</span> <em>Journal of Business Ethics</em> 182 (1): 35–58. <a href="https://doi.org/10.1007/s10551-021-05013-w">https://doi.org/10.1007/s10551-021-05013-w</a>.
+</div>
+<div id="ref-home_office_why_2023" class="csl-entry" role="listitem">
+Home Office. 2023. <span>“Why Do People Come to the <span>UK</span> to Work?”</span> <a href="https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-june-2023/why-do-people-come-to-the-uk-to-work">https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-june-2023/why-do-people-come-to-the-uk-to-work</a>.
+</div>
+<div id="ref-ILO11-indicators" class="csl-entry" role="listitem">
+I.L.O. 2012. <span>“<span>ILO</span> Indicators of Forced Labour.”</span> <a href="https://www.ilo.org/global/topics/forced-labour/publications/WCMS_203832/lang--en/index.htm">https://www.ilo.org/global/topics/forced-labour/publications/WCMS_203832/lang--en/index.htm</a>.
+</div>
+<div id="ref-juttner_supply_2003" class="csl-entry" role="listitem">
+Jüttner, Uta, Helen Peck, and Martin Christopher. 2003. <span>“Supply Chain Risk Management: Outlining an Agenda for Future Research.”</span> <em>International Journal of Logistics Research and Applications</em> 6 (4): 197–210. <a href="https://doi.org/10.1080/13675560310001627016">https://doi.org/10.1080/13675560310001627016</a>.
+</div>
+<div id="ref-kalayaan_new_2008" class="csl-entry" role="listitem">
+Kalayaan. 2008. <span>“The New Bonded Labour?”</span> <a href="http://www.kalayaan.org.uk/documents/Kalayaan%20Oxfam%20report.pdf">http://www.kalayaan.org.uk/documents/Kalayaan%20Oxfam%20report.pdf</a>.
+</div>
+<div id="ref-latin_american_womens_rights_service_behind_2023" class="csl-entry" role="listitem">
+Latin American Women’s Rights Service. 2023. <span>“Behind Closed Doors: Experiences of Latin American Domestic Workers in the <span>UK</span>.”</span> <a href="https://lawrs.org.uk/wp-content/uploads/2023/08/Behind-closed-doors_domestic_work.pdf">https://lawrs.org.uk/wp-content/uploads/2023/08/Behind-closed-doors_domestic_work.pdf</a>.
+</div>
+<div id="ref-manoudi_analysis_2018" class="csl-entry" role="listitem">
+Manoudi, A., T. Weber, D. Scott, and J. Hawley Woodall. 2018. <span>“An Analysis of Personal and Household Services to Support Work Life Balance for Working Parents and Carers - Google Search.”</span> Synthesis Report {ECE} Thematic Review. European Commission. <a href="https://www.google.com/search?q=An+analysis+of+Personal+and+Household+Services+to+support+work+life+balance+for+working+parents+and+carers&amp;rlz=1C1GCEB_enGB932GB935&amp;oq=An+analysis+of+Personal+and+Household+Services+to+support+work+life+balance+for+working+parents+and+carers&amp;gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCDIzNjNqMGo3qAIAsAIA&amp;sourceid=chrome&amp;ie=UTF-8">https://www.google.com/search?q=An+analysis+of+Personal+and+Household+Services+to+support+work+life+balance+for+working+parents+and+carers&amp;rlz=1C1GCEB_enGB932GB935&amp;oq=An+analysis+of+Personal+and+Household+Services+to+support+work+life+balance+for+working+parents+and+carers&amp;gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCDIzNjNqMGo3qAIAsAIA&amp;sourceid=chrome&amp;ie=UTF-8</a>.
+</div>
+<div id="ref-oconnell_davidson_margins_2015" class="csl-entry" role="listitem">
+O’Connell Davidson, Julia. 2015. <em>The Margins of Freedom: Modern Slavery</em>. Palgrave.
+</div>
+<div id="ref-romero_blueprint_2025" class="csl-entry" role="listitem">
+Romero, Angeli, and Oliver Fisher. 2025. <span>“Blueprint for Safer and Fairer Migration for Low-Paid Work.”</span> Focus on Labour Exploitation. <a href="https://labourexploitation.org/app/uploads/2025/06/Flex-Report-Blueprint-for-safer-and-fairer-migration-for-low-paid-work_final_30_June-.pdf">https://labourexploitation.org/app/uploads/2025/06/Flex-Report-Blueprint-for-safer-and-fairer-migration-for-low-paid-work_final_30_June-.pdf</a>.
+</div>
+<div id="ref-strauss_britain_2023" class="csl-entry" role="listitem">
+Strauss, D., and F. Cocco. 2023. <span>“Britain After Brexit: The Surprising Surge in Skilled Migrants.”</span>
+</div>
+<div id="ref-tarei_hybrid_2018" class="csl-entry" role="listitem">
+Tarei, Pradeep Kumar, Jitesh J. Thakkar, and Barnali Nag. 2018. <span>“A Hybrid Approach for Quantifying Supply Chain Risk and Prioritizing the Risk Drivers: A Case of Indian Petroleum Supply Chain.”</span> <em>Journal of Manufacturing Technology Management</em> 29 (3): 533–69. <a href="https://doi.org/10.1108/JMTM-10-2017-0218">https://doi.org/10.1108/JMTM-10-2017-0218</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Authors’ names are listed in alphabetical order.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -406,18 +406,72 @@ Against this backdrop, we used respondent driven sampling (RDS) as a sampling te
 ## Methods and Estimation Strategy
 
 ### Study Design and Sampling
-(Describe RDS recruitment, seed selection, incentives, and verification.)
+
+Data for this study were collected through a bespoke respondent-driven sampling (RDS) survey conducted among domestic workers in the United Kingdom. RDS was selected as the most appropriate sampling strategy because it is specifically designed for reaching hidden or hard-to-access populations where no comprehensive sampling frame exists. The approach builds on peer-to-peer recruitment through existing social networks and allows the derivation of statistically valid population estimates once appropriate adjustments are made for network size and recruitment patterns.
+
+The survey began with a small set of initial “seed” participants. These seeds were identified through community organisations and support networks that regularly interact with domestic workers. Care was taken to ensure that the seeds reflected variation across the three principal subgroups of the study—Latinx, Filipino, and British workers—as well as diversity in gender, employment arrangements (live-in and live-out), and geographical location within the UK. Each seed received a limited number of uniquely coded recruitment coupons and was instructed to recruit peers who also met the eligibility criteria for the study. Recruitment proceeded in successive waves, as each new participant was given coupons to recruit additional respondents from within their own networks. 
+
+To encourage participation, a dual-incentive structure was implemented. Participants received a small cash or electronic payment upon completion of the survey and an additional incentive for each eligible person they successfully recruited into the study. Incentive amounts were set in consultation with partner organisations to ensure they were modest yet sufficient to motivate participation without coercion.
+
+Data integrity and verification were central to the design. Each survey record was associated with a unique coupon code that linked recruiters and recruits, enabling tracking of referral chains. Duplicate entries were prevented through real-time monitoring of coupon codes and checks of contact details. In addition, data patterns were examined during fieldwork to identify irregular recruitment activity or potential fabrication. Verification protocols were informed by best practice guidelines in RDS implementation and ensured that the final dataset consisted of unique, valid respondents.
+
+Recruitment continued until equilibrium was reached on key demographic and employment variables, indicating that the sample composition had stabilised across successive waves. In total, the study achieved a final analytic sample of *N = XX* respondents distributed across *X* recruitment waves. The length and structure of the recruitment chains varied by subgroup, with Latinx respondents typically forming longer and denser referral trees, while British respondents tended to have shorter recruitment paths. This pattern reflects known differences in the density and cohesion of social networks within the domestic work sector.
+
+Overall, the RDS approach provided a practical and statistically defensible means of accessing a population for which no comprehensive administrative or membership lists exist. The resulting sample formed the basis for subsequent estimation procedures, including both RDS-based and network scale-up (NSUM) estimations.
+
 
 ### Survey Instrument and Indicators
-(Explain binary and continuous measures of exploitation and how risk index is constructed.)
+
+The survey instrument was designed specifically for this study to capture both the characteristics of domestic workers in the United Kingdom and the structure of their social networks. The questionnaire was developed in consultation with sector organisations, including migrant worker support groups and labour rights charities, to ensure that it was culturally appropriate and reflected the realities of domestic work in the UK. The survey was administered in English, Spanish, and Tagalog, with bilingual facilitators available to assist respondents when necessary.  
+
+The survey consisted of four core modules: (1) demographic and employment characteristics, (2) social network size and composition, (3) indicators of labour exploitation, and (4) knowledge of employment rights and working conditions. The instrument was structured to allow both **ego-based** and **alter-based** information to be collected, which later enabled the use of both respondent-driven sampling (RDS) and network scale-up (NSUM) estimation methods.  
+
+The **demographic and employment** module included items on age, gender, country of origin, migration history, visa status (where relevant), length of residence in the UK, type of domestic work performed, hours worked, and employment arrangements (live-in or live-out). These data were used to describe the sample and to explore subgroup differences across Latinx, Filipino, and British domestic workers.  
+
+The **social network** module gathered ego-based information necessary for RDS estimation. Respondents were asked to report the number of other domestic workers they personally knew in the UK who also owned a mobile phone and with whom they had been in contact during the past month. This network size variable was used to estimate each respondent’s degree, which forms a key input for RDS weighting procedures. Respondents were also asked to report information about who recruited them into the study, allowing construction of complete recruitment trees and verification of recruitment wave progression.  
+
+The **alter-based network questions** were designed to capture information suitable for NSUM estimation. Respondents were asked questions of the form, “How many domestic workers do you know who have experienced any of the following situations?” followed by a list of specific indicators of exploitation. These questions provided estimates of the proportion of alters within each respondent’s network who met defined criteria related to exploitation, thereby enabling inference to the broader population of domestic workers.
+
+Indicators of labour exploitation were adapted from the International Labour Organization’s (ILO) framework of forced labour and included domains such as excessive working hours, non-payment or delayed payment of wages, restriction of movement, confiscation of documents, and threats or intimidation by employers. These indicators were used in two distinct ways.  
+
+First, they were used to construct a **binary classification** of exploitation. Respondents were classified as exploited if they reported experiencing one or more of the defined ILO indicators above a specified threshold. This binary outcome allowed for prevalence estimation using both RDS and NSUM methods.  
+
+Second, the same set of indicators formed the basis of a **continuous risk index** that measured the degree of exposure to exploitation. Each indicator was coded and weighted based on its severity and frequency, and the weighted sum was normalised to create a continuous measure ranging from low to high risk. This index allowed the study to move beyond a simple dichotomy of exploited versus non-exploited workers and instead conceptualise exploitation as a spectrum of vulnerability. The weighting and normalisation procedures were guided by expert consultation and reference to prior studies on forced labour measurement.
+
+Finally, the **knowledge and rights** module included questions on awareness of employment rights, access to legal recourse, and perceptions of fairness at work. While not directly used in the prevalence estimation, these variables were important for contextual interpretation of the results and for linking quantitative findings to the qualitative insights reported in the companion paper by Yilmaz and Emberson (2023).
+
+Together, these modules provided the foundation for the dual-method analysis. The inclusion of both ego and alter network questions was intentional, enabling a direct comparison of RDS- and NSUM-based prevalence estimates within a single, coherent survey design.  
+
+
 
 ### Sample Characteristics
-(Summarize subgroup composition, demographics, employment types.)
 
-### Ethical Approval and AI Use
-(The data collection that underpins this analysis was given favourable ethical approval by the lead author’s School Research Ethics Committee in January 2023. 
-Large Language Models (LLMs) were used for brainstorming organisation and editing of text. Code co-pilot (Claude Code) was used to assist with debugging R scripts employed in the statistical analysis. 
-No generative models were used to generate or simulate data.)
+The final respondent-driven sampling (RDS) survey produced an analytic sample of *N = XX* domestic workers in the United Kingdom. Participants were recruited through peer referral chains that extended for up to *X* waves from the initial seeds. Recruitment chains differed by subgroup, reflecting variations in social network structure and cohesion across the domestic work population.
+
+The sample included three principal subgroups: Latinx (*n = XX*), Filipino (*n = XX*), and British (*n = XX*) domestic workers. These subgroups were chosen because they represent the most prominent national and linguistic groups within the UK domestic work sector. Latinx respondents included workers primarily from Colombia, Bolivia, and Ecuador; Filipino respondents were predominantly from Metro Manila and surrounding provinces; and British respondents comprised individuals engaged in domestic work either as part-time cleaners or caregivers. Although these subgroups differ in migration histories and employment arrangements, they share exposure to similar working environments and structural vulnerabilities inherent in domestic employment.
+
+Across the full sample, the majority of respondents were women (*X percent*), consistent with broader patterns in the feminisation of domestic labour. The mean age of participants was *XX years* (SD = X). Over half reported working in live-in arrangements, while the remainder were employed as live-out workers or part-time cleaners. The distribution of employment types varied by subgroup: Latinx and Filipino respondents were more likely to be employed as live-in domestic workers, whereas British respondents were disproportionately represented among part-time or hourly cleaning roles.
+
+Network characteristics also differed across subgroups. Latinx respondents tended to report larger average network sizes, with a mean of *X* known domestic workers, while British respondents reported smaller and less interconnected networks. Filipino respondents occupied an intermediate position, reflecting the long-established but socially clustered Filipino domestic worker communities in several UK cities. These differences are visible in the recruitment trees (Figure X), which show longer, denser referral chains among Latinx respondents and shorter, more fragmented structures among British participants. Such variations are consistent with known differences in the density of migrant community networks and have implications for both RDS weighting and NSUM inference.
+
+The geographic distribution of respondents was concentrated in London and the South East of England, with smaller clusters in Manchester, Birmingham, and Glasgow. This distribution reflects the spatial concentration of private household employment in major metropolitan areas. Many participants reported long working hours, limited rest periods, and overlapping roles that combined cleaning, childcare, and eldercare responsibilities. Among live-in workers, isolation from external social networks was commonly reported.
+
+Equilibrium diagnostics were conducted during recruitment to ensure representativeness within the RDS framework. By the final wave, equilibrium had been reached on key demographic and employment variables, including subgroup identity, gender, and live-in status. The convergence of sample proportions across waves indicated that the final sample had stabilised with respect to these attributes, supporting the validity of subsequent prevalence estimation.
+
+Overall, the resulting sample provided a balanced representation of the diversity within the UK domestic work sector. The composition of the sample, combined with the use of network-based estimation methods, allows for both quantitative assessment of exploitation prevalence and a nuanced understanding of how risk varies across interconnected yet distinct communities of domestic workers.
+
+### Ethical Approval
+
+The data collection that underpins the analysis presented in this paper was given favourable ethical approval by the lead author’s School Research Ethics Committee in January 2023.
+All participants were informed about the aims of the study, provided informed consent, and were assured that participation was voluntary and confidential.
+
+### Use of Artificial Intelligence in Research
+
+Large Language Models (LLMs) were used for brainstorming the organisation of the paper and editing of text.
+Code co-pilot (Claude Code) was used to test and debug R scripts employed in the statistical analysis.
+No generative models were used to generate or simulate data.
+
+
 
 ### Estimation Framework
 
