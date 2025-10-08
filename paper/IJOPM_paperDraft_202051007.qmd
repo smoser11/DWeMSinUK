@@ -485,7 +485,7 @@ Figure 1 presents the recruitment tree, showing that Latinx respondents generate
 
 ```{r}
 #| label: fig-rds-network
-#| fig-cap: "RDS Network Structure: Recruitment chains showing seed nodes (triangles) and recruitment waves. Node colors represent nationality clusters, with node size proportional to reported network degree (Q13). Lines show recruiter-recruit relationships. Source: Authors' Own Work."
+#| fig-cap: "RDS Network Structure: Recruitment chains showing seed nodes (triangles) and recruit nodes (circles). Node colors represent nationality clusters, with node size proportional to out-degree (number of recruits). Lines show recruiter-recruit relationships. Source: Authors' Own Work."
 #| fig-width: 9      # REDUCE from 12
 #| fig-height: 6     # REDUCE from 8
 #| out-width: "95%"  # ADD this
@@ -525,9 +525,15 @@ data_viz <- prepared_data %>%
     # Clean network size variable (q13)
     network_size = pmin(q13, 50, na.rm = TRUE), # Cap at 50 for visualization
     network_size = pmax(network_size, 1, na.rm = TRUE), # Minimum size 1
-    # Create recruitment tree info
-    is_seed = (recruiter.id == -1),
     wave_factor = factor(wave, levels = 1:5, labels = paste("Wave", 1:5))
+  ) %>%
+  # Identify seeds: either ridc == "seed" or zero indegree (not recruited by anyone)
+  dplyr::mutate(
+    is_seed = if("ridc" %in% names(.)) {
+      tolower(ridc) == "seed" | recruiter.id == -1 | is.na(recruiter.id)
+    } else {
+      recruiter.id == -1 | is.na(recruiter.id)
+    }
   )
 
 # Create edge list for network graph
@@ -536,14 +542,23 @@ edges <- data_viz %>%
   dplyr::select(from = recruiter.id, to = id) %>%
   dplyr::filter(from %in% data_viz$id) # Ensure recruiter exists in dataset
 
+# Calculate out-degree (number of people each node recruited)
+out_degree <- edges %>%
+  dplyr::count(from, name = "out_degree") %>%
+  dplyr::rename(id = from) %>%
+  dplyr::mutate(id = as.integer(id))
+
 # Create nodes dataframe
 nodes <- data_viz %>%
   dplyr::select(id, nationality_cluster, network_size, wave, is_seed) %>%
+  dplyr::left_join(out_degree, by = "id") %>%
   dplyr::mutate(
+    out_degree = ifelse(is.na(out_degree), 0, out_degree),
+    # Size nodes by out-degree (number recruited)
     node_size = dplyr::case_when(
-      is_seed ~ 8,  # Larger size for seeds
-      TRUE ~ 3 + (network_size / 10) # Scale size by network degree
-    ),
+      is_seed ~ 6,  # Base size for seeds
+      TRUE ~ 3      # Base size for recruits
+    ) + out_degree * 1.5,  # Scale up by number of recruits
     node_alpha = ifelse(is_seed, 0.9, 0.7)
   )
 
@@ -590,7 +605,7 @@ p <- ggraph(g, layout = "fr") +
   scale_shape_manual(
     values = c("TRUE" = 17, "FALSE" = 16), # Triangle for seeds, circle for recruits
     name = "Node Type",
-    labels = c("Recruit", "Seed")
+    labels = c("TRUE" = "Seed", "FALSE" = "Recruit")
   ) +
   theme_graph() +
   theme(
@@ -687,6 +702,7 @@ sample_summary %>%
 #| label: tbl-wave-distribution
 #| tbl-cap: "Distribution of Sample Across Recruitment Waves. Source: Authors' Own Work."
 #| echo: false
+#| eval: false
 
 # Create wave distribution table
 wave_summary <- data_viz %>%
@@ -994,12 +1010,10 @@ print(combined_plot)
 # Summary statistics are now integrated into the inline text below
 ```
 
-The MA estimate suggests that approximately $92.8\%$ of the population has zero exploitation risk, while $~7.2\%$ has moderate risk (0.1725)
 
-The population-weighted average risk is $0.0124$ This represents the Model-Assisted estimate of mean exploitation risk in the population, adjusted for RDS sampling bias.
-It is a design-based estimate that corrects for the non-random recruitment process in RDS.
-The population-adjusted distribution shows less concentration in the lower risk categories compared to the raw sample, suggesting that the RDS process may have under-recruited higher-risk individuals.
-@fig-ma-risk-estimates presents the comparison between the observed sample distribution and the model-assisted population estimates, demonstrating how the bias correction affects our understanding of exploitation risk in the broader domestic worker population.
+
+@fig-ma-risk-estimates presents the comparison between the observed sample distribution and the model-assisted population estimates, demonstrating how the bias correction affects our understanding of exploitation risk in the broader domestic worker population.  The population-weighted average risk is $0.0124$ This represents the Model-Assisted estimate of mean exploitation risk in the population, adjusted for RDS sampling bias. It is a design-based estimate that corrects for the non-random recruitment process in RDS.
+The population-adjusted distribution shows less concentration in the lower risk values compared to the raw sample.  The MA estimate suggests that  $~7.2\%$ of DWs in the UK have moderate risk (0.1725)
 This pattern reinforces the conceptual claim that exploitation is best understood as a continuum rather than a simple binary condition.
 
 ### Binary Exploitation Indicators (Exploited or Not Exploited)
@@ -1034,29 +1048,21 @@ ma_files <- c(
   "whether_exploitation" = "Any Exploitation"
 )
 
-# Function to extract MA estimates
+# Function to extract MA sensitivity estimates
+# Uses posterior distribution from Bayesian Model Assisted 
 extract_ma_estimate <- function(file_path) {
   if (file.exists(file_path)) {
     load(file_path)
     if (exists("ma_result") && !is.null(ma_result$estimate)) {
-      # Extract prevalence (proportion with indicator = 1)
-      estimates <- ma_result$estimate$estimate
-      if ("1" %in% names(estimates)) {
-        prevalence <- estimates["1"]
+      # Extract from posterior distribution intervals
+      interval <- ma_result$estimate$interval
+      if (length(interval) >= 6) {
+        # Point estimate from interval[2] (posterior mean for indicator=1)
+        prevalence <- interval[2]
+        # 95% Credible Interval from interval[4] to interval[6]
+        ci_lower <- interval[4]
+        ci_upper <- interval[6]
 
-        # Construct confidence interval using variance estimate
-        if (!is.null(ma_result$varest) && !is.na(ma_result$varest)) {
-          se <- sqrt(ma_result$varest)
-          ci_lower <- prevalence - 1.96 * se
-          ci_upper <- prevalence + 1.96 * se
-
-          # Ensure CI is within [0,1] bounds for proportions
-          ci_lower <- pmax(0, ci_lower)
-          ci_upper <- pmin(1, ci_upper)
-        } else {
-          ci_lower <- NA
-          ci_upper <- NA
-        }
         return(list(
           prevalence = as.numeric(prevalence),
           ci_lower = as.numeric(ci_lower),
@@ -1068,7 +1074,7 @@ extract_ma_estimate <- function(file_path) {
   return(list(prevalence = NA, ci_lower = NA, ci_upper = NA))
 }
 
-# Extract all MA results
+# Extract all MA sensitivity results (population=980000, seed.selection='sample')
 ma_results <- data.frame(
   indicator = names(ma_files),
   label = as.character(ma_files),
@@ -1076,7 +1082,8 @@ ma_results <- data.frame(
 )
 
 for (i in 1:nrow(ma_results)) {
-  file_path <- here("output", paste0("ma_result_", ma_results$indicator[i], ".RData"))
+  file_path <- here("output", paste0("ma_sensitivity_", ma_results$indicator[i],
+                                     "_980000_sample.RData"))
   result <- extract_ma_estimate(file_path)
   ma_results$prevalence[i] <- result$prevalence
   ma_results$ci_lower[i] <- result$ci_lower
@@ -1101,7 +1108,7 @@ ma_results_formatted <- ma_results %>%
 # Create professional table
 ma_results_formatted %>%
   kableExtra::kbl(
-    col.names = c("Exploitation Indicator", "Population Prevalence (95% CI)"),
+    col.names = c("Exploitation Indicator", "Population Prevalence (95% CrI)"),
     caption = "Model-Assisted Estimates of Binary Exploitation Indicators",
     booktabs = TRUE,
     align = c("l", "r")
@@ -1113,7 +1120,7 @@ ma_results_formatted %>%
     position = "center"
   ) %>%
   kableExtra::footnote(
-    general = "Estimates adjusted for RDS sampling bias using model-assisted inference. Confidence intervals reflect design-based uncertainty.",
+    general = "Estimates adjusted for RDS sampling bias using Bayesian Model Assissted Inference of Gile & Handcock (2015) (N=980,000, sample seed selection). Credible intervals from posterior distribution.",
     general_title = "Note:",
     footnote_as_chunk = TRUE
   )
@@ -1121,7 +1128,7 @@ ma_results_formatted %>%
 
 ```{r}
 #| label: fig-ma-binary-forest
-#| fig-cap: "Forest Plot of Model-Assisted Binary Exploitation Estimates: Population prevalence estimates with 95% confidence intervals for each exploitation indicator, ordered by prevalence magnitude. Error bars represent design-based uncertainty in the estimates. Source: Authors' Own Work."
+#| fig-cap: "Forest Plot of Model-Assisted Binary Exploitation Estimates: Population prevalence estimates with 95% credible intervals for each exploitation indicator, ordered by prevalence magnitude. Error bars represent posterior uncertainty from Bayesian SS-PSE (N=980,000, sample seed selection). Source: Authors' Own Work."
 #| fig-width: 8      # REDUCE from 10
 #| fig-height: 5     # REDUCE from 6
 #| out-width: "95%"  # ADD this
@@ -1131,13 +1138,16 @@ ma_results_formatted %>%
 
 library(ggplot2)
 
-# Create forest plot data (CI already calculated correctly in extraction function)
+# Create forest plot data
+# Point estimate from interval[2], 95% CrI from interval[4] to interval[6]
+# CrIs are from the posterior distribution (Bayesian MA)
 forest_data <- ma_results %>%
   dplyr::filter(!is.na(prevalence)) %>%
   dplyr::mutate(
     prevalence_pct = prevalence * 100,
     ci_lower_pct = ci_lower * 100,
     ci_upper_pct = ci_upper * 100,
+    # Order from lowest (bottom) to highest (top) prevalence
     label_clean = factor(label, levels = label[order(prevalence)])
   )
 
@@ -1148,7 +1158,7 @@ forest_plot <- forest_data %>%
                  height = 0.2, color = "steelblue", linewidth = 1) +
   geom_point(size = 3, color = "darkblue") +
   geom_text(aes(label = sprintf("%.1f%%", prevalence_pct)),
-            hjust = -0.3, size = 3.5, color = "darkblue") +
+            vjust = -0.8, size = 3.5, color = "darkblue") +
   labs(
     title = "Model-Assisted Estimates of Exploitation Prevalence",
     subtitle = "Population estimates adjusted for RDS sampling bias",
