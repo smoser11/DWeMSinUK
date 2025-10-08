@@ -100,6 +100,14 @@ compute_rds_weights_standard <- function(resample,
     # Set NA recruiter.id (unmapped) to 0 (treat as seeds)
     sample_data$recruiter.id[is.na(sample_data$recruiter.id)] <- "0"
 
+    # VALIDATION: Ensure we have at least one seed
+    n_seeds <- sum(sample_data$recruiter.id %in% c("0", "-1", "seed"))
+    if (n_seeds == 0) {
+      # No seeds found - make the first observation a seed
+      if (verbose) cat("  WARNING: No seeds found in bootstrap sample, creating one...\n")
+      sample_data$recruiter.id[1] <- "0"
+    }
+
     rds_data <- as.rds.data.frame(sample_data,
                                   id = "id",
                                   recruiter.id = "recruiter.id",
