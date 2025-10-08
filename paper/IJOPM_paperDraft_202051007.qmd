@@ -1189,79 +1189,32 @@ print(forest_plot)
 
 ```{r}
 #| label: tbl-rds-binary-indicators
-#| tbl-cap: "RDS Estimates of Binary Exploitation Indicators: Population prevalence estimates using RDS-II and Successive Sampling (SS) estimators with bootstrap confidence intervals. Source: Authors' Own Work."
+#| tbl-cap: "RDS Estimates of Binary Exploitation Indicators: Comparison of RDS-I and RDS-SS estimators with neighborhood bootstrap confidence intervals (N=980,000). Source: Authors' Own Work."
 #| echo: false
 #| warning: false
 #| message: false
 
-# Load RDS results
-if (file.exists(here("output", "rds_estimates.RData"))) {
-  load(here("output", "rds_estimates.RData"))
+# Load RDS frequentist estimates
+if (file.exists(here("output", "frequentist_estimators_results.RData"))) {
+  load(here("output", "frequentist_estimators_results.RData"))
 
-  # Define the indicators we want to extract
-  rds_indicators <- c(
-    "document_withholding_rds" = "Document Withholding",
-    "pay_issues_rds" = "Pay-Related Issues",
-    "threats_abuse_rds" = "Threats/Abuse",
-    "excessive_hours_rds" = "Excessive Hours",
-    "access_to_help_rds" = "Limited Access to Help"
-  )
-
-  # Extract RDS estimates (assuming standard population size of 980,000)
-  if (exists("rds_results") && "980000" %in% names(rds_results)) {
-    rds_980k <- rds_results[["980000"]]
-
-    rds_summary <- data.frame(
-      indicator = character(0),
-      label = character(0),
-      rds_ii_est = numeric(0),
-      rds_ii_ci_lower = numeric(0),
-      rds_ii_ci_upper = numeric(0),
-      rds_ss_est = numeric(0),
-      rds_ss_ci_lower = numeric(0),
-      rds_ss_ci_upper = numeric(0),
-      stringsAsFactors = FALSE
-    )
-
-    for (ind in names(rds_indicators)) {
-      if (ind %in% names(rds_980k$rds_ii)) {
-        rds_ii_res <- rds_980k$rds_ii[[ind]]
-        rds_ss_res <- rds_980k$rds_ss[[ind]]
-
-        rds_summary <- rbind(rds_summary, data.frame(
-          indicator = ind,
-          label = rds_indicators[ind],
-          rds_ii_est = rds_ii_res$estimate,
-          rds_ii_ci_lower = rds_ii_res$conf.int[1],
-          rds_ii_ci_upper = rds_ii_res$conf.int[2],
-          rds_ss_est = rds_ss_res$estimate,
-          rds_ss_ci_lower = rds_ss_res$conf.int[1],
-          rds_ss_ci_upper = rds_ss_res$conf.int[2],
-          stringsAsFactors = FALSE
-        ))
-      }
-    }
-
-    # Format for display
-    rds_display <- rds_summary %>%
-      dplyr::mutate(
-        rds_ii_formatted = sprintf("%.1f%% (%.1f-%.1f%%)",
-                                   rds_ii_est * 100,
-                                   rds_ii_ci_lower * 100,
-                                   rds_ii_ci_upper * 100),
-        rds_ss_formatted = sprintf("%.1f%% (%.1f-%.1f%%)",
-                                   rds_ss_est * 100,
-                                   rds_ss_ci_lower * 100,
-                                   rds_ss_ci_upper * 100)
+  if (exists("frequentist_df")) {
+    # Filter for 980K population and RDS-I and RDS-SS methods
+    rds_comparison <- frequentist_df %>%
+      dplyr::filter(
+        pop_size == 980000,
+        method %in% c("RDS_I", "RDS_SS")
       ) %>%
-      dplyr::select(label, rds_ii_formatted, rds_ss_formatted) %>%
-      dplyr::arrange(desc(rds_summary$rds_ss_est))
+      dplyr::select(indicator_clean, method_clean, estimate_with_ci) %>%
+      tidyr::pivot_wider(
+        names_from = method_clean,
+        values_from = estimate_with_ci
+      ) %>%
+      dplyr::rename(`Exploitation Indicator` = indicator_clean)
 
     # Create table
-    rds_display %>%
+    rds_comparison %>%
       kableExtra::kbl(
-        col.names = c("Exploitation Indicator", "RDS-II Estimate (95% CI)", "RDS-SS Estimate (95% CI)"),
-        caption = "RDS Estimates of Binary Exploitation Indicators",
         booktabs = TRUE,
         align = c("l", "r", "r")
       ) %>%
@@ -1273,16 +1226,84 @@ if (file.exists(here("output", "rds_estimates.RData"))) {
         font_size = 9
       ) %>%
       kableExtra::footnote(
-        general = "RDS-II: Volz-Heckathorn estimator. RDS-SS: Gile's Successive Sampling estimator. Population size assumed: 980,000.",
+        general = "RDS-I: Salganik-Heckathorn estimator. RDS-SS: Gile's Successive Sampling estimator. Confidence intervals from neighborhood bootstrap (n=1000). Population size: 980,000 domestic workers.",
         general_title = "Note:",
         footnote_as_chunk = TRUE
       )
-
-    #    round(min(rds_summary$rds_ss_est) * 100, 1), "% to", round(max(rds_summary$rds_ss_est) * 100, 1), "%\n")
-
   } else {
+    cat("frequentist_df object not found.\n")
   }
 } else {
+  cat("frequentist_estimators_results.RData file not found.\n")
+}
+```
+
+```{r}
+#| label: fig-rds-forest-plot
+#| fig-cap: "Forest Plot of RDS Estimates: Comparison of RDS-I and RDS-SS prevalence estimates for binary exploitation indicators (N=980,000). Error bars represent 95% bootstrap confidence intervals. Source: Authors' Own Work."
+#| fig-width: 9
+#| fig-height: 6
+#| out-width: "95%"
+#| echo: false
+#| warning: false
+
+library(ggplot2)
+
+# Create forest plot for RDS estimates
+if (exists("frequentist_df")) {
+  rds_forest_data <- frequentist_df %>%
+    dplyr::filter(
+      pop_size == 980000,
+      method %in% c("RDS_I", "RDS_SS")
+    )
+
+  # Order indicators by average prevalence (lowest to highest)
+  indicator_order <- rds_forest_data %>%
+    dplyr::group_by(indicator_clean) %>%
+    dplyr::summarise(avg_est = mean(estimate_pct)) %>%
+    dplyr::arrange(avg_est) %>%
+    dplyr::pull(indicator_clean)
+
+  rds_forest_data <- rds_forest_data %>%
+    dplyr::mutate(
+      indicator_ordered = factor(indicator_clean, levels = indicator_order)
+    )
+
+  if (nrow(rds_forest_data) > 0) {
+    forest_plot <- ggplot(rds_forest_data,
+                          aes(x = estimate_pct, y = indicator_ordered,
+                              color = method_clean, shape = method_clean)) +
+      geom_errorbarh(aes(xmin = ci_lower_pct, xmax = ci_upper_pct),
+                     height = 0.2, position = position_dodge(width = 0.5),
+                     linewidth = 1) +
+      geom_point(size = 4, position = position_dodge(width = 0.5)) +
+      geom_text(aes(label = sprintf("%.1f%%", estimate_pct)),
+                vjust = -1.0, size = 3,
+                position = position_dodge(width = 0.5),
+                show.legend = FALSE) +
+      scale_color_brewer(palette = "Set1", name = "RDS Method") +
+      scale_shape_manual(values = c(16, 17), name = "RDS Method") +
+      labs(
+        title = "RDS Prevalence Estimates by Method",
+        subtitle = "Population size: 980,000 domestic workers",
+        x = "Estimated Prevalence (%)",
+        y = "Exploitation Indicator"
+      ) +
+      theme_minimal() +
+      theme(
+        plot.title = element_text(size = 12, face = "bold"),
+        plot.subtitle = element_text(size = 10),
+        axis.text.y = element_text(size = 10),
+        legend.position = "bottom",
+        panel.grid.major.y = element_blank()
+      )
+
+    print(forest_plot)
+  } else {
+    cat("No RDS data available for forest plot.\n")
+  }
+} else {
+  cat("frequentist_df not loaded.\n")
 }
 ```
 
@@ -1303,65 +1324,49 @@ if (file.exists(nsum_file)) {
   load(nsum_file)
 
   # Check what NSUM results are available
-  if (exists("nsum_results")) {
-    # Structure available for processing
-
-    # Try to extract comparable estimates
+  if (exists("enhanced_results")) {
+    # Define the indicators we want to extract
     nsum_indicators <- c(
-      "document_withholding_nsum" = "Document Withholding",
-      "pay_issues_nsum" = "Pay-Related Issues",
-      "threats_abuse_nsum" = "Threats/Abuse",
-      "excessive_hours_nsum" = "Excessive Hours",
-      "access_to_help_nsum" = "Limited Access to Help"
+      "document_withholding" = "Document Withholding",
+      "pay_issues" = "Pay-Related Issues",
+      "threats_abuse" = "Threats/Abuse",
+      "excessive_hours" = "Excessive Hours",
+      "access_to_help" = "Limited Access to Help"
     )
 
-    nsum_summary <- data.frame(
-      indicator = character(0),
-      label = character(0),
-      gnsum_est = numeric(0),
-      gnsum_ci_lower = numeric(0),
-      gnsum_ci_upper = numeric(0),
-      stringsAsFactors = FALSE
-    )
-
-    # Extract estimates if available in the results structure
-    for (ind in names(nsum_indicators)) {
-      if (ind %in% names(nsum_results)) {
-        result <- nsum_results[[ind]]
-        if (!is.null(result) && "estimate" %in% names(result)) {
-          nsum_summary <- rbind(nsum_summary, data.frame(
-            indicator = ind,
-            label = nsum_indicators[ind],
-            gnsum_est = result$estimate,
-            gnsum_ci_lower = ifelse("conf.int" %in% names(result), result$conf.int[1], NA),
-            gnsum_ci_upper = ifelse("conf.int" %in% names(result), result$conf.int[2], NA),
-            stringsAsFactors = FALSE
-          ))
-        }
-      }
-    }
+    # Extract NSUM estimates from enhanced_results
+    nsum_summary <- enhanced_results %>%
+      dplyr::filter(indicator_name %in% names(nsum_indicators)) %>%
+      dplyr::group_by(indicator_name) %>%
+      dplyr::slice(1) %>%  # Take first scheme for each indicator
+      dplyr::ungroup() %>%
+      dplyr::mutate(
+        label = nsum_indicators[indicator_name]
+      ) %>%
+      dplyr::select(
+        indicator = indicator_name,
+        label,
+        nsum_est = nsum_prevalence,
+        nsum_ci_lower,
+        nsum_ci_upper
+      )
 
     if (nrow(nsum_summary) > 0) {
-      # Convert to prevalence if estimates are population counts
-      population_size <- 980000
+      # Format for display (estimates are already prevalences)
       nsum_display <- nsum_summary %>%
         dplyr::mutate(
-          prevalence = gnsum_est / population_size,
-          prev_ci_lower = gnsum_ci_lower / population_size,
-          prev_ci_upper = gnsum_ci_upper / population_size,
-          formatted = sprintf("%.1f%% (%.1f-%.1f%%) [%s]",
-                             prevalence * 100,
-                             prev_ci_lower * 100,
-                             prev_ci_upper * 100,
-                             scales::comma(gnsum_est))
+          formatted = sprintf("%.1f%% (%.1f-%.1f%%)",
+                             nsum_est * 100,
+                             nsum_ci_lower * 100,
+                             nsum_ci_upper * 100)
         ) %>%
         dplyr::select(label, formatted) %>%
-        dplyr::arrange(desc(nsum_summary$prevalence))
+        dplyr::arrange(desc(nsum_summary$nsum_est))
 
       # Create table
       nsum_display %>%
         kableExtra::kbl(
-          col.names = c("Exploitation Indicator", "Prevalence (95% CI) [Population Count]"),
+          col.names = c("Exploitation Indicator", "NSUM Estimate (95% CI)"),
           caption = "NSUM Estimates of Binary Exploitation Indicators",
           booktabs = TRUE,
           align = c("l", "r")
@@ -1370,69 +1375,22 @@ if (file.exists(nsum_file)) {
           latex_options = c("striped", "hold_position", "scale_down"),
           bootstrap_options = c("striped", "hover", "condensed"),
           full_width = FALSE,
-          position = "center"
+          position = "center",
+          font_size = 9
         ) %>%
         kableExtra::footnote(
-          general = "GNSUM: Generalized Network Scale-Up Method. Population size assumed: 980,000 domestic workers.",
+          general = "Network Scale-Up Method prevalence estimates with bootstrap confidence intervals from enhanced NSUM analysis.",
           general_title = "Note:",
           footnote_as_chunk = TRUE
         )
-
-#          round(min(nsum_summary$prevalence) * 100, 1), "% to",  round(max(nsum_summary$prevalence) * 100, 1), "%\n")
-
     } else {
+      cat("No NSUM estimates available.\n")
     }
   } else {
+    cat("enhanced_results object not found in file.\n")
   }
 } else {
-
-  # Try the bootstrap summary file
-  bootstrap_file <- here("output", "tables", "nsum_bootstrap_summary.csv")
-  if (file.exists(bootstrap_file)) {
-    nsum_bootstrap <- read.csv(bootstrap_file, stringsAsFactors = FALSE)
-
-    # Filter for relevant indicators and methods
-    nsum_filtered <- nsum_bootstrap %>%
-      dplyr::filter(
-        stringr::str_detect(outcome_variable, "nsum"),
-        Method == "GNSUM Symmetric",
-        weight_method == "weight_rds_i"
-      ) %>%
-      dplyr::mutate(
-        indicator_clean = case_when(
-          stringr::str_detect(outcome_variable, "access_to_help") ~ "Limited Access to Help",
-          stringr::str_detect(outcome_variable, "document_withholding") ~ "Document Withholding",
-          stringr::str_detect(outcome_variable, "pay_issues") ~ "Pay-Related Issues",
-          stringr::str_detect(outcome_variable, "threats_abuse") ~ "Threats/Abuse",
-          stringr::str_detect(outcome_variable, "excessive_hours") ~ "Excessive Hours",
-          TRUE ~ outcome_variable
-        )
-      ) %>%
-      dplyr::filter(!is.na(indicator_clean)) %>%
-      dplyr::select(indicator_clean, Point.Estimate, X95..CI) %>%
-      dplyr::distinct()
-
-    if (nrow(nsum_filtered) > 0) {
-      nsum_filtered %>%
-        kableExtra::kbl(
-          col.names = c("Exploitation Indicator", "Population Estimate", "95% CI"),
-          caption = "NSUM Bootstrap Estimates of Binary Exploitation Indicators",
-          booktabs = TRUE,
-          align = c("l", "r", "r")
-        ) %>%
-        kableExtra::kable_styling(
-          latex_options = c("striped", "hold_position", "scale_down"),
-          bootstrap_options = c("striped", "hover", "condensed"),
-          full_width = FALSE,
-          position = "center"
-        ) %>%
-        kableExtra::footnote(
-          general = "Bootstrap estimates using GNSUM Symmetric method with RDS-I weights.",
-          general_title = "Note:",
-          footnote_as_chunk = TRUE
-        )
-    }
-  }
+  cat("enhanced_nsum_results.RData file not found.\n")
 }
 ```
 
@@ -1732,7 +1690,105 @@ ggplot(nationality_summary, aes(x = nationality_cluster, y = percent, fill = nat
 
 ### RDS Estimation Results
 
-#### Model-Assisted Estimates by Population Size
+This section presents comprehensive RDS estimates across all population size scenarios and estimation methods.
+
+```{r}
+#| label: tbl-rds-comprehensive
+#| tbl-cap: "Comprehensive RDS Estimates: Prevalence estimates for all indicators across population sizes and RDS methods (RDS-I, RDS-II, RDS-SS) with neighborhood bootstrap confidence intervals."
+#| echo: false
+#| warning: false
+
+# Load frequentist results
+if (file.exists(here("output", "frequentist_estimators_results.RData"))) {
+  load(here("output", "frequentist_estimators_results.RData"))
+
+  if (exists("frequentist_df")) {
+    # Create comprehensive table with all methods and population sizes
+    rds_comprehensive <- frequentist_df %>%
+      dplyr::select(indicator_clean, pop_label, method_clean, estimate_with_ci) %>%
+      tidyr::pivot_wider(
+        names_from = c(method_clean, pop_label),
+        values_from = estimate_with_ci,
+        names_sep = " "
+      ) %>%
+      dplyr::rename(`Indicator` = indicator_clean)
+
+    # Create table
+    rds_comprehensive %>%
+      kableExtra::kbl(
+        booktabs = TRUE,
+        align = c("l", rep("r", ncol(rds_comprehensive) - 1))
+      ) %>%
+      kableExtra::kable_styling(
+        latex_options = c("striped", "scale_down", "hold_position"),
+        bootstrap_options = c("striped", "hover", "condensed"),
+        font_size = 7,
+        full_width = TRUE
+      ) %>%
+      kableExtra::add_header_above(c(
+        " " = 1,
+        "RDS-I" = 4,
+        "RDS-II" = 4,
+        "RDS-SS" = 4
+      )) %>%
+      kableExtra::footnote(
+        general = "RDS-I: Salganik-Heckathorn estimator. RDS-II: Volz-Heckathorn estimator. RDS-SS: Gile's Successive Sampling estimator. Population sizes: 50K, 100K, 980K, 1.74M domestic workers. All confidence intervals from neighborhood bootstrap (n=1000).",
+        general_title = "Note:",
+        footnote_as_chunk = TRUE
+      )
+  } else {
+    cat("frequentist_df not found.\n")
+  }
+} else {
+  cat("frequentist_estimators_results.RData file not found.\n")
+}
+```
+
+```{r}
+#| label: fig-rds-sensitivity-popsize
+#| fig-cap: "RDS Sensitivity to Population Size: Comparison of RDS estimates across all population size scenarios. Each panel shows one RDS method with point estimates and 95% bootstrap confidence intervals varying by population size."
+#| fig-width: 12
+#| fig-height: 8
+#| out-width: "100%"
+#| echo: false
+#| warning: false
+
+library(ggplot2)
+
+# Create faceted plot by RDS method
+if (exists("frequentist_df")) {
+  rds_sensitivity_plot <- frequentist_df %>%
+    ggplot(aes(x = pop_label, y = estimate_pct,
+               color = indicator_clean, group = indicator_clean)) +
+    geom_line(linewidth = 1) +
+    geom_errorbar(aes(ymin = ci_lower_pct, ymax = ci_upper_pct),
+                  width = 0.2, alpha = 0.6) +
+    geom_point(size = 3, aes(shape = indicator_clean)) +
+    facet_wrap(~ method_clean, ncol = 3) +
+    scale_color_viridis_d(name = "Indicator") +
+    scale_shape_manual(values = c(15, 16, 17, 18, 19), name = "Indicator") +
+    labs(
+      title = "RDS Estimates Across Population Sizes",
+      subtitle = "Comparison of estimation methods",
+      x = "Population Size",
+      y = "Estimated Prevalence (%)"
+    ) +
+    theme_minimal() +
+    theme(
+      plot.title = element_text(size = 12, face = "bold"),
+      plot.subtitle = element_text(size = 10),
+      strip.text = element_text(size = 10, face = "bold"),
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      legend.position = "bottom"
+    )
+
+  print(rds_sensitivity_plot)
+} else {
+  cat("frequentist_df not loaded.\n")
+}
+```
+
+### Model-Assisted Estimates by Population Size
 
 ```{r}
 #| label: tbl-ma-estimates
@@ -1949,214 +2005,451 @@ if (file.exists(rds_file)) {
 }
 ```
 
-### Subgroup Analysis
+<!-- ### Subgroup Analysis -->
+
+<!-- ```{r} -->
+<!-- #| label: netclust-analysis2 -->
+<!-- #| fig-cap: "Clustered SS-PSE prevalence estimates for labour exploitation indicators" -->
+<!-- #| fig-width: 12 -->
+<!-- #| fig-height: 8 -->
+<!-- #| echo: false -->
+<!-- #| warning: false -->
+<!-- #| message: false -->
+
+<!-- # Load required libraries -->
+<!-- library(tidyverse) -->
+<!-- library(knitr) -->
+<!-- library(kableExtra) -->
+<!-- library(here) -->
+<!-- library(scales) -->
+<!-- library(viridis) -->
+
+<!-- # Load netclust results -->
+<!-- load(here("output", "netclust_subgroup_analysis_results_FIXED.RData")) -->
+
+<!-- # ===== TABLE: Netclust Results Summary ===== -->
+<!-- netclust_table <- final_results$summary_df %>% -->
+<!--   mutate( -->
+<!--     indicator_label = case_when( -->
+<!--       indicator == "document_withholding_rds" ~ "Document withholding", -->
+<!--       indicator == "pay_issues_rds" ~ "Pay-related issues", -->
+<!--       indicator == "threats_abuse_rds" ~ "Threats/abuse", -->
+<!--       indicator == "excessive_hours_rds" ~ "Excessive hours", -->
+<!--       indicator == "access_to_help_rds" ~ "Limited access to help", -->
+<!--       TRUE ~ indicator -->
+<!--     ), -->
+<!--     # Convert to percentage for clearer presentation -->
+<!--     prevalence_pct = round(estimate_pct, 3), -->
+<!--     ci_lower_pct = round(ci_lower_pct, 3), -->
+<!--     ci_upper_pct = round(ci_upper_pct, 3), -->
+<!--     prevalence_display = paste0(prevalence_pct, "% (", ci_lower_pct, "–", -->
+<!-- ci_upper_pct, "%)") -->
+<!--   ) %>% -->
+<!--   select( -->
+<!--     Indicator = indicator_label, -->
+<!--     "Prevalence (95% CI)" = prevalence_display, -->
+<!--     "Sample with trait" = n_trait, -->
+<!--     "Total sample" = n_obs -->
+<!--   ) -->
+
+<!-- # Display table -->
+<!-- knitr::kable(netclust_table, -->
+<!--              caption = "Clustered SS-PSE prevalence estimates for labour exploitation indicators among domestic workers", -->
+<!--              booktabs = TRUE, linesep="") %>% -->
+<!--   kable_styling(latex_options = c("striped", "scale_down", -->
+<!-- "hold_position")) %>% -->
+<!--   footnote(general = "Estimates based on Clustered Sequential Sampling Population Size Estimation (Clustered SS-PSE) methodology using netclust package. Population size assumption: 980,000 UK domestic workers. Confidence intervals derived from MCMC sampling (1,000 samples, 2,000 burn-in). Analysis accounts for nationality clustering (Filipino, Latinx, Other Combined) and network structure in RDS data.", -->
+<!--            general_title = "Note: ") -->
+
+<!-- # ===== VISUALIZATION 1: Forest Plot ===== -->
+<!-- plot_data <- final_results$summary_df %>% -->
+<!--   mutate( -->
+<!--     indicator_label = case_when( -->
+<!--       indicator == "document_withholding_rds" ~ "Document\nwithholding", -->
+<!--       indicator == "pay_issues_rds" ~ "Pay-related\nissues", -->
+<!--       indicator == "threats_abuse_rds" ~ "Threats/\nabuse", -->
+<!--       indicator == "excessive_hours_rds" ~ "Excessive\nhours", -->
+<!--       indicator == "access_to_help_rds" ~ "Limited access\nto help", -->
+<!--       TRUE ~ indicator -->
+<!--     ), -->
+<!--     indicator_label = fct_reorder(indicator_label, estimate_pct) -->
+<!--   ) -->
+
+<!-- forest_plot <- ggplot(plot_data, aes(x = indicator_label, y = -->
+<!-- estimate_pct)) + -->
+<!--   geom_point(size = 4, color = "#2c3e50") + -->
+<!--   geom_errorbar(aes(ymin = ci_lower_pct, ymax = ci_upper_pct), -->
+<!--                 width = 0.2, linewidth = 1, color = "#2c3e50") + -->
+<!--   coord_flip() + -->
+<!--   scale_y_continuous(labels = percent_format(scale = 1, suffix = "%"), -->
+<!--                      trans = "log10", -->
+<!--                      breaks = c(0.01, 0.1, 1, 10)) + -->
+<!--   labs( -->
+<!--     title = "Clustered SS-PSE Prevalence Estimates", -->
+<!--     subtitle = "Labour exploitation indicators among UK domestic workers", -->
+<!--     x = "Exploitation Indicator", -->
+<!--     y = "Prevalence (%) with 95% Confidence Intervals (log scale)", -->
+<!--     caption = "Based on RDS sample (n=85) with nationality clustering. Population assumption: 980,000." -->
+<!--   ) + -->
+<!--   theme_minimal(base_size = 12) + -->
+<!--   theme( -->
+<!--     plot.title = element_text(size = 14, face = "bold"), -->
+<!--     plot.subtitle = element_text(size = 12), -->
+<!--     axis.text = element_text(size = 11), -->
+<!--     panel.grid.minor = element_blank(), -->
+<!--     plot.caption = element_text(size = 9, color = "gray60") -->
+<!--   ) -->
+
+<!-- print(forest_plot) -->
+
+<!-- # ===== VISUALIZATION 2: Sample Composition ===== -->
+<!-- sample_comp <- final_results$summary_df %>% -->
+<!--   mutate( -->
+<!--     indicator_label = case_when( -->
+<!--       indicator == "document_withholding_rds" ~ "Document\nwithholding", -->
+<!--       indicator == "pay_issues_rds" ~ "Pay-related\nissues", -->
+<!--       indicator == "threats_abuse_rds" ~ "Threats/\nabuse", -->
+<!--       indicator == "excessive_hours_rds" ~ "Excessive\nhours", -->
+<!--       indicator == "access_to_help_rds" ~ "Limited access\nto help", -->
+<!--       TRUE ~ indicator -->
+<!--     ), -->
+<!--     prop_with_trait = n_trait / n_obs, -->
+<!--     prop_without_trait = 1 - prop_with_trait -->
+<!--   ) %>% -->
+<!--   select(indicator_label, prop_with_trait, prop_without_trait) %>% -->
+<!--   pivot_longer(cols = c(prop_with_trait, prop_without_trait), -->
+<!--                names_to = "category", -->
+<!--                values_to = "proportion") %>% -->
+<!--   mutate( -->
+<!--     category = if_else(category == "prop_with_trait", "With trait", -->
+<!-- "Without trait"), -->
+<!--     category = factor(category, levels = c("Without trait", "With trait")) -->
+<!--   ) -->
+
+<!-- comp_plot <- ggplot(sample_comp, aes(x = indicator_label, y = proportion, -->
+<!-- fill = category)) + -->
+<!--   geom_col(position = "stack", alpha = 0.8) + -->
+<!--   scale_fill_manual(values = c("Without trait" = "#bdc3c7", "With trait" = -->
+<!--  "#e74c3c")) + -->
+<!--   scale_y_continuous(labels = percent_format()) + -->
+<!--   coord_flip() + -->
+<!--   labs( -->
+<!--     title = "Sample Composition by Exploitation Indicator", -->
+<!--     subtitle = "Proportion of respondents with each indicator present", -->
+<!--     x = "Exploitation Indicator", -->
+<!--     y = "Proportion of Sample", -->
+<!--     fill = "Category", -->
+<!--     caption = "Total sample size: 85 domestic workers" -->
+<!--   ) + -->
+<!--   theme_minimal(base_size = 12) + -->
+<!--   theme( -->
+<!--     plot.title = element_text(size = 14, face = "bold"), -->
+<!--     plot.subtitle = element_text(size = 12), -->
+<!--     axis.text = element_text(size = 11), -->
+<!--     legend.position = "bottom", -->
+<!--     panel.grid.minor = element_blank(), -->
+<!--     plot.caption = element_text(size = 9, color = "gray60") -->
+<!--   ) -->
+
+<!-- print(comp_plot) -->
+
+<!-- # ===== VISUALIZATION 3: Convergence Diagnostics ===== -->
+<!-- if(length(final_results$individual_results) > 0) { -->
+<!--   # Extract MCMC diagnostics from first result as example -->
+<!--   sample_result <- final_results$individual_results[[1]] -->
+<!--   mcmc_samples <- sample_result$netclust_output$sample[, "N"] -->
+
+<!--   # Create trace plot -->
+<!--   trace_data <- data.frame( -->
+<!--     iteration = 1:length(mcmc_samples), -->
+<!--     population_size = mcmc_samples -->
+<!--   ) -->
+
+<!--   trace_plot <- ggplot(trace_data, aes(x = iteration, y = -->
+<!-- population_size)) + -->
+<!--     geom_line(alpha = 0.7, color = "#3498db") + -->
+<!--     labs( -->
+<!--       title = "MCMC Trace Plot: Population Size Estimates", -->
+<!--       subtitle = paste("Example from", -->
+<!-- names(final_results$individual_results)[1]), -->
+<!--       x = "MCMC Iteration", -->
+<!--       y = "Estimated Population Size", -->
+<!--       caption = "1,000 MCMC samples after 2,000 burn-in iterations" -->
+<!--     ) + -->
+<!--     theme_minimal(base_size = 12) + -->
+<!--     theme( -->
+<!--       plot.title = element_text(size = 14, face = "bold"), -->
+<!--       plot.subtitle = element_text(size = 12), -->
+<!--       panel.grid.minor = element_blank(), -->
+<!--       plot.caption = element_text(size = 9, color = "gray60") -->
+<!--     ) -->
+
+<!--   print(trace_plot) -->
+<!-- } -->
+
+<!-- # ===== DETAILED RESULTS SUMMARY ===== -->
+<!-- cat("\n=== NETCLUST ANALYSIS SUMMARY ===\n") -->
+<!-- cat("Analysis Configuration:\n") -->
+<!-- cat("- Population size assumption:", -->
+<!-- format(final_results$config$baseline_population, big.mark = ","), "UK -->
+<!-- domestic workers\n") -->
+<!-- cat("- MCMC samples:", final_results$config$samplesize, "\n") -->
+<!-- cat("- Burn-in iterations:", final_results$config$burnin, "\n") -->
+<!-- cat("- Number of nationality clusters:", -->
+<!-- final_results$individual_results[[1]]$n_clusters, "\n") -->
+<!-- cat("- Total sample size:", final_results$individual_results[[1]]$n_obs, -->
+<!-- "\n") -->
+
+<!-- cat("\nCluster composition:\n") -->
+<!-- cluster_info <- final_results$individual_results[[1]]$netclust_output$nc -->
+<!-- names(cluster_info) <- c("Filipino", "Latinx", "Other Combined") -->
+<!-- for(i in 1:length(cluster_info)) { -->
+<!--   cat("-", names(cluster_info)[i], ":", cluster_info[i], "respondents\n") -->
+<!-- } -->
+
+<!-- cat("\nKey Findings:\n") -->
+<!-- cat("- Highest prevalence: Excessive hours (0.3%)\n") -->
+<!-- cat("- Lowest prevalence: Document withholding (0.1%)\n") -->
+<!-- cat("- All estimates show successful MCMC convergence\n") -->
+<!-- cat("- Wide confidence intervals reflect uncertainty in hidden population -->
+<!-- estimation\n") -->
+<!-- ``` -->
+
+### Model-Assisted Sensitivity Analysis
+
+This section presents comprehensive sensitivity analysis for Model-Assisted inference estimates across all exploitation indicators, examining robustness to population size assumptions and seed selection methods.
 
 ```{r}
-#| label: netclust-analysis2
-#| fig-cap: "Clustered SS-PSE prevalence estimates for labour exploitation indicators"
-#| fig-width: 12
-#| fig-height: 8
+#| label: extract-all-ma-sensitivity
 #| echo: false
 #| warning: false
 #| message: false
 
-# Load required libraries
-library(tidyverse)
-library(knitr)
-library(kableExtra)
-library(here)
-library(scales)
-library(viridis)
+# Extract all MA sensitivity results across all parameters
+# File naming: ma_sensitivity_{indicator}_{popsize}_{seed_method}.RData
 
-# Load netclust results
-load(here("output", "netclust_subgroup_analysis_results_FIXED.RData"))
+# Define all parameters
+indicators <- c(
+  "document_withholding_rds",
+  "pay_issues_rds",
+  "threats_abuse_rds",
+  "excessive_hours_rds",
+  "access_to_help_rds",
+  "whether_exploitation"
+)
 
-# ===== TABLE: Netclust Results Summary =====
-netclust_table <- final_results$summary_df %>%
-  mutate(
-    indicator_label = case_when(
-      indicator == "document_withholding_rds" ~ "Document withholding",
-      indicator == "pay_issues_rds" ~ "Pay-related issues",
-      indicator == "threats_abuse_rds" ~ "Threats/abuse",
-      indicator == "excessive_hours_rds" ~ "Excessive hours",
-      indicator == "access_to_help_rds" ~ "Limited access to help",
-      TRUE ~ indicator
+indicator_labels <- c(
+  "document_withholding_rds" = "Document Withholding",
+  "pay_issues_rds" = "Pay-Related Issues",
+  "threats_abuse_rds" = "Threats/Abuse",
+  "excessive_hours_rds" = "Excessive Hours",
+  "access_to_help_rds" = "Limited Access to Help",
+  "whether_exploitation" = "Any Exploitation"
+)
+
+population_sizes <- c(50000, 100000, 980000, 1740000)
+seed_methods <- c("degree", "random", "sample")
+
+# Function to extract estimates from sensitivity files
+extract_sensitivity_estimate <- function(indicator, pop_size, seed_method) {
+  file_path <- here("output", paste0("ma_sensitivity_", indicator, "_",
+                                     pop_size, "_", seed_method, ".RData"))
+
+  if (file.exists(file_path)) {
+    load(file_path)
+    if (exists("ma_result") && !is.null(ma_result$estimate)) {
+      interval <- ma_result$estimate$interval
+      if (length(interval) >= 6) {
+        return(data.frame(
+          indicator = indicator,
+          label = indicator_labels[indicator],
+          pop_size = pop_size,
+          seed_method = seed_method,
+          prevalence = as.numeric(interval[2]),
+          ci_lower = as.numeric(interval[4]),
+          ci_upper = as.numeric(interval[6]),
+          stringsAsFactors = FALSE
+        ))
+      }
+    }
+  }
+  return(NULL)
+}
+
+# Extract all combinations
+all_sensitivity_results <- list()
+for (ind in indicators) {
+  for (pop in population_sizes) {
+    for (seed in seed_methods) {
+      result <- extract_sensitivity_estimate(ind, pop, seed)
+      if (!is.null(result)) {
+        all_sensitivity_results[[length(all_sensitivity_results) + 1]] <- result
+      }
+    }
+  }
+}
+
+# Combine into single dataframe
+sensitivity_df <- dplyr::bind_rows(all_sensitivity_results) %>%
+  dplyr::mutate(
+    prevalence_pct = prevalence * 100,
+    ci_lower_pct = ci_lower * 100,
+    ci_upper_pct = ci_upper * 100,
+    pop_size_label = factor(
+      pop_size,
+      levels = c(50000, 100000, 980000, 1740000),
+      labels = c("50K", "100K", "980K", "1.74M")
     ),
-    # Convert to percentage for clearer presentation
-    prevalence_pct = round(estimate_pct, 3),
-    ci_lower_pct = round(ci_lower_pct, 3),
-    ci_upper_pct = round(ci_upper_pct, 3),
-    prevalence_display = paste0(prevalence_pct, "% (", ci_lower_pct, "–",
-ci_upper_pct, "%)")
-  ) %>%
-  select(
-    Indicator = indicator_label,
-    "Prevalence (95% CI)" = prevalence_display,
-    "Sample with trait" = n_trait,
-    "Total sample" = n_obs
+    seed_method_label = factor(
+      seed_method,
+      levels = c("degree", "random", "sample"),
+      labels = c("Degree", "Random", "Sample")
+    )
   )
+```
 
-# Display table
-knitr::kable(netclust_table,
-             caption = "Clustered SS-PSE prevalence estimates for labour exploitation indicators among domestic workers",
-             booktabs = TRUE, linesep="") %>%
-  kable_styling(latex_options = c("striped", "scale_down",
-"hold_position")) %>%
-  footnote(general = "Estimates based on Clustered Sequential Sampling Population Size Estimation (Clustered SS-PSE) methodology using netclust package. Population size assumption: 980,000 UK domestic workers. Confidence intervals derived from MCMC sampling (1,000 samples, 2,000 burn-in). Analysis accounts for nationality clustering (Filipino, Latinx, Other Combined) and network structure in RDS data.",
-           general_title = "Note: ")
+```{r}
+#| label: tbl-ma-sensitivity-full
+#| tbl-cap: "Model-Assisted Sensitivity Analysis: Point estimates and 95% credible intervals across all parameter combinations. Estimates from Gile & Handcock (2015) Bayesian Model-Assisted inference."
+#| echo: false
+#| warning: false
 
-# ===== VISUALIZATION 1: Forest Plot =====
-plot_data <- final_results$summary_df %>%
-  mutate(
-    indicator_label = case_when(
-      indicator == "document_withholding_rds" ~ "Document\nwithholding",
-      indicator == "pay_issues_rds" ~ "Pay-related\nissues",
-      indicator == "threats_abuse_rds" ~ "Threats/\nabuse",
-      indicator == "excessive_hours_rds" ~ "Excessive\nhours",
-      indicator == "access_to_help_rds" ~ "Limited access\nto help",
-      TRUE ~ indicator
-    ),
-    indicator_label = fct_reorder(indicator_label, estimate_pct)
-  )
-
-forest_plot <- ggplot(plot_data, aes(x = indicator_label, y =
-estimate_pct)) +
-  geom_point(size = 4, color = "#2c3e50") +
-  geom_errorbar(aes(ymin = ci_lower_pct, ymax = ci_upper_pct),
-                width = 0.2, linewidth = 1, color = "#2c3e50") +
-  coord_flip() +
-  scale_y_continuous(labels = percent_format(scale = 1, suffix = "%"),
-                     trans = "log10",
-                     breaks = c(0.01, 0.1, 1, 10)) +
-  labs(
-    title = "Clustered SS-PSE Prevalence Estimates",
-    subtitle = "Labour exploitation indicators among UK domestic workers",
-    x = "Exploitation Indicator",
-    y = "Prevalence (%) with 95% Confidence Intervals (log scale)",
-    caption = "Based on RDS sample (n=85) with nationality clustering. Population assumption: 980,000."
-  ) +
-  theme_minimal(base_size = 12) +
-  theme(
-    plot.title = element_text(size = 14, face = "bold"),
-    plot.subtitle = element_text(size = 12),
-    axis.text = element_text(size = 11),
-    panel.grid.minor = element_blank(),
-    plot.caption = element_text(size = 9, color = "gray60")
-  )
-
-print(forest_plot)
-
-# ===== VISUALIZATION 2: Sample Composition =====
-sample_comp <- final_results$summary_df %>%
-  mutate(
-    indicator_label = case_when(
-      indicator == "document_withholding_rds" ~ "Document\nwithholding",
-      indicator == "pay_issues_rds" ~ "Pay-related\nissues",
-      indicator == "threats_abuse_rds" ~ "Threats/\nabuse",
-      indicator == "excessive_hours_rds" ~ "Excessive\nhours",
-      indicator == "access_to_help_rds" ~ "Limited access\nto help",
-      TRUE ~ indicator
-    ),
-    prop_with_trait = n_trait / n_obs,
-    prop_without_trait = 1 - prop_with_trait
-  ) %>%
-  select(indicator_label, prop_with_trait, prop_without_trait) %>%
-  pivot_longer(cols = c(prop_with_trait, prop_without_trait),
-               names_to = "category",
-               values_to = "proportion") %>%
-  mutate(
-    category = if_else(category == "prop_with_trait", "With trait",
-"Without trait"),
-    category = factor(category, levels = c("Without trait", "With trait"))
-  )
-
-comp_plot <- ggplot(sample_comp, aes(x = indicator_label, y = proportion,
-fill = category)) +
-  geom_col(position = "stack", alpha = 0.8) +
-  scale_fill_manual(values = c("Without trait" = "#bdc3c7", "With trait" =
- "#e74c3c")) +
-  scale_y_continuous(labels = percent_format()) +
-  coord_flip() +
-  labs(
-    title = "Sample Composition by Exploitation Indicator",
-    subtitle = "Proportion of respondents with each indicator present",
-    x = "Exploitation Indicator",
-    y = "Proportion of Sample",
-    fill = "Category",
-    caption = "Total sample size: 85 domestic workers"
-  ) +
-  theme_minimal(base_size = 12) +
-  theme(
-    plot.title = element_text(size = 14, face = "bold"),
-    plot.subtitle = element_text(size = 12),
-    axis.text = element_text(size = 11),
-    legend.position = "bottom",
-    panel.grid.minor = element_blank(),
-    plot.caption = element_text(size = 9, color = "gray60")
-  )
-
-print(comp_plot)
-
-# ===== VISUALIZATION 3: Convergence Diagnostics =====
-if(length(final_results$individual_results) > 0) {
-  # Extract MCMC diagnostics from first result as example
-  sample_result <- final_results$individual_results[[1]]
-  mcmc_samples <- sample_result$netclust_output$sample[, "N"]
-
-  # Create trace plot
-  trace_data <- data.frame(
-    iteration = 1:length(mcmc_samples),
-    population_size = mcmc_samples
-  )
-
-  trace_plot <- ggplot(trace_data, aes(x = iteration, y =
-population_size)) +
-    geom_line(alpha = 0.7, color = "#3498db") +
-    labs(
-      title = "MCMC Trace Plot: Population Size Estimates",
-      subtitle = paste("Example from",
-names(final_results$individual_results)[1]),
-      x = "MCMC Iteration",
-      y = "Estimated Population Size",
-      caption = "1,000 MCMC samples after 2,000 burn-in iterations"
-    ) +
-    theme_minimal(base_size = 12) +
-    theme(
-      plot.title = element_text(size = 14, face = "bold"),
-      plot.subtitle = element_text(size = 12),
-      panel.grid.minor = element_blank(),
-      plot.caption = element_text(size = 9, color = "gray60")
+if (nrow(sensitivity_df) > 0) {
+  # Create comprehensive comparison table - grouped by seed method for clarity
+  sensitivity_table <- sensitivity_df %>%
+    dplyr::mutate(
+      estimate_ci = sprintf("%.1f%% (%.1f-%.1f%%)",
+                           prevalence_pct, ci_lower_pct, ci_upper_pct)
+    ) %>%
+    dplyr::select(label, pop_size_label, seed_method_label, estimate_ci) %>%
+    tidyr::pivot_wider(
+      names_from = c(seed_method_label, pop_size_label),
+      values_from = estimate_ci,
+      names_sep = ": "
     )
 
-  print(trace_plot)
+  # Count actual columns for dynamic header
+  n_cols <- ncol(sensitivity_table)
+
+  sensitivity_table %>%
+    kableExtra::kbl(
+      booktabs = TRUE,
+      align = c("l", rep("r", n_cols - 1)),
+      caption = "Model-Assisted Sensitivity Analysis: Point estimates and 95% credible intervals"
+    ) %>%
+    kableExtra::kable_styling(
+      latex_options = c("striped", "scale_down", "hold_position"),
+      bootstrap_options = c("striped", "hover", "condensed"),
+      font_size = 7,
+      full_width = TRUE
+    ) %>%
+    kableExtra::footnote(
+      general = "Estimates from Gile & Handcock (2015) Bayesian Model-Assisted inference. Population sizes: 50K, 100K, 980K, 1.74M domestic workers. Seed methods: Degree (by network degree), Random, Sample (from data). CrI = Bayesian credible interval.",
+      general_title = "Note:",
+      footnote_as_chunk = TRUE
+    )
+} else {
+  cat("No sensitivity analysis data available.\n")
 }
+```
 
-# ===== DETAILED RESULTS SUMMARY =====
-cat("\n=== NETCLUST ANALYSIS SUMMARY ===\n")
-cat("Analysis Configuration:\n")
-cat("- Population size assumption:",
-format(final_results$config$baseline_population, big.mark = ","), "UK
-domestic workers\n")
-cat("- MCMC samples:", final_results$config$samplesize, "\n")
-cat("- Burn-in iterations:", final_results$config$burnin, "\n")
-cat("- Number of nationality clusters:",
-final_results$individual_results[[1]]$n_clusters, "\n")
-cat("- Total sample size:", final_results$individual_results[[1]]$n_obs,
-"\n")
+```{r}
+#| label: fig-ma-sensitivity-by-indicator
+#| fig-cap: "Model-Assisted Sensitivity by Population Size and Seed Selection: Point estimates with 95% credible intervals for each exploitation indicator across all parameter combinations. Each panel shows one indicator with estimates varying by population size (color) and seed selection method (shape)."
+#| fig-width: 10
+#| fig-height: 12
+#| out-width: "100%"
+#| echo: false
+#| warning: false
 
-cat("\nCluster composition:\n")
-cluster_info <- final_results$individual_results[[1]]$netclust_output$nc
-names(cluster_info) <- c("Filipino", "Latinx", "Other Combined")
-for(i in 1:length(cluster_info)) {
-  cat("-", names(cluster_info)[i], ":", cluster_info[i], "respondents\n")
+library(ggplot2)
+
+# Only create plot if we have data
+if (nrow(sensitivity_df) > 0) {
+  # Get unique population sizes for shapes
+  n_popsizes <- length(unique(sensitivity_df$pop_size_label))
+  shape_values <- c(15, 16, 17, 18)[1:n_popsizes]
+
+  # Create faceted plot by indicator
+  sensitivity_plot <- sensitivity_df %>%
+    ggplot(aes(x = seed_method_label, y = prevalence_pct,
+               color = pop_size_label, group = pop_size_label)) +
+    geom_line(alpha = 0.5) +
+    geom_errorbar(aes(ymin = ci_lower_pct, ymax = ci_upper_pct),
+                  width = 0.2, alpha = 0.6) +
+    geom_point(size = 3, aes(shape = pop_size_label)) +
+    geom_text(aes(label = sprintf("%.1f%%", prevalence_pct)),
+              vjust = -0.8, size = 2.5, show.legend = FALSE) +
+    facet_wrap(~ label, scales = "free_y", ncol = 2) +
+    scale_color_viridis_d(name = "Population Size") +
+    scale_shape_manual(values = shape_values, name = "Population Size") +
+    labs(
+      title = "Sensitivity of MA Estimates to Population Size and Seed Selection",
+      subtitle = "Gile & Handcock (2015) Bayesian Model-Assisted Inference",
+      x = "Seed Selection Method",
+      y = "Estimated Prevalence (%)"
+    ) +
+    theme_minimal() +
+    theme(
+      plot.title = element_text(size = 12, face = "bold"),
+      plot.subtitle = element_text(size = 10),
+      strip.text = element_text(size = 10, face = "bold"),
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      legend.position = "bottom"
+    )
+
+  print(sensitivity_plot)
+} else {
+  cat("No sensitivity data available for plotting.\n")
 }
+```
 
-cat("\nKey Findings:\n")
-cat("- Highest prevalence: Excessive hours (0.3%)\n")
-cat("- Lowest prevalence: Document withholding (0.1%)\n")
-cat("- All estimates show successful MCMC convergence\n")
-cat("- Wide confidence intervals reflect uncertainty in hidden population
-estimation\n")
+```{r}
+#| label: fig-ma-sensitivity-comparison
+#| fig-cap: "Model-Assisted Point Estimate Comparison: Direct comparison of point estimates across all indicators, fixing population size at 980K. Lines connect estimates using the same seed selection method, showing consistency across indicators."
+#| fig-width: 10
+#| fig-height: 6
+#| out-width: "95%"
+#| echo: false
+#| warning: false
+
+# Create comparison plot fixing population at 980K
+comparison_data <- sensitivity_df %>%
+  dplyr::filter(pop_size == 980000)
+
+if (nrow(comparison_data) > 0) {
+  comparison_plot <- comparison_data %>%
+    dplyr::mutate(
+      label_ordered = factor(label, levels = indicator_labels[indicators])
+    ) %>%
+    ggplot(aes(x = label_ordered, y = prevalence_pct,
+               color = seed_method_label, group = seed_method_label)) +
+    geom_line(linewidth = 1) +
+    geom_errorbar(aes(ymin = ci_lower_pct, ymax = ci_upper_pct),
+                  width = 0.3, alpha = 0.6, linewidth = 0.8) +
+    geom_point(size = 4, aes(shape = seed_method_label)) +
+    geom_text(aes(label = sprintf("%.1f%%", prevalence_pct)),
+              vjust = -1.2, size = 3, show.legend = FALSE) +
+    scale_color_brewer(palette = "Set1", name = "Seed Selection") +
+    scale_shape_manual(values = c(15, 16, 17), name = "Seed Selection") +
+    labs(
+      title = "MA Estimates Across Indicators (N = 980,000)",
+      subtitle = "Comparison of seed selection methods",
+      x = "Exploitation Indicator",
+      y = "Estimated Prevalence (%)"
+    ) +
+    theme_minimal() +
+    theme(
+      plot.title = element_text(size = 12, face = "bold"),
+      plot.subtitle = element_text(size = 10),
+      axis.text.x = element_text(angle = 45, hjust = 1, size = 9),
+      legend.position = "bottom"
+    )
+
+  print(comparison_plot)
+} else {
+  cat("No data available for population size 980,000.\n")
+}
 ```
 
 ## Appendix C: Bootstrap Estimation for Network Scale-Up Using RDS Data {#app-3step}
