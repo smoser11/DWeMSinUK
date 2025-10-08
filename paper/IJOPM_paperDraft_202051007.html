@@ -656,6 +656,63 @@ Table&nbsp;5: NSUM Estimates of Binary Exploitation Indicators: Population preva
 <div class="cell-output-display">
 <table class="table table-striped table-hover table-condensed do-not-create-environment cell caption-top table-sm small" data-quarto-postprocess="true">
 <caption>NSUM Estimates of Binary Exploitation Indicators</caption>
+<<<<<<< HEAD
+=======
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Exploitation Indicator</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">NSUM Estimate (95% CI)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Excessive Hours</td>
+<td style="text-align: right;">64.2% (NA-NA%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Threats/Abuse</td>
+<td style="text-align: right;">59.3% (NA-NA%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pay-Related Issues</td>
+<td style="text-align: right;">58.2% (NA-NA%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Limited Access to Help</td>
+<td style="text-align: right;">45.2% (NA-NA%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Document Withholding</td>
+<td style="text-align: right;">42.1% (NA-NA%)</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note:</span> <sup></sup> Network Scale-Up Method prevalence estimates with bootstrap confidence intervals from enhanced NSUM analysis.</td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+</section>
+<section id="comparative-interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="comparative-interpretation">Comparative Interpretation</h3>
+<p>Table 1 summarises prevalence estimates across both methods, highlighting points of convergence and divergence. While absolute values differ slightly across RDS and NSUM (reflecting differences in ego- versus alter-based assumptions), the overall pattern is remarkably stable. <a href="#fig-method-comparison" class="quarto-xref">Figure&nbsp;5</a> demonstrates the comparison between frequentist RDS estimators (RDS-I, RDS-II, RDS-SS) and Bayesian model-assisted methods across all exploitation indicators. The horizontal spacing of estimates allows clear visual comparison of point estimates and uncertainty intervals, with RDS methods showing bootstrap confidence intervals and Bayesian methods showing credible intervals from MCMC estimation. Both approaches identify similar patterns of exploitation prevalence, with excessive hours showing the highest prevalence across all methods, followed by threats/abuse and pay-related issues.</p>
+<p><strong>Table 1 (proposed):</strong> Prevalence of labour exploitation among domestic workers, by method and subgroup</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 26%">
+<col style="width: 11%">
+<col style="width: 27%">
+<col style="width: 11%">
+</colgroup>
+>>>>>>> dab298d3b2ea029411e85f66f6cb92cd9c8b2dcf
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Exploitation Indicator</th>
@@ -710,7 +767,11 @@ Table&nbsp;5: NSUM Estimates of Binary Exploitation Indicators: Population preva
 <img src="../output/figures/method_comparison.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-method-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 Figure&nbsp;5: Method Comparison: frequentists RDS vs Bayesian RDS Estimators. Point estimates and uncertainty intervals for prevalence of exploitation indicators across different estimation methods. RDS methods show 95% confidence intervals (bootstrap); Bayesian methods show 95% credible intervals (MCMC). Baseline population assumption: 980,000 domestic workers. Source: Authors’ own work.
+=======
+Figure&nbsp;5: Method Comparison: RDS vs Bayesian Estimators. Point estimates and uncertainty intervals for prevalence of exploitation indicators across different estimation methods. RDS methods show 95% confidence intervals (bootstrap); Bayesian methods show 95% credible intervals (MCMC). Baseline population assumption: 980,000 domestic workers. Source: Authors’ own work.
+>>>>>>> dab298d3b2ea029411e85f66f6cb92cd9c8b2dcf
 </figcaption>
 </figure>
 </div>
@@ -719,8 +780,13 @@ Figure&nbsp;5: Method Comparison: frequentists RDS vs Bayesian RDS Estimators. P
 </section>
 <section id="robustness-checks" class="level3">
 <h3 class="anchored" data-anchor-id="robustness-checks">Robustness Checks</h3>
+<<<<<<< HEAD
 <p>A series of robustness checks were performed to assess the stability of the findings. <strong>?@fig-forest-plot</strong> presents a comprehensive forest plot comparing all prevalence estimates across indicators and methods, demonstrating remarkable consistency across different analytical approaches. Bootstrap resampling confirmed that the RDS and NSUM estimates remained stable across repeated draws. Sensitivity analyses excluding suspicious datapoints did not materially alter subgroup rankings. Analyses restricted to single subgroups confirmed that the elevated prevalence among Latinx workers was not an artifact of recruitment dynamics.</p>
 <p>The forest plot visualization clearly shows that traditional RDS estimators (RDS-I and RDS-SS) produced results consistent with the model-assisted and Bayesian estimates, albeit with wider confidence intervals in some cases. The pattern of estimates is remarkably stable across methods, with excessive hours consistently showing the highest prevalence, followed by threats/abuse and pay-related issues, while document withholding shows more moderate prevalence levels. This cross-method validation strengthens confidence in our findings and demonstrates the robustness of the dual estimation approach. Full technical details are reported in Appendices B and C.</p>
+=======
+<p>A series of robustness checks were performed to assess the stability of the findings. <a href="#fig-forest-plot" class="quarto-xref">Figure&nbsp;7</a> presents a comprehensive forest plot comparing all prevalence estimates across indicators and methods, demonstrating remarkable consistency across different analytical approaches. Bootstrap resampling confirmed that the RDS and NSUM estimates remained stable across repeated draws. Sensitivity analyses excluding suspicious datapoints did not materially alter subgroup rankings. Analyses restricted to single subgroups confirmed that the elevated prevalence among Latinx workers was not an artifact of recruitment dynamics.</p>
+<p>The forest plot visualization clearly shows that traditional RDS estimators (RDS-I and RDS-II) produced results consistent with the model-assisted and Bayesian estimates, albeit with wider confidence intervals in some cases. The pattern of estimates is remarkably stable across methods, with excessive hours consistently showing the highest prevalence, followed by threats/abuse and pay-related issues, while document withholding shows more moderate prevalence levels. This cross-method validation strengthens confidence in our findings and demonstrates the robustness of the dual estimation approach. Full technical details are reported in Appendices B and C.</p>
+>>>>>>> dab298d3b2ea029411e85f66f6cb92cd9c8b2dcf
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-parameter-comparison" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -730,6 +796,23 @@ Figure&nbsp;5: Method Comparison: frequentists RDS vs Bayesian RDS Estimators. P
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-parameter-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6: Bayesian Parameter Sensitivity Analysis. Comparison of prevalence estimates using enhanced vs standard MCMC parameters for Bayesian model-assisted estimation. Enhanced parameters use longer burn-in periods and more iterations, particularly important for numeric and ordinal variables like composite risk scores. Error bars represent 95% Bayesian credible intervals. Source: Authors’ own work.
+<<<<<<< HEAD
+=======
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-forest-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-forest-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../output/figures/model_comparison_forest_plot.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forest-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Forest Plot of Exploitation Prevalence Estimates. Comprehensive comparison of prevalence estimates across all indicators and estimation methods, displayed as a forest plot with 95% confidence/credible intervals. Each row represents a different exploitation indicator, with points showing method-specific estimates and horizontal lines indicating uncertainty bounds. Demonstrates consistency of findings across different analytical approaches. Source: Authors’ own work.
+>>>>>>> dab298d3b2ea029411e85f66f6cb92cd9c8b2dcf
 </figcaption>
 </figure>
 </div>
@@ -1035,7 +1118,7 @@ Table&nbsp;6: RDS Sample Network Characteristics
 <img src="IJOPM_paperDraft_202051007_files/figure-html/fig-demographics-1.png" class="img-fluid figure-img" width="3000">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-demographics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: Sample Composition by Nationality Clusters
+Figure&nbsp;8: Sample Composition by Nationality Clusters
 </figcaption>
 </figure>
 </div>
@@ -1054,7 +1137,11 @@ Figure&nbsp;7: Sample Composition by Nationality Clusters
 <div id="tbl-rds-comprehensive" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-rds-comprehensive-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 Table&nbsp;7: Comprehensive RDS Estimates: Prevalence estimates for all indicators across population sizes and RDS methods (RDS-I, RDS-II, RDS-SS) with neighborhood bootstrap confidence intervals.
+=======
+Table&nbsp;8: Comprehensive RDS Estimates: Prevalence estimates for all indicators across population sizes and RDS methods (RDS-I, RDS-II, RDS-SS) with neighborhood bootstrap confidence intervals.
+>>>>>>> dab298d3b2ea029411e85f66f6cb92cd9c8b2dcf
 </figcaption>
 <div aria-describedby="tbl-rds-comprehensive-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -1211,7 +1298,11 @@ RDS-SS
 <img src="IJOPM_paperDraft_202051007_files/figure-html/fig-rds-sensitivity-popsize-1.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rds-sensitivity-popsize-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 Figure&nbsp;8: RDS Sensitivity to Population Size: Comparison of RDS estimates across all population size scenarios. Each panel shows one RDS method with point estimates and 95% bootstrap confidence intervals varying by population size.
+=======
+Figure&nbsp;9: RDS Sensitivity to Population Size: Comparison of RDS estimates across all population size scenarios. Each panel shows one RDS method with point estimates and 95% bootstrap confidence intervals varying by population size.
+>>>>>>> dab298d3b2ea029411e85f66f6cb92cd9c8b2dcf
 </figcaption>
 </figure>
 </div>
@@ -1220,11 +1311,14 @@ Figure&nbsp;8: RDS Sensitivity to Population Size: Comparison of RDS estimates a
 </section>
 <section id="model-assisted-estimates-by-population-size" class="level3">
 <h3 class="anchored" data-anchor-id="model-assisted-estimates-by-population-size">Model-Assisted Estimates by Population Size</h3>
+<<<<<<< HEAD
 <div class="cell">
+=======
+>>>>>>> dab298d3b2ea029411e85f66f6cb92cd9c8b2dcf
 <div id="tbl-ma-estimates" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ma-estimates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;8: Model-Assisted Estimates by Population Size and Seed Selection. Source: Authors’ Own Work.
+Table&nbsp;9: Model-Assisted Estimates by Population Size and Seed Selection. Source: Authors’ Own Work.
 </figcaption>
 <div aria-describedby="tbl-ma-estimates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -1342,13 +1436,16 @@ Prevalence Estimates (95% CrI)
 </div>
 </figure>
 </div>
+<<<<<<< HEAD
 </div>
+=======
+>>>>>>> dab298d3b2ea029411e85f66f6cb92cd9c8b2dcf
 <section id="traditional-rds-estimators-comparison" class="level4">
 <h4 class="anchored" data-anchor-id="traditional-rds-estimators-comparison">Traditional RDS Estimators Comparison</h4>
 <div id="tbl-rds-comparison" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-rds-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;9: RDS Estimator Comparison for Binary Indicators. Source: Authors’ Own Work.
+Table&nbsp;10: RDS Estimator Comparison for Binary Indicators. Source: Authors’ Own Work.
 </figcaption>
 <div aria-describedby="tbl-rds-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-stdout">
@@ -1557,7 +1654,11 @@ Table&nbsp;9: RDS Estimator Comparison for Binary Indicators. Source: Authors’
 <div id="tbl-ma-sensitivity-full" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ma-sensitivity-full-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 Table&nbsp;10: Model-Assisted Sensitivity Analysis: Point estimates and 95% credible intervals across all parameter combinations. Estimates from Gile &amp; Handcock (2015) Bayesian Model-Assisted inference.
+=======
+Table&nbsp;11: Model-Assisted Sensitivity Analysis: Point estimates and 95% credible intervals across all parameter combinations. Estimates from Gile &amp; Handcock (2015) Bayesian Model-Assisted inference.
+>>>>>>> dab298d3b2ea029411e85f66f6cb92cd9c8b2dcf
 </figcaption>
 <div aria-describedby="tbl-ma-sensitivity-full-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -1679,7 +1780,11 @@ Table&nbsp;10: Model-Assisted Sensitivity Analysis: Point estimates and 95% cred
 <img src="IJOPM_paperDraft_202051007_files/figure-html/fig-ma-sensitivity-by-indicator-1.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ma-sensitivity-by-indicator-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 Figure&nbsp;9: Model-Assisted Sensitivity by Population Size and Seed Selection: Point estimates with 95% credible intervals for each exploitation indicator across all parameter combinations. Each panel shows one indicator with estimates varying by population size (color) and seed selection method (shape).
+=======
+Figure&nbsp;10: Model-Assisted Sensitivity by Population Size and Seed Selection: Point estimates with 95% credible intervals for each exploitation indicator across all parameter combinations. Each panel shows one indicator with estimates varying by population size (color) and seed selection method (shape).
+>>>>>>> dab298d3b2ea029411e85f66f6cb92cd9c8b2dcf
 </figcaption>
 </figure>
 </div>
@@ -1693,7 +1798,11 @@ Figure&nbsp;9: Model-Assisted Sensitivity by Population Size and Seed Selection:
 <img src="IJOPM_paperDraft_202051007_files/figure-html/fig-ma-sensitivity-comparison-1.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ma-sensitivity-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 Figure&nbsp;10: Model-Assisted Point Estimate Comparison: Direct comparison of point estimates across all indicators, fixing population size at 980K. Lines connect estimates using the same seed selection method, showing consistency across indicators.
+=======
+Figure&nbsp;11: Model-Assisted Point Estimate Comparison: Direct comparison of point estimates across all indicators, fixing population size at 980K. Lines connect estimates using the same seed selection method, showing consistency across indicators.
+>>>>>>> dab298d3b2ea029411e85f66f6cb92cd9c8b2dcf
 </figcaption>
 </figure>
 </div>
@@ -1861,10 +1970,17 @@ Researchers may define weights using alternative models or Bayesian simulations.
 </section>
 <section id="software-example-r" class="level5">
 <h5 class="anchored" data-anchor-id="software-example-r">Software Example (R)</h5>
+<<<<<<< HEAD
 <div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RDS)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>rd <span class="ot">&lt;-</span> <span class="fu">as.rds.data.frame</span>(boot_sample, <span class="at">id =</span> <span class="st">"id"</span>, <span class="at">recruiter.id =</span> <span class="st">"recruiter.id"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>boot_sample<span class="sc">$</span>ss_weight <span class="ot">&lt;-</span> <span class="fu">gile.ss.weights</span>(rd, <span class="at">N =</span> <span class="dv">980000</span>)</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>boot_sample<span class="sc">$</span>vh_weight <span class="ot">&lt;-</span> <span class="fu">rds.weights</span>(rd, <span class="at">weight.type =</span> <span class="st">"RDS-II"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+=======
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RDS)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>rd <span class="ot">&lt;-</span> <span class="fu">as.rds.data.frame</span>(boot_sample, <span class="at">id =</span> <span class="st">"id"</span>, <span class="at">recruiter.id =</span> <span class="st">"recruiter.id"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>boot_sample<span class="sc">$</span>ss_weight <span class="ot">&lt;-</span> <span class="fu">gile.ss.weights</span>(rd, <span class="at">N =</span> <span class="dv">980000</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>boot_sample<span class="sc">$</span>vh_weight <span class="ot">&lt;-</span> <span class="fu">rds.weights</span>(rd, <span class="at">weight.type =</span> <span class="st">"RDS-II"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+>>>>>>> dab298d3b2ea029411e85f66f6cb92cd9c8b2dcf
 <p>The output is a new dataset with respondent traits, degrees, and updated <span class="math inline">\(\pi_i^{(b)}\)</span>, which are used in Step 3.</p>
 <hr>
 <hr>

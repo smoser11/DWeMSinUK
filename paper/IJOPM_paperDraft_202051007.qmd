@@ -1237,6 +1237,7 @@ if (file.exists(here("output", "frequentist_estimators_results.RData"))) {
   cat("frequentist_estimators_results.RData file not found.\n")
 }
 ```
+<<<<<<< HEAD
 
 ```{r}
 #| label: fig-rds-forest-plot
@@ -1249,6 +1250,20 @@ if (file.exists(here("output", "frequentist_estimators_results.RData"))) {
 
 library(ggplot2)
 
+=======
+
+```{r}
+#| label: fig-rds-forest-plot
+#| fig-cap: "Forest Plot of RDS Estimates: Comparison of RDS-I and RDS-SS prevalence estimates for binary exploitation indicators (N=980,000). Error bars represent 95% bootstrap confidence intervals. Source: Authors' Own Work."
+#| fig-width: 9
+#| fig-height: 6
+#| out-width: "95%"
+#| echo: false
+#| warning: false
+
+library(ggplot2)
+
+>>>>>>> dab298d3b2ea029411e85f66f6cb92cd9c8b2dcf
 # Create forest plot for RDS estimates
 if (exists("frequentist_df")) {
   rds_forest_data <- frequentist_df %>%
@@ -1256,6 +1271,7 @@ if (exists("frequentist_df")) {
       pop_size == 980000,
       method %in% c("RDS_I", "RDS_SS")
     )
+<<<<<<< HEAD
 
   # Order indicators by average prevalence (lowest to highest)
   indicator_order <- rds_forest_data %>%
@@ -1269,6 +1285,21 @@ if (exists("frequentist_df")) {
       indicator_ordered = factor(indicator_clean, levels = indicator_order)
     )
 
+=======
+
+  # Order indicators by average prevalence (lowest to highest)
+  indicator_order <- rds_forest_data %>%
+    dplyr::group_by(indicator_clean) %>%
+    dplyr::summarise(avg_est = mean(estimate_pct)) %>%
+    dplyr::arrange(avg_est) %>%
+    dplyr::pull(indicator_clean)
+
+  rds_forest_data <- rds_forest_data %>%
+    dplyr::mutate(
+      indicator_ordered = factor(indicator_clean, levels = indicator_order)
+    )
+
+>>>>>>> dab298d3b2ea029411e85f66f6cb92cd9c8b2dcf
   if (nrow(rds_forest_data) > 0) {
     forest_plot <- ggplot(rds_forest_data,
                           aes(x = estimate_pct, y = indicator_ordered,
@@ -1596,28 +1627,104 @@ Key Coding Steps:
 
 #### Recruitment Network Structure
 
-```{r eval=FALSE}
+```{r}
 #| label: tbl-network
 #| tbl-cap: "RDS Sample Network Characteristics"
 
+# Calculate chain statistics from recruitment network
+calculate_chain_stats <- function(data) {
+  # Build parent-child relationships
+  chains <- data %>%
+    dplyr::select(id, recruiter.id) %>%
+    dplyr::mutate(
+      id = as.integer(id),
+      recruiter.id = as.integer(recruiter.id)
+    )
+
+  # Find all seeds (recruiter.id == -1 or NA)
+  seeds <- chains %>%
+    dplyr::filter(recruiter.id == -1 | is.na(recruiter.id)) %>%
+    dplyr::pull(id)
+
+  # Calculate depth for each node (distance from seed)
+  get_chain_depth <- function(node_id, chains, depth = 0, visited = c()) {
+    if (node_id %in% visited) return(depth)  # Prevent cycles
+    visited <- c(visited, node_id)
+
+    # Find children of this node
+    children <- chains %>%
+      dplyr::filter(recruiter.id == node_id) %>%
+      dplyr::pull(id)
+
+    if (length(children) == 0) {
+      return(depth)  # Leaf node
+    } else {
+      # Return maximum depth among children
+      child_depths <- sapply(children, function(child) {
+        get_chain_depth(child, chains, depth + 1, visited)
+      })
+      return(max(child_depths))
+    }
+  }
+
+  # Calculate longest chain from each seed
+  chain_lengths <- sapply(seeds, function(seed_id) {
+    get_chain_depth(seed_id, chains)
+  })
+
+  # Calculate average chain length (mean depth from seeds)
+  all_depths <- c()
+  for (seed_id in seeds) {
+    descendants <- chains %>%
+      dplyr::filter(recruiter.id == seed_id)
+
+    if (nrow(descendants) > 0) {
+      for (desc_id in descendants$id) {
+        all_depths <- c(all_depths, get_chain_depth(desc_id, chains, depth = 1))
+      }
+    }
+  }
+
+  return(list(
+    longest = max(chain_lengths, na.rm = TRUE),
+    mean_length = ifelse(length(all_depths) > 0, mean(all_depths, na.rm = TRUE), 0)
+  ))
+}
+
+chain_stats <- calculate_chain_stats(rd.dd)
+
 network_stats <- tibble(
-  Characteristic = c("Total Sample Size", "Recruitment Waves", "Average Degree", 
+  Characteristic = c("Total Sample Size", "Recruitment Waves", "Average Degree",
                     "Median Degree", "Seeds", "Longest Chain", "Mean Chain Length"),
   Value = c(
     nrow(rd.dd),
     max(rd.dd$wave, na.rm = TRUE),
     round(mean(rd.dd$numRef, na.rm = TRUE), 1),
     round(median(rd.dd$numRef, na.rm = TRUE), 1),
-    sum(rd.dd$recruiter.id == -1),
-    "TBD", ## Calculate from recruitment chains
-    "TBD"  ## Calculate average chain length
+    sum(rd.dd$recruiter.id == -1 | is.na(rd.dd$recruiter.id)),
+    chain_stats$longest,
+    round(chain_stats$mean_length, 1)
   )
 )
 
 network_stats %>%
-  gt() %>%
-  tab_header(title = "Network Characteristics") %>%
-  fmt_number(columns = Value, decimals = 1, use_seps = TRUE)
+  kableExtra::kbl(
+    col.names = c("Characteristic", "Value"),
+    booktabs = TRUE,
+    align = c("l", "r"),
+    caption = "RDS Sample Network Characteristics"
+  ) %>%
+  kableExtra::kable_styling(
+    latex_options = c("striped", "hold_position"),
+    bootstrap_options = c("striped", "hover"),
+    full_width = FALSE,
+    position = "center"
+  ) %>%
+  kableExtra::footnote(
+    general = "Average and median degree represent the number of other domestic workers known personally (Q13). Chain length measured from seed nodes through recruitment relationships.",
+    general_title = "Note:",
+    footnote_as_chunk = TRUE
+  )
 ```
 
 #### Demographic Composition
@@ -1625,24 +1732,55 @@ network_stats %>%
 ```{r}
 #| label: fig-demographics
 #| fig-cap: "Sample Composition by Nationality Clusters"
+#| fig-width: 8
+#| fig-height: 5
 
-## Create nationality breakdown
+# Create nationality breakdown with proper ordering
 nationality_summary <- rd.dd %>%
-  group_by(nationality_cluster) %>%
-  summarise(
+  dplyr::group_by(nationality_cluster) %>%
+  dplyr::summarise(
     n = n(),
     percent = round(n() / nrow(rd.dd) * 100, 1),
     .groups = 'drop'
+  ) %>%
+  dplyr::arrange(desc(n)) %>%
+  dplyr::mutate(
+    nationality_cluster = factor(nationality_cluster, levels = nationality_cluster),
+    label_text = sprintf("%d\n(%.1f%%)", n, percent)
   )
 
+# Create professional bar plot
 ggplot(nationality_summary, aes(x = nationality_cluster, y = percent, fill = nationality_cluster)) +
-  geom_col() +
-  geom_text(aes(label = paste0(n, "\n(", percent, "%)")), vjust = -0.5) +
-  scale_fill_viridis_d() +
-  theme_minimal() +
-  labs(x = "Nationality Cluster", y = "Percentage", 
-       title = "Sample Distribution by Nationality") +
-  theme(legend.position = "none")
+  geom_col(width = 0.7, alpha = 0.9) +
+  geom_text(aes(label = label_text),
+            vjust = -0.3,
+            size = 3.5,
+            fontface = "bold") +
+  scale_fill_viridis_d(option = "plasma", begin = 0.2, end = 0.8) +
+  scale_y_continuous(
+    expand = expansion(mult = c(0, 0.15)),
+    breaks = seq(0, 100, by = 10),
+    labels = function(x) paste0(x, "%")
+  ) +
+  labs(
+    x = "Nationality Cluster",
+    y = "Percentage of Sample",
+    title = "Sample Distribution by Nationality Cluster",
+    subtitle = sprintf("Total N = %d", nrow(rd.dd))
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(face = "bold", size = 13, hjust = 0.5),
+    plot.subtitle = element_text(size = 10, hjust = 0.5, color = "gray30"),
+    axis.title = element_text(face = "bold", size = 11),
+    axis.text.x = element_text(angle = 0, hjust = 0.5, size = 10),
+    axis.text.y = element_text(size = 10),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "white", color = NA),
+    plot.background = element_rect(fill = "white", color = NA)
+  )
 ```
 
 
