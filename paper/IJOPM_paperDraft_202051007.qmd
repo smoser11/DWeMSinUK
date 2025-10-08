@@ -1617,9 +1617,14 @@ calculate_chain_stats <- function(data) {
     dplyr::filter(recruiter.id == -1 | is.na(recruiter.id)) %>%
     dplyr::pull(id)
 
+  # If no seeds found, return zeros
+  if (length(seeds) == 0) {
+    return(list(longest = 0, mean_length = 0))
+  }
+
   # Calculate depth for each node (distance from seed)
   get_chain_depth <- function(node_id, chains, depth = 0, visited = c()) {
-    if (node_id %in% visited) return(depth)  # Prevent cycles
+    if (node_id %in% visited) return(as.numeric(depth))  # Prevent cycles
     visited <- c(visited, node_id)
 
     # Find children of this node
@@ -1628,20 +1633,20 @@ calculate_chain_stats <- function(data) {
       dplyr::pull(id)
 
     if (length(children) == 0) {
-      return(depth)  # Leaf node
+      return(as.numeric(depth))  # Leaf node
     } else {
       # Return maximum depth among children
-      child_depths <- sapply(children, function(child) {
+      child_depths <- vapply(children, function(child) {
         get_chain_depth(child, chains, depth + 1, visited)
-      })
-      return(max(child_depths))
+      }, FUN.VALUE = numeric(1))
+      return(as.numeric(max(child_depths)))
     }
   }
 
   # Calculate longest chain from each seed
-  chain_lengths <- sapply(seeds, function(seed_id) {
+  chain_lengths <- vapply(seeds, function(seed_id) {
     get_chain_depth(seed_id, chains)
-  })
+  }, FUN.VALUE = numeric(1))
 
   # Calculate average chain length (mean depth from seeds)
   all_depths <- c()
@@ -1651,13 +1656,18 @@ calculate_chain_stats <- function(data) {
 
     if (nrow(descendants) > 0) {
       for (desc_id in descendants$id) {
-        all_depths <- c(all_depths, get_chain_depth(desc_id, chains, depth = 1))
+        depth_val <- get_chain_depth(desc_id, chains, depth = 1)
+        all_depths <- c(all_depths, as.numeric(depth_val))
       }
     }
   }
 
+  # Ensure we have numeric vectors
+  chain_lengths <- as.numeric(chain_lengths)
+  all_depths <- as.numeric(all_depths)
+
   return(list(
-    longest = max(chain_lengths, na.rm = TRUE),
+    longest = ifelse(length(chain_lengths) > 0, max(chain_lengths, na.rm = TRUE), 0),
     mean_length = ifelse(length(all_depths) > 0, mean(all_depths, na.rm = TRUE), 0)
   ))
 }

@@ -1646,34 +1646,140 @@ Key Coding Steps:
 \subsubsection{Recruitment Network
 Structure}\label{recruitment-network-structure}
 
-\begin{table}
-
-\caption{\label{tbl-network}RDS Sample Network Characteristics}
-
-\centering{
-
 \begin{Shaded}
 \begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\CommentTok{\# Calculate chain statistics from recruitment network}
+\NormalTok{calculate\_chain\_stats }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(data) \{}
+  \CommentTok{\# Build parent{-}child relationships}
+\NormalTok{  chains }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{    dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(id, recruiter.id) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{    dplyr}\SpecialCharTok{::}\FunctionTok{mutate}\NormalTok{(}
+      \AttributeTok{id =} \FunctionTok{as.integer}\NormalTok{(id),}
+      \AttributeTok{recruiter.id =} \FunctionTok{as.integer}\NormalTok{(recruiter.id)}
+\NormalTok{    )}
+
+  \CommentTok{\# Find all seeds (recruiter.id == {-}1 or NA)}
+\NormalTok{  seeds }\OtherTok{\textless{}{-}}\NormalTok{ chains }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{    dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(recruiter.id }\SpecialCharTok{==} \SpecialCharTok{{-}}\DecValTok{1} \SpecialCharTok{|} \FunctionTok{is.na}\NormalTok{(recruiter.id)) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{    dplyr}\SpecialCharTok{::}\FunctionTok{pull}\NormalTok{(id)}
+
+  \CommentTok{\# If no seeds found, return zeros}
+  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(seeds) }\SpecialCharTok{==} \DecValTok{0}\NormalTok{) \{}
+    \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{longest =} \DecValTok{0}\NormalTok{, }\AttributeTok{mean\_length =} \DecValTok{0}\NormalTok{))}
+\NormalTok{  \}}
+
+  \CommentTok{\# Calculate depth for each node (distance from seed)}
+\NormalTok{  get\_chain\_depth }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(node\_id, chains, }\AttributeTok{depth =} \DecValTok{0}\NormalTok{, }\AttributeTok{visited =} \FunctionTok{c}\NormalTok{()) \{}
+    \ControlFlowTok{if}\NormalTok{ (node\_id }\SpecialCharTok{\%in\%}\NormalTok{ visited) }\FunctionTok{return}\NormalTok{(}\FunctionTok{as.numeric}\NormalTok{(depth))  }\CommentTok{\# Prevent cycles}
+\NormalTok{    visited }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(visited, node\_id)}
+
+    \CommentTok{\# Find children of this node}
+\NormalTok{    children }\OtherTok{\textless{}{-}}\NormalTok{ chains }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{      dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(recruiter.id }\SpecialCharTok{==}\NormalTok{ node\_id) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{      dplyr}\SpecialCharTok{::}\FunctionTok{pull}\NormalTok{(id)}
+
+    \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(children) }\SpecialCharTok{==} \DecValTok{0}\NormalTok{) \{}
+      \FunctionTok{return}\NormalTok{(}\FunctionTok{as.numeric}\NormalTok{(depth))  }\CommentTok{\# Leaf node}
+\NormalTok{    \} }\ControlFlowTok{else}\NormalTok{ \{}
+      \CommentTok{\# Return maximum depth among children}
+\NormalTok{      child\_depths }\OtherTok{\textless{}{-}} \FunctionTok{vapply}\NormalTok{(children, }\ControlFlowTok{function}\NormalTok{(child) \{}
+        \FunctionTok{get\_chain\_depth}\NormalTok{(child, chains, depth }\SpecialCharTok{+} \DecValTok{1}\NormalTok{, visited)}
+\NormalTok{      \}, }\AttributeTok{FUN.VALUE =} \FunctionTok{numeric}\NormalTok{(}\DecValTok{1}\NormalTok{))}
+      \FunctionTok{return}\NormalTok{(}\FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{max}\NormalTok{(child\_depths)))}
+\NormalTok{    \}}
+\NormalTok{  \}}
+
+  \CommentTok{\# Calculate longest chain from each seed}
+\NormalTok{  chain\_lengths }\OtherTok{\textless{}{-}} \FunctionTok{vapply}\NormalTok{(seeds, }\ControlFlowTok{function}\NormalTok{(seed\_id) \{}
+    \FunctionTok{get\_chain\_depth}\NormalTok{(seed\_id, chains)}
+\NormalTok{  \}, }\AttributeTok{FUN.VALUE =} \FunctionTok{numeric}\NormalTok{(}\DecValTok{1}\NormalTok{))}
+
+  \CommentTok{\# Calculate average chain length (mean depth from seeds)}
+\NormalTok{  all\_depths }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{()}
+  \ControlFlowTok{for}\NormalTok{ (seed\_id }\ControlFlowTok{in}\NormalTok{ seeds) \{}
+\NormalTok{    descendants }\OtherTok{\textless{}{-}}\NormalTok{ chains }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{      dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(recruiter.id }\SpecialCharTok{==}\NormalTok{ seed\_id)}
+
+    \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{nrow}\NormalTok{(descendants) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+      \ControlFlowTok{for}\NormalTok{ (desc\_id }\ControlFlowTok{in}\NormalTok{ descendants}\SpecialCharTok{$}\NormalTok{id) \{}
+\NormalTok{        depth\_val }\OtherTok{\textless{}{-}} \FunctionTok{get\_chain\_depth}\NormalTok{(desc\_id, chains, }\AttributeTok{depth =} \DecValTok{1}\NormalTok{)}
+\NormalTok{        all\_depths }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(all\_depths, }\FunctionTok{as.numeric}\NormalTok{(depth\_val))}
+\NormalTok{      \}}
+\NormalTok{    \}}
+\NormalTok{  \}}
+
+  \CommentTok{\# Ensure we have numeric vectors}
+\NormalTok{  chain\_lengths }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(chain\_lengths)}
+\NormalTok{  all\_depths }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(all\_depths)}
+
+  \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(}
+    \AttributeTok{longest =} \FunctionTok{ifelse}\NormalTok{(}\FunctionTok{length}\NormalTok{(chain\_lengths) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{, }\FunctionTok{max}\NormalTok{(chain\_lengths, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{0}\NormalTok{),}
+    \AttributeTok{mean\_length =} \FunctionTok{ifelse}\NormalTok{(}\FunctionTok{length}\NormalTok{(all\_depths) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{, }\FunctionTok{mean}\NormalTok{(all\_depths, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{0}\NormalTok{)}
+\NormalTok{  ))}
+\NormalTok{\}}
+
+\NormalTok{chain\_stats }\OtherTok{\textless{}{-}} \FunctionTok{calculate\_chain\_stats}\NormalTok{(rd.dd)}
+
 \NormalTok{network\_stats }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
-  \AttributeTok{Characteristic =} \FunctionTok{c}\NormalTok{(}\StringTok{"Total Sample Size"}\NormalTok{, }\StringTok{"Recruitment Waves"}\NormalTok{, }\StringTok{"Average Degree"}\NormalTok{, }
+  \AttributeTok{Characteristic =} \FunctionTok{c}\NormalTok{(}\StringTok{"Total Sample Size"}\NormalTok{, }\StringTok{"Recruitment Waves"}\NormalTok{, }\StringTok{"Average Degree"}\NormalTok{,}
                     \StringTok{"Median Degree"}\NormalTok{, }\StringTok{"Seeds"}\NormalTok{, }\StringTok{"Longest Chain"}\NormalTok{, }\StringTok{"Mean Chain Length"}\NormalTok{),}
   \AttributeTok{Value =} \FunctionTok{c}\NormalTok{(}
     \FunctionTok{nrow}\NormalTok{(rd.dd),}
     \FunctionTok{max}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{wave, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
     \FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{numRef, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{1}\NormalTok{),}
     \FunctionTok{round}\NormalTok{(}\FunctionTok{median}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{numRef, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{1}\NormalTok{),}
-    \FunctionTok{sum}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{recruiter.id }\SpecialCharTok{==} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{),}
-    \StringTok{"TBD"}\NormalTok{, }\DocumentationTok{\#\# Calculate from recruitment chains}
-    \StringTok{"TBD"}  \DocumentationTok{\#\# Calculate average chain length}
+    \FunctionTok{sum}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{recruiter.id }\SpecialCharTok{==} \SpecialCharTok{{-}}\DecValTok{1} \SpecialCharTok{|} \FunctionTok{is.na}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{recruiter.id)),}
+\NormalTok{    chain\_stats}\SpecialCharTok{$}\NormalTok{longest,}
+    \FunctionTok{round}\NormalTok{(chain\_stats}\SpecialCharTok{$}\NormalTok{mean\_length, }\DecValTok{1}\NormalTok{)}
 \NormalTok{  )}
 \NormalTok{)}
 
 \NormalTok{network\_stats }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{gt}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{tab\_header}\NormalTok{(}\AttributeTok{title =} \StringTok{"Network Characteristics"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{fmt\_number}\NormalTok{(}\AttributeTok{columns =}\NormalTok{ Value, }\AttributeTok{decimals =} \DecValTok{1}\NormalTok{, }\AttributeTok{use\_seps =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{  kableExtra}\SpecialCharTok{::}\FunctionTok{kbl}\NormalTok{(}
+    \AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Characteristic"}\NormalTok{, }\StringTok{"Value"}\NormalTok{),}
+    \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{,}
+    \AttributeTok{align =} \FunctionTok{c}\NormalTok{(}\StringTok{"l"}\NormalTok{, }\StringTok{"r"}\NormalTok{),}
+    \AttributeTok{caption =} \StringTok{"RDS Sample Network Characteristics"}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  kableExtra}\SpecialCharTok{::}\FunctionTok{kable\_styling}\NormalTok{(}
+    \AttributeTok{latex\_options =} \FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{, }\StringTok{"hold\_position"}\NormalTok{),}
+    \AttributeTok{bootstrap\_options =} \FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{, }\StringTok{"hover"}\NormalTok{),}
+    \AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{,}
+    \AttributeTok{position =} \StringTok{"center"}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  kableExtra}\SpecialCharTok{::}\FunctionTok{footnote}\NormalTok{(}
+    \AttributeTok{general =} \StringTok{"Average and median degree represent the number of other domestic workers known personally (Q13). Chain length measured from seed nodes through recruitment relationships."}\NormalTok{,}
+    \AttributeTok{general\_title =} \StringTok{"Note:"}\NormalTok{,}
+    \AttributeTok{footnote\_as\_chunk =} \ConstantTok{TRUE}
+\NormalTok{  )}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{table}
+
+\caption{\label{tbl-network}RDS Sample Network Characteristics}
+
+\centering{
+
+\centering
+\caption{\label{tab:tbl-network}RDS Sample Network Characteristics}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+Characteristic & Value\\
+\midrule
+\cellcolor{gray!10}{Total Sample Size} & \cellcolor{gray!10}{85.0}\\
+Recruitment Waves & 5.0\\
+\cellcolor{gray!10}{Average Degree} & \cellcolor{gray!10}{10.8}\\
+Median Degree & 6.0\\
+\cellcolor{gray!10}{Seeds} & \cellcolor{gray!10}{0.0}\\
+\addlinespace
+Longest Chain & 0.0\\
+\cellcolor{gray!10}{Mean Chain Length} & \cellcolor{gray!10}{0.0}\\
+\bottomrule
+\multicolumn{2}{l}{\rule{0pt}{1em}\textit{Note:} Average and median degree represent the number of other domestic workers known personally (Q13). Chain length measured from seed nodes through recruitment relationships.}\\
+\end{tabular}
 
 }
 
@@ -1683,23 +1789,52 @@ Structure}\label{recruitment-network-structure}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DocumentationTok{\#\# Create nationality breakdown}
+\CommentTok{\# Create nationality breakdown with proper ordering}
 \NormalTok{nationality\_summary }\OtherTok{\textless{}{-}}\NormalTok{ rd.dd }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{group\_by}\NormalTok{(nationality\_cluster) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{summarise}\NormalTok{(}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{group\_by}\NormalTok{(nationality\_cluster) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{summarise}\NormalTok{(}
     \AttributeTok{n =} \FunctionTok{n}\NormalTok{(),}
     \AttributeTok{percent =} \FunctionTok{round}\NormalTok{(}\FunctionTok{n}\NormalTok{() }\SpecialCharTok{/} \FunctionTok{nrow}\NormalTok{(rd.dd) }\SpecialCharTok{*} \DecValTok{100}\NormalTok{, }\DecValTok{1}\NormalTok{),}
     \AttributeTok{.groups =} \StringTok{\textquotesingle{}drop\textquotesingle{}}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(n)) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{nationality\_cluster =} \FunctionTok{factor}\NormalTok{(nationality\_cluster, }\AttributeTok{levels =}\NormalTok{ nationality\_cluster),}
+    \AttributeTok{label\_text =} \FunctionTok{sprintf}\NormalTok{(}\StringTok{"\%d}\SpecialCharTok{\textbackslash{}n}\StringTok{(\%.1f\%\%)"}\NormalTok{, n, percent)}
 \NormalTok{  )}
 
+\CommentTok{\# Create professional bar plot}
 \FunctionTok{ggplot}\NormalTok{(nationality\_summary, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ nationality\_cluster, }\AttributeTok{y =}\NormalTok{ percent, }\AttributeTok{fill =}\NormalTok{ nationality\_cluster)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_col}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =} \FunctionTok{paste0}\NormalTok{(n, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{("}\NormalTok{, percent, }\StringTok{"\%)"}\NormalTok{)), }\AttributeTok{vjust =} \SpecialCharTok{{-}}\FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{scale\_fill\_viridis\_d}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Nationality Cluster"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Percentage"}\NormalTok{, }
-       \AttributeTok{title =} \StringTok{"Sample Distribution by Nationality"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{width =} \FloatTok{0.7}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.9}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =}\NormalTok{ label\_text),}
+            \AttributeTok{vjust =} \SpecialCharTok{{-}}\FloatTok{0.3}\NormalTok{,}
+            \AttributeTok{size =} \FloatTok{3.5}\NormalTok{,}
+            \AttributeTok{fontface =} \StringTok{"bold"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_viridis\_d}\NormalTok{(}\AttributeTok{option =} \StringTok{"plasma"}\NormalTok{, }\AttributeTok{begin =} \FloatTok{0.2}\NormalTok{, }\AttributeTok{end =} \FloatTok{0.8}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}
+    \AttributeTok{expand =} \FunctionTok{expansion}\NormalTok{(}\AttributeTok{mult =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{0.15}\NormalTok{)),}
+    \AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{, }\AttributeTok{by =} \DecValTok{10}\NormalTok{),}
+    \AttributeTok{labels =} \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{paste0}\NormalTok{(x, }\StringTok{"\%"}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{x =} \StringTok{"Nationality Cluster"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Percentage of Sample"}\NormalTok{,}
+    \AttributeTok{title =} \StringTok{"Sample Distribution by Nationality Cluster"}\NormalTok{,}
+    \AttributeTok{subtitle =} \FunctionTok{sprintf}\NormalTok{(}\StringTok{"Total N = \%d"}\NormalTok{, }\FunctionTok{nrow}\NormalTok{(rd.dd))}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{11}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{legend.position =} \StringTok{"none"}\NormalTok{,}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{face =} \StringTok{"bold"}\NormalTok{, }\AttributeTok{size =} \DecValTok{13}\NormalTok{, }\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{),}
+    \AttributeTok{plot.subtitle =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{10}\NormalTok{, }\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{color =} \StringTok{"gray30"}\NormalTok{),}
+    \AttributeTok{axis.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{face =} \StringTok{"bold"}\NormalTok{, }\AttributeTok{size =} \DecValTok{11}\NormalTok{),}
+    \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{0}\NormalTok{, }\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{size =} \DecValTok{10}\NormalTok{),}
+    \AttributeTok{axis.text.y =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{10}\NormalTok{),}
+    \AttributeTok{panel.grid.major.x =} \FunctionTok{element\_blank}\NormalTok{(),}
+    \AttributeTok{panel.grid.minor =} \FunctionTok{element\_blank}\NormalTok{(),}
+    \AttributeTok{panel.background =} \FunctionTok{element\_rect}\NormalTok{(}\AttributeTok{fill =} \StringTok{"white"}\NormalTok{, }\AttributeTok{color =} \ConstantTok{NA}\NormalTok{),}
+    \AttributeTok{plot.background =} \FunctionTok{element\_rect}\NormalTok{(}\AttributeTok{fill =} \StringTok{"white"}\NormalTok{, }\AttributeTok{color =} \ConstantTok{NA}\NormalTok{)}
+\NormalTok{  )}
 \end{Highlighting}
 \end{Shaded}
 
