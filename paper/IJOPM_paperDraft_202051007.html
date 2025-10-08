@@ -174,16 +174,17 @@ window.Quarto = {
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  <li><a href="#app-a" id="toc-app-a" class="nav-link" data-scroll-target="#app-a">Appendix A</a>
+  <li><a href="#app-survey" id="toc-app-survey" class="nav-link" data-scroll-target="#app-survey">Appendix A</a>
   <ul class="collapse">
   <li><a href="#the-survey" id="toc-the-survey" class="nav-link" data-scroll-target="#the-survey">The Survey</a></li>
   <li><a href="#app-dataprep" id="toc-app-dataprep" class="nav-link" data-scroll-target="#app-dataprep">Data Processing</a></li>
-  </ul></li>
-  <li><a href="#app-b" id="toc-app-b" class="nav-link" data-scroll-target="#app-b">Appendix B</a>
-  <ul class="collapse">
   <li><a href="#sample-characteristics" id="toc-sample-characteristics" class="nav-link" data-scroll-target="#sample-characteristics">Sample Characteristics</a></li>
+  </ul></li>
+  <li><a href="#app-sens" id="toc-app-sens" class="nav-link" data-scroll-target="#app-sens">Appendix B</a>
+  <ul class="collapse">
   <li><a href="#rds-estimation-results" id="toc-rds-estimation-results" class="nav-link" data-scroll-target="#rds-estimation-results">RDS Estimation Results</a></li>
-  <li><a href="#subgroup-analysis" id="toc-subgroup-analysis" class="nav-link" data-scroll-target="#subgroup-analysis">Subgroup Analysis</a></li>
+  <li><a href="#model-assisted-estimates-by-population-size" id="toc-model-assisted-estimates-by-population-size" class="nav-link" data-scroll-target="#model-assisted-estimates-by-population-size">Model-Assisted Estimates by Population Size</a></li>
+  <li><a href="#model-assisted-sensitivity-analysis" id="toc-model-assisted-sensitivity-analysis" class="nav-link" data-scroll-target="#model-assisted-sensitivity-analysis">Model-Assisted Sensitivity Analysis</a></li>
   </ul></li>
   <li><a href="#app-3step" id="toc-app-3step" class="nav-link" data-scroll-target="#app-3step">Appendix C: Bootstrap Estimation for Network Scale-Up Using RDS Data</a>
   <ul class="collapse">
@@ -514,7 +515,7 @@ Table&nbsp;3: Model-Assisted Estimates of Binary Exploitation Indicators: Popula
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Exploitation Indicator</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Population Prevalence (95% CI)</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Population Prevalence (95% CrI)</th>
 </tr>
 </thead>
 <tbody>
@@ -544,7 +545,7 @@ Table&nbsp;3: Model-Assisted Estimates of Binary Exploitation Indicators: Popula
 </tr>
 </tbody><tfoot>
 <tr class="odd">
-<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note:</span> <sup></sup> Estimates adjusted for RDS sampling bias using model-assisted inference. Confidence intervals reflect design-based uncertainty.</td>
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note:</span> <sup></sup> Estimates adjusted for RDS sampling bias using Bayesian Model Assissted Inference of Gile &amp; Handcock (2015) (N=980,000, sample seed selection). Credible intervals from posterior distribution.</td>
 <td style="text-align: right;"></td>
 </tr>
 </tfoot>
@@ -563,7 +564,7 @@ Table&nbsp;3: Model-Assisted Estimates of Binary Exploitation Indicators: Popula
 <img src="IJOPM_paperDraft_202051007_files/figure-html/fig-ma-binary-forest-1.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ma-binary-forest-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Forest Plot of Model-Assisted Binary Exploitation Estimates: Population prevalence estimates with 95% confidence intervals for each exploitation indicator, ordered by prevalence magnitude. Error bars represent design-based uncertainty in the estimates. Source: Authors’ Own Work.
+Figure&nbsp;3: Forest Plot of Model-Assisted Binary Exploitation Estimates: Population prevalence estimates with 95% credible intervals for each exploitation indicator, ordered by prevalence magnitude. Error bars represent posterior uncertainty from Bayesian SS-PSE (N=980,000, sample seed selection). Source: Authors’ Own Work.
 </figcaption>
 </figure>
 </div>
@@ -572,100 +573,135 @@ Figure&nbsp;3: Forest Plot of Model-Assisted Binary Exploitation Estimates: Popu
 </section>
 <section id="rds-estimates" class="level4">
 <h4 class="anchored" data-anchor-id="rds-estimates">RDS Estimates</h4>
+<div class="cell">
 <div id="tbl-rds-binary-indicators" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-rds-binary-indicators-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4: RDS Estimates of Binary Exploitation Indicators: Population prevalence estimates using RDS-II and Successive Sampling (SS) estimators with bootstrap confidence intervals. Source: Authors’ Own Work.
+Table&nbsp;4: RDS Estimates of Binary Exploitation Indicators: Comparison of RDS-I and RDS-SS estimators with neighborhood bootstrap confidence intervals (N=980,000). Source: Authors’ Own Work.
 </figcaption>
 <div aria-describedby="tbl-rds-binary-indicators-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-stdout">
-<pre><code>NULL</code></pre>
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed do-not-create-environment cell caption-top table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Exploitation Indicator</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">RDS-I</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">RDS-SS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Document withholding</td>
+<td style="text-align: right;">49.4% (25.3–56.3)</td>
+<td style="text-align: right;">34.2% (25.2–56.0)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Excessive working hours</td>
+<td style="text-align: right;">92.8% (71.4–92.9)</td>
+<td style="text-align: right;">83.7% (71.5–93.0)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Limited access to help</td>
+<td style="text-align: right;">57.7% (55.1–80.3)</td>
+<td style="text-align: right;">59.4% (54.7–80.2)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pay-related issues</td>
+<td style="text-align: right;">59.3% (34.2–63.5)</td>
+<td style="text-align: right;">49.7% (34.8–63.4)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Threats and abuse</td>
+<td style="text-align: right;">65.2% (40.5–72.1)</td>
+<td style="text-align: right;">57.2% (40.1–72.3)</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note:</span> <sup></sup> RDS-I: Salganik-Heckathorn estimator. RDS-SS: Gile's Successive Sampling estimator. Confidence intervals from neighborhood bootstrap (n=1000). Population size: 980,000 domestic workers.</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
 </div>
 </div>
 </figure>
 </div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-rds-forest-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rds-forest-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="IJOPM_paperDraft_202051007_files/figure-html/fig-rds-forest-plot-1.png" class="img-fluid figure-img" style="width:95.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rds-forest-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Forest Plot of RDS Estimates: Comparison of RDS-I and RDS-SS prevalence estimates for binary exploitation indicators (N=980,000). Error bars represent 95% bootstrap confidence intervals. Source: Authors’ Own Work.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="nsum-estimates" class="level4">
 <h4 class="anchored" data-anchor-id="nsum-estimates">NSUM Estimates</h4>
+<div class="cell">
 <div id="tbl-nsum-binary-indicators" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-nsum-binary-indicators-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;5: NSUM Estimates of Binary Exploitation Indicators: Population prevalence estimates using Network Scale-Up Methods with bootstrap confidence intervals. Estimates represent population size of exploited domestic workers. Source: Authors’ Own Work.
 </figcaption>
 <div aria-describedby="tbl-nsum-binary-indicators-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-stdout">
-<pre><code>NULL</code></pre>
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed do-not-create-environment cell caption-top table-sm small" data-quarto-postprocess="true">
+<caption>NSUM Estimates of Binary Exploitation Indicators</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Exploitation Indicator</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">NSUM Estimate (95% CI)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Excessive Hours</td>
+<td style="text-align: right;">64.2% (NA-NA%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Threats/Abuse</td>
+<td style="text-align: right;">59.3% (NA-NA%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pay-Related Issues</td>
+<td style="text-align: right;">58.2% (NA-NA%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Limited Access to Help</td>
+<td style="text-align: right;">45.2% (NA-NA%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Document Withholding</td>
+<td style="text-align: right;">42.1% (NA-NA%)</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note:</span> <sup></sup> Network Scale-Up Method prevalence estimates with bootstrap confidence intervals from enhanced NSUM analysis.</td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
 </div>
 </div>
 </figure>
+</div>
 </div>
 </section>
 </section>
 <section id="comparative-interpretation" class="level3">
 <h3 class="anchored" data-anchor-id="comparative-interpretation">Comparative Interpretation</h3>
-<p>Table 1 summarises prevalence estimates across both methods, highlighting points of convergence and divergence. While absolute values differ slightly across RDS and NSUM (reflecting differences in ego- versus alter-based assumptions), the overall pattern is remarkably stable. <a href="#fig-method-comparison" class="quarto-xref">Figure&nbsp;4</a> demonstrates the comparison between frequentist RDS estimators (RDS-I, RDS-II, RDS-SS) and Bayesian model-assisted methods across all exploitation indicators. The horizontal spacing of estimates allows clear visual comparison of point estimates and uncertainty intervals, with RDS methods showing bootstrap confidence intervals and Bayesian methods showing credible intervals from MCMC estimation. Both approaches identify similar patterns of exploitation prevalence, with excessive hours showing the highest prevalence across all methods, followed by threats/abuse and pay-related issues.</p>
-<p><strong>Table 1 (proposed):</strong> Prevalence of labour exploitation among domestic workers, by method and subgroup</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 23%">
-<col style="width: 26%">
-<col style="width: 11%">
-<col style="width: 27%">
-<col style="width: 11%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Subgroup</th>
-<th>RDS Estimate (%)</th>
-<th>95% CI</th>
-<th>NSUM Estimate (%)</th>
-<th>95% CI</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Overall sample</td>
-<td>xx.x</td>
-<td>(x–x)</td>
-<td>xx.x</td>
-<td>(x–x)</td>
-</tr>
-<tr class="even">
-<td>Latinx</td>
-<td>xx.x</td>
-<td>(x–x)</td>
-<td>xx.x</td>
-<td>(x–x)</td>
-</tr>
-<tr class="odd">
-<td>Filipino</td>
-<td>xx.x</td>
-<td>(x–x)</td>
-<td>xx.x</td>
-<td>(x–x)</td>
-</tr>
-<tr class="even">
-<td>British</td>
-<td>xx.x</td>
-<td>(x–x)</td>
-<td>xx.x</td>
-<td>(x–x)</td>
-</tr>
-</tbody>
-</table>
-<div id="tbl-subgroup-prevalence" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-subgroup-prevalence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;6: Prevalence of labour exploitation among domestic workers by nationality subgroup
-</figcaption>
-<div aria-describedby="tbl-subgroup-prevalence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div>
-
-</div>
-</div>
-</figure>
-</div>
-<p><strong>Figure 2 (proposed):</strong> Side-by-side bar chart comparing RDS and NSUM estimates with confidence intervals for each subgroup.</p>
+<p>Table 1 summarises prevalence estimates across both methods, highlighting points of convergence and divergence. While absolute values differ slightly across RDS and NSUM (reflecting differences in ego- versus alter-based assumptions), the overall pattern is remarkably stable.</p>
+<p><a href="#fig-method-comparison" class="quarto-xref">Figure&nbsp;5</a> demonstrates the comparison between frequentist RDS estimators (RDS-I, RDS-II, RDS-SS) and Bayesian model-assisted methods across all exploitation indicators. The horizontal spacing of estimates allows clear visual comparison of point estimates and uncertainty intervals, with RDS methods showing bootstrap confidence intervals and Bayesian methods showing credible intervals from MCMC estimation. Both approaches identify similar patterns of exploitation prevalence, with excessive hours showing the highest prevalence across all methods, followed by threats/abuse and pay-related issues.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-method-comparison" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -674,7 +710,7 @@ Table&nbsp;6: Prevalence of labour exploitation among domestic workers by nation
 <img src="../output/figures/method_comparison.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-method-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Method Comparison: RDS vs Bayesian Estimators. Point estimates and uncertainty intervals for prevalence of exploitation indicators across different estimation methods. RDS methods show 95% confidence intervals (bootstrap); Bayesian methods show 95% credible intervals (MCMC). Baseline population assumption: 980,000 domestic workers. Source: Authors’ own work.
+Figure&nbsp;5: Method Comparison: frequentists RDS vs Bayesian RDS Estimators. Point estimates and uncertainty intervals for prevalence of exploitation indicators across different estimation methods. RDS methods show 95% confidence intervals (bootstrap); Bayesian methods show 95% credible intervals (MCMC). Baseline population assumption: 980,000 domestic workers. Source: Authors’ own work.
 </figcaption>
 </figure>
 </div>
@@ -683,8 +719,8 @@ Figure&nbsp;4: Method Comparison: RDS vs Bayesian Estimators. Point estimates an
 </section>
 <section id="robustness-checks" class="level3">
 <h3 class="anchored" data-anchor-id="robustness-checks">Robustness Checks</h3>
-<p>A series of robustness checks were performed to assess the stability of the findings. <a href="#fig-forest-plot" class="quarto-xref">Figure&nbsp;6</a> presents a comprehensive forest plot comparing all prevalence estimates across indicators and methods, demonstrating remarkable consistency across different analytical approaches. Bootstrap resampling confirmed that the RDS and NSUM estimates remained stable across repeated draws. Sensitivity analyses excluding suspicious datapoints did not materially alter subgroup rankings. Analyses restricted to single subgroups confirmed that the elevated prevalence among Latinx workers was not an artifact of recruitment dynamics.</p>
-<p>The forest plot visualization clearly shows that traditional RDS estimators (RDS-I and RDS-II) produced results consistent with the model-assisted and Bayesian estimates, albeit with wider confidence intervals in some cases. The pattern of estimates is remarkably stable across methods, with excessive hours consistently showing the highest prevalence, followed by threats/abuse and pay-related issues, while document withholding shows more moderate prevalence levels. This cross-method validation strengthens confidence in our findings and demonstrates the robustness of the dual estimation approach. Full technical details are reported in Appendices B and C.</p>
+<p>A series of robustness checks were performed to assess the stability of the findings. <strong>?@fig-forest-plot</strong> presents a comprehensive forest plot comparing all prevalence estimates across indicators and methods, demonstrating remarkable consistency across different analytical approaches. Bootstrap resampling confirmed that the RDS and NSUM estimates remained stable across repeated draws. Sensitivity analyses excluding suspicious datapoints did not materially alter subgroup rankings. Analyses restricted to single subgroups confirmed that the elevated prevalence among Latinx workers was not an artifact of recruitment dynamics.</p>
+<p>The forest plot visualization clearly shows that traditional RDS estimators (RDS-I and RDS-SS) produced results consistent with the model-assisted and Bayesian estimates, albeit with wider confidence intervals in some cases. The pattern of estimates is remarkably stable across methods, with excessive hours consistently showing the highest prevalence, followed by threats/abuse and pay-related issues, while document withholding shows more moderate prevalence levels. This cross-method validation strengthens confidence in our findings and demonstrates the robustness of the dual estimation approach. Full technical details are reported in Appendices B and C.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-parameter-comparison" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -693,21 +729,7 @@ Figure&nbsp;4: Method Comparison: RDS vs Bayesian Estimators. Point estimates an
 <img src="../output/figures/parameter_comparison.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-parameter-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Bayesian Parameter Sensitivity Analysis. Comparison of prevalence estimates using enhanced vs standard MCMC parameters for Bayesian model-assisted estimation. Enhanced parameters use longer burn-in periods and more iterations, particularly important for numeric and ordinal variables like composite risk scores. Error bars represent 95% Bayesian credible intervals. Source: Authors’ own work.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-forest-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-forest-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../output/figures/model_comparison_forest_plot.png" class="img-fluid figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forest-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: Forest Plot of Exploitation Prevalence Estimates. Comprehensive comparison of prevalence estimates across all indicators and estimation methods, displayed as a forest plot with 95% confidence/credible intervals. Each row represents a different exploitation indicator, with points showing method-specific estimates and horizontal lines indicating uncertainty bounds. Demonstrates consistency of findings across different analytical approaches. Source: Authors’ own work.
+Figure&nbsp;6: Bayesian Parameter Sensitivity Analysis. Comparison of prevalence estimates using enhanced vs standard MCMC parameters for Bayesian model-assisted estimation. Enhanced parameters use longer burn-in periods and more iterations, particularly important for numeric and ordinal variables like composite risk scores. Error bars represent 95% Bayesian credible intervals. Source: Authors’ own work.
 </figcaption>
 </figure>
 </div>
@@ -732,7 +754,7 @@ Figure&nbsp;6: Forest Plot of Exploitation Prevalence Estimates. Comprehensive c
 <h3 class="anchored" data-anchor-id="methodological-contributions">Methodological Contributions</h3>
 <p>This study makes several methodological contributions to the estimation of prevalence in hidden and hard-to-reach populations:</p>
 <p><strong>Dual conceptualisation of exploitation</strong>: We introduce two distinct approaches to operationalising exploitation. First, we treat exploitation as a binary outcome (exploited versus not exploited), enabling direct comparison of prevalence estimates across RDS and NSUM methods. Second, we construct a continuous risk index, acknowledging that all domestic workers may be exposed to some degree of exploitation risk. To our knowledge, this is the first application of model-assisted RDS estimators to quantify a continuous measure of exploitation risk.</p>
-<p><strong>Bayesian parameter sensitivity</strong>: <a href="#fig-parameter-comparison" class="quarto-xref">Figure&nbsp;5</a> demonstrates the importance of appropriate MCMC parameter selection for Bayesian model-assisted estimation. Our analysis shows that enhanced parameters (featuring longer burn-in periods and more iterations) are particularly crucial for numeric and ordinal variables, where standard parameters may suffer from convergence issues. This methodological innovation ensures robust credible interval estimation for continuous risk measures.</p>
+<p><strong>Bayesian parameter sensitivity</strong>: <a href="#fig-parameter-comparison" class="quarto-xref">Figure&nbsp;6</a> demonstrates the importance of appropriate MCMC parameter selection for Bayesian model-assisted estimation. Our analysis shows that enhanced parameters (featuring longer burn-in periods and more iterations) are particularly crucial for numeric and ordinal variables, where standard parameters may suffer from convergence issues. This methodological innovation ensures robust credible interval estimation for continuous risk measures.</p>
 <p><em>Combining RDS and NSUM on the same survey instrument</em>: By designing a survey that captures both ego and alter information, we are able to apply RDS and NSUM to the same sample. This dual approach has rarely been implemented in studies of labour exploitation. It provides an opportunity to cross-validate results and assess the robustness of prevalence estimates.</p>
 <p><em>Novel bootstrap procedure for NSUM</em>: Recognising the non-random nature of an RDS sample, we developed a three-step bootstrap procedure tailored for NSUM estimation. This resamples respondents, recalculates weights, and re-estimates NSUM prevalence at each iteration. The procedure captures multiple layers of uncertainty and produces more reliable confidence intervals than conventional methods, particularly in small samples.</p>
 <p><em>Application to domestic workers in the UK</em>: Finally, by applying these methods to a population that is both highly stigmatised and under-researched, we demonstrate the feasibility of using advanced network-based estimation techniques in contexts where traditional sampling is impossible. This methodological innovation has potential applications in studies of other hidden labour markets and vulnerable populations.</p>
@@ -913,8 +935,8 @@ Zhang, S. X., M. Dank, K. Vincent, P. Narayanan, S. Bharadwaj, and S. M. Balasub
 <!-- This will be populated by Pandoc if you use --citeproc and a .bib file -->
 <div style="page-break-after: always;"></div>
 </section>
-<section id="app-a" class="level2">
-<h2 class="anchored" data-anchor-id="app-a">Appendix A</h2>
+<section id="app-survey" class="level2">
+<h2 class="anchored" data-anchor-id="app-survey">Appendix A</h2>
 <p>Population Parameters</p>
 <p>Use ~980,000 as UK domestic worker population estimate (EU data)</p>
 <p>Use 44,360 as NRM adult referrals baseline Address treatment of “don’t know” responses and zero network size claims Consider separate analysis for Filipino subgroup</p>
@@ -948,10 +970,6 @@ Zhang, S. X., M. Dank, K. Vincent, P. Narayanan, S. Bharadwaj, and S. M. Balasub
 <li>Converting NSUM Count Variables to Binary: The NSUM questions, which asked for a numerical count (e.g., “how many do you know?”), were also converted to binary. If a respondent knew one or more people (&gt; 0), their answer was coded as 1; if they knew zero, it remained 0. Through this systematic process of recoding, handling missing data, and aggregating variables, the team created a set of parallel binary indicators suitable for a direct comparison between the RDS and NSUM estimation frameworks.</li>
 </ol>
 </section>
-</section>
-<section id="app-b" class="level2">
-<h2 class="anchored" data-anchor-id="app-b">Appendix B</h2>
-<p>This analysis estimates the prevalence of modern slavery among domestic workers in the UK using multiple RDS methodologies. We examine two primary indicators across various population size assumptions and estimation techniques.</p>
 <section id="sample-characteristics" class="level3">
 <h3 class="anchored" data-anchor-id="sample-characteristics">Sample Characteristics</h3>
 <section id="recruitment-network-structure" class="level4">
@@ -959,12 +977,30 @@ Zhang, S. X., M. Dank, K. Vincent, P. Narayanan, S. Bharadwaj, and S. M. Balasub
 <div id="tbl-network" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-network-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;7: RDS Sample Network Characteristics
+Table&nbsp;6: RDS Sample Network Characteristics
 </figcaption>
 <div aria-describedby="tbl-network-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div>
-
-</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>network_stats <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Characteristic =</span> <span class="fu">c</span>(<span class="st">"Total Sample Size"</span>, <span class="st">"Recruitment Waves"</span>, <span class="st">"Average Degree"</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Median Degree"</span>, <span class="st">"Seeds"</span>, <span class="st">"Longest Chain"</span>, <span class="st">"Mean Chain Length"</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Value =</span> <span class="fu">c</span>(</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">nrow</span>(rd.dd),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">max</span>(rd.dd<span class="sc">$</span>wave, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">mean</span>(rd.dd<span class="sc">$</span>numRef, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">1</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">median</span>(rd.dd<span class="sc">$</span>numRef, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">1</span>),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(rd.dd<span class="sc">$</span>recruiter.id <span class="sc">==</span> <span class="sc">-</span><span class="dv">1</span>),</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"TBD"</span>, <span class="do">## Calculate from recruitment chains</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"TBD"</span>  <span class="do">## Calculate average chain length</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>network_stats <span class="sc">%&gt;%</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Network Characteristics"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(<span class="at">columns =</span> Value, <span class="at">decimals =</span> <span class="dv">1</span>, <span class="at">use_seps =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </figure>
 </div>
@@ -972,6 +1008,26 @@ Table&nbsp;7: RDS Sample Network Characteristics
 <section id="demographic-composition" class="level4">
 <h4 class="anchored" data-anchor-id="demographic-composition">Demographic Composition</h4>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Create nationality breakdown</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>nationality_summary <span class="ot">&lt;-</span> rd.dd <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(nationality_cluster) <span class="sc">%&gt;%</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">percent =</span> <span class="fu">round</span>(<span class="fu">n</span>() <span class="sc">/</span> <span class="fu">nrow</span>(rd.dd) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">'drop'</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nationality_summary, <span class="fu">aes</span>(<span class="at">x =</span> nationality_cluster, <span class="at">y =</span> percent, <span class="at">fill =</span> nationality_cluster)) <span class="sc">+</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste0</span>(n, <span class="st">"</span><span class="sc">\n</span><span class="st">("</span>, percent, <span class="st">"%)"</span>)), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Nationality Cluster"</span>, <span class="at">y =</span> <span class="st">"Percentage"</span>, </span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Sample Distribution by Nationality"</span>) <span class="sc">+</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div id="fig-demographics" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -987,551 +1043,306 @@ Figure&nbsp;7: Sample Composition by Nationality Clusters
 </div>
 </section>
 </section>
+</section>
+<section id="app-sens" class="level2">
+<h2 class="anchored" data-anchor-id="app-sens">Appendix B</h2>
+<p>This analysis estimates the prevalence of modern slavery among domestic workers in the UK using multiple RDS methodologies. We examine two primary indicators across various population size assumptions and estimation techniques.</p>
 <section id="rds-estimation-results" class="level3">
 <h3 class="anchored" data-anchor-id="rds-estimation-results">RDS Estimation Results</h3>
-<section id="model-assisted-estimates-by-population-size" class="level4">
-<h4 class="anchored" data-anchor-id="model-assisted-estimates-by-population-size">Model-Assisted Estimates by Population Size</h4>
+<p>This section presents comprehensive RDS estimates across all population size scenarios and estimation methods.</p>
+<div class="cell">
+<div id="tbl-rds-comprehensive" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-rds-comprehensive-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7: Comprehensive RDS Estimates: Prevalence estimates for all indicators across population sizes and RDS methods (RDS-I, RDS-II, RDS-SS) with neighborhood bootstrap confidence intervals.
+</figcaption>
+<div aria-describedby="tbl-rds-comprehensive-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed do-not-create-environment cell caption-top table-sm small" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; empty-cells: hide; border-bottom: hidden;"></th>
+<th colspan="4" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+RDS-I
+</div></th>
+<th colspan="4" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+RDS-II
+</div></th>
+<th colspan="4" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+RDS-SS
+</div></th>
+</tr>
+<tr class="even">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Indicator</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">RDS-I 50K</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">RDS-I 100K</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">RDS-I 980K</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">RDS-I 1.74M</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">RDS-II 50K</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">RDS-II 100K</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">RDS-II 980K</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">RDS-II 1.74M</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">RDS-SS 50K</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">RDS-SS 100K</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">RDS-SS 980K</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">RDS-SS 1.74M</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Document withholding</td>
+<td style="text-align: right;">49.4% (25.5–56.2)</td>
+<td style="text-align: right;">49.4% (25.2–55.9)</td>
+<td style="text-align: right;">49.4% (25.3–56.3)</td>
+<td style="text-align: right;">49.4% (25.4–56.1)</td>
+<td style="text-align: right;">34.2% (25.5–56.3)</td>
+<td style="text-align: right;">34.2% (25.3–56.2)</td>
+<td style="text-align: right;">34.2% (24.7–56.3)</td>
+<td style="text-align: right;">34.2% (25.4–56.5)</td>
+<td style="text-align: right;">34.2% (25.6–56.2)</td>
+<td style="text-align: right;">34.2% (25.1–56.5)</td>
+<td style="text-align: right;">34.2% (25.2–56.0)</td>
+<td style="text-align: right;">34.2% (25.3–56.5)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Excessive working hours</td>
+<td style="text-align: right;">92.8% (71.8–92.8)</td>
+<td style="text-align: right;">92.8% (71.8–92.5)</td>
+<td style="text-align: right;">92.8% (71.4–92.9)</td>
+<td style="text-align: right;">92.8% (71.7–92.8)</td>
+<td style="text-align: right;">83.7% (71.9–93.0)</td>
+<td style="text-align: right;">83.7% (71.5–93.1)</td>
+<td style="text-align: right;">83.7% (71.1–92.9)</td>
+<td style="text-align: right;">83.7% (71.5–93.0)</td>
+<td style="text-align: right;">83.7% (71.5–93.0)</td>
+<td style="text-align: right;">83.7% (71.5–93.0)</td>
+<td style="text-align: right;">83.7% (71.5–93.0)</td>
+<td style="text-align: right;">83.7% (71.6–92.8)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Limited access to help</td>
+<td style="text-align: right;">57.7% (54.7–80.0)</td>
+<td style="text-align: right;">57.7% (54.8–79.8)</td>
+<td style="text-align: right;">57.7% (55.1–80.3)</td>
+<td style="text-align: right;">57.7% (54.9–80.0)</td>
+<td style="text-align: right;">59.4% (55.2–80.0)</td>
+<td style="text-align: right;">59.4% (54.9–79.9)</td>
+<td style="text-align: right;">59.4% (55.0–80.1)</td>
+<td style="text-align: right;">59.4% (54.7–79.9)</td>
+<td style="text-align: right;">59.4% (54.9–80.1)</td>
+<td style="text-align: right;">59.4% (55.1–80.2)</td>
+<td style="text-align: right;">59.4% (54.7–80.2)</td>
+<td style="text-align: right;">59.4% (54.8–80.1)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pay-related issues</td>
+<td style="text-align: right;">59.3% (34.5–63.5)</td>
+<td style="text-align: right;">59.3% (34.8–63.0)</td>
+<td style="text-align: right;">59.3% (34.2–63.5)</td>
+<td style="text-align: right;">59.3% (34.2–63.6)</td>
+<td style="text-align: right;">49.7% (34.8–63.6)</td>
+<td style="text-align: right;">49.7% (35.2–63.4)</td>
+<td style="text-align: right;">49.7% (34.5–63.6)</td>
+<td style="text-align: right;">49.7% (34.7–63.3)</td>
+<td style="text-align: right;">49.7% (34.0–63.8)</td>
+<td style="text-align: right;">49.7% (34.2–64.1)</td>
+<td style="text-align: right;">49.7% (34.8–63.4)</td>
+<td style="text-align: right;">49.7% (34.6–63.5)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Threats and abuse</td>
+<td style="text-align: right;">65.2% (40.3–71.7)</td>
+<td style="text-align: right;">65.2% (40.2–72.0)</td>
+<td style="text-align: right;">65.2% (40.5–72.1)</td>
+<td style="text-align: right;">65.2% (40.6–72.1)</td>
+<td style="text-align: right;">57.2% (40.3–72.0)</td>
+<td style="text-align: right;">57.2% (40.5–72.1)</td>
+<td style="text-align: right;">57.2% (40.6–72.4)</td>
+<td style="text-align: right;">57.2% (40.3–71.6)</td>
+<td style="text-align: right;">57.2% (40.9–72.5)</td>
+<td style="text-align: right;">57.2% (40.9–72.0)</td>
+<td style="text-align: right;">57.2% (40.1–72.3)</td>
+<td style="text-align: right;">57.2% (40.6–72.6)</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note:</span> <sup></sup> RDS-I: Salganik-Heckathorn estimator. RDS-II: Volz-Heckathorn estimator. RDS-SS: Gile's Successive Sampling estimator. Population sizes: 50K, 100K, 980K, 1.74M domestic workers. All confidence intervals from neighborhood bootstrap (n=1000).</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-rds-sensitivity-popsize" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rds-sensitivity-popsize-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="IJOPM_paperDraft_202051007_files/figure-html/fig-rds-sensitivity-popsize-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rds-sensitivity-popsize-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: RDS Sensitivity to Population Size: Comparison of RDS estimates across all population size scenarios. Each panel shows one RDS method with point estimates and 95% bootstrap confidence intervals varying by population size.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="model-assisted-estimates-by-population-size" class="level3">
+<h3 class="anchored" data-anchor-id="model-assisted-estimates-by-population-size">Model-Assisted Estimates by Population Size</h3>
+<div class="cell">
 <div id="tbl-ma-estimates" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ma-estimates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;8: Model-Assisted Estimates by Population Size and Seed Selection. Source: Authors’ Own Work.
 </figcaption>
 <div aria-describedby="tbl-ma-estimates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;div id="dtdhhlplrj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;"&gt;
-  &lt;style&gt;#dtdhhlplrj table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed do-not-create-environment cell caption-top table-sm small" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: left; empty-cells: hide; border-bottom: hidden;"></th>
+<th colspan="4" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Prevalence Estimates (95% CrI)
+</div></th>
+</tr>
+<tr class="even">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Seed Selection</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Population Size</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Document Withholding</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Pay Issues</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Excessive Hours</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Threats/Abuse</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">sample</td>
+<td style="text-align: right;">50,000</td>
+<td style="text-align: right;">34.1% (16.1%, 52.1%)</td>
+<td style="text-align: right;">49.3% (35.2%, 63.4%)</td>
+<td style="text-align: right;">84.0% (72.3%, 95.8%)</td>
+<td style="text-align: right;">57.1% (34.6%, 79.6%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sample</td>
+<td style="text-align: right;">980,000</td>
+<td style="text-align: right;">34.3% (16.4%, 52.2%)</td>
+<td style="text-align: right;">49.5% (35.6%, 63.5%)</td>
+<td style="text-align: right;">83.7% (71.9%, 95.6%)</td>
+<td style="text-align: right;">57.3% (35.4%, 79.3%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">sample</td>
+<td style="text-align: right;">1,740,000</td>
+<td style="text-align: right;">34.3% (16.0%, 52.7%)</td>
+<td style="text-align: right;">49.1% (34.9%, 63.3%)</td>
+<td style="text-align: right;">83.8% (72.1%, 95.6%)</td>
+<td style="text-align: right;">57.0% (34.7%, 79.3%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">random</td>
+<td style="text-align: right;">50,000</td>
+<td style="text-align: right;">34.1% (16.1%, 52.1%)</td>
+<td style="text-align: right;">49.3% (35.2%, 63.4%)</td>
+<td style="text-align: right;">84.0% (72.3%, 95.8%)</td>
+<td style="text-align: right;">57.1% (34.6%, 79.6%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">random</td>
+<td style="text-align: right;">980,000</td>
+<td style="text-align: right;">34.3% (16.4%, 52.2%)</td>
+<td style="text-align: right;">49.5% (35.6%, 63.5%)</td>
+<td style="text-align: right;">83.7% (71.9%, 95.6%)</td>
+<td style="text-align: right;">57.3% (35.4%, 79.3%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">random</td>
+<td style="text-align: right;">1,740,000</td>
+<td style="text-align: right;">34.3% (16.0%, 52.7%)</td>
+<td style="text-align: right;">49.1% (34.9%, 63.3%)</td>
+<td style="text-align: right;">83.8% (72.1%, 95.6%)</td>
+<td style="text-align: right;">57.0% (34.7%, 79.3%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">degree</td>
+<td style="text-align: right;">50,000</td>
+<td style="text-align: right;">34.1% (16.1%, 52.1%)</td>
+<td style="text-align: right;">49.3% (35.2%, 63.4%)</td>
+<td style="text-align: right;">84.0% (72.3%, 95.8%)</td>
+<td style="text-align: right;">57.1% (34.6%, 79.6%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">degree</td>
+<td style="text-align: right;">980,000</td>
+<td style="text-align: right;">34.3% (16.4%, 52.2%)</td>
+<td style="text-align: right;">49.5% (35.6%, 63.5%)</td>
+<td style="text-align: right;">83.7% (71.9%, 95.6%)</td>
+<td style="text-align: right;">57.3% (35.4%, 79.3%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">degree</td>
+<td style="text-align: right;">1,740,000</td>
+<td style="text-align: right;">34.3% (16.0%, 52.7%)</td>
+<td style="text-align: right;">49.1% (34.9%, 63.3%)</td>
+<td style="text-align: right;">83.8% (72.1%, 95.6%)</td>
+<td style="text-align: right;">57.0% (34.7%, 79.3%)</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note:</span> <sup></sup> Model-Assisted estimates from Gile &amp; Handcock (2015) Bayesian inference. CrI = Credible Interval from posterior distribution.</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
 
-#dtdhhlplrj thead, #dtdhhlplrj tbody, #dtdhhlplrj tfoot, #dtdhhlplrj tr, #dtdhhlplrj td, #dtdhhlplrj th {
-  border-style: none;
-}
-
-#dtdhhlplrj p {
-  margin: 0;
-  padding: 0;
-}
-
-#dtdhhlplrj .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 9px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: 85%;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#dtdhhlplrj .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#dtdhhlplrj .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#dtdhhlplrj .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#dtdhhlplrj .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#dtdhhlplrj .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#dtdhhlplrj .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#dtdhhlplrj .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 8px;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#dtdhhlplrj .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 8px;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#dtdhhlplrj .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#dtdhhlplrj .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#dtdhhlplrj .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#dtdhhlplrj .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#dtdhhlplrj .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#dtdhhlplrj .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#dtdhhlplrj .gt_from_md &gt; :first-child {
-  margin-top: 0;
-}
-
-#dtdhhlplrj .gt_from_md &gt; :last-child {
-  margin-bottom: 0;
-}
-
-#dtdhhlplrj .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#dtdhhlplrj .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#dtdhhlplrj .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#dtdhhlplrj .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#dtdhhlplrj .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#dtdhhlplrj .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#dtdhhlplrj .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#dtdhhlplrj .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#dtdhhlplrj .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#dtdhhlplrj .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#dtdhhlplrj .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#dtdhhlplrj .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#dtdhhlplrj .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#dtdhhlplrj .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#dtdhhlplrj .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#dtdhhlplrj .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#dtdhhlplrj .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#dtdhhlplrj .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#dtdhhlplrj .gt_left {
-  text-align: left;
-}
-
-#dtdhhlplrj .gt_center {
-  text-align: center;
-}
-
-#dtdhhlplrj .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#dtdhhlplrj .gt_font_normal {
-  font-weight: normal;
-}
-
-#dtdhhlplrj .gt_font_bold {
-  font-weight: bold;
-}
-
-#dtdhhlplrj .gt_font_italic {
-  font-style: italic;
-}
-
-#dtdhhlplrj .gt_super {
-  font-size: 65%;
-}
-
-#dtdhhlplrj .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#dtdhhlplrj .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#dtdhhlplrj .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#dtdhhlplrj .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#dtdhhlplrj .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#dtdhhlplrj .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#dtdhhlplrj .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#dtdhhlplrj .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#dtdhhlplrj div.Reactable &gt; div.rt-table &gt; div.rt-thead &gt; div.rt-tr.rt-tr-group-header &gt; div.rt-th-group:after {
-  height: 0px !important;
-}
-&lt;/style&gt;
-  &lt;table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"&gt;
-  &lt;thead&gt;
-    &lt;tr class="gt_heading"&gt;
-      &lt;td colspan="6" class="gt_heading gt_title gt_font_normal gt_bottom_border" style&gt;Model-Assisted Estimates by Population Size and Seed Selection&lt;/td&gt;
-    &lt;/tr&gt;
-    
-    &lt;tr class="gt_col_headings gt_spanner_row"&gt;
-      &lt;th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" scope="col" id="seed_method"&gt;Seed Selection&lt;/th&gt;
-      &lt;th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="2" colspan="1" scope="col" id="pop_size_f"&gt;Population Size&lt;/th&gt;
-      &lt;th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="4" scope="colgroup" id="Prevalence Estimates (95% CI)"&gt;
-        &lt;div class="gt_column_spanner"&gt;Prevalence Estimates (95% CI)&lt;/div&gt;
-      &lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr class="gt_col_headings"&gt;
-      &lt;th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Document-Withholding"&gt;Document Withholding&lt;/th&gt;
-      &lt;th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Pay-Issues"&gt;Pay Issues&lt;/th&gt;
-      &lt;th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Excessive-Hours"&gt;Excessive Hours&lt;/th&gt;
-      &lt;th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Threats/Abuse"&gt;Threats/Abuse&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody class="gt_table_body"&gt;
-    &lt;tr&gt;&lt;td headers="seed_method" class="gt_row gt_left"&gt;sample&lt;/td&gt;
-&lt;td headers="pop_size_f" class="gt_row gt_right"&gt;50,000&lt;/td&gt;
-&lt;td headers="Document Withholding" class="gt_row gt_right"&gt;34.1% (16.1%, 52.1%)&lt;/td&gt;
-&lt;td headers="Pay Issues" class="gt_row gt_right"&gt;49.3% (35.2%, 63.4%)&lt;/td&gt;
-&lt;td headers="Excessive Hours" class="gt_row gt_right"&gt;84.0% (72.3%, 95.8%)&lt;/td&gt;
-&lt;td headers="Threats/Abuse" class="gt_row gt_right"&gt;57.1% (34.6%, 79.6%)&lt;/td&gt;&lt;/tr&gt;
-    &lt;tr&gt;&lt;td headers="seed_method" class="gt_row gt_left"&gt;sample&lt;/td&gt;
-&lt;td headers="pop_size_f" class="gt_row gt_right"&gt;980,000&lt;/td&gt;
-&lt;td headers="Document Withholding" class="gt_row gt_right"&gt;34.3% (16.4%, 52.2%)&lt;/td&gt;
-&lt;td headers="Pay Issues" class="gt_row gt_right"&gt;49.5% (35.6%, 63.5%)&lt;/td&gt;
-&lt;td headers="Excessive Hours" class="gt_row gt_right"&gt;83.7% (71.9%, 95.6%)&lt;/td&gt;
-&lt;td headers="Threats/Abuse" class="gt_row gt_right"&gt;57.3% (35.4%, 79.3%)&lt;/td&gt;&lt;/tr&gt;
-    &lt;tr&gt;&lt;td headers="seed_method" class="gt_row gt_left"&gt;sample&lt;/td&gt;
-&lt;td headers="pop_size_f" class="gt_row gt_right"&gt;1,740,000&lt;/td&gt;
-&lt;td headers="Document Withholding" class="gt_row gt_right"&gt;34.3% (16.0%, 52.7%)&lt;/td&gt;
-&lt;td headers="Pay Issues" class="gt_row gt_right"&gt;49.1% (34.9%, 63.3%)&lt;/td&gt;
-&lt;td headers="Excessive Hours" class="gt_row gt_right"&gt;83.8% (72.1%, 95.6%)&lt;/td&gt;
-&lt;td headers="Threats/Abuse" class="gt_row gt_right"&gt;57.0% (34.7%, 79.3%)&lt;/td&gt;&lt;/tr&gt;
-    &lt;tr&gt;&lt;td headers="seed_method" class="gt_row gt_left"&gt;random&lt;/td&gt;
-&lt;td headers="pop_size_f" class="gt_row gt_right"&gt;50,000&lt;/td&gt;
-&lt;td headers="Document Withholding" class="gt_row gt_right"&gt;34.1% (16.1%, 52.1%)&lt;/td&gt;
-&lt;td headers="Pay Issues" class="gt_row gt_right"&gt;49.3% (35.2%, 63.4%)&lt;/td&gt;
-&lt;td headers="Excessive Hours" class="gt_row gt_right"&gt;84.0% (72.3%, 95.8%)&lt;/td&gt;
-&lt;td headers="Threats/Abuse" class="gt_row gt_right"&gt;57.1% (34.6%, 79.6%)&lt;/td&gt;&lt;/tr&gt;
-    &lt;tr&gt;&lt;td headers="seed_method" class="gt_row gt_left"&gt;random&lt;/td&gt;
-&lt;td headers="pop_size_f" class="gt_row gt_right"&gt;980,000&lt;/td&gt;
-&lt;td headers="Document Withholding" class="gt_row gt_right"&gt;34.3% (16.4%, 52.2%)&lt;/td&gt;
-&lt;td headers="Pay Issues" class="gt_row gt_right"&gt;49.5% (35.6%, 63.5%)&lt;/td&gt;
-&lt;td headers="Excessive Hours" class="gt_row gt_right"&gt;83.7% (71.9%, 95.6%)&lt;/td&gt;
-&lt;td headers="Threats/Abuse" class="gt_row gt_right"&gt;57.3% (35.4%, 79.3%)&lt;/td&gt;&lt;/tr&gt;
-    &lt;tr&gt;&lt;td headers="seed_method" class="gt_row gt_left"&gt;random&lt;/td&gt;
-&lt;td headers="pop_size_f" class="gt_row gt_right"&gt;1,740,000&lt;/td&gt;
-&lt;td headers="Document Withholding" class="gt_row gt_right"&gt;34.3% (16.0%, 52.7%)&lt;/td&gt;
-&lt;td headers="Pay Issues" class="gt_row gt_right"&gt;49.1% (34.9%, 63.3%)&lt;/td&gt;
-&lt;td headers="Excessive Hours" class="gt_row gt_right"&gt;83.8% (72.1%, 95.6%)&lt;/td&gt;
-&lt;td headers="Threats/Abuse" class="gt_row gt_right"&gt;57.0% (34.7%, 79.3%)&lt;/td&gt;&lt;/tr&gt;
-    &lt;tr&gt;&lt;td headers="seed_method" class="gt_row gt_left"&gt;degree&lt;/td&gt;
-&lt;td headers="pop_size_f" class="gt_row gt_right"&gt;50,000&lt;/td&gt;
-&lt;td headers="Document Withholding" class="gt_row gt_right"&gt;34.1% (16.1%, 52.1%)&lt;/td&gt;
-&lt;td headers="Pay Issues" class="gt_row gt_right"&gt;49.3% (35.2%, 63.4%)&lt;/td&gt;
-&lt;td headers="Excessive Hours" class="gt_row gt_right"&gt;84.0% (72.3%, 95.8%)&lt;/td&gt;
-&lt;td headers="Threats/Abuse" class="gt_row gt_right"&gt;57.1% (34.6%, 79.6%)&lt;/td&gt;&lt;/tr&gt;
-    &lt;tr&gt;&lt;td headers="seed_method" class="gt_row gt_left"&gt;degree&lt;/td&gt;
-&lt;td headers="pop_size_f" class="gt_row gt_right"&gt;980,000&lt;/td&gt;
-&lt;td headers="Document Withholding" class="gt_row gt_right"&gt;34.3% (16.4%, 52.2%)&lt;/td&gt;
-&lt;td headers="Pay Issues" class="gt_row gt_right"&gt;49.5% (35.6%, 63.5%)&lt;/td&gt;
-&lt;td headers="Excessive Hours" class="gt_row gt_right"&gt;83.7% (71.9%, 95.6%)&lt;/td&gt;
-&lt;td headers="Threats/Abuse" class="gt_row gt_right"&gt;57.3% (35.4%, 79.3%)&lt;/td&gt;&lt;/tr&gt;
-    &lt;tr&gt;&lt;td headers="seed_method" class="gt_row gt_left"&gt;degree&lt;/td&gt;
-&lt;td headers="pop_size_f" class="gt_row gt_right"&gt;1,740,000&lt;/td&gt;
-&lt;td headers="Document Withholding" class="gt_row gt_right"&gt;34.3% (16.0%, 52.7%)&lt;/td&gt;
-&lt;td headers="Pay Issues" class="gt_row gt_right"&gt;49.1% (34.9%, 63.3%)&lt;/td&gt;
-&lt;td headers="Excessive Hours" class="gt_row gt_right"&gt;83.8% (72.1%, 95.6%)&lt;/td&gt;
-&lt;td headers="Threats/Abuse" class="gt_row gt_right"&gt;57.0% (34.7%, 79.3%)&lt;/td&gt;&lt;/tr&gt;
-  &lt;/tbody&gt;
-  
-  
-&lt;/table&gt;
-&lt;/div&gt;</code></pre>
+</table>
 </div>
 </div>
 </figure>
 </div>
-</section>
+</div>
 <section id="traditional-rds-estimators-comparison" class="level4">
 <h4 class="anchored" data-anchor-id="traditional-rds-estimators-comparison">Traditional RDS Estimators Comparison</h4>
 <div id="tbl-rds-comparison" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -1546,208 +1357,346 @@ Table&nbsp;9: RDS Estimator Comparison for Binary Indicators. Source: Authors’
 </div>
 </figure>
 </div>
+<!-- ### Subgroup Analysis -->
+<!-- ```{r} -->
+<!-- #| label: netclust-analysis2 -->
+<!-- #| fig-cap: "Clustered SS-PSE prevalence estimates for labour exploitation indicators" -->
+<!-- #| fig-width: 12 -->
+<!-- #| fig-height: 8 -->
+<!-- #| echo: false -->
+<!-- #| warning: false -->
+<!-- #| message: false -->
+<!-- # Load required libraries -->
+<!-- library(tidyverse) -->
+<!-- library(knitr) -->
+<!-- library(kableExtra) -->
+<!-- library(here) -->
+<!-- library(scales) -->
+<!-- library(viridis) -->
+<!-- # Load netclust results -->
+<!-- load(here("output", "netclust_subgroup_analysis_results_FIXED.RData")) -->
+<!-- # ===== TABLE: Netclust Results Summary ===== -->
+<!-- netclust_table <- final_results$summary_df %>% -->
+<!--   mutate( -->
+<!--     indicator_label = case_when( -->
+<!--       indicator == "document_withholding_rds" ~ "Document withholding", -->
+<!--       indicator == "pay_issues_rds" ~ "Pay-related issues", -->
+<!--       indicator == "threats_abuse_rds" ~ "Threats/abuse", -->
+<!--       indicator == "excessive_hours_rds" ~ "Excessive hours", -->
+<!--       indicator == "access_to_help_rds" ~ "Limited access to help", -->
+<!--       TRUE ~ indicator -->
+<!--     ), -->
+<!--     # Convert to percentage for clearer presentation -->
+<!--     prevalence_pct = round(estimate_pct, 3), -->
+<!--     ci_lower_pct = round(ci_lower_pct, 3), -->
+<!--     ci_upper_pct = round(ci_upper_pct, 3), -->
+<!--     prevalence_display = paste0(prevalence_pct, "% (", ci_lower_pct, "–", -->
+<!-- ci_upper_pct, "%)") -->
+<!--   ) %>% -->
+<!--   select( -->
+<!--     Indicator = indicator_label, -->
+<!--     "Prevalence (95% CI)" = prevalence_display, -->
+<!--     "Sample with trait" = n_trait, -->
+<!--     "Total sample" = n_obs -->
+<!--   ) -->
+<!-- # Display table -->
+<!-- knitr::kable(netclust_table, -->
+<!--              caption = "Clustered SS-PSE prevalence estimates for labour exploitation indicators among domestic workers", -->
+<!--              booktabs = TRUE, linesep="") %>% -->
+<!--   kable_styling(latex_options = c("striped", "scale_down", -->
+<!-- "hold_position")) %>% -->
+<!--   footnote(general = "Estimates based on Clustered Sequential Sampling Population Size Estimation (Clustered SS-PSE) methodology using netclust package. Population size assumption: 980,000 UK domestic workers. Confidence intervals derived from MCMC sampling (1,000 samples, 2,000 burn-in). Analysis accounts for nationality clustering (Filipino, Latinx, Other Combined) and network structure in RDS data.", -->
+<!--            general_title = "Note: ") -->
+<!-- # ===== VISUALIZATION 1: Forest Plot ===== -->
+<!-- plot_data <- final_results$summary_df %>% -->
+<!--   mutate( -->
+<!--     indicator_label = case_when( -->
+<!--       indicator == "document_withholding_rds" ~ "Document\nwithholding", -->
+<!--       indicator == "pay_issues_rds" ~ "Pay-related\nissues", -->
+<!--       indicator == "threats_abuse_rds" ~ "Threats/\nabuse", -->
+<!--       indicator == "excessive_hours_rds" ~ "Excessive\nhours", -->
+<!--       indicator == "access_to_help_rds" ~ "Limited access\nto help", -->
+<!--       TRUE ~ indicator -->
+<!--     ), -->
+<!--     indicator_label = fct_reorder(indicator_label, estimate_pct) -->
+<!--   ) -->
+<!-- forest_plot <- ggplot(plot_data, aes(x = indicator_label, y = -->
+<!-- estimate_pct)) + -->
+<!--   geom_point(size = 4, color = "#2c3e50") + -->
+<!--   geom_errorbar(aes(ymin = ci_lower_pct, ymax = ci_upper_pct), -->
+<!--                 width = 0.2, linewidth = 1, color = "#2c3e50") + -->
+<!--   coord_flip() + -->
+<!--   scale_y_continuous(labels = percent_format(scale = 1, suffix = "%"), -->
+<!--                      trans = "log10", -->
+<!--                      breaks = c(0.01, 0.1, 1, 10)) + -->
+<!--   labs( -->
+<!--     title = "Clustered SS-PSE Prevalence Estimates", -->
+<!--     subtitle = "Labour exploitation indicators among UK domestic workers", -->
+<!--     x = "Exploitation Indicator", -->
+<!--     y = "Prevalence (%) with 95% Confidence Intervals (log scale)", -->
+<!--     caption = "Based on RDS sample (n=85) with nationality clustering. Population assumption: 980,000." -->
+<!--   ) + -->
+<!--   theme_minimal(base_size = 12) + -->
+<!--   theme( -->
+<!--     plot.title = element_text(size = 14, face = "bold"), -->
+<!--     plot.subtitle = element_text(size = 12), -->
+<!--     axis.text = element_text(size = 11), -->
+<!--     panel.grid.minor = element_blank(), -->
+<!--     plot.caption = element_text(size = 9, color = "gray60") -->
+<!--   ) -->
+<!-- print(forest_plot) -->
+<!-- # ===== VISUALIZATION 2: Sample Composition ===== -->
+<!-- sample_comp <- final_results$summary_df %>% -->
+<!--   mutate( -->
+<!--     indicator_label = case_when( -->
+<!--       indicator == "document_withholding_rds" ~ "Document\nwithholding", -->
+<!--       indicator == "pay_issues_rds" ~ "Pay-related\nissues", -->
+<!--       indicator == "threats_abuse_rds" ~ "Threats/\nabuse", -->
+<!--       indicator == "excessive_hours_rds" ~ "Excessive\nhours", -->
+<!--       indicator == "access_to_help_rds" ~ "Limited access\nto help", -->
+<!--       TRUE ~ indicator -->
+<!--     ), -->
+<!--     prop_with_trait = n_trait / n_obs, -->
+<!--     prop_without_trait = 1 - prop_with_trait -->
+<!--   ) %>% -->
+<!--   select(indicator_label, prop_with_trait, prop_without_trait) %>% -->
+<!--   pivot_longer(cols = c(prop_with_trait, prop_without_trait), -->
+<!--                names_to = "category", -->
+<!--                values_to = "proportion") %>% -->
+<!--   mutate( -->
+<!--     category = if_else(category == "prop_with_trait", "With trait", -->
+<!-- "Without trait"), -->
+<!--     category = factor(category, levels = c("Without trait", "With trait")) -->
+<!--   ) -->
+<!-- comp_plot <- ggplot(sample_comp, aes(x = indicator_label, y = proportion, -->
+<!-- fill = category)) + -->
+<!--   geom_col(position = "stack", alpha = 0.8) + -->
+<!--   scale_fill_manual(values = c("Without trait" = "#bdc3c7", "With trait" = -->
+<!--  "#e74c3c")) + -->
+<!--   scale_y_continuous(labels = percent_format()) + -->
+<!--   coord_flip() + -->
+<!--   labs( -->
+<!--     title = "Sample Composition by Exploitation Indicator", -->
+<!--     subtitle = "Proportion of respondents with each indicator present", -->
+<!--     x = "Exploitation Indicator", -->
+<!--     y = "Proportion of Sample", -->
+<!--     fill = "Category", -->
+<!--     caption = "Total sample size: 85 domestic workers" -->
+<!--   ) + -->
+<!--   theme_minimal(base_size = 12) + -->
+<!--   theme( -->
+<!--     plot.title = element_text(size = 14, face = "bold"), -->
+<!--     plot.subtitle = element_text(size = 12), -->
+<!--     axis.text = element_text(size = 11), -->
+<!--     legend.position = "bottom", -->
+<!--     panel.grid.minor = element_blank(), -->
+<!--     plot.caption = element_text(size = 9, color = "gray60") -->
+<!--   ) -->
+<!-- print(comp_plot) -->
+<!-- # ===== VISUALIZATION 3: Convergence Diagnostics ===== -->
+<!-- if(length(final_results$individual_results) > 0) { -->
+<!--   # Extract MCMC diagnostics from first result as example -->
+<!--   sample_result <- final_results$individual_results[[1]] -->
+<!--   mcmc_samples <- sample_result$netclust_output$sample[, "N"] -->
+<!--   # Create trace plot -->
+<!--   trace_data <- data.frame( -->
+<!--     iteration = 1:length(mcmc_samples), -->
+<!--     population_size = mcmc_samples -->
+<!--   ) -->
+<!--   trace_plot <- ggplot(trace_data, aes(x = iteration, y = -->
+<!-- population_size)) + -->
+<!--     geom_line(alpha = 0.7, color = "#3498db") + -->
+<!--     labs( -->
+<!--       title = "MCMC Trace Plot: Population Size Estimates", -->
+<!--       subtitle = paste("Example from", -->
+<!-- names(final_results$individual_results)[1]), -->
+<!--       x = "MCMC Iteration", -->
+<!--       y = "Estimated Population Size", -->
+<!--       caption = "1,000 MCMC samples after 2,000 burn-in iterations" -->
+<!--     ) + -->
+<!--     theme_minimal(base_size = 12) + -->
+<!--     theme( -->
+<!--       plot.title = element_text(size = 14, face = "bold"), -->
+<!--       plot.subtitle = element_text(size = 12), -->
+<!--       panel.grid.minor = element_blank(), -->
+<!--       plot.caption = element_text(size = 9, color = "gray60") -->
+<!--     ) -->
+<!--   print(trace_plot) -->
+<!-- } -->
+<!-- # ===== DETAILED RESULTS SUMMARY ===== -->
+<!-- cat("\n=== NETCLUST ANALYSIS SUMMARY ===\n") -->
+<!-- cat("Analysis Configuration:\n") -->
+<!-- cat("- Population size assumption:", -->
+<!-- format(final_results$config$baseline_population, big.mark = ","), "UK -->
+<!-- domestic workers\n") -->
+<!-- cat("- MCMC samples:", final_results$config$samplesize, "\n") -->
+<!-- cat("- Burn-in iterations:", final_results$config$burnin, "\n") -->
+<!-- cat("- Number of nationality clusters:", -->
+<!-- final_results$individual_results[[1]]$n_clusters, "\n") -->
+<!-- cat("- Total sample size:", final_results$individual_results[[1]]$n_obs, -->
+<!-- "\n") -->
+<!-- cat("\nCluster composition:\n") -->
+<!-- cluster_info <- final_results$individual_results[[1]]$netclust_output$nc -->
+<!-- names(cluster_info) <- c("Filipino", "Latinx", "Other Combined") -->
+<!-- for(i in 1:length(cluster_info)) { -->
+<!--   cat("-", names(cluster_info)[i], ":", cluster_info[i], "respondents\n") -->
+<!-- } -->
+<!-- cat("\nKey Findings:\n") -->
+<!-- cat("- Highest prevalence: Excessive hours (0.3%)\n") -->
+<!-- cat("- Lowest prevalence: Document withholding (0.1%)\n") -->
+<!-- cat("- All estimates show successful MCMC convergence\n") -->
+<!-- cat("- Wide confidence intervals reflect uncertainty in hidden population -->
+<!-- estimation\n") -->
+<!-- ``` -->
 </section>
 </section>
-<section id="subgroup-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="subgroup-analysis">Subgroup Analysis</h3>
+<section id="model-assisted-sensitivity-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="model-assisted-sensitivity-analysis">Model-Assisted Sensitivity Analysis</h3>
+<p>This section presents comprehensive sensitivity analysis for Model-Assisted inference estimates across all exploitation indicators, examining robustness to population size assumptions and seed selection methods.</p>
 <div class="cell">
+<div id="tbl-ma-sensitivity-full" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ma-sensitivity-full-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;10: Model-Assisted Sensitivity Analysis: Point estimates and 95% credible intervals across all parameter combinations. Estimates from Gile &amp; Handcock (2015) Bayesian Model-Assisted inference.
+</figcaption>
+<div aria-describedby="tbl-ma-sensitivity-full-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table" style="margin-left: auto; margin-right: auto;border-bottom: 0;">
-<caption>
-Clustered SS-PSE prevalence estimates for labour exploitation indicators among domestic workers
-</caption>
+<table class="table table-striped table-hover table-condensed do-not-create-environment cell caption-top table-sm small" data-quarto-postprocess="true">
+<caption>Model-Assisted Sensitivity Analysis: Point estimates and 95% credible intervals</caption>
 <thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:left;">
-Indicator
-</th>
-<th style="text-align:left;">
-Prevalence (95% CI)
-</th>
-<th style="text-align:right;">
-Sample with trait
-</th>
-<th style="text-align:right;">
-Total sample
-</th>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">label</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Degree: 50K</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Random: 50K</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Sample: 50K</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Degree: 980K</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Random: 980K</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Sample: 980K</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Degree: 1.74M</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Random: 1.74M</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Sample: 1.74M</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-97.5%
-</td>
-<td style="text-align:left;">
-Document withholding
-</td>
-<td style="text-align:left;">
-0.084% (0.018–0.732%)
-</td>
-<td style="text-align:right;">
-22
-</td>
-<td style="text-align:right;">
-85
-</td>
+<tr class="odd">
+<td style="text-align: left;">Document Withholding</td>
+<td style="text-align: right;">34.1% (16.1-52.1%)</td>
+<td style="text-align: right;">34.1% (16.1-52.1%)</td>
+<td style="text-align: right;">34.1% (16.1-52.1%)</td>
+<td style="text-align: right;">34.3% (16.4-52.2%)</td>
+<td style="text-align: right;">34.3% (16.4-52.2%)</td>
+<td style="text-align: right;">34.3% (16.4-52.2%)</td>
+<td style="text-align: right;">34.3% (16.0-52.7%)</td>
+<td style="text-align: right;">34.3% (16.0-52.7%)</td>
+<td style="text-align: right;">34.3% (16.0-52.7%)</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-97.5%1
-</td>
-<td style="text-align:left;">
-Pay-related issues
-</td>
-<td style="text-align:left;">
-0.173% (0.036–1.495%)
-</td>
-<td style="text-align:right;">
-48
-</td>
-<td style="text-align:right;">
-85
-</td>
+<tr class="even">
+<td style="text-align: left;">Pay-Related Issues</td>
+<td style="text-align: right;">49.3% (35.2-63.4%)</td>
+<td style="text-align: right;">49.3% (35.2-63.4%)</td>
+<td style="text-align: right;">49.3% (35.2-63.4%)</td>
+<td style="text-align: right;">49.5% (35.6-63.5%)</td>
+<td style="text-align: right;">49.5% (35.6-63.5%)</td>
+<td style="text-align: right;">49.5% (35.6-63.5%)</td>
+<td style="text-align: right;">49.1% (34.9-63.3%)</td>
+<td style="text-align: right;">49.1% (34.9-63.3%)</td>
+<td style="text-align: right;">49.1% (34.9-63.3%)</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-97.5%2
-</td>
-<td style="text-align:left;">
-Threats/abuse
-</td>
-<td style="text-align:left;">
-0.19% (0.041–1.68%)
-</td>
-<td style="text-align:right;">
-51
-</td>
-<td style="text-align:right;">
-85
-</td>
+<tr class="odd">
+<td style="text-align: left;">Threats/Abuse</td>
+<td style="text-align: right;">57.1% (34.6-79.6%)</td>
+<td style="text-align: right;">57.1% (34.6-79.6%)</td>
+<td style="text-align: right;">57.1% (34.6-79.6%)</td>
+<td style="text-align: right;">57.3% (35.4-79.3%)</td>
+<td style="text-align: right;">57.3% (35.4-79.3%)</td>
+<td style="text-align: right;">57.3% (35.4-79.3%)</td>
+<td style="text-align: right;">57.0% (34.7-79.3%)</td>
+<td style="text-align: right;">57.0% (34.7-79.3%)</td>
+<td style="text-align: right;">57.0% (34.7-79.3%)</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-97.5%3
-</td>
-<td style="text-align:left;">
-Excessive hours
-</td>
-<td style="text-align:left;">
-0.283% (0.06–2.111%)
-</td>
-<td style="text-align:right;">
-70
-</td>
-<td style="text-align:right;">
-85
-</td>
+<tr class="even">
+<td style="text-align: left;">Excessive Hours</td>
+<td style="text-align: right;">84.0% (72.3-95.8%)</td>
+<td style="text-align: right;">84.0% (72.3-95.8%)</td>
+<td style="text-align: right;">84.0% (72.3-95.8%)</td>
+<td style="text-align: right;">83.7% (71.9-95.6%)</td>
+<td style="text-align: right;">83.7% (71.9-95.6%)</td>
+<td style="text-align: right;">83.7% (71.9-95.6%)</td>
+<td style="text-align: right;">83.8% (72.1-95.6%)</td>
+<td style="text-align: right;">83.8% (72.1-95.6%)</td>
+<td style="text-align: right;">83.8% (72.1-95.6%)</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-97.5%4
-</td>
-<td style="text-align:left;">
-Limited access to help
-</td>
-<td style="text-align:left;">
-0.183% (0.038–1.59%)
-</td>
-<td style="text-align:right;">
-49
-</td>
-<td style="text-align:right;">
-85
-</td>
+<tr class="odd">
+<td style="text-align: left;">Limited Access to Help</td>
+<td style="text-align: right;">58.2% (46.0-70.4%)</td>
+<td style="text-align: right;">58.2% (46.0-70.4%)</td>
+<td style="text-align: right;">58.2% (46.0-70.4%)</td>
+<td style="text-align: right;">58.3% (46.1-70.6%)</td>
+<td style="text-align: right;">58.3% (46.1-70.6%)</td>
+<td style="text-align: right;">58.3% (46.1-70.6%)</td>
+<td style="text-align: right;">58.4% (46.2-70.7%)</td>
+<td style="text-align: right;">58.4% (46.2-70.7%)</td>
+<td style="text-align: right;">58.4% (46.2-70.7%)</td>
 </tr>
-</tbody>
-<tfoot>
-<tr>
-<td style="padding: 0; " colspan="100%">
-<span style="font-style: italic;">Note: </span>
-</td>
+<tr class="even">
+<td style="text-align: left;">Any Exploitation</td>
+<td style="text-align: right;">94.9% (61.5-100.0%)</td>
+<td style="text-align: right;">94.9% (61.5-100.0%)</td>
+<td style="text-align: right;">94.9% (61.5-100.0%)</td>
+<td style="text-align: right;">95.0% (62.2-100.0%)</td>
+<td style="text-align: right;">95.0% (62.2-100.0%)</td>
+<td style="text-align: right;">95.0% (62.2-100.0%)</td>
+<td style="text-align: right;">94.8% (59.2-100.0%)</td>
+<td style="text-align: right;">94.8% (59.2-100.0%)</td>
+<td style="text-align: right;">94.8% (59.2-100.0%)</td>
 </tr>
-<tr>
-<td style="padding: 0; " colspan="100%">
-<sup></sup> Estimates based on Clustered Sequential Sampling Population Size Estimation (Clustered SS-PSE) methodology using netclust package. Population size assumption: 980,000 UK domestic workers. Confidence intervals derived from MCMC sampling (1,000 samples, 2,000 burn-in). Analysis accounts for nationality clustering (Filipino, Latinx, Other Combined) and network structure in RDS data.
-</td>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note:</span> <sup></sup> Estimates from Gile &amp; Handcock (2015) Bayesian Model-Assisted inference. Population sizes: 50K, 100K, 980K, 1.74M domestic workers. Seed methods: Degree (by network degree), Random, Sample (from data). CrI = Bayesian credible interval.</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
 </tr>
 </tfoot>
+
 </table>
-<p>Clustered SS-PSE prevalence estimates for labour exploitation indicators</p>
 </div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="IJOPM_paperDraft_202051007_files/figure-html/netclust-analysis2-1.png" class="img-fluid figure-img" width="3600"></p>
-<figcaption>Clustered SS-PSE prevalence estimates for labour exploitation indicators</figcaption>
+</div>
 </figure>
 </div>
 </div>
+<div class="cell">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="IJOPM_paperDraft_202051007_files/figure-html/netclust-analysis2-2.png" class="img-fluid figure-img" width="3600"></p>
-<figcaption>Clustered SS-PSE prevalence estimates for labour exploitation indicators</figcaption>
+<div id="fig-ma-sensitivity-by-indicator" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ma-sensitivity-by-indicator-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="IJOPM_paperDraft_202051007_files/figure-html/fig-ma-sensitivity-by-indicator-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ma-sensitivity-by-indicator-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Model-Assisted Sensitivity by Population Size and Seed Selection: Point estimates with 95% credible intervals for each exploitation indicator across all parameter combinations. Each panel shows one indicator with estimates varying by population size (color) and seed selection method (shape).
+</figcaption>
 </figure>
 </div>
 </div>
+</div>
+<div class="cell">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="IJOPM_paperDraft_202051007_files/figure-html/netclust-analysis2-3.png" class="img-fluid figure-img" width="3600"></p>
-<figcaption>Clustered SS-PSE prevalence estimates for labour exploitation indicators</figcaption>
+<div id="fig-ma-sensitivity-comparison" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ma-sensitivity-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="IJOPM_paperDraft_202051007_files/figure-html/fig-ma-sensitivity-comparison-1.png" class="img-fluid figure-img" style="width:95.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ma-sensitivity-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Model-Assisted Point Estimate Comparison: Direct comparison of point estimates across all indicators, fixing population size at 980K. Lines connect estimates using the same seed selection method, showing consistency across indicators.
+</figcaption>
 </figure>
 </div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-=== NETCLUST ANALYSIS SUMMARY ===</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Analysis Configuration:</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>- Population size assumption: 980,000 UK
-domestic workers</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>- MCMC samples: 5000 </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>- Burn-in iterations: 2000 </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>- Number of nationality clusters: 3 </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>- Total sample size: 85 </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Cluster composition:</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>- Filipino : 62 respondents
-- Latinx : 18 respondents
-- Other Combined : 5 respondents</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Key Findings:</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>- Highest prevalence: Excessive hours (0.3%)</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>- Lowest prevalence: Document withholding (0.1%)</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>- All estimates show successful MCMC convergence</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>- Wide confidence intervals reflect uncertainty in hidden population
-estimation</code></pre>
 </div>
 </div>
 </section>
@@ -1912,10 +1861,10 @@ Researchers may define weights using alternative models or Bayesian simulations.
 </section>
 <section id="software-example-r" class="level5">
 <h5 class="anchored" data-anchor-id="software-example-r">Software Example (R)</h5>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RDS)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>rd <span class="ot">&lt;-</span> <span class="fu">as.rds.data.frame</span>(boot_sample, <span class="at">id =</span> <span class="st">"id"</span>, <span class="at">recruiter.id =</span> <span class="st">"recruiter.id"</span>)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>boot_sample<span class="sc">$</span>ss_weight <span class="ot">&lt;-</span> <span class="fu">gile.ss.weights</span>(rd, <span class="at">N =</span> <span class="dv">980000</span>)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>boot_sample<span class="sc">$</span>vh_weight <span class="ot">&lt;-</span> <span class="fu">rds.weights</span>(rd, <span class="at">weight.type =</span> <span class="st">"RDS-II"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RDS)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>rd <span class="ot">&lt;-</span> <span class="fu">as.rds.data.frame</span>(boot_sample, <span class="at">id =</span> <span class="st">"id"</span>, <span class="at">recruiter.id =</span> <span class="st">"recruiter.id"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>boot_sample<span class="sc">$</span>ss_weight <span class="ot">&lt;-</span> <span class="fu">gile.ss.weights</span>(rd, <span class="at">N =</span> <span class="dv">980000</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>boot_sample<span class="sc">$</span>vh_weight <span class="ot">&lt;-</span> <span class="fu">rds.weights</span>(rd, <span class="at">weight.type =</span> <span class="st">"RDS-II"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The output is a new dataset with respondent traits, degrees, and updated <span class="math inline">\(\pi_i^{(b)}\)</span>, which are used in Step 3.</p>
 <hr>
 <hr>

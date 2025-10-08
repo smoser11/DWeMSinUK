@@ -24,9 +24,8 @@ library(parallel)
 
 # Base configuration
 BASE_CONFIG <- list(
-  # Bootstrap parameters (shared across all runs)
+  # Bootstrap parameters
   n_bootstrap = 1000,
-  bootstrap_method = "tree",
 
   # Outcomes to analyze
   nsum_outcomes = c(
@@ -50,6 +49,9 @@ BASE_CONFIG <- list(
   output_base_dir = here("output", "nsum_comprehensive"),
   save_intermediate = TRUE
 )
+
+# Bootstrap methods to test
+BOOTSTRAP_METHODS <- c("neighboot", "tree", "chain", "ss")
 
 # Population sizes to test
 POPULATION_SIZES <- c(50000, 100000, 980000, 1740000)
@@ -93,17 +95,18 @@ cat(rep("=", 80), "\n\n", sep = "")
 
 cat("Configuration:\n")
 cat("- Bootstrap samples:", BASE_CONFIG$n_bootstrap, "\n")
+cat("- Bootstrap methods:", paste(BOOTSTRAP_METHODS, collapse = ", "), "\n")
 cat("- Population sizes:", paste(format(POPULATION_SIZES, big.mark = ","), collapse = ", "), "\n")
 cat("- Weight methods:", paste(WEIGHT_METHODS, collapse = ", "), "\n")
 cat("- NSUM methods:", length(NSUM_METHODS), "\n")
-cat("- Total configurations:", length(POPULATION_SIZES) * length(WEIGHT_METHODS) * length(NSUM_METHODS), "\n")
+cat("- Total configurations:", length(BOOTSTRAP_METHODS) * length(POPULATION_SIZES) * length(WEIGHT_METHODS) * length(NSUM_METHODS), "\n")
 cat("- Output directory:", BASE_CONFIG$output_base_dir, "\n\n")
 
 # ==============================================================================
 # STEP 0: PREPARE DATA AND BOOTSTRAP SAMPLES
 # ==============================================================================
 
-cat("\n=== Preparing Data and Bootstrap Samples ===\n")
+cat("\n=== Preparing Data ===\n")
 
 # Load prepared data
 prepared_data_path <- here("data", "processed", "prepared_data.RData")
@@ -113,33 +116,8 @@ if (!file.exists(prepared_data_path)) {
 load(prepared_data_path)
 cat("✓ Loaded prepared data: n =", nrow(dd), "\n")
 
-# Load or generate bootstrap samples (shared across all configurations)
-bootstrap_samples_path <- file.path(BASE_CONFIG$output_base_dir, "bootstrap_samples_shared.RData")
-
-if (BASE_CONFIG$force_regenerate_bootstrap || !file.exists(bootstrap_samples_path)) {
-  cat("Generating", BASE_CONFIG$n_bootstrap, "bootstrap samples...\n")
-
-  source(here("R", "analysis", "NSUM", "Boot_Step1.r"))
-
-  boot_samples <- bootstrap_rds_sample(
-    rds_sample = rd.dd,
-    method = BASE_CONFIG$bootstrap_method,
-    B = BASE_CONFIG$n_bootstrap,
-    traits = BASE_CONFIG$nsum_outcomes,
-    degree_col = "known_network_size",
-    return_rds_df = FALSE,
-    verbose = TRUE
-  )
-
-  save(boot_samples, file = bootstrap_samples_path)
-  cat("✓ Bootstrap samples saved\n")
-} else {
-  cat("Loading existing bootstrap samples...\n")
-  load(bootstrap_samples_path)
-  cat("✓ Loaded", length(boot_samples), "bootstrap samples\n")
-}
-
 # Source required scripts
+source(here("R", "analysis", "NSUM", "Boot_Step1.r"))
 source(here("R", "analysis", "NSUM", "Boot_Step2_FIXED.R"))
 source(here("R", "analysis", "NSUM", "Boot_Step3.R"))
 
@@ -152,36 +130,70 @@ cat("\n=== Running All Configurations ===\n\n")
 # Initialize results storage
 all_results <- list()
 config_counter <- 0
-total_configs <- length(POPULATION_SIZES) * length(WEIGHT_METHODS) * length(NSUM_METHODS)
+total_configs <- length(BOOTSTRAP_METHODS) * length(POPULATION_SIZES) * length(WEIGHT_METHODS) * length(NSUM_METHODS)
 
-# Loop over all combinations
-for (pop_size in POPULATION_SIZES) {
-  for (weight_method in WEIGHT_METHODS) {
+# Loop over all combinations - BOOTSTRAP METHOD is outermost loop
+for (bootstrap_method in BOOTSTRAP_METHODS) {
 
-    # Apply weights to bootstrap samples for this combination
-    cat("\n--- Applying", weight_method, "weights for N =", format(pop_size, big.mark = ","), "---\n")
+  cat("\n", rep("=", 80), "\n", sep = "")
+  cat("BOOTSTRAP METHOD:", toupper(bootstrap_method), "\n")
+  cat(rep("=", 80), "\n\n", sep = "")
 
-    weighted_samples_path <- file.path(
-      BASE_CONFIG$output_base_dir,
-      sprintf("bootstrap_weighted_%s_N%s.RData", weight_method, pop_size)
+  # Generate or load bootstrap samples for this method
+  bootstrap_samples_path <- file.path(
+    BASE_CONFIG$output_base_dir,
+    sprintf("bootstrap_samples_%s.RData", bootstrap_method)
+  )
+
+  if (BASE_CONFIG$force_regenerate_bootstrap || !file.exists(bootstrap_samples_path)) {
+    cat("Generating", BASE_CONFIG$n_bootstrap, "bootstrap samples using", bootstrap_method, "method...\n")
+
+    boot_samples <- bootstrap_rds_sample(
+      rds_sample = rd.dd,
+      method = bootstrap_method,
+      B = BASE_CONFIG$n_bootstrap,
+      traits = BASE_CONFIG$nsum_outcomes,
+      degree_col = "known_network_size",
+      return_rds_df = FALSE,
+      verbose = TRUE
     )
 
-    if (BASE_CONFIG$force_reweight || !file.exists(weighted_samples_path)) {
-      weighted_samples <- compute_weights_batch_standard(
-        bootstrap_samples = boot_samples,
-        weight_method = weight_method,
-        population_size = pop_size,
-        outcome_variable = BASE_CONFIG$nsum_outcomes[1],  # Reference outcome
-        parallel = BASE_CONFIG$use_parallel,
-        n_cores = BASE_CONFIG$n_cores,
-        verbose = FALSE
+    save(boot_samples, file = bootstrap_samples_path)
+    cat("✓ Bootstrap samples saved\n")
+  } else {
+    cat("Loading existing bootstrap samples for", bootstrap_method, "method...\n")
+    load(bootstrap_samples_path)
+    cat("✓ Loaded", length(boot_samples), "bootstrap samples\n")
+  }
+
+  # Loop over population sizes
+  for (pop_size in POPULATION_SIZES) {
+    for (weight_method in WEIGHT_METHODS) {
+
+      # Apply weights to bootstrap samples for this combination
+      cat("\n--- Applying", weight_method, "weights for N =", format(pop_size, big.mark = ","), "---\n")
+
+      weighted_samples_path <- file.path(
+        BASE_CONFIG$output_base_dir,
+        sprintf("bootstrap_weighted_%s_%s_N%s.RData", bootstrap_method, weight_method, pop_size)
       )
-      save(weighted_samples, file = weighted_samples_path)
-      cat("✓ Weighted samples saved\n")
-    } else {
-      load(weighted_samples_path)
-      cat("✓ Loaded weighted samples\n")
-    }
+
+      if (BASE_CONFIG$force_reweight || !file.exists(weighted_samples_path)) {
+        weighted_samples <- compute_weights_batch_standard(
+          bootstrap_samples = boot_samples,
+          weight_method = weight_method,
+          population_size = pop_size,
+          outcome_variable = BASE_CONFIG$nsum_outcomes[1],  # Reference outcome
+          parallel = BASE_CONFIG$use_parallel,
+          n_cores = BASE_CONFIG$n_cores,
+          verbose = FALSE
+        )
+        save(weighted_samples, file = weighted_samples_path)
+        cat("✓ Weighted samples saved\n")
+      } else {
+        load(weighted_samples_path)
+        cat("✓ Loaded weighted samples\n")
+      }
 
     # Determine weight column names (must match 02-data_preparation.R naming)
     # Actual column names: wt.vh_050k, wt.vh_100k, wt.vh_980k, wt.vh_1740k
@@ -210,12 +222,13 @@ for (pop_size in POPULATION_SIZES) {
       nsum_config <- NSUM_METHODS[[nsum_config_name]]
 
       config_counter <- config_counter + 1
-      cat(sprintf("\n[%d/%d] %s | %s weights | N=%s\n",
+      cat(sprintf("\n[%d/%d] %s | %s weights | N=%s | Bootstrap: %s\n",
                   config_counter, total_configs,
                   nsum_config$label, weight_method,
-                  format(pop_size, big.mark = ",")))
+                  format(pop_size, big.mark = ","),
+                  bootstrap_method))
 
-      config_id <- sprintf("%s_%s_N%s", nsum_config_name, weight_method, pop_size)
+      config_id <- sprintf("%s_%s_%s_N%s", bootstrap_method, nsum_config_name, weight_method, pop_size)
 
       # Process each outcome
       outcome_results <- list()
@@ -258,7 +271,15 @@ for (pop_size in POPULATION_SIZES) {
         }
 
         # Extract point estimate with safety checks
-        point_estimate <- point_result$N_H_estimate
+        # Different estimators use different field names: N_H_estimate or N_hat
+        point_estimate <- if (!is.null(point_result$N_H_estimate)) {
+          point_result$N_H_estimate
+        } else if (!is.null(point_result$N_hat)) {
+          point_result$N_hat
+        } else {
+          NULL
+        }
+
         if (is.null(point_estimate) || is.list(point_estimate) ||
             !is.numeric(point_estimate) || length(point_estimate) != 1) {
           cat(" ERROR: Invalid point estimate structure\n")
@@ -274,8 +295,14 @@ for (pop_size in POPULATION_SIZES) {
           tryCatch({
             est_params$data <- boot_sample
             result <- do.call(estimate_nsum, est_params)
-            # Extract numeric estimate (handle different return structures)
-            estimate <- result$N_H_estimate
+            # Extract numeric estimate (handle different field names and structures)
+            estimate <- if (!is.null(result$N_H_estimate)) {
+              result$N_H_estimate
+            } else if (!is.null(result$N_hat)) {
+              result$N_hat
+            } else {
+              NULL
+            }
             if (is.null(estimate)) return(NA)
             if (is.list(estimate)) return(NA)
             if (!is.numeric(estimate)) return(NA)
@@ -320,6 +347,7 @@ for (pop_size in POPULATION_SIZES) {
       # Store configuration results
       all_results[[config_id]] <- list(
         config_id = config_id,
+        bootstrap_method = bootstrap_method,
         nsum_method = nsum_config$method,
         nsum_label = nsum_config$label,
         weight_method = weight_method,
@@ -328,6 +356,7 @@ for (pop_size in POPULATION_SIZES) {
         outcomes = outcome_results,
         timestamp = Sys.time()
       )
+    }
     }
   }
 }
@@ -351,6 +380,7 @@ for (config_id in names(all_results)) {
 
     summary_rows[[length(summary_rows) + 1]] <- data.frame(
       config_id = config_id,
+      bootstrap_method = config$bootstrap_method,
       nsum_method = config$nsum_method,
       nsum_label = config$nsum_label,
       weight_method = config$weight_method,
@@ -386,8 +416,8 @@ summary_df <- summary_df %>%
       outcome == "access_to_help_nsum" ~ "Access to Help",
       TRUE ~ outcome
     ),
-    config_label = sprintf("%s | %s | N=%s",
-                          nsum_label, weight_method,
+    config_label = sprintf("%s | %s | %s | N=%s",
+                          bootstrap_method, nsum_label, weight_method,
                           format(population_size, big.mark = ",")),
     prevalence_with_ci = sprintf("%.2f%% (%.2f%% - %.2f%%)",
                                 prevalence_point,
@@ -489,11 +519,12 @@ p_sensitivity <- ggplot(main_config,
   geom_point(size = 3) +
   geom_ribbon(aes(ymin = prevalence_ci_lower, ymax = prevalence_ci_upper,
                   fill = outcome_clean), alpha = 0.2, color = NA) +
+  facet_wrap(~ bootstrap_method, ncol = 2) +
   scale_x_continuous(labels = scales::comma,
                     breaks = POPULATION_SIZES) +
   labs(
     title = "Population Size Sensitivity Analysis",
-    subtitle = "MBSU (No Adjustment) with VH weights",
+    subtitle = "MBSU (No Adjustment) with VH weights across bootstrap methods",
     x = "Population Size",
     y = "Prevalence (%)",
     color = "Outcome",
@@ -502,13 +533,44 @@ p_sensitivity <- ggplot(main_config,
   theme_minimal() +
   theme(
     plot.title = element_text(face = "bold", size = 14),
-    legend.position = "right"
+    strip.text = element_text(face = "bold"),
+    legend.position = "right",
+    axis.text.x = element_text(angle = 45, hjust = 1)
   )
 
 ggsave(file.path(BASE_CONFIG$output_base_dir, "population_sensitivity.png"),
-       p_sensitivity, width = 12, height = 8, dpi = 300)
+       p_sensitivity, width = 14, height = 10, dpi = 300)
 
 cat("✓ Saved: population_sensitivity.png\n")
+
+# 4. Bootstrap method comparison (for main configuration)
+bootstrap_config <- summary_df %>%
+  filter(nsum_label == "MBSU (No Adjustment)", weight_method == "VH", population_size == 980000)
+
+p_bootstrap_comp <- ggplot(bootstrap_config,
+                          aes(x = bootstrap_method, y = prevalence_point,
+                              color = outcome_clean, group = outcome_clean)) +
+  geom_line(size = 1) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = prevalence_ci_lower, ymax = prevalence_ci_upper),
+                width = 0.2, alpha = 0.6) +
+  labs(
+    title = "Bootstrap Method Comparison",
+    subtitle = "MBSU (No Adjustment) with VH weights, N=980,000",
+    x = "Bootstrap Method",
+    y = "Prevalence (%)",
+    color = "Outcome"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", size = 14),
+    legend.position = "right"
+  )
+
+ggsave(file.path(BASE_CONFIG$output_base_dir, "bootstrap_method_comparison.png"),
+       p_bootstrap_comp, width = 12, height = 8, dpi = 300)
+
+cat("✓ Saved: bootstrap_method_comparison.png\n")
 
 # ==============================================================================
 # COMPLETION
@@ -528,11 +590,12 @@ cat("1. Summary table: nsum_comprehensive_summary.csv\n")
 cat("2. Full results: nsum_comprehensive_results.RData\n")
 cat("3. Prevalence plots: prevalence_*.png\n")
 cat("4. All outcomes: prevalence_all_outcomes.png\n")
-cat("5. Sensitivity: population_sensitivity.png\n\n")
+cat("5. Population sensitivity: population_sensitivity.png\n")
+cat("6. Bootstrap method comparison: bootstrap_method_comparison.png\n\n")
 
 # Print sample of results
-cat("Sample results (N=980K, VH weights):\n")
+cat("Sample results (N=980K, VH weights, tree bootstrap):\n")
 print(summary_df %>%
-        filter(population_size == 980000, weight_method == "VH") %>%
-        select(nsum_label, outcome_clean, prevalence_with_ci) %>%
+        filter(population_size == 980000, weight_method == "VH", bootstrap_method == "tree") %>%
+        select(bootstrap_method, nsum_label, outcome_clean, prevalence_with_ci) %>%
         head(10))
