@@ -237,7 +237,44 @@ bootstrap_rds_sample <- function(rds_sample,
                       
                       # ------------------------------------------
                       "ss" = {
-                        stop("SS-bootstrap not yet implemented.")
+                        if (verbose) cat("Running SS Bootstrap (Sequential Sampling)...\n")
+
+                        # Convert to rds.data.frame format if needed
+                        if (!"rds.data.frame" %in% class(dd)) {
+                          # Create proper rds.data.frame
+                          rds_df <- dd
+                          rds_df$wave <- 0  # Initialize wave
+
+                          # Calculate waves based on recruitment structure
+                          seeds <- which(rds_df[[recruiter_col]] == -1)
+                          rds_df$wave[seeds] <- 0
+
+                          # Simple wave calculation
+                          for (wave in 1:10) {  # Max 10 waves
+                            current_wave_ids <- rds_df[[id_col]][rds_df$wave == wave - 1]
+                            if (length(current_wave_ids) == 0) break
+                            next_wave_mask <- rds_df[[recruiter_col]] %in% current_wave_ids
+                            rds_df$wave[next_wave_mask] <- wave
+                          }
+
+                          # Convert to rds.data.frame
+                          rds_df <- RDS::as.rds.data.frame(rds_df,
+                                                           population.size = 100000,
+                                                           id = id_col,
+                                                           recruiter.id = recruiter_col,
+                                                           network.size = degree_col)
+                        } else {
+                          rds_df <- dd
+                        }
+
+                        # Perform SS bootstrap using wave-based resampling
+                        bootstrap_samples <- ss_bootstrap_resamples(rds_df, traits, B, verbose)
+
+                        if (return_rds_df) {
+                          bootstrap_samples  # Already in rds.data.frame format
+                        } else {
+                          lapply(bootstrap_samples, as.data.frame)
+                        }
                       }
   )
   
@@ -542,6 +579,123 @@ identify_recruitment_chains_simple <- function(data, id_col = "id", recruiter_co
   }
 
   return(chains)
+}
+
+#' SS Bootstrap Resampling Function
+#'
+#' Sequential Sampling bootstrap that resamples within waves/strata
+#' while maintaining the recruitment structure
+#'
+#' This approach resamples observations within each wave, preserving
+#' the sequential sampling structure of RDS
+ss_bootstrap_resamples <- function(rds.data, traits = NULL, B = 500, verbose = TRUE) {
+
+  # Extract information from rds.data.frame
+  if (!is(rds.data, "rds.data.frame")) {
+    stop("rds.data must be of type rds.data.frame")
+  }
+
+  network.size <- attr(rds.data, "network.size.variable")
+  id <- RDS::get.id(rds.data)
+  recruiter.id <- RDS::get.rid(rds.data)
+  wave <- RDS::get.wave(rds.data)
+
+  # Prepare all data for bootstrap
+  exclude_cols <- c("id", "recruiter.id", "wave", "network.size.variable")
+  all_cols <- names(rds.data)
+  data_cols <- setdiff(all_cols, exclude_cols)
+  outcomes <- data.frame(rds.data)[data_cols]
+
+  if (verbose) cat("  SS bootstrap: resampling", B, "samples by wave...\n")
+
+  # Get unique waves
+  unique_waves <- sort(unique(wave))
+  n <- length(id)
+
+  # Perform B bootstrap replicates
+  bootstrap_samples <- list()
+  for (b in 1:B) {
+    if (verbose && b %% 100 == 0) cat("    Completed", b, "replicates\n")
+
+    # Resample within each wave (stratified resampling)
+    boot_sample <- ss_bootstrap_single(
+      wave = wave,
+      network.size = rds.data[[network.size]],
+      outcomes = outcomes,
+      id = id,
+      recruiter.id = recruiter.id,
+      population.size = RDS::get.population.size(rds.data)
+    )
+
+    bootstrap_samples[[b]] <- boot_sample
+  }
+
+  return(bootstrap_samples)
+}
+
+#' Single SS Bootstrap Sample
+#'
+#' Creates a single bootstrap sample using sequential sampling approach
+#' Resamples within waves to maintain the sequential structure
+ss_bootstrap_single <- function(wave, network.size, outcomes, id, recruiter.id, population.size) {
+
+  n <- length(id)
+  unique_waves <- sort(unique(wave))
+
+  # Storage for bootstrap sample
+  boot_indices <- c()
+
+  # Resample within each wave (with replacement)
+  for (w in unique_waves) {
+    wave_indices <- which(wave == w)
+    n_wave <- length(wave_indices)
+
+    # Sample with replacement within this wave
+    sampled_indices <- sample(wave_indices, size = n_wave, replace = TRUE)
+    boot_indices <- c(boot_indices, sampled_indices)
+  }
+
+  # Create bootstrap data frame
+  df <- data.frame(
+    id = 1:n,  # New sequential IDs
+    recruiter.id = NA,  # Will be updated
+    network.size.variable = network.size[boot_indices]
+  )
+
+  # Add outcome variables
+  df <- cbind(df, outcomes[boot_indices, , drop = FALSE])
+
+  # Update recruiter relationships
+  # Seeds (wave 0) have recruiter.id = "_"
+  # Others need to be assigned a recruiter from the previous wave
+  for (i in 1:n) {
+    original_wave <- wave[boot_indices[i]]
+
+    if (original_wave == 0) {
+      # Keep as seed
+      df$recruiter.id[i] <- "_"
+    } else {
+      # Find observations from previous wave in bootstrap sample
+      prev_wave_in_boot <- which(wave[boot_indices] == (original_wave - 1))
+
+      if (length(prev_wave_in_boot) > 0) {
+        # Randomly assign a recruiter from the previous wave
+        df$recruiter.id[i] <- as.character(sample(prev_wave_in_boot, 1))
+      } else {
+        # If no previous wave exists, make this a seed
+        df$recruiter.id[i] <- "_"
+      }
+    }
+  }
+
+  # Convert to rds.data.frame
+  bootstrapped.data <- RDS::as.rds.data.frame(
+    df,
+    population.size = population.size,
+    check.valid = FALSE
+  )
+
+  return(bootstrapped.data)
 }
 
 
