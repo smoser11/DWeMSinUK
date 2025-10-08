@@ -183,12 +183,25 @@ for (pop_size in POPULATION_SIZES) {
       cat("✓ Loaded weighted samples\n")
     }
 
-    # Determine weight column names
+    # Determine weight column names (must match 02-data_preparation.R naming)
+    # Actual column names: wt.vh_050k, wt.vh_100k, wt.vh_980k, wt.vh_1740k
+    pop_suffix <- if (pop_size == 50000) {
+      "050k"
+    } else if (pop_size == 100000) {
+      "100k"
+    } else if (pop_size == 980000) {
+      "980k"
+    } else if (pop_size == 1740000) {
+      "1740k"
+    } else {
+      stop("Unsupported population size: ", pop_size)
+    }
+
     if (weight_method == "VH") {
-      original_weight_col <- paste0("wt.vh_", gsub("000$", "k", as.character(pop_size)))
+      original_weight_col <- paste0("wt.vh_", pop_suffix)
       bootstrap_weight_col <- "weight_vh"
     } else if (weight_method == "SS") {
-      original_weight_col <- paste0("wt.SS_", gsub("000$", "k", as.character(pop_size)))
+      original_weight_col <- paste0("wt.SS_", pop_suffix)
       bootstrap_weight_col <- "weight_rds_ss"
     }
 
@@ -244,7 +257,14 @@ for (pop_size in POPULATION_SIZES) {
           next
         }
 
+        # Extract point estimate with safety checks
         point_estimate <- point_result$N_H_estimate
+        if (is.null(point_estimate) || is.list(point_estimate) ||
+            !is.numeric(point_estimate) || length(point_estimate) != 1) {
+          cat(" ERROR: Invalid point estimate structure\n")
+          next
+        }
+        point_estimate <- as.numeric(point_estimate)
 
         # Bootstrap estimates
         est_params$data <- NULL  # Will be replaced in loop
@@ -254,7 +274,13 @@ for (pop_size in POPULATION_SIZES) {
           tryCatch({
             est_params$data <- boot_sample
             result <- do.call(estimate_nsum, est_params)
-            return(result$N_H_estimate)
+            # Extract numeric estimate (handle different return structures)
+            estimate <- result$N_H_estimate
+            if (is.null(estimate)) return(NA)
+            if (is.list(estimate)) return(NA)
+            if (!is.numeric(estimate)) return(NA)
+            if (length(estimate) != 1) return(NA)
+            return(as.numeric(estimate))
           }, error = function(e) {
             return(NA)
           })
