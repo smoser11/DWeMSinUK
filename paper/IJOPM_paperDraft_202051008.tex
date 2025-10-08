@@ -1,4 +1,5 @@
 % Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
@@ -8,21 +9,23 @@
   letterpaper,
   DIV=11,
   numbers=noendperiod]{scrartcl}
-
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
 \usepackage{lmodern}
-\ifPDFTeX\else  
-    % xetex/luatex font selection
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -40,10 +43,6 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-\usepackage{xcolor}
-\usepackage[margin=1in]{geometry}
-\setlength{\emergencystretch}{3em} % prevent overfull lines
-\setcounter{secnumdepth}{5}
 % Make \paragraph and \subparagraph free-standing
 \makeatletter
 \ifx\paragraph\undefined\else
@@ -109,8 +108,7 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -122,17 +120,37 @@
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
 % Set default figure placement to htbp
-\makeatletter
 \def\fps@figure{htbp}
 \makeatother
+
+
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+\usepackage[backend=biber,natbib =
+true,style=apa,sorting=nyt,maxcitenames=2]{biblatex}
+\addbibresource{references.bib}
+\addbibresource{MyLibrary2025-08-25.bib}
+
 
 \usepackage{booktabs}
 \usepackage{longtable}
@@ -212,18 +230,9 @@
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
-
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
-\usepackage[backend=biber,natbib =
-true,style=apa,sorting=nyt,maxcitenames=2]{biblatex}
-\addbibresource{references.bib}
-\addbibresource{MyLibrary2025-08-25.bib}
 \usepackage{bookmark}
-
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
+\urlstyle{same}
 \hypersetup{
   pdftitle={Quantifying Hidden Exploitation: Dual-Method Prevalence Estimates of Modern Slavery Risk Among UK Domestic Workers},
   pdfauthor={Caroline Emberson; Scott Moser},
@@ -240,17 +249,16 @@ of Modern Slavery Risk Among UK Domestic Workers\footnote{Authors' names
   are listed in alphabetical order.}}
 \author{Caroline Emberson \and Scott Moser}
 \date{08, October 2025}
-
 \begin{document}
 \maketitle
 \begin{abstract}
-\textbf{Purpose}
+Purpose
 
 The purpose of this article is to demonstrate a quantitative approach to
 the construction of a risk index of labour exploitation and alternative
 estimators of the prevalence of exploitation.
 
-\textbf{Design/ Methodology/ Approach}
+Design/ Methodology/ Approach
 
 Using data from a survey of domestic workers based in the United Kingdom
 (UK), we use statistical techniques, including Respondent Driven
@@ -258,32 +266,32 @@ Sampling (RDS) methods RDS-I and RDS-II and Network Scale Up (NSUM)
 methods, to produce an index of labour exploitation risk and estimators
 of the prevalence of labour exploitation.
 
-\textbf{Findings}
+Findings
 
 The labour exploitation risk index shows a reverse correlation between
 the increasing seriousness of exploitation and the number of
 exploitation cases reported. The various prevalence estimators examined
 show significant differences in population level exploitation.
 
-\textbf{Research implications/ limitations}
+Research implications/ limitations
 
 Further research into the application of different quantitative
 statistical estimators of the prevalence of labour exploitation is
 urgently required.
 
-\textbf{Practical implications}
+Practical implications
 
 Robust estimators are necessary if policy makers are to make informed
 choices about the appropriate allocation of scarce resources to help to
 eradicate severe forms of labour exploitation and labour abuse.
 
-\textbf{Social implications}
+Social implications
 
 Even by more conservative estimates, thousands of domestic workers in
 the UK are subject to labour exploitation. Urgent policy attention is
 needed if structural vulnerabilities are to be removed.
 
-\textbf{Originality}
+Originality
 
 We believe this paper is the first to compare the use of RDS and NSUM
 methods in the quantitative estimation of the prevalence of labour
@@ -431,7 +439,7 @@ may be used in future studies of labour exploitation in other sectoral
 and geographic contexts. The limitations of our study are outlined,
 before, finally, we conclude our article.
 
-\subsubsection{Conceptualising Labour Exploitation and the Degree of
+\subsection{Conceptualising Labour Exploitation and the Degree of
 Risk}\label{conceptualising-labour-exploitation-and-the-degree-of-risk}
 
 \begin{itemize}
@@ -465,7 +473,7 @@ most severe form of exploitation may be distinguished from the likely
 occurrence of less severe, though similarly illegal, forms of labour
 abuse.
 
-\subsection{Evaluating the Degree of
+\section{Evaluating the Degree of
 Risk}\label{evaluating-the-degree-of-risk}
 
 The study of risk management has a long tradition in operations and
@@ -507,8 +515,8 @@ as the strongest indicator of modern slavery risk, with lesser risks
 assessed according to the degree to which cumulative indicators of
 forced labour are reported.
 
-\subsubsection{Case Setting: Labour Exploitation Risk Among
-Transnational Migrant Domestic Workers In The
+\subsection{Case Setting: Labour Exploitation Risk Among Transnational
+Migrant Domestic Workers In The
 UK}\label{case-setting-labour-exploitation-risk-among-transnational-migrant-domestic-workers-in-the-uk}
 
 Domestic work forms part of a broader industrial category of Personal
@@ -597,9 +605,9 @@ about the working conditions they were experiencing to estimate the
 nature and scale of abuse and exploitation based upon reports of their
 conditions by domestic workers themselves.
 
-\subsection{Research Methods}\label{research-methods}
+\section{Research Methods}\label{research-methods}
 
-\subsubsection{Respondent-Driven Sampling (RDS) And Survey
+\subsection{Respondent-Driven Sampling (RDS) And Survey
 Method}\label{respondent-driven-sampling-rds-and-survey-method}
 
 Comprehensive descriptions and literature reviews of the development and
@@ -694,7 +702,7 @@ level of job satisfaction, employment conditions, and demographic data
 such as nationality, age, and gender. The main survey was conducted in
 the five months between February and July 2023.
 
-\subsubsection{Initial Sample Selection}\label{initial-sample-selection}
+\subsection{Initial Sample Selection}\label{initial-sample-selection}
 
 We selected our first wave of participants nonrandomly by convenience
 sampling. Mobile phone numbers were used both to identify seed
@@ -713,7 +721,7 @@ of an initial version of the survey (which was translated and made
 available in four languages: English, Spanish, Tagalog, and Portuguese)
 to selected domestic workers within each community.
 
-\subsubsection{Survey Incentives: Incentive Design and Participation
+\subsection{Survey Incentives: Incentive Design and Participation
 Verification}\label{survey-incentives-incentive-design-and-participation-verification}
 
 A double incentive scheme rewarded respondents both for completing the
@@ -754,7 +762,7 @@ referred were collated, and each of these numbers was called by one of
 the authors of the paper to ascertain the veracity of the respondent as
 a migrant domestic worker.
 
-\subsubsection{Descriptive Statistics}\label{descriptive-statistics}
+\subsection{Descriptive Statistics}\label{descriptive-statistics}
 
 In total, we received completed online surveys from 97 respondents. Of
 these respondents, 90 identified themselves as transnational migrants.
@@ -782,7 +790,7 @@ shorter, more fragmented networks.
 
 \centering{
 
-\includegraphics[width=0.95\textwidth,height=\textheight]{IJOPM_paperDraft_202051008_files/figure-pdf/fig-rds-network-1.pdf}
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{IJOPM_paperDraft_202051008_files/figure-pdf/fig-rds-network-1.pdf}
 
 }
 
@@ -801,9 +809,8 @@ Nationality Cluster and Recruitment Wave. Source: Authors' Own Work.}
 
 \centering{
 
-[!h]
 \centering
-\caption{Sample Characteristics by Nationality Cluster}
+\caption{\label{tab:tbl-sample-characteristics}Sample Characteristics by Nationality Cluster}
 \centering
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
 \fontsize{9}{11}\selectfont
@@ -822,7 +829,7 @@ Latinx & 17 & 20.0 & 13 & 4 & 6.9 & 5\\
 
 \end{table}%
 
-\subsubsection{Indicators}\label{indicators}
+\subsection{Indicators}\label{indicators}
 
 creating comparable variables to bridge the Respondent-Driven Sampling
 (RDS) and Network Scale-Up Method (NSUM) estimations is a key
@@ -871,7 +878,7 @@ the two different methodologies. This process is considered a crucial
 step to integrate the RDS and NSUM approaches and to produce more robust
 findings.
 
-\subsubsection{Ethical Approval}\label{ethical-approval}
+\subsection{Ethical Approval}\label{ethical-approval}
 
 The data collection that underpins the analysis presented in this paper
 was given favourable ethical approval by the lead author's School
@@ -879,7 +886,7 @@ Research Ethics Committee in January 2023. All participants were
 informed about the aims of the study, provided informed consent, and
 were assured that participation was voluntary and confidential.
 
-\subsubsection{Use of Artificial Intelligence in
+\subsection{Use of Artificial Intelligence in
 Research}\label{use-of-artificial-intelligence-in-research}
 
 Large Language Models (LLMs) were used for brainstorming the
@@ -887,7 +894,7 @@ organisation of the paper and editing of text. Code co-pilot (Claude
 Code) was used to test and debug R scripts employed in the statistical
 analysis. No generative models were used to generate or simulate data.
 
-\subsection{Estimation Methods}\label{estimation-methods}
+\section{Estimation Methods}\label{estimation-methods}
 
 We analysed the survey sample using multiple estimation models in order
 to assess robustness and conduct sensitivity analyses (see Appendix XX).
@@ -900,7 +907,7 @@ network scale-up methods (NSUM). In addition, we developed and
 implemented a novel three-step bootstrap procedure to address
 uncertainty in NSUM estimates, which we describe in more detail below.
 
-\subsubsection{RDS-Based Estimation}\label{rds-based-estimation}
+\subsection{RDS-Based Estimation}\label{rds-based-estimation}
 
 RDS estimators use ego-based information. Each participant reported the
 number of other domestic workers they knew, and this degree information
@@ -919,48 +926,46 @@ design-based adjustments with regression models that incorporate
 auxiliary covariates, producing valid estimates of sample means and
 distributions of continuous outcomes under the RDS design.
 
-\subsubsection{Estimation Strategy}\label{estimation-strategy}
+\subsection{Estimation Strategy}\label{estimation-strategy}
 
 Given that our data were collected using a respondent-driven sampling
 (RDS) design, the choice of estimator is critical. We considered several
 well-established RDS estimators, each with distinct assumptions and
 applicability.
 
-First, the \textbf{RDS-I estimator} \textcite{salg04-samplin} provides
-an early design-based approach. However, it performs poorly in small
-samples, is highly sensitive to seed dependence, and requires strong
-assumptions about equilibrium. Since our sample comprises fewer than 100
-respondents recruited from multiple seeds, we regard RDS-I primarily as
-a historical benchmark rather than a viable option for inference.
+First, the RDS-I estimator \textcite{salg04-samplin} provides an early
+design-based approach. However, it performs poorly in small samples, is
+highly sensitive to seed dependence, and requires strong assumptions
+about equilibrium. Since our sample comprises fewer than 100 respondents
+recruited from multiple seeds, we regard RDS-I primarily as a historical
+benchmark rather than a viable option for inference.
 
-Second, the \textbf{Volz--Heckathorn (VH) estimator}
-\textcite{volz08-probabi} offers a probability-based refinement of
-RDS-I. It is more robust but assumes a large population relative to the
-sample size and does not adjust for finite-population effects. Although
-our diagnostic checks indicated approximate equilibrium across key
-demographics, the VH estimator is best used here as a robustness check
-rather than the primary estimator.
+Second, the Volz--Heckathorn (VH) estimator \textcite{volz08-probabi}
+offers a probability-based refinement of RDS-I. It is more robust but
+assumes a large population relative to the sample size and does not
+adjust for finite-population effects. Although our diagnostic checks
+indicated approximate equilibrium across key demographics, the VH
+estimator is best used here as a robustness check rather than the
+primary estimator.
 
-Third, the \textbf{Successive Sampling (RDS-SS) estimator} (also called
-RDS-II) \textcite{gile11-improve} accounts for finite population
-effects, adjusting for the non-negligible sampling fraction that arises
-when the target population is not extremely large relative to the
-sample. This property makes RDS-SS particularly appropriate for our
-study of migrant domestic workers, and we therefore use it as our
-primary estimator for binary outcomes (e.g., presence or absence of
-exploitation).
+Third, the Successive Sampling (RDS-SS) estimator (also called RDS-II)
+\textcite{gile11-improve} accounts for finite population effects,
+adjusting for the non-negligible sampling fraction that arises when the
+target population is not extremely large relative to the sample. This
+property makes RDS-SS particularly appropriate for our study of migrant
+domestic workers, and we therefore use it as our primary estimator for
+binary outcomes (e.g., presence or absence of exploitation).
 
-Fourth, to estimate \textbf{continuous outcomes} such as our
-exploitation risk index, we employ the \textbf{Model-Assisted (MA-RDS)
-estimator} \textcite{gile15-network}. This approach integrates
-regression modelling with RDS weights, thereby extending inference
-beyond binary outcomes and improving efficiency by leveraging auxiliary
-covariates.
+Fourth, to estimate continuous outcomes such as our exploitation risk
+index, we employ the Model-Assisted (MA-RDS) estimator
+\textcite{gile15-network}. This approach integrates regression modelling
+with RDS weights, thereby extending inference beyond binary outcomes and
+improving efficiency by leveraging auxiliary covariates.
 
-In summary, we rely primarily on \textbf{RDS-SS} for binary outcomes and
-MA-RDS for continuous and binary indicators, with \textbf{VH} used for
-robustness checks. This combined strategy balances methodological rigor
-with the substantive goals of our study.
+In summary, we rely primarily on RDS-SS for binary outcomes and MA-RDS
+for continuous and binary indicators, with VH used for robustness
+checks. This combined strategy balances methodological rigor with the
+substantive goals of our study.
 
 We use model-assisted RDS estimators (\textcite{gile15-network}) because
 they are design-based yet leverage a working ERGM (with degree and
@@ -974,7 +979,7 @@ our data, the method reduces bias, improves efficiency, and provides
 design-compatible bootstrap uncertainty, making it particularly
 well-suited to our small, heterogeneous sample of domestic workers.''
 
-\subsubsection{Network Scale-Up Methods
+\subsection{Network Scale-Up Methods
 (NSUM)}\label{network-scale-up-methods-nsum}
 
 NSUM relies on alter-based information. Rather than depending on
@@ -994,29 +999,29 @@ of degree and on the properties of recruitment chains, while NSUM
 depends on the accuracy of respondents' knowledge about others and the
 representativeness of their social networks
 
-\paragraph{How RDS and NSUM Use Social Network
+\subsubsection{How RDS and NSUM Use Social Network
 Information}\label{how-rds-and-nsum-use-social-network-information}
 
 Respondent-driven sampling (RDS) and network scale-up methods (NSUM)
 both rely on social network structures, but they exploit different
 aspects of those structures for inference.
 
-RDS uses \textbf{ego-based information}. Each participant reports the
-size of their personal network of eligible individuals, and these degree
-reports are combined with the wave at which respondents were recruited
-to adjust for unequal inclusion probabilities. The underlying logic is
-that individuals with larger networks are more likely to be recruited
-earlier and more often, creating a bias toward highly connected
-respondents. RDS estimators, including Gile's successive sampling
-estimator, explicitly correct for this bias by weighting observations
-according to network degree and recruitment path. For continuous traits,
-such as our risk index, RDS model-assisted estimators incorporate
-auxiliary covariates into this weighting process to further reduce bias.
+RDS uses ego-based information. Each participant reports the size of
+their personal network of eligible individuals, and these degree reports
+are combined with the wave at which respondents were recruited to adjust
+for unequal inclusion probabilities. The underlying logic is that
+individuals with larger networks are more likely to be recruited earlier
+and more often, creating a bias toward highly connected respondents. RDS
+estimators, including Gile's successive sampling estimator, explicitly
+correct for this bias by weighting observations according to network
+degree and recruitment path. For continuous traits, such as our risk
+index, RDS model-assisted estimators incorporate auxiliary covariates
+into this weighting process to further reduce bias.
 
-In contrast, NSUM uses \textbf{alter-based information}. Rather than
-focusing on the ego's probability of inclusion, NSUM treats respondents
-as informants about the wider hidden population. Respondents are asked
-how many people they know with a given trait (for example, ``How many
+In contrast, NSUM uses alter-based information. Rather than focusing on
+the ego's probability of inclusion, NSUM treats respondents as
+informants about the wider hidden population. Respondents are asked how
+many people they know with a given trait (for example, ``How many
 domestic workers do you know who have experienced exploitation?'').
 These responses are then scaled up, using assumptions about network size
 and visibility, to infer prevalence in the broader population. This
@@ -1031,7 +1036,7 @@ size; NSUM leverages alter reports to extend beyond the sample. Applying
 both methods to the same dataset allows for triangulation across two
 fundamentally different inferential logics.
 
-\subsubsection{Bootstrap Procedure for
+\subsection{Bootstrap Procedure for
 NSUM}\label{bootstrap-procedure-for-nsum}
 
 To appropriately characterise uncertainty in NSUM estimates, we
@@ -1044,7 +1049,7 @@ estimators, particularly for small samples such as ours. Details of the
 bootstrap implementation and diagnostic checks are provided in Appendix
 \textcite{app-3step}.
 
-\subsubsection{Comparative Rationale}\label{comparative-rationale}
+\subsection{Comparative Rationale}\label{comparative-rationale}
 
 Respondent-driven sampling (RDS) and network scale-up methods (NSUM)
 both rely on social network structures, but they exploit different
@@ -1090,9 +1095,9 @@ conceptual value of considering exploitation both as a binary threshold
 and as a continuum, and demonstrates the methodological trade-offs
 involved in studying hidden populations.
 
-\subsection{Results}\label{results}
+\section{Results}\label{results}
 
-\subsubsection{Model-Assisted Estimates of the Risk Index (Continuous
+\subsection{Model-Assisted Estimates of the Risk Index (Continuous
 Conceptualisation)}\label{model-assisted-estimates-of-the-risk-index-continuous-conceptualisation}
 
 One of the central contributions of this study is the introduction of a
@@ -1115,7 +1120,7 @@ and Handcock, 2018).
 
 \centering{
 
-\includegraphics[width=1\textwidth,height=\textheight]{IJOPM_paperDraft_202051008_files/figure-pdf/fig-ma-risk-estimates-1.pdf}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{IJOPM_paperDraft_202051008_files/figure-pdf/fig-ma-risk-estimates-1.pdf}
 
 }
 
@@ -1144,7 +1149,7 @@ that \(~7.2\%\) of DWs in the UK have moderate risk (0.1725) This
 pattern reinforces the conceptual claim that exploitation is best
 understood as a continuum rather than a simple binary condition.
 
-\subsubsection{Binary Exploitation Indicators (Exploited or Not
+\subsection{Binary Exploitation Indicators (Exploited or Not
 Exploited)}\label{binary-exploitation-indicators-exploited-or-not-exploited}
 
 To complement the continuous measure, we also operationalised
@@ -1154,7 +1159,7 @@ definitions. This allows estimation using both respondent-driven
 sampling estimators, which rely on ego-based network data, and network
 scale-up methods, which rely on alter-based information.
 
-\paragraph{Model-Assisted (MA)
+\subsubsection{Model-Assisted (MA)
 Estimates}\label{model-assisted-ma-estimates}
 
 \begin{table}
@@ -1167,9 +1172,8 @@ Authors' Own Work.}
 
 \centering{
 
-[!h]
 \centering
-\caption{Model-Assisted Estimates of Binary Exploitation Indicators}
+\caption{\label{tab:tbl-ma-binary-indicators}Model-Assisted Estimates of Binary Exploitation Indicators}
 \centering
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
 \begin{tabular}[t]{lr}
@@ -1195,7 +1199,7 @@ Document Withholding & 34.3\% (16.4-52.2\%)\\
 
 \centering{
 
-\includegraphics[width=0.95\textwidth,height=\textheight]{IJOPM_paperDraft_202051008_files/figure-pdf/fig-ma-binary-forest-1.pdf}
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{IJOPM_paperDraft_202051008_files/figure-pdf/fig-ma-binary-forest-1.pdf}
 
 }
 
@@ -1208,7 +1212,7 @@ Work.}
 
 \end{figure}%
 
-\paragraph{RDS Estimates}\label{rds-estimates}
+\subsubsection{RDS Estimates}\label{rds-estimates}
 
 \begin{table}
 
@@ -1219,7 +1223,6 @@ Authors' Own Work.}
 
 \centering{
 
-[!h]
 \centering\begingroup\fontsize{9}{11}\selectfont
 
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
@@ -1245,7 +1248,7 @@ Pay-related issues & 59.3\% (34.2–63.5) & 49.7\% (34.8–63.4)\\
 
 \centering{
 
-\includegraphics[width=0.95\textwidth,height=\textheight]{IJOPM_paperDraft_202051008_files/figure-pdf/fig-rds-forest-plot-1.pdf}
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{IJOPM_paperDraft_202051008_files/figure-pdf/fig-rds-forest-plot-1.pdf}
 
 }
 
@@ -1256,38 +1259,37 @@ confidence intervals. Source: Authors' Own Work.}
 
 \end{figure}%
 
-\paragraph{NSUM Estimates}\label{nsum-estimates}
+\subsubsection{NSUM Estimates}\label{nsum-estimates}
 
 Using the Modified Basic Scale-Up (MBSU) estimator with Sequential
 Sampling weights and an estimated UK domestic worker population of
 980,000, we find substantial variation in prevalence estimates depending
 on the adjustment factors applied (Table~\ref{tbl-nsum-main}).
 
-The \textbf{unadjusted MBSU estimates} (baseline scenario with no
-adjustment for visibility or reporting barriers, δ=1.0, τ=1.0) suggest
-that document withholding affects approximately 8,120 workers (0.83\%,
-95\% CI: 0.23\%-2.39\%). Pay-related issues affect 21,560 workers
-(2.20\%, 95\% CI: 1.45\%-4.35\%), while threats and abuse affect 20,141
-workers (2.06\%, 95\% CI: 1.42\%-4.48\%). Excessive working hours affect
-22,375 workers (2.28\%, 95\% CI: 1.41\%-4.21\%), and 15,212 workers
-report lacking access to help (1.55\%, 95\% CI: 0.51\%-3.73\%).
+The unadjusted MBSU estimates (baseline scenario with no adjustment for
+visibility or reporting barriers, δ=1.0, τ=1.0) suggest that document
+withholding affects approximately 8,120 workers (0.83\%, 95\% CI:
+0.23\%-2.39\%). Pay-related issues affect 21,560 workers (2.20\%, 95\%
+CI: 1.45\%-4.35\%), while threats and abuse affect 20,141 workers
+(2.06\%, 95\% CI: 1.42\%-4.48\%). Excessive working hours affect 22,375
+workers (2.28\%, 95\% CI: 1.41\%-4.21\%), and 15,212 workers report
+lacking access to help (1.55\%, 95\% CI: 0.51\%-3.73\%).
 
-Applying \textbf{moderate adjustments} for reporting and visibility
-biases (δ=0.9, τ=0.85) yields estimates of 10,615 workers experiencing
-document withholding (1.08\%, 95\% CI: 0.30\%-3.13\%), 28,182 with pay
-issues (2.88\%, 95\% CI: 1.90\%-5.68\%), 26,328 experiencing
-threats/abuse (2.69\%, 95\% CI: 1.86\%-5.86\%), 29,248 with excessive
-hours (2.98\%, 95\% CI: 1.84\%-5.51\%), and 19,885 lacking access to
-help (2.03\%, 95\% CI: 0.67\%-4.88\%).
+Applying moderate adjustments for reporting and visibility biases
+(δ=0.9, τ=0.85) yields estimates of 10,615 workers experiencing document
+withholding (1.08\%, 95\% CI: 0.30\%-3.13\%), 28,182 with pay issues
+(2.88\%, 95\% CI: 1.90\%-5.68\%), 26,328 experiencing threats/abuse
+(2.69\%, 95\% CI: 1.86\%-5.86\%), 29,248 with excessive hours (2.98\%,
+95\% CI: 1.84\%-5.51\%), and 19,885 lacking access to help (2.03\%, 95\%
+CI: 0.67\%-4.88\%).
 
-The \textbf{most conservative adjustments} (δ=0.8, τ=0.7), accounting
-for greater underreporting and visibility barriers, produce
-substantially higher estimates: 14,500 workers with document withholding
-(1.48\%, 95\% CI: 0.40\%-4.27\%), 38,499 with pay issues (3.93\%, 95\%
-CI: 2.60\%-7.77\%), 35,966 experiencing threats/abuse (3.67\%, 95\% CI:
-2.53\%-8.00\%), 39,955 with excessive hours (4.08\%, 95\% CI:
-2.52\%-7.53\%), and 27,165 lacking access to help (2.77\%, 95\% CI:
-0.91\%-6.67\%).
+The most conservative adjustments (δ=0.8, τ=0.7), accounting for greater
+underreporting and visibility barriers, produce substantially higher
+estimates: 14,500 workers with document withholding (1.48\%, 95\% CI:
+0.40\%-4.27\%), 38,499 with pay issues (3.93\%, 95\% CI: 2.60\%-7.77\%),
+35,966 experiencing threats/abuse (3.67\%, 95\% CI: 2.53\%-8.00\%),
+39,955 with excessive hours (4.08\%, 95\% CI: 2.52\%-7.53\%), and 27,165
+lacking access to help (2.77\%, 95\% CI: 0.91\%-6.67\%).
 
 These estimates represent prevalence rates ranging from 0.83\% to 4.08\%
 across all indicators, with confidence intervals reflecting substantial
@@ -1308,9 +1310,8 @@ Bootstrap confidence intervals based on neighborhood resampling
 
 \centering{
 
-[!h]
 \centering
-\caption{NSUM Prevalence Estimates for Labor Exploitation Indicators}
+\caption{\label{tab:tbl-nsum-main}NSUM Prevalence Estimates for Labor Exploitation Indicators}
 \centering
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
 \fontsize{9}{11}\selectfont
@@ -1347,7 +1348,7 @@ Adjustment Method & Outcome & Point Estimate & 95\% CI Lower & 95\% CI Upper & P
 
 \end{table}%
 
-\subsubsection{Comparative
+\subsection{Comparative
 Interpretation}\label{comparative-interpretation}
 
 Table 1 summarises prevalence estimates across both methods,
@@ -1371,7 +1372,7 @@ issues.
 
 \centering{
 
-\includegraphics[width=1\textwidth,height=\textheight]{../output/figures/method_comparison.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{../output/figures/method_comparison.png}
 
 }
 
@@ -1385,7 +1386,91 @@ Authors' own work.}
 
 \end{figure}%
 
-\subsubsection{Robustness Checks}\label{robustness-checks}
+\section{On the Role of Visibility in Explaining Differences Between
+NSUM and RDS
+Estimates}\label{on-the-role-of-visibility-in-explaining-differences-between-nsum-and-rds-estimates}
+
+Substantial discrepancies between hidden population prevalence estimates
+derived from Respondent-Driven Sampling (RDS) and the Network Scale-Up
+Method (NSUM) are widely observed in empirical research and simulation
+studies. In the present case, for example, egocentric RDS-based
+estimates (e.g., using Gile's Successive Sampling estimator) suggest
+that 34\% to 84\% of respondents personally experienced indicators of
+exploitation. In contrast, the corresponding NSUM estimates suggest that
+only 2.9\% to 5.1\% of the general domestic worker population
+experiences these same harms. This stark divergence---often approaching
+an order of magnitude---warrants a careful methodological explanation.
+
+Among the various sources of error affecting NSUM, the most important
+and widely documented is visibility bias, also referred to in some
+literature as transmission bias. Visibility refers to the extent to
+which members of a hidden population are known to belong to that
+population by members of the general population. In the context of NSUM,
+visibility determines whether a respondent can accurately report having
+connections to members of the hidden group. If visibility is
+low---because of stigma, secrecy, or lack of awareness---respondents
+will systematically underreport these ties. This causes a downward bias
+in the numerator of the NSUM estimator, thereby underestimating the size
+of the hidden population.
+
+As Feehan and Salganik put it:
+
+\begin{quote}
+``Transmission error occurs when respondents do not know or are
+unwilling to report the true group memberships of people they know''
+\autocite[155]{feeh16-gener}.
+\end{quote}
+
+This issue has been recognized since the earliest implementations of
+NSUM. Bernard et al.~describe it as a failure of the transmission
+condition---the assumption that a respondent will be aware of, and
+willing to disclose, the group membership of their contacts
+\autocite{bern10-estima}. More recently, Maltiel et al.~have addressed
+visibility bias using model-based (Bayesian) approaches, which estimate
+and correct for differential visibility between groups
+\autocite{malt15-estima}.
+
+In contrast, RDS estimators such as the Volz--Heckathorn (RDS-II) and
+especially the Successive Sampling (SS) estimator rely on direct
+self-reporting of hidden group membership. That is, RDS respondents are
+asked whether they themselves belong to the group or exhibit a trait of
+interest. This egocentric measurement bypasses the visibility problem
+entirely. While RDS relies on its own set of assumptions---such as the
+random recruitment assumption, accurate self-reported degree, and a
+sufficiently connected social network---visibility is not among its main
+sources of bias.
+
+Thus, while both NSUM and RDS are used to estimate the size or
+prevalence of hidden populations, they are subject to fundamentally
+different sources of error. In NSUM, low visibility leads to systematic
+underreporting, which can result in severe underestimation unless
+appropriately adjusted. Adjustments such as those proposed by Feehan and
+Salganik---including multiplicative correction factors for visibility
+(\(\tau\) τ), degree ratio (\(\delta\) δ), and barrier effects (\(\rho\)
+ρ)---can mitigate these biases, but require additional data or
+assumptions \autocite{feeh16-gener}.
+
+In your setting, where RDS estimates suggest that over 50\% of
+respondents have experienced exploitation, but NSUM estimates suggest
+only 3--5\% of the domestic worker population does so, visibility bias
+is almost certainly the dominant factor explaining the discrepancy. This
+is especially true in contexts involving exploitation, abuse, or
+trafficking---where group membership is often concealed both by victims
+and by observers. Respondents in the frame population may simply be
+unaware that their contacts are experiencing exploitation, leading to
+substantial underreporting.
+
+Hense, visibility bias is a major and well-understood limitation of
+NSUM, and likely the principal reason why your NSUM estimates are
+substantially lower than those derived from RDS. The use of RDS-based
+estimators, particularly those that adjust for sample design such as
+Gile's SS estimator, provides direct measurement of traits among the
+hidden population and avoids the visibility problem. Therefore, RDS
+estimates are often more accurate in estimating prevalence within the
+hidden population, whereas NSUM estimates are typically biased downward
+unless adjusted for visibility and related biases.
+
+\subsection{Robustness Checks}\label{robustness-checks}
 
 A series of robustness checks were performed to assess the stability of
 the findings. \textbf{?@fig-forest-plot} presents a comprehensive forest
@@ -1413,7 +1498,7 @@ technical details are reported in Appendices B and C.
 
 \centering{
 
-\includegraphics[width=0.95\textwidth,height=\textheight]{../output/figures/parameter_comparison.png}
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{../output/figures/parameter_comparison.png}
 
 }
 
@@ -1427,9 +1512,9 @@ own work.}
 
 \end{figure}%
 
-\subsection{Discussion}\label{discussion}
+\section{Discussion}\label{discussion}
 
-\subsubsection{Implications for Policy}\label{implications-for-policy}
+\subsection{Implications for Policy}\label{implications-for-policy}
 
 The UK Government has proved reluctant to respond to calls to remove the
 restrictive, tied, visa conditions currently in force for those migrant
@@ -1460,8 +1545,7 @@ Government to enforce a firewall between immigration control and labour
 exploitation if the true scale of abuse is to be made visible and the
 perpetrators brought to justice.
 
-\subsubsection{Implications for
-Practice}\label{implications-for-practice}
+\subsection{Implications for Practice}\label{implications-for-practice}
 
 The UK Visa and Immigration service already offers rights-based training
 to migrant domestic workers via UK embassies in certain source
@@ -1471,14 +1555,14 @@ training related to employment and labour rights within the UK and to
 the rapidly expanding range of new source countries from where migrant
 domestic workers are now drawn.
 
-\subsubsection{Methodological
+\subsection{Methodological
 Contributions}\label{methodological-contributions}
 
 This study makes several methodological contributions to the estimation
 of prevalence in hidden and hard-to-reach populations:
 
-\textbf{Dual conceptualisation of exploitation}: We introduce two
-distinct approaches to operationalising exploitation. First, we treat
+Dual conceptualisation of exploitation: We introduce two distinct
+approaches to operationalising exploitation. First, we treat
 exploitation as a binary outcome (exploited versus not exploited),
 enabling direct comparison of prevalence estimates across RDS and NSUM
 methods. Second, we construct a continuous risk index, acknowledging
@@ -1486,14 +1570,14 @@ that all domestic workers may be exposed to some degree of exploitation
 risk. To our knowledge, this is the first application of model-assisted
 RDS estimators to quantify a continuous measure of exploitation risk.
 
-\textbf{Bayesian parameter sensitivity}:
-Figure~\ref{fig-parameter-comparison} demonstrates the importance of
-appropriate MCMC parameter selection for Bayesian model-assisted
-estimation. Our analysis shows that enhanced parameters (featuring
-longer burn-in periods and more iterations) are particularly crucial for
-numeric and ordinal variables, where standard parameters may suffer from
-convergence issues. This methodological innovation ensures robust
-credible interval estimation for continuous risk measures.
+Bayesian parameter sensitivity: Figure~\ref{fig-parameter-comparison}
+demonstrates the importance of appropriate MCMC parameter selection for
+Bayesian model-assisted estimation. Our analysis shows that enhanced
+parameters (featuring longer burn-in periods and more iterations) are
+particularly crucial for numeric and ordinal variables, where standard
+parameters may suffer from convergence issues. This methodological
+innovation ensures robust credible interval estimation for continuous
+risk measures.
 
 \emph{Combining RDS and NSUM on the same survey instrument}: By
 designing a survey that captures both ego and alter information, we are
@@ -1518,7 +1602,7 @@ sampling is impossible. This methodological innovation has potential
 applications in studies of other hidden labour markets and vulnerable
 populations.
 
-\subsubsection{Limitations of the Study}\label{limitations-of-the-study}
+\subsection{Limitations of the Study}\label{limitations-of-the-study}
 
 As with any empirical research, our study is subject to limitations. In
 terms of nationality, our sample is not representative of the
@@ -1538,7 +1622,7 @@ sampling waves in the time available. Most of our respondents are
 therefore original sample members draw from the three domestic worker
 communities used to seed the survey.
 
-\subsubsection{Further Research}\label{further-research}
+\subsection{Further Research}\label{further-research}
 
 We believe that web-RDS combined with statistical estimators such as
 NSUM offers an important method for the capture and comparison of
@@ -1549,13 +1633,13 @@ understanding, not least within operations and supply chain management
 research, of the extent of labour exploitation in different sectors and
 across industries.
 
-\subsection{Conclusion}\label{conclusion}
+\section{Conclusion}\label{conclusion}
 
 \newpage
 
 \newpage
 
-\subsection{References}\label{references}
+\section{References}\label{references}
 
 \printbibliography[heading=none]
 
@@ -1563,7 +1647,7 @@ across industries.
 
 \appendix
 
-\subsection{Appendix A}\label{app-survey}
+\section{Appendix A}\label{app-survey}
 
 Population Parameters
 
@@ -1574,7 +1658,7 @@ Use 44,360 as NRM adult referrals baseline Address treatment of ``don't
 know'' responses and zero network size claims Consider separate analysis
 for Filipino subgroup
 
-\subsubsection{The Survey}\label{the-survey}
+\subsection{The Survey}\label{the-survey}
 
 (From codebook)
 
@@ -1608,7 +1692,7 @@ Risk Index Implementation
   Below minimum wage (0.10)
 \end{itemize}
 
-\subsubsection{Data Processing}\label{app-dataprep}
+\subsection{Data Processing}\label{app-dataprep}
 
 The process of coding variables to make them comparable across the
 Respondent-Driven Sampling (RDS) and Network Scale-Up Method (NSUM)
@@ -1685,9 +1769,9 @@ Key Coding Steps:
   the RDS and NSUM estimation frameworks.
 \end{enumerate}
 
-\subsubsection{Sample Characteristics}\label{sample-characteristics}
+\subsection{Sample Characteristics}\label{sample-characteristics}
 
-\paragraph{Recruitment Network
+\subsubsection{Recruitment Network
 Structure}\label{recruitment-network-structure}
 
 \begin{table}
@@ -1696,9 +1780,8 @@ Structure}\label{recruitment-network-structure}
 
 \centering{
 
-[!h]
 \centering
-\caption{RDS Sample Network Characteristics}
+\caption{\label{tab:tbl-network}RDS Sample Network Characteristics}
 \centering
 \begin{tabular}[t]{lr}
 \toprule
@@ -1720,7 +1803,7 @@ Longest Chain & 0.0\\
 
 \end{table}%
 
-\paragraph{Demographic Composition}\label{demographic-composition}
+\subsubsection{Demographic Composition}\label{demographic-composition}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1777,7 +1860,7 @@ Longest Chain & 0.0\\
 
 \centering{
 
-\includegraphics{IJOPM_paperDraft_202051008_files/figure-pdf/fig-demographics-1.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{IJOPM_paperDraft_202051008_files/figure-pdf/fig-demographics-1.pdf}}
 
 }
 
@@ -1786,14 +1869,14 @@ Clusters}
 
 \end{figure}%
 
-\subsection{Appendix B}\label{app-sens}
+\section{Appendix B}\label{app-sens}
 
 This analysis estimates the prevalence of modern slavery among domestic
 workers in the UK using multiple RDS methodologies. We examine two
 primary indicators across various population size assumptions and
 estimation techniques.
 
-\subsubsection{RDS Estimation Results}\label{rds-estimation-results}
+\subsection{RDS Estimation Results}\label{rds-estimation-results}
 
 This section presents comprehensive RDS estimates across all population
 size scenarios and estimation methods.
@@ -1837,7 +1920,7 @@ Indicator & 50K & 100K & 980K & 1.74M & 50K & 100K & 980K & 1.74M\\
 
 \centering{
 
-\includegraphics[width=1\textwidth,height=\textheight]{IJOPM_paperDraft_202051008_files/figure-pdf/fig-rds-sensitivity-popsize-1.pdf}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{IJOPM_paperDraft_202051008_files/figure-pdf/fig-rds-sensitivity-popsize-1.pdf}
 
 }
 
@@ -1848,7 +1931,7 @@ bootstrap confidence intervals varying by population size.}
 
 \end{figure}%
 
-\subsubsection{Model-Assisted Estimates by Population
+\subsection{Model-Assisted Estimates by Population
 Size}\label{model-assisted-estimates-by-population-size}
 
 \begin{table}
@@ -1886,7 +1969,7 @@ degree & 980,000 & 34.3\% (16.4\%, 52.2\%) & 49.5\% (35.6\%, 63.5\%) & 83.7\% (7
 
 \end{table}%
 
-\paragraph{Traditional RDS Estimators
+\subsubsection{Traditional RDS Estimators
 Comparison}\label{traditional-rds-estimators-comparison}
 
 \begin{table}
@@ -1904,7 +1987,7 @@ NULL
 
 \end{table}%
 
-\subsubsection{Model-Assisted Sensitivity
+\subsection{Model-Assisted Sensitivity
 Analysis}\label{model-assisted-sensitivity-analysis}
 
 This section presents comprehensive sensitivity analysis for
@@ -1950,7 +2033,7 @@ Any Exploitation & 94.9\% (61.5-100.0\%) & 94.9\% (61.5-100.0\%) & 94.9\% (61.5-
 
 \centering{
 
-\includegraphics[width=1\textwidth,height=\textheight]{IJOPM_paperDraft_202051008_files/figure-pdf/fig-ma-sensitivity-by-indicator-1.pdf}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{IJOPM_paperDraft_202051008_files/figure-pdf/fig-ma-sensitivity-by-indicator-1.pdf}
 
 }
 
@@ -1966,7 +2049,7 @@ varying by population size (color) and seed selection method (shape).}
 
 \centering{
 
-\includegraphics[width=0.95\textwidth,height=\textheight]{IJOPM_paperDraft_202051008_files/figure-pdf/fig-ma-sensitivity-comparison-1.pdf}
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{IJOPM_paperDraft_202051008_files/figure-pdf/fig-ma-sensitivity-comparison-1.pdf}
 
 }
 
@@ -1978,7 +2061,7 @@ indicators.}
 
 \end{figure}%
 
-\subsubsection{NSUM Sensitivity Analysis}\label{app-nsum-sens}
+\subsection{NSUM Sensitivity Analysis}\label{app-nsum-sens}
 
 The NSUM estimates presented in the main text (Section 5.2.3) used
 neighborhood bootstrap resampling, Sequential Sampling weights, and the
@@ -1988,7 +2071,7 @@ comprehensive sensitivity analyses varying four key methodological
 choices: (1) bootstrap method, (2) weighting scheme, (3) population size
 assumption, and (4) NSUM estimator specification.
 
-\paragraph{Sensitivity to Bootstrap
+\subsubsection{Sensitivity to Bootstrap
 Method}\label{sensitivity-to-bootstrap-method}
 
 We compared four bootstrap resampling approaches: neighborhood
@@ -2008,7 +2091,6 @@ Method Comparison. All estimates use SS weights, N=980,000, and MBSU
 
 \centering{
 
-[!h]
 \centering\begingroup\fontsize{8}{10}\selectfont
 
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
@@ -2048,7 +2130,7 @@ tree & Threats/Abuse & 26,328.26 & 18,678.408 & 46,053.23 & 2.69\% (1.91\% - 4.7
 
 \end{table}%
 
-\paragraph{Sensitivity to Weight
+\subsubsection{Sensitivity to Weight
 Method}\label{sensitivity-to-weight-method}
 
 We compared Volz-Heckathorn (VH) and Sequential Sampling (SS) weighting
@@ -2065,7 +2147,6 @@ MBSU (Moderate) adjustment. Source: Authors' Own Work.}
 
 \centering{
 
-[!h]
 \centering\begingroup\fontsize{8}{10}\selectfont
 
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
@@ -2093,7 +2174,7 @@ VH & Threats/Abuse & 26,328.26 & 18,179.435 & 57,424.35 & 2.69\% (1.86\% - 5.86\
 
 \end{table}%
 
-\paragraph{Sensitivity to Population
+\subsubsection{Sensitivity to Population
 Size}\label{sensitivity-to-population-size}
 
 We tested four population size scenarios: 50,000, 100,000, 980,000, and
@@ -2111,7 +2192,6 @@ and MBSU (Moderate) adjustment. Source: Authors' Own Work.}
 
 \centering{
 
-[!h]
 \centering\begingroup\fontsize{8}{10}\selectfont
 
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
@@ -2151,7 +2231,7 @@ Population Size & Outcome & Point Estimate & 95\% CI Lower & 95\% CI Upper & Pre
 
 \end{table}%
 
-\paragraph{Sensitivity to NSUM Method and Adjustment
+\subsubsection{Sensitivity to NSUM Method and Adjustment
 Factors}\label{sensitivity-to-nsum-method-and-adjustment-factors}
 
 The choice of NSUM estimator and adjustment factors had substantial
@@ -2174,7 +2254,6 @@ bootstrap, SS weights, and N=980,000. Source: Authors' Own Work.}
 
 \centering{
 
-[!h]
 \centering\begingroup\fontsize{8}{10}\selectfont
 
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
@@ -2219,7 +2298,7 @@ NSUM Method & Outcome & Point Estimate & 95\% CI Lower & 95\% CI Upper & Prevale
 
 \end{table}%
 
-\paragraph{Summary of Sensitivity
+\subsubsection{Summary of Sensitivity
 Analyses}\label{summary-of-sensitivity-analyses}
 
 Across all 128 parameter combinations tested (4 bootstrap methods × 4
@@ -2240,10 +2319,10 @@ extreme assumptions). This specification provides credible estimates
 while acknowledging uncertainty and avoiding both overly optimistic and
 overly pessimistic scenarios.
 
-\subsection{Appendix C: Bootstrap Estimation for Network Scale-Up Using
-RDS Data}\label{app-3step}
+\section{Appendix C: Bootstrap Estimation for Network Scale-Up Using RDS
+Data}\label{app-3step}
 
-\subsubsection{Introduction}\label{introduction}
+\subsection{Introduction}\label{introduction}
 
 When estimating the size or characteristics of a hidden population using
 the Network Scale-Up Method (NSUM), researchers typically assume a
@@ -2261,16 +2340,16 @@ reflect the sampling design. When data are RDS-based, these weights are
 typically derived from known degree-based estimators such as RDS-II or
 Gile's Successive Sampling (SS) weights.
 
-To address this challenge, we propose a \textbf{three-step bootstrap
-procedure} for NSUM estimation using RDS data. This approach is
-flexible, modular, and applicable across several classes of NSUM
-estimators. It separates the issues of: 1. How to resample an RDS chain
-(Step 1), 2. How to recalculate sample-specific weights (Step 2), and 3.
-How to apply a chosen NSUM estimator (Step 3).
+To address this challenge, we propose a three-step bootstrap procedure
+for NSUM estimation using RDS data. This approach is flexible, modular,
+and applicable across several classes of NSUM estimators. It separates
+the issues of: 1. How to resample an RDS chain (Step 1), 2. How to
+recalculate sample-specific weights (Step 2), and 3. How to apply a
+chosen NSUM estimator (Step 3).
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsubsection{Step 1: Resampling the RDS
+\subsection{Step 1: Resampling the RDS
 Sample}\label{step-1-resampling-the-rds-sample}
 
 We begin by resampling from the observed RDS sample in a way that mimics
@@ -2280,34 +2359,35 @@ the original recruitment structure. Let the original sample be: \[
 self-reported degree for respondent \(i\), and let the recruitment tree
 structure be encoded via seed/recruiter IDs.
 
-\paragraph{Options for RDS Resampling}\label{options-for-rds-resampling}
+\subsubsection{Options for RDS
+Resampling}\label{options-for-rds-resampling}
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Tree Bootstrap}: Sample entire recruitment trees (originating
-  from seeds) with replacement. This respects the hierarchical
-  recruitment structure and allows design effect estimation
+  Tree Bootstrap: Sample entire recruitment trees (originating from
+  seeds) with replacement. This respects the hierarchical recruitment
+  structure and allows design effect estimation
   \autocite{salg06-variance}.
 \item
-  \textbf{Successive Sampling Bootstrap (SSB)}: Sample with replacement
-  according to inclusion probabilities derived from the SS model
+  Successive Sampling Bootstrap (SSB): Sample with replacement according
+  to inclusion probabilities derived from the SS model
   (\textcite{gile11-improv}).
 \item
-  \textbf{Neighborhood Bootstrap}: Use ego-network topology to preserve
+  Neighborhood Bootstrap: Use ego-network topology to preserve
   recruitment ties and neighborhood structure
   (\textcite{yauc22-neighboor}).
 \item
-  \textbf{Chain Bootstrap:} Each bootstrap replicate samples chains or
-  subchains with replacement, preserving recruiter--recruitee links.
-  This is implemented in \texttt{surveybootstrap::rds.boot.draw.chain()}
-  and used in studies like \textcite{weir12-comparison}.
+  Chain Bootstrap: Each bootstrap replicate samples chains or subchains
+  with replacement, preserving recruiter--recruitee links. This is
+  implemented in \texttt{surveybootstrap::rds.boot.draw.chain()} and
+  used in studies like \textcite{weir12-comparison}.
 \end{itemize}
 
 Let \(\mathcal{S}^{(b)}\) denote the sample drawn in bootstrap replicate
 \(b\).
 
-\paragraph{Resampling Procedure}\label{resampling-procedure}
+\subsubsection{Resampling Procedure}\label{resampling-procedure}
 
 We selected our first wave of par5cipants nonrandomly by convenience
 sampling. Mobile phone numbers were used both to iden5fy seed
@@ -2384,31 +2464,31 @@ Moodie. 2022. Neighboot: Neighborhood Bootstrap Method for RDS (version
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsubsection{Step 2: Recalculating
+\subsection{Step 2: Recalculating
 Weights}\label{step-2-recalculating-weights}
 
 NSUM estimators require inclusion weights \(\pi_i\) or their inverses
 \(w_i = 1 / \pi_i\). Because bootstrap samples differ in composition and
-recruitment pattern, these weights must be \textbf{recomputed for each
-replicate}.
+recruitment pattern, these weights must be recomputed for each
+replicate.
 
-\paragraph{General Structure}\label{general-structure}
+\subsubsection{General Structure}\label{general-structure}
 
 For each replicate \(b\), construct: - \(\mathcal{S}^{(b)}\): resampled
 respondent IDs - \(d_i^{(b)}\): degree reports in replicate -
 \(\pi_i^{(b)}\): estimated inclusion probabilities
 
-\paragraph{Weighting Options}\label{weighting-options}
+\subsubsection{Weighting Options}\label{weighting-options}
 
 \begin{itemize}
 \item
-  \textbf{RDS-II Weights} (\textcite{volz08-simple}): \[
+  RDS-II Weights (\textcite{volz08-simple}): \[
   w_i^{(b)} \propto \frac{1}{d_i^{(b)}}
   \]
 \item
-  \textbf{SS Weights} (\textcite{gile11-improv}): Incorporate sampling
-  fraction and frame size \(N_F\). Computed numerically via successive
-  sampling approximation.
+  SS Weights (\textcite{gile11-improv}): Incorporate sampling fraction
+  and frame size \(N_F\). Computed numerically via successive sampling
+  approximation.
 \end{itemize}
 
 Let \(\mathbf{X}_i\) denote covariates (e.g.~traits, degree, indicator
@@ -2417,17 +2497,16 @@ data and passed to Step 3.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsubsection{Step 3: NSUM Estimation}\label{step-3-nsum-estimation}
+\subsection{Step 3: NSUM Estimation}\label{step-3-nsum-estimation}
 
-\paragraph{Step 3: NSUM Estimation on Resampled and Reweighted
+\subsubsection{Step 3: NSUM Estimation on Resampled and Reweighted
 Data}\label{step-3-nsum-estimation-on-resampled-and-reweighted-data}
 
 Given a bootstrap sample \(\mathcal{S}^{(b)}\), we estimate the size of
 the hidden population \(N_H\) using one of several NSUM estimators. All
 estimators rely on weighted sums of out-reports and degree.
 
-\subparagraph{(a) Generalized NSUM
-(GNSUM)}\label{a-generalized-nsum-gnsum}
+\paragraph{(a) Generalized NSUM (GNSUM)}\label{a-generalized-nsum-gnsum}
 
 As described in \textcite{feeh16-generaling}, GNSUM estimates:
 
@@ -2444,14 +2523,13 @@ Where:
   \(N_F\): size of the frame population (e.g.~domestic workers in UK).
 \end{itemize}
 
-\subparagraph{(b) GNSUM with Symmetric Visibility (for Hidden Members in
+\paragraph{(b) GNSUM with Symmetric Visibility (for Hidden Members in
 RDS)}\label{b-gnsum-with-symmetric-visibility-for-hidden-members-in-rds}
 
 In your context, some RDS respondents are ex post identified as members
-of the hidden population. Under the \textbf{symmetric visibility
-assumption}, if \(i \in H\), we assume the probability that \(i\) knows
-\(j\) is the same as \(j\) knows \(i\). This allows \textbf{in-reports}
-to be incorporated.
+of the hidden population. Under the symmetric visibility assumption, if
+\(i \in H\), we assume the probability that \(i\) knows \(j\) is the
+same as \(j\) knows \(i\). This allows in-reports to be incorporated.
 
 Let:
 
@@ -2467,7 +2545,7 @@ Then the estimator becomes:
 
 \[\hat{N}_H^{(b)} = \left( \frac{\sum_{i} \frac{y_{i,H} + I_H(i) \cdot y_{i}^{\text{in}}}{\pi_i^{(b)}}}{\sum_{i} \frac{d_i}{\pi_i^{(b)}}} \right) \cdot N_F\]
 
-\subparagraph{(c) Modified Basic Scale-Up
+\paragraph{(c) Modified Basic Scale-Up
 (MBSU)}\label{c-modified-basic-scale-up-mbsu}
 
 This estimator adjusts for key reporting biases via three correction
@@ -2479,29 +2557,29 @@ Where:
 
 \begin{itemize}
 \item
-  \(\delta\): \textbf{Transmission bias} (probability respondent is
-  aware of alter's status),
+  \(\delta\): Transmission bias (probability respondent is aware of
+  alter's status),
 \item
-  \(\tau\): \textbf{Barrier effect} (social mixing between hidden and
-  frame population),
+  \(\tau\): Barrier effect (social mixing between hidden and frame
+  population),
 \item
-  \(\rho\): \textbf{Popularity bias} (relative visibility of hidden
-  population members).
+  \(\rho\): Popularity bias (relative visibility of hidden population
+  members).
 \end{itemize}
 
 These values can be:
 
 \begin{itemize}
 \item
-  Estimated using \textbf{known subpopulations} (e.g., alter groups with
-  known size),
+  Estimated using known subpopulations (e.g., alter groups with known
+  size),
 \item
-  Set by expert \textbf{elicitation},
+  Set by expert elicitation,
 \item
-  Scanned in \textbf{sensitivity analysis}.
+  Scanned in sensitivity analysis.
 \end{itemize}
 
-\subparagraph{(d) Model-Based NSUM}\label{d-model-based-nsum}
+\paragraph{(d) Model-Based NSUM}\label{d-model-based-nsum}
 
 Bayesian implementations (e.g. \textcite{malt15-estimating}) model:
 
@@ -2516,8 +2594,8 @@ Bayesian implementations (e.g. \textcite{malt15-estimating}) model:
   Hidden population size.
 \end{itemize}
 
-They yield a \textbf{posterior distribution} over \(N_H\), and
-uncertainty is embedded within the model.
+They yield a posterior distribution over \(N_H\), and uncertainty is
+embedded within the model.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -2529,7 +2607,7 @@ respondent \(i\) has in hidden population \(H\).
 Let \(N_F\) denote the frame population size (assumed known), and let
 \(d_i\) be the degree of respondent \(i\).
 
-\paragraph{Generalized NSUM Estimator
+\subsubsection{Generalized NSUM Estimator
 (GNSUM)}\label{generalized-nsum-estimator-gnsum}
 
 The weighted GNSUM estimator is:
@@ -2542,13 +2620,13 @@ This estimator assumes proportional mixing and equal visibility.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\paragraph{Symmetric Visibility
+\subsubsection{Symmetric Visibility
 Variant}\label{symmetric-visibility-variant}
 
 In our setting, some RDS respondents can be identified \emph{ex post} as
 members of the hidden population \(H\). Denote this set
-\(\mathcal{H} \subseteq \mathcal{S}\). Under the assumption of
-\textbf{symmetric visibility}, we define:
+\(\mathcal{H} \subseteq \mathcal{S}\). Under the assumption of symmetric
+visibility, we define:
 
 \[
 \hat{v}_{H} = \frac{1}{|\mathcal{H}|} \sum_{j \in \mathcal{H}} \frac{y_{j,F}}{d_j}
@@ -2558,7 +2636,7 @@ That is, the average proportion of alters known by members of \(H\) who
 are in the frame population \(F\). Incorporating this, the symmetric
 visibility GNSUM becomes:
 
-\paragraph{Step 4: Aggregating Bootstrap
+\subsubsection{Step 4: Aggregating Bootstrap
 Estimates}\label{step-4-aggregating-bootstrap-estimates}
 
 After \(B\) replicates:
@@ -2569,35 +2647,39 @@ We compute:
 
 \begin{itemize}
 \item
-  \textbf{Point estimate}:
-  \(\bar{N}_H = \frac{1}{B} \sum_b \hat{N}_H^{(b)}\)
+  Point estimate: \(\bar{N}_H = \frac{1}{B} \sum_b \hat{N}_H^{(b)}\)
 \item
-  \textbf{Standard error}: sample SD
+  Standard error: sample SD
 \item
-  \textbf{95\% CI}: empirical percentiles (e.g., 2.5\%, 97.5\%)
+  95\% CI: empirical percentiles (e.g., 2.5\%, 97.5\%)
 \end{itemize}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\paragraph{Step 2: Recalculate Inclusion
+\subsubsection{Step 2: Recalculate Inclusion
 Probabilities}\label{step-2-recalculate-inclusion-probabilities}
 
-RDS produces samples with \textbf{unknown and unequal probabilities of
-inclusion}, which must be corrected when used in NSUM estimation. This
-is achieved by estimating the probability \(\pi_i^{(b)}\) that each
+RDS produces samples with unknown and unequal probabilities of
+inclusion, which must be corrected when used in NSUM estimation. This is
+achieved by estimating the probability \(\pi_i^{(b)}\) that each
 individual \(i\) in bootstrap replicate \(b\) is included in the sample,
 conditional on their degree and position in the recruitment tree.
 
-These probabilities are used to generate \textbf{sampling weights}
+These probabilities are used to generate sampling weights
 \(w_i^{(b)} = 1/\pi_i^{(b)}\), which are passed into NSUM estimators.
 
-\subparagraph{Estimation Methods}\label{estimation-methods-1}
+\paragraph{Estimation Methods}\label{estimation-methods-1}
 
-\textbf{(a) RDS-II (Volz-Heckathorn) Weights}\\
-Assumes the probability of selection is proportional to the respondent's
-degree:
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  RDS-II (Volz-Heckathorn) Weights\\
+  Assumes the probability of selection is proportional to the
+  respondent's degree:
+\end{enumerate}
 
 \[\pi_i \propto d_i \quad \Rightarrow \quad w_i = \frac{1}{d_i}\]
 
@@ -2605,11 +2687,17 @@ These weights are normalized post hoc. This method is simple but does
 not account for homophily or finite population correction
 (\textcite{volz08-rds}).
 
-\textbf{(b) Gile's Successive Sampling (SS) Weights}\\
-This method assumes RDS approximates successive sampling without
-replacement. The inclusion probabilities are computed by simulating from
-a known or assumed population size \(N\). This method is implemented in
-\texttt{RDS::gile.ss.weights()} and adjusts for:
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Gile's Successive Sampling (SS) Weights\\
+  This method assumes RDS approximates successive sampling without
+  replacement. The inclusion probabilities are computed by simulating
+  from a known or assumed population size \(N\). This method is
+  implemented in \texttt{RDS::gile.ss.weights()} and adjusts for:
+\end{enumerate}
 
 \begin{itemize}
 \item
@@ -2620,12 +2708,18 @@ a known or assumed population size \(N\). This method is implemented in
   Sample depletion over waves.
 \end{itemize}
 
-\textbf{(c) User-Defined or Model-Based Weights}\\
-Researchers may define weights using alternative models or Bayesian
-simulations. This includes post-stratification or fitting full
-generative models of the RDS process.
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  User-Defined or Model-Based Weights\\
+  Researchers may define weights using alternative models or Bayesian
+  simulations. This includes post-stratification or fitting full
+  generative models of the RDS process.
+\end{enumerate}
 
-\subparagraph{Software Example (R)}\label{software-example-r}
+\paragraph{Software Example (R)}\label{software-example-r}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2643,7 +2737,7 @@ The output is a new dataset with respondent traits, degrees, and updated
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\paragraph{5. References}\label{references-1}
+\subsubsection{5. References}\label{references-1}
 
 \begin{itemize}
 \item

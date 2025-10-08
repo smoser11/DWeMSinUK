@@ -1,0 +1,435 @@
+---
+title: "Quantifying Hidden Exploitation: Dual-Method Prevalence Estimates of Modern Slavery Risk Among UK Domestic Workers^[Authors' names are listed in alphabetical order.]"
+author:
+  - name: Caroline Emberson
+    affiliation: UoN
+  - name: Scott Moser
+    affiliation: UoN
+date: today
+date-format: "DD, MMMM YYYY"
+abstract: |
+  Purpose
+  
+  The purpose of this article is to demonstrate a quantitative approach to the construction of a risk index of labour exploitation and alternative estimators of the prevalence of exploitation.
+  
+  Design/ Methodology/ Approach
+  
+  Using data from a survey of domestic workers based in the United Kingdom (UK), we use statistical techniques, including Respondent Driven Sampling (RDS) methods RDS-I and RDS-II and Network Scale Up (NSUM) methods, to produce an index of labour exploitation risk and estimators of the prevalence of labour exploitation.
+  
+  Findings
+  
+  The labour exploitation risk index shows a reverse correlation between the increasing seriousness of exploitation and the number of exploitation cases reported.
+  The various prevalence estimators examined show significant differences in population level exploitation.
+  
+  Research implications/ limitations
+  
+  Further research into the application of different quantitative statistical estimators of the prevalence of labour exploitation is urgently required. 
+  
+  Practical implications
+  
+  Robust estimators are necessary if policy makers are to make informed choices about the appropriate allocation of scarce resources to help to eradicate severe forms of labour exploitation and labour abuse.
+  
+  Social implications
+
+    Even by more conservative estimates, thousands of domestic workers in the UK are subject to labour exploitation. Urgent policy attention is needed if structural vulnerabilities are to be removed.
+
+  Originality
+
+  We believe this paper is the first to compare the use of RDS and NSUM methods in the quantitative estimation of the prevalence of labour exploitation and to construct a quantitative, composite index of labour exploitation risk. 
+
+  
+bibliography: 
+  - references.bib
+  - MyLibrary2025-08-25.bib
+
+fontsize: 12pt
+geometry: margin=1in
+subparagraph: true
+format:
+  pdf:
+    pdf-engine: xelatex
+    cite-method: biblatex
+    keep-tex: true
+    biblatexoptions:
+      - backend=biber
+      - natbib = true
+      - style=apa
+      - sorting=nyt
+      - maxcitenames=2
+    include-in-header:
+      text: |
+        % Do NOT load biblatex here.
+        \DeclareLanguageMapping{english}{english-apa}
+        \usepackage{amsthm}
+        \usepackage{amsmath}
+        \usepackage{amsfonts}
+        \usepackage{amssymb}
+        \usepackage{float}
+        \usepackage{caption}
+        \usepackage{subcaption}
+        \usepackage{stmaryrd}
+        \usepackage{pdflscape}  % ADD THIS for landscape pages
+        \theoremstyle{plain}
+        \newtheorem{theorem}{Theorem}[section]
+        \newtheorem{proposition}[theorem]{Proposition}
+        \theoremstyle{definition}
+        \newtheorem{definition}{Definition}
+        \newtheorem{corollary}{Corollary}
+        \newtheorem{example}{Example}
+        \renewenvironment{proof}
+           {\par\noindent\textbf{Proof.}\ }
+           {\hfill$\blacksquare$\par}
+        \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+    number-sections: true
+    toc: true
+    toc-depth: 3
+    colorlinks: true
+    linkcolor: black
+    citecolor: RoyalBlue
+    urlcolor: BrickRed
+    link-citations: true
+    fig-pos: "H"
+    fig-width: 6.5    # Good default
+    fig-height: 4     # Good default
+    df-print: kable
+    pandoc:
+      from: markdown+tex_math_dollars+tex_math_single_backslash
+  docx:
+    number-sections: true
+    highlight-style: github
+    fig-width: 6      # CHANGE to 6 for DOCX
+    fig-height: 4
+    fig-dpi: 300      # ADD this
+    df-print: kable   # ADD this
+  html:
+    code-fold: true
+    toc: true
+    toc-depth: 3
+    theme: cosmo
+    fig-width: 10
+    fig-height: 6
+editor:
+  markdown:
+    wrap: sentence
+execute:
+  warning: false
+  message: false
+  eval: true
+---
+
+```{r setup, include=FALSE}
+getwd()
+## Ensure fs is available
+if (!requireNamespace("fs", quietly = TRUE)) install.packages("fs")
+
+# Set PDF-friendly graphics options
+if (knitr::is_latex_output()) {
+  # Set device to cairo_pdf for better font handling
+  knitr::opts_chunk$set(
+    dev = "cairo_pdf",
+    dev.args = list(family = "", fallback_resolution = 300),
+    fig.retina = 1
+  )
+
+  # Set ggplot2 default theme with safe fonts
+  if (requireNamespace("ggplot2", quietly = TRUE)) {
+    ggplot2::theme_set(ggplot2::theme_minimal(base_family = ""))
+  }
+} else {
+  # For HTML output
+  knitr::opts_chunk$set(
+    dev = "png",
+    dpi = 300
+  )
+}
+
+## Define paths
+home_dir <- Sys.getenv("HOME")
+bib_source <- fs::path(home_dir, "Dropbox", "Bibliog", "scottAll5-BBL-URLdoi2024.bib")
+bib_target <- "references.bib"
+
+## Only copy if target doesn't exist or source is newer
+if (!fs::file_exists(bib_target) ||
+    fs::file_info(bib_source)$modification_time > fs::file_info(bib_target)$modification_time) {
+  fs::file_copy(bib_source, bib_target, overwrite = TRUE)
+  message("- Updated bibliography file")
+} else {
+  message("- Bibliography file is up to date")
+}
+
+## Rest of your setup...
+css_dir <- fs::path(home_dir, "Dropbox", "LaTeX", "Stationary", "Rmakrdown")
+css_files <- c("columns.css", "seminar_v6.css", "Qmd_noPublished.css")
+
+fs::dir_create("css")
+for (file in css_files) {
+  source <- fs::path(css_dir, file)
+  target <- fs::path("css", file)
+  if (!fs::file_exists(target) ||
+      fs::file_info(source)$modification_time > fs::file_info(target)$modification_time) {
+    fs::file_copy(source, target, overwrite = TRUE)
+    message(paste("- Updated", file))
+  }
+}
+
+## Download CSL file if missing
+if (!fs::file_exists("apa.csl")) {
+  download.file(
+    "https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl",
+    "apa.csl"
+  )
+  message("- Downloaded APA citation style")
+}
+
+message("Setup complete!")
+
+library(here)
+load(here("data", "processed", "prepared_data.RData"))
+prepared_data <- dd
+```
+
+<!-- NOTES: (1)custom placement of Endnotes only works for `html_document(2)` -- not pdf_document   (2) boxes added -> uses `\usepackage{framed}` for LaTeX-ing -- see https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html  (3)    -->
+
+<!-- As discussed in the [this footnote](#footnote1)  the results are significant.[^11] -->
+
+<!-- [^11]: <a name="footnote1"></a>Your detailed footnote text goes here. -->
+
+<!-- https://tex.stackexchange.com/questions/452552/algorithm-pseudocode-in-markdown -->
+
+\newpage
+
+
+<!-- ```          -->
+<!-- * Why study labour exploitation among UK domestic workers? -->
+
+<!-- * Gap in existing research. -->
+
+<!-- * Contributions: (1) Conceptualisation of exploitation (binary vs. continuous, risk index), (2) Novel use of dual methods (RDS & NSUM), (3) Policy relevance. -->
+<!-- ``` -->
+
+```{=latex}
+
+\section{Introduction}\label{introduction}
+
+Labour exploitation has been defined as `work situations that deviate 
+significantly from standard working conditions as defined by legislation
+or other binding legal regulations, concerning in particular
+remuneration, working hours, leave entitlements, health and safety
+standards and decent treatment'\autocite[10]{european_union_for_fundamental_rights_severe_2015}. In the operations and supply chain management literature,
+interest in businesses' respect for these kinds of employee labour rights began with
+studies focused upon labour rights transgressions related to risk
+reduction and risk communication and how to improve
+employees' health and safety \autocite{chinander_aligning_2001,wolf_operationalizing_2001}. More recently, 
+serious labour rights abuses have come to the fore with studies
+examining the challenges of severe labour exploitation under the umbrella term `modern slavery' \autocite{gold_modern_2015,new_modern_2015,benstead_horizontal_2018,stevenson_modern_2018}. While this literature
+offers important insights into severe forms of labour exploitation, particularly
+in global supply chains, this and the wider social sustainability literature has
+been criticised for its de-humanised approach to the understanding
+of workers and their working conditions \autocite{soundararajan_humanizing_2021}. While at least one current
+project seeks to examine the phenomenon of worker voice in factory
+settings  \autocite{leverhulme_trust_research_2022}, there appears to be little attention paid to severe forms of labour exploitation from the workers' perspective in the private sphere. Nowhere are the realities of individual workers' experiences of employer exploitation brought into sharper relief than in the setting of domestic
+work in private households.
+
+The authors of the Global Slavery Index estimate that there are
+seventy-six million people employed in domestic work worldwide
+\autocite{international_labour_organization_global_2022}).
+According to \textcite{bonnet_domestic_2022}, eighty percent of this domestic work is unregulated and informal. Labour
+exploitation has been identified as an extensive global problem within
+the sector, with domestic work identified as one of five private sector
+groupings which contribute the most to forced labour. Defined in the ILO
+Forced Labour Convention, 1930 No.29, forced or compulsory labour is
+`all work or service which is exacted from a person under the threat of
+a penalty and for which the person has not offered himself or herself
+voluntarily' \autocite{ilo_what_2024}. Seventy-six
+percent of domestic workers are women, and these workers represent four
+percent of the total female workforce \autocite{international_labour_organization_global_2022}. Indeed, women in forced labour are much more likely to be in domestic
+work than in any other occupation \autocite{international_labour_organization_global_2022}.
+The ILO suggest that female domestic workers may be coerced through
+non-payment of wages; abuse of vulnerability; subjected to physical and
+sexual violence or experience threats against their family members. Such
+severe forms of labour exploitation may be present alongside other,
+perhaps less severe but equally illegal, practices which constitute
+various forms of labour abuse. The criminalisation of both labour
+exploitation and abuse in a domestic setting has developed in recent
+times, with legislation enacted in the United Kingdom (UK), Europe,
+Australia and Norway to criminalise such severe exploitation under the
+term `modern slavery'. However, even where modern slavery laws are in
+place, reliance on traditional, inspection-led, approaches to detection
+designed primarily to ensure labour rights compliance within communal
+workplaces such as factories mean that the number of reported cases of
+labour exploitation in private dwellings may well severely underestimate
+actual exploitation levels. Though an exploration of labour exploitation within private residences, our research seeks to redress the paucity of rigorous quantitative research in the modern slavery field.  Specifically, this article aims to contribute to a more
+nuanced understanding of how quantitative methodologies may be deployed to
+improve understanding of the realities of workers' conditions by
+demonstrating the use of a statistically robust estimation of the nature
+and proportion of labour exploitation and abuse among domestic workers in the UK. This setting was chosen due to long-standing national
+legislation criminalising modern slavery introduced to the UK in 2015.
+Despite, or perhaps because of this legislation, in recent years the
+number of potential victims entering the UK's National Referral
+Mechanism (NRM), a scheme which provides government support for those
+suspected to be modern slavery survivors, has continued to increase.
+Nineteen thousand, one hundred and twenty-five potential victims were
+recorded in 2024: the highest annual figure since the NRM began
+\autocite{home_office_modern_2025}. In 2024, for the
+first time the number of cases of potential modern slavery among females
+handled by the charity Unseen, who run the UK's modern slavery helpline,
+were more prevalent than those among men 
+(\cite{carter_women_2025}). Despite these worrying
+headline statistics, and the persistence of specific concerns about high
+levels of exploitation among domestic workers in the grey literature
+\autocite{kalayaan_new_2008, mantouvalou_modern_2016, latin_american_womens_rights_service_behind_2023}, to our knowledge no-one has yet estimated the nature and extent of labour exploitation and abuse that may exist among domestic workers in the UK.
+
+In contrast to overseas factory workers in globally dispersed, product,
+supply chains, many service workers engaged in domestic work have
+migrated to work in the UK. These transnational workers enter on
+restricted visas where their employment---and their right to remain in
+the country---is tied to their continuing employment. It is now ten
+years since the UK's Modern Slavery Act was enacted. During its passage
+through parliament, those advocating for the rights of domestic workers
+were successful in expanding the final category boundaries of the
+legislation to include, in Section 53, the specific definition of
+(overseas) domestic workers as modern slavery victims 
+\autocite{caruana_boundaries_2025}. These transnational
+migrants are at particular risk of exploitation due to regulatory visa
+restrictions and intersecting structural issues related to their gender,
+the relative isolation of domestic work and a lack of supportive social
+networks. This can mean that they fall out of legal migratory status.
+Due to the social stigma attached to such illegal working, transnational
+workers remaining in the UK without the right to work may be considered
+a hidden, hard-to-reach, population. Extracting a sample of domestic
+workers which includes this group raises difficulties when trying to
+employ the normal statistical sampling methods considered necessary for
+robust prevalence estimation. Perhaps due to these sampling
+difficulties, we know relatively little about the nature of labour
+exploitation among this particularly at-risk group of workers.
+Fortunately, there has been significant interest in the development of
+alternative methods for prevalence estimation which include such
+hard-to-reach groups, with many scholars advocating and developing the
+use of respondent-driven sampling (RDS) techniques to support
+statistically robust estimators.
+
+In this paper, we make two specific contributions to the operations and
+supply chain management literature. First, we demonstrate the use of RDS
+coupled with Network Scale-up Methods (N-SUM) to reach and sample
+respondents' views of their working conditions among these,
+predominantly female, transnational migrant domestic workers. We use the
+data we obtain from these respondents to show how quantitative survey data can be
+used to estimate the proportion of workers experiencing labour
+exploitation. Second, we begin to capture the nature and extent of
+modern slavery as voiced by domestic workers, thus, we
+believe, expanding the nascent literature on worker voice which has, in
+the main, focused primarily on factory workers
+\autocite{stephens_theorising_2024}. These contributions
+not only extend our understanding of the risks of labour exploitation
+and abuse among service workers engaged in domestic settings but also
+show how it is possible to shed light on the severity of the
+individuals' experience of exploitation through the construction of a
+novel risk index. The remainder of this paper is structured as follows.
+our study in more detail, highlighting what is already known about the
+current population of domestic workers in the UK and the conditions in
+which they work. Next, we describe our research methods. We review the
+development of the respondent-driven sampling (RDS) techniques we used
+and explain why this sampling method is suitable for our study. We then
+describe our survey methods, including how we designed our survey
+instrument, contacted our sample seeds and analysed our data. We then
+present and discuss our findings, detailing the proportional estimate
+that we calculated and the risk index we constructed. In our discussion,
+we expand upon the implications of our findings for government policy,
+enforcement practices and further research, including how these methods
+may be used in future studies of labour exploitation in other sectoral
+and geographic contexts. The limitations of our study are outlined,
+before, finally, we conclude our article.
+```
+
+### Conceptualising Labour Exploitation and the Degree of Risk
+
+-   Binary vs. continuous definitions.
+
+-   Risk index construction and theoretical justification.
+
+Modern slavery has been criticised by some for its overly extensive scope: encapsulating a broad range of divergent sub-categories of exploitation (@oconnell_davidson_margins_2015; @gutierrez-huerter_o_change_2023).
+For this reason, we used the International Labour Organization’s (@ILO11-indicators) ‘Indicators of Forced Labour’ to identify the potential for severe labour exploitation and as a basis for the quantification of our labour exploitation and abuse risk index.
+The ILO identify eleven indicators designed to help understand how forced labour arises and how it affects victims.
+These indicators include: abuse of vulnerability; deception; restriction of movement; isolation; physical and sexual violence; intimidation and threats; retention of identity documents; withholding of wages; debt bondage; abusive working and living conditions and excessive overtime.
+According to the ILO, the presence of a single indicator in any given situation may in some cases imply the existence of forced labour.
+However, it also suggests that in other cases it may be necessary to look for several indications which, taken together, may point to a case of forced labour.
+We seek to refine this statement through the construction of a composite index by which means a degree of risk related to the likelihood of a domestic worker experiencing this most severe form of exploitation may be distinguished from the likely occurrence of less severe, though similarly illegal, forms of labour abuse.
+
+
+## Evaluating the Degree of Risk
+
+The study of risk management has a long tradition in operations and supply chain management.
+Initially, the risks under consideration were primarily related to ensuring continuity of the supply of goods and services (see for example, @juttner_supply_2003).
+Beginning with @anderson_critical_2006 and @anderson_sustainability_2009, however, a literature stream of sustainability-related supply chain risk management developed related specifically to the risks associated with the environment and social justice.
+A normative consensus related to the main stages of supply chain risk management has developed in the literature, with a five-stage sequential model typically presented.
+There have also been empirical studies of risk management within various industrial supply chains in the United States and India (@tarei_hybrid_2018; @dellana_scale_2021), including the quantification of a risk index for the petroleum supply chain (@tarei_hybrid_2018).
+Yet, while these authors recognize the need for responsible management and its effect on societal values, in line with other literature in the field they view risk from the perspective of the corporate supply chain rather than examining the risk of harm to the worker.
+
+In our study, we conceptualise the risk of labour exploitation from the workers’ perspective.
+We conceive severe forms of labour exploitation such as forced labour as one end of a spectrum ranging from illegal employment practices that constitute labour abuse, such as wage payments below legal minimum wage levels and health and safety violations, through to the likelihood of criminal exploitation recognized in the UK as modern slavery.
+Our assessment of this personal risk permits a degree of risk to be assigned to various clusters of forced labour indicators with the more indicators present, the stronger the likelihood that the working conditions may be considered exploitative.
+Our approach, therefore, includes, but goes beyond, assessing the likelihood of forced labour by simply quantifying the proportion of survivors entering the UK’s National Referral Mechanism (NRM): a government system for survivor support set up to identify whether there are positive grounds for the identification of Modern Slavery.
+In our method, an NRM referral is used as the strongest indicator of modern slavery risk, with lesser risks assessed according to the degree to which cumulative indicators of forced labour are reported.
+
+### Case Setting: Labour Exploitation Risk Among Transnational Migrant Domestic Workers In The UK
+
+Domestic work forms part of a broader industrial category of Personal and Household Service work (PHS).
+Work in this category includes those employed in ‘social work activities without accommodation’ and ‘activities of households as employers of domestic personnel’ (@european_commission_staff_2012).
+In 2017, an estimated 980,000 people were engaged in PHS work in the UK (@manoudi_analysis_2018).
+@manoudi_analysis_2018 highlight that the PHS sector is dominated by women and migrants, with many undeclared foreign workers.
+Detailed statistics related to the country of origin of domestic workers migrating to work in PHS in the UK are difficult to isolate before 2019.
+Since that time, annual migration has fluctuated – falling sharply in 2021 due in part to the COVID-19 pandemic, before later rising again above pre-pandemic levels.
+In the year to December 2022, the UK Home Office reported that it had issued 18,533 Overseas Domestic Worker visas (@home_office_why_2023).
+These domestic workers came from various countries in South America and Asia, including many from the Philippines.
+
+In 2023, @strauss_britain_2023 reported a big shift in the source countries of migrants arriving in the UK on the Overseas Domestic Worker and other types of worker visas.
+Transnational domestic workers from the Philippines and India accounted for the single largest number of applications granted (10,186 and 3,858 visas respectively), followed by smaller, but still significant, numbers of workers arriving from Bangladesh (465), Nigeria (446), Sri Lanka (444), Egypt (422), and Ethiopia (285).
+In the same period, smaller numbers of visa applications to work as a domestic worker in the UK were also accepted from workers from other source countries including, but not limited to, the Sudan, Nepal, Ghana, Kenya, Lebanon, Eritrea, Iran, Turkey, Yemen, Malaysia, Thailand, and Morocco.
+This post-Brexit increase in the diversity of source countries from which transnational workers are drawn makes a more detailed analysis of the risk of labour exploitation in the sector both timely and more urgent.
+
+There is a long history of reports of exploitation in the domestic work sector in the UK.
+In 2008, the civil society organisation Kalayaan, which was formed to campaign for the formal recognition of migrant domestic workers’ rights in the UK, reported on the impact of proposed changes to the UK immigration system on migrant domestic workers (@kalayaan_new_2008).
+Their report highlights government recognition of documented and unacceptable levels of abuse and exploitation among domestic workers in the UK as early as 1996.
+At this stage, new policies, including the development of a specialised visa allowing domestic workers to change employer during their stay were introduced.
+However, in 2012, these visa conditions were modified, tying domestic workers to a single employer and restricting the length of time that they are permitted to remain in the country to a period of six months (@gower_calls_2016).
+Overseas domestic worker visa holders are now, again, permitted to change employers, but not to apply to renew their six-month long visa unless they receive a positive ‘Conclusive Grounds’ decision related to exploitation considered to be modern slavery through the UK’s National Referral Mechanism (NRM) (@romero_blueprint_2025).
+
+These reports highlight the underlying reasons for migrant domestic workers’ vulnerability, including workers’ relative desperation for work; their lack of social ties; unfamiliarity with English language and culture; long working hours; lack of knowledge of their legal rights; a lack of oversight of the private home as a workplace; their work forming part of the informal economy; their reliance on their employer for permission to work in the UK; and their lack of recourse to public funds.
+As a result, migrant domestic workers are vulnerable to abuse ranging from minor breaches of employment and health and safety law, to physical and sexual violence, slavery, forced labour and trafficking.
+
+That these conditions may persist is evidenced by a report from another civil society organisation, the Latin American Women’s Rights Service, which describes the results from twelve in-depth interviews with Latin American domestic workers in the UK.
+This report depicts high levels of isolation, exploitation and abuse including a failure by employers to provide written contracts or payslips; breaches of verbal agreements; a requirement to perform different tasks from those indicated during recruitment; increasing working hours with little or no time off; excessive work days; a lack of paid holiday; many domestic workers not registered with a GP; sexual harassment in the workplace; verbal or physical abuse; employer surveillance; a lack of opportunity to change working conditions; isolation and fear of seeking help; and high reported levels of trafficking for labour exploitation (@latin_american_womens_rights_service_behind_2023).
+
+Against this backdrop, we used respondent driven sampling (RDS) as a sampling technique to recruit and survey domestic workers in the UK about the working conditions they were experiencing to estimate the nature and scale of abuse and exploitation based upon reports of their conditions by domestic workers themselves.
+
+
+## Methods and Estimation Strategy
+
+### Study Design and Sampling
+(Describe RDS recruitment, seed selection, incentives, and verification.)
+
+### Survey Instrument and Indicators
+(Explain binary and continuous measures of exploitation and how risk index is constructed.)
+
+### Sample Characteristics
+(Summarize subgroup composition, demographics, employment types.)
+
+### Ethical Approval and AI Use
+(The data collection that underpins this analysis was given favourable ethical approval by the lead author’s School Research Ethics Committee in January 2023. 
+Large Language Models (LLMs) were used for brainstorming organisation and editing of text. Code co-pilot (Claude Code) was used to assist with debugging R scripts employed in the statistical analysis. 
+No generative models were used to generate or simulate data.)
+
+### Estimation Framework
+
+#### RDS Estimation
+RDS estimators use ego-based information to correct for unequal inclusion probabilities. Each participant reports the size of their network of other domestic workers, and estimators such as RDS-II and Gile’s successive sampling (SS) estimator (Gile 2011; Gile & Handcock 2010) use this degree information and recruitment wave to weight observations. For continuous traits, model-assisted inference approaches (Gile 2011; Gile, Beaudry & Handcock 2018) are applied to estimate means and distributions of continuous outcomes.
+
+#### NSUM Estimation
+NSUM relies on alter-based information, where respondents report how many people they know who meet given criteria (e.g., “How many domestic workers do you know who have experienced exploitation?”). These alter counts are used to infer prevalence across the population. Unlike RDS, which corrects for recruitment bias, NSUM depends on the accuracy of respondents’ knowledge about their social contacts.
+
+#### Comparative Rationale
+RDS and NSUM rely on distinct uses of network data: RDS focuses on “who recruited whom” and degree-based weighting, while NSUM relies on “how many alters fit a criterion.” Applying both methods to the same dataset allows triangulation across these inferential logics.
+
+#### Bootstrap and Sensitivity
+To quantify uncertainty in NSUM estimates, we implemented a three-step bootstrap procedure that resamples respondents, alters, and exploitation classifications simultaneously, producing robust confidence intervals (see Appendix C). Sensitivity analyses and model comparisons are discussed in the Results section.
+
