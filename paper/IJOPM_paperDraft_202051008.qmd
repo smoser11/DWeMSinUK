@@ -1309,86 +1309,61 @@ if (exists("frequentist_df")) {
 
 #### NSUM Estimates
 
+Using the Modified Basic Scale-Up (MBSU) estimator with Sequential Sampling weights and an estimated UK domestic worker population of 980,000, we find substantial variation in prevalence estimates depending on the adjustment factors applied (@tbl-nsum-main).
+
+The **unadjusted MBSU estimates** (baseline scenario with no adjustment for visibility or reporting barriers, δ=1.0, τ=1.0) suggest that document withholding affects approximately 8,120 workers (0.83%, 95% CI: 0.23%-2.39%). Pay-related issues affect 21,560 workers (2.20%, 95% CI: 1.45%-4.35%), while threats and abuse affect 20,141 workers (2.06%, 95% CI: 1.42%-4.48%). Excessive working hours affect 22,375 workers (2.28%, 95% CI: 1.41%-4.21%), and 15,212 workers report lacking access to help (1.55%, 95% CI: 0.51%-3.73%).
+
+Applying **moderate adjustments** for reporting and visibility biases (δ=0.9, τ=0.85) yields estimates of 10,615 workers experiencing document withholding (1.08%, 95% CI: 0.30%-3.13%), 28,182 with pay issues (2.88%, 95% CI: 1.90%-5.68%), 26,328 experiencing threats/abuse (2.69%, 95% CI: 1.86%-5.86%), 29,248 with excessive hours (2.98%, 95% CI: 1.84%-5.51%), and 19,885 lacking access to help (2.03%, 95% CI: 0.67%-4.88%).
+
+The **most conservative adjustments** (δ=0.8, τ=0.7), accounting for greater underreporting and visibility barriers, produce substantially higher estimates: 14,500 workers with document withholding (1.48%, 95% CI: 0.40%-4.27%), 38,499 with pay issues (3.93%, 95% CI: 2.60%-7.77%), 35,966 experiencing threats/abuse (3.67%, 95% CI: 2.53%-8.00%), 39,955 with excessive hours (4.08%, 95% CI: 2.52%-7.53%), and 27,165 lacking access to help (2.77%, 95% CI: 0.91%-6.67%).
+
+These estimates represent prevalence rates ranging from 0.83% to 4.08% across all indicators, with confidence intervals reflecting substantial uncertainty inherent in network-based estimation methods. The conservative adjustments yield estimates approximately 1.8 times higher than unadjusted estimates, while moderate adjustments produce intermediate values approximately 1.3 times higher than baseline.
+
 ```{r}
-#| label: tbl-nsum-binary-indicators
-#| tbl-cap: "NSUM Estimates of Binary Exploitation Indicators: Population prevalence estimates using Network Scale-Up Methods with bootstrap confidence intervals. Estimates represent population size of exploited domestic workers. Source: Authors' Own Work."
+#| label: tbl-nsum-main
+#| tbl-cap: "NSUM Prevalence Estimates for Labor Exploitation Indicators: Estimates using Modified Basic Scale-Up (MBSU) method with Sequential Sampling weights and population size of 980,000 domestic workers. Adjustment factors: δ (transmission/barrier effect) and τ (recall effect) control for visibility and reporting biases. Bootstrap confidence intervals based on neighborhood resampling (B=1000). Source: Authors' Own Work."
 #| echo: false
 #| warning: false
 #| message: false
 
-# Load NSUM results
-nsum_file <- here("output", "enhanced_nsum_results.RData")
+library(tidyverse)
+library(kableExtra)
+
+# Load comprehensive NSUM results
+nsum_file <- here("output", "tables", "Table6_NSUM_main_results.csv")
 if (file.exists(nsum_file)) {
-  load(nsum_file)
+  nsum_main <- read_csv(nsum_file, show_col_types = FALSE)
 
-  # Check what NSUM results are available
-  if (exists("enhanced_results")) {
-    # Define the indicators we want to extract
-    nsum_indicators <- c(
-      "document_withholding" = "Document Withholding",
-      "pay_issues" = "Pay-Related Issues",
-      "threats_abuse" = "Threats/Abuse",
-      "excessive_hours" = "Excessive Hours",
-      "access_to_help" = "Limited Access to Help"
+  # Format the table
+  nsum_main %>%
+    kbl(
+      col.names = c("Adjustment Method", "Outcome", "Point Estimate",
+                    "95% CI Lower", "95% CI Upper", "Prevalence (%)"),
+      caption = "NSUM Prevalence Estimates for Labor Exploitation Indicators",
+      booktabs = TRUE,
+      align = c("l", "l", "r", "r", "r", "l"),
+      format.args = list(big.mark = ",")
+    ) %>%
+    kable_styling(
+      latex_options = c("striped", "hold_position", "scale_down"),
+      bootstrap_options = c("striped", "hover", "condensed"),
+      full_width = FALSE,
+      position = "center",
+      font_size = 9
+    ) %>%
+    column_spec(1, width = "3cm") %>%
+    column_spec(2, width = "3cm") %>%
+    column_spec(6, width = "3cm") %>%
+    pack_rows("No Adjustment (δ=1.0, τ=1.0)", 1, 5) %>%
+    pack_rows("Conservative (δ=0.8, τ=0.7)", 6, 10) %>%
+    pack_rows("Moderate (δ=0.9, τ=0.85)", 11, 15) %>%
+    footnote(
+      general = "MBSU = Modified Basic Scale-Up method; δ = transmission/barrier effect (proportion of cases visible to network); τ = recall effect (accuracy of reporting); Bootstrap method: neighborhood resampling with 1000 iterations; Population base: 980,000 UK domestic workers.",
+      general_title = "Note:",
+      footnote_as_chunk = TRUE
     )
-
-    # Extract NSUM estimates from enhanced_results
-    nsum_summary <- enhanced_results %>%
-      dplyr::filter(indicator_name %in% names(nsum_indicators)) %>%
-      dplyr::group_by(indicator_name) %>%
-      dplyr::slice(1) %>%  # Take first scheme for each indicator
-      dplyr::ungroup() %>%
-      dplyr::mutate(
-        label = nsum_indicators[indicator_name]
-      ) %>%
-      dplyr::select(
-        indicator = indicator_name,
-        label,
-        nsum_est = nsum_prevalence,
-        nsum_ci_lower,
-        nsum_ci_upper
-      )
-
-    if (nrow(nsum_summary) > 0) {
-      # Format for display (estimates are already prevalences)
-      nsum_display <- nsum_summary %>%
-        dplyr::mutate(
-          formatted = sprintf("%.1f%% (%.1f-%.1f%%)",
-                             nsum_est * 100,
-                             nsum_ci_lower * 100,
-                             nsum_ci_upper * 100)
-        ) %>%
-        dplyr::select(label, formatted) %>%
-        dplyr::arrange(desc(nsum_summary$nsum_est))
-
-      # Create table
-      nsum_display %>%
-        kableExtra::kbl(
-          col.names = c("Exploitation Indicator", "NSUM Estimate (95% CI)"),
-          caption = "NSUM Estimates of Binary Exploitation Indicators",
-          booktabs = TRUE,
-          align = c("l", "r")
-        ) %>%
-        kableExtra::kable_styling(
-          latex_options = c("striped", "hold_position", "scale_down"),
-          bootstrap_options = c("striped", "hover", "condensed"),
-          full_width = FALSE,
-          position = "center",
-          font_size = 9
-        ) %>%
-        kableExtra::footnote(
-          general = "Network Scale-Up Method prevalence estimates with bootstrap confidence intervals from enhanced NSUM analysis.",
-          general_title = "Note:",
-          footnote_as_chunk = TRUE
-        )
-    } else {
-      cat("No NSUM estimates available.\n")
-    }
-  } else {
-    cat("enhanced_results object not found in file.\n")
-  }
 } else {
-  cat("enhanced_nsum_results.RData file not found.\n")
+  cat("NSUM results file not found. Please run R/analysis/NSUM/extract_main_results.R\n")
 }
 ```
 
@@ -2602,6 +2577,179 @@ if (nrow(comparison_data) > 0) {
   cat("No data available for population size 980,000.\n")
 }
 ```
+
+### NSUM Sensitivity Analysis {#app-nsum-sens}
+
+The NSUM estimates presented in the main text (Section 5.2.3) used neighborhood bootstrap resampling, Sequential Sampling weights, and the Modified Basic Scale-Up (MBSU) estimator with a population size of 980,000. To assess the robustness of these findings, we conducted comprehensive sensitivity analyses varying four key methodological choices: (1) bootstrap method, (2) weighting scheme, (3) population size assumption, and (4) NSUM estimator specification.
+
+#### Sensitivity to Bootstrap Method
+
+We compared four bootstrap resampling approaches: neighborhood bootstrap, tree bootstrap, chain bootstrap, and sequential sampling bootstrap. As shown in @tbl-appendix-bootstrap, all methods produce nearly identical point estimates, with variation only in confidence interval widths. This demonstrates that our findings are robust to the choice of bootstrap method, with the neighborhood bootstrap providing slightly more conservative (wider) confidence intervals than alternative approaches.
+
+```{r}
+#| label: tbl-appendix-bootstrap
+#| tbl-cap: "Sensitivity Analysis: Bootstrap Method Comparison. All estimates use SS weights, N=980,000, and MBSU (Moderate) adjustment. Source: Authors' Own Work."
+#| echo: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(kableExtra)
+
+bootstrap_file <- here("output", "tables", "AppendixA1_bootstrap_comparison.csv")
+if (file.exists(bootstrap_file)) {
+  boot_comp <- read_csv(bootstrap_file, show_col_types = FALSE)
+
+  boot_comp %>%
+    kbl(
+      col.names = c("Bootstrap Method", "Outcome", "Point Estimate",
+                    "95% CI Lower", "95% CI Upper", "Prevalence (%)"),
+      booktabs = TRUE,
+      align = c("l", "l", "r", "r", "r", "l"),
+      format.args = list(big.mark = ",")
+    ) %>%
+    kable_styling(
+      latex_options = c("striped", "hold_position", "scale_down"),
+      bootstrap_options = c("striped", "hover", "condensed"),
+      full_width = FALSE,
+      font_size = 8
+    ) %>%
+    footnote(
+      general = "All estimates use Sequential Sampling weights, population size of 980,000, and MBSU estimator with moderate adjustments (δ=0.9, τ=0.85).",
+      general_title = "Note:",
+      footnote_as_chunk = TRUE
+    )
+} else {
+  cat("Bootstrap comparison file not found.\n")
+}
+```
+
+#### Sensitivity to Weight Method
+
+We compared Volz-Heckathorn (VH) and Sequential Sampling (SS) weighting schemes (@tbl-appendix-weights). Results were identical for both methods, as both approaches appropriately account for the RDS sampling design and degree-based inclusion probabilities. This validates our choice of SS weights for the main analysis.
+
+```{r}
+#| label: tbl-appendix-weights
+#| tbl-cap: "Sensitivity Analysis: Weight Method Comparison. All estimates use neighborhood bootstrap, N=980,000, and MBSU (Moderate) adjustment. Source: Authors' Own Work."
+#| echo: false
+#| warning: false
+#| message: false
+
+weight_file <- here("output", "tables", "AppendixA2_weight_comparison.csv")
+if (file.exists(weight_file)) {
+  weight_comp <- read_csv(weight_file, show_col_types = FALSE)
+
+  weight_comp %>%
+    kbl(
+      col.names = c("Weight Method", "Outcome", "Point Estimate",
+                    "95% CI Lower", "95% CI Upper", "Prevalence (%)"),
+      booktabs = TRUE,
+      align = c("l", "l", "r", "r", "r", "l"),
+      format.args = list(big.mark = ",")
+    ) %>%
+    kable_styling(
+      latex_options = c("striped", "hold_position", "scale_down"),
+      bootstrap_options = c("striped", "hover", "condensed"),
+      full_width = FALSE,
+      font_size = 8
+    ) %>%
+    footnote(
+      general = "VH = Volz-Heckathorn weights; SS = Sequential Sampling weights. Both methods produce identical estimates as expected for RDS data.",
+      general_title = "Note:",
+      footnote_as_chunk = TRUE
+    )
+} else {
+  cat("Weight comparison file not found.\n")
+}
+```
+
+#### Sensitivity to Population Size
+
+We tested four population size scenarios: 50,000, 100,000, 980,000, and 1,740,000 (@tbl-appendix-popsize). As expected, absolute counts scaled linearly with population size assumptions, while prevalence rates remained constant. This validates our estimation approach and demonstrates that the choice of population size affects the scale but not the proportional prevalence estimates.
+
+```{r}
+#| label: tbl-appendix-popsize
+#| tbl-cap: "Sensitivity Analysis: Population Size Comparison. All estimates use neighborhood bootstrap, SS weights, and MBSU (Moderate) adjustment. Source: Authors' Own Work."
+#| echo: false
+#| warning: false
+#| message: false
+
+popsize_file <- here("output", "tables", "AppendixA3_popsize_comparison.csv")
+if (file.exists(popsize_file)) {
+  popsize_comp <- read_csv(popsize_file, show_col_types = FALSE)
+
+  popsize_comp %>%
+    kbl(
+      col.names = c("Population Size", "Outcome", "Point Estimate",
+                    "95% CI Lower", "95% CI Upper", "Prevalence (%)"),
+      booktabs = TRUE,
+      align = c("r", "l", "r", "r", "r", "l"),
+      format.args = list(big.mark = ",")
+    ) %>%
+    kable_styling(
+      latex_options = c("striped", "hold_position", "scale_down"),
+      bootstrap_options = c("striped", "hover", "condensed"),
+      full_width = FALSE,
+      font_size = 8
+    ) %>%
+    footnote(
+      general = "Prevalence rates remain constant across population sizes, demonstrating validity of estimation approach. We use N=980,000 as our baseline estimate of UK domestic worker population.",
+      general_title = "Note:",
+      footnote_as_chunk = TRUE
+    )
+} else {
+  cat("Population size comparison file not found.\n")
+}
+```
+
+#### Sensitivity to NSUM Method and Adjustment Factors
+
+The choice of NSUM estimator and adjustment factors had substantial impact on estimates (@tbl-appendix-nsum-method). We compared MBSU with three adjustment factor sets (no adjustment, moderate, conservative) and GNSUM Symmetric estimation. GNSUM estimates matched MBSU (No Adjustment) exactly for all indicators, while conservative MBSU adjustments (δ=0.8, τ=0.7) produced estimates approximately 1.8 times higher than unadjusted estimates. Moderate adjustments (δ=0.9, τ=0.85) provided intermediate values approximately 1.3 times higher than baseline, representing our preferred specification that acknowledges likely visibility and reporting barriers while avoiding extreme assumptions.
+
+```{r}
+#| label: tbl-appendix-nsum-method
+#| tbl-cap: "Sensitivity Analysis: NSUM Method and Adjustment Factor Comparison. All estimates use neighborhood bootstrap, SS weights, and N=980,000. Source: Authors' Own Work."
+#| echo: false
+#| warning: false
+#| message: false
+
+nsum_method_file <- here("output", "tables", "AppendixA4_nsum_method_comparison.csv")
+if (file.exists(nsum_method_file)) {
+  nsum_method_comp <- read_csv(nsum_method_file, show_col_types = FALSE)
+
+  nsum_method_comp %>%
+    kbl(
+      col.names = c("NSUM Method", "Outcome", "Point Estimate",
+                    "95% CI Lower", "95% CI Upper", "Prevalence (%)"),
+      booktabs = TRUE,
+      align = c("l", "l", "r", "r", "r", "l"),
+      format.args = list(big.mark = ",")
+    ) %>%
+    kable_styling(
+      latex_options = c("striped", "hold_position", "scale_down"),
+      bootstrap_options = c("striped", "hover", "condensed"),
+      full_width = FALSE,
+      font_size = 8
+    ) %>%
+    pack_rows("GNSUM Symmetric", 1, 5) %>%
+    pack_rows("MBSU Conservative (δ=0.8, τ=0.7)", 6, 10) %>%
+    pack_rows("MBSU Moderate (δ=0.9, τ=0.85)", 11, 15) %>%
+    pack_rows("MBSU No Adjustment (δ=1.0, τ=1.0)", 16, 20) %>%
+    footnote(
+      general = "MBSU = Modified Basic Scale-Up; GNSUM = Generalized Network Scale-Up Method; δ = transmission/barrier effect; τ = recall effect. Adjustment factors control for visibility and reporting biases in network-based estimation.",
+      general_title = "Note:",
+      footnote_as_chunk = TRUE
+    )
+} else {
+  cat("NSUM method comparison file not found.\n")
+}
+```
+
+#### Summary of Sensitivity Analyses
+
+Across all 128 parameter combinations tested (4 bootstrap methods × 4 population sizes × 2 weight methods × 4 NSUM methods), prevalence estimates ranged from 0.83% to 4.08% for the five exploitation indicators. The most important source of variation was the choice of adjustment factors, with conservative adjustments producing estimates up to twice as high as unadjusted estimates. Bootstrap method, weight scheme, and population size assumptions had minimal impact on prevalence rates, demonstrating the robustness of our findings to these methodological choices.
+
+For the main text analysis, we selected neighborhood bootstrap (providing conservative confidence intervals), SS weights (standard for RDS data), N=980,000 (based on EU labor force data), and MBSU with moderate adjustments (acknowledging likely barriers while avoiding extreme assumptions). This specification provides credible estimates while acknowledging uncertainty and avoiding both overly optimistic and overly pessimistic scenarios.
 
 ## Appendix C: Bootstrap Estimation for Network Scale-Up Using RDS Data {#app-3step}
 
