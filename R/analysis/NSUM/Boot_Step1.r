@@ -472,19 +472,32 @@ chain_bootstrap_simple <- function(data, B = 500, id_col = "id", recruiter_col =
     bootstrap_sample <- do.call(rbind, chains[sampled_chain_indices])
     rownames(bootstrap_sample) <- NULL
 
-    # Reset IDs to be sequential
-    bootstrap_sample[[id_col]] <- 1:nrow(bootstrap_sample)
+    # IMPORTANT: Track which observations were originally seeds BEFORE resetting IDs
+    was_seed <- bootstrap_sample[[recruiter_col]] == -1
 
-    # Update recruiter relationships (simplified - avoid self-recruitment)
-    non_seed_mask <- bootstrap_sample[[recruiter_col]] != -1
-    if (any(non_seed_mask)) {
-      # For non-seeds, assign random valid recruiter (not themselves)
-      for (i in which(non_seed_mask)) {
-        potential_recruiters <- setdiff(1:nrow(bootstrap_sample), i)
-        if (length(potential_recruiters) > 0) {
-          bootstrap_sample[[recruiter_col]][i] <- sample(potential_recruiters, 1)
+    # Create ID mapping from old to new IDs
+    old_ids <- bootstrap_sample[[id_col]]
+    new_ids <- 1:nrow(bootstrap_sample)
+    id_mapping <- setNames(new_ids, old_ids)
+
+    # Reset IDs to be sequential
+    bootstrap_sample[[id_col]] <- new_ids
+
+    # Update recruiter relationships while PRESERVING seed structure
+    # Seeds must remain as seeds (recruiter.id = -1)
+    # Non-seeds get their recruiter.id remapped to new ID scheme
+    for (i in 1:nrow(bootstrap_sample)) {
+      if (was_seed[i]) {
+        # Keep as seed
+        bootstrap_sample[[recruiter_col]][i] <- -1
+      } else {
+        # Remap recruiter ID to new ID scheme
+        old_recruiter <- bootstrap_sample[[recruiter_col]][i]
+        if (old_recruiter %in% names(id_mapping)) {
+          bootstrap_sample[[recruiter_col]][i] <- id_mapping[as.character(old_recruiter)]
         } else {
-          bootstrap_sample[[recruiter_col]][i] <- -1  # Make it a seed if no alternatives
+          # If recruiter not in sample, make this a seed
+          bootstrap_sample[[recruiter_col]][i] <- -1
         }
       }
     }
