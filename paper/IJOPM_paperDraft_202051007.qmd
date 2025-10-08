@@ -1600,6 +1600,8 @@ Key Coding Steps:
 ```{r}
 #| label: tbl-network
 #| tbl-cap: "RDS Sample Network Characteristics"
+#| echo: false
+#| warning: false
 
 library(tidyverse)
 # Calculate chain statistics from recruitment network
@@ -1794,7 +1796,7 @@ This section presents comprehensive RDS estimates across all population size sce
 
 ```{r}
 #| label: tbl-rds-comprehensive
-#| tbl-cap: "Comprehensive RDS Estimates: Prevalence estimates for all indicators across population sizes and RDS methods (RDS-I, RDS-II, RDS-SS) with neighborhood bootstrap confidence intervals."
+#| tbl-cap: "Comprehensive RDS Estimates: Prevalence estimates for all indicators across population sizes and RDS methods (RDS-I, RDS-SS) with neighborhood bootstrap confidence intervals."
 #| echo: false
 #| warning: false
 
@@ -1803,38 +1805,89 @@ if (file.exists(here("output", "frequentist_estimators_results.RData"))) {
   load(here("output", "frequentist_estimators_results.RData"))
 
   if (exists("frequentist_df")) {
-    # Create comprehensive table with all methods and population sizes
+    # Create comprehensive table excluding RDS-II
     rds_comprehensive <- frequentist_df %>%
+      dplyr::filter(method_clean %in% c("RDS-I", "RDS-SS")) %>%
       dplyr::select(indicator_clean, pop_label, method_clean, estimate_with_ci) %>%
       tidyr::pivot_wider(
         names_from = c(method_clean, pop_label),
         values_from = estimate_with_ci,
-        names_sep = " "
+        names_sep = " | "
       ) %>%
       dplyr::rename(`Indicator` = indicator_clean)
 
-    # Create table
+    # Reorder columns: all RDS-I first, then all RDS-SS
+    rds_i_cols <- grep("^RDS-I", names(rds_comprehensive), value = TRUE)
+    rds_ss_cols <- grep("^RDS-SS", names(rds_comprehensive), value = TRUE)
+
+    rds_comprehensive <- rds_comprehensive %>%
+      dplyr::select(Indicator, all_of(rds_i_cols), all_of(rds_ss_cols))
+
+    # Clean column names for display
+    col_names <- names(rds_comprehensive)
+    col_names[-1] <- gsub("^RDS-I \\| ", "", col_names[-1])
+    col_names[-1] <- gsub("^RDS-SS \\| ", "", col_names[-1])
+
+    rds_comprehensive %>%
+  kableExtra::kbl(
+    col.names = col_names,
+    booktabs = TRUE,
+    align = c("l", rep("c", ncol(rds_comprehensive) - 1)),
+    longtable = TRUE
+  ) %>%
+  kableExtra::kable_styling(
+    latex_options = c("striped", "scale_down", "hold_position"),
+    font_size = 8,
+    full_width = FALSE      # <--- Key change here
+  ) %>%
+  kableExtra::add_header_above(c(
+    " " = 1,
+    "RDS-I Estimator" = length(rds_i_cols),
+    "RDS-SS Estimator" = length(rds_ss_cols)
+  )) %>%
+  kableExtra::column_spec(1, bold = TRUE) %>%   # Remove or relax width argument
+  kableExtra::footnote(
+    general = "RDS-I: Salganik-Heckathorn estimator...",
+    general_title = "Note:",
+    footnote_as_chunk = TRUE,
+    threeparttable = TRUE
+    #longtable = TRUE
+  )
+  } else {
+    cat("frequentist_df not found.\n")
+  }
+} else {
+  cat("frequentist_estimators_results.RData file not found.\n")
+}
+```
+
+```{r eval=FALSE}
+
+    # Create professionally formatted table
     rds_comprehensive %>%
       kableExtra::kbl(
+        col.names = col_names,
         booktabs = TRUE,
-        align = c("l", rep("r", ncol(rds_comprehensive) - 1))
+        align = c("l", rep("c", ncol(rds_comprehensive) - 1)),
+        longtable = TRUE
       ) %>%
       kableExtra::kable_styling(
         latex_options = c("striped", "scale_down", "hold_position"),
         bootstrap_options = c("striped", "hover", "condensed"),
-        font_size = 7,
+        font_size = 8,
         full_width = TRUE
       ) %>%
       kableExtra::add_header_above(c(
         " " = 1,
-        "RDS-I" = 4,
-        "RDS-II" = 4,
-        "RDS-SS" = 4
+        "RDS-I Estimator" = length(rds_i_cols),
+        "RDS-SS Estimator" = length(rds_ss_cols)
       )) %>%
+      kableExtra::column_spec(1, bold = TRUE, width = "3cm") %>%
       kableExtra::footnote(
-        general = "RDS-I: Salganik-Heckathorn estimator. RDS-II: Volz-Heckathorn estimator. RDS-SS: Gile's Successive Sampling estimator. Population sizes: 50K, 100K, 980K, 1.74M domestic workers. All confidence intervals from neighborhood bootstrap (n=1000).",
+        general = "RDS-I: Salganik-Heckathorn estimator; RDS-SS: Gile's Successive Sampling estimator. Population sizes represent assumed UK domestic worker totals: 50K, 100K, 980K, and 1.74M. Estimates shown as prevalence (95% CI) from neighborhood bootstrap with 1,000 resamples.",
         general_title = "Note:",
-        footnote_as_chunk = TRUE
+        footnote_as_chunk = TRUE,
+        threeparttable = TRUE
       )
   } else {
     cat("frequentist_df not found.\n")

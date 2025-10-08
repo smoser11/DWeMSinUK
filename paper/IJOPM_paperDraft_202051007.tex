@@ -1646,116 +1646,6 @@ Key Coding Steps:
 \subsubsection{Recruitment Network
 Structure}\label{recruitment-network-structure}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(tidyverse)}
-\CommentTok{\# Calculate chain statistics from recruitment network}
-\NormalTok{calculate\_chain\_stats }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(data) \{}
-  \CommentTok{\# Build parent{-}child relationships}
-\NormalTok{  chains }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{    dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(id, recruiter.id) }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{    dplyr}\SpecialCharTok{::}\FunctionTok{mutate}\NormalTok{(}
-      \AttributeTok{id =} \FunctionTok{as.integer}\NormalTok{(id),}
-      \AttributeTok{recruiter.id =} \FunctionTok{as.integer}\NormalTok{(recruiter.id)}
-\NormalTok{    )}
-
-  \CommentTok{\# Find all seeds (recruiter.id == {-}1 or NA)}
-\NormalTok{  seeds }\OtherTok{\textless{}{-}}\NormalTok{ chains }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{    dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(recruiter.id }\SpecialCharTok{==} \SpecialCharTok{{-}}\DecValTok{1} \SpecialCharTok{|} \FunctionTok{is.na}\NormalTok{(recruiter.id)) }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{    dplyr}\SpecialCharTok{::}\FunctionTok{pull}\NormalTok{(id)}
-
-  \CommentTok{\# If no seeds found, return zeros}
-  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(seeds) }\SpecialCharTok{==} \DecValTok{0}\NormalTok{) \{}
-    \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{longest =} \DecValTok{0}\NormalTok{, }\AttributeTok{mean\_length =} \DecValTok{0}\NormalTok{))}
-\NormalTok{  \}}
-
-  \CommentTok{\# Calculate depth for each node (distance from seed)}
-\NormalTok{  get\_chain\_depth }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(node\_id, chains, }\AttributeTok{depth =} \DecValTok{0}\NormalTok{, }\AttributeTok{visited =} \FunctionTok{c}\NormalTok{()) \{}
-    \ControlFlowTok{if}\NormalTok{ (node\_id }\SpecialCharTok{\%in\%}\NormalTok{ visited) }\FunctionTok{return}\NormalTok{(}\FunctionTok{as.numeric}\NormalTok{(depth))  }\CommentTok{\# Prevent cycles}
-\NormalTok{    visited }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(visited, node\_id)}
-
-    \CommentTok{\# Find children of this node}
-\NormalTok{    children }\OtherTok{\textless{}{-}}\NormalTok{ chains }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{      dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(recruiter.id }\SpecialCharTok{==}\NormalTok{ node\_id) }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{      dplyr}\SpecialCharTok{::}\FunctionTok{pull}\NormalTok{(id)}
-
-    \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(children) }\SpecialCharTok{==} \DecValTok{0}\NormalTok{) \{}
-      \FunctionTok{return}\NormalTok{(}\FunctionTok{as.numeric}\NormalTok{(depth))  }\CommentTok{\# Leaf node}
-\NormalTok{    \} }\ControlFlowTok{else}\NormalTok{ \{}
-      \CommentTok{\# Return maximum depth among children}
-\NormalTok{      child\_depths }\OtherTok{\textless{}{-}} \FunctionTok{vapply}\NormalTok{(children, }\ControlFlowTok{function}\NormalTok{(child) \{}
-        \FunctionTok{get\_chain\_depth}\NormalTok{(child, chains, depth }\SpecialCharTok{+} \DecValTok{1}\NormalTok{, visited)}
-\NormalTok{      \}, }\AttributeTok{FUN.VALUE =} \FunctionTok{numeric}\NormalTok{(}\DecValTok{1}\NormalTok{))}
-      \FunctionTok{return}\NormalTok{(}\FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{max}\NormalTok{(child\_depths)))}
-\NormalTok{    \}}
-\NormalTok{  \}}
-
-  \CommentTok{\# Calculate longest chain from each seed}
-\NormalTok{  chain\_lengths }\OtherTok{\textless{}{-}} \FunctionTok{vapply}\NormalTok{(seeds, }\ControlFlowTok{function}\NormalTok{(seed\_id) \{}
-    \FunctionTok{get\_chain\_depth}\NormalTok{(seed\_id, chains)}
-\NormalTok{  \}, }\AttributeTok{FUN.VALUE =} \FunctionTok{numeric}\NormalTok{(}\DecValTok{1}\NormalTok{))}
-
-  \CommentTok{\# Calculate average chain length (mean depth from seeds)}
-\NormalTok{  all\_depths }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{()}
-  \ControlFlowTok{for}\NormalTok{ (seed\_id }\ControlFlowTok{in}\NormalTok{ seeds) \{}
-\NormalTok{    descendants }\OtherTok{\textless{}{-}}\NormalTok{ chains }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{      dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(recruiter.id }\SpecialCharTok{==}\NormalTok{ seed\_id)}
-
-    \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{nrow}\NormalTok{(descendants) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
-      \ControlFlowTok{for}\NormalTok{ (desc\_id }\ControlFlowTok{in}\NormalTok{ descendants}\SpecialCharTok{$}\NormalTok{id) \{}
-\NormalTok{        depth\_val }\OtherTok{\textless{}{-}} \FunctionTok{get\_chain\_depth}\NormalTok{(desc\_id, chains, }\AttributeTok{depth =} \DecValTok{1}\NormalTok{)}
-\NormalTok{        all\_depths }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(all\_depths, }\FunctionTok{as.numeric}\NormalTok{(depth\_val))}
-\NormalTok{      \}}
-\NormalTok{    \}}
-\NormalTok{  \}}
-
-  \CommentTok{\# Ensure we have numeric vectors}
-\NormalTok{  chain\_lengths }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(chain\_lengths)}
-\NormalTok{  all\_depths }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(all\_depths)}
-
-  \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(}
-    \AttributeTok{longest =} \FunctionTok{ifelse}\NormalTok{(}\FunctionTok{length}\NormalTok{(chain\_lengths) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{, }\FunctionTok{max}\NormalTok{(chain\_lengths, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{0}\NormalTok{),}
-    \AttributeTok{mean\_length =} \FunctionTok{ifelse}\NormalTok{(}\FunctionTok{length}\NormalTok{(all\_depths) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{, }\FunctionTok{mean}\NormalTok{(all\_depths, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{0}\NormalTok{)}
-\NormalTok{  ))}
-\NormalTok{\}}
-
-\NormalTok{chain\_stats }\OtherTok{\textless{}{-}} \FunctionTok{calculate\_chain\_stats}\NormalTok{(rd.dd)}
-
-\NormalTok{network\_stats }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
-  \AttributeTok{Characteristic =} \FunctionTok{c}\NormalTok{(}\StringTok{"Total Sample Size"}\NormalTok{, }\StringTok{"Recruitment Waves"}\NormalTok{, }\StringTok{"Average Degree"}\NormalTok{,}
-                    \StringTok{"Median Degree"}\NormalTok{, }\StringTok{"Seeds"}\NormalTok{, }\StringTok{"Longest Chain"}\NormalTok{, }\StringTok{"Mean Chain Length"}\NormalTok{),}
-  \AttributeTok{Value =} \FunctionTok{c}\NormalTok{(}
-    \FunctionTok{nrow}\NormalTok{(rd.dd),}
-    \FunctionTok{max}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{wave, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
-    \FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{numRef, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{1}\NormalTok{),}
-    \FunctionTok{round}\NormalTok{(}\FunctionTok{median}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{numRef, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\DecValTok{1}\NormalTok{),}
-    \FunctionTok{sum}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{recruiter.id }\SpecialCharTok{==} \SpecialCharTok{{-}}\DecValTok{1} \SpecialCharTok{|} \FunctionTok{is.na}\NormalTok{(rd.dd}\SpecialCharTok{$}\NormalTok{recruiter.id)),}
-\NormalTok{    chain\_stats}\SpecialCharTok{$}\NormalTok{longest,}
-    \FunctionTok{round}\NormalTok{(chain\_stats}\SpecialCharTok{$}\NormalTok{mean\_length, }\DecValTok{1}\NormalTok{)}
-\NormalTok{  )}
-\NormalTok{)}
-
-\NormalTok{network\_stats }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{  kableExtra}\SpecialCharTok{::}\FunctionTok{kbl}\NormalTok{(}
-    \AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Characteristic"}\NormalTok{, }\StringTok{"Value"}\NormalTok{),}
-    \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{,}
-    \AttributeTok{align =} \FunctionTok{c}\NormalTok{(}\StringTok{"l"}\NormalTok{, }\StringTok{"r"}\NormalTok{),}
-    \AttributeTok{caption =} \StringTok{"RDS Sample Network Characteristics"}
-\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{  kableExtra}\SpecialCharTok{::}\FunctionTok{kable\_styling}\NormalTok{(}
-    \AttributeTok{latex\_options =} \FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{, }\StringTok{"hold\_position"}\NormalTok{),}
-    \AttributeTok{bootstrap\_options =} \FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{, }\StringTok{"hover"}\NormalTok{),}
-    \AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{,}
-    \AttributeTok{position =} \StringTok{"center"}
-\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{  kableExtra}\SpecialCharTok{::}\FunctionTok{footnote}\NormalTok{(}
-    \AttributeTok{general =} \StringTok{"Average and median degree represent the number of other domestic workers known personally (Q13). Chain length measured from seed nodes through recruitment relationships."}\NormalTok{,}
-    \AttributeTok{general\_title =} \StringTok{"Note:"}\NormalTok{,}
-    \AttributeTok{footnote\_as\_chunk =} \ConstantTok{TRUE}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{table}
 
 \caption{\label{tbl-network}RDS Sample Network Characteristics}
@@ -1863,37 +1753,40 @@ estimation techniques.
 This section presents comprehensive RDS estimates across all population
 size scenarios and estimation methods.
 
-\begin{table}
+\begingroup\fontsize{8}{10}\selectfont
+
+\begin{ThreePartTable}
+\begin{TableNotes}[para]
+\item \textit{Note:} 
+\item RDS-I: Salganik-Heckathorn estimator...
+\end{TableNotes}
+
+\begin{longtable}[t]{>{}lcccccccc}
 
 \caption{\label{tbl-rds-comprehensive}Comprehensive RDS Estimates:
 Prevalence estimates for all indicators across population sizes and RDS
-methods (RDS-I, RDS-II, RDS-SS) with neighborhood bootstrap confidence
+methods (RDS-I, RDS-SS) with neighborhood bootstrap confidence
 intervals.}
 
-\centering{
+\tabularnewline
 
-\begingroup\fontsize{7}{9}\selectfont
-
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X}
 \toprule
-\multicolumn{1}{c}{ } & \multicolumn{4}{c}{RDS-I} & \multicolumn{4}{c}{RDS-II} & \multicolumn{4}{c}{RDS-SS} \\
-\cmidrule(l{3pt}r{3pt}){2-5} \cmidrule(l{3pt}r{3pt}){6-9} \cmidrule(l{3pt}r{3pt}){10-13}
-Indicator & RDS-I 50K & RDS-I 100K & RDS-I 980K & RDS-I 1.74M & RDS-II 50K & RDS-II 100K & RDS-II 980K & RDS-II 1.74M & RDS-SS 50K & RDS-SS 100K & RDS-SS 980K & RDS-SS 1.74M\\
+\multicolumn{1}{c}{ } & \multicolumn{4}{c}{RDS-I Estimator} & \multicolumn{4}{c}{RDS-SS Estimator} \\
+\cmidrule(l{3pt}r{3pt}){2-5} \cmidrule(l{3pt}r{3pt}){6-9}
+Indicator & 50K & 100K & 980K & 1.74M & 50K & 100K & 980K & 1.74M\\
 \midrule
-\cellcolor{gray!10}{Document withholding} & \cellcolor{gray!10}{49.4\% (25.5–56.2)} & \cellcolor{gray!10}{49.4\% (25.2–55.9)} & \cellcolor{gray!10}{49.4\% (25.3–56.3)} & \cellcolor{gray!10}{49.4\% (25.4–56.1)} & \cellcolor{gray!10}{34.2\% (25.5–56.3)} & \cellcolor{gray!10}{34.2\% (25.3–56.2)} & \cellcolor{gray!10}{34.2\% (24.7–56.3)} & \cellcolor{gray!10}{34.2\% (25.4–56.5)} & \cellcolor{gray!10}{34.2\% (25.6–56.2)} & \cellcolor{gray!10}{34.2\% (25.1–56.5)} & \cellcolor{gray!10}{34.2\% (25.2–56.0)} & \cellcolor{gray!10}{34.2\% (25.3–56.5)}\\
-Excessive working hours & 92.8\% (71.8–92.8) & 92.8\% (71.8–92.5) & 92.8\% (71.4–92.9) & 92.8\% (71.7–92.8) & 83.7\% (71.9–93.0) & 83.7\% (71.5–93.1) & 83.7\% (71.1–92.9) & 83.7\% (71.5–93.0) & 83.7\% (71.5–93.0) & 83.7\% (71.5–93.0) & 83.7\% (71.5–93.0) & 83.7\% (71.6–92.8)\\
-\cellcolor{gray!10}{Limited access to help} & \cellcolor{gray!10}{57.7\% (54.7–80.0)} & \cellcolor{gray!10}{57.7\% (54.8–79.8)} & \cellcolor{gray!10}{57.7\% (55.1–80.3)} & \cellcolor{gray!10}{57.7\% (54.9–80.0)} & \cellcolor{gray!10}{59.4\% (55.2–80.0)} & \cellcolor{gray!10}{59.4\% (54.9–79.9)} & \cellcolor{gray!10}{59.4\% (55.0–80.1)} & \cellcolor{gray!10}{59.4\% (54.7–79.9)} & \cellcolor{gray!10}{59.4\% (54.9–80.1)} & \cellcolor{gray!10}{59.4\% (55.1–80.2)} & \cellcolor{gray!10}{59.4\% (54.7–80.2)} & \cellcolor{gray!10}{59.4\% (54.8–80.1)}\\
-Pay-related issues & 59.3\% (34.5–63.5) & 59.3\% (34.8–63.0) & 59.3\% (34.2–63.5) & 59.3\% (34.2–63.6) & 49.7\% (34.8–63.6) & 49.7\% (35.2–63.4) & 49.7\% (34.5–63.6) & 49.7\% (34.7–63.3) & 49.7\% (34.0–63.8) & 49.7\% (34.2–64.1) & 49.7\% (34.8–63.4) & 49.7\% (34.6–63.5)\\
-\cellcolor{gray!10}{Threats and abuse} & \cellcolor{gray!10}{65.2\% (40.3–71.7)} & \cellcolor{gray!10}{65.2\% (40.2–72.0)} & \cellcolor{gray!10}{65.2\% (40.5–72.1)} & \cellcolor{gray!10}{65.2\% (40.6–72.1)} & \cellcolor{gray!10}{57.2\% (40.3–72.0)} & \cellcolor{gray!10}{57.2\% (40.5–72.1)} & \cellcolor{gray!10}{57.2\% (40.6–72.4)} & \cellcolor{gray!10}{57.2\% (40.3–71.6)} & \cellcolor{gray!10}{57.2\% (40.9–72.5)} & \cellcolor{gray!10}{57.2\% (40.9–72.0)} & \cellcolor{gray!10}{57.2\% (40.1–72.3)} & \cellcolor{gray!10}{57.2\% (40.6–72.6)}\\
+\textbf{\cellcolor{gray!10}{Document withholding}} & \cellcolor{gray!10}{49.4\% (25.5–56.2)} & \cellcolor{gray!10}{49.4\% (25.2–55.9)} & \cellcolor{gray!10}{49.4\% (25.3–56.3)} & \cellcolor{gray!10}{49.4\% (25.4–56.1)} & \cellcolor{gray!10}{34.2\% (25.6–56.2)} & \cellcolor{gray!10}{34.2\% (25.1–56.5)} & \cellcolor{gray!10}{34.2\% (25.2–56.0)} & \cellcolor{gray!10}{34.2\% (25.3–56.5)}\\
+\textbf{Excessive working hours} & 92.8\% (71.8–92.8) & 92.8\% (71.8–92.5) & 92.8\% (71.4–92.9) & 92.8\% (71.7–92.8) & 83.7\% (71.5–93.0) & 83.7\% (71.5–93.0) & 83.7\% (71.5–93.0) & 83.7\% (71.6–92.8)\\
+\textbf{\cellcolor{gray!10}{Limited access to help}} & \cellcolor{gray!10}{57.7\% (54.7–80.0)} & \cellcolor{gray!10}{57.7\% (54.8–79.8)} & \cellcolor{gray!10}{57.7\% (55.1–80.3)} & \cellcolor{gray!10}{57.7\% (54.9–80.0)} & \cellcolor{gray!10}{59.4\% (54.9–80.1)} & \cellcolor{gray!10}{59.4\% (55.1–80.2)} & \cellcolor{gray!10}{59.4\% (54.7–80.2)} & \cellcolor{gray!10}{59.4\% (54.8–80.1)}\\
+\textbf{Pay-related issues} & 59.3\% (34.5–63.5) & 59.3\% (34.8–63.0) & 59.3\% (34.2–63.5) & 59.3\% (34.2–63.6) & 49.7\% (34.0–63.8) & 49.7\% (34.2–64.1) & 49.7\% (34.8–63.4) & 49.7\% (34.6–63.5)\\
+\textbf{\cellcolor{gray!10}{Threats and abuse}} & \cellcolor{gray!10}{65.2\% (40.3–71.7)} & \cellcolor{gray!10}{65.2\% (40.2–72.0)} & \cellcolor{gray!10}{65.2\% (40.5–72.1)} & \cellcolor{gray!10}{65.2\% (40.6–72.1)} & \cellcolor{gray!10}{57.2\% (40.9–72.5)} & \cellcolor{gray!10}{57.2\% (40.9–72.0)} & \cellcolor{gray!10}{57.2\% (40.1–72.3)} & \cellcolor{gray!10}{57.2\% (40.6–72.6)}\\
 \bottomrule
-\multicolumn{13}{l}{\rule{0pt}{1em}\textit{Note:} RDS-I: Salganik-Heckathorn estimator. RDS-II: Volz-Heckathorn estimator. RDS-SS: Gile's Successive Sampling estimator. Population sizes: 50K, 100K, 980K, 1.74M domestic workers. All confidence intervals from neighborhood bootstrap (n=1000).}\\
-\end{tabu}}
+\insertTableNotes
+
+\end{longtable}
+
+\end{ThreePartTable}
 \endgroup{}
-
-}
-
-\end{table}%
 
 \begin{figure}[H]
 
