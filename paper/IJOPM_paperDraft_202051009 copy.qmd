@@ -348,7 +348,7 @@ before, finally, we conclude our article.
 -   Risk index construction and theoretical justification.
 
 Modern slavery has been criticised by some for its overly extensive scope: encapsulating a broad range of divergent sub-categories of exploitation (@oconnell_davidson_margins_2015; @gutierrez-huerter_o_change_2023).
-For this reason, we used the International Labour Organization’s [@ILO11-indicators] ‘Indicators of Forced Labour’ to identify the potential for severe labour exploitation and as a basis for the quantification of our labour exploitation and abuse risk index.
+For this reason, we used the International Labour Organization’s (@ILO11-indicators) ‘Indicators of Forced Labour’ to identify the potential for severe labour exploitation and as a basis for the quantification of our labour exploitation and abuse risk index.
 The ILO identify eleven indicators designed to help understand how forced labour arises and how it affects victims.
 These indicators include: abuse of vulnerability; deception; restriction of movement; isolation; physical and sexual violence; intimidation and threats; retention of identity documents; withholding of wages; debt bondage; abusive working and living conditions and excessive overtime.
 According to the ILO, the presence of a single indicator in any given situation may in some cases imply the existence of forced labour.
@@ -429,9 +429,9 @@ First, we constructed binary indicators classifying respondents as exploited or 
 Second, we developed a continuous risk index, designed to capture gradations of vulnerability across the full sample.
 
 In the following section, we describe our methods, including how we designed our survey, contacted our sample seeds, and analysed our data.
-Our approach can best be described as Web-based RDS [@wejnert_web-based_2008].
+Our approach can best be described as Web-based RDS (@wejnert_web-based_2008).
 We designed a web survey using the JISC online survey interface, suitable for our respondents to complete via a mobile phone.
-Composite measures to quantify the extent to which respondents were at risk of labour exploitation, including severe forms of exploitation such as forced labour, were constructed from existing exploitation typologies, notably the ILO’s Indicators [@ILO11-indicators].
+Composite measures to quantify the extent to which respondents were at risk of labour exploitation, including severe forms of exploitation such as forced labour, were constructed from existing exploitation typologies, notably the ILO’s Indicators (@ILO11-indicators).
 The survey consisted of these 11 composite indicators and included questions related to domestic workers’ level of job satisfaction, employment conditions, and demographic data such as nationality, age, and gender.
 The main survey was conducted in the five months between February and July 2023.
 
@@ -454,7 +454,7 @@ This approach is akin to the use of vouchers in face-to-face studies as advocate
 
 The ethical and practical issues related to the design and effective use of incentives for RDS among vulnerable populations has been much discussed in the literature; see, for example, @wang_respondent-driven_2005; @abdul-quader_effectiveness_2006; @singer_incentives_2006; @dejong_ethical_2009; @semaan_ethical_2009; @brunovskis_untold_2010; @semaan_time-space_2010; @platt_adapting_2015, including the specificities of incentive use within web-based surveys [@cobanoglu_effect_2003].
 Following the principles of lottery use established by @brown_you_2006 and @laguilles_can_2011, we also designed our survey to encourage the maximum extent of participation by entering all respondents completing the questionnaire into a free prize draw for £150.
-Research suggests that a high lottery provides the most cost-effective incentive for obtaining complete responses [@gajic_cost-effectiveness_2012].
+Research suggests that a high lottery provides the most cost-effective incentive for obtaining complete responses (@gajic_cost-effectiveness_2012).
 While using incentives to encourage participation would seem to be desirable, it is worth noting the potential downside of respondents fabricating responses to increase their remuneration [@robinson_sampling_2014].
 To minimise this risk, mobile phone numbers for each respondent and those whom they referred were collated, and each of these numbers was called by one of the authors of the paper to ascertain the veracity of the respondent as a migrant domestic worker.
 
@@ -666,10 +666,11 @@ sample_summary <- data_viz %>%
   ) %>%
   dplyr::arrange(desc(n))
 
-# Format table (NO caption - using tbl-cap from chunk options)
+# Format table
 sample_summary %>%
   kableExtra::kbl(
     col.names = c("Nationality", "N", "%", "Seeds", "Recruits", "Mean Degree", "Median Degree"),
+    caption = "Sample Characteristics by Nationality Cluster",
     booktabs = TRUE,
     align = c("l", "r", "r", "r", "r", "r", "r")
   ) %>%
@@ -719,10 +720,11 @@ totals <- data.frame(
 
 wave_summary <- rbind(wave_summary, totals)
 
-# Format table (NO caption - using tbl-cap from chunk options)
+# Format table
 wave_summary %>%
   kableExtra::kbl(
     col.names = c("Recruitment Wave", "N", "%", "Seeds", "Recruits"),
+    caption = "Recruitment Wave Distribution",
     booktabs = TRUE,
     align = c("l", "r", "r", "r", "r")
   ) %>%
@@ -806,7 +808,7 @@ This approach integrates regression modelling with RDS weights, thereby extendin
 In summary, we rely primarily on RDS-SS for binary outcomes and MA-RDS for continuous and binary indicators, with VH used for robustness checks.
 This combined strategy balances methodological rigor with the substantive goals of our study.
 
-We use model-assisted RDS estimators [@gile15-network] because they are design-based yet leverage a working ERGM (with degree and homophily terms) to approximate inclusion probabilities conditional on our observed seeds.
+We use model-assisted RDS estimators (@gile15-network) because they are design-based yet leverage a working ERGM (with degree and homophily terms) to approximate inclusion probabilities conditional on our observed seeds.
 This approach directly addresses seed bias and homophily that conventional RDS estimators cannot correct, accommodates finite-population effects through successive-sampling logic, and supports valid estimation of both binary and continuous outcomes.
 By conditioning on the actual seed composition and subgroup structure in our data, the method reduces bias, improves efficiency, and provides design-compatible bootstrap uncertainty, making it particularly well-suited to our small, heterogeneous sample of domestic workers.”
 
@@ -1102,10 +1104,11 @@ ma_results_formatted <- ma_results %>%
   dplyr::select(label, estimate_ci) %>%
   dplyr::arrange(desc(ma_results$prevalence))
 
-# Create professional table (NO caption - using tbl-cap from chunk options)
+# Create professional table
 ma_results_formatted %>%
   kableExtra::kbl(
     col.names = c("Exploitation Indicator", "Population Prevalence (95% CrI)"),
+    caption = "Model-Assisted Estimates of Binary Exploitation Indicators",
     booktabs = TRUE,
     align = c("l", "r")
   ) %>%
@@ -1333,30 +1336,22 @@ nsum_file <- here("output", "tables", "Table6_NSUM_main_results.csv")
 if (file.exists(nsum_file)) {
   nsum_main <- read_csv(nsum_file, show_col_types = FALSE)
 
-  # Format the table - NO caption parameter (using tbl-cap from chunk options)
-  table_output <- nsum_main %>%
+  # Format the table
+  nsum_main %>%
     kbl(
       col.names = c("Adjustment Method", "Outcome", "Point Estimate",
                     "95% CI Lower", "95% CI Upper", "Prevalence (%)"),
+      caption = "NSUM Prevalence Estimates for Labor Exploitation Indicators",
       booktabs = TRUE,
       align = c("l", "l", "r", "r", "r", "l"),
-      format.args = list(big.mark = ","),
-      longtable = FALSE
+      format.args = list(big.mark = ",")
     ) %>%
     kable_styling(
-      latex_options = if (knitr::is_latex_output()) {
-        c("striped", "hold_position", "scale_down", "repeat_header")
-      } else {
-        NULL
-      },
-      bootstrap_options = if (knitr::is_html_output()) {
-        c("striped", "hover", "condensed")
-      } else {
-        NULL
-      },
+      latex_options = c("striped", "hold_position", "scale_down"),
+      bootstrap_options = c("striped", "hover", "condensed"),
       full_width = FALSE,
       position = "center",
-      font_size = if (knitr::is_latex_output()) 8 else NULL
+      font_size = 9
     ) %>%
     column_spec(1, width = "3cm") %>%
     column_spec(2, width = "3cm") %>%
@@ -1369,9 +1364,6 @@ if (file.exists(nsum_file)) {
       general_title = "Note:",
       footnote_as_chunk = TRUE
     )
-
-  # Print the table
-  table_output
 } else {
   cat("NSUM results file not found. Please run R/analysis/NSUM/extract_main_results.R\n")
 }
@@ -1391,21 +1383,12 @@ Both approaches identify similar patterns of exploitation prevalence, with exces
 ```{r}
 #| label: fig-method-comparison
 #| fig-cap: "Method Comparison: frequentists RDS vs Bayesian RDS Estimators. Point estimates and uncertainty intervals for prevalence of exploitation indicators across different estimation methods. RDS methods show 95% confidence intervals (bootstrap); Bayesian methods show 95% credible intervals (MCMC). Baseline population assumption: 980,000 domestic workers. Source: Authors' own work."
+#| fig-width: 10     # REDUCE from 12
+#| fig-height: 7     # REDUCE from 8
+#| out-width: "100%" # ADD this
 #| echo: false
 
-# Format-specific figure inclusion
-fig_path <- here::here("output", "figures", "method_comparison.png")
-
-if (file.exists(fig_path)) {
-  if (knitr::is_html_output()) {
-    knitr::include_graphics(fig_path)
-  } else {
-    # For PDF output with specific dimensions
-    knitr::include_graphics(fig_path)
-  }
-} else {
-  cat("Figure file not found:", fig_path)
-}
+knitr::include_graphics(here::here("output", "figures", "method_comparison.png"))
 ```
 
 On the Role of Visibility in Explaining Differences Between NSUM and RDS Estimates
@@ -1473,7 +1456,7 @@ knitr::include_graphics(here::here("output", "figures", "model_comparison_forest
 ### Implications for Policy
 
 The UK Government has proved reluctant to respond to calls to remove the restrictive, tied, visa conditions currently in force for those migrant workers working in the UK on the Overseas Domestic Workers visa [@gower_calls_2016].
-Maintaining these restrictive conditions prevents the ratification in the UK of C189, the International Convention for Domestic Workers [@ILO11-indicators].
+Maintaining these restrictive conditions prevents the ratification in the UK of C189, the International Convention for Domestic Workers (@ILO11-indicators).
 If the estimates resulting from our study are correct, these visa conditions place migrant domestic workers at significant risk of serious forms of labour exploitation including, in its most severe form, exploitation that exhibits the characteristics of forced labour—legally considered a form of modern slavery.
 
 To reduce the vulnerability of transnational domestic workers to this—and other—forms of labour exploitation, we urge policy-makers to reconsider these discriminatory visa conditions and offer the same freedoms to domestic workers that are enjoyed by other groups of workers under UK law.
@@ -1709,7 +1692,8 @@ network_stats %>%
   kableExtra::kbl(
     col.names = c("Characteristic", "Value"),
     booktabs = TRUE,
-    align = c("l", "r")
+    align = c("l", "r"),
+    caption = "RDS Sample Network Characteristics"
   ) %>%
   kableExtra::kable_styling(
     latex_options = c("striped", "hold_position"),
@@ -1842,44 +1826,31 @@ if (file.exists(here("output", "frequentist_estimators_results.RData"))) {
     col_names[-1] <- gsub("^RDS-I \\| ", "", col_names[-1])
     col_names[-1] <- gsub("^RDS-SS \\| ", "", col_names[-1])
 
-    # Format with landscape for PDF, regular for HTML
-    table_out <- rds_comprehensive %>%
-      kableExtra::kbl(
-        col.names = col_names,
-        booktabs = TRUE,
-        align = c("l", rep("c", ncol(rds_comprehensive) - 1)),
-        longtable = FALSE
-      ) %>%
-      kableExtra::kable_styling(
-        latex_options = if (knitr::is_latex_output()) {
-          c("scale_down", "hold_position")
-        } else {
-          c("striped", "hover", "condensed")
-        },
-        font_size = if (knitr::is_latex_output()) 6 else NULL,
-        full_width = FALSE
-      ) %>%
-      kableExtra::add_header_above(c(
-        " " = 1,
-        "RDS-I Estimator" = length(rds_i_cols),
-        "RDS-SS Estimator" = length(rds_ss_cols)
-      )) %>%
-      kableExtra::column_spec(1, bold = TRUE, width = "2.5cm") %>%
-      kableExtra::footnote(
-        general = "RDS-I: Salganik-Heckathorn estimator; RDS-SS: Gile's Successive Sampling estimator. Population sizes represent assumed UK domestic worker totals: 50K, 100K, 980K, and 1.74M. Estimates shown as prevalence (95% CI) from neighborhood bootstrap with 1,000 resamples.",
-        general_title = "Note:",
-        footnote_as_chunk = TRUE,
-        threeparttable = TRUE
-      )
-
-    # Add landscape wrapper for PDF
-    if (knitr::is_latex_output()) {
-      cat("\\begin{landscape}\n")
-      print(table_out)
-      cat("\\end{landscape}\n")
-    } else {
-      table_out
-    }
+    rds_comprehensive %>%
+  kableExtra::kbl(
+    col.names = col_names,
+    booktabs = TRUE,
+    align = c("l", rep("c", ncol(rds_comprehensive) - 1)),
+    longtable = TRUE
+  ) %>%
+  kableExtra::kable_styling(
+    latex_options = c("striped", "scale_down", "hold_position"),
+    font_size = 8,
+    full_width = FALSE      # <--- Key change here
+  ) %>%
+  kableExtra::add_header_above(c(
+    " " = 1,
+    "RDS-I Estimator" = length(rds_i_cols),
+    "RDS-SS Estimator" = length(rds_ss_cols)
+  )) %>%
+  kableExtra::column_spec(1, bold = TRUE) %>%   # Remove or relax width argument
+  kableExtra::footnote(
+    general = "RDS-I: Salganik-Heckathorn estimator...",
+    general_title = "Note:",
+    footnote_as_chunk = TRUE,
+    threeparttable = TRUE
+    #longtable = TRUE
+  )
   } else {
     cat("frequentist_df not found.\n")
   }
@@ -2515,7 +2486,8 @@ if (nrow(sensitivity_df) > 0) {
   sensitivity_table %>%
     kableExtra::kbl(
       booktabs = TRUE,
-      align = c("l", rep("r", n_cols - 1))
+      align = c("l", rep("r", n_cols - 1)),
+      caption = "Model-Assisted Sensitivity Analysis: Point estimates and 95% credible intervals"
     ) %>%
     kableExtra::kable_styling(
       latex_options = c("striped", "scale_down", "hold_position"),
@@ -2837,8 +2809,8 @@ Let $d_i$ denote self-reported degree for respondent $i$, and let the recruitmen
 #### Options for RDS Resampling
 
 -   Tree Bootstrap: Sample entire recruitment trees (originating from seeds) with replacement. This respects the hierarchical recruitment structure and allows design effect estimation [@salg06-variance].
--   Successive Sampling Bootstrap (SSB): Sample with replacement according to inclusion probabilities derived from the SS model [@gile11-improved].
--   Neighborhood Bootstrap: Use ego-network topology to preserve recruitment ties and neighborhood structure [@yauc22-neighborhood].
+-   Successive Sampling Bootstrap (SSB): Sample with replacement according to inclusion probabilities derived from the SS model (@gile11-improved).
+-   Neighborhood Bootstrap: Use ego-network topology to preserve recruitment ties and neighborhood structure (@yauc22-neighborhood).
 -   Chain Bootstrap: Each bootstrap replicate samples chains or subchains with replacement, preserving recruiter–recruitee links. This is implemented in `surveybootstrap::rds.boot.draw.chain()` and used in studies like @weir12-comparison.
 
 Let $\mathcal{S}^{(b)}$ denote the sample drawn in bootstrap replicate $b$.
@@ -2918,11 +2890,11 @@ For each replicate $b$, construct: - $\mathcal{S}^{(b)}$: resampled respondent I
 
 #### Weighting Options
 
--   RDS-II Weights [@volz08-probability]: $$
+-   RDS-II Weights (@volz08-probability): $$
     w_i^{(b)} \propto \frac{1}{d_i^{(b)}}
     $$
 
--   SS Weights [@gile11-improved]: Incorporate sampling fraction and frame size $N_F$.
+-   SS Weights (@gile11-improved): Incorporate sampling fraction and frame size $N_F$.
     Computed numerically via successive sampling approximation.
 
 Let $\mathbf{X}_i$ denote covariates (e.g. traits, degree, indicator of hidden population membership), which are retained from the original data and passed to Step 3.
