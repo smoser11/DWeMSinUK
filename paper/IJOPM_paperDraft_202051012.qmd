@@ -356,7 +356,7 @@ However, it also suggests that in other cases it may be necessary to look for se
 We seek to refine this statement through the construction of a composite index by which means a degree of risk related to the likelihood of a domestic worker experiencing this most severe form of exploitation may be distinguished from the likely occurrence of less severe, though similarly illegal, forms of labour abuse.
 
 
-## Evaluating the Degree of Risk
+### Evaluating the Degree of Risk
 
 The study of risk management has a long tradition in operations and supply chain management.
 Initially, the risks under consideration were primarily related to ensuring continuity of the supply of goods and services -- see for example, @juttner_supply_2003.
@@ -1088,7 +1088,7 @@ ma_results_formatted %>%
 
 ```{r}
 #| label: fig-ma-binary-forest
-#| fig-cap: "Forest Plot of Model-Assisted Binary Exploitation Estimates: Population prevalence estimates with 95% credible intervals for each exploitation indicator, ordered by prevalence magnitude. Error bars represent posterior uncertainty from Bayesian SS-PSE (N=980,000, sample seed selection). Source: Authors' Own Work."
+#| fig-cap: "Forest Plot of Model-Assisted Binary Exploitation Estimates: Population prevalence estimates with 95% credible intervals for each exploitation indicator, ordered by prevalence magnitude. Error bars represent posterior uncertainty from Bayesian MA-RDS (N=980,000, sample seed selection). Source: Authors' Own Work."
 #| fig-width: 8      # REDUCE from 10
 #| fig-height: 5     # REDUCE from 6
 #| out-width: "95%"  # ADD this
@@ -1272,19 +1272,19 @@ if (exists("frequentist_df")) {
 
 ### NSUM Estimates
 
-Using the Modified Basic Scale-Up (MBSU) estimator with Sequential Sampling weights and an estimated UK domestic worker population of 980,000, we find substantial variation in prevalence estimates depending on the adjustment factors applied (@tbl-nsum-main).
+Using the Modified Basic Scale-Up (MBSU) estimator @feeh16-generalizing with Sequential Sampling weights and an estimated UK domestic worker population of 980,000, we find substantial variation in prevalence estimates depending on the adjustment factors applied (@tbl-nsum-main).
 
 The unadjusted MBSU estimates (baseline scenario with no adjustment for visibility or reporting barriers, δ=1.0, τ=1.0) suggest that document withholding affects approximately 8,120 workers (0.83%, 95% CI: 0.23%-2.39%). Pay-related issues affect 21,560 workers (2.20%, 95% CI: 1.45%-4.35%), while threats and abuse affect 20,141 workers (2.06%, 95% CI: 1.42%-4.48%). Excessive working hours affect 22,375 workers (2.28%, 95% CI: 1.41%-4.21%), and 15,212 workers report lacking access to help (1.55%, 95% CI: 0.51%-3.73%).
 
 Applying moderate adjustments for reporting and visibility biases (δ=0.9, τ=0.85) yields estimates of 10,615 workers experiencing document withholding (1.08%, 95% CI: 0.30%-3.13%), 28,182 with pay issues (2.88%, 95% CI: 1.90%-5.68%), 26,328 experiencing threats/abuse (2.69%, 95% CI: 1.86%-5.86%), 29,248 with excessive hours (2.98%, 95% CI: 1.84%-5.51%), and 19,885 lacking access to help (2.03%, 95% CI: 0.67%-4.88%).
 
-The most conservative adjustments (δ=0.8, τ=0.7), accounting for greater underreporting and visibility barriers, produce substantially higher estimates: 14,500 workers with document withholding (1.48%, 95% CI: 0.40%-4.27%), 38,499 with pay issues (3.93%, 95% CI: 2.60%-7.77%), 35,966 experiencing threats/abuse (3.67%, 95% CI: 2.53%-8.00%), 39,955 with excessive hours (4.08%, 95% CI: 2.52%-7.53%), and 27,165 lacking access to help (2.77%, 95% CI: 0.91%-6.67%).
+The most conservative visability and reporting adjustments (δ $\delta=0.8$, τ$\tau=0.7$), accounting for greater underreporting and visibility barriers, produce substantially higher estimates: 14,500 workers with document withholding (1.48%, 95% CI: 0.40%-4.27%), 38,499 with pay issues (3.93%, 95% CI: 2.60%-7.77%), 35,966 experiencing threats/abuse (3.67%, 95% CI: 2.53%-8.00%), 39,955 with excessive hours (4.08%, 95% CI: 2.52%-7.53%), and 27,165 lacking access to help (2.77%, 95% CI: 0.91%-6.67%).
 
 These estimates represent prevalence rates ranging from 0.83% to 4.08% across all indicators, with confidence intervals reflecting substantial uncertainty inherent in network-based estimation methods. The conservative adjustments yield estimates approximately 1.8 times higher than unadjusted estimates, while moderate adjustments produce intermediate values approximately 1.3 times higher than baseline.
 
 ```{r}
 #| label: tbl-nsum-main
-#| tbl-cap: "NSUM Prevalence Estimates for Labor Exploitation Indicators: Estimates using Modified Basic Scale-Up (MBSU) method with Sequential Sampling weights and population size of 980,000 domestic workers. Adjustment factors: δ (transmission/barrier effect) and τ (recall effect) control for visibility and reporting biases. Bootstrap confidence intervals based on neighborhood resampling (B=1000). Source: Authors' Own Work."
+#| tbl-cap: "NSUM Prevalence Estimates for Labor Exploitation Indicators: Estimates using Modified Basic Scale-Up (MBSU) method with Sequential Sampling weights and population size of 980,000 domestic workers. Adjustment factors: δ $\\delta$ (transmission/barrier effect) and τ $\\tau$(recall effect) control for visibility and reporting biases. Bootstrap confidence intervals based on neighborhood resampling (B=1000). Source: Authors' Own Work."
 #| echo: false
 #| warning: false
 #| message: false
@@ -1385,7 +1385,7 @@ As Feehan and Salganik put it:
 
 This issue has been recognized since the earliest implementations of NSUM. Bernard et al. describe it as a failure of the transmission condition—the assumption that a respondent will be aware of, and willing to disclose, the group membership of their contacts [@bern10-counting]. More recently, Maltiel et al. have addressed visibility bias using model-based (Bayesian) approaches, which estimate and correct for differential visibility between groups [@malt15-estimating].
 
-In contrast, RDS estimators such as the Volz–Heckathorn (RDS-II) and especially the Successive Sampling (SS) estimator rely on direct self-reporting of hidden group membership. That is, RDS respondents are asked whether they themselves belong to the group or exhibit a trait of interest. This egocentric measurement bypasses the visibility problem entirely. While RDS relies on its own set of assumptions—such as the random recruitment assumption, accurate self-reported degree, and a sufficiently connected social network—visibility is not among its main sources of bias.
+In contrast, RDS estimators such as the Volz–Heckathorn  and especially the Successive Sampling (SS) estimator rely on direct self-reporting of hidden group membership. That is, RDS respondents are asked whether they themselves belong to the group or exhibit a trait of interest. This egocentric measurement bypasses the visibility problem entirely. While RDS relies on its own set of assumptions—such as the random recruitment assumption, accurate self-reported degree, and a sufficiently connected social network—visibility is not among its main sources of bias.
 
 Thus, while both NSUM and RDS are used to estimate the size or prevalence of hidden populations, they are subject to fundamentally different sources of error. In NSUM, low visibility leads to systematic underreporting, which can result in severe underestimation unless appropriately adjusted. Adjustments such as those proposed by Feehan and Salganik—including multiplicative correction factors for visibility ($\tau$ τ), degree ratio ($\delta$ δ), and barrier effects ($\rho$ ρ)—can mitigate these biases, but require additional data or assumptions [@feeh16-generalizing].
 

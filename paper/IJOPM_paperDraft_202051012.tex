@@ -468,7 +468,7 @@ experiencing this most severe form of exploitation may be distinguished
 from the likely occurrence of less severe, though similarly illegal,
 forms of labour abuse.
 
-\subsection{Evaluating the Degree of
+\subsubsection{Evaluating the Degree of
 Risk}\label{evaluating-the-degree-of-risk}
 
 The study of risk management has a long tradition in operations and
@@ -788,7 +788,7 @@ UK -- that is, having a null social network -- had to be removed.
 
 \centering{
 
-\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{IJOPM_paperDraft_202051011_files/figure-pdf/fig-rds-network-1.pdf}
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{IJOPM_paperDraft_202051012_files/figure-pdf/fig-rds-network-1.pdf}
 
 }
 
@@ -1070,7 +1070,7 @@ and Handcock, 2018).
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{IJOPM_paperDraft_202051011_files/figure-pdf/fig-ma-risk-estimates-1.pdf}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{IJOPM_paperDraft_202051012_files/figure-pdf/fig-ma-risk-estimates-1.pdf}
 
 }
 
@@ -1147,7 +1147,7 @@ Document Withholding & 34.3\% (16.4-52.2\%)\\
 
 \centering{
 
-\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{IJOPM_paperDraft_202051011_files/figure-pdf/fig-ma-binary-forest-1.pdf}
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{IJOPM_paperDraft_202051012_files/figure-pdf/fig-ma-binary-forest-1.pdf}
 
 }
 
@@ -1155,7 +1155,7 @@ Document Withholding & 34.3\% (16.4-52.2\%)\\
 Binary Exploitation Estimates: Population prevalence estimates with 95\%
 credible intervals for each exploitation indicator, ordered by
 prevalence magnitude. Error bars represent posterior uncertainty from
-Bayesian SS-PSE (N=980,000, sample seed selection). Source: Authors' Own
+Bayesian MA-RDS (N=980,000, sample seed selection). Source: Authors' Own
 Work.}
 
 \end{figure}%
@@ -1196,7 +1196,7 @@ Pay-related issues & 59.3\% (34.2–63.5) & 49.7\% (34.8–63.4)\\
 
 \centering{
 
-\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{IJOPM_paperDraft_202051011_files/figure-pdf/fig-rds-forest-plot-1.pdf}
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{IJOPM_paperDraft_202051012_files/figure-pdf/fig-rds-forest-plot-1.pdf}
 
 }
 
@@ -1209,10 +1209,11 @@ confidence intervals. Source: Authors' Own Work.}
 
 \subsubsection{NSUM Estimates}\label{nsum-estimates}
 
-Using the Modified Basic Scale-Up (MBSU) estimator with Sequential
-Sampling weights and an estimated UK domestic worker population of
-980,000, we find substantial variation in prevalence estimates depending
-on the adjustment factors applied (Table~\ref{tbl-nsum-main}).
+Using the Modified Basic Scale-Up (MBSU) estimator
+\textcite{fee16-generalizing} with Sequential Sampling weights and an
+estimated UK domestic worker population of 980,000, we find substantial
+variation in prevalence estimates depending on the adjustment factors
+applied (Table~\ref{tbl-nsum-main}).
 
 The unadjusted MBSU estimates (baseline scenario with no adjustment for
 visibility or reporting barriers, δ=1.0, τ=1.0) suggest that document
@@ -1231,13 +1232,14 @@ withholding (1.08\%, 95\% CI: 0.30\%-3.13\%), 28,182 with pay issues
 95\% CI: 1.84\%-5.51\%), and 19,885 lacking access to help (2.03\%, 95\%
 CI: 0.67\%-4.88\%).
 
-The most conservative adjustments (δ=0.8, τ=0.7), accounting for greater
-underreporting and visibility barriers, produce substantially higher
-estimates: 14,500 workers with document withholding (1.48\%, 95\% CI:
-0.40\%-4.27\%), 38,499 with pay issues (3.93\%, 95\% CI: 2.60\%-7.77\%),
-35,966 experiencing threats/abuse (3.67\%, 95\% CI: 2.53\%-8.00\%),
-39,955 with excessive hours (4.08\%, 95\% CI: 2.52\%-7.53\%), and 27,165
-lacking access to help (2.77\%, 95\% CI: 0.91\%-6.67\%).
+The most conservative visability and reporting adjustments (δ
+\(\delta=0.8\), τ\(\tau=0.7\)), accounting for greater underreporting
+and visibility barriers, produce substantially higher estimates: 14,500
+workers with document withholding (1.48\%, 95\% CI: 0.40\%-4.27\%),
+38,499 with pay issues (3.93\%, 95\% CI: 2.60\%-7.77\%), 35,966
+experiencing threats/abuse (3.67\%, 95\% CI: 2.53\%-8.00\%), 39,955 with
+excessive hours (4.08\%, 95\% CI: 2.52\%-7.53\%), and 27,165 lacking
+access to help (2.77\%, 95\% CI: 0.91\%-6.67\%).
 
 These estimates represent prevalence rates ranging from 0.83\% to 4.08\%
 across all indicators, with confidence intervals reflecting substantial
@@ -1251,10 +1253,10 @@ intermediate values approximately 1.3 times higher than baseline.
 \caption{\label{tbl-nsum-main}NSUM Prevalence Estimates for Labor
 Exploitation Indicators: Estimates using Modified Basic Scale-Up (MBSU)
 method with Sequential Sampling weights and population size of 980,000
-domestic workers. Adjustment factors: δ (transmission/barrier effect)
-and τ (recall effect) control for visibility and reporting biases.
-Bootstrap confidence intervals based on neighborhood resampling
-(B=1000). Source: Authors' Own Work.}
+domestic workers. Adjustment factors: δ \(\delta\) (transmission/barrier
+effect) and τ \(\tau\)(recall effect) control for visibility and
+reporting biases. Bootstrap confidence intervals based on neighborhood
+resampling (B=1000). Source: Authors' Own Work.}
 
 \centering{
 
@@ -1377,13 +1379,13 @@ visibility bias using model-based (Bayesian) approaches, which estimate
 and correct for differential visibility between groups
 \autocite{malt15-estimating}.
 
-In contrast, RDS estimators such as the Volz--Heckathorn (RDS-II) and
-especially the Successive Sampling (SS) estimator rely on direct
-self-reporting of hidden group membership. That is, RDS respondents are
-asked whether they themselves belong to the group or exhibit a trait of
-interest. This egocentric measurement bypasses the visibility problem
-entirely. While RDS relies on its own set of assumptions---such as the
-random recruitment assumption, accurate self-reported degree, and a
+In contrast, RDS estimators such as the Volz--Heckathorn and especially
+the Successive Sampling (SS) estimator rely on direct self-reporting of
+hidden group membership. That is, RDS respondents are asked whether they
+themselves belong to the group or exhibit a trait of interest. This
+egocentric measurement bypasses the visibility problem entirely. While
+RDS relies on its own set of assumptions---such as the random
+recruitment assumption, accurate self-reported degree, and a
 sufficiently connected social network---visibility is not among its main
 sources of bias.
 
@@ -1854,7 +1856,7 @@ Longest Chain & 0.0\\
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{IJOPM_paperDraft_202051011_files/figure-pdf/fig-demographics-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{IJOPM_paperDraft_202051012_files/figure-pdf/fig-demographics-1.pdf}}
 
 }
 
@@ -1922,7 +1924,7 @@ Indicator & 50K & 100K & 980K & 1.74M & 50K & 100K & 980K & 1.74M\\
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{IJOPM_paperDraft_202051011_files/figure-pdf/fig-rds-sensitivity-popsize-1.pdf}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{IJOPM_paperDraft_202051012_files/figure-pdf/fig-rds-sensitivity-popsize-1.pdf}
 
 }
 
@@ -2033,7 +2035,7 @@ Any Exploitation & 94.9\% (61.5-100.0\%) & 94.9\% (61.5-100.0\%) & 94.9\% (61.5-
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{IJOPM_paperDraft_202051011_files/figure-pdf/fig-ma-sensitivity-by-indicator-1.pdf}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{IJOPM_paperDraft_202051012_files/figure-pdf/fig-ma-sensitivity-by-indicator-1.pdf}
 
 }
 
@@ -2049,7 +2051,7 @@ varying by population size (color) and seed selection method (shape).}
 
 \centering{
 
-\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{IJOPM_paperDraft_202051011_files/figure-pdf/fig-ma-sensitivity-comparison-1.pdf}
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{IJOPM_paperDraft_202051012_files/figure-pdf/fig-ma-sensitivity-comparison-1.pdf}
 
 }
 
