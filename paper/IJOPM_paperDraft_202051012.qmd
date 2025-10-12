@@ -5,7 +5,11 @@ author:
     affiliation: UoN
   - name: Scott Moser
     affiliation: UoN
+<<<<<<< HEAD
 date: 12, October 2025 # today
+=======
+date: today
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 date-format: "DD, MMMM YYYY"
 abstract: |
   **Purpose**
@@ -14,7 +18,11 @@ abstract: |
   
   **Design/ Methodology/ Approach**
   
+<<<<<<< HEAD
   Using data from a survey of domestic workers based in the United Kingdom (UK), we use statistical techniques, including Respondent Driven Sampling (RDS) methods RDS-I and RDS-SS and Network Scale Up (NSUM) methods, to produce an index of labour exploitation risk and estimators of the prevalence of labour exploitation.
+=======
+  Using data from a survey of domestic workers based in the United Kingdom (UK), we use statistical techniques, including Respondent Driven Sampling (RDS) methods RDS-I and RDS-II and Network Scale Up (NSUM) methods, to produce an index of labour exploitation risk and estimators of the prevalence of labour exploitation.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
   
   **Findings**
   
@@ -788,7 +796,11 @@ However, it performs poorly in small samples, is highly sensitive to seed depend
 Since our sample comprises fewer than 100 respondents recruited from multiple seeds, we regard RDS-I primarily as a historical benchmark rather than a viable option for inference.[^ The Volz–Heckathorn (VH) estimator @volz08-probability offers a probability-based refinement of RDS-I.
 It is more robust but assumes a large population relative to the sample size and does not adjust for finite-population effects.
 Although our diagnostic checks indicated approximate equilibrium across key demographics, the VH estimator is best used here as a robustness check rather than the primary estimator.]
+<<<<<<< HEAD
 Next, the Successive Sampling (RDS-SS) estimator [@gile11-improved] accounts for finite population effects, adjusting for the non-negligible sampling fraction that arises when the target population is not extremely large relative to the sample.
+=======
+Next, the Successive Sampling (RDS-SS) estimator (also called RDS-II) @gile11-improved accounts for finite population effects, adjusting for the non-negligible sampling fraction that arises when the target population is not extremely large relative to the sample.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 This property makes RDS-SS particularly appropriate for our study of migrant domestic workers, and we therefore use it as our primary estimator for binary outcomes (e.g., presence or absence of exploitation).
 
 To estimate continuous outcomes such as our exploitation risk index, we employ the Model-Assisted (MA-RDS) estimator @gile15-network. MA inference uses realistic network simulations to better estimate how likely each kind of person was to be sampled, improving population estimates over standard RDS estimators.
@@ -1274,17 +1286,29 @@ if (exists("frequentist_df")) {
 
 Using the Modified Basic Scale-Up (MBSU) estimator @feeh16-generalizing with Sequential Sampling weights and an estimated UK domestic worker population of 980,000, we find substantial variation in prevalence estimates depending on the adjustment factors applied (@tbl-nsum-main).
 
+<<<<<<< HEAD
 The unadjusted MBSU estimates (baseline scenario with no adjustment for network degree differences or visibility/reporting barriers, δ=1.0, τ=1.0) suggest that document withholding affects approximately 8,120 workers (0.83%, 95% CI: 0.23%-2.39%). Pay-related issues affect 21,560 workers (2.20%, 95% CI: 1.45%-4.35%), while threats and abuse affect 20,141 workers (2.06%, 95% CI: 1.42%-4.48%). Excessive working hours affect 22,375 workers (2.28%, 95% CI: 1.41%-4.21%), and 15,212 workers report lacking access to help (1.55%, 95% CI: 0.51%-3.73%).
 
 Applying moderate adjustments for network degree differences and visibility biases (δ=0.9 for degree ratio, τ=0.85 for visibility/reporting) yields estimates of 10,615 workers experiencing document withholding (1.08%, 95% CI: 0.30%-3.13%), 28,182 with pay issues (2.88%, 95% CI: 1.90%-5.68%), 26,328 experiencing threats/abuse (2.69%, 95% CI: 1.86%-5.86%), 29,248 with excessive hours (2.98%, 95% CI: 1.84%-5.51%), and 19,885 lacking access to help (2.03%, 95% CI: 0.67%-4.88%).
 
 The most conservative adjustments (δ=0.8 for degree ratio, τ=0.7 for visibility/transmission), accounting for greater network degree differences and visibility barriers, produce substantially higher estimates: 14,500 workers with document withholding (1.48%, 95% CI: 0.40%-4.27%), 38,499 with pay issues (3.93%, 95% CI: 2.60%-7.77%), 35,966 experiencing threats/abuse (3.67%, 95% CI: 2.53%-8.00%), 39,955 with excessive hours (4.08%, 95% CI: 2.52%-7.53%), and 27,165 lacking access to help (2.77%, 95% CI: 0.91%-6.67%).
+=======
+The unadjusted MBSU estimates (baseline scenario with no adjustment for visibility or reporting barriers, δ=1.0, τ=1.0) suggest that document withholding affects approximately 8,120 workers (0.83%, 95% CI: 0.23%-2.39%). Pay-related issues affect 21,560 workers (2.20%, 95% CI: 1.45%-4.35%), while threats and abuse affect 20,141 workers (2.06%, 95% CI: 1.42%-4.48%). Excessive working hours affect 22,375 workers (2.28%, 95% CI: 1.41%-4.21%), and 15,212 workers report lacking access to help (1.55%, 95% CI: 0.51%-3.73%).
+
+Applying moderate adjustments for reporting and visibility biases (δ=0.9, τ=0.85) yields estimates of 10,615 workers experiencing document withholding (1.08%, 95% CI: 0.30%-3.13%), 28,182 with pay issues (2.88%, 95% CI: 1.90%-5.68%), 26,328 experiencing threats/abuse (2.69%, 95% CI: 1.86%-5.86%), 29,248 with excessive hours (2.98%, 95% CI: 1.84%-5.51%), and 19,885 lacking access to help (2.03%, 95% CI: 0.67%-4.88%).
+
+The most conservative visability and reporting adjustments (δ $\delta=0.8$, τ$\tau=0.7$), accounting for greater underreporting and visibility barriers, produce substantially higher estimates: 14,500 workers with document withholding (1.48%, 95% CI: 0.40%-4.27%), 38,499 with pay issues (3.93%, 95% CI: 2.60%-7.77%), 35,966 experiencing threats/abuse (3.67%, 95% CI: 2.53%-8.00%), 39,955 with excessive hours (4.08%, 95% CI: 2.52%-7.53%), and 27,165 lacking access to help (2.77%, 95% CI: 0.91%-6.67%).
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 
 These estimates represent prevalence rates ranging from 0.83% to 4.08% across all indicators, with confidence intervals reflecting substantial uncertainty inherent in network-based estimation methods. The conservative adjustments yield estimates approximately 1.8 times higher than unadjusted estimates, while moderate adjustments produce intermediate values approximately 1.3 times higher than baseline.
 
 ```{r}
 #| label: tbl-nsum-main
+<<<<<<< HEAD
 #| tbl-cap: "NSUM Prevalence Estimates for Labor Exploitation Indicators: Estimates using Modified Basic Scale-Up (MBSU) method with Sequential Sampling weights and population size of 980,000 domestic workers. Adjustment factors: $\\delta$ (δ, degree ratio) controls for network size differences; $\\tau$ (τ, visibility/true positive rate) controls for reporting accuracy and visibility barriers. Bootstrap confidence intervals based on neighborhood resampling (B=1000). Source: Authors' Own Work."
+=======
+#| tbl-cap: "NSUM Prevalence Estimates for Labor Exploitation Indicators: Estimates using Modified Basic Scale-Up (MBSU) method with Sequential Sampling weights and population size of 980,000 domestic workers. Adjustment factors: δ $\\delta$ (transmission/barrier effect) and τ $\\tau$(recall effect) control for visibility and reporting biases. Bootstrap confidence intervals based on neighborhood resampling (B=1000). Source: Authors' Own Work."
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 #| echo: false
 #| warning: false
 #| message: false
@@ -1329,7 +1353,11 @@ if (file.exists(nsum_file)) {
     pack_rows("Conservative (δ=0.8, τ=0.7)", 6, 10) %>%
     pack_rows("Moderate (δ=0.9, τ=0.85)", 11, 15) %>%
     footnote(
+<<<<<<< HEAD
       general = "MBSU = Modified Basic Scale-Up method; δ = degree ratio (d̄_H,F/d̄_F,F, ratio of hidden population network degree to frame population degree); τ = visibility/true positive rate (v̄_H,F/d̄_H,F, proportion of edges correctly reported, measures transmission and reporting accuracy); Bootstrap method: neighborhood resampling with 1000 iterations; Population base: 980,000 UK domestic workers.",
+=======
+      general = "MBSU = Modified Basic Scale-Up method; δ = transmission/barrier effect (proportion of cases visible to network); τ = recall effect (accuracy of reporting); Bootstrap method: neighborhood resampling with 1000 iterations; Population base: 980,000 UK domestic workers.",
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
       general_title = "Note:",
       footnote_as_chunk = TRUE
     )
@@ -1344,9 +1372,15 @@ if (file.exists(nsum_file)) {
 ## Comparative Interpretation
 
 Table 1 summarises prevalence estimates across both methods, highlighting points of convergence and divergence.
+<<<<<<< HEAD
 While absolute values differ across RDS and NSUM (reflecting differences in ego- versus alter-based assumptions), the overall pattern is remarkably stable.
 
 @fig-method-comparison demonstrates the comparison between frequentist RDS estimators (RDS-I, RDS-SS) and Bayesian model-assisted methods across all exploitation indicators.
+=======
+While absolute values differ slightly across RDS and NSUM (reflecting differences in ego- versus alter-based assumptions), the overall pattern is remarkably stable.
+
+@fig-method-comparison demonstrates the comparison between frequentist RDS estimators (RDS-I, RDS-II, RDS-SS) and Bayesian model-assisted methods across all exploitation indicators.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 The horizontal spacing of estimates allows clear visual comparison of point estimates and uncertainty intervals, with RDS methods showing bootstrap confidence intervals and Bayesian methods showing credible intervals from MCMC estimation.
 Both approaches identify similar patterns of exploitation prevalence, with excessive hours showing the highest prevalence across all methods, followed by threats/abuse and pay-related issues.
 
@@ -1372,6 +1406,7 @@ if (file.exists(fig_path)) {
 }
 ```
 
+<<<<<<< HEAD
 ### On the Role of Visibility in Explaining Differences Between NSUM and RDS Estimates
 
 Substantial discrepancies between hidden population prevalence estimates derived from Respondent-Driven Sampling (RDS) and the Network Scale-Up Method (NSUM) are widely observed in empirical research and simulation studies. In the present case, for example, egocentric RDS-based estimates suggest that 34% to 84% of respondents personally experienced indicators of exploitation. In contrast, the corresponding NSUM estimates suggest that only 2.9% to 5.1% of the general domestic worker population experiences these same harms. This stark divergence—often approaching an order of magnitude—warrants a careful methodological explanation.
@@ -1389,6 +1424,26 @@ In contrast, RDS estimators such as the Volz–Heckathorn and especially the Suc
 Thus, while both NSUM and RDS are used to estimate the size or prevalence of hidden populations, they are subject to fundamentally different sources of error. In NSUM, low visibility leads to systematic underreporting, which can result in severe underestimation unless appropriately adjusted. Adjustments such as those proposed by Feehan and Salganik—including multiplicative correction factors for degree ratio ($\delta$ δ, network size differences), visibility/true positive rate ($\tau$ τ, transmission and reporting accuracy), and frame ratio ($\phi_F$ φ_F)—can mitigate these biases, but require additional data or assumptions [@feeh16-generalizing].
 
 In our setting, where RDS estimates suggest that over 50% of respondents have experienced some form of labour exploitation, but NSUM estimates suggest only 3–5% of the domestic worker population does so, visibility bias is almost certainly the dominant factor explaining the discrepancy. This is especially true in contexts involving exploitation, abuse, or trafficking—where group membership is often concealed both by victims and by observers. Respondents in the frame population may simply be unaware that their contacts are experiencing exploitation, leading to substantial underreporting.
+=======
+On the Role of Visibility in Explaining Differences Between NSUM and RDS Estimates
+----------------------------------------------------------------------------------
+
+Substantial discrepancies between hidden population prevalence estimates derived from Respondent-Driven Sampling (RDS) and the Network Scale-Up Method (NSUM) are widely observed in empirical research and simulation studies. In the present case, for example, egocentric RDS-based estimates (e.g., using Gile’s Successive Sampling estimator) suggest that 34% to 84% of respondents personally experienced indicators of exploitation. In contrast, the corresponding NSUM estimates suggest that only 2.9% to 5.1% of the general domestic worker population experiences these same harms. This stark divergence—often approaching an order of magnitude—warrants a careful methodological explanation.
+
+Among the various sources of error affecting NSUM, the most important and widely documented is visibility bias, also referred to in some literature as transmission bias. Visibility refers to the extent to which members of a hidden population are known to belong to that population by members of the general population. In the context of NSUM, visibility determines whether a respondent can accurately report having connections to members of the hidden group. If visibility is low—because of stigma, secrecy, or lack of awareness—respondents will systematically underreport these ties. This causes a downward bias in the numerator of the NSUM estimator, thereby underestimating the size of the hidden population.
+
+As Feehan and Salganik put it:
+
+> “Transmission error occurs when respondents do not know or are unwilling to report the true group memberships of people they know” [@feeh16-generalizing, p. 155].
+
+This issue has been recognized since the earliest implementations of NSUM. Bernard et al. describe it as a failure of the transmission condition—the assumption that a respondent will be aware of, and willing to disclose, the group membership of their contacts [@bern10-counting]. More recently, Maltiel et al. have addressed visibility bias using model-based (Bayesian) approaches, which estimate and correct for differential visibility between groups [@malt15-estimating].
+
+In contrast, RDS estimators such as the Volz–Heckathorn  and especially the Successive Sampling (SS) estimator rely on direct self-reporting of hidden group membership. That is, RDS respondents are asked whether they themselves belong to the group or exhibit a trait of interest. This egocentric measurement bypasses the visibility problem entirely. While RDS relies on its own set of assumptions—such as the random recruitment assumption, accurate self-reported degree, and a sufficiently connected social network—visibility is not among its main sources of bias.
+
+Thus, while both NSUM and RDS are used to estimate the size or prevalence of hidden populations, they are subject to fundamentally different sources of error. In NSUM, low visibility leads to systematic underreporting, which can result in severe underestimation unless appropriately adjusted. Adjustments such as those proposed by Feehan and Salganik—including multiplicative correction factors for visibility ($\tau$ τ), degree ratio ($\delta$ δ), and barrier effects ($\rho$ ρ)—can mitigate these biases, but require additional data or assumptions [@feeh16-generalizing].
+
+In our setting, where RDS estimates suggest that over 50% of respondents have experienced exploitation, but NSUM estimates suggest only 3–5% of the domestic worker population does so, visibility bias is almost certainly the dominant factor explaining the discrepancy. This is especially true in contexts involving exploitation, abuse, or trafficking—where group membership is often concealed both by victims and by observers. Respondents in the frame population may simply be unaware that their contacts are experiencing exploitation, leading to substantial underreporting.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 
 
 Hense, visibility bias is a major and well-understood limitation of NSUM, and likely the principal reason why our NSUM estimates are substantially lower than those derived from RDS. The use of RDS-based estimators, particularly those that adjust for sample design such as Gile’s SS estimator, provides direct measurement of traits among the hidden population and avoids the visibility problem. Therefore, RDS estimates are often more accurate in estimating prevalence within the hidden population, whereas NSUM estimates are typically biased downward unless adjusted for visibility and related biases.
@@ -1397,11 +1452,22 @@ Hense, visibility bias is a major and well-understood limitation of NSUM, and li
 
 ## Robustness Checks
 
+<<<<<<< HEAD
 A series of robustness checks were performed to assess the stability of the findings.  In Appendix B,  a comprehensive analysis comparing all prevalence estimates across indicators, methods, and parameter values is presented.  There,  remarkable consistency is demonstrated across different analytical approaches.
+=======
+A series of robustness checks were performed to assess the stability of the findings.
+@fig-forest-plot presents a comprehensive forest plot comparing all prevalence estimates across indicators and methods, demonstrating remarkable consistency across different analytical approaches.
+Bootstrap resampling confirmed that the RDS and NSUM estimates remained stable across repeated draws.
+Sensitivity analyses excluding suspicious datapoints did not materially alter subgroup rankings.
+Analyses restricted to single subgroups confirmed that the elevated prevalence among Latinx workers was not an artifact of recruitment dynamics.
+
+The forest plot visualization clearly shows that traditional RDS estimators (RDS-I and RDS-SS) produced results consistent with the model-assisted and Bayesian estimates, albeit with wider confidence intervals in some cases.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 The pattern of estimates is remarkably stable across methods, with excessive hours consistently showing the highest prevalence, followed by threats/abuse and pay-related issues, while document withholding shows more moderate prevalence levels.
 This cross-method validation strengthens confidence in our findings and demonstrates the robustness of the dual estimation approach.
 Full technical details are reported in Appendices B and C.
 
+<<<<<<< HEAD
 <!-- ```{r} -->
 <!-- #| label: fig-parameter-comparison -->
 <!-- #| fig-cap: "Bayesian Parameter Sensitivity Analysis. Comparison of prevalence estimates using enhanced vs standard MCMC parameters for Bayesian model-assisted estimation. Enhanced parameters use longer burn-in periods and more iterations, particularly important for numeric and ordinal variables like composite risk scores. Error bars represent 95% Bayesian credible intervals. Source: Authors' own work." -->
@@ -1412,6 +1478,18 @@ Full technical details are reported in Appendices B and C.
 
 <!-- knitr::include_graphics(here::here("output", "figures", "parameter_comparison.png")) -->
 <!-- ``` -->
+=======
+```{r}
+#| label: fig-parameter-comparison
+#| fig-cap: "Bayesian Parameter Sensitivity Analysis. Comparison of prevalence estimates using enhanced vs standard MCMC parameters for Bayesian model-assisted estimation. Enhanced parameters use longer burn-in periods and more iterations, particularly important for numeric and ordinal variables like composite risk scores. Error bars represent 95% Bayesian credible intervals. Source: Authors' own work."
+#| fig-width: 9      # REDUCE from 10
+#| fig-height: 5     # REDUCE from 6
+#| out-width: "95%"  # ADD this
+#| echo: false
+
+knitr::include_graphics(here::here("output", "figures", "parameter_comparison.png"))
+```
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 
 ```{r}
 #| label: fig-forest-plot
@@ -1448,11 +1526,21 @@ To reduce migrant domestic workers vulnerabilities, we advocate the expansion of
 
 This study makes several methodological contributions to the estimation of prevalence in hidden and hard-to-reach populations:
 
+<<<<<<< HEAD
 _Dual conceptualisation of exploitation_: We introduce two distinct approaches to operationalising exploitation.
+=======
+Dual conceptualisation of exploitation: We introduce two distinct approaches to operationalising exploitation.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 First, we treat exploitation as a binary outcome (exploited versus not exploited), enabling direct comparison of prevalence estimates across RDS and NSUM methods.
 Second, we construct a continuous risk index, acknowledging that all domestic workers may be exposed to some degree of exploitation risk.
 To our knowledge, this is the first application of model-assisted RDS estimators to quantify a continuous measure of exploitation risk.
 
+<<<<<<< HEAD
+=======
+Bayesian parameter sensitivity: @fig-parameter-comparison demonstrates the importance of appropriate MCMC parameter selection for Bayesian model-assisted estimation.
+Our analysis shows that enhanced parameters (featuring longer burn-in periods and more iterations) are particularly crucial for numeric and ordinal variables, where standard parameters may suffer from convergence issues.
+This methodological innovation ensures robust credible interval estimation for continuous risk measures.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 
 *Combining RDS and NSUM on the same survey instrument*: By designing a survey that captures both ego and alter information, we are able to apply RDS and NSUM to the same sample.
 This dual approach has rarely been implemented in studies of labour exploitation.
@@ -1479,8 +1567,12 @@ Most of our respondents are therefore original sample members draw from the thre
 ## Further Research
 
 We believe that web-RDS combined with statistical estimators such as NSUM offers an important method for the capture and comparison of relative proportions of labour exploitation and abuse in sectors within and beyond the UK.
+<<<<<<< HEAD
 Network scale up methods, and potential enhancements such as Generalised network scale up estimators offer to enhance understanding, not least within operations and supply chain management research, of the extent of labour exploitation in different sectors and across industries.  The differences in NSUM and RDS estimates warrants further investitation and suggests research into _combining_ multiple estimates may be a fruitful direction in human rights research and especially prevelenace of modern slavery research.
 
+=======
+Network scale up methods, and potential enhancements such as Generalised network scale up estimators offer to enhance understanding, not least within operations and supply chain management research, of the extent of labour exploitation in different sectors and across industries.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 
 # Conclusion
 
@@ -1511,9 +1603,20 @@ Network scale up methods, and potential enhancements such as Generalised network
 
 # Appendix A {#app-survey}
 
+<<<<<<< HEAD
 
 
 ## The Survey Questions
+=======
+Population Parameters
+
+Use \~980,000 as UK domestic worker population estimate (EU data)
+
+Use 44,360 as NRM adult referrals baseline Address treatment of "don't know" responses and zero network size claims Consider separate analysis for Filipino subgroup
+
+
+### The Survey
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 
 (From codebook)
 
@@ -1532,6 +1635,7 @@ Risk Index Implementation
 -   Forced labor indicators (0.55 total)
 -   Below minimum wage (0.10)
 
+<<<<<<< HEAD
 ## Data Processing {#app-dataprep}
 
 The process of coding variables to make them comparable across the Respondent-Driven Sampling (RDS) and Network Scale-Up Method (NSUM) estimations is a multi-step procedure that moves from conceptual mapping to specific data transformations.
@@ -1550,6 +1654,24 @@ The confidence is lower because the NSUM question (Q64) also asks about annual l
 - Access to Help (Least Confident): Matching whether the respondent personally knows where to go for help (Q78) with knowing others who do not (Q79).
 Coding and Transformation Process The conceptual mapping was then put into practice through a detailed coding process, which is explicitly documented in the project's R script.
 
+=======
+### Data Processing {#app-dataprep}
+
+The process of coding variables to make them comparable across the Respondent-Driven Sampling (RDS) and Network Scale-Up Method (NSUM) estimations is a multi-step procedure that moves from conceptual mapping to specific data transformations.
+The core challenge is bridging the "egocentric" questions (about the respondent's own experiences, used for RDS) with the network-based questions (about how many others the respondent knows with certain experiences, used for NSUM).
+Yes, the sources provide extensive detail on the coding of variables to make them comparable for RDS and NSUM estimation.
+The fundamental challenge is to create a fair comparison between the "egocentric" RDS questions (about personal experience) and the broader "how many do you know" NSUM questions.
+This was accomplished by first identifying thematic links between questions and then implementing a specific coding scheme to transform them into a consistent format.
+Conceptual Mapping of Variables The team first identified sets of questions that cover the same underlying themes, even if their wording differed.
+These "linking" questions were categorized by the team's confidence in their comparability.
+Thematic Groups for Comparison: • Document Withholding (Most Confident): Comparing personal experience (Q70) with knowing others who lack access to their documents (Q71).
+• Pay/Debt Issues (High Confidence): Linking personal experience with debt (Q39) and withheld pay (Q42) to knowing others with such problems (Q43).
+• Threats/Abuse (High Confidence): Aggregating personal experiences of being forced, threatened, intimidated, or verbally abused (Q45, Q47, Q48) and comparing them to knowing others who experienced threats or force (Q49).
+• Excessive Hours (Lower Confidence): Combining questions about inadequate weekly rest (Q61) and excessive overtime (Q62) to compare with knowing others who face similar labor rights issues (Q64).
+The confidence is lower because the NSUM question (Q64) also asks about annual leave, which is not covered in the corresponding RDS questions.
+• Access to Help (Least Confident): Matching whether the respondent personally knows where to go for help (Q78) with knowing others who do not (Q79).
+Coding and Transformation Process The conceptual mapping was then put into practice through a detailed coding process, which is explicitly documented in the project's R script.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 The primary goal was to convert all variables into a binary (0/1) format, representing "No" or "Yes" to experiencing or knowing someone who experienced the issue.
 
 Key Coding Steps:
@@ -1557,6 +1679,7 @@ Key Coding Steps:
 1.  Handling Ambiguous Answers: For most RDS questions, responses like "I don’t know" or "Prefer not to say" were recoded as NA (missing) to exclude them from the binary analysis.
 2.  Converting Categorical RDS Variables to Binary: Questions with multiple response options (e.g., "Always," "Often," "Sometimes," "Never") were recoded into a 0/1 format. For instance, for Q70 (document withholding), the answers "Always," "Often," and "Sometimes" were all coded as 1 (indicating the presence of the issue), while "Never" was coded as 0.
 3.  Aggregating Multiple RDS Questions: For themes covered by multiple egocentric questions (like "Threats/Abuse"), each individual question was first recoded into a binary 0/1 variable. These binary variables were then combined using a logical OR (\|). This means if a respondent answered "Yes" to any of the grouped questions (e.g., experiencing threats OR intimidation OR verbal abuse), the final composite RDS variable would be coded as 1. This aggregation was necessary to match the broader scope of the single corresponding NSUM question.
+<<<<<<< HEAD
 4.  Converting NSUM Count Variables to Binary: The NSUM questions, which asked for a numerical count (e.g., "how many do you know?"), were also converted to binary. If a respondent knew one or more people (\> 0), their answer was coded as 1; if they knew zero, it remained 0. 
 
 ## Indicators
@@ -1651,6 +1774,203 @@ The goal is to aggregate some of the specific "egocentric" questions to make the
 <!--     plot.background = element_rect(fill = "white", color = NA) -->
 <!--   ) -->
 <!-- ``` -->
+=======
+4.  Converting NSUM Count Variables to Binary: The NSUM questions, which asked for a numerical count (e.g., "how many do you know?"), were also converted to binary. If a respondent knew one or more people (\> 0), their answer was coded as 1; if they knew zero, it remained 0. Through this systematic process of recoding, handling missing data, and aggregating variables, the team created a set of parallel binary indicators suitable for a direct comparison between the RDS and NSUM estimation frameworks.
+
+### Indicators
+
+Creating comparable variables to bridge the Respondent-Driven Sampling (RDS) and Network Scale-Up Method (NSUM) estimations is a key methodological challenge the research team is actively working to solve.
+The core issue is that the two methods rely on differently framed questions: • RDS estimation uses "egocentric" questions, which focus on the respondent's personal experiences (e.g., "Have you been forced to work?").
+• NSUM estimation uses questions about the respondent's knowledge of others in their network (e.g., "How many domestic workers do you know who have experienced...").
+The survey questions designed for these two purposes do not always match up directly, making a fair comparison between the estimates difficult.
+The Strategy: Creating "Linking" Variables To overcome this, the team's strategy is to identify and group questions that cover the same underlying themes, even if they are worded differently for each method.
+The goal is to aggregate some of the specific "egocentric" questions to make them comparable to the broader "how many do you know" NSUM questions.
+Based on our sources, several sets of "linking" questions have been identified with varying degrees of confidence in their comparability: • Document Withholding (High Confidence): ◦ RDS Question: Q70 asks if the employer has withheld the respondent's travel and identity documents.
+◦ NSUM Question: Q71 asks how many other domestic workers the respondent knows who do not have access to their own documents.
+• Debt and Pay Issues (High Confidence): ◦ RDS Questions: This involves combining Q39 (having to pay off debt to someone who helped find work) and Q42 (has our pay ever been withheld?).
+◦ NSUM Question: Q43 asks how many others the respondent knows who have experienced problems with debt or pay.
+• Abuse and Threats (Medium Confidence): ◦ RDS Questions: This requires grouping Q45 (forced, deceived, or threatened into poor working conditions), Q47 (employer intimidation or threats), and Q48 (verbal abuse).
+◦ NSUM Question: Q49 asks how many others the respondent knows who have experienced the use of threat or force.
+• Excessive Hours (Lower Confidence): ◦ RDS Questions: Q61 (weekly rest does not last 24 hours) and Q62 (working excessive overtime) are combined.
+◦ NSUM Question: Q64 asks about knowing others who work excessive overtime, lack breaks, or lack annual leave.
+The comparison here is considered "flakier" because the RDS questions do not ask about annual leave, creating a partial mismatch.
+• Access to Help (Lower Confidence): ◦ RDS Question: Q78 asks if the respondent knows who might help them (coded for "No" answers).
+◦ NSUM Question: Q79 asks how many other domestic workers the respondent knows who do NOT know where to go for help.
+By creating these comparable variables, even if just for one or two highly confident themes like debt bondage or document withholding, the team hopes to perform a fair comparison between the estimates derived from the two different methodologies.
+This process is considered a crucial step to integrate the RDS and NSUM approaches and to produce more robust findings.
+
+### Sample Characteristics
+
+#### Recruitment Network Structure
+
+```{r}
+#| label: tbl-network
+#| tbl-cap: "RDS Sample Network Characteristics"
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+# Calculate chain statistics from recruitment network
+calculate_chain_stats <- function(data) {
+  # Build parent-child relationships
+  chains <- data %>%
+    dplyr::select(id, recruiter.id) %>%
+    dplyr::mutate(
+      id = as.integer(id),
+      recruiter.id = as.integer(recruiter.id)
+    )
+
+  # Find all seeds (recruiter.id == -1 or NA)
+  seeds <- chains %>%
+    dplyr::filter(recruiter.id == -1 | is.na(recruiter.id)) %>%
+    dplyr::pull(id)
+
+  # If no seeds found, return zeros
+  if (length(seeds) == 0) {
+    return(list(longest = 0, mean_length = 0))
+  }
+
+  # Calculate depth for each node (distance from seed)
+  get_chain_depth <- function(node_id, chains, depth = 0, visited = c()) {
+    if (node_id %in% visited) return(as.numeric(depth))  # Prevent cycles
+    visited <- c(visited, node_id)
+
+    # Find children of this node
+    children <- chains %>%
+      dplyr::filter(recruiter.id == node_id) %>%
+      dplyr::pull(id)
+
+    if (length(children) == 0) {
+      return(as.numeric(depth))  # Leaf node
+    } else {
+      # Return maximum depth among children
+      child_depths <- vapply(children, function(child) {
+        get_chain_depth(child, chains, depth + 1, visited)
+      }, FUN.VALUE = numeric(1))
+      return(as.numeric(max(child_depths)))
+    }
+  }
+
+  # Calculate longest chain from each seed
+  chain_lengths <- vapply(seeds, function(seed_id) {
+    get_chain_depth(seed_id, chains)
+  }, FUN.VALUE = numeric(1))
+
+  # Calculate average chain length (mean depth from seeds)
+  all_depths <- c()
+  for (seed_id in seeds) {
+    descendants <- chains %>%
+      dplyr::filter(recruiter.id == seed_id)
+
+    if (nrow(descendants) > 0) {
+      for (desc_id in descendants$id) {
+        depth_val <- get_chain_depth(desc_id, chains, depth = 1)
+        all_depths <- c(all_depths, as.numeric(depth_val))
+      }
+    }
+  }
+
+  # Ensure we have numeric vectors
+  chain_lengths <- as.numeric(chain_lengths)
+  all_depths <- as.numeric(all_depths)
+
+  return(list(
+    longest = ifelse(length(chain_lengths) > 0, max(chain_lengths, na.rm = TRUE), 0),
+    mean_length = ifelse(length(all_depths) > 0, mean(all_depths, na.rm = TRUE), 0)
+  ))
+}
+
+chain_stats <- calculate_chain_stats(rd.dd)
+
+network_stats <- tibble(
+  Characteristic = c("Total Sample Size", "Recruitment Waves", "Average Degree",
+                    "Median Degree", "Seeds", "Longest Chain", "Mean Chain Length"),
+  Value = c(
+    nrow(rd.dd),
+    max(rd.dd$wave, na.rm = TRUE),
+    round(mean(rd.dd$numRef, na.rm = TRUE), 1),
+    round(median(rd.dd$numRef, na.rm = TRUE), 1),
+    sum(rd.dd$recruiter.id == -1 | is.na(rd.dd$recruiter.id)),
+    chain_stats$longest,
+    round(chain_stats$mean_length, 1)
+  )
+)
+
+network_stats %>%
+  kableExtra::kbl(
+    col.names = c("Characteristic", "Value"),
+    booktabs = TRUE,
+    align = c("l", "r")
+  ) %>%
+  kableExtra::kable_styling(
+    latex_options = c("striped", "hold_position"),
+    bootstrap_options = c("striped", "hover"),
+    full_width = FALSE,
+    position = "center"
+  ) %>%
+  kableExtra::footnote(
+    general = "Average and median degree represent the number of other domestic workers known personally (Q13). Chain length measured from seed nodes through recruitment relationships.",
+    general_title = "Note:",
+    footnote_as_chunk = TRUE
+  )
+```
+
+#### Demographic Composition
+
+```{r}
+#| label: fig-demographics
+#| fig-cap: "Sample Composition by Nationality Clusters"
+#| fig-width: 8
+#| fig-height: 5
+
+# Create nationality breakdown with proper ordering
+nationality_summary <- rd.dd %>%
+  dplyr::group_by(nationality_cluster) %>%
+  dplyr::summarise(
+    n = n(),
+    percent = round(n() / nrow(rd.dd) * 100, 1),
+    .groups = 'drop'
+  ) %>%
+  dplyr::arrange(desc(n)) %>%
+  dplyr::mutate(
+    nationality_cluster = factor(nationality_cluster, levels = nationality_cluster),
+    label_text = sprintf("%d\n(%.1f%%)", n, percent)
+  )
+
+# Create professional bar plot
+ggplot(nationality_summary, aes(x = nationality_cluster, y = percent, fill = nationality_cluster)) +
+  geom_col(width = 0.7, alpha = 0.9) +
+  geom_text(aes(label = label_text),
+            vjust = -0.3,
+            size = 3.5,
+            fontface = "bold") +
+  scale_fill_viridis_d(option = "plasma", begin = 0.2, end = 0.8) +
+  scale_y_continuous(
+    expand = expansion(mult = c(0, 0.15)),
+    breaks = seq(0, 100, by = 10),
+    labels = function(x) paste0(x, "%")
+  ) +
+  labs(
+    x = "Nationality Cluster",
+    y = "Percentage of Sample",
+    title = "Sample Distribution by Nationality Cluster",
+    subtitle = sprintf("Total N = %d", nrow(rd.dd))
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(face = "bold", size = 13, hjust = 0.5),
+    plot.subtitle = element_text(size = 10, hjust = 0.5, color = "gray30"),
+    axis.title = element_text(face = "bold", size = 11),
+    axis.text.x = element_text(angle = 0, hjust = 0.5, size = 10),
+    axis.text.y = element_text(size = 10),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "white", color = NA),
+    plot.background = element_rect(fill = "white", color = NA)
+  )
+```
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 
 
 
@@ -1760,7 +2080,11 @@ if (file.exists(here("output", "frequentist_estimators_results.RData"))) {
 }
 ```
 
+<<<<<<< HEAD
 ```{r eval=FALSE, echo=FALSE}
+=======
+```{r eval=FALSE}
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 
     # Create professionally formatted table
     rds_comprehensive %>%
@@ -1788,8 +2112,17 @@ if (file.exists(here("output", "frequentist_estimators_results.RData"))) {
         footnote_as_chunk = TRUE,
         threeparttable = TRUE
       )
+<<<<<<< HEAD
   } 
 
+=======
+  } else {
+    cat("frequentist_df not found.\n")
+  }
+} else {
+  cat("frequentist_estimators_results.RData file not found.\n")
+}
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 ```
 
 ```{r}
@@ -1959,9 +2292,15 @@ if (nrow(ma_comparison) > 0) {
 }
 ```
 
+<<<<<<< HEAD
 <!-- #### Traditional RDS Estimators Comparison -->
 
 ```{r eval=F}
+=======
+#### Traditional RDS Estimators Comparison
+
+```{r}
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 #| label: tbl-rds-comparison
 #| tbl-cap: "RDS Estimator Comparison for Binary Indicators. Source: Authors' Own Work."
 #| echo: false
@@ -2266,7 +2605,11 @@ if (file.exists(rds_file)) {
 
 ## Model-Assisted Sensitivity Analysis
 
+<<<<<<< HEAD
 This section presents comprehensive sensitivity analysis for Model-Assisted inference estimates across all exploitation indicators, examining robustness to population size assumptions and seed selection methods.  @fig-ma-sensitivity-by-indicator and @fig-ma-sensitivity-comparison show MA estimates are robust to these paramter choices.
+=======
+This section presents comprehensive sensitivity analysis for Model-Assisted inference estimates across all exploitation indicators, examining robustness to population size assumptions and seed selection methods.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 
 ```{r}
 #| label: extract-all-ma-sensitivity
@@ -2626,7 +2969,11 @@ if (file.exists(popsize_file)) {
 
 ### Sensitivity to NSUM Method and Adjustment Factors
 
+<<<<<<< HEAD
 The choice of NSUM estimator and adjustment factors had substantial impact on estimates (@tbl-appendix-nsum-method). We compared MBSU with three adjustment factor sets (no adjustment, moderate, conservative) and GNSUM Symmetric estimation. GNSUM estimates matched MBSU (No Adjustment) exactly for all indicators, while conservative MBSU adjustments (δ$\delta=0.8$ τ$\tau=0.7$) produced estimates approximately 1.8 times higher than unadjusted estimates. Moderate adjustments (δ=0.9, τ=0.85) provided intermediate values approximately 1.3 times higher than baseline, representing our preferred specification that acknowledges likely visibility and reporting barriers while avoiding extreme assumptions.
+=======
+The choice of NSUM estimator and adjustment factors had substantial impact on estimates (@tbl-appendix-nsum-method). We compared MBSU with three adjustment factor sets (no adjustment, moderate, conservative) and GNSUM Symmetric estimation. GNSUM estimates matched MBSU (No Adjustment) exactly for all indicators, while conservative MBSU adjustments (δ=0.8, τ=0.7) produced estimates approximately 1.8 times higher than unadjusted estimates. Moderate adjustments (δ=0.9, τ=0.85) provided intermediate values approximately 1.3 times higher than baseline, representing our preferred specification that acknowledges likely visibility and reporting barriers while avoiding extreme assumptions.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 
 ```{r}
 #| label: tbl-appendix-nsum-method
@@ -2658,7 +3005,11 @@ if (file.exists(nsum_method_file)) {
     pack_rows("MBSU Moderate (δ=0.9, τ=0.85)", 11, 15) %>%
     pack_rows("MBSU No Adjustment (δ=1.0, τ=1.0)", 16, 20) %>%
     footnote(
+<<<<<<< HEAD
       general = "MBSU = Modified Basic Scale-Up; GNSUM = Generalized Network Scale-Up Method; δ = degree ratio (network size differences); τ = visibility/true positive rate (transmission and reporting accuracy). Adjustment factors control for network degree differences and visibility/reporting biases in network-based estimation.",
+=======
+      general = "MBSU = Modified Basic Scale-Up; GNSUM = Generalized Network Scale-Up Method; δ = transmission/barrier effect; τ = recall effect. Adjustment factors control for visibility and reporting biases in network-based estimation.",
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
       general_title = "Note:",
       footnote_as_chunk = TRUE
     )
@@ -2683,7 +3034,11 @@ RDS introduces specific structural dependencies and inclusion probabilities that
 
 This presents a challenge: how can we correctly estimate uncertainty for NSUM estimates derived from an RDS sample?
 As shown in @feeh16-generalizing and @salg06-variance, the NSUM estimator depends crucially on inclusion weights $\pi_i$, which must reflect the sampling design.
+<<<<<<< HEAD
 When data are RDS-based, these weights are typically derived from known degree-based estimators such as RDS-I, or RDS-II or Gile’s Successive Sampling (SS) weights.
+=======
+When data are RDS-based, these weights are typically derived from known degree-based estimators such as RDS-II or Gile’s Successive Sampling (SS) weights.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 
 To address this challenge, we propose a three-step bootstrap procedure for NSUM estimation using RDS data.
 This approach is flexible, modular, and applicable across several classes of NSUM estimators.
@@ -2692,6 +3047,10 @@ How to resample an RDS chain (Step 1), 2.
 How to recalculate sample-specific weights (Step 2), and 3.
 How to apply a chosen NSUM estimator (Step 3).
 
+<<<<<<< HEAD
+=======
+------------------------------------------------------------------------
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 
 ## Step 1: Resampling the RDS Sample
 
@@ -2746,6 +3105,7 @@ the selected recruiters and their corresponding recruits in the bootstrap sample
 The method allows the construc5on of calibrated interval es5mates. Unlike other methods, the
 advantages of this approach include its ability to derive es5mates from a single bootstrap sample for
 any number of aLributes.
+<<<<<<< HEAD
 
 Limita5ons
 
@@ -2774,6 +3134,35 @@ assump5on par5cularly does not relate to the reality of RDS in prac5ce.
 <!-- Method for RDS (version 1.0.1). https://cran.r- -->
 <!-- project.org/web/packages/Neighboot/index.html. -->
 
+=======
+Limita5ons
+Baraﬀ et al. (2016)’s approach relies on a series of simplifying assump5ons, namely: i) the social
+network is finite and connected ii) network connec5ons are reciprocal, not directed [I believe this to
+be true of the respondents in our study] iii) recruits accurately report their network degree [this is
+facilitated by the concrete request to provide a count of domes5c workers contacts within their
+mobile phone – thereby minimising recall error[ iv) recruitment coupons are distributed uniformly at
+random to neighbours in the network [in our study, the research team managed the distribu5on of
+the survey link to those suggested by our seeds and respondents from earlier waves] v) that
+individuals may be recruited into the sample more than once. Baraﬀ et al., note that this laLer
+assump5on par5cularly does not relate to the reality of RDS in prac5ce.
+References
+Baraﬀ, Aaron J., Tyler H. McCormick, and Adrian E. Ra`ery. 2016. “Es5ma5ng Uncertainty in
+Respondent-Driven Sampling Using a Tree Bootstrap Method.” Proceedings of the Na5onal Academy
+of Sciences of the United States of America 113 (51): 14668–73.
+hLps://doi.org/10.1073/pnas.1617258113.
+Feehan, Dennis M., and MaLhew J. Salganik. 2016. “Online Appendix: Generalizing the Network
+Scale-up Method.” Sociological Methodology 46 (1): 153–86.
+hLps://doi.org/10.1177/0081175016665425.
+Mamadou Yauck, Erica E M Moodie, Herak Apelian, Alain Fourmigue, Daniel Grace, Trevor A
+Hart, Gilles Lambert, Joseph Cox, Neighborhood Bootstrap for Respondent-Driven
+Sampling, Journal of Survey Statistics and Methodology, Volume 10, Issue 2, April 2022, Pages
+419–438, https://doi.org/10.1093/jssam/smab057
+Yauck, Mamadou, and Erica E. M. Moodie. 2022. Neighboot: Neighborhood Bootstrap
+Method for RDS (version 1.0.1). https://cran.r-
+project.org/web/packages/Neighboot/index.html.
+
+------------------------------------------------------------------------
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 
 ## Step 2: Recalculating Weights
 
@@ -2795,6 +3184,10 @@ For each replicate $b$, construct: - $\mathcal{S}^{(b)}$: resampled respondent I
 
 Let $\mathbf{X}_i$ denote covariates (e.g. traits, degree, indicator of hidden population membership), which are retained from the original data and passed to Step 3.
 
+<<<<<<< HEAD
+=======
+------------------------------------------------------------------------
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 
 
 ## Step 3: NSUM Estimation on Resampled and Reweighted Data
@@ -2840,11 +3233,19 @@ $$\hat{N}_H^{(b)} = \left( \frac{\sum_{i} \frac{y_{i,H}}{\pi_i^{(b)}}}{\sum_{i} 
 
 Where:
 
+<<<<<<< HEAD
 -   $\delta$ (δ): Degree ratio (d̄_H,F/d̄_F,F) — ratio of average network degree of hidden population to frame population,
 
 -   $\tau$ (τ): Visibility / true positive rate (v̄_H,F/d̄_H,F) — proportion of network edges correctly reported; measures transmission and reporting accuracy; captures visibility of hidden population to frame population,
 
 -   $\rho$ (ρ): Popularity bias (relative visibility of hidden population members).
+=======
+-   $\delta$: Transmission bias (probability respondent is aware of alter’s status),
+
+-   $\tau$: Barrier effect (social mixing between hidden and frame population),
+
+-   $\rho$: Popularity bias (relative visibility of hidden population members).
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 
 These values can be:
 
@@ -2868,14 +3269,45 @@ Bayesian implementations (e.g. @malt15-estimating) model:
 
 They yield a posterior distribution over $N_H$, and uncertainty is embedded within the model.
 
+<<<<<<< HEAD
+=======
+------------------------------------------------------------------------
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 
 This step applies an NSUM estimator to the bootstrap sample $\mathcal{S}^{(b)}$ using the recalculated weights $w_i^{(b)}$ and responses $y_{i,H}$, where $y_{i,H}$ is the number of known contacts respondent $i$ has in hidden population $H$.
 
 Let $N_F$ denote the frame population size (assumed known), and let $d_i$ be the degree of respondent $i$.
 
+<<<<<<< HEAD
 
 
 
+=======
+### Generalized NSUM Estimator (GNSUM)
+
+The weighted GNSUM estimator is:
+
+$$
+\hat{N}_H^{(b)} = \frac{\sum_{i \in \mathcal{S}^{(b)}} \frac{y_{i,H}}{\pi_i^{(b)}}}{\sum_{i \in \mathcal{S}^{(b)}} \frac{d_i}{\pi_i^{(b)}}} \cdot N_F
+$$
+
+This estimator assumes proportional mixing and equal visibility.
+
+------------------------------------------------------------------------
+
+### Symmetric Visibility Variant
+
+In our setting, some RDS respondents can be identified *ex post* as members of the hidden population $H$.
+Denote this set $\mathcal{H} \subseteq \mathcal{S}$.
+Under the assumption of symmetric visibility, we define:
+
+$$
+\hat{v}_{H} = \frac{1}{|\mathcal{H}|} \sum_{j \in \mathcal{H}} \frac{y_{j,F}}{d_j}
+$$
+
+That is, the average proportion of alters known by members of $H$ who are in the frame population $F$.
+Incorporating this, the symmetric visibility GNSUM becomes:
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 
 ## Step 4: Aggregating Bootstrap Estimates
 
@@ -2891,6 +3323,7 @@ We compute:
 
 -   95% CI: empirical percentiles (e.g., 2.5%, 97.5%)
 
+<<<<<<< HEAD
 
 
 <!-- #### 5. References -->
@@ -2912,3 +3345,27 @@ We compute:
 <!-- -   @salg06-variance -->
 
 <!-- -   @rao88-resampling -->
+=======
+------------------------------------------------------------------------
+
+
+#### 5. References
+
+-   @feeh16-generalizing
+
+-   @salg06-variance
+
+-   @gile11-improved
+
+-   @volz08-probability
+
+-   @malt15-estimating
+
+-   @yauc22-neighborhood
+
+-   @weir12-comparison
+
+-   @salg06-variance
+
+-   @rao88-resampling
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956

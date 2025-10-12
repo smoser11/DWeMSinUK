@@ -22,6 +22,44 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+<<<<<<< HEAD
+=======
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -134,10 +172,15 @@ window.Quarto = {
   <li><a href="#rds-estimates" id="toc-rds-estimates" class="nav-link" data-scroll-target="#rds-estimates">RDS Estimates</a></li>
   <li><a href="#nsum-estimates" id="toc-nsum-estimates" class="nav-link" data-scroll-target="#nsum-estimates">NSUM Estimates</a></li>
   </ul></li>
+<<<<<<< HEAD
   <li><a href="#comparative-interpretation" id="toc-comparative-interpretation" class="nav-link" data-scroll-target="#comparative-interpretation">Comparative Interpretation</a>
   <ul class="collapse">
   <li><a href="#on-the-role-of-visibility-in-explaining-differences-between-nsum-and-rds-estimates" id="toc-on-the-role-of-visibility-in-explaining-differences-between-nsum-and-rds-estimates" class="nav-link" data-scroll-target="#on-the-role-of-visibility-in-explaining-differences-between-nsum-and-rds-estimates">On the Role of Visibility in Explaining Differences Between NSUM and RDS Estimates</a></li>
   </ul></li>
+=======
+  <li><a href="#comparative-interpretation" id="toc-comparative-interpretation" class="nav-link" data-scroll-target="#comparative-interpretation">Comparative Interpretation</a></li>
+  <li><a href="#on-the-role-of-visibility-in-explaining-differences-between-nsum-and-rds-estimates" id="toc-on-the-role-of-visibility-in-explaining-differences-between-nsum-and-rds-estimates" class="nav-link" data-scroll-target="#on-the-role-of-visibility-in-explaining-differences-between-nsum-and-rds-estimates">On the Role of Visibility in Explaining Differences Between NSUM and RDS Estimates</a></li>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
   <li><a href="#robustness-checks" id="toc-robustness-checks" class="nav-link" data-scroll-target="#robustness-checks">Robustness Checks</a></li>
   </ul></li>
   <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a>
@@ -152,9 +195,16 @@ window.Quarto = {
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   <li><a href="#app-survey" id="toc-app-survey" class="nav-link" data-scroll-target="#app-survey">Appendix A</a>
   <ul class="collapse">
+<<<<<<< HEAD
   <li><a href="#the-survey-questions" id="toc-the-survey-questions" class="nav-link" data-scroll-target="#the-survey-questions">The Survey Questions</a></li>
   <li><a href="#app-dataprep" id="toc-app-dataprep" class="nav-link" data-scroll-target="#app-dataprep">Data Processing</a></li>
   <li><a href="#indicators" id="toc-indicators" class="nav-link" data-scroll-target="#indicators">Indicators</a></li>
+=======
+  <li><a href="#the-survey" id="toc-the-survey" class="nav-link" data-scroll-target="#the-survey">The Survey</a></li>
+  <li><a href="#app-dataprep" id="toc-app-dataprep" class="nav-link" data-scroll-target="#app-dataprep">Data Processing</a></li>
+  <li><a href="#indicators" id="toc-indicators" class="nav-link" data-scroll-target="#indicators">Indicators</a></li>
+  <li><a href="#sample-characteristics" id="toc-sample-characteristics" class="nav-link" data-scroll-target="#sample-characteristics">Sample Characteristics</a></li>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
   </ul></li>
   <li><a href="#app-sens" id="toc-app-sens" class="nav-link" data-scroll-target="#app-sens">Appendix B</a>
   <ul class="collapse">
@@ -189,6 +239,11 @@ window.Quarto = {
   <li><a href="#b-gnsum-with-symmetric-visibility-for-hidden-members-in-rds" id="toc-b-gnsum-with-symmetric-visibility-for-hidden-members-in-rds" class="nav-link" data-scroll-target="#b-gnsum-with-symmetric-visibility-for-hidden-members-in-rds">(b) GNSUM with Symmetric Visibility (for Hidden Members in RDS)</a></li>
   <li><a href="#c-modified-basic-scale-up-mbsu" id="toc-c-modified-basic-scale-up-mbsu" class="nav-link" data-scroll-target="#c-modified-basic-scale-up-mbsu">(c) Modified Basic Scale-Up (MBSU)</a></li>
   <li><a href="#d-model-based-nsum" id="toc-d-model-based-nsum" class="nav-link" data-scroll-target="#d-model-based-nsum">(d) Model-Based NSUM</a></li>
+<<<<<<< HEAD
+=======
+  <li><a href="#generalized-nsum-estimator-gnsum" id="toc-generalized-nsum-estimator-gnsum" class="nav-link" data-scroll-target="#generalized-nsum-estimator-gnsum">Generalized NSUM Estimator (GNSUM)</a></li>
+  <li><a href="#symmetric-visibility-variant" id="toc-symmetric-visibility-variant" class="nav-link" data-scroll-target="#symmetric-visibility-variant">Symmetric Visibility Variant</a></li>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
   </ul></li>
   <li><a href="#step-4-aggregating-bootstrap-estimates" id="toc-step-4-aggregating-bootstrap-estimates" class="nav-link" data-scroll-target="#step-4-aggregating-bootstrap-estimates">Step 4: Aggregating Bootstrap Estimates</a></li>
   </ul></li>
@@ -244,7 +299,11 @@ window.Quarto = {
     <p><strong>Purpose</strong></p>
     <p>The purpose of this article is to demonstrate a quantitative approach to the construction of a risk index of labour exploitation and alternative estimators of the prevalence of exploitation.</p>
     <p><strong>Design/ Methodology/ Approach</strong></p>
+<<<<<<< HEAD
     <p>Using data from a survey of domestic workers based in the United Kingdom (UK), we use statistical techniques, including Respondent Driven Sampling (RDS) methods RDS-I and RDS-SS and Network Scale Up (NSUM) methods, to produce an index of labour exploitation risk and estimators of the prevalence of labour exploitation.</p>
+=======
+    <p>Using data from a survey of domestic workers based in the United Kingdom (UK), we use statistical techniques, including Respondent Driven Sampling (RDS) methods RDS-I and RDS-II and Network Scale Up (NSUM) methods, to produce an index of labour exploitation risk and estimators of the prevalence of labour exploitation.</p>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
     <p><strong>Findings</strong></p>
     <p>The labour exploitation risk index shows a reverse correlation between the increasing seriousness of exploitation and the number of exploitation cases reported. The various prevalence estimators examined show significant differences in population level exploitation.</p>
     <p><strong>Research implications/ limitations</strong></p>
@@ -435,7 +494,11 @@ Table&nbsp;2: Distribution of Sample Across Recruitment Waves. Source: Authors�
 <p>RDS estimators use ego-based information. Each participant reported the number of other domestic workers they knew, and this degree information was used to adjust for the over-representation of highly connected individuals in the sample. We implemented RDS-I and Gile’s successive sampling (SS) estimator, the latter of which accounts for finite population effects and improves performance when the sample fraction is relatively large (Gile, 2011; Gile and Handcock, 2010). These estimators were used to generate prevalence estimates for binary indicators of exploitation.</p>
 <p>For continuous traits, such as the exploitation risk index, we applied model-assisted inference approaches (<span class="citation" data-cites="gile15-network">Gile and Handcock (<a href="#ref-gile15-network" role="doc-biblioref">2015b</a>)</span>, Gile, 2011; Gile, Beaudry, and Handcock, 2018). These approaches combine design-based adjustments with regression models that incorporate auxiliary covariates, producing valid estimates of sample means and distributions of continuous outcomes under the RDS design.</p>
 <p>Given that our data were collected using a respondent-driven sampling (RDS) design, the choice of estimator is critical. We considered several well-established RDS estimators, each with distinct assumptions and applicability.</p>
+<<<<<<< HEAD
 <p>First, the RDS-I estimator <span class="citation" data-cites="salg04-sampling">Salganik and Heckathorn (<a href="#ref-salg04-sampling" role="doc-biblioref">2004</a>)</span> provides an early design-based approach. However, it performs poorly in small samples, is highly sensitive to seed dependence, and requires strong assumptions about equilibrium. Since our sample comprises fewer than 100 respondents recruited from multiple seeds, we regard RDS-I primarily as a historical benchmark rather than a viable option for inference.<span class="citation" data-cites="volz08-probability">(^ The Volz–Heckathorn (VH) estimator <a href="#ref-volz08-probability" role="doc-biblioref">Volz and Heckathorn 2008</a> offers a probability-based refinement of RDS-I. It is more robust but assumes a large population relative to the sample size and does not adjust for finite-population effects. Although our diagnostic checks indicated approximate equilibrium across key demographics, the VH estimator is best used here as a robustness check rather than the primary estimator.)</span> Next, the Successive Sampling (RDS-SS) estimator <span class="citation" data-cites="gile11-improved">(<a href="#ref-gile11-improved" role="doc-biblioref">Gile 2011</a>)</span> accounts for finite population effects, adjusting for the non-negligible sampling fraction that arises when the target population is not extremely large relative to the sample. This property makes RDS-SS particularly appropriate for our study of migrant domestic workers, and we therefore use it as our primary estimator for binary outcomes (e.g., presence or absence of exploitation).</p>
+=======
+<p>First, the RDS-I estimator <span class="citation" data-cites="salg04-sampling">Salganik and Heckathorn (<a href="#ref-salg04-sampling" role="doc-biblioref">2004</a>)</span> provides an early design-based approach. However, it performs poorly in small samples, is highly sensitive to seed dependence, and requires strong assumptions about equilibrium. Since our sample comprises fewer than 100 respondents recruited from multiple seeds, we regard RDS-I primarily as a historical benchmark rather than a viable option for inference.<span class="citation" data-cites="volz08-probability">(^ The Volz–Heckathorn (VH) estimator <a href="#ref-volz08-probability" role="doc-biblioref">Volz and Heckathorn 2008</a> offers a probability-based refinement of RDS-I. It is more robust but assumes a large population relative to the sample size and does not adjust for finite-population effects. Although our diagnostic checks indicated approximate equilibrium across key demographics, the VH estimator is best used here as a robustness check rather than the primary estimator.)</span> Next, the Successive Sampling (RDS-SS) estimator (also called RDS-II) <span class="citation" data-cites="gile11-improved">Gile (<a href="#ref-gile11-improved" role="doc-biblioref">2011</a>)</span> accounts for finite population effects, adjusting for the non-negligible sampling fraction that arises when the target population is not extremely large relative to the sample. This property makes RDS-SS particularly appropriate for our study of migrant domestic workers, and we therefore use it as our primary estimator for binary outcomes (e.g., presence or absence of exploitation).</p>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 <p>To estimate continuous outcomes such as our exploitation risk index, we employ the Model-Assisted (MA-RDS) estimator <span class="citation" data-cites="gile15-network">Gile and Handcock (<a href="#ref-gile15-network" role="doc-biblioref">2015b</a>)</span>. MA inference uses realistic network simulations to better estimate how likely each kind of person was to be sampled, improving population estimates over standard RDS estimators.</p>
 <p>In summary, we rely primarily on RDS-SS for binary outcomes and MA-RDS for continuous and binary indicators, with RDS-I used for historical benchmarks. This combined strategy balances methodological rigor with the substantive goals of our study.</p>
 <p>We use model-assisted RDS estimators <span class="citation" data-cites="gile15-network">(<a href="#ref-gile15-network" role="doc-biblioref">Gile and Handcock 2015b</a>)</span> because they are design-based yet leverage a working ERGM (with degree and homophily terms) to approximate inclusion probabilities conditional on our observed seeds. This approach directly addresses seed bias and homophily that conventional RDS estimators cannot correct, accommodates finite-population effects through successive-sampling logic, and supports valid estimation of both binary and continuous outcomes. By conditioning on the actual seed composition and subgroup structure in our data, the method reduces bias, improves efficiency, and provides design-compatible bootstrap uncertainty, making it particularly well-suited to our small, heterogeneous sample of domestic workers.</p>
@@ -634,15 +697,25 @@ Figure&nbsp;4: Forest Plot of RDS Estimates: Comparison of RDS-I and RDS-SS prev
 <section id="nsum-estimates" class="level3">
 <h3 class="anchored" data-anchor-id="nsum-estimates">NSUM Estimates</h3>
 <p>Using the Modified Basic Scale-Up (MBSU) estimator <span class="citation" data-cites="feeh16-generalizing">Feehan and Salganik (<a href="#ref-feeh16-generalizing" role="doc-biblioref">2016</a>)</span> with Sequential Sampling weights and an estimated UK domestic worker population of 980,000, we find substantial variation in prevalence estimates depending on the adjustment factors applied (<a href="#tbl-nsum-main" class="quarto-xref">Table&nbsp;5</a>).</p>
+<<<<<<< HEAD
 <p>The unadjusted MBSU estimates (baseline scenario with no adjustment for network degree differences or visibility/reporting barriers, δ=1.0, τ=1.0) suggest that document withholding affects approximately 8,120 workers (0.83%, 95% CI: 0.23%-2.39%). Pay-related issues affect 21,560 workers (2.20%, 95% CI: 1.45%-4.35%), while threats and abuse affect 20,141 workers (2.06%, 95% CI: 1.42%-4.48%). Excessive working hours affect 22,375 workers (2.28%, 95% CI: 1.41%-4.21%), and 15,212 workers report lacking access to help (1.55%, 95% CI: 0.51%-3.73%).</p>
 <p>Applying moderate adjustments for network degree differences and visibility biases (δ=0.9 for degree ratio, τ=0.85 for visibility/reporting) yields estimates of 10,615 workers experiencing document withholding (1.08%, 95% CI: 0.30%-3.13%), 28,182 with pay issues (2.88%, 95% CI: 1.90%-5.68%), 26,328 experiencing threats/abuse (2.69%, 95% CI: 1.86%-5.86%), 29,248 with excessive hours (2.98%, 95% CI: 1.84%-5.51%), and 19,885 lacking access to help (2.03%, 95% CI: 0.67%-4.88%).</p>
 <p>The most conservative adjustments (δ=0.8 for degree ratio, τ=0.7 for visibility/transmission), accounting for greater network degree differences and visibility barriers, produce substantially higher estimates: 14,500 workers with document withholding (1.48%, 95% CI: 0.40%-4.27%), 38,499 with pay issues (3.93%, 95% CI: 2.60%-7.77%), 35,966 experiencing threats/abuse (3.67%, 95% CI: 2.53%-8.00%), 39,955 with excessive hours (4.08%, 95% CI: 2.52%-7.53%), and 27,165 lacking access to help (2.77%, 95% CI: 0.91%-6.67%).</p>
+=======
+<p>The unadjusted MBSU estimates (baseline scenario with no adjustment for visibility or reporting barriers, δ=1.0, τ=1.0) suggest that document withholding affects approximately 8,120 workers (0.83%, 95% CI: 0.23%-2.39%). Pay-related issues affect 21,560 workers (2.20%, 95% CI: 1.45%-4.35%), while threats and abuse affect 20,141 workers (2.06%, 95% CI: 1.42%-4.48%). Excessive working hours affect 22,375 workers (2.28%, 95% CI: 1.41%-4.21%), and 15,212 workers report lacking access to help (1.55%, 95% CI: 0.51%-3.73%).</p>
+<p>Applying moderate adjustments for reporting and visibility biases (δ=0.9, τ=0.85) yields estimates of 10,615 workers experiencing document withholding (1.08%, 95% CI: 0.30%-3.13%), 28,182 with pay issues (2.88%, 95% CI: 1.90%-5.68%), 26,328 experiencing threats/abuse (2.69%, 95% CI: 1.86%-5.86%), 29,248 with excessive hours (2.98%, 95% CI: 1.84%-5.51%), and 19,885 lacking access to help (2.03%, 95% CI: 0.67%-4.88%).</p>
+<p>The most conservative visability and reporting adjustments (δ <span class="math inline">\(\delta=0.8\)</span>, τ<span class="math inline">\(\tau=0.7\)</span>), accounting for greater underreporting and visibility barriers, produce substantially higher estimates: 14,500 workers with document withholding (1.48%, 95% CI: 0.40%-4.27%), 38,499 with pay issues (3.93%, 95% CI: 2.60%-7.77%), 35,966 experiencing threats/abuse (3.67%, 95% CI: 2.53%-8.00%), 39,955 with excessive hours (4.08%, 95% CI: 2.52%-7.53%), and 27,165 lacking access to help (2.77%, 95% CI: 0.91%-6.67%).</p>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 <p>These estimates represent prevalence rates ranging from 0.83% to 4.08% across all indicators, with confidence intervals reflecting substantial uncertainty inherent in network-based estimation methods. The conservative adjustments yield estimates approximately 1.8 times higher than unadjusted estimates, while moderate adjustments produce intermediate values approximately 1.3 times higher than baseline.</p>
 <div class="cell">
 <div id="tbl-nsum-main" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-nsum-main-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 Table&nbsp;5: NSUM Prevalence Estimates for Labor Exploitation Indicators: Estimates using Modified Basic Scale-Up (MBSU) method with Sequential Sampling weights and population size of 980,000 domestic workers. Adjustment factors: <span class="math inline">\(\delta\)</span> (δ, degree ratio) controls for network size differences; <span class="math inline">\(\tau\)</span> (τ, visibility/true positive rate) controls for reporting accuracy and visibility barriers. Bootstrap confidence intervals based on neighborhood resampling (B=1000). Source: Authors’ Own Work.
+=======
+Table&nbsp;5: NSUM Prevalence Estimates for Labor Exploitation Indicators: Estimates using Modified Basic Scale-Up (MBSU) method with Sequential Sampling weights and population size of 980,000 domestic workers. Adjustment factors: δ <span class="math inline">\(\delta\)</span> (transmission/barrier effect) and τ <span class="math inline">\(\tau\)</span>(recall effect) control for visibility and reporting biases. Bootstrap confidence intervals based on neighborhood resampling (B=1000). Source: Authors’ Own Work.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 </figcaption>
 <div aria-describedby="tbl-nsum-main-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -789,7 +862,11 @@ Table&nbsp;5: NSUM Prevalence Estimates for Labor Exploitation Indicators: Estim
 </tr>
 </tbody><tfoot>
 <tr class="odd">
+<<<<<<< HEAD
 <td style="padding: 0"><span style="font-style: italic;">Note:</span> <sup></sup> MBSU = Modified Basic Scale-Up method; δ = degree ratio (d̄_H,F/d̄_F,F, ratio of hidden population network degree to frame population degree); τ = visibility/true positive rate (v̄_H,F/d̄_H,F, proportion of edges correctly reported, measures transmission and reporting accuracy); Bootstrap method: neighborhood resampling with 1000 iterations; Population base: 980,000 UK domestic workers.</td>
+=======
+<td style="padding: 0"><span style="font-style: italic;">Note:</span> <sup></sup> MBSU = Modified Basic Scale-Up method; δ = transmission/barrier effect (proportion of cases visible to network); τ = recall effect (accuracy of reporting); Bootstrap method: neighborhood resampling with 1000 iterations; Population base: 980,000 UK domestic workers.</td>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 <td></td>
 <td></td>
 <td></td>
@@ -808,8 +885,13 @@ Table&nbsp;5: NSUM Prevalence Estimates for Labor Exploitation Indicators: Estim
 </section>
 <section id="comparative-interpretation" class="level2">
 <h2 class="anchored" data-anchor-id="comparative-interpretation">Comparative Interpretation</h2>
+<<<<<<< HEAD
 <p>Table 1 summarises prevalence estimates across both methods, highlighting points of convergence and divergence. While absolute values differ across RDS and NSUM (reflecting differences in ego- versus alter-based assumptions), the overall pattern is remarkably stable.</p>
 <p><a href="#fig-method-comparison" class="quarto-xref">Figure&nbsp;5</a> demonstrates the comparison between frequentist RDS estimators (RDS-I, RDS-SS) and Bayesian model-assisted methods across all exploitation indicators. The horizontal spacing of estimates allows clear visual comparison of point estimates and uncertainty intervals, with RDS methods showing bootstrap confidence intervals and Bayesian methods showing credible intervals from MCMC estimation. Both approaches identify similar patterns of exploitation prevalence, with excessive hours showing the highest prevalence across all methods, followed by threats/abuse and pay-related issues.</p>
+=======
+<p>Table 1 summarises prevalence estimates across both methods, highlighting points of convergence and divergence. While absolute values differ slightly across RDS and NSUM (reflecting differences in ego- versus alter-based assumptions), the overall pattern is remarkably stable.</p>
+<p><a href="#fig-method-comparison" class="quarto-xref">Figure&nbsp;5</a> demonstrates the comparison between frequentist RDS estimators (RDS-I, RDS-II, RDS-SS) and Bayesian model-assisted methods across all exploitation indicators. The horizontal spacing of estimates allows clear visual comparison of point estimates and uncertainty intervals, with RDS methods showing bootstrap confidence intervals and Bayesian methods showing credible intervals from MCMC estimation. Both approaches identify similar patterns of exploitation prevalence, with excessive hours showing the highest prevalence across all methods, followed by threats/abuse and pay-related issues.</p>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-method-comparison" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -824,6 +906,7 @@ Figure&nbsp;5: Method Comparison: frequentists RDS vs Bayesian RDS Estimators. P
 </div>
 </div>
 </div>
+<<<<<<< HEAD
 <section id="on-the-role-of-visibility-in-explaining-differences-between-nsum-and-rds-estimates" class="level3">
 <h3 class="anchored" data-anchor-id="on-the-role-of-visibility-in-explaining-differences-between-nsum-and-rds-estimates">On the Role of Visibility in Explaining Differences Between NSUM and RDS Estimates</h3>
 <p>Substantial discrepancies between hidden population prevalence estimates derived from Respondent-Driven Sampling (RDS) and the Network Scale-Up Method (NSUM) are widely observed in empirical research and simulation studies. In the present case, for example, egocentric RDS-based estimates suggest that 34% to 84% of respondents personally experienced indicators of exploitation. In contrast, the corresponding NSUM estimates suggest that only 2.9% to 5.1% of the general domestic worker population experiences these same harms. This stark divergence—often approaching an order of magnitude—warrants a careful methodological explanation.</p>
@@ -849,6 +932,41 @@ Figure&nbsp;5: Method Comparison: frequentists RDS vs Bayesian RDS Estimators. P
 <!-- #| echo: false -->
 <!-- knitr::include_graphics(here::here("output", "figures", "parameter_comparison.png")) -->
 <!-- ``` -->
+=======
+</section>
+<section id="on-the-role-of-visibility-in-explaining-differences-between-nsum-and-rds-estimates" class="level2">
+<h2 class="anchored" data-anchor-id="on-the-role-of-visibility-in-explaining-differences-between-nsum-and-rds-estimates">On the Role of Visibility in Explaining Differences Between NSUM and RDS Estimates</h2>
+<p>Substantial discrepancies between hidden population prevalence estimates derived from Respondent-Driven Sampling (RDS) and the Network Scale-Up Method (NSUM) are widely observed in empirical research and simulation studies. In the present case, for example, egocentric RDS-based estimates (e.g., using Gile’s Successive Sampling estimator) suggest that 34% to 84% of respondents personally experienced indicators of exploitation. In contrast, the corresponding NSUM estimates suggest that only 2.9% to 5.1% of the general domestic worker population experiences these same harms. This stark divergence—often approaching an order of magnitude—warrants a careful methodological explanation.</p>
+<p>Among the various sources of error affecting NSUM, the most important and widely documented is visibility bias, also referred to in some literature as transmission bias. Visibility refers to the extent to which members of a hidden population are known to belong to that population by members of the general population. In the context of NSUM, visibility determines whether a respondent can accurately report having connections to members of the hidden group. If visibility is low—because of stigma, secrecy, or lack of awareness—respondents will systematically underreport these ties. This causes a downward bias in the numerator of the NSUM estimator, thereby underestimating the size of the hidden population.</p>
+<p>As Feehan and Salganik put it:</p>
+<blockquote class="blockquote">
+<p>“Transmission error occurs when respondents do not know or are unwilling to report the true group memberships of people they know” <span class="citation" data-cites="feeh16-generalizing">(<a href="#ref-feeh16-generalizing" role="doc-biblioref">Feehan and Salganik 2016, 155</a>)</span>.</p>
+</blockquote>
+<p>This issue has been recognized since the earliest implementations of NSUM. Bernard et al.&nbsp;describe it as a failure of the transmission condition—the assumption that a respondent will be aware of, and willing to disclose, the group membership of their contacts <span class="citation" data-cites="bern10-counting">(<a href="#ref-bern10-counting" role="doc-biblioref">Bernard et al. 2010</a>)</span>. More recently, Maltiel et al.&nbsp;have addressed visibility bias using model-based (Bayesian) approaches, which estimate and correct for differential visibility between groups <span class="citation" data-cites="malt15-estimating">(<a href="#ref-malt15-estimating" role="doc-biblioref">Maltiel et al. 2015</a>)</span>.</p>
+<p>In contrast, RDS estimators such as the Volz–Heckathorn and especially the Successive Sampling (SS) estimator rely on direct self-reporting of hidden group membership. That is, RDS respondents are asked whether they themselves belong to the group or exhibit a trait of interest. This egocentric measurement bypasses the visibility problem entirely. While RDS relies on its own set of assumptions—such as the random recruitment assumption, accurate self-reported degree, and a sufficiently connected social network—visibility is not among its main sources of bias.</p>
+<p>Thus, while both NSUM and RDS are used to estimate the size or prevalence of hidden populations, they are subject to fundamentally different sources of error. In NSUM, low visibility leads to systematic underreporting, which can result in severe underestimation unless appropriately adjusted. Adjustments such as those proposed by Feehan and Salganik—including multiplicative correction factors for visibility (<span class="math inline">\(\tau\)</span> τ), degree ratio (<span class="math inline">\(\delta\)</span> δ), and barrier effects (<span class="math inline">\(\rho\)</span> ρ)—can mitigate these biases, but require additional data or assumptions <span class="citation" data-cites="feeh16-generalizing">(<a href="#ref-feeh16-generalizing" role="doc-biblioref">Feehan and Salganik 2016</a>)</span>.</p>
+<p>In our setting, where RDS estimates suggest that over 50% of respondents have experienced exploitation, but NSUM estimates suggest only 3–5% of the domestic worker population does so, visibility bias is almost certainly the dominant factor explaining the discrepancy. This is especially true in contexts involving exploitation, abuse, or trafficking—where group membership is often concealed both by victims and by observers. Respondents in the frame population may simply be unaware that their contacts are experiencing exploitation, leading to substantial underreporting.</p>
+<p>Hense, visibility bias is a major and well-understood limitation of NSUM, and likely the principal reason why our NSUM estimates are substantially lower than those derived from RDS. The use of RDS-based estimators, particularly those that adjust for sample design such as Gile’s SS estimator, provides direct measurement of traits among the hidden population and avoids the visibility problem. Therefore, RDS estimates are often more accurate in estimating prevalence within the hidden population, whereas NSUM estimates are typically biased downward unless adjusted for visibility and related biases.</p>
+</section>
+<section id="robustness-checks" class="level2">
+<h2 class="anchored" data-anchor-id="robustness-checks">Robustness Checks</h2>
+<p>A series of robustness checks were performed to assess the stability of the findings. <strong>?@fig-forest-plot</strong> presents a comprehensive forest plot comparing all prevalence estimates across indicators and methods, demonstrating remarkable consistency across different analytical approaches. Bootstrap resampling confirmed that the RDS and NSUM estimates remained stable across repeated draws. Sensitivity analyses excluding suspicious datapoints did not materially alter subgroup rankings. Analyses restricted to single subgroups confirmed that the elevated prevalence among Latinx workers was not an artifact of recruitment dynamics.</p>
+<p>The forest plot visualization clearly shows that traditional RDS estimators (RDS-I and RDS-SS) produced results consistent with the model-assisted and Bayesian estimates, albeit with wider confidence intervals in some cases. The pattern of estimates is remarkably stable across methods, with excessive hours consistently showing the highest prevalence, followed by threats/abuse and pay-related issues, while document withholding shows more moderate prevalence levels. This cross-method validation strengthens confidence in our findings and demonstrates the robustness of the dual estimation approach. Full technical details are reported in Appendices B and C.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-parameter-comparison" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-parameter-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../output/figures/parameter_comparison.png" class="img-fluid figure-img" style="width:95.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-parameter-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Bayesian Parameter Sensitivity Analysis. Comparison of prevalence estimates using enhanced vs standard MCMC parameters for Bayesian model-assisted estimation. Enhanced parameters use longer burn-in periods and more iterations, particularly important for numeric and ordinal variables like composite risk scores. Error bars represent 95% Bayesian credible intervals. Source: Authors’ own work.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 </section>
 </section>
 <section id="discussion" class="level1">
@@ -867,7 +985,12 @@ Figure&nbsp;5: Method Comparison: frequentists RDS vs Bayesian RDS Estimators. P
 <section id="methodological-contributions" class="level2">
 <h2 class="anchored" data-anchor-id="methodological-contributions">Methodological Contributions</h2>
 <p>This study makes several methodological contributions to the estimation of prevalence in hidden and hard-to-reach populations:</p>
+<<<<<<< HEAD
 <p><em>Dual conceptualisation of exploitation</em>: We introduce two distinct approaches to operationalising exploitation. First, we treat exploitation as a binary outcome (exploited versus not exploited), enabling direct comparison of prevalence estimates across RDS and NSUM methods. Second, we construct a continuous risk index, acknowledging that all domestic workers may be exposed to some degree of exploitation risk. To our knowledge, this is the first application of model-assisted RDS estimators to quantify a continuous measure of exploitation risk.</p>
+=======
+<p>Dual conceptualisation of exploitation: We introduce two distinct approaches to operationalising exploitation. First, we treat exploitation as a binary outcome (exploited versus not exploited), enabling direct comparison of prevalence estimates across RDS and NSUM methods. Second, we construct a continuous risk index, acknowledging that all domestic workers may be exposed to some degree of exploitation risk. To our knowledge, this is the first application of model-assisted RDS estimators to quantify a continuous measure of exploitation risk.</p>
+<p>Bayesian parameter sensitivity: <a href="#fig-parameter-comparison" class="quarto-xref">Figure&nbsp;6</a> demonstrates the importance of appropriate MCMC parameter selection for Bayesian model-assisted estimation. Our analysis shows that enhanced parameters (featuring longer burn-in periods and more iterations) are particularly crucial for numeric and ordinal variables, where standard parameters may suffer from convergence issues. This methodological innovation ensures robust credible interval estimation for continuous risk measures.</p>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 <p><em>Combining RDS and NSUM on the same survey instrument</em>: By designing a survey that captures both ego and alter information, we are able to apply RDS and NSUM to the same sample. This dual approach has rarely been implemented in studies of labour exploitation. It provides an opportunity to cross-validate results and assess the robustness of prevalence estimates.</p>
 <p><em>Novel bootstrap procedure for NSUM</em>: Recognising the non-random nature of an RDS sample, we developed a three-step bootstrap procedure tailored for NSUM estimation. This resamples respondents, recalculates weights, and re-estimates NSUM prevalence at each iteration. The procedure captures multiple layers of uncertainty and produces more reliable confidence intervals than conventional methods, particularly in small samples.</p>
 <p><em>Application to domestic workers in the UK</em>: Finally, by applying these methods to a population that is both highly stigmatised and under-researched, we demonstrate the feasibility of using advanced network-based estimation techniques in contexts where traditional sampling is impossible. This methodological innovation has potential applications in studies of other hidden labour markets and vulnerable populations.</p>
@@ -879,7 +1002,11 @@ Figure&nbsp;5: Method Comparison: frequentists RDS vs Bayesian RDS Estimators. P
 </section>
 <section id="further-research" class="level2">
 <h2 class="anchored" data-anchor-id="further-research">Further Research</h2>
+<<<<<<< HEAD
 <p>We believe that web-RDS combined with statistical estimators such as NSUM offers an important method for the capture and comparison of relative proportions of labour exploitation and abuse in sectors within and beyond the UK. Network scale up methods, and potential enhancements such as Generalised network scale up estimators offer to enhance understanding, not least within operations and supply chain management research, of the extent of labour exploitation in different sectors and across industries. The differences in NSUM and RDS estimates warrants further investitation and suggests research into <em>combining</em> multiple estimates may be a fruitful direction in human rights research and especially prevelenace of modern slavery research.</p>
+=======
+<p>We believe that web-RDS combined with statistical estimators such as NSUM offers an important method for the capture and comparison of relative proportions of labour exploitation and abuse in sectors within and beyond the UK. Network scale up methods, and potential enhancements such as Generalised network scale up estimators offer to enhance understanding, not least within operations and supply chain management research, of the extent of labour exploitation in different sectors and across industries.</p>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 </section>
 </section>
 <section id="conclusion" class="level1">
@@ -1005,6 +1132,12 @@ O’Connell Davidson, Julia. 2015. <em>The Margins of Freedom: Modern Slavery</e
 <div id="ref-platt_adapting_2015" class="csl-entry" role="listitem">
 Platt, L., R. Luthra, and T. Frere-Smith. 2015. <span>“Adapting Chain Referral Methods to Sample New Migrants: Possibilities and Limitations.”</span> <em>Demographic Research</em> 33: 665–700.
 </div>
+<<<<<<< HEAD
+=======
+<div id="ref-rao88-resampling" class="csl-entry" role="listitem">
+Rao, J. N. K., and C. F. J. Wu. 1988. <span>“Resampling <span>Inference With Complex Survey Data</span>.”</span> <em>Journal of the American Statistical Association</em> 83 (401): 231–41. <a href="https://doi.org/10.2307/2288945">https://doi.org/10.2307/2288945</a>.
+</div>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 <div id="ref-robinson_sampling_2014" class="csl-entry" role="listitem">
 Robinson, O. C. 2014. <span>“Sampling in Interview-Based Qualitative Research: A Theoretical and Practical Guide.”</span> <em>Qualitative Research in Psychology</em> 11 (1): 25–41.
 </div>
@@ -1068,8 +1201,16 @@ Zhang, S. X., M. Dank, K. Vincent, P. Narayanan, S. Bharadwaj, and S. M. Balasub
 </section>
 <section id="app-survey" class="level1">
 <h1>Appendix A</h1>
+<<<<<<< HEAD
 <section id="the-survey-questions" class="level2">
 <h2 class="anchored" data-anchor-id="the-survey-questions">The Survey Questions</h2>
+=======
+<p>Population Parameters</p>
+<p>Use ~980,000 as UK domestic worker population estimate (EU data)</p>
+<p>Use 44,360 as NRM adult referrals baseline Address treatment of “don’t know” responses and zero network size claims Consider separate analysis for Filipino subgroup</p>
+<section id="the-survey" class="level3">
+<h3 class="anchored" data-anchor-id="the-survey">The Survey</h3>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 <p>(From codebook)</p>
 <p>Compare corresponding survey questions between RDS and NSUM methods:</p>
 <ul>
@@ -1087,6 +1228,7 @@ Zhang, S. X., M. Dank, K. Vincent, P. Narayanan, S. Bharadwaj, and S. M. Balasub
 <li>Below minimum wage (0.10)</li>
 </ul>
 </section>
+<<<<<<< HEAD
 <section id="app-dataprep" class="level2">
 <h2 class="anchored" data-anchor-id="app-dataprep">Data Processing</h2>
 <p>The process of coding variables to make them comparable across the Respondent-Driven Sampling (RDS) and Network Scale-Up Method (NSUM) estimations is a multi-step procedure that moves from conceptual mapping to specific data transformations. The core challenge is bridging the “egocentric” questions (about the respondent’s own experiences, used for RDS) with the network-based questions (about how many others the respondent knows with certain experiences, used for NSUM). The fundamental challenge is to create a fair comparison between the “egocentric” RDS questions (about personal experience) and the broader “how many do you know” NSUM questions. This was accomplished by first identifying thematic links between questions and then implementing a specific coding scheme to transform them into a consistent format.</p>
@@ -1099,11 +1241,17 @@ Zhang, S. X., M. Dank, K. Vincent, P. Narayanan, S. Bharadwaj, and S. M. Balasub
 <li>Access to Help (Least Confident): Matching whether the respondent personally knows where to go for help (Q78) with knowing others who do not (Q79). Coding and Transformation Process The conceptual mapping was then put into practice through a detailed coding process, which is explicitly documented in the project’s R script.</li>
 </ul>
 <p>The primary goal was to convert all variables into a binary (0/1) format, representing “No” or “Yes” to experiencing or knowing someone who experienced the issue.</p>
+=======
+<section id="app-dataprep" class="level3">
+<h3 class="anchored" data-anchor-id="app-dataprep">Data Processing</h3>
+<p>The process of coding variables to make them comparable across the Respondent-Driven Sampling (RDS) and Network Scale-Up Method (NSUM) estimations is a multi-step procedure that moves from conceptual mapping to specific data transformations. The core challenge is bridging the “egocentric” questions (about the respondent’s own experiences, used for RDS) with the network-based questions (about how many others the respondent knows with certain experiences, used for NSUM). Yes, the sources provide extensive detail on the coding of variables to make them comparable for RDS and NSUM estimation. The fundamental challenge is to create a fair comparison between the “egocentric” RDS questions (about personal experience) and the broader “how many do you know” NSUM questions. This was accomplished by first identifying thematic links between questions and then implementing a specific coding scheme to transform them into a consistent format. Conceptual Mapping of Variables The team first identified sets of questions that cover the same underlying themes, even if their wording differed. These “linking” questions were categorized by the team’s confidence in their comparability. Thematic Groups for Comparison: • Document Withholding (Most Confident): Comparing personal experience (Q70) with knowing others who lack access to their documents (Q71). • Pay/Debt Issues (High Confidence): Linking personal experience with debt (Q39) and withheld pay (Q42) to knowing others with such problems (Q43). • Threats/Abuse (High Confidence): Aggregating personal experiences of being forced, threatened, intimidated, or verbally abused (Q45, Q47, Q48) and comparing them to knowing others who experienced threats or force (Q49). • Excessive Hours (Lower Confidence): Combining questions about inadequate weekly rest (Q61) and excessive overtime (Q62) to compare with knowing others who face similar labor rights issues (Q64). The confidence is lower because the NSUM question (Q64) also asks about annual leave, which is not covered in the corresponding RDS questions. • Access to Help (Least Confident): Matching whether the respondent personally knows where to go for help (Q78) with knowing others who do not (Q79). Coding and Transformation Process The conceptual mapping was then put into practice through a detailed coding process, which is explicitly documented in the project’s R script. The primary goal was to convert all variables into a binary (0/1) format, representing “No” or “Yes” to experiencing or knowing someone who experienced the issue.</p>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 <p>Key Coding Steps:</p>
 <ol type="1">
 <li>Handling Ambiguous Answers: For most RDS questions, responses like “I don’t know” or “Prefer not to say” were recoded as NA (missing) to exclude them from the binary analysis.</li>
 <li>Converting Categorical RDS Variables to Binary: Questions with multiple response options (e.g., “Always,” “Often,” “Sometimes,” “Never”) were recoded into a 0/1 format. For instance, for Q70 (document withholding), the answers “Always,” “Often,” and “Sometimes” were all coded as 1 (indicating the presence of the issue), while “Never” was coded as 0.</li>
 <li>Aggregating Multiple RDS Questions: For themes covered by multiple egocentric questions (like “Threats/Abuse”), each individual question was first recoded into a binary 0/1 variable. These binary variables were then combined using a logical OR (|). This means if a respondent answered “Yes” to any of the grouped questions (e.g., experiencing threats OR intimidation OR verbal abuse), the final composite RDS variable would be coded as 1. This aggregation was necessary to match the broader scope of the single corresponding NSUM question.</li>
+<<<<<<< HEAD
 <li>Converting NSUM Count Variables to Binary: The NSUM questions, which asked for a numerical count (e.g., “how many do you know?”), were also converted to binary. If a respondent knew one or more people (&gt; 0), their answer was coded as 1; if they knew zero, it remained 0.</li>
 </ol>
 </section>
@@ -1195,6 +1343,143 @@ Zhang, S. X., M. Dank, K. Vincent, P. Narayanan, S. Bharadwaj, and S. M. Balasub
 <!--     plot.background = element_rect(fill = "white", color = NA) -->
 <!--   ) -->
 <!-- ``` -->
+=======
+<li>Converting NSUM Count Variables to Binary: The NSUM questions, which asked for a numerical count (e.g., “how many do you know?”), were also converted to binary. If a respondent knew one or more people (&gt; 0), their answer was coded as 1; if they knew zero, it remained 0. Through this systematic process of recoding, handling missing data, and aggregating variables, the team created a set of parallel binary indicators suitable for a direct comparison between the RDS and NSUM estimation frameworks.</li>
+</ol>
+</section>
+<section id="indicators" class="level3">
+<h3 class="anchored" data-anchor-id="indicators">Indicators</h3>
+<p>Creating comparable variables to bridge the Respondent-Driven Sampling (RDS) and Network Scale-Up Method (NSUM) estimations is a key methodological challenge the research team is actively working to solve. The core issue is that the two methods rely on differently framed questions: • RDS estimation uses “egocentric” questions, which focus on the respondent’s personal experiences (e.g., “Have you been forced to work?”). • NSUM estimation uses questions about the respondent’s knowledge of others in their network (e.g., “How many domestic workers do you know who have experienced…”). The survey questions designed for these two purposes do not always match up directly, making a fair comparison between the estimates difficult. The Strategy: Creating “Linking” Variables To overcome this, the team’s strategy is to identify and group questions that cover the same underlying themes, even if they are worded differently for each method. The goal is to aggregate some of the specific “egocentric” questions to make them comparable to the broader “how many do you know” NSUM questions. Based on our sources, several sets of “linking” questions have been identified with varying degrees of confidence in their comparability: • Document Withholding (High Confidence): ◦ RDS Question: Q70 asks if the employer has withheld the respondent’s travel and identity documents. ◦ NSUM Question: Q71 asks how many other domestic workers the respondent knows who do not have access to their own documents. • Debt and Pay Issues (High Confidence): ◦ RDS Questions: This involves combining Q39 (having to pay off debt to someone who helped find work) and Q42 (has our pay ever been withheld?). ◦ NSUM Question: Q43 asks how many others the respondent knows who have experienced problems with debt or pay. • Abuse and Threats (Medium Confidence): ◦ RDS Questions: This requires grouping Q45 (forced, deceived, or threatened into poor working conditions), Q47 (employer intimidation or threats), and Q48 (verbal abuse). ◦ NSUM Question: Q49 asks how many others the respondent knows who have experienced the use of threat or force. • Excessive Hours (Lower Confidence): ◦ RDS Questions: Q61 (weekly rest does not last 24 hours) and Q62 (working excessive overtime) are combined. ◦ NSUM Question: Q64 asks about knowing others who work excessive overtime, lack breaks, or lack annual leave. The comparison here is considered “flakier” because the RDS questions do not ask about annual leave, creating a partial mismatch. • Access to Help (Lower Confidence): ◦ RDS Question: Q78 asks if the respondent knows who might help them (coded for “No” answers). ◦ NSUM Question: Q79 asks how many other domestic workers the respondent knows who do NOT know where to go for help. By creating these comparable variables, even if just for one or two highly confident themes like debt bondage or document withholding, the team hopes to perform a fair comparison between the estimates derived from the two different methodologies. This process is considered a crucial step to integrate the RDS and NSUM approaches and to produce more robust findings.</p>
+</section>
+<section id="sample-characteristics" class="level3">
+<h3 class="anchored" data-anchor-id="sample-characteristics">Sample Characteristics</h3>
+<section id="recruitment-network-structure" class="level4">
+<h4 class="anchored" data-anchor-id="recruitment-network-structure">Recruitment Network Structure</h4>
+<div class="cell">
+<div id="tbl-network" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-network-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6: RDS Sample Network Characteristics
+</figcaption>
+<div aria-describedby="tbl-network-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table table-striped table-hover do-not-create-environment cell caption-top table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Characteristic</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Total Sample Size</td>
+<td style="text-align: right;">85.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Recruitment Waves</td>
+<td style="text-align: right;">5.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Average Degree</td>
+<td style="text-align: right;">10.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Median Degree</td>
+<td style="text-align: right;">6.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Seeds</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Longest Chain</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mean Chain Length</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note:</span> <sup></sup> Average and median degree represent the number of other domestic workers known personally (Q13). Chain length measured from seed nodes through recruitment relationships.</td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="demographic-composition" class="level4">
+<h4 class="anchored" data-anchor-id="demographic-composition">Demographic Composition</h4>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create nationality breakdown with proper ordering</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>nationality_summary <span class="ot">&lt;-</span> rd.dd <span class="sc">%&gt;%</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(nationality_cluster) <span class="sc">%&gt;%</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">percent =</span> <span class="fu">round</span>(<span class="fu">n</span>() <span class="sc">/</span> <span class="fu">nrow</span>(rd.dd) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">'drop'</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">nationality_cluster =</span> <span class="fu">factor</span>(nationality_cluster, <span class="at">levels =</span> nationality_cluster),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">label_text =</span> <span class="fu">sprintf</span>(<span class="st">"%d</span><span class="sc">\n</span><span class="st">(%.1f%%)"</span>, n, percent)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create professional bar plot</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nationality_summary, <span class="fu">aes</span>(<span class="at">x =</span> nationality_cluster, <span class="at">y =</span> percent, <span class="at">fill =</span> nationality_cluster)) <span class="sc">+</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.7</span>, <span class="at">alpha =</span> <span class="fl">0.9</span>) <span class="sc">+</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> label_text),</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.3</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="fl">3.5</span>,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>            <span class="at">fontface =</span> <span class="st">"bold"</span>) <span class="sc">+</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">option =</span> <span class="st">"plasma"</span>, <span class="at">begin =</span> <span class="fl">0.2</span>, <span class="at">end =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.15</span>)),</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">10</span>),</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">paste0</span>(x, <span class="st">"%"</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Nationality Cluster"</span>,</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Percentage of Sample"</span>,</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Sample Distribution by Nationality Cluster"</span>,</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">sprintf</span>(<span class="st">"Total N = %d"</span>, <span class="fu">nrow</span>(rd.dd))</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">13</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"gray30"</span>),</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">11</span>),</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">0</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">color =</span> <span class="cn">NA</span>),</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">color =</span> <span class="cn">NA</span>)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-demographics" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-demographics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="IJOPM_paperDraft_202051012_files/figure-html/fig-demographics-1.png" class="img-fluid figure-img" width="2400">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-demographics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Sample Composition by Nationality Clusters
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 </section>
 </section>
 <section id="app-sens" class="level1">
@@ -1207,7 +1492,11 @@ Zhang, S. X., M. Dank, K. Vincent, P. Narayanan, S. Bharadwaj, and S. M. Balasub
 <div id="tbl-rds-comprehensive" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-rds-comprehensive-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 Table&nbsp;6: Comprehensive RDS Estimates: Prevalence estimates for all indicators across population sizes and RDS methods (RDS-I, RDS-SS) with neighborhood bootstrap confidence intervals.
+=======
+Table&nbsp;7: Comprehensive RDS Estimates: Prevalence estimates for all indicators across population sizes and RDS methods (RDS-I, RDS-SS) with neighborhood bootstrap confidence intervals.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 </figcaption>
 <div aria-describedby="tbl-rds-comprehensive-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -1329,7 +1618,11 @@ RDS-SS Estimator
 <img src="IJOPM_paperDraft_202051012_files/figure-html/fig-rds-sensitivity-popsize-1.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rds-sensitivity-popsize-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 Figure&nbsp;6: RDS Sensitivity to Population Size: Comparison of RDS estimates across all population size scenarios. Each panel shows one RDS method with point estimates and 95% bootstrap confidence intervals varying by population size.
+=======
+Figure&nbsp;8: RDS Sensitivity to Population Size: Comparison of RDS estimates across all population size scenarios. Each panel shows one RDS method with point estimates and 95% bootstrap confidence intervals varying by population size.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 </figcaption>
 </figure>
 </div>
@@ -1342,7 +1635,11 @@ Figure&nbsp;6: RDS Sensitivity to Population Size: Comparison of RDS estimates a
 <div id="tbl-ma-estimates" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ma-estimates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 Table&nbsp;7: Model-Assisted Estimates by Population Size and Seed Selection. Source: Authors’ Own Work.
+=======
+Table&nbsp;8: Model-Assisted Estimates by Population Size and Seed Selection. Source: Authors’ Own Work.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 </figcaption>
 <div aria-describedby="tbl-ma-estimates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -1461,6 +1758,7 @@ Prevalence Estimates (95% CrI)
 </figure>
 </div>
 </div>
+<<<<<<< HEAD
 <!-- #### Traditional RDS Estimators Comparison -->
 <div id="tbl-rds-comparison" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -1470,6 +1768,18 @@ Table&nbsp;8: RDS Estimator Comparison for Binary Indicators. Source: Authors’
 <div aria-describedby="tbl-rds-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
 
+=======
+<section id="traditional-rds-estimators-comparison" class="level4">
+<h4 class="anchored" data-anchor-id="traditional-rds-estimators-comparison">Traditional RDS Estimators Comparison</h4>
+<div id="tbl-rds-comparison" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-rds-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9: RDS Estimator Comparison for Binary Indicators. Source: Authors’ Own Work.
+</figcaption>
+<div aria-describedby="tbl-rds-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-stdout">
+<pre><code>NULL</code></pre>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 </div>
 </div>
 </figure>
@@ -1666,14 +1976,25 @@ Table&nbsp;8: RDS Estimator Comparison for Binary Indicators. Source: Authors’
 <!-- estimation\n") -->
 <!-- ``` -->
 </section>
+<<<<<<< HEAD
 <section id="model-assisted-sensitivity-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="model-assisted-sensitivity-analysis">Model-Assisted Sensitivity Analysis</h2>
 <p>This section presents comprehensive sensitivity analysis for Model-Assisted inference estimates across all exploitation indicators, examining robustness to population size assumptions and seed selection methods. <a href="#fig-ma-sensitivity-by-indicator" class="quarto-xref">Figure&nbsp;7</a> and <a href="#fig-ma-sensitivity-comparison" class="quarto-xref">Figure&nbsp;8</a> show MA estimates are robust to these paramter choices.</p>
+=======
+</section>
+<section id="model-assisted-sensitivity-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="model-assisted-sensitivity-analysis">Model-Assisted Sensitivity Analysis</h2>
+<p>This section presents comprehensive sensitivity analysis for Model-Assisted inference estimates across all exploitation indicators, examining robustness to population size assumptions and seed selection methods.</p>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 <div class="cell">
 <div id="tbl-ma-sensitivity-full" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ma-sensitivity-full-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 Table&nbsp;9: Model-Assisted Sensitivity Analysis: Point estimates and 95% credible intervals across all parameter combinations. Estimates from Gile &amp; Handcock (2015) Bayesian Model-Assisted inference.
+=======
+Table&nbsp;10: Model-Assisted Sensitivity Analysis: Point estimates and 95% credible intervals across all parameter combinations. Estimates from Gile &amp; Handcock (2015) Bayesian Model-Assisted inference.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 </figcaption>
 <div aria-describedby="tbl-ma-sensitivity-full-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -1794,7 +2115,11 @@ Table&nbsp;9: Model-Assisted Sensitivity Analysis: Point estimates and 95% credi
 <img src="IJOPM_paperDraft_202051012_files/figure-html/fig-ma-sensitivity-by-indicator-1.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ma-sensitivity-by-indicator-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 Figure&nbsp;7: Model-Assisted Sensitivity by Population Size and Seed Selection: Point estimates with 95% credible intervals for each exploitation indicator across all parameter combinations. Each panel shows one indicator with estimates varying by population size (color) and seed selection method (shape).
+=======
+Figure&nbsp;9: Model-Assisted Sensitivity by Population Size and Seed Selection: Point estimates with 95% credible intervals for each exploitation indicator across all parameter combinations. Each panel shows one indicator with estimates varying by population size (color) and seed selection method (shape).
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 </figcaption>
 </figure>
 </div>
@@ -1808,7 +2133,11 @@ Figure&nbsp;7: Model-Assisted Sensitivity by Population Size and Seed Selection:
 <img src="IJOPM_paperDraft_202051012_files/figure-html/fig-ma-sensitivity-comparison-1.png" class="img-fluid figure-img" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ma-sensitivity-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 Figure&nbsp;8: Model-Assisted Point Estimate Comparison: Direct comparison of point estimates across all indicators, fixing population size at 980K. Lines connect estimates using the same seed selection method, showing consistency across indicators.
+=======
+Figure&nbsp;10: Model-Assisted Point Estimate Comparison: Direct comparison of point estimates across all indicators, fixing population size at 980K. Lines connect estimates using the same seed selection method, showing consistency across indicators.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 </figcaption>
 </figure>
 </div>
@@ -1820,12 +2149,20 @@ Figure&nbsp;8: Model-Assisted Point Estimate Comparison: Direct comparison of po
 <p>The NSUM estimates presented in the main text (Section 5.2.3) used neighborhood bootstrap resampling, Sequential Sampling weights, and the Modified Basic Scale-Up (MBSU) estimator with a population size of 980,000. To assess the robustness of these findings, we conducted comprehensive sensitivity analyses varying four key methodological choices: (1) bootstrap method, (2) weighting scheme, (3) population size assumption, and (4) NSUM estimator specification.</p>
 <section id="sensitivity-to-bootstrap-method" class="level3">
 <h3 class="anchored" data-anchor-id="sensitivity-to-bootstrap-method">Sensitivity to Bootstrap Method</h3>
+<<<<<<< HEAD
 <p>We compared four bootstrap resampling approaches: neighborhood bootstrap, tree bootstrap, chain bootstrap, and sequential sampling bootstrap. As shown in <a href="#tbl-appendix-bootstrap" class="quarto-xref">Table&nbsp;10</a>, all methods produce nearly identical point estimates, with variation only in confidence interval widths. This demonstrates that our findings are robust to the choice of bootstrap method, with the neighborhood bootstrap providing slightly more conservative (wider) confidence intervals than alternative approaches.</p>
+=======
+<p>We compared four bootstrap resampling approaches: neighborhood bootstrap, tree bootstrap, chain bootstrap, and sequential sampling bootstrap. As shown in <a href="#tbl-appendix-bootstrap" class="quarto-xref">Table&nbsp;11</a>, all methods produce nearly identical point estimates, with variation only in confidence interval widths. This demonstrates that our findings are robust to the choice of bootstrap method, with the neighborhood bootstrap providing slightly more conservative (wider) confidence intervals than alternative approaches.</p>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 <div class="cell">
 <div id="tbl-appendix-bootstrap" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-appendix-bootstrap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 Table&nbsp;10: Sensitivity Analysis: Bootstrap Method Comparison. All estimates use SS weights, N=980,000, and MBSU (Moderate) adjustment. Source: Authors’ Own Work.
+=======
+Table&nbsp;11: Sensitivity Analysis: Bootstrap Method Comparison. All estimates use SS weights, N=980,000, and MBSU (Moderate) adjustment. Source: Authors’ Own Work.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 </figcaption>
 <div aria-describedby="tbl-appendix-bootstrap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -2021,12 +2358,20 @@ Table&nbsp;10: Sensitivity Analysis: Bootstrap Method Comparison. All estimates 
 </section>
 <section id="sensitivity-to-weight-method" class="level3">
 <h3 class="anchored" data-anchor-id="sensitivity-to-weight-method">Sensitivity to Weight Method</h3>
+<<<<<<< HEAD
 <p>We compared Volz-Heckathorn (VH) and Sequential Sampling (SS) weighting schemes (<a href="#tbl-appendix-weights" class="quarto-xref">Table&nbsp;11</a>). Results were identical for both methods, as both approaches appropriately account for the RDS sampling design and degree-based inclusion probabilities. This validates our choice of SS weights for the main analysis.</p>
+=======
+<p>We compared Volz-Heckathorn (VH) and Sequential Sampling (SS) weighting schemes (<a href="#tbl-appendix-weights" class="quarto-xref">Table&nbsp;12</a>). Results were identical for both methods, as both approaches appropriately account for the RDS sampling design and degree-based inclusion probabilities. This validates our choice of SS weights for the main analysis.</p>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 <div class="cell">
 <div id="tbl-appendix-weights" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-appendix-weights-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 Table&nbsp;11: Sensitivity Analysis: Weight Method Comparison. All estimates use neighborhood bootstrap, N=980,000, and MBSU (Moderate) adjustment. Source: Authors’ Own Work.
+=======
+Table&nbsp;12: Sensitivity Analysis: Weight Method Comparison. All estimates use neighborhood bootstrap, N=980,000, and MBSU (Moderate) adjustment. Source: Authors’ Own Work.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 </figcaption>
 <div aria-describedby="tbl-appendix-weights-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -2142,12 +2487,20 @@ Table&nbsp;11: Sensitivity Analysis: Weight Method Comparison. All estimates use
 </section>
 <section id="sensitivity-to-population-size" class="level3">
 <h3 class="anchored" data-anchor-id="sensitivity-to-population-size">Sensitivity to Population Size</h3>
+<<<<<<< HEAD
 <p>We tested four population size scenarios: 50,000, 100,000, 980,000, and 1,740,000 (<a href="#tbl-appendix-popsize" class="quarto-xref">Table&nbsp;12</a>). As expected, absolute counts scaled linearly with population size assumptions, while prevalence rates remained constant. This validates our estimation approach and demonstrates that the choice of population size affects the scale but not the proportional prevalence estimates.</p>
+=======
+<p>We tested four population size scenarios: 50,000, 100,000, 980,000, and 1,740,000 (<a href="#tbl-appendix-popsize" class="quarto-xref">Table&nbsp;13</a>). As expected, absolute counts scaled linearly with population size assumptions, while prevalence rates remained constant. This validates our estimation approach and demonstrates that the choice of population size affects the scale but not the proportional prevalence estimates.</p>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 <div class="cell">
 <div id="tbl-appendix-popsize" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-appendix-popsize-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 Table&nbsp;12: Sensitivity Analysis: Population Size Comparison. All estimates use neighborhood bootstrap, SS weights, and MBSU (Moderate) adjustment. Source: Authors’ Own Work.
+=======
+Table&nbsp;13: Sensitivity Analysis: Population Size Comparison. All estimates use neighborhood bootstrap, SS weights, and MBSU (Moderate) adjustment. Source: Authors’ Own Work.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 </figcaption>
 <div aria-describedby="tbl-appendix-popsize-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -2343,12 +2696,20 @@ Table&nbsp;12: Sensitivity Analysis: Population Size Comparison. All estimates u
 </section>
 <section id="sensitivity-to-nsum-method-and-adjustment-factors" class="level3">
 <h3 class="anchored" data-anchor-id="sensitivity-to-nsum-method-and-adjustment-factors">Sensitivity to NSUM Method and Adjustment Factors</h3>
+<<<<<<< HEAD
 <p>The choice of NSUM estimator and adjustment factors had substantial impact on estimates (<a href="#tbl-appendix-nsum-method" class="quarto-xref">Table&nbsp;13</a>). We compared MBSU with three adjustment factor sets (no adjustment, moderate, conservative) and GNSUM Symmetric estimation. GNSUM estimates matched MBSU (No Adjustment) exactly for all indicators, while conservative MBSU adjustments (δ<span class="math inline">\(\delta=0.8\)</span> τ<span class="math inline">\(\tau=0.7\)</span>) produced estimates approximately 1.8 times higher than unadjusted estimates. Moderate adjustments (δ=0.9, τ=0.85) provided intermediate values approximately 1.3 times higher than baseline, representing our preferred specification that acknowledges likely visibility and reporting barriers while avoiding extreme assumptions.</p>
+=======
+<p>The choice of NSUM estimator and adjustment factors had substantial impact on estimates (<a href="#tbl-appendix-nsum-method" class="quarto-xref">Table&nbsp;14</a>). We compared MBSU with three adjustment factor sets (no adjustment, moderate, conservative) and GNSUM Symmetric estimation. GNSUM estimates matched MBSU (No Adjustment) exactly for all indicators, while conservative MBSU adjustments (δ=0.8, τ=0.7) produced estimates approximately 1.8 times higher than unadjusted estimates. Moderate adjustments (δ=0.9, τ=0.85) provided intermediate values approximately 1.3 times higher than baseline, representing our preferred specification that acknowledges likely visibility and reporting barriers while avoiding extreme assumptions.</p>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 <div class="cell">
 <div id="tbl-appendix-nsum-method" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-appendix-nsum-method-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<<<<<<< HEAD
 Table&nbsp;13: Sensitivity Analysis: NSUM Method and Adjustment Factor Comparison. All estimates use neighborhood bootstrap, SS weights, and N=980,000. Source: Authors’ Own Work.
+=======
+Table&nbsp;14: Sensitivity Analysis: NSUM Method and Adjustment Factor Comparison. All estimates use neighborhood bootstrap, SS weights, and N=980,000. Source: Authors’ Own Work.
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 </figcaption>
 <div aria-describedby="tbl-appendix-nsum-method-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -2538,7 +2899,11 @@ Table&nbsp;13: Sensitivity Analysis: NSUM Method and Adjustment Factor Compariso
 </tr>
 </tbody><tfoot>
 <tr class="odd">
+<<<<<<< HEAD
 <td style="padding: 0"><span style="font-style: italic;">Note:</span> <sup></sup> MBSU = Modified Basic Scale-Up; GNSUM = Generalized Network Scale-Up Method; δ = degree ratio (network size differences); τ = visibility/true positive rate (transmission and reporting accuracy). Adjustment factors control for network degree differences and visibility/reporting biases in network-based estimation.</td>
+=======
+<td style="padding: 0"><span style="font-style: italic;">Note:</span> <sup></sup> MBSU = Modified Basic Scale-Up; GNSUM = Generalized Network Scale-Up Method; δ = transmission/barrier effect; τ = recall effect. Adjustment factors control for visibility and reporting biases in network-based estimation.</td>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 <td></td>
 <td></td>
 <td></td>
@@ -2566,8 +2931,14 @@ Table&nbsp;13: Sensitivity Analysis: NSUM Method and Adjustment Factor Compariso
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>When estimating the size or characteristics of a hidden population using the Network Scale-Up Method (NSUM), researchers typically assume a probability sample from the frame population. However, in many applied settings—including hard-to-reach populations—data are collected via*Respondent-Driven Sampling (RDS). RDS introduces specific structural dependencies and inclusion probabilities that violate the assumptions of simple random sampling.</p>
+<<<<<<< HEAD
 <p>This presents a challenge: how can we correctly estimate uncertainty for NSUM estimates derived from an RDS sample? As shown in <span class="citation" data-cites="feeh16-generalizing">Feehan and Salganik (<a href="#ref-feeh16-generalizing" role="doc-biblioref">2016</a>)</span> and <span class="citation" data-cites="salg06-variance">Salganik (<a href="#ref-salg06-variance" role="doc-biblioref">2006</a>)</span>, the NSUM estimator depends crucially on inclusion weights <span class="math inline">\(\pi_i\)</span>, which must reflect the sampling design. When data are RDS-based, these weights are typically derived from known degree-based estimators such as RDS-I, or RDS-II or Gile’s Successive Sampling (SS) weights.</p>
 <p>To address this challenge, we propose a three-step bootstrap procedure for NSUM estimation using RDS data. This approach is flexible, modular, and applicable across several classes of NSUM estimators. It separates the issues of: 1. How to resample an RDS chain (Step 1), 2. How to recalculate sample-specific weights (Step 2), and 3. How to apply a chosen NSUM estimator (Step 3).</p>
+=======
+<p>This presents a challenge: how can we correctly estimate uncertainty for NSUM estimates derived from an RDS sample? As shown in <span class="citation" data-cites="feeh16-generalizing">Feehan and Salganik (<a href="#ref-feeh16-generalizing" role="doc-biblioref">2016</a>)</span> and <span class="citation" data-cites="salg06-variance">Salganik (<a href="#ref-salg06-variance" role="doc-biblioref">2006</a>)</span>, the NSUM estimator depends crucially on inclusion weights <span class="math inline">\(\pi_i\)</span>, which must reflect the sampling design. When data are RDS-based, these weights are typically derived from known degree-based estimators such as RDS-II or Gile’s Successive Sampling (SS) weights.</p>
+<p>To address this challenge, we propose a three-step bootstrap procedure for NSUM estimation using RDS data. This approach is flexible, modular, and applicable across several classes of NSUM estimators. It separates the issues of: 1. How to resample an RDS chain (Step 1), 2. How to recalculate sample-specific weights (Step 2), and 3. How to apply a chosen NSUM estimator (Step 3).</p>
+<hr>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 </section>
 <section id="step-1-resampling-the-rds-sample" class="level2">
 <h2 class="anchored" data-anchor-id="step-1-resampling-the-rds-sample">Step 1: Resampling the RDS Sample</h2>
@@ -2586,6 +2957,7 @@ Table&nbsp;13: Sensitivity Analysis: NSUM Method and Adjustment Factor Compariso
 </section>
 <section id="resampling-procedure" class="level3">
 <h3 class="anchored" data-anchor-id="resampling-procedure">Resampling Procedure</h3>
+<<<<<<< HEAD
 <p>We selected our first wave of par5cipants nonrandomly by convenience sampling. Mobile phone numbers were used both to iden5fy seed par5cipants and to act as a unique iden5fier for those whom they referred. We used the publicly available ‘Neighboot’ bookstrapping procedure to es5mate confidence limits from our sample (Yauck and Moodie, 2020). Bootstrapping contributes to overcoming the high degree of uncertainty surrounding es5mates from samples generated through respondent-driven sampling and allows beLer sta5s5cal inference, especially related to sampling variability (Baraﬀ et al., 2016). These authors develop a mul5-level tree bootstrapping procedure based on resampling recruitment trees that depends solely upon the structure of the sampled recruitment trees rather than the aLributes being measured on the respondents. This allows es5ma5on of variability and correla5ons between aLributes. Their tree bootstrap method can produce interval es5mates that are able to account for the high variability of the RDS process, even when the design eﬀects are very large, producing es5mates that are slightly conserva5ve – which is preferable in this situa5on. The process involves a sample, without replacement from ini5al seed par5cipants, followed by resampling from each of the selected seeds recruits and further resampling form second-level recruits’ recruits and con5nues un5l there are no recruits remaining (Baraﬀ et al., 2016; Yauck et al., 2022).More recently, however, Yauck et al.&nbsp;(2022) have raised concerns that the tree bootstrapping method proposed by Baraﬀ et al., 2016) severely over es5mates uncertainty and, instead, propose a neighborhood bootstrap method to quan5fy uncertainty in RDS. This is designed to capture the ‘local’ neighborhood depdendence by including the selected recruiters’ recruits. Yauck et al., (2022) argue that this approach improves upon previously advocated approaches because the ‘local’ neighbors’ 5es are present in any full, unobserved network of the target popula5on. This method is par5cularly suitable for our study, since it oﬀers computa5onal eﬃciencies which yield confidence intervals with conserva5ve coverages for small sample sizes and is based on resampling recruited individuals and their observed neighbors -defined as those individuals with whom they are directly connected within the RDS tree. Yauck et al.’s method relies on the following assump5ons: i) social connec5ons are reciprocal and ii) an individual within the network can reach another individual through a finite set of connec5ons. Their bootstrap method is based upon sequen5ally resampling recruiters and their recruits and can be described in two main steps: step 1 involved the random selec5on, with replacement of the number of recruiters within the RDS sample. Step 2 then includes the selected recruiters and their corresponding recruits in the bootstrap sample. The method allows the construc5on of calibrated interval es5mates. Unlike other methods, the advantages of this approach include its ability to derive es5mates from a single bootstrap sample for any number of aLributes.</p>
 <p>Limita5ons</p>
 <p>Baraﬀ et al.&nbsp;(2016)’s approach relies on a series of simplifying assump5ons, namely: i) the social network is finite and connected ii) network connec5ons are reciprocal, not directed iii) recruits accurately report their network degree [this is facilitated by the concrete request to provide a count of domes5c workers contacts within their mobile phone – thereby minimising recall error[ iv) recruitment coupons are distributed uniformly at random to neighbours in the network v) that individuals may be recruited into the sample more than once. Baraﬀ et al., note that this laLer assump5on par5cularly does not relate to the reality of RDS in prac5ce.</p>
@@ -2604,6 +2976,10 @@ Table&nbsp;13: Sensitivity Analysis: NSUM Method and Adjustment Factor Compariso
 <!-- Yauck, Mamadou, and Erica E. M. Moodie. 2022. Neighboot: Neighborhood Bootstrap -->
 <!-- Method for RDS (version 1.0.1). https://cran.r- -->
 <!-- project.org/web/packages/Neighboot/index.html. -->
+=======
+<p>We selected our first wave of par5cipants nonrandomly by convenience sampling. Mobile phone numbers were used both to iden5fy seed par5cipants and to act as a unique iden5fier for those whom they referred. We used the publicly available ‘Neighboot’ bookstrapping procedure to es5mate confidence limits from our sample (Yauck and Moodie, 2020). Bootstrapping contributes to overcoming the high degree of uncertainty surrounding es5mates from samples generated through respondent-driven sampling and allows beLer sta5s5cal inference, especially related to sampling variability (Baraﬀ et al., 2016). These authors develop a mul5-level tree bootstrapping procedure based on resampling recruitment trees that depends solely upon the structure of the sampled recruitment trees rather than the aLributes being measured on the respondents. This allows es5ma5on of variability and correla5ons between aLributes. Their tree bootstrap method can produce interval es5mates that are able to account for the high variability of the RDS process, even when the design eﬀects are very large, producing es5mates that are slightly conserva5ve – which is preferable in this situa5on. The process involves a sample, without replacement from ini5al seed par5cipants, followed by resampling from each of the selected seeds recruits and further resampling form second-level recruits’ recruits and con5nues un5l there are no recruits remaining (Baraﬀ et al., 2016; Yauck et al., 2022).More recently, however, Yauck et al.&nbsp;(2022) have raised concerns that the tree bootstrapping method proposed by Baraﬀ et al., 2016) severely over es5mates uncertainty and, instead, propose a neighborhood bootstrap method to quan5fy uncertainty in RDS. This is designed to capture the ‘local’ neighborhood depdendence by including the selected recruiters’ recruits. Yauck et al., (2022) argue that this approach improves upon previously advocated approaches because the ‘local’ neighbors’ 5es are present in any full, unobserved network of the target popula5on. This method is par5cularly suitable for our study, since it oﬀers computa5onal eﬃciencies which yield confidence intervals with conserva5ve coverages for small sample sizes and is based on resampling recruited individuals and their observed neighbors -defined as those individuals with whom they are directly connected within the RDS tree. Yauck et al.’s method relies on the following assump5ons: i) social connec5ons are reciprocal and ii) an individual within the network can reach another individual through a finite set of connec5ons. Their bootstrap method is based upon sequen5ally resampling recruiters and their recruits and can be described in two main steps: step 1 involved the random selec5on, with replacement of the number of recruiters within the RDS sample. Step 2 then includes the selected recruiters and their corresponding recruits in the bootstrap sample. The method allows the construc5on of calibrated interval es5mates. Unlike other methods, the advantages of this approach include its ability to derive es5mates from a single bootstrap sample for any number of aLributes. Limita5ons Baraﬀ et al.&nbsp;(2016)’s approach relies on a series of simplifying assump5ons, namely: i) the social network is finite and connected ii) network connec5ons are reciprocal, not directed [I believe this to be true of the respondents in our study] iii) recruits accurately report their network degree [this is facilitated by the concrete request to provide a count of domes5c workers contacts within their mobile phone – thereby minimising recall error[ iv) recruitment coupons are distributed uniformly at random to neighbours in the network [in our study, the research team managed the distribu5on of the survey link to those suggested by our seeds and respondents from earlier waves] v) that individuals may be recruited into the sample more than once. Baraﬀ et al., note that this laLer assump5on par5cularly does not relate to the reality of RDS in prac5ce. References Baraﬀ, Aaron J., Tyler H. McCormick, and Adrian E. Ra`ery. 2016. “Es5ma5ng Uncertainty in Respondent-Driven Sampling Using a Tree Bootstrap Method.” Proceedings of the Na5onal Academy of Sciences of the United States of America 113 (51): 14668–73. hLps://doi.org/10.1073/pnas.1617258113. Feehan, Dennis M., and MaLhew J. Salganik. 2016. “Online Appendix: Generalizing the Network Scale-up Method.” Sociological Methodology 46 (1): 153–86. hLps://doi.org/10.1177/0081175016665425. Mamadou Yauck, Erica E M Moodie, Herak Apelian, Alain Fourmigue, Daniel Grace, Trevor A Hart, Gilles Lambert, Joseph Cox, Neighborhood Bootstrap for Respondent-Driven Sampling, Journal of Survey Statistics and Methodology, Volume 10, Issue 2, April 2022, Pages 419–438, https://doi.org/10.1093/jssam/smab057 Yauck, Mamadou, and Erica E. M. Moodie. 2022. Neighboot: Neighborhood Bootstrap Method for RDS (version 1.0.1). https://cran.r- project.org/web/packages/Neighboot/index.html.</p>
+<hr>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 </section>
 </section>
 <section id="step-2-recalculating-weights" class="level2">
@@ -2622,6 +2998,10 @@ w_i^{(b)} \propto \frac{1}{d_i^{(b)}}
 <li><p>SS Weights <span class="citation" data-cites="gile11-improved">(<a href="#ref-gile11-improved" role="doc-biblioref">Gile 2011</a>)</span>: Incorporate sampling fraction and frame size <span class="math inline">\(N_F\)</span>. Computed numerically via successive sampling approximation.</p></li>
 </ul>
 <p>Let <span class="math inline">\(\mathbf{X}_i\)</span> denote covariates (e.g.&nbsp;traits, degree, indicator of hidden population membership), which are retained from the original data and passed to Step 3.</p>
+<<<<<<< HEAD
+=======
+<hr>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 </section>
 </section>
 <section id="step-3-nsum-estimation-on-resampled-and-reweighted-data" class="level2">
@@ -2655,9 +3035,15 @@ w_i^{(b)} \propto \frac{1}{d_i^{(b)}}
 <p><span class="math display">\[\hat{N}_H^{(b)} = \left( \frac{\sum_{i} \frac{y_{i,H}}{\pi_i^{(b)}}}{\sum_{i} \frac{d_i}{\pi_i^{(b)}}} \right) \cdot N_F \cdot \frac{1}{\delta \cdot \tau \cdot \rho}\]</span></p>
 <p>Where:</p>
 <ul>
+<<<<<<< HEAD
 <li><p><span class="math inline">\(\delta\)</span> (δ): Degree ratio (d̄_H,F/d̄_F,F) — ratio of average network degree of hidden population to frame population,</p></li>
 <li><p><span class="math inline">\(\tau\)</span> (τ): Visibility / true positive rate (v̄_H,F/d̄_H,F) — proportion of network edges correctly reported; measures transmission and reporting accuracy; captures visibility of hidden population to frame population,</p></li>
 <li><p><span class="math inline">\(\rho\)</span> (ρ): Popularity bias (relative visibility of hidden population members).</p></li>
+=======
+<li><p><span class="math inline">\(\delta\)</span>: Transmission bias (probability respondent is aware of alter’s status),</p></li>
+<li><p><span class="math inline">\(\tau\)</span>: Barrier effect (social mixing between hidden and frame population),</p></li>
+<li><p><span class="math inline">\(\rho\)</span>: Popularity bias (relative visibility of hidden population members).</p></li>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 </ul>
 <p>These values can be:</p>
 <ul>
@@ -2676,9 +3062,33 @@ w_i^{(b)} \propto \frac{1}{d_i^{(b)}}
 <li><p>Hidden population size.</p></li>
 </ul>
 <p>They yield a posterior distribution over <span class="math inline">\(N_H\)</span>, and uncertainty is embedded within the model.</p>
+<<<<<<< HEAD
 <p>This step applies an NSUM estimator to the bootstrap sample <span class="math inline">\(\mathcal{S}^{(b)}\)</span> using the recalculated weights <span class="math inline">\(w_i^{(b)}\)</span> and responses <span class="math inline">\(y_{i,H}\)</span>, where <span class="math inline">\(y_{i,H}\)</span> is the number of known contacts respondent <span class="math inline">\(i\)</span> has in hidden population <span class="math inline">\(H\)</span>.</p>
 <p>Let <span class="math inline">\(N_F\)</span> denote the frame population size (assumed known), and let <span class="math inline">\(d_i\)</span> be the degree of respondent <span class="math inline">\(i\)</span>.</p>
 </section>
+=======
+<hr>
+<p>This step applies an NSUM estimator to the bootstrap sample <span class="math inline">\(\mathcal{S}^{(b)}\)</span> using the recalculated weights <span class="math inline">\(w_i^{(b)}\)</span> and responses <span class="math inline">\(y_{i,H}\)</span>, where <span class="math inline">\(y_{i,H}\)</span> is the number of known contacts respondent <span class="math inline">\(i\)</span> has in hidden population <span class="math inline">\(H\)</span>.</p>
+<p>Let <span class="math inline">\(N_F\)</span> denote the frame population size (assumed known), and let <span class="math inline">\(d_i\)</span> be the degree of respondent <span class="math inline">\(i\)</span>.</p>
+</section>
+<section id="generalized-nsum-estimator-gnsum" class="level3">
+<h3 class="anchored" data-anchor-id="generalized-nsum-estimator-gnsum">Generalized NSUM Estimator (GNSUM)</h3>
+<p>The weighted GNSUM estimator is:</p>
+<p><span class="math display">\[
+\hat{N}_H^{(b)} = \frac{\sum_{i \in \mathcal{S}^{(b)}} \frac{y_{i,H}}{\pi_i^{(b)}}}{\sum_{i \in \mathcal{S}^{(b)}} \frac{d_i}{\pi_i^{(b)}}} \cdot N_F
+\]</span></p>
+<p>This estimator assumes proportional mixing and equal visibility.</p>
+<hr>
+</section>
+<section id="symmetric-visibility-variant" class="level3">
+<h3 class="anchored" data-anchor-id="symmetric-visibility-variant">Symmetric Visibility Variant</h3>
+<p>In our setting, some RDS respondents can be identified <em>ex post</em> as members of the hidden population <span class="math inline">\(H\)</span>. Denote this set <span class="math inline">\(\mathcal{H} \subseteq \mathcal{S}\)</span>. Under the assumption of symmetric visibility, we define:</p>
+<p><span class="math display">\[
+\hat{v}_{H} = \frac{1}{|\mathcal{H}|} \sum_{j \in \mathcal{H}} \frac{y_{j,F}}{d_j}
+\]</span></p>
+<p>That is, the average proportion of alters known by members of <span class="math inline">\(H\)</span> who are in the frame population <span class="math inline">\(F\)</span>. Incorporating this, the symmetric visibility GNSUM becomes:</p>
+</section>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 </section>
 <section id="step-4-aggregating-bootstrap-estimates" class="level2">
 <h2 class="anchored" data-anchor-id="step-4-aggregating-bootstrap-estimates">Step 4: Aggregating Bootstrap Estimates</h2>
@@ -2690,6 +3100,7 @@ w_i^{(b)} \propto \frac{1}{d_i^{(b)}}
 <li><p>Standard error: sample SD</p></li>
 <li><p>95% CI: empirical percentiles (e.g., 2.5%, 97.5%)</p></li>
 </ul>
+<<<<<<< HEAD
 <!-- #### 5. References -->
 <!-- -   @feeh16-generalizing -->
 <!-- -   @salg06-variance -->
@@ -2700,6 +3111,23 @@ w_i^{(b)} \propto \frac{1}{d_i^{(b)}}
 <!-- -   @weir12-comparison -->
 <!-- -   @salg06-variance -->
 <!-- -   @rao88-resampling -->
+=======
+<hr>
+<section id="references-1" class="level4">
+<h4 class="anchored" data-anchor-id="references-1">5. References</h4>
+<ul>
+<li><p><span class="citation" data-cites="feeh16-generalizing">Feehan and Salganik (<a href="#ref-feeh16-generalizing" role="doc-biblioref">2016</a>)</span></p></li>
+<li><p><span class="citation" data-cites="salg06-variance">Salganik (<a href="#ref-salg06-variance" role="doc-biblioref">2006</a>)</span></p></li>
+<li><p><span class="citation" data-cites="gile11-improved">Gile (<a href="#ref-gile11-improved" role="doc-biblioref">2011</a>)</span></p></li>
+<li><p><span class="citation" data-cites="volz08-probability">Volz and Heckathorn (<a href="#ref-volz08-probability" role="doc-biblioref">2008</a>)</span></p></li>
+<li><p><span class="citation" data-cites="malt15-estimating">Maltiel et al. (<a href="#ref-malt15-estimating" role="doc-biblioref">2015</a>)</span></p></li>
+<li><p><span class="citation" data-cites="yauc22-neighborhood">Yauck et al. (<a href="#ref-yauc22-neighborhood" role="doc-biblioref">2022</a>)</span></p></li>
+<li><p><span class="citation" data-cites="weir12-comparison">Weir et al. (<a href="#ref-weir12-comparison" role="doc-biblioref">2012</a>)</span></p></li>
+<li><p><span class="citation" data-cites="salg06-variance">Salganik (<a href="#ref-salg06-variance" role="doc-biblioref">2006</a>)</span></p></li>
+<li><p><span class="citation" data-cites="rao88-resampling">Rao and Wu (<a href="#ref-rao88-resampling" role="doc-biblioref">1988</a>)</span></p></li>
+</ul>
+</section>
+>>>>>>> b8fb866286418bc4845d972050dd8a343dd24956
 </section>
 </section>
 
