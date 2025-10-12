@@ -1,0 +1,8 @@
+[0] Config.pm:328> INFO - This is Biber 2.21
+[0] Config.pm:331> INFO - Logfile is 'IJOPM_paperDraft_202051011.blg'
+[55] biber-darwin:342> INFO - === Sun Oct 12, 2025, 16:37:52
+[68] Biber.pm:421> INFO - Reading 'IJOPM_paperDraft_202051011.bcf'
+[163] Biber.pm:1002> INFO - Found 74 citekeys in bib section 0
+[179] Biber.pm:4487> INFO - Processing section 0
+[187] Biber.pm:4678> INFO - Looking for bibtex file 'references.bib' for section 0
+[317] bibtex.pm:1713> INFO - LaTeX decoding ...
