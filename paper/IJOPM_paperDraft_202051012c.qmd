@@ -6,7 +6,7 @@ title: "Quantifying Hidden Exploitation: Dual-Method Prevalence Estimates of Mod
 #     affiliation: UoN
 #   - name: Scott Moser
 #     affiliation: UoN
-date: 12, October 2025 # today
+#date: 12, October 2025 # today
 date-format: "DD, MMMM YYYY"
 abstract: |
   **Purpose**
@@ -904,11 +904,11 @@ To complement the continuous measure, we operationalised exploitation as binary 
 #| label: fig-method-comparison
 #| fig-cap: "Comparative Method Overview: Point estimates and uncertainty intervals for prevalence of exploitation indicators across different estimation methods. RDS methods show 95% confidence intervals (bootstrap); Bayesian methods show 95% credible intervals (MCMC); NSUM shows estimates under different adjustment scenarios. Baseline population assumption: 980,000 domestic workers. Source: Authors' own work."
 #| echo: false
-#| fig-width: 10
-#| fig-height: 7
-#| out-width: "100%"
+#| out-width: "95%"
+#| fig-align: "center"
+#| dpi: 300
 
-# Format-specific figure inclusion
+# Format-specific figure inclusion with higher resolution
 fig_path <- here::here("output", "figures", "method_comparison.png")
 
 if (file.exists(fig_path)) {
@@ -1011,15 +1011,19 @@ ma_results_formatted %>%
     align = c("l", "r")
   ) %>%
   kableExtra::kable_styling(
-    latex_options = c("striped", "hold_position", "scale_down"),
+    latex_options = c("striped", "hold_position"),
     bootstrap_options = c("striped", "hover", "condensed"),
     full_width = FALSE,
-    position = "center"
+    position = "center",
+    font_size = 10
   ) %>%
+  kableExtra::column_spec(1, width = "6cm") %>%
+  kableExtra::column_spec(2, width = "5cm") %>%
   kableExtra::footnote(
-    general = "Estimates adjusted for RDS sampling bias using Bayesian Model Assissted Inference of Gile & Handcock (2015) (N=980,000, sample seed selection). Credible intervals from posterior distribution.",
+    general = "Estimates adjusted for RDS sampling bias using Bayesian Model Assisted Inference (Gile & Handcock, 2015). N=980,000; sample seed selection. Credible intervals from posterior distribution.",
     general_title = "Note:",
-    footnote_as_chunk = TRUE
+    footnote_as_chunk = TRUE,
+    threeparttable = TRUE
   )
 ```
 
@@ -1118,16 +1122,20 @@ if (file.exists(here("output", "frequentist_estimators_results.RData"))) {
         align = c("l", "r", "r")
       ) %>%
       kableExtra::kable_styling(
-        latex_options = c("striped", "hold_position", "scale_down"),
+        latex_options = c("striped", "hold_position"),
         bootstrap_options = c("striped", "hover", "condensed"),
         full_width = FALSE,
         position = "center",
-        font_size = 9
+        font_size = 10
       ) %>%
+      kableExtra::column_spec(1, width = "5cm") %>%
+      kableExtra::column_spec(2, width = "4cm") %>%
+      kableExtra::column_spec(3, width = "4cm") %>%
       kableExtra::footnote(
-        general = "RDS-I: Salganik-Heckathorn estimator. RDS-SS: Gile's Successive Sampling estimator. Confidence intervals from neighborhood bootstrap (n=1000). Population size: 980,000 domestic workers.",
+        general = "RDS-I: Salganik-Heckathorn estimator. RDS-SS: Gile's Successive Sampling estimator. Confidence intervals from neighborhood bootstrap (n=1000). Population: 980,000 domestic workers.",
         general_title = "Note:",
-        footnote_as_chunk = TRUE
+        footnote_as_chunk = TRUE,
+        threeparttable = TRUE
       )
   } else {
     cat("frequentist_df object not found.\n")
@@ -1230,8 +1238,12 @@ nsum_file <- here("output", "tables", "Table6_NSUM_main_results.csv")
 if (file.exists(nsum_file)) {
   nsum_main <- read_csv(nsum_file, show_col_types = FALSE)
 
+  # Select only the 6 essential columns to display
+  nsum_main_clean <- nsum_main %>%
+    dplyr::select(1:6)  # Select first 6 columns only
+
   # Format the table - NO caption parameter (using tbl-cap from chunk options)
-  table_output <- nsum_main %>%
+  table_output <- nsum_main_clean %>%
     kbl(
       col.names = c("Adjustment Method", "Outcome", "Point Estimate",
                     "95% CI Lower", "95% CI Upper", "Prevalence (%)"),
@@ -1242,7 +1254,7 @@ if (file.exists(nsum_file)) {
     ) %>%
     kable_styling(
       latex_options = if (knitr::is_latex_output()) {
-        c("striped", "hold_position", "scale_down", "repeat_header")
+        c("striped", "hold_position")
       } else {
         NULL
       },
@@ -1253,18 +1265,22 @@ if (file.exists(nsum_file)) {
       },
       full_width = FALSE,
       position = "center",
-      font_size = if (knitr::is_latex_output()) 8 else NULL
+      font_size = 10
     ) %>%
-    column_spec(1, width = "3cm") %>%
-    column_spec(2, width = "3cm") %>%
-    column_spec(6, width = "3cm") %>%
+    column_spec(1, width = "2.5cm") %>%
+    column_spec(2, width = "3.5cm") %>%
+    column_spec(3, width = "2cm") %>%
+    column_spec(4, width = "1.8cm") %>%
+    column_spec(5, width = "1.8cm") %>%
+    column_spec(6, width = "2.2cm") %>%
     pack_rows("No Adjustment (δ=1.0, τ=1.0)", 1, 5) %>%
     pack_rows("Conservative (δ=0.8, τ=0.7)", 6, 10) %>%
     pack_rows("Moderate (δ=0.9, τ=0.85)", 11, 15) %>%
     footnote(
-      general = "MBSU = Modified Basic Scale-Up method; δ = degree ratio (d̄_H,F/d̄_F,F, ratio of hidden population network degree to frame population degree); τ = visibility/true positive rate (v̄_H,F/d̄_H,F, proportion of edges correctly reported, measures transmission and reporting accuracy); Bootstrap method: neighborhood resampling with 1000 iterations; Population base: 980,000 UK domestic workers.",
+      general = "MBSU = Modified Basic Scale-Up method; δ = degree ratio (d̄_H,F/d̄_F,F); τ = visibility/true positive rate (v̄_H,F/d̄_H,F); Bootstrap: neighborhood resampling (n=1000); Population: 980,000 UK domestic workers.",
       general_title = "Note:",
-      footnote_as_chunk = TRUE
+      footnote_as_chunk = TRUE,
+      threeparttable = TRUE
     )
 
   # Print the table
@@ -1632,7 +1648,7 @@ if (file.exists(here("output", "frequentist_estimators_results.RData"))) {
         } else {
           c("striped", "hover", "condensed")
         },
-        font_size = if (knitr::is_latex_output()) 6 else NULL,
+        font_size = if (knitr::is_latex_output()) 7 else NULL,
         full_width = FALSE
       ) %>%
       kableExtra::add_header_above(c(
@@ -1648,11 +1664,9 @@ if (file.exists(here("output", "frequentist_estimators_results.RData"))) {
         threeparttable = TRUE
       )
 
-    # Add landscape wrapper for PDF
+    # Add landscape wrapper for PDF using kableExtra function
     if (knitr::is_latex_output()) {
-      cat("\\begin{landscape}\n")
-      print(table_out)
-      cat("\\end{landscape}\n")
+      table_out %>% kableExtra::landscape()
     } else {
       table_out
     }
@@ -2573,7 +2587,7 @@ if (file.exists(nsum_method_file)) {
 
 ### Summary of Sensitivity Analyses
 
-Across all 64 parameter combinations tested (4 bootstrap methods × 4 population sizes × 2 weight methods × 2 NSUM methods), prevalence estimates ranged from 0.83% to 4.08% for the five exploitation indicators. The most important source of variation was the choice of adjustment factors, with conservative adjustments producing estimates up to twice as high as unadjusted estimates. Bootstrap method, weight scheme, and population size assumptions had minimal impact on prevalence rates, demonstrating the robustness of our findings to these methodological choices.
+Across all 128 parameter combinations tested (4 bootstrap methods × 4 population sizes × 2 weight methods × 4 NSUM methods), prevalence estimates ranged from 0.83% to 4.08% for the five exploitation indicators. The most important source of variation was the choice of adjustment factors, with conservative adjustments producing estimates up to twice as high as unadjusted estimates. Bootstrap method, weight scheme, and population size assumptions had minimal impact on prevalence rates, demonstrating the robustness of our findings to these methodological choices.
 
 For the main text analysis, we selected neighborhood bootstrap (providing conservative confidence intervals), SS weights (standard for RDS data), N=980,000 (based on EU labor force data), and MBSU with moderate adjustments (acknowledging likely barriers while avoiding extreme assumptions). This specification provides credible estimates while acknowledging uncertainty and avoiding both overly optimistic and overly pessimistic scenarios.
 

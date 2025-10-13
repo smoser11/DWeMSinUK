@@ -206,7 +206,7 @@ true,style=apa,sorting=nyt,maxcitenames=2]{biblatex}
 \title{Quantifying Hidden Exploitation: Dual-Method Prevalence Estimates
 of Modern Slavery Risk Among UK Domestic Workers}
 \author{}
-\date{12, October 2025}
+\date{}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -955,7 +955,7 @@ scenarios.
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{../output/figures/method_comparison.png}
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{../output/figures/method_comparison.png}
 
 }
 
@@ -992,9 +992,10 @@ Source: Authors' Own Work.}
 
 \centering{
 
-\centering
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}[t]{lr}
+\centering\begingroup\fontsize{10}{12}\selectfont
+
+\begin{threeparttable}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{6cm}>{\raggedleft\arraybackslash}p{5cm}}
 \toprule
 Exploitation Indicator & Population Prevalence (95\% CrI)\\
 \midrule
@@ -1006,8 +1007,13 @@ Threats/Abuse & 57.3\% (35.4-79.3\%)\\
 \addlinespace
 Document Withholding & 34.3\% (16.4-52.2\%)\\
 \bottomrule
-\multicolumn{2}{l}{\rule{0pt}{1em}\textit{Note:} Estimates adjusted for RDS sampling bias using Bayesian Model Assissted Inference of Gile \& Handcock (2015) (N=980,000, sample seed selection). Credible intervals from posterior distribution.}\\
-\end{tabular}}
+\end{tabular}
+\begin{tablenotes}[para]
+\item \textit{Note:} 
+\item Estimates adjusted for RDS sampling bias using Bayesian Model Assisted Inference (Gile \& Handcock, 2015). N=980,000; sample seed selection. Credible intervals from posterior distribution.
+\end{tablenotes}
+\end{threeparttable}
+\endgroup{}
 
 }
 
@@ -1049,10 +1055,10 @@ Source: Authors' Own Work.}
 
 \centering{
 
-\centering\begingroup\fontsize{9}{11}\selectfont
+\centering\begingroup\fontsize{10}{12}\selectfont
 
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}[t]{lrr}
+\begin{threeparttable}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{5cm}>{\raggedleft\arraybackslash}p{4cm}>{\raggedleft\arraybackslash}p{4cm}}
 \toprule
 Exploitation Indicator & RDS-I & RDS-SS\\
 \midrule
@@ -1062,8 +1068,12 @@ Excessive working hours & 92.8\% (71.4–92.9) & 83.7\% (71.5–93.0)\\
 Pay-related issues & 59.3\% (34.2–63.5) & 49.7\% (34.8–63.4)\\
 \cellcolor{gray!10}{Threats and abuse} & \cellcolor{gray!10}{65.2\% (40.5–72.1)} & \cellcolor{gray!10}{57.2\% (40.1–72.3)}\\
 \bottomrule
-\multicolumn{3}{l}{\rule{0pt}{1em}\textit{Note:} RDS-I: Salganik-Heckathorn estimator. RDS-SS: Gile's Successive Sampling estimator. Confidence intervals from neighborhood bootstrap (n=1000). Population size: 980,000 domestic workers.}\\
-\end{tabular}}
+\end{tabular}
+\begin{tablenotes}[para]
+\item \textit{Note:} 
+\item RDS-I: Salganik-Heckathorn estimator. RDS-SS: Gile's Successive Sampling estimator. Confidence intervals from neighborhood bootstrap (n=1000). Population: 980,000 domestic workers.
+\end{tablenotes}
+\end{threeparttable}
 \endgroup{}
 
 }
@@ -1118,10 +1128,10 @@ Bootstrap confidence intervals based on neighborhood resampling
 
 \centering{
 
-\centering\begingroup\fontsize{8}{10}\selectfont
+\centering\begingroup\fontsize{10}{12}\selectfont
 
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{3cm}rrr>{\raggedright\arraybackslash}p{3cm}}
+\begin{threeparttable}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{3.5cm}>{\raggedleft\arraybackslash}p{2cm}>{\raggedleft\arraybackslash}p{1.8cm}>{\raggedleft\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{2.2cm}}
 \toprule
 Adjustment Method & Outcome & Point Estimate & 95\% CI Lower & 95\% CI Upper & Prevalence (\%)\\
 \midrule
@@ -1147,8 +1157,12 @@ Adjustment Method & Outcome & Point Estimate & 95\% CI Lower & 95\% CI Upper & P
 \hspace{1em}MBSU (No Adjustment) & Pay Issues & 21,559.504 & 14,245.665 & 42,617.22 & 2.20\% (1.45\% - 4.35\%)\\
 \hspace{1em}\cellcolor{gray!10}{MBSU (No Adjustment)} & \cellcolor{gray!10}{Threats/Abuse} & \cellcolor{gray!10}{20,141.115} & \cellcolor{gray!10}{13,907.268} & \cellcolor{gray!10}{43,929.63} & \cellcolor{gray!10}{2.06\% (1.42\% - 4.48\%)}\\
 \bottomrule
-\multicolumn{6}{l}{\rule{0pt}{1em}\textit{Note:} MBSU = Modified Basic Scale-Up method; δ = degree ratio (d̄\_H,F/d̄\_F,F, ratio of hidden population network degree to frame population degree); τ = visibility/true positive rate (v̄\_H,F/d̄\_H,F, proportion of edges correctly reported, measures transmission and reporting accuracy); Bootstrap method: neighborhood resampling with 1000 iterations; Population base: 980,000 UK domestic workers.}\\
-\end{tabular}}
+\end{tabular}
+\begin{tablenotes}[para]
+\item \textit{Note:} 
+\item MBSU = Modified Basic Scale-Up method; δ = degree ratio (d̄\_H,F/d̄\_F,F); τ = visibility/true positive rate (v̄\_H,F/d̄\_H,F); Bootstrap: neighborhood resampling (n=1000); Population: 980,000 UK domestic workers.
+\end{tablenotes}
+\end{threeparttable}
 \endgroup{}
 
 }
@@ -1652,10 +1666,7 @@ intervals.}
 
 \centering{
 
-\begin{verbatim}
-\begin{landscape}
-\begin{table}[!h]
-\centering\begingroup\fontsize{6}{8}\selectfont
+\centering\begingroup\fontsize{7}{9}\selectfont
 
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
 \begin{threeparttable}
@@ -1678,9 +1689,6 @@ Indicator & 50K & 100K & 980K & 1.74M & 50K & 100K & 980K & 1.74M\\
 \end{tablenotes}
 \end{threeparttable}}
 \endgroup{}
-\end{table}
-\end{landscape}
-\end{verbatim}
 
 }
 
@@ -2053,8 +2061,8 @@ NSUM Method & Outcome & Point Estimate & 95\% CI Lower & 95\% CI Upper & Prevale
 \subsubsection{Summary of Sensitivity
 Analyses}\label{summary-of-sensitivity-analyses}
 
-Across all 64 parameter combinations tested (4 bootstrap methods × 4
-population sizes × 2 weight methods × 2 NSUM methods), prevalence
+Across all 128 parameter combinations tested (4 bootstrap methods × 4
+population sizes × 2 weight methods × 4 NSUM methods), prevalence
 estimates ranged from 0.83\% to 4.08\% for the five exploitation
 indicators. The most important source of variation was the choice of
 adjustment factors, with conservative adjustments producing estimates up
