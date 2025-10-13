@@ -6,7 +6,7 @@ title: "Quantifying Hidden Exploitation: Dual-Method Prevalence Estimates of Mod
 #     affiliation: UoN
 #   - name: Scott Moser
 #     affiliation: UoN
-# date: 12, October 2025 # today
+date: 12, October 2025 # today
 date-format: "DD, MMMM YYYY"
 abstract: |
   **Purpose**
@@ -441,16 +441,21 @@ Research suggests that a high lottery provides the most cost-effective incentive
 While using incentives to encourage participation would seem to be desirable, it is worth noting the potential downside of respondents fabricating responses to increase their remuneration [@robinson_sampling_2014].
 To minimise this risk, mobile phone numbers for each respondent and those whom they referred were collated, and each of these numbers was called by one of the authors of the paper to ascertain the veracity of the respondent as a migrant domestic worker.
 
-### Descriptive Statistics
+## Survey Instrument and Indicators
 
-In total, we received completed online surveys from 97 respondents.
-Of these respondents, 90 identified themselves as transnational migrants.
-Forty-five percent regarded themselves as self-employed, 39% identified themselves as employees, and 16% categorised their employment status as that of a worker.  Of the 97 respondents, 64 (66% of the total), and the largest single nationality group, reported that they had a Filipina background.
-Other nationalities represented included Dominican, Brazilian, Spanish, Colombian, Bolivian, Venezuelan, Cuban, and Panamanian.
-Female domestic workers made up 97% of the sample, with 3% of the sample comprised of male domestic workers.
-The age structure of the domestic workers was skewed towards those over 45 years old, with such workers representing over half of the sample (see @tbl-sample-characteristics).
+The survey instrument was designed to capture both egocentric (ego-based) and altercentric (alter-based) network information, enabling the application of both RDS and NSUM estimation methods. Composite measures to quantify the extent to which respondents were at risk of labour exploitation, including severe forms of exploitation such as forced labour, were constructed from existing exploitation typologies, notably the ILO's Indicators of Forced Labour [@ILO11-indicators].
 
-@fig-rds-network presents the recruitment network in our sample.  Twelve partiicpants reported know zero domestic workers in the UK -- that is, having a null social network -- had to be removed.
+The survey consisted of 11 composite indicators and included questions related to domestic workers' level of job satisfaction, employment conditions, and demographic data such as nationality, age, and gender. Based on these indicators, we operationalize exploitation in two ways: (1) five dichotomous (binary) indicators classifying respondents as exploited or not exploited based on threshold criteria, and (2) one continuous risk index designed to capture gradations of vulnerability across the full sample.
+
+Ego-based questions capture respondents' own experiences of exploitation (used for RDS estimation), while alter-based questions ask respondents to report on the exploitation experiences of domestic workers they know (used for NSUM estimation). See Appendix A for details of these survey questions and the construction of comparable ego- and alter-based indicators.
+
+## Sample Characteristics
+
+In total, we received completed online surveys from 97 respondents. Twelve participants reported knowing zero domestic workers in the UK—that is, having a null social network—and were excluded from RDS analysis because network degree information is required for RDS weighting procedures. This resulted in an analytical sample of 85 respondents for RDS-based estimation.
+
+Of the 97 initial respondents, 90 identified themselves as transnational migrants. Forty-five percent regarded themselves as self-employed, 39% identified themselves as employees, and 16% categorised their employment status as that of a worker. The largest single nationality group, comprising 64 respondents (66% of the total), reported a Filipina background. Other nationalities represented included Dominican, Brazilian, Spanish, Colombian, Bolivian, Venezuelan, Cuban, and Panamanian. Female domestic workers made up 97% of the sample, with 3% of the sample comprised of male domestic workers. The age structure of the domestic workers was skewed towards those over 45 years old, with such workers representing over half of the sample (see @tbl-sample-characteristics).
+
+@fig-rds-network presents the recruitment network structure for the 85 respondents included in RDS analysis.
 
 ```{r}
 #| label: fig-rds-network
@@ -719,124 +724,58 @@ wave_summary %>%
   )
 ```
 
+## Ethical Approval and Use of AI
 
+The data collection that underpins the analysis presented in this paper was given favourable ethical approval by the lead author's School Research Ethics Committee in January 2023. All participants were informed about the aims of the study, provided informed consent, and were assured that participation was voluntary and confidential.
 
-### Ethical Approval
-
-The data collection that underpins the analysis presented in this paper was given favourable ethical approval by the lead author’s School Research Ethics Committee in January 2023.
-All participants were informed about the aims of the study, provided informed consent, and were assured that participation was voluntary and confidential.
-
-### Use of Artificial Intelligence in Research
-
-Large Language Models (LLMs) were used for brainstorming the organisation of the paper and editing of text.
-Code co-pilot (Claude Code) was used to test and debug R scripts employed in the statistical analysis.
-No generative models were used to generate or simulate data.
-
-# Estimation Strategies
-
-We take two different strategies for estimation:  RDS and NSUM.
-
-To the best of the authors' knowledge, the use of both methods in the same study is limited in academic research (though we note the dual use in Government-funded research reports and Technical reports from NGOs and research organizations -- e.g. @ist20-prevalence and @hick25-human).  Hence this paper contributes to the emergine area combinating RDS and NSUM  in survey methodology for hidden populations. The relative scarcity of peer-reviewed publications may reflect: The methodological complexity of implementing both approaches;
-The specialized nature of applications (primarily human trafficking and other sensitive populations).
-
-While there is significant interest in combining RDS and NSUM methodologies, particularly for studying hidden and marginalized populations, the number of peer-reviewed academic publications specifically documenting their simultaneous use in the same survey appears to be quite limited.
+Large Language Models (LLMs) were used for brainstorming the organisation of the paper and editing of text. Code co-pilot (Claude Code) was used to test and debug R scripts employed in the statistical analysis. No generative models were used to generate or simulate data.
 
 ## Estimation Framework
 
-We analysed the survey sample using multiple estimation models in order to assess robustness and conduct sensitivity analyses (see Appendix B).
-The survey instrument contained both ego questions (which capture information about respondents and their personal network ties) and alter questions (which capture information about the people respondents know).
-These two types of network data enable two fundamentally different estimation strategies: respondent-driven sampling (RDS) estimators and network scale-up methods (NSUM).
-In addition, we developed and implemented a novel three-step bootstrap procedure to address uncertainty in NSUM estimates, which we describe in more detail below.
+We analysed the survey sample using multiple estimation models to assess robustness and conduct sensitivity analyses (see Appendix B). The dual structure of our survey instrument—capturing both ego-based and alter-based network information—enables two fundamentally different estimation strategies: Respondent-Driven Sampling (RDS) estimators and Network Scale-Up Methods (NSUM).
+
+To the best of the authors' knowledge, the combined use of both methods in the same study is rare in peer-reviewed academic research, though it has appeared in government-funded reports and technical documents from NGOs and research organizations [@ist20-prevalence; @hick25-human]. This paper contributes to the emerging methodological literature on combining RDS and NSUM in survey research for hidden populations. We also developed a novel three-step bootstrap procedure to address uncertainty in NSUM estimates.
 
 
 
-## RDS-Based Estimation
+### RDS Estimation
 
-RDS estimators use ego-based information.
-Each participant reported the number of other domestic workers they knew, and this degree information was used to adjust for the over-representation of highly connected individuals in the sample.
-We implemented RDS-I and Gile’s successive sampling (SS) estimator, the latter of which accounts for finite population effects and improves performance when the sample fraction is relatively large (Gile, 2011; Gile and Handcock, 2010).
-These estimators were used to generate prevalence estimates for binary indicators of exploitation.
+We implemented three RDS estimators, each with distinct assumptions: RDS-I [@salg04-sampling], the Volz–Heckathorn (VH) estimator [@volz08-probability], and Gile's Successive Sampling (RDS-SS) estimator [@gile11-improved]. Given our small sample (85 respondents) and non-negligible sampling fraction, RDS-SS serves as our primary estimator for binary outcomes because it accounts for finite population effects. RDS-I, which performs poorly in small samples and is highly sensitive to seed dependence, is retained as a historical benchmark.
 
-For continuous traits, such as the exploitation risk index, we applied model-assisted inference approaches (@gile15-network, Gile, 2011; Gile, Beaudry, and Handcock, 2018).
-These approaches combine design-based adjustments with regression models that incorporate auxiliary covariates, producing valid estimates of sample means and distributions of continuous outcomes under the RDS design.
+For continuous outcomes such as the exploitation risk index, we employ Model-Assisted (MA-RDS) estimators [@gile15-network]. MA-RDS is design-based yet leverages a working Exponential Random Graph Model (ERGM) with degree and homophily terms to approximate inclusion probabilities conditional on observed seeds. This approach directly addresses seed bias and homophily that conventional RDS estimators cannot correct, accommodates finite-population effects through successive-sampling logic, and supports valid estimation of both binary and continuous outcomes. By conditioning on actual seed composition and subgroup structure, the method reduces bias, improves efficiency, and provides design-compatible bootstrap uncertainty [@gile11-improved].
 
-Given that our data were collected using a respondent-driven sampling (RDS) design, the choice of estimator is critical.
-We considered several well-established RDS estimators, each with distinct assumptions and applicability.
+### NSUM Estimation
 
-First, the RDS-I estimator @salg04-sampling provides an early design-based approach.
-However, it performs poorly in small samples, is highly sensitive to seed dependence, and requires strong assumptions about equilibrium.
-Since our sample comprises fewer than 100 respondents recruited from multiple seeds, we regard RDS-I primarily as a historical benchmark rather than a viable option for inference.[^ The Volz–Heckathorn (VH) estimator @volz08-probability offers a probability-based refinement of RDS-I.
-It is more robust but assumes a large population relative to the sample size and does not adjust for finite-population effects.
-Although our diagnostic checks indicated approximate equilibrium across key demographics, the VH estimator is best used here as a robustness check rather than the primary estimator.]
-Next, the Successive Sampling (RDS-SS) estimator [@gile11-improved] accounts for finite population effects, adjusting for the non-negligible sampling fraction that arises when the target population is not extremely large relative to the sample.
-This property makes RDS-SS particularly appropriate for our study of migrant domestic workers, and we therefore use it as our primary estimator for binary outcomes (e.g., presence or absence of exploitation).
+We employ the Modified Basic Scale-Up (MBSU) model [@feeh16-generalizing], which improves upon the original Basic Scale-Up Method by accounting for key sources of bias. The traditional method assumes that respondents can accurately report how many people they know in the hidden population and that all members are equally likely to be known. These assumptions often fail due to stigma, recall issues, or social barriers.
 
-To estimate continuous outcomes such as our exploitation risk index, we employ the Model-Assisted (MA-RDS) estimator @gile15-network. MA inference uses realistic network simulations to better estimate how likely each kind of person was to be sampled, improving population estimates over standard RDS estimators.
+The MBSU addresses this through two primary adjustments. First, the degree ratio adjustment (δ) accounts for differences in network size between the hidden population and frame population. Second, the visibility/true positive rate adjustment (τ) corrects for underreporting of connections to hidden population members due to stigma or lack of awareness. We apply these adjustments with sensitivity analysis across multiple parameter values: δ ∈ {0.8, 0.9, 1.0} and τ ∈ {0.7, 0.85, 1.0}, where δ=1.0 and τ=1.0 represent the unadjusted baseline scenario.
 
+### Comparative Rationale: Ego-Based vs. Alter-Based Inference
 
+RDS and NSUM both exploit social network structures but use fundamentally different information for inference. RDS uses ego-based information: respondents report their own characteristics and network degree, which are combined with recruitment wave to adjust for unequal inclusion probabilities. The underlying logic is that individuals with larger networks are more likely to be recruited, creating bias toward highly connected respondents. RDS estimators explicitly correct for this by weighting observations according to network degree and recruitment path.
 
-In summary, we rely primarily on RDS-SS for binary outcomes and MA-RDS for continuous and binary indicators, with RDS-I used for historical benchmarks.  This combined strategy balances methodological rigor with the substantive goals of our study.
+NSUM uses alter-based information -- respondents serve as informants about the wider hidden population, reporting how many people they know with specific traits. These reports are scaled up using assumptions about network size and visibility to infer prevalence in the broader population. NSUM does not depend on recruitment chains but instead on the accuracy of respondents' knowledge about others in their social circles.
 
-We use model-assisted RDS estimators [@gile15-network] because they are design-based yet leverage a working ERGM (with degree and homophily terms) to approximate inclusion probabilities conditional on our observed seeds.
-This approach directly addresses seed bias and homophily that conventional RDS estimators cannot correct, accommodates finite-population effects through successive-sampling logic, and supports valid estimation of both binary and continuous outcomes.
-By conditioning on the actual seed composition and subgroup structure in our data, the method reduces bias, improves efficiency, and provides design-compatible bootstrap uncertainty, making it particularly well-suited to our small, heterogeneous sample of domestic workers.
+Applying both methods to the same dataset allows for triangulation across two fundamentally different inferential logics—one anchored in "who recruited whom" (RDS), the other in "how many alters fit this category" (NSUM).
 
-## Network Scale-Up Methods (NSUM)
+### Bootstrap and Sensitivity Procedures
 
-NSUM relies on alter-based information.
-Rather than depending on respondents’ own position in the referral network and their reported degree, NSUM uses information about alters—other people in respondents’ networks.
-Participants reported on the number and characteristics of people they knew who met specific exploitation criteria.
-These reports were aggregated to estimate prevalence in the wider population of domestic workers.
+To appropriately characterise uncertainty in NSUM estimates, we developed a novel three-step bootstrap procedure. This approach resamples respondents, their reported alters, and the exploitation classifications simultaneously, thereby capturing uncertainty at each stage of the inference process. This procedure provides more realistic confidence intervals than those generated by conventional variance estimators, particularly for small samples such as ours. Details of the bootstrap implementation and diagnostic checks are provided in Appendix C.
 
-The key methodological distinction between RDS and NSUM lies in how the social network is used.
-RDS leverages ego-level network size and recruitment paths to adjust for biases in the referral process.
-NSUM treats respondents as informants about a larger social universe, using alter data to infer prevalence.
-RDS depends on accurate self-reporting of degree and on the properties of recruitment chains, while NSUM depends on the accuracy of respondents’ knowledge about others and the representativeness of their social networks.
-
-The Modified Basic Scale-Up (MBSU) model, introduced by Feehan and Salganik (2016), improves upon the original Basic Scale-Up Method (BSU) for estimating the size of hidden populations by accounting for key sources of bias. The traditional BSU method assumes that members of the general population can accurately report how many people they know in the hidden population and that all members of the hidden group are equally likely to be known. These assumptions often fail in practice due to stigma, recall issues, or social barriers that affect how people perceive and report their connections. The MBSU addresses this by introducing adjustment factors that correct for differential visibility and reporting behavior.
-
-Two primary adjustments are central to the MBSU model. First, the visibility adjustment accounts for the fact that not all members of the hidden population are equally likely to be known by others; it is estimated using data from the hidden population itself, who report how many people are aware of their membership in the group. Second, the reporting adjustment corrects for the tendency of general population respondents to underreport their known connections to hidden population members, often due to stigma or social desirability bias. This adjustment is typically estimated by comparing reporting accuracy across groups with known sizes. By incorporating these two corrections, the MBSU provides more accurate estimates of hidden population sizes under realistic social conditions, especially when the assumptions of the basic scale-up model are violated.
-
-
-
-### Bootstrap Procedure for NSUM
-
-To appropriately characterise uncertainty in NSUM estimates, we developed a novel three-step bootstrap procedure.
-This approach resamples respondents, their reported alters, and the exploitation classifications simultaneously, thereby capturing uncertainty at each stage of the inference process.
-This procedure provides more realistic confidence intervals than those generated by conventional variance estimators, particularly for small samples such as ours.
-Details of the bootstrap implementation and diagnostic checks are provided in Appendix C.
-
-## Comparative Rationale
-
-
-Respondent-driven sampling (RDS) and network scale-up methods (NSUM) both rely on social network structures, but they exploit different aspects of those structures for inference.
-
-RDS uses ego-based information.  That is, information about survey respondent's attributes and characteristics. Each participant reports the size of their personal network of eligible individuals, and these degree reports are combined with the wave at which respondents were recruited to adjust for unequal inclusion probabilities. The underlying logic is that individuals with larger networks are more likely to be recruited earlier and more often, creating a bias toward highly connected respondents. However, is is not a simple random sample and so we must account for non-random selection into the survey.  RDS estimators, including Gile’s successive sampling estimator, explicitly correct for this bias by weighting observations according to network degree and recruitment path. For continuous traits, such as our Risk Index, RDS model-assisted estimators incorporate auxiliary covariates into this weighting process to further reduce bias.
-
-In contrast, NSUM uses alter-based information. Rather than focusing on the ego’s probability of inclusion, NSUM treats respondents as informants about the wider hidden population. Respondents are asked how many people they know with a given trait (for example, “Do you know personally of any other domesticc workers that are currently experiencing any restrictions on their freedom? If so, how many?”). These responses are then scaled up, using assumptions about network size and visibility, to infer prevalence in the broader population. This method does not depend on recruitment chains but instead on the accuracy of respondents’ knowledge about others in their social circles.
-
-The practical difference is therefore twofold. RDS estimates are anchored in “who recruited whom” and “how many do you know,” while NSUM estimates are anchored in “how many of our alters fit this category.” RDS leverages inclusion probabilities tied to ego network size; NSUM leverages alter reports to extend beyond the sample. Applying both methods to the same dataset allows for triangulation across two fundamentally different inferential logics.
-
-
-
-<!-- * Survey and RDS design. -->
-
-<!-- * Sample recruitment and incentives. -->
-
-<!-- * Estimation methods (RDS estimators, NSUM, bootstrap). -->
-<!-- ``` -->
+For RDS estimators, we employ neighborhood bootstrap methods that preserve the network structure while resampling [@yauc22-neighborhood]. Sensitivity analyses examine robustness to population size assumptions (50K, 100K, 980K, 1.74M) and NSUM adjustment factor values. Full results are reported in Appendix B.
 
 
 # Results
 
-## Model-Assisted Estimates of the Risk Index (Continuous Conceptualisation)
+## Descriptive Overview
 
-One of the central contributions of this study is the introduction of a continuous risk index to measure degrees of exposure to labour exploitation.
-The index was constructed from multiple indicators aligned with the International Labour Organization’s forced labour framework, weighted inductively and refined through expert consultation.
-Rather than treating exploitation as a dichotomy, the risk index conceptualises all domestic workers as facing some degree of potential exploitation, albeit with significant variation in intensity.  Conceptually, the presumes that everyone in the sampling frame are exposed to some degree of LE or risk of exploitation.  Emperically this is all domestic workers in the UK with a  mobile phone (during the survey dates).
+Sample characteristics are presented in @tbl-sample-characteristics and @fig-rds-network (Section 3.3). In total, 97 respondents completed the survey, of whom 85 had non-zero network degree and were included in RDS analysis. The analytical sample comprised 90 transnational migrants (93%), with the largest nationality cluster being Filipino (66%). Female domestic workers constituted 97% of the sample, with over half aged 45 or older. Self-employment status was reported by 45% of respondents.
 
-Because continuous traits cannot be estimated directly with conventional RDS estimators or NSUM, we employed model-assisted inference methods.
-These methods adjust for the non-random structure of RDS recruitment while permitting reliable estimation of means and distributions of continuous outcomes (Gile, 2011; Gile and Handcock, 2010; Gile, Beaudry, and Handcock, 2018).
+## Model-Assisted Estimates of the Continuous Risk Index
+
+One of the central contributions of this study is the introduction of a continuous risk index to measure degrees of exposure to labour exploitation. The index was constructed from multiple indicators aligned with the ILO's forced labour framework, weighted inductively and refined through expert consultation. Rather than treating exploitation as a dichotomy, the risk index conceptualises all domestic workers as facing some degree of potential exploitation, albeit with significant variation in intensity.
+
+Because continuous traits cannot be estimated directly with conventional RDS estimators or NSUM, we employed model-assisted inference methods [@gile15-network]. These methods adjust for the non-random structure of RDS recruitment while permitting reliable estimation of means and distributions of continuous outcomes.
 
 ```{r}
 #| label: fig-ma-risk-estimates
@@ -957,17 +896,35 @@ print(combined_plot)
 The population-adjusted distribution shows less concentration in the lower risk values compared to the raw sample.  The MA estimate suggests that  $~7.2\%$ of DWs in the UK have moderate risk (0.1725)
 This pattern reinforces the conceptual claim that exploitation is best understood as a continuum rather than a simple binary condition.
 
-## Binary Exploitation Indicators (Exploited or Not Exploited)
+## Binary Exploitation Indicators: Comparative RDS–NSUM Estimates
 
-To complement the continuous measure, we also operationalised exploitation as a binary outcome.
-Respondents were classified as exploited if they met threshold indicators consistent with ILO definitions.
-This allows estimation using both respondent-driven sampling estimators, which rely on ego-based network data, and network scale-up methods, which rely on alter-based information.
+To complement the continuous measure, we operationalised exploitation as binary outcomes. Respondents were classified as exploited if they met threshold indicators consistent with ILO definitions. We present prevalence estimates from three approaches: (1) Model-Assisted (MA-RDS) Bayesian estimates that adjust for RDS sampling bias, (2) frequentist RDS estimators (RDS-I and RDS-SS) for comparison, and (3) Network Scale-Up Method (NSUM) estimates with multiple adjustment factor scenarios.
 
-### Model-Assisted (MA) Estimates
+```{r}
+#| label: fig-method-comparison
+#| fig-cap: "Comparative Method Overview: Point estimates and uncertainty intervals for prevalence of exploitation indicators across different estimation methods. RDS methods show 95% confidence intervals (bootstrap); Bayesian methods show 95% credible intervals (MCMC); NSUM shows estimates under different adjustment scenarios. Baseline population assumption: 980,000 domestic workers. Source: Authors' own work."
+#| echo: false
+#| fig-width: 10
+#| fig-height: 7
+#| out-width: "100%"
+
+# Format-specific figure inclusion
+fig_path <- here::here("output", "figures", "method_comparison.png")
+
+if (file.exists(fig_path)) {
+  knitr::include_graphics(fig_path)
+} else {
+  cat("Figure file not found:", fig_path)
+}
+```
+
+@fig-method-comparison provides a comprehensive comparison of prevalence estimates across all three approaches. While absolute values differ—reflecting the fundamental differences between ego-based (RDS) and alter-based (NSUM) inference—the overall pattern is remarkably stable. Excessive hours consistently shows the highest prevalence across all methods, followed by threats/abuse and pay-related issues. Model-Assisted estimates generally fall between RDS frequentist estimates and NSUM baseline estimates, though NSUM estimates are highly sensitive to adjustment factor assumptions.
+
+### Model-Assisted Bayesian Estimates
 
 ```{r}
 #| label: tbl-ma-binary-indicators
-#| tbl-cap: "Model-Assisted Estimates of Binary Exploitation Indicators: Population prevalence estimates adjusted for RDS sampling bias. Values represent the estimated proportion of domestic workers experiencing each form of exploitation. Source: Authors' Own Work."
+#| tbl-cap: "Model-Assisted Bayesian Estimates of Binary Exploitation Indicators: Population prevalence estimates adjusted for RDS sampling bias using Bayesian inference. Values represent estimated proportions with 95% credible intervals. Source: Authors' Own Work."
 #| echo: false
 #| warning: false
 #| message: false
@@ -1125,11 +1082,13 @@ print(forest_plot)
 ```
 
 
-### RDS Estimates
+### Frequentist RDS Estimates
+
+@tbl-rds-binary-indicators compares RDS-I and RDS-SS estimators for binary exploitation indicators. As expected, RDS-SS produces slightly more conservative estimates than RDS-I due to its finite population correction. Both estimators show similar relative patterns across indicators, with @fig-rds-forest-plot visualizing the comparison.
 
 ```{r}
 #| label: tbl-rds-binary-indicators
-#| tbl-cap: "RDS Estimates of Binary Exploitation Indicators: Comparison of RDS-I and RDS-SS estimators with neighborhood bootstrap confidence intervals (N=980,000). Source: Authors' Own Work."
+#| tbl-cap: "Frequentist RDS Estimates of Binary Exploitation Indicators: Comparison of RDS-I and RDS-SS estimators with neighborhood bootstrap confidence intervals (N=980,000). Source: Authors' Own Work."
 #| echo: false
 #| warning: false
 #| message: false
@@ -1250,17 +1209,11 @@ if (exists("frequentist_df")) {
 
 
 
-### NSUM Estimates
+### Network Scale-Up Method (NSUM) Estimates
 
-Using the Modified Basic Scale-Up (MBSU) estimator @feeh16-generalizing with Sequential Sampling weights and an estimated UK domestic worker population of 980,000, we find substantial variation in prevalence estimates depending on the adjustment factors applied (@tbl-nsum-main).
+Using the Modified Basic Scale-Up (MBSU) estimator [@feeh16-generalizing] with Sequential Sampling weights and a UK domestic worker population of 980,000, @tbl-nsum-main presents prevalence estimates under three adjustment scenarios: (1) unadjusted baseline (δ=1.0, τ=1.0), (2) moderate adjustments (δ=0.9, τ=0.85), and (3) conservative adjustments (δ=0.8, τ=0.7).
 
-The unadjusted MBSU estimates (baseline scenario with no adjustment for network degree differences or visibility/reporting barriers, δ=1.0, τ=1.0) suggest that document withholding affects approximately 8,120 workers (0.83%, 95% CI: 0.23%-2.39%). Pay-related issues affect 21,560 workers (2.20%, 95% CI: 1.45%-4.35%), while threats and abuse affect 20,141 workers (2.06%, 95% CI: 1.42%-4.48%). Excessive working hours affect 22,375 workers (2.28%, 95% CI: 1.41%-4.21%), and 15,212 workers report lacking access to help (1.55%, 95% CI: 0.51%-3.73%).
-
-Applying moderate adjustments for network degree differences and visibility biases (δ=0.9 for degree ratio, τ=0.85 for visibility/reporting) yields estimates of 10,615 workers experiencing document withholding (1.08%, 95% CI: 0.30%-3.13%), 28,182 with pay issues (2.88%, 95% CI: 1.90%-5.68%), 26,328 experiencing threats/abuse (2.69%, 95% CI: 1.86%-5.86%), 29,248 with excessive hours (2.98%, 95% CI: 1.84%-5.51%), and 19,885 lacking access to help (2.03%, 95% CI: 0.67%-4.88%).
-
-The most conservative adjustments (δ=0.8 for degree ratio, τ=0.7 for visibility/transmission), accounting for greater network degree differences and visibility barriers, produce substantially higher estimates: 14,500 workers with document withholding (1.48%, 95% CI: 0.40%-4.27%), 38,499 with pay issues (3.93%, 95% CI: 2.60%-7.77%), 35,966 experiencing threats/abuse (3.67%, 95% CI: 2.53%-8.00%), 39,955 with excessive hours (4.08%, 95% CI: 2.52%-7.53%), and 27,165 lacking access to help (2.77%, 95% CI: 0.91%-6.67%).
-
-These estimates represent prevalence rates ranging from 0.83% to 4.08% across all indicators, with confidence intervals reflecting substantial uncertainty inherent in network-based estimation methods. The conservative adjustments yield estimates approximately 1.8 times higher than unadjusted estimates, while moderate adjustments produce intermediate values approximately 1.3 times higher than baseline.
+NSUM estimates show substantial sensitivity to adjustment factor assumptions. Unadjusted estimates range from 0.83% (document withholding) to 2.28% (excessive hours). Conservative adjustments accounting for network degree differences and visibility barriers produce estimates approximately 1.8 times higher—ranging from 1.48% to 4.08%—while moderate adjustments yield intermediate values approximately 1.3 times the baseline. Wide confidence intervals reflect substantial uncertainty inherent in network-based estimation methods, particularly for small hidden populations.
 
 ```{r}
 #| label: tbl-nsum-main
@@ -1321,60 +1274,6 @@ if (file.exists(nsum_file)) {
 }
 ```
 
-## Comparative Interpretation
-
-Table 1 summarises prevalence estimates across both methods, highlighting points of convergence and divergence.
-While absolute values differ across RDS and NSUM (reflecting differences in ego- versus alter-based assumptions), the overall pattern is remarkably stable.
-
-@fig-method-comparison demonstrates the comparison between frequentist RDS estimators (RDS-I, RDS-SS) and Bayesian model-assisted methods across all exploitation indicators.
-The horizontal spacing of estimates allows clear visual comparison of point estimates and uncertainty intervals, with RDS methods showing bootstrap confidence intervals and Bayesian methods showing credible intervals from MCMC estimation.
-Both approaches identify similar patterns of exploitation prevalence, with excessive hours showing the highest prevalence across all methods, followed by threats/abuse and pay-related issues.
-
-
-
-```{r}
-#| label: fig-method-comparison
-#| fig-cap: "Method Comparison: frequentists RDS vs Bayesian RDS Estimators. Point estimates and uncertainty intervals for prevalence of exploitation indicators across different estimation methods. RDS methods show 95% confidence intervals (bootstrap); Bayesian methods show 95% credible intervals (MCMC). Baseline population assumption: 980,000 domestic workers. Source: Authors' own work."
-#| echo: false
-
-# Format-specific figure inclusion
-fig_path <- here::here("output", "figures", "method_comparison.png")
-
-if (file.exists(fig_path)) {
-  if (knitr::is_html_output()) {
-    knitr::include_graphics(fig_path)
-  } else {
-    # For PDF output with specific dimensions
-    knitr::include_graphics(fig_path)
-  }
-} else {
-  cat("Figure file not found:", fig_path)
-}
-```
-
-### On the Role of Visibility in Explaining Differences Between NSUM and RDS Estimates
-
-Substantial discrepancies between hidden population prevalence estimates derived from Respondent-Driven Sampling (RDS) and the Network Scale-Up Method (NSUM) are widely observed in empirical research and simulation studies. In the present case, for example, egocentric RDS-based estimates suggest that 34% to 84% of respondents personally experienced indicators of exploitation. In contrast, the corresponding NSUM estimates suggest that only 2.9% to 5.1% of the general domestic worker population experiences these same harms. This stark divergence—often approaching an order of magnitude—warrants a careful methodological explanation.
-
-Among the various sources of error affecting NSUM, the most important and widely documented is visibility bias, also referred to in some literature as transmission bias. Visibility refers to the extent to which members of a hidden population are known to belong to that population by members of the general population. In the context of NSUM, visibility determines whether a respondent can accurately report having connections to members of the hidden group. If visibility is low—because of stigma, secrecy, or lack of awareness—respondents will systematically underreport these ties. This causes a downward bias in the numerator of the NSUM estimator, thereby underestimating the size of the hidden population.
-
-<!-- As Feehan and Salganik put it: -->
-
-<!-- > “Transmission error occurs when respondents do not know or are unwilling to report the true group memberships of people they know” [@feeh16-generalizing, p. 155]. -->
-
-This issue has been recognized since the earliest implementations of NSUM. Bernard et al. describe it as a failure of the transmission condition—the assumption that a respondent will be aware of, and willing to disclose, the group membership of their contacts [@bern10-counting]. More recently, Maltiel et al. have addressed visibility bias using model-based (Bayesian) approaches, which estimate and correct for differential visibility between groups [@malt15-estimating].
-
-In contrast, RDS estimators such as the Volz–Heckathorn and especially the Successive Sampling (SS) estimator rely on direct self-reporting of hidden group membership. That is, RDS respondents are asked whether they themselves belong to the group or exhibit a trait of interest. This egocentric measurement bypasses the visibility problem entirely. While RDS relies on its own set of assumptions—such as the random recruitment assumption, accurate self-reported degree, and a sufficiently connected social network—visibility is not among its main sources of bias.
-
-Thus, while both NSUM and RDS are used to estimate the size or prevalence of hidden populations, they are subject to fundamentally different sources of error. In NSUM, low visibility leads to systematic underreporting, which can result in severe underestimation unless appropriately adjusted. Adjustments such as those proposed by Feehan and Salganik—including multiplicative correction factors for degree ratio ($\delta$ δ, network size differences), visibility/true positive rate ($\tau$ τ, transmission and reporting accuracy), and frame ratio ($\phi_F$ φ_F)—can mitigate these biases, but require additional data or assumptions [@feeh16-generalizing].
-
-In our setting, where RDS estimates suggest that over 50% of respondents have experienced some form of labour exploitation, but NSUM estimates suggest only 3–5% of the domestic worker population does so, visibility bias is almost certainly the dominant factor explaining the discrepancy. This is especially true in contexts involving exploitation, abuse, or trafficking—where group membership is often concealed both by victims and by observers. Respondents in the frame population may simply be unaware that their contacts are experiencing exploitation, leading to substantial underreporting.
-
-
-Hense, visibility bias is a major and well-understood limitation of NSUM, and likely the principal reason why our NSUM estimates are substantially lower than those derived from RDS. The use of RDS-based estimators, particularly those that adjust for sample design such as Gile’s SS estimator, provides direct measurement of traits among the hidden population and avoids the visibility problem. Therefore, RDS estimates are often more accurate in estimating prevalence within the hidden population, whereas NSUM estimates are typically biased downward unless adjusted for visibility and related biases.
-
-
-
 ## Robustness Checks
 
 A series of robustness checks were performed to assess the stability of the findings.  In Appendix B,  a comprehensive analysis comparing all prevalence estimates across indicators, methods, and parameter values is presented.  There,  remarkable consistency is demonstrated across different analytical approaches.
@@ -1407,24 +1306,11 @@ knitr::include_graphics(here::here("output", "figures", "model_comparison_forest
 
 # Discussion
 
-## Implications for Policy
+## Summary of Findings
 
-The UK Government has proved reluctant to respond to calls to remove the restrictive, tied, visa conditions currently in force for those migrant workers working in the UK on the Overseas Domestic Workers visa [@gower_calls_2016].
-Maintaining these restrictive conditions prevents the ratification in the UK of C189, the International Convention for Domestic Workers [@ILO11-indicators].
-If the estimates resulting from our study are correct, these visa conditions place migrant domestic workers at significant risk of serious forms of labour exploitation including, in its most severe form, exploitation that exhibits the characteristics of forced labour—legally considered a form of modern slavery.
+This study estimated prevalence of labour exploitation among UK domestic workers using both Respondent-Driven Sampling (RDS) and Network Scale-Up Method (NSUM). We introduced a continuous risk index alongside binary exploitation indicators based on ILO forced labour criteria. Model-Assisted RDS estimates suggest prevalence rates ranging from 34% to 84% for various exploitation indicators among respondents. In contrast, NSUM estimates—highly sensitive to adjustment factors—range from 0.83% to 4.08% depending on assumptions about network degree differences (δ) and visibility/reporting accuracy (τ). The pattern across methods is remarkably consistent: excessive working hours shows the highest prevalence, followed by threats/abuse and pay-related issues, while document withholding shows more moderate levels. Robustness checks across different population size assumptions and estimation approaches confirm the stability of these relative patterns.
 
-To reduce the vulnerability of transnational domestic workers to this—and other—forms of labour exploitation, we urge policy-makers to reconsider these discriminatory visa conditions and offer the same freedoms to domestic workers that are enjoyed by other groups of workers under UK law.
-
-In addition, given the vulnerabilities experienced by workers due to the private nature of the workplace, we would urge the UK government to consider the regulation of domestic worker employers.
-
-Finally, given the stigma and very real danger of deportation of those migrant domestic workers who may have fallen out of legal migration status, our evidence suggests that there is an urgent need for the UK Government to enforce a firewall between immigration control and labour exploitation if the true scale of abuse is to be made visible and the perpetrators brought to justice.
-
-## Implications for Practice
-
-The UK Visa and Immigration service already offers rights-based training to migrant domestic workers via UK embassies in certain source countries.
-To reduce migrant domestic workers vulnerabilities, we advocate the expansion of this training both to include explicit training related to employment and labour rights within the UK and to the rapidly expanding range of new source countries from where migrant domestic workers are now drawn.
-
-## Methodological Contributions
+## Methodological Reflections and Contributions
 
 This study makes several methodological contributions to the estimation of prevalence in hidden and hard-to-reach populations:
 
@@ -1445,7 +1331,43 @@ The procedure captures multiple layers of uncertainty and produces more reliable
 *Application to domestic workers in the UK*: Finally, by applying these methods to a population that is both highly stigmatised and under-researched, we demonstrate the feasibility of using advanced network-based estimation techniques in contexts where traditional sampling is impossible.
 This methodological innovation has potential applications in studies of other hidden labour markets and vulnerable populations.
 
-## Limitations of the Study
+### Interpreting RDS–NSUM Divergence: The Role of Visibility
+
+Substantial discrepancies between hidden population prevalence estimates derived from Respondent-Driven Sampling (RDS) and the Network Scale-Up Method (NSUM) are widely observed in empirical research and simulation studies. In the present case, for example, egocentric RDS-based estimates suggest that 34% to 84% of respondents personally experienced indicators of exploitation. In contrast, the corresponding NSUM estimates suggest that only 2.9% to 5.1% of the general domestic worker population experiences these same harms. This stark divergence—often approaching an order of magnitude—warrants a careful methodological explanation.
+
+Among the various sources of error affecting NSUM, the most important and widely documented is visibility bias, also referred to in some literature as transmission bias. Visibility refers to the extent to which members of a hidden population are known to belong to that population by members of the general population. In the context of NSUM, visibility determines whether a respondent can accurately report having connections to members of the hidden group. If visibility is low—because of stigma, secrecy, or lack of awareness—respondents will systematically underreport these ties. This causes a downward bias in the numerator of the NSUM estimator, thereby underestimating the size of the hidden population.
+
+<!-- As Feehan and Salganik put it: -->
+
+<!-- > "Transmission error occurs when respondents do not know or are unwilling to report the true group memberships of people they know" [@feeh16-generalizing, p. 155]. -->
+
+This issue has been recognized since the earliest implementations of NSUM. Bernard et al. describe it as a failure of the transmission condition—the assumption that a respondent will be aware of, and willing to disclose, the group membership of their contacts [@bern10-counting]. More recently, Maltiel et al. have addressed visibility bias using model-based (Bayesian) approaches, which estimate and correct for differential visibility between groups [@malt15-estimating].
+
+In contrast, RDS estimators such as the Volz–Heckathorn and especially the Successive Sampling (SS) estimator rely on direct self-reporting of hidden group membership. That is, RDS respondents are asked whether they themselves belong to the group or exhibit a trait of interest. This egocentric measurement bypasses the visibility problem entirely. While RDS relies on its own set of assumptions—such as the random recruitment assumption, accurate self-reported degree, and a sufficiently connected social network—visibility is not among its main sources of bias.
+
+Thus, while both NSUM and RDS are used to estimate the size or prevalence of hidden populations, they are subject to fundamentally different sources of error. In NSUM, low visibility leads to systematic underreporting, which can result in severe underestimation unless appropriately adjusted. Adjustments such as those proposed by Feehan and Salganik—including multiplicative correction factors for degree ratio ($\delta$ δ, network size differences), visibility/true positive rate ($\tau$ τ, transmission and reporting accuracy), and frame ratio ($\phi_F$ φ_F)—can mitigate these biases, but require additional data or assumptions [@feeh16-generalizing].
+
+In our setting, where RDS estimates suggest that over 50% of respondents have experienced some form of labour exploitation, but NSUM estimates suggest only 3–5% of the domestic worker population does so, visibility bias is almost certainly the dominant factor explaining the discrepancy. This is especially true in contexts involving exploitation, abuse, or trafficking—where group membership is often concealed both by victims and by observers. Respondents in the frame population may simply be unaware that their contacts are experiencing exploitation, leading to substantial underreporting.
+
+
+Hense, visibility bias is a major and well-understood limitation of NSUM, and likely the principal reason why our NSUM estimates are substantially lower than those derived from RDS. The use of RDS-based estimators, particularly those that adjust for sample design such as Gile's SS estimator, provides direct measurement of traits among the hidden population and avoids the visibility problem. Therefore, RDS estimates are often more accurate in estimating prevalence within the hidden population, whereas NSUM estimates are typically biased downward unless adjusted for visibility and related biases.
+
+## Policy and Theoretical Implications
+
+The UK Government has proved reluctant to respond to calls to remove the restrictive, tied, visa conditions currently in force for those migrant workers working in the UK on the Overseas Domestic Workers visa [@gower_calls_2016].
+Maintaining these restrictive conditions prevents the ratification in the UK of C189, the International Convention for Domestic Workers [@ILO11-indicators].
+If the estimates resulting from our study are correct, these visa conditions place migrant domestic workers at significant risk of serious forms of labour exploitation including, in its most severe form, exploitation that exhibits the characteristics of forced labour—legally considered a form of modern slavery.
+
+To reduce the vulnerability of transnational domestic workers to this—and other—forms of labour exploitation, we urge policy-makers to reconsider these discriminatory visa conditions and offer the same freedoms to domestic workers that are enjoyed by other groups of workers under UK law.
+
+In addition, given the vulnerabilities experienced by workers due to the private nature of the workplace, we would urge the UK government to consider the regulation of domestic worker employers.
+
+Finally, given the stigma and very real danger of deportation of those migrant domestic workers who may have fallen out of legal migration status, our evidence suggests that there is an urgent need for the UK Government to enforce a firewall between immigration control and labour exploitation if the true scale of abuse is to be made visible and the perpetrators brought to justice.
+
+The UK Visa and Immigration service already offers rights-based training to migrant domestic workers via UK embassies in certain source countries.
+To reduce migrant domestic workers vulnerabilities, we advocate the expansion of this training both to include explicit training related to employment and labour rights within the UK and to the rapidly expanding range of new source countries from where migrant domestic workers are now drawn.
+
+## Limitations and Directions for Future Research
 
 As with any empirical research, our study is subject to limitations.
 In terms of nationality, our sample is not representative of the demographics of those domestic workers employed on Overseas Domestic Worker Visas in 2022 the UK.
@@ -1455,8 +1377,6 @@ It is not therefore possible to infer the nature and extent of labour exploitati
 
 As the network structure of our sample demonstrates, even with a well-designed incentive scheme it proved difficult to recruit respondents from these communities of domestic workers in subsequent sampling waves in the time available.
 Most of our respondents are therefore original sample members draw from the three domestic worker communities used to seed the survey.
-
-## Further Research
 
 We believe that web-RDS combined with statistical estimators such as NSUM offers an important method for the capture and comparison of relative proportions of labour exploitation and abuse in sectors within and beyond the UK.
 Network scale up methods, and potential enhancements such as Generalised network scale up estimators offer to enhance understanding, not least within operations and supply chain management research, of the extent of labour exploitation in different sectors and across industries.  The differences in NSUM and RDS estimates warrants further investitation and suggests research into _combining_ multiple estimates may be a fruitful direction in human rights research and especially prevelenace of modern slavery research.
