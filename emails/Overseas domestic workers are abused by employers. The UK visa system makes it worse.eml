@@ -1,0 +1,432 @@
+Received: from DB9PR06MB8123.eurprd06.prod.outlook.com (2603:10a6:10:29e::8)
+ by AS8PR06MB7301.eurprd06.prod.outlook.com with HTTPS; Wed, 8 Apr 2026
+ 17:28:18 +0000
+ARC-Seal: i=2; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=pass;
+ b=d2xwT3PMIqKIyzwxERqmn12YlZB41CHPQbmth+mEH2QMRcWmCdpDN7W5+gruk6Hz8nfD2szDcutbrYyYljoPxalJTk77z2s5TN9ak7MRzUcwmUpsL+V9jND3VwTs76ZjGzWTvn/drdf94QXcO9S6nEukDUIwr9KNBodYE7Z0Sqm53kQMA5/ZN3QAwKoxC1cKTlxa86JlHrD9rUU9U7kFI6j1lSFoo2/kM7GR9zpNj7YL4w7iEJ5/5sCHtaTTC2gNbs/5Cos1FbS97cjv9RwjYCqg9s/8geZJlNVvm98CasvDJ39Vrj3+NTayfJPJ7Bd/J24d/X0goJ0vKyW3jnoqkw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=MmMJ35pEJYX8pIL1xIccZRAtSL72VQ1KWxjvtSjzS6E=;
+ b=U7y3RfryMLaYo2MmKyJ65lH4RpQnqfKhgb0VwxJc070T9e1OpLuzxhCUkIvbq7OaxedV1c6jpccLMPWwCHAkpkqomKgpy/xyPapEpH/srnafQYA25xNS5/C7VcSgNhiOc4dc6GU4fi8VHi5xVMK2exmvL2BkI7LYTw47hFDpBxwTB7BPPX0yZ0jf1cuk1PSdYZ+TzOnZ6BpfDpah9RmwIXbu0AvZh5YOWdNWh5ssZcSadgSw5uiLN96ly94EfbSXZEL5k1m10YlFlgRjjMl9Ksf61b9uwfTpbrRu96c6gdqkAQmKP6ZwJEETD/35F+ca0fuUdrmorVCkprlvSpbu4A==
+ARC-Authentication-Results: i=2; mx.microsoft.com 1; spf=pass (sender ip is
+ 2607:f8b0:4864:20::729) smtp.rcpttodomain=nottingham.ac.uk
+ smtp.mailfrom=gmail.com; dmarc=pass (p=none sp=quarantine pct=100)
+ action=none header.from=gmail.com; dkim=pass (signature was verified)
+ header.d=gmail.com; arc=pass (0 oda=0 ltdi=1)
+Received: from DU2PR04CA0039.eurprd04.prod.outlook.com (2603:10a6:10:234::14)
+ by DB9PR06MB8123.eurprd06.prod.outlook.com (2603:10a6:10:29e::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9769.20; Wed, 8 Apr
+ 2026 17:28:14 +0000
+Received: from DU6PEPF00009528.eurprd02.prod.outlook.com
+ (2603:10a6:10:234:cafe::ba) by DU2PR04CA0039.outlook.office365.com
+ (2603:10a6:10:234::14) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9769.32 via Frontend Transport; Wed,
+ 8 Apr 2026 17:28:14 +0000
+Authentication-Results: spf=pass (sender IP is 2607:f8b0:4864:20::729)
+ smtp.mailfrom=gmail.com; dkim=pass (signature was verified)
+ header.d=gmail.com;dmarc=pass action=none header.from=gmail.com;compauth=pass
+ reason=100
+Received-SPF: Pass (protection.outlook.com: domain of gmail.com designates
+ 2607:f8b0:4864:20::729 as permitted sender) receiver=protection.outlook.com;
+ client-ip=2607:f8b0:4864:20::729; helo=mail-qk1-x729.google.com; pr=C
+Received: from mail-qk1-x729.google.com (2607:f8b0:4864:20::729) by
+ DU6PEPF00009528.mail.protection.outlook.com (2603:10a6:18:3::9) with
+ Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id
+ 15.20.9769.17 via Frontend Transport; Wed, 8 Apr 2026 17:28:14 +0000
+Received: by mail-qk1-x729.google.com with SMTP id af79cd13be357-8d68f702851so1512085a.0
+        for <scott.moser@nottingham.ac.uk>; Wed, 08 Apr 2026 10:28:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1775669293; cv=none;
+        d=google.com; s=arc-20240605;
+        b=GL3YQH0cgBSY1dWwnspVYAiVyqQEynPAnVSr7qQNGcVex6fU2sYI8LxO519sW4BBfu
+         0jmQERxc/3zZNubUbgg3SzuYo5t02NGiceHoXDLFW9X3aJIy49lYSp+Z0TmMYEKh1u3t
+         PmxaZMkNuWSM61Uf9R28YuX8B0dKY5bPbP8KZtT5wLiYNMDiEQVAqEgxDmsS6/kyp9ti
+         fk9p61Us6ixiBxPfJNu29yF45j8CjG0IWM4UcD5eWqU7I5TsjocERXogF5KhncfbaSJK
+         1uG71ki81tqnGcl714j5WRcn/g/iD0Iffo6kekwYhZWZ5dtsbek2lw0Vx1OKYx0Kdeev
+         nsgw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=MmMJ35pEJYX8pIL1xIccZRAtSL72VQ1KWxjvtSjzS6E=;
+        fh=LVdBd9caJPvY8ZGPEZBUpvarTm/hF7LE08mPoJ870WA=;
+        b=Y1kSlm886UzubRWuG36MivCMpliQl4FF1NbfMrFo5pyFjEhBtcHZ6r/rDuGcOuZlB/
+         WLZQd8BU+7fHDC7uaVfcjINA/ONihhEua6GrLGnPCjRV7+C6nQVecDmf9rpZLSfgcR+j
+         YwixB/y33Hdxad3JhvJahgOXWEauCaxYC3Oxt+Y5FYwCtd/LE/eZ6nAvL3KRUNX0sxuO
+         6CgORahtllU8yIPAbWdP6r/9Ocg2dbI2TJRDuan1DICN0dqCot+VoxqoJqyf2ee9E9UE
+         PuVd2+x81/SmnpdyG372Aoqf3BcIiS8C1h6SR9LfM0YIkMSzIdx3UKNMy+6mWUKHgAOv
+         FyUg==;
+        darn=nottingham.ac.uk
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1775669293; x=1776274093; darn=nottingham.ac.uk;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=MmMJ35pEJYX8pIL1xIccZRAtSL72VQ1KWxjvtSjzS6E=;
+        b=UGX+HljmU+HXp3/Nz2IY8UrGqrvOY9/SuvBvRAoNDAFjIkAURB7BUKSsndQi7peySn
+         zhTA4cvrMUL+4EZ6UI/fY1xlKdF19pJnIWIUdndSF1emLoID8SfMnk501mrL0SHiZWDy
+         PJtso+MsH9rvgge3ZpEg5ffmdPKkiGD8p16RMO17xWnRsilGiz6zIL4s6QU95dS6OH33
+         CHmBFzT4h94Fw10ZuCtooAuAqXCC5VirdQCrwR874f+qtjmiJCWRgavis/LhgVFMzHDy
+         Mjbz+bqZ6ZrzJHMU1rI3533Vagi4LTItibzud3/BiMqRrLb0JKDZfFezo+nrCmD1quoc
+         4ijw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1775669293; x=1776274093;
+        h=to:subject:message-id:date:from:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=MmMJ35pEJYX8pIL1xIccZRAtSL72VQ1KWxjvtSjzS6E=;
+        b=NivBQrqsENyAG1wNILR0tGjGduXBhNlBAGDsXEDrIaR88SOcrNPhLqlMPZf12ivtsQ
+         u/0woHBWRSE4dIu9lik0REac7ab88NyJknLMQpi05gArcQ61uy4m+S0lk4AzeD8o/is3
+         Nu83GpMCINy+KBNDbsovMnbgLEJfUJT4CYG0BcUhuINSYFeVeWHfgBqw5OsHDNQ7C2y3
+         BCJ/y7RPryIJI4vldio3/ui2DHnLIFokJMy5xi9uD3AzKlBPnPq5PVeAr7pHZELx0x4M
+         TGa1+Xr2MKBaHJv69rWj2c4RHxHuohoMJyfbg/ZvqHRcy6ITqqBfc+PV9gBNw3PI2b5J
+         hQUA==
+X-Gm-Message-State: AOJu0YwBfp2dJ4SmoXmZZwMgsCa1ZaJALixtqN9vIEQ1kS8xgefLQUQe
+	+E3rljWrEO3OsP3AwkTwbFlh92kEqXSfhkl/S2SObSNEAm8g3OJN3npYbxdLSR/LdeQ0zZvma8L
+	qWbfwrtHE5uy/TfyChaiyaa/ky6tnE5trjX8=
+X-Gm-Gg: AeBDieuvoHbmw0MVFqyei7dhuEQo3LVqZoHhaSRau5Fw9pg+bwJ4avfs06pm0Sa8fWx
+	mc1hV3gC28FgJJQ5cFuuQ5nIffkw3oZv0zNLJxb8mWf82jCmaj/9+bmflwLiZLzOPFbc7cLO+w1
+	x8xli9HC6gd0vlPE/34S4ptNM6gNWutNODdIHAUz2VmLCoMbFdHZVeuteYhqZIsJavkfHwyfiEI
+	RgItK2DQwpU+BB/+021ZeRgwOaTGq2rxPayV/DzuEpKp3Z2vJeODpvovLn7tyZl2m5m4ZQb0AXZ
+	ZC8t
+X-Received: by 2002:ac8:5804:0:b0:50d:8309:14fb with SMTP id
+ d75a77b69052e-50d83091811mr240972761cf.24.1775669292144; Wed, 08 Apr 2026
+ 10:28:12 -0700 (PDT)
+From: Caroline Emberson <carolineemberson1@gmail.com>
+Date: Wed, 8 Apr 2026 18:28:00 +0100
+X-Gm-Features: AQROBzADb4KVlHJol8vOfEJL926DojoGN2AtVb3iwd4fwKELAqqZtgffb1oeN7g
+Message-ID: <CAHpONtg9OZKF_fVg_iUMYOJDjdTK7n+sqhpXT13QwS1S93wTuQ@mail.gmail.com>
+Subject: Overseas domestic workers are abused by employers. The UK visa system
+ makes it worse
+To: scott.moser@nottingham.ac.uk
+Content-Type: multipart/alternative; boundary="000000000000659bd9064ef63988"
+Return-Path: carolineemberson1@gmail.com
+X-MS-Exchange-Organization-ExpirationStartTime: 08 Apr 2026 17:28:14.1669
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: ada3fbf2-f02b-4763-060b-08de959436e2
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 67bda7ee-fd80-41ef-ac91-358418290a1e:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU6PEPF00009528:EE_|DB9PR06MB8123:EE_|AS8PR06MB7301:EE_
+X-MS-Exchange-Organization-AuthSource: DU6PEPF00009528.eurprd02.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id: ada3fbf2-f02b-4763-060b-08de959436e2
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MAH-internal: external
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:0;ARA:13230040|704162111799003|7093399015|30052699003|16102099003|18002099003|19002099003|56012099003|55112099003|13003099007|8096899003;
+X-Forefront-Antispam-Report: CIP:2607:f8b0:4864:20::729;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail-qk1-x729.google.com;PTR:mail-qk1-x729.google.com;CAT:NONE;SFTY:9.25;SFS:(13230040)(704162111799003)(7093399015)(30052699003)(16102099003)(18002099003)(19002099003)(56012099003)(55112099003)(13003099007)(8096899003);DIR:INB;SFTY:9.25;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Apr 2026 17:28:14.1086
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: ada3fbf2-f02b-4763-060b-08de959436e2
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: DU6PEPF00009528.eurprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB9PR06MB8123
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:04.5289108
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.9769.015
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910005)(944506478)(944626604)(4710137)(4712097)(4999163)(920097)(930201)(20251009189)(140003);
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?d01tMnJVOFpJcnF2MHhDd2hoUGlFVkt2Y0FiSzNzWER2YWZqekJJUTdqaVpE?=
+ =?utf-8?B?K2FZeVF0S2Z1dTZmYUJpUkphUmNCakM2V3RzbWVkd1dVWG9yWkp5VEVtblBH?=
+ =?utf-8?B?L3BEWUpGUWZLN2w0SGVHUHJwd0ZpZkI1K0N1RUMrQ1k1QmprOEtaWkFJeVdL?=
+ =?utf-8?B?d3dJZDJPZlk2SXVwbHVVdHBjendYdUFqK1JubmFKZjc3cmQvd0pHb1k5Mnl1?=
+ =?utf-8?B?eEE2R3F3OU9vQzNzdkJvSlQ2OC9TUkN1dkQ0dmx4ZnpmUG5ySURNV0ZqTGEw?=
+ =?utf-8?B?SEdXUEFpaWFGcGMydzJEKzRxcmg5R2FwN3ZLZ0g1RzdKU3FpZ05iWDFYUjJV?=
+ =?utf-8?B?dmVpYzkwS1NkeWxzakppZ3J3c3NBbWZhanhLOG9xQmhFbHlQb2g1QlRUOHFK?=
+ =?utf-8?B?Nlc4ZTRxRUVkc2tzMFFuWHJNQ0RIK0h4SUp3TnVHM1FxNnkyS254VE4xVWVh?=
+ =?utf-8?B?WG53bTl4OVZCY0E0K0NYbzBSZHBydjdBQWRaVitiODJzMjlMYzRUcWtBN1c1?=
+ =?utf-8?B?U1piMW83TFNBdS9IY082RUpNVWFvZUNQcWtwT0E5VzhkTkxnakdlR05wZk11?=
+ =?utf-8?B?Rko5eFlOODUzbHdLRnlLaXlpVXdoOXl4TGU1TWhidGNnc0Uza25uRzBLdldq?=
+ =?utf-8?B?amNLM21LMVZlSEZxZkMxYTNsMWUzODMweVNybXZVWStwREpFeHFQb0l1c083?=
+ =?utf-8?B?Rk01VVh0aFlVNGFXT1JIRXpBZm9mRlY1SzcwaWJGUDZHQUsxNlYrQVliNDNz?=
+ =?utf-8?B?L0c0YVpaWnl0anRiUkg3V0ppMm0rVWQ3c3p0OHZlWW93VmJDTWlScWtjTStw?=
+ =?utf-8?B?OUJOQlV1YnlCZVVHNktwd3NyR3VYc01yV2VOTlBoY05LejlHbk1IWWNkTkMr?=
+ =?utf-8?B?eFY1cWdHaHRJK1g2VHB6UVhqRFY4NXhERTAwSklkazlsZXYzMTJZOGoxN0Y5?=
+ =?utf-8?B?MktJMEIzQ3RSWUhYcU5HcDBaMXQ3bFpJTXNqc2tBQnowcFNVV2t2VERYaDJl?=
+ =?utf-8?B?N1F0N2NWR1R2SC81R1dUR1pMd3l6RDJVRVMrd3VmTjBwZXVqSVZUOUU1TnAv?=
+ =?utf-8?B?OUJQSGVqTnZDMU11YUw3WDZCTnREZnI0bjJ2MWRhSmptSHdQYjRkdDh1SzI2?=
+ =?utf-8?B?cng2YXBWdVhNQ1dJUWhEWWZOQ0FYRkVsV1FZd3R6U1BXOUhiVERWUlFnM2NZ?=
+ =?utf-8?B?WXdxeDFucVdmVWtPVWd0bFk1djFKUTNnSVRIb0xUTytTc3JmZmpuSmlLbWlP?=
+ =?utf-8?B?MmZvemV2MXpaOUtLcjAveXNPZEtISGltSlp2b3RNR0pmd2dYT0ROTlo2akJF?=
+ =?utf-8?B?ZFVRSXMyR2Z2UmdkbC9MeHY4WWFlWlB2Q0RVTFg2UG1oMnpremFrMFNEcFF2?=
+ =?utf-8?B?V2grc0NORzBoL21JRzliUmpWM3NJWU1xOEJSL2hiREVYR1BRNEpBWW1HV2sv?=
+ =?utf-8?B?aUhlMUxSWUxVVzltc3hjU015VTFVVVZyMjVBU1dYVkNPSldPNHRzanVpbmdB?=
+ =?utf-8?B?WmVlNXhrQysyajBKZmptanM1NzJsbE9ZRkxya0RQV1ZWbXBkWW1vNGVoYitK?=
+ =?utf-8?B?dUdLaGNUaGQzdUpuU0xSWThuazBxdVQ1ZW5rVDJQVVNraEQvcXUya3RhWkk2?=
+ =?utf-8?B?Z25Cbk5ZUnBGb2JUclVVclptVmNJaVNvNmhQUXFlTTJTK25qbUJlcE9IM0ov?=
+ =?utf-8?B?NTh4amw4T05OT2crTVhoR3BwL29kQzUzUDJOSjRFa1dKTUxkT2psbDIvVld2?=
+ =?utf-8?B?cDNRem5lU3NxTllUdFcxWXpkRnkrYTl1UGl1UStsZU1ZckErSW1nczQrY3RS?=
+ =?utf-8?B?ZENrclRRd0xTWTh3SkJCYmxCamVZTWRtd0MxcnkwUHNicC9sbjN0aU4yRzR2?=
+ =?utf-8?B?ZW1wZGdXK08wSndoZzRhdWFhQUlURGYzMUFOM3VrVnpFTW14MG9CUXZ0VXhS?=
+ =?utf-8?B?NWVQZEZvTXRTZzlHZHc3NS9yQmNQVFp6RjhrSVlRT2xqNnRjeURlVGJaSW5l?=
+ =?utf-8?B?UHRuYjB5TFhkL3lUa3E1N3c0UVpGUVgyWTY1c29CVG5IUzZqelMyNzBob29v?=
+ =?utf-8?B?aXhVb2dsREcxd2JQZ0hnTWVKYkpwaXpqYXduUmJGbnJhZkh2cjdoSEVwZG5i?=
+ =?utf-8?B?N3hBRUdOWjdCKzFIczBXeGVEb0JRaStXUFFrbmdnaC9RQkJnS0U4a1FTV3N5?=
+ =?utf-8?B?MHhaT25EVTBPSWs0ZlpMblZ4bzBOeDkxL0R5dlRIeDY3RVhyY1BjK0k1cDRM?=
+ =?utf-8?B?eXIzeUZuOXRPY0RQV2pBTm45TlhjSlVPbVY4Y0pGM2N3VlVDNGc0aVlDZW80?=
+ =?utf-8?B?U2Rqc2Y3YUlNVEN3U1RxeUhWdzFSc0drY0tqVWx0KzJ3cGsrOTZ3VDd5bk5E?=
+ =?utf-8?B?NWtKNXFjQmZYSlQ1TzRleW94T1JTbUZKc1NUYkRScG5Md1JmOW5qelF6SDd0?=
+ =?utf-8?B?eWJzU0gvMVJKSHNqdDNyZDBKRnZZQTZHOHVYUDB1Z3M3aGlCblpBTHlsZ0ZS?=
+ =?utf-8?B?QzB5eHJWSTYvMHdSTGtVK2dRZ01NRlozdytsR0drRU1GbDdMUFdpUDdoOW1v?=
+ =?utf-8?B?Rm80RlYzZXFkWElNWHBqb1ExUjZGR25QTzVwbUhER1ZnbmtMUXd0TlNPak13?=
+ =?utf-8?B?dEtvWTlNRng0Y0Vkc1IyMEdLOWFPdndMaW5ZS1laS2tmcmRZRDVvU0VpNE9L?=
+ =?utf-8?B?LzR3a2tKSUduUW1ta3hseHpaNnZ2VkRqWjdaNVlXOWI1NDJITk1jWE02V2xE?=
+ =?utf-8?B?WmNxMkc0QXZoRzNiTHBBaTl5K0JrcmhNYWFPei9md2lBclQ2Qmg0SmpsdG9l?=
+ =?utf-8?B?WHErdW9lNmlXeVIvMEsyMEU0WmhKSnFsbzJkdFNNWk1YaWNENjhwT29ZZlo3?=
+ =?utf-8?B?ZHhlaXQ3MDJXV2hWdEdGREJSSW1oNDlTdmJUaHRJRVMvSXZab1ZnNmthWFJu?=
+ =?utf-8?B?NTl5aXVTY003L24vemx0WDBQVzV2VTR3NUFDS1NLaVFHblFYOFpMTDVOcURi?=
+ =?utf-8?B?RFloVXY1TDNXOVNzKzFreHZMOGlrU21wL25UK3hHZHZVOCtBQm9xUUp6eU1G?=
+ =?utf-8?B?ckxBcEwyd3hqTDBwQmhLS0xhODFKWXJZOXVPeVhmbUpWRWNldDlpT2M5Yitl?=
+ =?utf-8?B?T21HZFB1UmFPN29HNHhwTlBadldKTi8zM2ZlRk44c2ZRTzJyRzlMa1EyZEs5?=
+ =?utf-8?B?Y3VVZ01uQkVaZ01HbmhRYVY3dEozekFEV3Flc2Q2bXVaQXBEYU4ybmNIWlBF?=
+ =?utf-8?B?cVNDMlRsd1ZMYkM3dzVkb1drM1NmSGU0ZjZvQkdXeUJYRUJlbng3RmlEaXBT?=
+ =?utf-8?B?N2hiNHd1cG9oT0hQVStlTWl0MW95dzFPSjVpQ0p2R2QrWFVvSFhxUkN0UVVr?=
+ =?utf-8?B?YjRvdGJEcmxUbWUwQWhxVFVJUWJzRU1HUWpySkRLZncxbldxbXBROG50M01Z?=
+ =?utf-8?B?M0VIdXI4KytYTnY3dVZob05nb25qTTVxcW5TMGJ0WWpUOWljREhTdENNYlcw?=
+ =?utf-8?B?eWRhRmtXZGQ4VDVnbjRVeGYvcjJyOXlhaWdKaEZaZUhQMndOcW8wNlo0S0FP?=
+ =?utf-8?B?U2FBdkdSaGdObmdzd2dZd240MlZOT1laTmVxWnhlOSs3V2tYendtelBXUWl3?=
+ =?utf-8?B?RGxEQXU1QVZJd0FjalRDdlIzUzFyZDRIbzUrenFvaHJOSGNVTDFDTEVWSVlO?=
+ =?utf-8?B?cU9Va28xa2F3OGtJRXJ0TWNZZ3piT1FLT2RWSDJUS2dlQ21KdVQ0a2xvY0Zu?=
+ =?utf-8?B?cXVmdDN3cW5wZjZrd2UxYy9XMUxyVXFaL3JzZVdpUzZtN2s0V2w1MGNqRXpR?=
+ =?utf-8?B?N012QVlUWG5LaFN3cDdYMGdPM2p5SzRMbnZiS1c5NVZabnZrdEE2UDRXZXhv?=
+ =?utf-8?B?S01uNEI2Wm1raTl6R2t1OW1kZjRDSXYza002bjFPSWZxUEQrZHZ0VVAvbXh6?=
+ =?utf-8?B?c2NBTDhCTUQ3NHIrRThIaE5ITFJFYjhOM3kvcWlLb0VMU05SRFlOOXpCRTJZ?=
+ =?utf-8?B?VmNIaWVFaVVlR2FjcXBKc2VPR1NCM21HNXUyR2ZYUElseGJURy9WdFdoMUc0?=
+ =?utf-8?B?T2EwWEt6SEFodmFVMkRjS0wzQkR5cDRCb2g2MnlWQStvYWZxQlMwckhCbW1C?=
+ =?utf-8?B?ZjZHbTMwQWx6R3M3RVZVOVkvTk5hZGFHUHdrNE41WDBjZ2lLTW1HNTVTbHFH?=
+ =?utf-8?B?OHBQT0NQUUZERk5ZSjFjRFRETmxHV2Z6ZGVWM2ZsbGF0ZGZuTGtqL1dGZHVK?=
+ =?utf-8?Q?f0FnZE0w532QPxakkVq4+sDgMyNIRkm?=
+MIME-Version: 1.0
+
+--000000000000659bd9064ef63988
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+You don't often get email from carolineemberson1@gmail.com. Learn why this =
+is important<https://aka.ms/LearnAboutSenderIdentification>
+https://www.bigissue.com/opinion/overseas-domestic-workers-abuse-uk-visa-sy=
+stem/
+
+Hi Scott
+
+I hope all goes well with you. I am on leave now until 23 April. I hope on =
+my return to pick up our paper again and find a suitable outlet for it. I a=
+m sorry that I just never got a chance to progress it further this semester=
+. This big issue article shows this is still very much a live issue .
+
+I=E2=80=99ll be in touch on my return. If you=E2=80=99re taking a break, I =
+hope you get some time to relax and recharge.
+
+
+Best wishes
+Caroline
+
+--000000000000659bd9064ef63988
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8">
+</head>
+<body>
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" styl=
+e=3D" aspect-ratio: revert !important; background: revert !important; block=
+-size: revert !important; border: revert !important; bottom: revert !import=
+ant; color: revert !important; color-scheme: revert !important; content-vis=
+ibility: revert !important; cursor: revert !important; direction: revert !i=
+mportant; display: revert !important; font-size: revert !important; height:=
+ revert !important; hyphens: revert !important; letter-spacing: revert !imp=
+ortant; line-height: revert !important; margin: revert !important; opacity:=
+ revert !important; order: revert !important; outline: revert !important; o=
+verflow: revert !important; padding: revert !important; position: revert !i=
+mportant; resize: revert !important; rotate: revert !important; scale: reve=
+rt !important; tab-size: revert !important; table-layout: revert !important=
+; text-align: revert !important; text-indent: revert !important; text-orien=
+tation: revert !important; text-overflow: revert !important; text-shadow: r=
+evert !important; text-transform: revert !important; text-wrap: revert !imp=
+ortant; top: revert !important; transition: revert !important; user-select:=
+ revert !important; vertical-align: revert !important; visibility: revert !=
+important; white-space: revert !important; width: revert !important; word-b=
+reak: revert !important; word-spacing: revert !important; writing-mode: rev=
+ert !important; zoom: revert !important; cellpadding: 0 !important; border:=
+ 0 !important; cellspacing: 0 !important; display: table !important; width:=
+ 100% !important; table-layout: fixed !important; border-collapse: seperate=
+ !important; float: none !important; border-spacing: 0px 0px !important; " =
+align=3D"left">
+<tbody style=3D" aspect-ratio: revert !important; background: revert !impor=
+tant; block-size: revert !important; border: revert !important; bottom: rev=
+ert !important; color: revert !important; color-scheme: revert !important; =
+content-visibility: revert !important; cursor: revert !important; direction=
+: revert !important; display: revert !important; font-size: revert !importa=
+nt; height: revert !important; hyphens: revert !important; letter-spacing: =
+revert !important; line-height: revert !important; margin: revert !importan=
+t; opacity: revert !important; order: revert !important; outline: revert !i=
+mportant; overflow: revert !important; padding: revert !important; position=
+: revert !important; resize: revert !important; rotate: revert !important; =
+scale: revert !important; tab-size: revert !important; table-layout: revert=
+ !important; text-align: revert !important; text-indent: revert !important;=
+ text-orientation: revert !important; text-overflow: revert !important; tex=
+t-shadow: revert !important; text-transform: revert !important; text-wrap: =
+revert !important; top: revert !important; transition: revert !important; u=
+ser-select: revert !important; vertical-align: revert !important; visibilit=
+y: revert !important; white-space: revert !important; width: revert !import=
+ant; word-break: revert !important; word-spacing: revert !important; writin=
+g-mode: revert !important; zoom: revert !important; display: block !importa=
+nt; ">
+<tr style=3D" aspect-ratio: revert !important; background: revert !importan=
+t; block-size: revert !important; border: revert !important; bottom: revert=
+ !important; color: revert !important; color-scheme: revert !important; con=
+tent-visibility: revert !important; cursor: revert !important; direction: r=
+evert !important; display: revert !important; font-size: revert !important;=
+ height: revert !important; hyphens: revert !important; letter-spacing: rev=
+ert !important; line-height: revert !important; margin: revert !important; =
+opacity: revert !important; order: revert !important; outline: revert !impo=
+rtant; overflow: revert !important; padding: revert !important; position: r=
+evert !important; resize: revert !important; rotate: revert !important; sca=
+le: revert !important; tab-size: revert !important; table-layout: revert !i=
+mportant; text-align: revert !important; text-indent: revert !important; te=
+xt-orientation: revert !important; text-overflow: revert !important; text-s=
+hadow: revert !important; text-transform: revert !important; text-wrap: rev=
+ert !important; top: revert !important; transition: revert !important; user=
+-select: revert !important; vertical-align: revert !important; visibility: =
+revert !important; white-space: revert !important; width: revert !important=
+; word-break: revert !important; word-spacing: revert !important; writing-m=
+ode: revert !important; zoom: revert !important; ">
+<td valign=3D"middle" width=3D"1px" bgcolor=3D"#A6A6A6" cellpadding=3D"7px =
+2px 7px 2px" style=3D" aspect-ratio: revert !important; background: revert =
+!important; block-size: revert !important; border: revert !important; botto=
+m: revert !important; color: revert !important; color-scheme: revert !impor=
+tant; content-visibility: revert !important; cursor: revert !important; dir=
+ection: revert !important; display: revert !important; font-size: revert !i=
+mportant; height: revert !important; hyphens: revert !important; letter-spa=
+cing: revert !important; line-height: revert !important; margin: revert !im=
+portant; opacity: revert !important; order: revert !important; outline: rev=
+ert !important; overflow: revert !important; padding: revert !important; po=
+sition: revert !important; resize: revert !important; rotate: revert !impor=
+tant; scale: revert !important; tab-size: revert !important; table-layout: =
+revert !important; text-align: revert !important; text-indent: revert !impo=
+rtant; text-orientation: revert !important; text-overflow: revert !importan=
+t; text-shadow: revert !important; text-transform: revert !important; text-=
+wrap: revert !important; top: revert !important; transition: revert !import=
+ant; user-select: revert !important; vertical-align: revert !important; vis=
+ibility: revert !important; white-space: revert !important; width: revert !=
+important; word-break: revert !important; word-spacing: revert !important; =
+writing-mode: revert !important; zoom: revert !important; padding: 7px 2px =
+7px 2px !important; background-color: #A6A6A6 !important; valign: middle !i=
+mportant; width: 0px !important; ">
+</td>
+<td valign=3D"middle" width=3D"100%" bgcolor=3D"#EAEAEA" cellpadding=3D"7px=
+ 5px 7px 15px" color=3D"#212121" style=3D" aspect-ratio: revert !important;=
+ background: revert !important; block-size: revert !important; border: reve=
+rt !important; bottom: revert !important; color: revert !important; color-s=
+cheme: revert !important; content-visibility: revert !important; cursor: re=
+vert !important; direction: revert !important; display: revert !important; =
+font-size: revert !important; height: revert !important; hyphens: revert !i=
+mportant; letter-spacing: revert !important; line-height: revert !important=
+; margin: revert !important; opacity: revert !important; order: revert !imp=
+ortant; outline: revert !important; overflow: revert !important; padding: r=
+evert !important; position: revert !important; resize: revert !important; r=
+otate: revert !important; scale: revert !important; tab-size: revert !impor=
+tant; table-layout: revert !important; text-align: revert !important; text-=
+indent: revert !important; text-orientation: revert !important; text-overfl=
+ow: revert !important; text-shadow: revert !important; text-transform: reve=
+rt !important; text-wrap: revert !important; top: revert !important; transi=
+tion: revert !important; user-select: revert !important; vertical-align: re=
+vert !important; visibility: revert !important; white-space: revert !import=
+ant; width: revert !important; word-break: revert !important; word-spacing:=
+ revert !important; writing-mode: revert !important; zoom: revert !importan=
+t; width: 100% !important; background-color: #EAEAEA !important; padding: 7=
+px 5px 7px 15px !important; font-family: wf_segoe-ui_normal, Segoe UI, Sego=
+e WP, Tahoma, Arial, sans-serif !important; font-size: 12px !important; fon=
+t-weight: normal !important; color: #212121 !important; text-align: left !i=
+mportant; word-wrap: break-word !important; ">
+<div style=3D" aspect-ratio: revert !important; background: revert !importa=
+nt; block-size: revert !important; border: revert !important; bottom: rever=
+t !important; color: revert !important; color-scheme: revert !important; co=
+ntent-visibility: revert !important; cursor: revert !important; direction: =
+revert !important; display: revert !important; font-size: revert !important=
+; height: revert !important; hyphens: revert !important; letter-spacing: re=
+vert !important; line-height: revert !important; margin: revert !important;=
+ opacity: revert !important; order: revert !important; outline: revert !imp=
+ortant; overflow: revert !important; padding: revert !important; position: =
+revert !important; resize: revert !important; rotate: revert !important; sc=
+ale: revert !important; tab-size: revert !important; table-layout: revert !=
+important; text-align: revert !important; text-indent: revert !important; t=
+ext-orientation: revert !important; text-overflow: revert !important; text-=
+shadow: revert !important; text-transform: revert !important; text-wrap: re=
+vert !important; top: revert !important; transition: revert !important; use=
+r-select: revert !important; vertical-align: revert !important; visibility:=
+ revert !important; white-space: revert !important; width: revert !importan=
+t; word-break: revert !important; word-spacing: revert !important; writing-=
+mode: revert !important; zoom: revert !important; ">
+You don't often get email from carolineemberson1@gmail.com. <a href=3D"http=
+s://aka.ms/LearnAboutSenderIdentification" style=3D"background: revert !imp=
+ortant;color: revert !important;content-visibility: revert !important;direc=
+tion: revert !important;display: revert !important;font-size: revert !impor=
+tant;opacity: revert !important;rotate: revert !important;scale: revert !im=
+portant;visibility: revert !important;">
+Learn why this is important</a> </div>
+</td>
+<td valign=3D"middle" align=3D"left" width=3D"75px" bgcolor=3D"#EAEAEA" cel=
+lpadding=3D"7px 5px 7px 5px" color=3D"#212121" style=3D" aspect-ratio: reve=
+rt !important; background: revert !important; block-size: revert !important=
+; border: revert !important; bottom: revert !important; color: revert !impo=
+rtant; color-scheme: revert !important; content-visibility: revert !importa=
+nt; cursor: revert !important; direction: revert !important; display: rever=
+t !important; font-size: revert !important; height: revert !important; hyph=
+ens: revert !important; letter-spacing: revert !important; line-height: rev=
+ert !important; margin: revert !important; opacity: revert !important; orde=
+r: revert !important; outline: revert !important; overflow: revert !importa=
+nt; padding: revert !important; position: revert !important; resize: revert=
+ !important; rotate: revert !important; scale: revert !important; tab-size:=
+ revert !important; table-layout: revert !important; text-align: revert !im=
+portant; text-indent: revert !important; text-orientation: revert !importan=
+t; text-overflow: revert !important; text-shadow: revert !important; text-t=
+ransform: revert !important; text-wrap: revert !important; top: revert !imp=
+ortant; transition: revert !important; user-select: revert !important; vert=
+ical-align: revert !important; visibility: revert !important; white-space: =
+revert !important; width: revert !important; word-break: revert !important;=
+ word-spacing: revert !important; writing-mode: revert !important; zoom: re=
+vert !important; width: 75px !important; background-color: #EAEAEA !importa=
+nt; padding: 7px 5px 7px 5px !important; font-family: wf_segoe-ui_normal, S=
+egoe UI, Segoe WP, Tahoma, Arial, sans-serif !important; font-size: 12px !i=
+mportant; font-weight: normal !important; color: #212121 !important; text-a=
+lign: left !important; word-wrap: break-word !important; align: left !impor=
+tant; ">
+</td>
+</tr>
+</tbody>
+</table>
+<div>
+<div><a href=3D"https://www.bigissue.com/opinion/overseas-domestic-workers-=
+abuse-uk-visa-system/">https://www.bigissue.com/opinion/overseas-domestic-w=
+orkers-abuse-uk-visa-system/</a></div>
+<div dir=3D"auto"><br>
+</div>
+<div dir=3D"auto">Hi Scott&nbsp;</div>
+<div dir=3D"auto"><br>
+</div>
+<div dir=3D"auto">I hope all goes well with you. I am on leave now until 23=
+ April. I hope on my return to pick up our paper again and find a suitable =
+outlet for it. I am sorry that I just never got a chance to progress it fur=
+ther this semester. This big issue
+ article shows this is still very much a live issue .</div>
+<div dir=3D"auto"><br>
+</div>
+<div dir=3D"auto">I=E2=80=99ll be in touch on my return. If you=E2=80=99re =
+taking a break, I hope you get some time to relax and recharge.</div>
+<div dir=3D"auto"><br>
+</div>
+<div dir=3D"auto"><br>
+</div>
+<div dir=3D"auto">Best wishes&nbsp;</div>
+<div dir=3D"auto">Caroline&nbsp;</div>
+</div>
+</body>
+</html>
+
+--000000000000659bd9064ef63988--

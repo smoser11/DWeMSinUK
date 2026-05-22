@@ -1,0 +1,173 @@
+Received: from MRWPR06MB10608.eurprd06.prod.outlook.com (2603:10a6:501:96::21)
+ by AS8PR06MB7301.eurprd06.prod.outlook.com with HTTPS; Thu, 6 Nov 2025
+ 11:33:45 +0000
+Received: from AS4P192CA0008.EURP192.PROD.OUTLOOK.COM (2603:10a6:20b:5da::6)
+ by MRWPR06MB10608.eurprd06.prod.outlook.com (2603:10a6:501:96::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9298.8; Thu, 6 Nov
+ 2025 11:33:44 +0000
+Received: from AMS0EPF000001B5.eurprd05.prod.outlook.com
+ (2603:10a6:20b:5da:cafe::8) by AS4P192CA0008.outlook.office365.com
+ (2603:10a6:20b:5da::6) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9298.12 via Frontend Transport; Thu,
+ 6 Nov 2025 11:33:41 +0000
+Authentication-Results: spf=pass (sender IP is 54.240.115.15)
+ smtp.mailfrom=mail.editorialmanager.com; dkim=pass (signature was verified)
+ header.d=editorialmanager.com;dkim=pass (signature was verified)
+ header.d=amazonses.com;dmarc=pass action=none
+ header.from=editorialmanager.com;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of
+ mail.editorialmanager.com designates 54.240.115.15 as permitted sender)
+ receiver=protection.outlook.com; client-ip=54.240.115.15;
+ helo=a115-15.smtp-out.us-east-2.amazonses.com; pr=C
+Received: from a115-15.smtp-out.us-east-2.amazonses.com (54.240.115.15) by
+ AMS0EPF000001B5.mail.protection.outlook.com (10.167.16.169) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9298.6
+ via Frontend Transport; Thu, 6 Nov 2025 11:33:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=ln5agc5mkfy3me2r7vnk7c2nw2qqlzun; d=editorialmanager.com;
+	t=1762428821;
+	h=Sender:From:Reply-To:To:Subject:Date:MIME-Version:Content-Type:Message-ID;
+	bh=Zb2jlG6iWT/nxwQkE1CmX6Oxql8sIxMP2Mec+lbCayE=;
+	b=lphQ3lmq1vPUZDdt6R8J2Q5MFolbpX3TImJMimuNOHr+4/TlMorB25aX1UsEMfhb
+	uRddIkXx5i3cHyTWdjdRkUa/Flk8LkLUoNxLgwzoAetURGzhwShrlg/z1ipGRQpYnRe
+	3A5it1UG7NXbYrz4KyKVIw87EONFt0N1GI17brU6CXtj2TIpu3v3ZOAqG029km+H/mm
+	doRay4uB6XBX8ljDhDTobZDmgmMiyRvm+88bF2+JmsJULVYcmPYy+6bhMzPeEVt5t3f
+	BCTGBG1YZChlTgnvqUZfbeqJuLzfOkixbQGJm+crVY77i+iaLRbjxHf2hbQ8Ky57mLJ
+	li9rajd6tw==
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=ndjes4mrtuzus6qxu3frw3ubo3gpjndv; d=amazonses.com; t=1762428821;
+	h=Sender:From:Reply-To:To:Subject:Date:MIME-Version:Content-Type:Message-ID:Feedback-ID;
+	bh=Zb2jlG6iWT/nxwQkE1CmX6Oxql8sIxMP2Mec+lbCayE=;
+	b=FozXSVwz+cJOsdj6Z2h987KcM/e2TdoBd1P6gYB5irnKUWQWt5+nvUhQGtaEWk5Q
+	y//DkjLN2av0OxaFHKZLCRZz6U3fgMVDPggWsir7WY2uXYilHv2doiujicFWU2ZjmEZ
+	N/nqiBxvfRaVX+zonZ2EHCprFnU/F9jtKv0IP4ec=
+Sender: em.busi.0.9741cf.a0f69966@editorialmanager.com
+From: "Journal of Business Ethics (BUSI)" <em@editorialmanager.com>
+Reply-To: "Journal of Business Ethics (BUSI)" <saranya.sekar@springer.com>
+To: Scott Moser <scott.moser@nottingham.ac.uk>
+Subject: BUSI-D-25-05247 - Submission Notification to co-author
+Date: Thu, 6 Nov 2025 11:33:41 +0000
+Content-Type: text/plain; charset=utf-8
+Message-ID: <010f019a58f1a03d-29c07a1c-dc40-4559-8f7f-256580be9ea7-000000@us-east-2.amazonses.com>
+Feedback-ID: ::1.us-east-2.cfEymE50DmvakymQX9ZrPi9nu6QsNLbJaZEYfDsv68A=:AmazonSES
+X-SES-Outgoing: 2025.11.06-54.240.115.15
+Return-Path: 010f019a58f1a03d-29c07a1c-dc40-4559-8f7f-256580be9ea7-000000@mail.editorialmanager.com
+X-MS-Exchange-Organization-ExpirationStartTime: 06 Nov 2025 11:33:43.1507
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: ba948eb6-b2b2-438b-c607-08de1d28572a
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 67bda7ee-fd80-41ef-ac91-358418290a1e:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AMS0EPF000001B5:EE_|MRWPR06MB10608:EE_|AS8PR06MB7301:EE_
+X-MS-Exchange-Organization-AuthSource: AMS0EPF000001B5.eurprd05.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id: ba948eb6-b2b2-438b-c607-08de1d28572a
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MAH-internal: external
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:4;ARA:13230040|13102899012|32142699015|12012899012|2092899012|3092899012|3072899012|5062899012|4092899012|13012899012;
+X-Forefront-Antispam-Report: CIP:54.240.115.15;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:a115-15.smtp-out.us-east-2.amazonses.com;PTR:a115-15.smtp-out.us-east-2.amazonses.com;CAT:NONE;SFS:(13230040)(13102899012)(32142699015)(12012899012)(2092899012)(3092899012)(3072899012)(5062899012)(4092899012)(13012899012);DIR:INB;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Nov 2025 11:33:42.8346
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: ba948eb6-b2b2-438b-c607-08de1d28572a
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: AMS0EPF000001B5.eurprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MRWPR06MB10608
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:02.7387801
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.9298.006
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910005)(944506478)(944626604)(920097)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?cGxqbjV6N0tnWFd1NFVQa0xFVkMrWml5ZjNPYjQ2YXd2MFA1VENGQzVudFZP?=
+ =?utf-8?B?aEhlektWSzduM1UzMDYzdVRsUnU4cFZTMnNuOXlMMENSZnhrRHllbnBPVmc3?=
+ =?utf-8?B?TWtJVzV2ZW1oYXRaUjllMnpualgyNjczc0w2RVpsb044dlRvVmxBcjAvQkR3?=
+ =?utf-8?B?QkdOUWFwUUs5RUFwTlJMOElYTjQvU1Nub1dEUWpNUFpvSUljRGtPMGdGaUVG?=
+ =?utf-8?B?L1AxdWhydnZpZGowSXBVL3k3U0FRb1hjN1lwcHdSd3FSeG1NdnF5M2RCcWEw?=
+ =?utf-8?B?VS8zL3hxcVNMZFB3eHhySkllV1FLMWFkWSsvR0tMWnFjSm1iOS8rRFphUFA4?=
+ =?utf-8?B?azR0VEtiUU90RDlxb09oN3RmZVd0a0xWS29HS2dsekRlYWFiNlh5V29jT0c0?=
+ =?utf-8?B?S2ZYb3gvQmRNTUpyVHh2NmVwb2Zybmd1Qkp6aDdYRFFQL0Y2NnRhMnZYQU1P?=
+ =?utf-8?B?Nk85V2dmdUorSFcvcERoZFZyNkNnYjlnYldhNUFwRExiMHpYRGFVQmw1ZXpO?=
+ =?utf-8?B?eFRVNFR6MzBveWxnRGpMOVpXYnFJdWI1Tmx3VDFMbFFJYlFQUlVEcmhSUTJ5?=
+ =?utf-8?B?c1lHTXZzeHdlczhtUnk0Zm9yeVVhNGpzWVpzWnN3QnVKRGhtTEZRWUp1ZTJl?=
+ =?utf-8?B?K2hlcGdPMjZwakRFZFBxdHRPZjFHZEx3L2szNUJGYWJ4NHNLOGMwTysrNUZB?=
+ =?utf-8?B?QmFsL0N0SHRFVlJETmlFemJNNUN1dEhaRXZ1WDFrenVzc2svSldCVUtHNW5a?=
+ =?utf-8?B?QmRHaUdUOUVhYytOMnlXNk16eXcxU2dTZnZJcnFpSW5EQ1cwdXlscHpDTWgv?=
+ =?utf-8?B?WDJkYkJ4N3pVRWlrZi9Lai9iSEpKc1BVNVpkMDhnWXZaWktUZ0Zhc3JJanA3?=
+ =?utf-8?B?QkJvVHFvV3NSZDRFMUMwcmJkc1lBZFQ2eEdIRnREYkVMTU04ZWlHaXRiK3lL?=
+ =?utf-8?B?cENubXdmbFlXaFZORTR1N2VvQlZJWnVBRUFkMkZnQkw2anVSUnB0TzFFUjht?=
+ =?utf-8?B?aGluVVRwbFJKNjN4V1JHblpNb0EzMUo2YlBxaGdmMTVyNXRDYWloWStlWlJP?=
+ =?utf-8?B?cmdYSlF0RURUVmxnY1IxVy84enRmMkFRdjJ6NzRUUTFFcnhZYTRnOHl1SC9K?=
+ =?utf-8?B?TDF2WnBmbDF1YkZFOHkwaXpuWVF2WEYzV0dEOWdVN3NKWXJ2b2puWXFXRWpk?=
+ =?utf-8?B?WkVVdE95aE5jem9TVzR6OXpFZURSeDFIWUEzVjBNVC9XVUVsNVF1OVpMSy9Y?=
+ =?utf-8?B?VTlVbkQ3MzR5MGNoV092YllLZkxmbSs2dW9vNkVRbEpXYkJRZlZ0VnlaWEIw?=
+ =?utf-8?B?RGVCajkwVzhQYk8rN0FJbkNUbmdJZHZxUDIxVWM2c0k1QzNXYUNYR3V2Qml0?=
+ =?utf-8?B?aWoxK29QbHB4aWZYRzFjbnMzVlB6c2Q3Z2hXbUh2R1czWkVrM1hzM2laL0do?=
+ =?utf-8?B?NTZVRS9waUNWb2RCTTlLWjBTOGo0UUhmUlhGajBTQkhUN1ZDZzNtUndrU2lO?=
+ =?utf-8?B?V3l3SXZIamtzczZ5S3JOUVJrVUhaWnNQcjU5OStHRUZPN3ZCYVZXdmhhayth?=
+ =?utf-8?B?TjRER2VVeG9kSXRNZUpHNFlZeHNxZXJCd1AycTZGT3R6YWFjcmpGUWdTM1Jz?=
+ =?utf-8?B?Vm4rY0ZqQlo2a3BEOWk3aVZKRCtBZjJEWGxYbkNjMzEwVjNPd29IcHVOQjZU?=
+ =?utf-8?B?WXI4NTdORWRSRy9va2dWTjJxRE1jN1E1dzdlamVVRGlTV0FiZEZQQ1VvN1Ax?=
+ =?utf-8?B?R3RPa3liZTMwTzNMbHFjSUlERXQzRXdUSmF3c2ZZU3ZSM05pZTliNmhVaStK?=
+ =?utf-8?B?TDlGdlBwU05meERIcjJQZDg2emw0Z0J3S3hpbXhHMURhL0JDditucWQySUdm?=
+ =?utf-8?B?VHlkcGgycnZnM1QzblFLMDZiV1d1RWVUQU56VGQydjBZRm5MQlM1RTJDb3hy?=
+ =?utf-8?B?VjVqdXkzcnVCSUhlNVFpR1oyZ2pPbEZIVGFlSCtIemNuOTl3SDlaMnlOOVBQ?=
+ =?utf-8?B?ZkJRU2dMZ3g3Q2NTQlhEVE9nMUdPVEt4bU9LbkVXVmJpWk1aaXlKUlFlcStt?=
+ =?utf-8?B?UkJ0TmdDMXNSSlV0SU1mNjdsRml4a1RBNzZBWjA3NWdjVjJlWEtGUGpTRmV1?=
+ =?utf-8?B?NHRvbWsxa09mVUV1c3dLMDlKWmtJU1ZKZGZEa3hBQ1ZaZm5jYjRraWszRElO?=
+ =?utf-8?B?cHdvbWNuWHNVemNRTkZkRHU4YlFBT2Y4N0NTc3BLWWJKMUprOFVzcVJLSVlm?=
+ =?utf-8?B?cGZOSjRyYVA1LzBwZmpURmFzY3U5TVZ6Z3h6SjI3Y1EzRjRYZ1BnNUpQRWMr?=
+ =?utf-8?B?S3g3MVg3Wlc5TW1RNHNFK29DeThxVHlCalNuRE4wbDFXVGcwSWFQZG85Rk96?=
+ =?utf-8?B?Qk1yREwwODB5WG43M0w4akhvUCs0L2RITTdvV0Q5ODB0RC9wRFdrZ1pXang3?=
+ =?utf-8?B?Q2R2RHg5UU1YSENUMEFoUnpodGNJYzN5Vld6ZFBNNjZPLzUwZVpRMGltOE1N?=
+ =?utf-8?B?OTVnZjJWdmQ0bldXSlhSdWNoK2xwc3QrZFRvaDJ2ek1Qb0gwUFAraTFrbGww?=
+ =?utf-8?B?Y0NVRk8wQVhnTUZKQnBsUjlzdGVrM3h1Uk9vUk9ZMlp0ZkZQVC96clFzTysz?=
+ =?utf-8?B?WGZUN1hBQXhMYnorSzFtaC9OUzJWQ2pvaDY4SGdOZS9pQ3dmdTdMRGVEWXlj?=
+ =?utf-8?B?MkVJMlVRZWVnQlN2a1VEUDc4RWtZQzVkN25jNTZQSzIzdUNkUFRFa3YzeVYr?=
+ =?utf-8?B?MkFMYXg4Y0JLcTNRVHFnL3Z1dWJ3TU9MeVd0WlRnbmo0OEx0M0J2SlB0VHYy?=
+ =?utf-8?B?Rmd4YUxSQzhtNG5WMGNFbFovTVFPTUN4bW5Rd1pyeWEzOE50bzFHdnFwSTlU?=
+ =?utf-8?B?a0tKUi9Ja0RodVBKNiswekJUYnFadm1MUjdJNjJaZ2NCQ3lmMHRjb0Zmai9M?=
+ =?utf-8?B?Q24zOENiQTNWSklFM2wxaWNFU1d2Ym5wQmh0TFlrNWhxZms2dmlqOUF3Wlc2?=
+ =?utf-8?B?bWRiN1JueDk2VmNka08vQnZOL0tYYjZPR214RGdTRlFUTWo3YlZIdndLaVRn?=
+ =?utf-8?B?QWhnQitQWldYRDRDOE5xcVh1RW1ySDFSV01OcnRsRHRJdnByVnVqZTJVUzYx?=
+ =?utf-8?B?S3dJdzlzREkvenAzY0p4bFE4TER5cUFTZWs0R2hBLzZ3Qk9VVllUN1NadnNJ?=
+ =?utf-8?Q?NtKlSrv6nnDB1nsu43T3Bqz+idX0?=
+MIME-Version: 1.0
+
+Submission ID: BUSI-D-25-05247
+Quantifying Hidden Exploitation: Dual-Method Estimation of Labour Exploitation Risk Among Domestic Workers in the United Kingdom
+Full author list: Caroline Emberson; Scott Moser
+
+Dear Dr Moser,
+
+We have received the submission entitled: "Quantifying Hidden Exploitation: Dual-Method Estimation of Labour Exploitation Risk Among Domestic Workers in the United Kingdom" for possible publication in Journal of Business Ethics, and you are listed as one of the co-authors.
+
+The manuscript has been submitted to the journal by Dr. Dr Caroline Emberson who will be able to track the status of the paper through his/her login.
+
+Please could you confirm your co-authorship by clicking on the link below:
+
+https://www.editorialmanager.com/busi/l.asp?i=1213112&l=EKXZ4PUT 
+
+Otherwise please click on this link:
+
+https://www.editorialmanager.com/busi/l.asp?i=1213113&l=SBWSNSZY and contact the Editorial Office.
+
+Thank you very much.
+
+With kind regards,
+Springer Journals Editorial Office
+Journal of Business Ethics
+
+
+This letter contains confidential information, is for your own use, and should not be forwarded to third parties.
+
+Recipients of this email are registered users within the Editorial Manager database for this journal. We will keep your information on file to use in the process of submitting, evaluating and publishing a manuscript. For more information on how we use your personal details please see our privacy policy at https://www.springernature.com/production-privacy-policy. If you no longer wish to receive messages from this journal or you have questions regarding database management, please contact the Publication Office at the link below.
+
+__________________________________________________
+In compliance with data protection regulations, you may request that we remove your personal registration details at any time.  (Use the following URL: https://www.editorialmanager.com/busi/login.asp?a=r). Please contact the publication office if you have any questions.

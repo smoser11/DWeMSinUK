@@ -1,0 +1,522 @@
+Received: from GVUPR06MB10717.eurprd06.prod.outlook.com
+ (2603:10a6:150:30e::16) by AS8PR06MB7301.eurprd06.prod.outlook.com with
+ HTTPS; Tue, 10 Feb 2026 09:43:11 +0000
+Received: from DU0PR06MB8552.eurprd06.prod.outlook.com (2603:10a6:10:35b::8)
+ by GVUPR06MB10717.eurprd06.prod.outlook.com (2603:10a6:150:30e::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9587.18; Tue, 10 Feb
+ 2026 09:43:08 +0000
+Received: from DU0PR06MB8552.eurprd06.prod.outlook.com
+ ([fe80::4fb1:7274:2ddc:f9ab]) by DU0PR06MB8552.eurprd06.prod.outlook.com
+ ([fe80::4fb1:7274:2ddc:f9ab%6]) with mapi id 15.20.9587.017; Tue, 10 Feb 2026
+ 09:43:08 +0000
+From: "Caroline Emberson (staff)" <Caroline.Emberson@nottingham.ac.uk>
+To: "Scott Moser (staff)" <Scott.Moser@nottingham.ac.uk>
+Subject: Re: Decision on manuscript: 5552682
+Thread-Topic: Decision on manuscript: 5552682
+Thread-Index: AQHck2DtfK1sQx144UW+6ke5bgpiN7Vt6DO1gA3UXgA=
+X-MS-Exchange-MessageSentRepresentingType: 1
+Date: Tue, 10 Feb 2026 09:43:08 +0000
+Message-ID:
+	<DU0PR06MB8552A11040E0C9B40ADC2D0BD362A@DU0PR06MB8552.eurprd06.prod.outlook.com>
+References: <1ccpI12-QCyW42Fe8VJRjw@geopod-ismtpd-13>
+ <AS8PR06MB7301F4DD9FEBF18B2F1F60B4D49DA@AS8PR06MB7301.eurprd06.prod.outlook.com>
+In-Reply-To:
+	<AS8PR06MB7301F4DD9FEBF18B2F1F60B4D49DA@AS8PR06MB7301.eurprd06.prod.outlook.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-GB
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-AuthSource: DU0PR06MB8552.eurprd06.prod.outlook.com
+X-MS-Has-Attach: yes
+X-MS-Exchange-Organization-Network-Message-Id:
+	5ba2c220-8f3e-45b3-5bd9-08de6888cc6b
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+msip_labels:
+x-microsoft-antispam:
+	BCL:0;ARA:13230040|7049299003|31052699007|366016|39142699007|6049299003|69100299015|3109299003|13003099007|4013099003|8096899003|7053199007|41050700001;
+x-forefront-antispam-report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR06MB8552.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7049299003)(31052699007)(366016)(39142699007)(6049299003)(69100299015)(3109299003)(13003099007)(4013099003)(8096899003)(7053199007)(41050700001);DIR:INT;
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nottingham.ac.uk;
+x-ms-exchange-crosstenant-originalarrivaltime: 10 Feb 2026 09:43:08.7435 (UTC)
+x-ms-exchange-transport-crosstenantheadersstamped: GVUPR06MB10717
+x-ms-exchange-crosstenant-id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+x-ms-exchange-crosstenant-fromentityheader: Hosted
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 5ba2c220-8f3e-45b3-5bd9-08de6888cc6b
+x-ms-exchange-transport-endtoendlatency: 00:00:03.1690848
+x-ms-traffictypediagnostic:
+	DU0PR06MB8552:EE_|GVUPR06MB10717:EE_|AS8PR06MB7301:EE_
+x-ms-exchange-crosstenant-network-message-id:
+	5ba2c220-8f3e-45b3-5bd9-08de6888cc6b
+x-ms-exchange-crosstenant-mailboxtype: HOSTED
+x-ms-exchange-crosstenant-userprincipalname:
+	wjHrZp+Hyd6kw6MTl2/UF/6h+EHu8f+IH0FFn81VHV1r9pj07BZwbrZyKRyDCu4lI9Cwhfm9bAzQBIgvd9+yEfId1eUOcNERuKSpB0vEaHCm2tJAsEk6Uyp+B8u6iefp
+x-ms-exchange-processed-by-bccfoldering: 15.20.9587.013
+x-ms-exchange-crosstenant-authsource: DU0PR06MB8552.eurprd06.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Internal
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910005)(944506478)(944626604)(920097)(425001)(930201)(20251009159)(140003);
+X-Microsoft-Antispam-Message-Info:
+	EMK0BtPdu0O8uptDuuXiVV7Q/25mrZvnTMp61BY4bIOhZGJIdaWGEweS2ZQNgrjm0CXE81Hn0YUk38QD+I3B8Aw3n68uRaId6mJPWm3vqtnBRcDn0g81vBSqNVvEO4i72Abss7JZfd8pojiRvNkL0J17+F+4LXsuBjfcLEFQhq7G22GK66KKNrtkQ48/hySCp7kKHNHJfoV1CyOlW3YZE+uMIv59TdoOFTBLLoC7v2K5w+svjSIJCBdy0zTeRi9CmYeoIkpfkukI1RQ5ZruZWD2MSsra4FoGMMjyuHcjgvPOdmE3hqtI8V3tbxCYLxbjZ2QJqf8CzX8e5mDWilZtNmDoNyY4nYm1lspqBYY3sc8TeyDGUHxcOxyC3d0iak1+oIslNXTo4KlEreENsvdGkHlEjggMV2nW0izpS4MeFQacATTgLHkxWX5aM1EXV0cMSTWgyyH7rpgotQSfI70wOM7kFGXuDV/BrPOq0hj/xwNG/RkdkYs8HtBFwKOXZDRpoP7JjDQMbPmvzeYfOEDpLarvqrnLAsJmGJy4d0PT4HZeVpgtd3KF0Obx4RPcff/B+6B+mY7AOljqcCWmY0wEvHaXdk2CQIkW1d8dcn5kSoV6gReOXEaXidTBj08G7giNXQk1DIuiVXczI+fkQ8YzoxARFT+9jCS1SHV75w1NoJeQrd3bcvaZHkyiQAI/RnREzbokEqSDDUBau40ezNhnjRM7YR32FcwQhaF1qaMeZ1ZqC5NLUZ5X1sIkTHOxlUM6WeDjukHN/FbenMwX9LjZw7nsrvjx1HiYZVZ0aD1/0GDioGPziB1uzfp0BptlLZmiT5dwRMDyw7Y4YhKx8SQESA==
+Content-Type: multipart/related;
+	boundary="_004_DU0PR06MB8552A11040E0C9B40ADC2D0BD362ADU0PR06MB8552eurp_";
+	type="multipart/alternative"
+MIME-Version: 1.0
+
+--_004_DU0PR06MB8552A11040E0C9B40ADC2D0BD362ADU0PR06MB8552eurp_
+Content-Type: multipart/alternative;
+	boundary="_000_DU0PR06MB8552A11040E0C9B40ADC2D0BD362ADU0PR06MB8552eurp_"
+
+--_000_DU0PR06MB8552A11040E0C9B40ADC2D0BD362ADU0PR06MB8552eurp_
+Content-Type: text/plain; charset="us-ascii"
+
+Sorry for ghosting you - this is my busy teaching term.
+
+I still have some ideas - there is the journal of labour economics and possibly the journal of population economics.
+
+I'll resubmit to these when I have the chance to check the required formating details.
+
+Hope all goes well with you
+
+Best wishes
+Caroline
+
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (FHEA)
+
+Departmental External Engagement Director, Operations Management and Information Systems
+
+
+
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk<http://nottingham.ac.uk/>
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+Follow us
+
+Facebook.com/UniofNottingham<http://facebook.com/TheUniofNottingham>
+
+Twitter.com/UniofNottingham<http://twitter.com/UniofNottingham>
+
+Youtube.com/nottmuniversity<http://youtube.com/nottmuniversity>
+
+Instagram.com/uniofnottingham<http://instagram.com/uniofnottingham>
+
+Linkedin.com/company/university-of-nottingham<http://linkedin.com/company/university-of-nottingham>
+
+F<http://www.foursquare.com/uniofnottingham>oursquare.com/uniofnottingham<http://www.foursquare.com/uniofnottingham>
+
+
+
+[cid:657a4d48-f587-439a-99e3-f66fcdf61346]<https://outlook.office.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&ep=bwmEmailSignature>
+Book time to meet with me<https://outlook.office.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&ep=bwmEmailSignature>
+________________________________
+From: Scott Moser (staff) <Scott.Moser@nottingham.ac.uk>
+Sent: 01 February 2026 14:32
+To: Caroline Emberson (staff) <Caroline.Emberson@nottingham.ac.uk>
+Subject: FW: Decision on manuscript: 5552682
+
+UG!  Why can we not get this thing even considered?!
+Applied stats journal?
+
+
+Best,
+
+Scott
+
+
+
+
+
+Dr Scott Moser
+
+Associate Professor
+
+School of Politics and International Relations
+
+
+
+Faculty of Social Science
+University of Nottingham
+
+C18, Law and Social Science (LaSS)
+
+University Park
+
+Nottingham, NG7 2RD
+
++44 (0) 115  9514998| scott.moser@nottingham.ac.uk<mailto:scott.moser@nottingham.ac.uk>
+
+
+
+From: British Journal of Industrial Relations <bjiredoffice@wiley.com>
+Date: Sunday, 1 February 2026 at 09:55
+To: Caroline Emberson (staff) <Caroline.Emberson@nottingham.ac.uk>
+Cc: Scott Moser (staff) <Scott.Moser@nottingham.ac.uk>
+Subject: Decision on manuscript: 5552682
+
+You don't often get email from bjiredoffice@wiley.com. Learn why this is important<https://aka.ms/LearnAboutSenderIdentification>
+[https://review.wiley.com/assets/wiley/email-logo.png]
+Dear Dr. Caroline Emberson ,
+
+Thank you for submitting your manuscript "Quantifying hidden exploitation: Dual method prevalence estimates of labour exploitation among domestic workers in the United Kingdom" to our journal. After careful assessment, we have made the decision not to consider your manuscript for publication in British Journal of Industrial Relations. In this case the paper is underdeveloped theoretically for a general IR journal like BJIR and is better suited perhaps to a more specific UK focused journal like IRJ or similar.
+We appreciate you considering British Journal of Industrial Relations for the publication of your research.
+Kind regards,
+J. Ryan Lamare
+British Journal of Industrial Relations
+You can also find free resources for writing and preparing your manuscript <https://u51250877.ct.sendgrid.net/ls/click?upn=u001.gfcv7tnN320fH9LcH8Twv3WshQlBD47eTM-2BNcPtHMjhd2HoVzlhOdNL-2FL8D3gBm-2F9IDfT0EOVG8yYM406BtorewJ10lU-2B-2FYEF7pmEnKGbrdt5wfDuYj1cRGghiu6Jb2lRFlL1lzTdJV6L1i2rFFdNYj3JiVt00c2l1eSNId7guQOy4AeM9ugCW2kWQgHBl0Lkl17TnpuZP69HCL6JJFkr9ENHKplAhzSspP2miwmcV4-3DMO_m_J0t3AyzaM4tXOmzaGF1QHoEhZ3Wh0wXOQfDb0kMOse-2FzQ7W9Ni-2FOkpqVEnPr0JhB0FOYuufirkJj6yPg4v6tYJ8nOV91d05B6SrMFxy-2BvPr0skyYTRE9sN8s9Ar8mTiPLBuBbwAwxMAUa8-2FgaXbRXzDJKaWM-2FbgqNgvn67xCNKfFrNbzlPc-2FsHXshxCm8ZGEcx7Sxl6lUpft0lSh2p9fbXQScUn8Bi2cCF9QfTV21iQHU3EYwF6FBkczFvtdS35FteCeVYwce1QK5K8gfAad9qip-2F0R7qAFNRAKM4BWS-2BGAXLX5IDLkCVxze2keoiXsC8r5WGUSGEI5dbHvUKSyWhTn41kPJWRcjSbQYD2RfRSMdP1L3YX37FdI8dc1qgz0RwxIkHpaRxIkeuUVlk-2FKKbX7neGzI3MCIrNm8leVDDPA-3D> through Wiley Author Services.
+This email was sent to caroline.emberson@nottingham.ac.uk by John Wiley & Sons, Inc.
+111 River Street, Hoboken, NJ 07030 USA. 877-762-2974.
+For more information, please see our privacy policy<https://u51250877.ct.sendgrid.net/ls/click?upn=u001.gfcv7tnN320fH9LcH8TwvwWxAtS7BEUU1-2BD77L4tsq5H-2BpTqDlh3XFdeJRCta7EQH-4c_J0t3AyzaM4tXOmzaGF1QHoEhZ3Wh0wXOQfDb0kMOse-2FzQ7W9Ni-2FOkpqVEnPr0JhB0FOYuufirkJj6yPg4v6tYJ8nOV91d05B6SrMFxy-2BvPr0skyYTRE9sN8s9Ar8mTiPLBuBbwAwxMAUa8-2FgaXbRXzDJKaWM-2FbgqNgvn67xCNKcECiu6emPYXwg-2B0WAuKqeydULWjW7r0E-2F8PCkXazsx1-2Bl-2FewQsmIDfYriHjkDiHaHZGiOsZVUUodGkMQvkwOhl3OWPsR8Z4vXh1tkS8Ywm0TbDAfExOunK-2FXCFGFd8kQGIdiad9G3HXi-2BdxM-2FZn6V4ivBXlmHXc-2Bp3ANFl2kD6-2FdYPHE80-2FonbwCnLln3UQBKOjdoCPEnH2rS072WO7Hd0moUj-2FPmMA7Horw-2B-2Fl100k-2FfrL9bXNe7LcKond7nG5E8-3D>.
+
+
+--_000_DU0PR06MB8552A11040E0C9B40ADC2D0BD362ADU0PR06MB8552eurp_
+Content-Type: text/html; charset="us-ascii"
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+<style type="text/css" style="display:none;"> P {margin-top:0;margin-bottom:0;} </style>
+</head>
+<body dir="ltr">
+<div style="font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class="elementToProof">
+Sorry for ghosting you - this is my busy teaching term.</div>
+<div style="font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class="elementToProof">
+<br>
+</div>
+<div style="font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class="elementToProof">
+I still have some ideas - there is the journal of labour economics and possibly the journal of population economics.</div>
+<div style="font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class="elementToProof">
+<br>
+</div>
+<div style="font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class="elementToProof">
+I'll resubmit to these when I have the chance to check the required formating details.</div>
+<div style="font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class="elementToProof">
+<br>
+</div>
+<div style="font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class="elementToProof">
+Hope all goes well with you</div>
+<div style="font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class="elementToProof">
+<br>
+</div>
+<div style="font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class="elementToProof">
+Best wishes</div>
+<div style="font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class="elementToProof">
+Caroline</div>
+<div class="elementToProof" id="Signature">
+<div style="font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class="elementToProof">
+<br>
+</div>
+<div style="font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" class="elementToProof">
+<br>
+</div>
+<div class="elementToProof" id="x_divtagdefaultwrapper">
+<p style="direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;" class="elementToProof">
+<span style="font-family: Arial, sans-serif; color: rgb(0, 155, 189);"><b>Dr Caroline Emberson (preferred pronouns she/her)</b></span></p>
+<p style="direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;" class="elementToProof">
+<span style="font-family: Arial, sans-serif; color: rgb(19, 27, 87);"><b>Assistant Professor in Operations Management (FHEA)</b></span></p>
+<p style="direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;" class="elementToProof">
+<span style="font-family: Arial, sans-serif; color: rgb(19, 27, 87);"><b>Departmental External Engagement Director, Operations Management and Information Systems</b></span></p>
+<p style="direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;" class="elementToProof">
+<span style="font-family: Arial, sans-serif; color: rgb(19, 27, 87);"><b><br>
+</b></span></p>
+<p style="direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;" class="elementToProof">
+<span style="font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 0);">&nbsp;</span></p>
+<p style="direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;" class="elementToProof">
+<span style="font-family: Arial, sans-serif; font-size: 9pt; color: rgb(19, 27, 87);">Nottingham University Business School OMIS/ Faculty of Social Science<br>
+University of Nottingham</span></p>
+<p style="direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;" class="elementToProof">
+<span style="font-family: Arial, sans-serif; font-size: 9pt; color: rgb(19, 27, 87);">B12,Si Yuan Building</span></p>
+<p style="direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;" class="elementToProof">
+<span style="font-family: Arial, sans-serif; font-size: 9pt; color: rgb(19, 27, 87);">Jubilee Campus</span></p>
+<p style="direction: ltr; margin-top: 0px; margin-bottom: 0px;" class="elementToProof">
+<span style="font-family: Arial, sans-serif; font-size: 9pt; color: rgb(19, 27, 87);">Nottingham, NG8 1BB&nbsp;</span></p>
+<p style="direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;" class="elementToProof">
+<span style="font-family: Arial, sans-serif; font-size: 9pt; color: rgb(19, 27, 87);">+44 (0) 115 8466631<b>&nbsp;</b></span><span style="font-family: Calibri, sans-serif; font-size: 9pt; color: rgb(19, 27, 87);"><b>|
+</b></span><span style="font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 0);"><a style="margin-top: 0px; margin-bottom: 0px;" target="_blank" href="http://nottingham.ac.uk/">caroline.emberson@nottingham.ac.uk</a></span></p>
+<p style="direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;" class="elementToProof">
+<span style="color: rgb(0, 0, 0);"><br>
+</span></p>
+<p style="direction: ltr; margin-top: 0px; margin-bottom: 0px;" class="elementToProof">
+<span style="font-family: Arial, sans-serif; font-size: 12px; color: rgb(0, 0, 0);">Please note that my working days are Monday, Tuesday, Thursday and Friday</span></p>
+<p style="direction: ltr; margin-top: 0px; margin-bottom: 0px;" class="elementToProof">
+<span style="font-family: Arial, sans-serif; font-size: 12px; color: rgb(0, 0, 0);"><br>
+</span></p>
+<p style="direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;" class="elementToProof">
+<span style="font-family: Georgia, serif; font-size: 9pt; color: rgb(21, 118, 158);"><b>Follow us</b></span></p>
+<p style="direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;" class="elementToProof">
+<span style="font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u><a style="color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;" href="http://facebook.com/TheUniofNottingham">Facebook.com/UniofNottingham</a></u></span></p>
+<p style="direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;" class="elementToProof">
+<span style="font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u><a style="color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;" href="http://twitter.com/UniofNottingham">Twitter.com/UniofNottingham</a></u></span></p>
+<p style="direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;" class="elementToProof">
+<span style="font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u><a style="color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;" href="http://youtube.com/nottmuniversity">Youtube.com/nottmuniversity</a></u></span></p>
+<p style="direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;" class="elementToProof">
+<span style="font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u><a style="color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;" href="http://instagram.com/uniofnottingham">Instagram.com/uniofnottingham</a></u></span></p>
+<p style="direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;" class="elementToProof">
+<span style="font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u><a style="color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;" href="http://linkedin.com/company/university-of-nottingham">Linkedin.com/company/university-of-nottingham</a></u></span></p>
+<p style="direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;" class="elementToProof">
+<span style="font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u><a style="color: rgb(0, 0, 233); margin-top: 0px; margin-bottom: 0px;" href="http://www.foursquare.com/uniofnottingham">F</a><a style="margin-top: 0px; margin-bottom: 0px;" href="http://www.foursquare.com/uniofnottingham">oursquare.com/uniofnottingham</a></u></span></p>
+<p style="direction: ltr; margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;" class="elementToProof">
+<span style="font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0, 0, 233);"><u>&nbsp;</u></span></p>
+<div style="direction: ltr; color: rgb(0, 0, 0);" class="elementToProof"><br>
+</div>
+</div>
+<table id="x_pbpsiglinktable">
+<tbody>
+<tr>
+<td><a href="https://outlook.office.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=bwmEmailSignature"><img data-outlook-trace="F:1|T:1" src="cid:657a4d48-f587-439a-99e3-f66fcdf61346"></a></td>
+<td></td>
+<td>
+<div style="color: rgb(0, 120, 212);" class="elementToProof"><a style="color: rgb(0, 120, 212); text-decoration: none;" href="https://outlook.office.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=bwmEmailSignature">Book
+ time to meet with me</a></div>
+</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="appendonsend"></div>
+<hr style="display:inline-block;width:98%" tabindex="-1">
+<div id="divRplyFwdMsg" dir="ltr"><font face="Calibri, sans-serif" style="font-size:11pt" color="#000000"><b>From:</b> Scott Moser (staff) &lt;Scott.Moser@nottingham.ac.uk&gt;<br>
+<b>Sent:</b> 01 February 2026 14:32<br>
+<b>To:</b> Caroline Emberson (staff) &lt;Caroline.Emberson@nottingham.ac.uk&gt;<br>
+<b>Subject:</b> FW: Decision on manuscript: 5552682</font>
+<div>&nbsp;</div>
+</div>
+<div>
+<div style="direction:ltr; line-height:20px; font-family:Arial,Helvetica,Verdana,sans-serif; font-size:12pt; color:rgb(0,0,0)">
+UG! &nbsp;Why can we not get this thing even considered?!</div>
+<div style="direction:ltr; line-height:20px; font-family:Arial,Helvetica,Verdana,sans-serif; font-size:12pt; color:rgb(0,0,0)">
+Applied stats journal?</div>
+<div style="direction:ltr; line-height:20px; font-family:Arial,Helvetica,Verdana,sans-serif; font-size:12pt; color:rgb(0,0,0)">
+<br>
+</div>
+<div id="x_ms-outlook-mobile-signature">
+<p style="margin:0cm 0cm 0.0001pt; font-family:Calibri,sans-serif; font-size:11pt">
+<span style="font-family:Aptos; font-size:12pt; color:black">Best,</span></p>
+<p style="margin:0cm 0cm 0.0001pt; font-family:Calibri,sans-serif; font-size:11pt">
+<span style="font-family:Aptos; font-size:12pt; color:black">Scott</span></p>
+<p style="margin:0cm 0cm 0.0001pt; font-family:Calibri,sans-serif; font-size:11pt">
+<span style="font-family:Aptos; font-size:12pt; color:black">&nbsp;</span></p>
+<p style="margin:0cm 0cm 0.0001pt; font-family:Calibri,sans-serif; font-size:11pt">
+<span style="font-family:Aptos; font-size:12pt; color:black">&nbsp;</span></p>
+<p style="margin:0cm 0cm 0.0001pt"><span style="font-family:Arial,sans-serif; font-size:12pt; color:rgb(0,155,189)"><b>Dr Scott Moser</b></span></p>
+<p style="margin:0cm 0cm 0.0001pt"><span style="font-family:Arial,sans-serif; font-size:12pt; color:rgb(19,27,87)"><b>Associate Professor</b></span></p>
+<p style="margin:0cm 0cm 0.0001pt"><span style="font-family:Arial,sans-serif; font-size:12pt; color:rgb(19,27,87)"><b>School of Politics and International Relations</b></span></p>
+<p style="margin:0cm 0cm 0.0001pt"><span style="font-family:Arial,sans-serif; font-size:9pt; color:black">&nbsp;</span></p>
+<p style="margin:0cm 0cm 0.0001pt"><span style="font-family:Arial,sans-serif; font-size:9pt; color:rgb(19,27,87)">Faculty of Social Science<br>
+University of Nottingham</span></p>
+<p style="margin:0cm 0cm 0.0001pt"><span style="font-family:Arial,sans-serif; font-size:9pt; color:rgb(19,27,87)">C18, Law and Social Science (LaSS)</span></p>
+<p style="margin:0cm 0cm 0.0001pt"><span style="font-family:Arial,sans-serif; font-size:9pt; color:rgb(19,27,87)">University Park</span></p>
+<p style="margin:0cm 0cm 0.0001pt"><span style="font-family:Arial,sans-serif; font-size:9pt; color:rgb(19,27,87)">Nottingham, NG7 2RD</span></p>
+<p style="margin:0cm 0cm 0.0001pt"><span style="font-family:Arial,sans-serif; font-size:9pt; color:rgb(19,27,87)">+44 (0) 115 &nbsp;9514998</span><span style="font-size:9pt; color:rgb(19,27,87)"><b>|
+</b></span><span style="font-size:9pt; color:rgb(5,99,193)"><b><u><a href="mailto:scott.moser@nottingham.ac.uk" data-outlook-id="01e44949-6d5d-4f50-a9f1-038873ec8c9b" style="color:rgb(5,99,193); margin-top:0px; margin-bottom:0px">scott.moser@nottingham.ac.uk</a></u></b></span></p>
+<p style="margin:0cm 0cm 0.0001pt; font-family:Calibri,sans-serif; font-size:11pt">
+&nbsp;</p>
+</div>
+<div id="x_mail-editor-reference-message-container" style="line-height:20px; font-family:Arial,Helvetica,Verdana,sans-serif!important">
+<div class="x_ms-outlook-mobile-reference-message x_skipProofing" style="direction:ltr; line-height:20px; font-family:Arial,Helvetica,Verdana,sans-serif">
+<span style="line-height:20px">
+<meta content="IE=edge" style="line-height:20px; font-family:Arial,Helvetica,Verdana,sans-serif!important">
+<meta name="viewport" content="width=device-width, initial-scale=1" style="line-height:20px; font-family:Arial,Helvetica,Verdana,sans-serif!important">
+</span></div>
+<div class="x_ms-outlook-mobile-reference-message x_skipProofing" style="text-align:left; line-height:20px; padding:3pt 0in 0in; border-width:1pt medium medium; border-style:solid none none; border-color:rgb(181,196,223) currentcolor currentcolor; font-family:Arial,Helvetica,Verdana,sans-serif; font-size:12pt; color:black">
+<span style="line-height:20px"><b>From: </b>British Journal of Industrial Relations &lt;bjiredoffice@wiley.com&gt;<br>
+<b>Date: </b>Sunday, 1 February 2026 at 09:55<br>
+<b>To: </b>Caroline Emberson (staff) &lt;Caroline.Emberson@nottingham.ac.uk&gt;<br>
+<b>Cc: </b>Scott Moser (staff) &lt;Scott.Moser@nottingham.ac.uk&gt;<br>
+<b>Subject: </b>Decision on manuscript: 5552682<br>
+<br>
+</span></div>
+<table class="x_ms-outlook-mobile-reference-message x_skipProofing" cellspacing="0" cellpadding="0" style="direction:ltr; text-indent:revert; line-height:revert; white-space:revert; text-transform:revert; background-color:revert; display:table; margin:revert; width:100%; height:revert; table-layout:fixed; color:revert; box-sizing:border-box; border-collapse:collapse; border-spacing:0px">
+<tbody>
+<tr style="background-color:revert">
+<td class="x_ms-outlook-mobile-reference-message x_skipProofing" style="direction:ltr; text-indent:revert; line-height:revert; white-space:revert; text-transform:revert; border-width:revert; border-style:revert; border-color:revert; background-color:rgb(166,166,166); padding:7px 2px; word-break:revert; color:revert; width:0px; height:revert">
+</td>
+<td class="x_ms-outlook-mobile-reference-message x_skipProofing" style="direction:ltr; text-align:left; text-indent:revert; line-height:revert; white-space:revert; text-transform:revert; border-width:revert; border-style:revert; border-color:revert; background-color:rgb(234,234,234); padding:7px 5px 7px 15px; word-break:revert; color:rgb(33,33,33); width:100%; height:revert">
+<div class="x_ms-outlook-mobile-reference-message x_skipProofing" style="direction:ltr; text-align:left; text-indent:revert; line-height:revert; white-space:revert; text-transform:revert; font-family:Arial,Helvetica,Verdana,sans-serif; color:revert">
+<span style="letter-spacing:revert; background-color:revert; line-height:revert; text-transform:revert">You don't often get email from bjiredoffice@wiley.com.
+</span><span style="letter-spacing:revert; background-color:revert; line-height:20px; text-transform:revert"><a href="https://aka.ms/LearnAboutSenderIdentification" data-outlook-id="025de1c8-a684-4bd8-a352-c97da904d603" style="color:revert; display:revert; background-color:revert">Learn
+ why this is important</a></span></div>
+</td>
+<td class="x_ms-outlook-mobile-reference-message x_skipProofing" style="direction:ltr; text-align:left; text-indent:revert; line-height:revert; white-space:revert; text-transform:revert; border-width:revert; border-style:revert; border-color:revert; background-color:rgb(234,234,234); padding:7px 5px; word-break:revert; color:rgb(33,33,33); width:75px; height:revert">
+</td>
+</tr>
+</tbody>
+</table>
+<div style="background-color:rgb(244,244,244)">
+<div style="margin:0px auto; max-width:600px">
+<table class="x_ms-outlook-mobile-reference-message x_skipProofing" align="center" role="presentation" cellspacing="0" cellpadding="0" style="direction:ltr; line-height:20px; width:100%; box-sizing:border-box; border-collapse:collapse; border-spacing:0px">
+<tbody>
+<tr>
+<td class="x_ms-outlook-mobile-reference-message x_skipProofing" style="direction:ltr; text-align:center; line-height:20px; padding-top:20px; padding-bottom:20px">
+<div style="width:100%; display:inline-block">
+<table class="x_mj-column-per-100 x_mj-outlook-group-fix" role="presentation" cellspacing="0" cellpadding="0" style="direction:ltr; text-align:left; line-height:20px; width:100%; box-sizing:border-box; border-collapse:collapse; border-spacing:0px">
+<tbody>
+<tr>
+<td class="x_mj-column-per-100 x_mj-outlook-group-fix" align="center" style="direction:ltr; line-height:20px; padding:10px 25px; word-break:break-word">
+<table class="x_mj-column-per-100 x_mj-outlook-group-fix" role="presentation" cellspacing="0" cellpadding="0" style="direction:ltr; line-height:20px; box-sizing:border-box; border-collapse:collapse; border-spacing:0px">
+<tbody>
+<tr>
+<td class="x_mj-column-per-100 x_mj-outlook-group-fix" style="direction:ltr; line-height:20px; width:100px">
+<span style="font-family:Arial,Helvetica,Verdana,sans-serif; font-size:13px; line-height:20px"><img style="width:100%; height:auto; display:block; outline:currentcolor" src="https://review.wiley.com/assets/wiley/email-logo.png"></span></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background-color:rgb(255,255,255); margin:0px auto; max-width:600px">
+<table class="x_ms-outlook-mobile-reference-message x_skipProofing" align="center" role="presentation" cellspacing="0" cellpadding="0" style="direction:ltr; line-height:20px; background-color:rgb(255,255,255); width:100%; box-sizing:border-box; border-collapse:collapse; border-spacing:0px">
+<tbody>
+<tr>
+<td class="x_ms-outlook-mobile-reference-message x_skipProofing" style="direction:ltr; text-align:center; line-height:20px; border-width:1px; border-style:solid; border-color:rgb(244,244,244); padding:25px">
+<div style="margin:0px auto; max-width:548px">
+<table class="x_ms-outlook-mobile-reference-message x_skipProofing" align="center" role="presentation" cellspacing="0" cellpadding="0" style="direction:ltr; line-height:20px; width:100%; box-sizing:border-box; border-collapse:collapse; border-spacing:0px">
+<tbody>
+<tr>
+<td class="x_ms-outlook-mobile-reference-message x_skipProofing" style="direction:ltr; text-align:center; line-height:20px; padding-top:20px; padding-bottom:20px">
+<div style="width:100%; display:inline-block">
+<table class="x_mj-column-per-100 x_mj-outlook-group-fix" role="presentation" cellspacing="0" cellpadding="0" style="direction:ltr; text-align:left; line-height:20px; width:100%; box-sizing:border-box; border-collapse:collapse; border-spacing:0px">
+<tbody>
+<tr>
+<td class="x_editable-area" align="left" style="direction:ltr; line-height:20px; padding:10px 25px; word-break:break-word">
+<div class="x_editable-area" style="direction:ltr; text-align:left; line-height:20px; font-family:Arial,Helvetica,Verdana,sans-serif; font-size:14px; color:rgb(79,79,79)">
+<span style="line-height:20px">Dear Dr. Caroline Emberson ,</span></div>
+<div class="x_editable-area" style="direction:ltr; text-align:left; line-height:20px; font-family:Arial,Helvetica,Verdana,sans-serif; font-size:14px; color:rgb(79,79,79)">
+<span style="line-height:20px"><br>
+</span></div>
+<div class="x_editable-area" style="direction:ltr; text-align:left; line-height:20px; font-family:Arial,Helvetica,Verdana,sans-serif; font-size:14px; color:rgb(79,79,79)">
+<span style="line-height:20px">Thank you for submitting your manuscript &quot;Quantifying hidden exploitation: Dual method prevalence estimates of labour exploitation among domestic workers in the United Kingdom&quot; to our journal. After careful assessment, we have
+ made the decision not to consider your manuscript for publication in British Journal of Industrial Relations. In this case the paper is underdeveloped theoretically for a general IR journal like BJIR and is better suited perhaps to a more specific UK focused
+ journal like IRJ or similar.</span></div>
+</td>
+</tr>
+<tr>
+<td class="x_non-editable-text" align="left" style="direction:ltr; line-height:20px; padding:10px 25px; word-break:break-word; color:rgb(79,79,79)">
+<div class="x_non-editable-text" style="direction:ltr; text-align:left; line-height:20px; font-family:Arial,Helvetica,Verdana,sans-serif; font-size:14px; color:rgb(79,79,79)">
+<span style="line-height:20px">We appreciate you considering&nbsp;British Journal of Industrial Relations for the publication of your research.</span></div>
+</td>
+</tr>
+<tr>
+<td class="x_editable-area" align="left" style="direction:ltr; line-height:20px; padding:10px 25px; word-break:break-word">
+<div class="x_editable-area" style="direction:ltr; text-align:left; line-height:20px; font-family:Arial,Helvetica,Verdana,sans-serif; font-size:14px; color:rgb(79,79,79)">
+<span style="line-height:20px">Kind regards,<br>
+J. Ryan Lamare<br>
+British Journal of Industrial Relations</span></div>
+</td>
+</tr>
+<tr>
+<td class="x_mj-column-per-100 x_mj-outlook-group-fix" align="center" style="direction:ltr; line-height:20px; padding:10px 25px; word-break:break-word">
+</td>
+</tr>
+<tr>
+<td class="x_non-editable-text" align="left" style="direction:ltr; line-height:20px; padding:10px 25px; word-break:break-word; color:rgb(79,79,79)">
+<div class="x_non-editable-text" style="direction:ltr; text-align:left; line-height:20px; font-family:Arial,Helvetica,Verdana,sans-serif; font-size:14px; color:rgb(79,79,79)">
+<span style="line-height:20px">You can also find <a href="https://u51250877.ct.sendgrid.net/ls/click?upn=u001.gfcv7tnN320fH9LcH8Twv3WshQlBD47eTM-2BNcPtHMjhd2HoVzlhOdNL-2FL8D3gBm-2F9IDfT0EOVG8yYM406BtorewJ10lU-2B-2FYEF7pmEnKGbrdt5wfDuYj1cRGghiu6Jb2lRFlL1lzTdJV6L1i2rFFdNYj3JiVt00c2l1eSNId7guQOy4AeM9ugCW2kWQgHBl0Lkl17TnpuZP69HCL6JJFkr9ENHKplAhzSspP2miwmcV4-3DMO_m_J0t3AyzaM4tXOmzaGF1QHoEhZ3Wh0wXOQfDb0kMOse-2FzQ7W9Ni-2FOkpqVEnPr0JhB0FOYuufirkJj6yPg4v6tYJ8nOV91d05B6SrMFxy-2BvPr0skyYTRE9sN8s9Ar8mTiPLBuBbwAwxMAUa8-2FgaXbRXzDJKaWM-2FbgqNgvn67xCNKfFrNbzlPc-2FsHXshxCm8ZGEcx7Sxl6lUpft0lSh2p9fbXQScUn8Bi2cCF9QfTV21iQHU3EYwF6FBkczFvtdS35FteCeVYwce1QK5K8gfAad9qip-2F0R7qAFNRAKM4BWS-2BGAXLX5IDLkCVxze2keoiXsC8r5WGUSGEI5dbHvUKSyWhTn41kPJWRcjSbQYD2RfRSMdP1L3YX37FdI8dc1qgz0RwxIkHpaRxIkeuUVlk-2FKKbX7neGzI3MCIrNm8leVDDPA-3D" id="x_i0kjv" class="x_link" data-outlook-id="9e857c11-938b-4c7e-89a3-d64dab40a5b7">
+free resources for writing and preparing your manuscript </a>through Wiley Author Services.</span></div>
+</td>
+</tr>
+<tr>
+<td class="x_editable-area" align="left" style="direction:ltr; line-height:20px; padding:10px 25px; word-break:break-word">
+</td>
+</tr>
+<tr>
+<td class="x_non-editable-text" align="left" style="direction:ltr; line-height:20px; padding:10px 25px; word-break:break-word; color:rgb(79,79,79)">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background-color:rgb(244,244,244); margin:0px auto; max-width:600px">
+<table class="x_ms-outlook-mobile-reference-message x_skipProofing" align="center" role="presentation" cellspacing="0" cellpadding="0" style="direction:ltr; line-height:20px; background-color:rgb(244,244,244); width:100%; box-sizing:border-box; border-collapse:collapse; border-spacing:0px">
+<tbody>
+<tr>
+<td class="x_ms-outlook-mobile-reference-message x_skipProofing" style="direction:ltr; text-align:center; line-height:20px; padding-top:20px; padding-bottom:20px">
+<div style="width:100%; display:inline-block">
+<table class="x_mj-column-per-100 x_mj-outlook-group-fix" role="presentation" cellspacing="0" cellpadding="0" style="direction:ltr; text-align:left; line-height:20px; width:100%; box-sizing:border-box; border-collapse:collapse; border-spacing:0px">
+<tbody>
+<tr>
+<td class="x_mj-column-per-100 x_mj-outlook-group-fix" align="center" style="direction:ltr; line-height:20px; padding:10px 25px; word-break:break-word">
+<div class="x_mj-column-per-100 x_mj-outlook-group-fix" style="direction:ltr; text-align:center; line-height:20px; font-family:Arial,Helvetica,Verdana,sans-serif; font-size:12px; color:rgb(88,105,113)">
+<span style="line-height:20px">This email was sent to caroline.emberson@nottingham.ac.uk by John Wiley &amp; Sons, Inc.<br>
+111 River Street, Hoboken, NJ 07030 USA. 877-762-2974.<br>
+For more information, please see our <a href="https://u51250877.ct.sendgrid.net/ls/click?upn=u001.gfcv7tnN320fH9LcH8TwvwWxAtS7BEUU1-2BD77L4tsq5H-2BpTqDlh3XFdeJRCta7EQH-4c_J0t3AyzaM4tXOmzaGF1QHoEhZ3Wh0wXOQfDb0kMOse-2FzQ7W9Ni-2FOkpqVEnPr0JhB0FOYuufirkJj6yPg4v6tYJ8nOV91d05B6SrMFxy-2BvPr0skyYTRE9sN8s9Ar8mTiPLBuBbwAwxMAUa8-2FgaXbRXzDJKaWM-2FbgqNgvn67xCNKcECiu6emPYXwg-2B0WAuKqeydULWjW7r0E-2F8PCkXazsx1-2Bl-2FewQsmIDfYriHjkDiHaHZGiOsZVUUodGkMQvkwOhl3OWPsR8Z4vXh1tkS8Ywm0TbDAfExOunK-2FXCFGFd8kQGIdiad9G3HXi-2BdxM-2FZn6V4ivBXlmHXc-2Bp3ANFl2kD6-2FdYPHE80-2FonbwCnLln3UQBKOjdoCPEnH2rS072WO7Hd0moUj-2FPmMA7Horw-2B-2Fl100k-2FfrL9bXNe7LcKond7nG5E8-3D" data-outlook-id="1c0f272a-7bea-414f-a5ea-96d6f2dbe57a">
+privacy policy</a>.</span></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="x_ms-outlook-mobile-reference-message x_skipProofing" style="direction:ltr; line-height:20px; font-family:Arial,Helvetica,Verdana,sans-serif">
+<span style="line-height:20px"><img width="1" height="1" style="width:1px; height:1px; margin:0px; outline:currentcolor" src="https://u51250877.ct.sendgrid.net/wf/open?upn=u001.zxn6UjfPdUia0YK7kqkObc6-2FGOoIHCJCh12zOHZKhePSU4ntReMOrS0fmbS3WZq9VpVaGz3z0Ub5yIN-2BOktmCL-2FDkV9sK0fYyko84KykL7k13VQsDUwYO6pts5FEPBRzUH0GQ8LwAWgvb9nbMxHdwRkScJ-2F8CyAy6PN3ZUKh66-2Fzwvy0VrDJ-2FVAj38hz0f2YohwYU0l2J7nc6RkbMOEqnlTqRLIJ-2BzbKnhCKfB81qcZyHN41DkcKBsT9z-2BEdc-2FlbKqr-2BA-2BtqCi16UM2xu0zSA96RnNdvJiCULDyJKNzueMYv8h95nyuGzXWnQ8bW2VDQYe8TgudHrpVsMCoWr0NFLKJUJCgOEEA2NtJtMFZIAUp8eWRAYXlKZaIqFKiA88kvW1sgfJcps8b1MaHmUwNagxfttdYzMFS-2Fx4FuPhe1WTLUNZZ4rAjW1GC2E9aN5C1W"></span></div>
+</div>
+</div>
+</body>
+</html>
+
+--_000_DU0PR06MB8552A11040E0C9B40ADC2D0BD362ADU0PR06MB8552eurp_--
+
+--_004_DU0PR06MB8552A11040E0C9B40ADC2D0BD362ADU0PR06MB8552eurp_
+Content-Type: image/png; name="Outlook-mo5kf4b4.png"
+Content-Description: Outlook-mo5kf4b4.png
+Content-Disposition: inline; filename="Outlook-mo5kf4b4.png"; size=821;
+	creation-date="Tue, 10 Feb 2026 09:43:08 GMT";
+	modification-date="Fri, 22 May 2026 17:37:04 GMT"
+Content-ID: <657a4d48-f587-439a-99e3-f66fcdf61346>
+Content-Transfer-Encoding: base64
+
+iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAcpJREFUOE9j
+ZAABr6aJDHqhuQwMDIxgPrHg19d3DLP91Bk+P3sD08IIN2x1hjPDy7NXiDWL4T8nM0NA33wGWRMP
+hg5NJgYGhv8gvYwMFdf/MYAMu3twP9GGISssv/qLYVdzMsP5FYthBv5nmO2pyfDzzVuyDEw/eJ3h
+xNyJDEenNSMMJMskJE2Hp9YxHJ2CZOBUM1GGz5/hAUuS+UVnXjOcXDCJygbOm4TqZUpcGDJjJcPz
+S1eoYyAvrzDD58/vGRgY/iHSYcX1/wykupBXWpghe89reEbY0RjNcGHFMkQsk2pgwYkXDBz84iiR
+16EJzmWghE26C8uv/mZgZGJBM5AZ5HXyDPRo7GMwCCuEG/jj40uGCRYS5LsQpNM6q4TBOLqE4emF
+gwxrs8NRI2WynSTD19cvSErQOBQzMhSdecvw8vophqWxngQNBCWTrBMvMMIPpnF7dQQjA6+UCEP2
+3tcM//7+Zvjx8QNOQydZizFk7bvNwCepgs9iWIHKyGAYEcPALaQEUQwq3mBplQmi5siUBoa0bRcZ
+hBT18Bj4n7QSWlhGmiF19xOcBh6aVEyagSCTQEEUNf8Ag6CcFjyn/Pz8hmF9cQjDg8MHAaiKxp0e
+iZJ4AAAAAElFTkSuQmCC
+
+--_004_DU0PR06MB8552A11040E0C9B40ADC2D0BD362ADU0PR06MB8552eurp_--

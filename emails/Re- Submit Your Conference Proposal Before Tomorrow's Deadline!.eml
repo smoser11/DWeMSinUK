@@ -1,0 +1,1066 @@
+Received: from DB9PR06MB7420.eurprd06.prod.outlook.com (2603:10a6:10:253::24)
+ by AS8PR06MB7301.eurprd06.prod.outlook.com with HTTPS; Tue, 14 Oct 2025
+ 08:13:28 +0000
+Received: from DU0PR06MB8552.eurprd06.prod.outlook.com (2603:10a6:10:35b::8)
+ by DB9PR06MB7420.eurprd06.prod.outlook.com (2603:10a6:10:253::24) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9203.13; Tue, 14 Oct
+ 2025 08:13:27 +0000
+Received: from DU0PR06MB8552.eurprd06.prod.outlook.com
+ ([fe80::29bb:342b:33f4:56a8]) by DU0PR06MB8552.eurprd06.prod.outlook.com
+ ([fe80::29bb:342b:33f4:56a8%3]) with mapi id 15.20.9203.009; Tue, 14 Oct 2025
+ 08:13:27 +0000
+From: "Caroline Emberson (staff)" <Caroline.Emberson@nottingham.ac.uk>
+To: "Scott Moser (staff)" <Scott.Moser@nottingham.ac.uk>
+Subject: Re: Submit Your Conference Proposal Before Tomorrow's Deadline!
+Thread-Topic: Submit Your Conference Proposal Before Tomorrow's Deadline!
+Thread-Index: AQHcNuXn7BRtB/19Gk+pix3k8WggxrS1X8o6gAv2Ojs=
+X-MS-Exchange-MessageSentRepresentingType: 1
+Date: Tue, 14 Oct 2025 08:13:26 +0000
+Message-ID:
+	<DU0PR06MB855215410C31FA4B22D225B8D3EBA@DU0PR06MB8552.eurprd06.prod.outlook.com>
+References: <7ce9dd25-d239-4f35-8c23-d40d1bc904a6@atl1s11mta106.xt.local>
+ <AS8PR06MB73013B3BF772DE712FDD7ADAD4E3A@AS8PR06MB7301.eurprd06.prod.outlook.com>
+In-Reply-To:
+	<AS8PR06MB73013B3BF772DE712FDD7ADAD4E3A@AS8PR06MB7301.eurprd06.prod.outlook.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-GB
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-AuthSource: DU0PR06MB8552.eurprd06.prod.outlook.com
+X-MS-Has-Attach: yes
+X-MS-Exchange-Organization-Network-Message-Id:
+	2115c954-fd94-4526-7c33-08de0af98d77
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+msip_labels:
+x-microsoft-antispam:
+	BCL:0;ARA:13230040|4022899009|366016|39142699007|31052699007|7053199007|8096899003|13003099007|3613699012|4013099003|41050700001;
+x-forefront-antispam-report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR06MB8552.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(4022899009)(366016)(39142699007)(31052699007)(7053199007)(8096899003)(13003099007)(3613699012)(4013099003)(41050700001);DIR:INT;
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nottingham.ac.uk;
+x-ms-exchange-crosstenant-originalarrivaltime: 14 Oct 2025 08:13:26.9525 (UTC)
+x-ms-exchange-transport-crosstenantheadersstamped: DB9PR06MB7420
+x-ms-exchange-crosstenant-id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+x-ms-exchange-crosstenant-fromentityheader: Hosted
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 2115c954-fd94-4526-7c33-08de0af98d77
+x-ms-exchange-transport-endtoendlatency: 00:00:01.7424650
+x-ms-traffictypediagnostic:
+	DU0PR06MB8552:EE_|DB9PR06MB7420:EE_|AS8PR06MB7301:EE_
+x-ms-exchange-crosstenant-network-message-id:
+	2115c954-fd94-4526-7c33-08de0af98d77
+x-ms-exchange-crosstenant-mailboxtype: HOSTED
+x-ms-exchange-crosstenant-userprincipalname:
+	IuAzWAgapcJHXug78RX4tbGF6h9mqtVRbv+eceUQCFOvRU5xv5rkYsVpW+wLN854FUhEa6SHXySGsjx+eWqo6jUv1oNx69lAfF/65QbhcqyFoVGJ7CMnBFBJvT2YZAVC
+x-ms-exchange-processed-by-bccfoldering: 15.20.9203.007
+x-ms-exchange-crosstenant-authsource: DU0PR06MB8552.eurprd06.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Internal
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910005)(944506478)(944626604)(920097)(425001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	USQxivyxmcKoKWDzWSJpYMv2DediJLIj9KU/9oNHZ/jUBAvyGeSusGhkAFX4LdkTDLFdgZGVaB4HXjBvAFH+MTKonUxLZ1jQrRerdbheErs08ABw0mHS9DV1MGRKKpkjnhuyGruKcbRa4q35Z6y8eDWpI6XDRHLeBh+L2FQYTN5lDhXryLN/ITcRBCZu6gLC6J9MMOaeD2rTBnEP/XKVL7deDAVrNg8OA/2zI5IuXK36eHXwIugnUvI00OBMI0L7hgUCT5ES+bfRIzanmKXjnW695YPbKcd/ulkswSyhUyZTjLCti0wKFAfGW1VLIXulaa0VgjWS4PZl97DCvxS27EyxutPepxG8ZgIvFsyrpshsEPMpoT4FvGkMFS8yD9MKbncD+0vOW1v4sAabtRiAOrEq3mm63m/Tv3fr0nIguqH4dYaFQhqYW9tLEesg1a1o5WIqTXplEzDvQjKQyDb40ywEjFI/lnBHFPcgLNflvJXgNj/Yyb3Q4/a0oy6IfRKiB03yfCwblnEfnglWoy0T4zQ7pzQcPLg5fM56AXZwuiZ7TT/EmBZm0ONh9a2FobD4cHnFYwlpw1z6rNXdOfHKpl9RT9ZtnSjBe84o0fsf6roS0vUGPooYkmOV0v+cM4QYWthAGaUzo6qo8Seg7RsibdQmjsvHDeMG1PHoNtwyXpK5oTT5JIhr4lmaMjKLZrfIIEo2JUsl5XIQM5bAK/b7x7UNWlUjQUvtny7BQOeHd5vrEyJYH/56vy9KhJs6k62AQhL6io95R+6LDLlf7cZTB25U2jE6hntPtid4Dgd7PlRq3XKPhlfqKHuM4xf85Qo6FpoWSTkNani5K03KSJ9y6gRntjqLHnKoslyceHfKvmtKqp+Ra8VX0ThIBQRBPAot
+Content-Type: multipart/related;
+	boundary="_004_DU0PR06MB855215410C31FA4B22D225B8D3EBADU0PR06MB8552eurp_";
+	type="multipart/alternative"
+MIME-Version: 1.0
+
+--_004_DU0PR06MB855215410C31FA4B22D225B8D3EBADU0PR06MB8552eurp_
+Content-Type: multipart/alternative;
+	boundary="_000_DU0PR06MB855215410C31FA4B22D225B8D3EBADU0PR06MB8552eurp_"
+
+--_000_DU0PR06MB855215410C31FA4B22D225B8D3EBADU0PR06MB8552eurp_
+Content-Type: text/plain; charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+
+Morning Scott,
+
+Sorry for not replying to this until now.
+
+Not sure whether you went for this on not - I notice that the deadline has =
+passed.
+
+I couldn't get the IJOPM link on pre-prints and conference publications to =
+work, so I would prefer to err on the side of caution and just leave it in =
+the review process for now without submitting/ publishing elsewhere.
+
+If the IJOPM paper is unsuccessful, very happy for you to submit our paper =
+for conferences as long as we don't fall foul of any pre-print publication =
+and conference submission rules for other journals.
+
+Best wishes
+Caroline
+
+
+
+Dr Caroline Emberson (preferred pronouns she/her)
+
+Assistant Professor in Operations Management (FHEA)
+
+
+
+
+Nottingham University Business School OMIS/ Faculty of Social Science
+University of Nottingham
+
+B12,Si Yuan Building
+
+Jubilee Campus
+
+Nottingham, NG8 1BB
+
++44 (0) 115 8466631 | caroline.emberson@nottingham.ac.uk<http://nottingham.=
+ac.uk/>
+
+
+Please note that my working days are Monday, Tuesday, Thursday and Friday
+
+
+Follow us
+
+Facebook.com/UniofNottingham<http://facebook.com/TheUniofNottingham>
+
+Twitter.com/UniofNottingham<http://twitter.com/UniofNottingham>
+
+Youtube.com/nottmuniversity<http://youtube.com/nottmuniversity>
+
+Instagram.com/uniofnottingham<http://instagram.com/uniofnottingham>
+
+Linkedin.com/company/university-of-nottingham<http://linkedin.com/company/u=
+niversity-of-nottingham>
+
+F<http://www.foursquare.com/uniofnottingham>oursquare.com/uniofnottingham<h=
+ttp://www.foursquare.com/uniofnottingham>
+
+
+
+[cid:8494b529-8928-471e-912a-bd094258eba4]<https://outlook.office.com/bookw=
+ithme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymo=
+us&ep=3DbwmEmailSignature>
+Book time to meet with me<https://outlook.office.com/bookwithme/user/68c1e0=
+7fca314c1a863a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&ep=3DbwmEmailS=
+ignature>
+________________________________
+From: Scott Moser (staff) <Scott.Moser@nottingham.ac.uk>
+Sent: 06 October 2025 18:33
+To: Caroline Emberson (staff) <Caroline.Emberson@nottingham.ac.uk>
+Subject: Re: Submit Your Conference Proposal Before Tomorrow's Deadline!
+
+
+Just FYI.  I do not know if this is a good idea for use for this paper=85  =
+ But it might be!  MidWest is know to be a heavily =91quants=92 Poli. Sci.=
+=92 Conference.  Just FYI.  I use to attend somewhat regularly bug haven=92=
+t since COVID.  But it might be an idea, especially if we are going to with=
+ the =91Impact=92 angle that you emailed about.
+
+Just a thought.
+
+
+
+Ok, nap time.  Will wake up and work and email with you with an update Tues=
+day.
+
+
+
+Best,
+
+Scott
+
+
+
+
+
+Dr Scott Moser
+
+Associate Professor
+
+School of Politics and International Relations
+
+
+
+Faculty of Social Science
+University of Nottingham
+
+C18, Law and Social Science (LaSS)
+
+University Park
+
+Nottingham, NG7 2RD
+
++44 (0) 115  9514998| scott.moser@nottingham.ac.uk<mailto:scott.moser@notti=
+ngham.ac.uk>
+
+
+
+
+
+From: MPSA <mpsaconference@mpsanet.org>
+Date: Monday, 6 October 2025 at 18:23
+To: Scott Moser (staff) <Scott.Moser@nottingham.ac.uk>
+Subject: Submit Your Conference Proposal Before Tomorrow's Deadline!
+
+[Image removed by sender.]<https://go.mpsanet.org/e/875141/2025-10-06/2d4my=
+h7/1267426734/h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI>
+
+
+
+View in your browser<https://go.mpsanet.org/webmail/875141/1267426734/46d4e=
+8438a78e826719eb50fe6b9309184a5b1dc4f336ddbd72b1486c12ec554>
+
+[Image removed by sender.]<https://go.mpsanet.org/e/875141/conference-/2d4m=
+yhb/1267426734/h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI>
+
+Hybrid Format: In Person at the Palmer House Hilton in Chicago, IL or Onlin=
+e
+All panel/paper sessions, roundtables, lightning talks and working groups w=
+ill feature a hybrid format (for in-person or virtual participation). Under=
+graduate poster sessions will be held in person only.
+
+
+The deadline to submit your paper, roundtable, complete panel and working g=
+roup proposals to be considered for the 2026 MPSA Annual Conference program=
+ is tomorrow, October 7!
+
+The Midwest Political Science Association Annual Conference<https://go.mpsa=
+net.org/e/875141/conference-/2d4myhf/1267426734/h/TqDMeyvKMmyUN1VGgu0SGtFO7=
+7-HAVgzVq6Y9viN8iI> is one of the largest political science conferences in =
+the discipline featuring over 1,000 panels, a large exhibit hall, a profess=
+ional headshot lounge, publisher's corner, and numerous opportunities for n=
+etworking and professional development. The conference historically draws o=
+ver 4,000 attendees from 65+ countries and features scholarship across 80+ =
+political interest areas<https://go.mpsanet.org/e/875141/ion-descriptions-a=
+nd-contacts-/2d4myk1/1267426734/h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8=
+iI>.
+[Image removed by sender.]<https://go.mpsanet.org/e/875141/mpsacommunity-s-=
+/2d4myhm/1267426734/h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI>
+View the submission guidelines<https://go.mpsanet.org/e/875141/ference-subm=
+ission-guidelines-/2d4myhq/1267426734/h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6=
+Y9viN8iI> before you submit your proposal. You must be logged into your MPS=
+A account<https://go.mpsanet.org/e/875141/mpsacommunity-s-/2d4myht/12674267=
+34/h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI> to access the proposal su=
+bmission system. If you do not have an account, or are unsure, click here<h=
+ttps://go.mpsanet.org/e/875141/2Fmpsacommunity2Fs2Fmembership/2d4myk4/12674=
+26734/h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI>. If you need to create=
+ an MPSA account, view these helpful tips and screenshots<https://go.mpsane=
+t.org/e/875141/roposal-Submission-Process-pdf/2d4myk7/1267426734/h/TqDMeyvK=
+MmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI>. Click here<https://go.mpsanet.org/e/8=
+75141/mmunity-s-login-ForgotPassword/2d4myj4/1267426734/h/TqDMeyvKMmyUN1VGg=
+u0SGtFO77-HAVgzVq6Y9viN8iI> if you need to reset your password. After loggi=
+ng into your account, click the =93Submit a Proposal=94 button.
+
+Do you have an account associated with an email you no longer have access t=
+o? Contact mpsainfo@mpsanet.org<mailto:mpsainfo@mpsanet.org> to request the=
+ accounts be merged. Do not create a new account, as this will prevent you =
+from accessing previously submitted proposals.
+
+________________________________
+
+Organize a Working Group/Conference-within-a-Conference
+Individuals holding a Ph.D. may submit a proposal to convene a conference-w=
+ithin-a-conference, or multiple organized sessions related to a single them=
+e, topic, or area of study. Proposals are reviewed on a case-by-case basis.=
+ The convenor(s) are responsible for recruiting participants, organizing th=
+em into sessions, and facilitating communication and cooperation within the=
+ group. MPSA staff will assign meeting space, provide for the logistical ne=
+eds of the group, maintain a roster of participants, help to promote the ev=
+ent, and work with the convenor(s) to accommodate scheduling requests. This=
+ is an excellent opportunity for cohorts to gather around specific areas of=
+ study that may not be well-represented in the normal conference sections, =
+or to develop specific projects like an edited volume. If you are intereste=
+d in organizing a Working Group or Conference-within-a-Conference<https://g=
+o.mpsanet.org/e/875141/conference-working-groups-/2d4myj7/1267426734/h/TqDM=
+eyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI>, contact MPSA Professional Develop=
+ment Manager, Lewis Hoss, Ph.D<mailto:hoss@mpsanet.org>.
+
+Offer to Serve as a Chair or Discussant
+Please consider volunteering your expertise to demonstrate your support of =
+your colleagues in the discipline. Professional-level members and submitter=
+s may volunteer to be a discussant or chair via the MPSA proposal system. S=
+econd-year graduate students may volunteer to serve as a discussant on unde=
+rgraduate sessions (poster sessions are for in-person participation only, n=
+o virtual option is available). You must be logged in<https://go.mpsanet.or=
+g/e/875141/mpsacommunity-s-/2d4myht/1267426734/h/TqDMeyvKMmyUN1VGgu0SGtFO77=
+-HAVgzVq6Y9viN8iI> with your MPSA username and password to volunteer. All u=
+sers must complete their profile before volunteering for a chair or discuss=
+ant role. You will be prompted to complete your account profile if you have=
+ not done so already. After logging in, click =93Volunteer to be a Chair or=
+ Discussant for a Section=94 in the proposal system. Learn more about confe=
+rence participation roles here<https://go.mpsanet.org/e/875141/formats-and-=
+role-descriptions-/2d4mykb/1267426734/h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6=
+Y9viN8iI>.
+
+Schedule a Meeting or Reception at the Conference
+MPSA intends to hold some networking sessions, meetings and receptions. Att=
+endees are also invited to propose meetings, receptions and networking even=
+ts for the conference. If your group needs to arrange for a meeting, recept=
+ion, or catered meal in conjunction with the 2026 MPSA Annual Conference, c=
+omplimentary meeting and reception space is available to our professional c=
+olleagues on a first-to-ask, first-to-receive basis. If your group needs to=
+ arrange for a function at the conference, please email MPSA Conference Adm=
+inistrator, Bonnie Van Deventer<mailto:vandeventer@mpsanet.org>.
+
+Questions?
+Please contact MPSA staff at mpsainfo@mpsanet.org<mailto:mpsainfo@mpsanet.o=
+rg>.
+
+[Image removed by sender.]<https://go.mpsanet.org/e/875141/MyMPSA-/2d4myjf/=
+1267426734/h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI>[Image removed by =
+sender. twitter]<https://go.mpsanet.org/e/875141/mpsanet/2d4myjj/1267426734=
+/h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI>[Image removed by sender.]<h=
+ttps://go.mpsanet.org/e/875141/profile-mpsa-bsky-social/2d4myjm/1267426734/=
+h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI> [Image removed by sender.] <=
+https://go.mpsanet.org/e/875141/political-science-association-/2d4myjq/1267=
+426734/h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI> [Image removed by sen=
+der.] <https://go.mpsanet.org/e/875141/mpsanet-/2d4myjt/1267426734/h/TqDMey=
+vKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI> [Image removed by sender.] <https://=
+go.mpsanet.org/e/875141/user-MPSAvideo/2d4myjx/1267426734/h/TqDMeyvKMmyUN1V=
+Ggu0SGtFO77-HAVgzVq6Y9viN8iI>
+
+Copyright =A9 2025, All rights reserved.
+
+Our mailing address is:
+
+Midwest Political Science Association
+885 S. College Mall Road, #382
+Bloomington, Indiana 47401
+
+Unsubscribe or Manage Subscription Preferences<https://go.mpsanet.org/email=
+-preferences?ehash=3D46d4e8438a78e826719eb50fe6b9309184a5b1dc4f336ddbd72b14=
+86c12ec554&email_id=3D1267426734&epc_hash=3DCLn9FJLePbJFTryXBATcI2BqgQTQCyj=
+D90ve77EhQbU>
+
+
+
+[Image removed by sender.]
+
+
+
+--_000_DU0PR06MB855215410C31FA4B22D225B8D3EBADU0PR06MB8552eurp_
+Content-Type: text/html; charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DWindows-1=
+252">
+<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
+ttom:0;} </style>
+</head>
+<body dir=3D"ltr">
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+Morning Scott,</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+<br>
+</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+Sorry for not replying to this until now.&nbsp;</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+<br>
+</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+Not sure whether you went for this on not - I notice that the deadline has =
+passed.&nbsp;</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+<br>
+</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+I couldn't get the IJOPM link on pre-prints and conference publications to =
+work, so I would prefer to err on the side of caution and just leave it in =
+the review process for now without submitting/ publishing elsewhere.</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+<br>
+</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+If the IJOPM paper is unsuccessful, very happy for you to submit our paper =
+for conferences as long as we don't fall foul of any pre-print publication =
+and conference submission rules for other journals.</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+<br>
+</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+Best wishes</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+Caroline</div>
+<div class=3D"elementToProof" id=3D"Signature">
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+<br>
+</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+<br>
+</div>
+<div class=3D"elementToProof" id=3D"divtagdefaultwrapper">
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-famil=
+y: Calibri, Helvetica, sans-serif; font-size: 12pt;" class=3D"elementToProo=
+f">
+<span style=3D"font-family: Arial, sans-serif; color: rgb(0, 155, 189);"><b=
+>Dr Caroline Emberson (preferred pronouns she/her)</b></span></p>
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-famil=
+y: Calibri, Helvetica, sans-serif; font-size: 12pt;" class=3D"elementToProo=
+f">
+<span style=3D"font-family: Arial, sans-serif; color: rgb(19, 27, 87);"><b>=
+Assistant Professor in Operations Management (FHEA)</b></span></p>
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-famil=
+y: Calibri, Helvetica, sans-serif; font-size: 12pt;" class=3D"elementToProo=
+f">
+<span style=3D"font-family: Arial, sans-serif; color: rgb(19, 27, 87);"><b>=
+<br>
+</b></span></p>
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-famil=
+y: Calibri, Helvetica, sans-serif; font-size: 12pt;" class=3D"elementToProo=
+f">
+<span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0=
+, 0, 0);">&nbsp;</span></p>
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-famil=
+y: Calibri, Helvetica, sans-serif; font-size: 12pt;" class=3D"elementToProo=
+f">
+<span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(1=
+9, 27, 87);">Nottingham University Business School OMIS/ Faculty of Social =
+Science<br>
+University of Nottingham</span></p>
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-famil=
+y: Calibri, Helvetica, sans-serif; font-size: 12pt;" class=3D"elementToProo=
+f">
+<span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(1=
+9, 27, 87);">B12,Si Yuan Building</span></p>
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-famil=
+y: Calibri, Helvetica, sans-serif; font-size: 12pt;" class=3D"elementToProo=
+f">
+<span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(1=
+9, 27, 87);">Jubilee Campus</span></p>
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px;" class=3D"=
+elementToProof">
+<span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(1=
+9, 27, 87);">Nottingham, NG8 1BB&nbsp;</span></p>
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-famil=
+y: Calibri, Helvetica, sans-serif; font-size: 12pt;" class=3D"elementToProo=
+f">
+<span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(1=
+9, 27, 87);">+44 (0) 115 8466631<b>&nbsp;</b></span><span style=3D"font-fam=
+ily: Calibri, sans-serif; font-size: 9pt; color: rgb(19, 27, 87);"><b>|
+</b></span><span style=3D"font-family: Arial, sans-serif; font-size: 9pt; c=
+olor: rgb(0, 0, 0);"><a style=3D"margin-top: 0px; margin-bottom: 0px;" targ=
+et=3D"_blank" href=3D"http://nottingham.ac.uk/">caroline.emberson@nottingha=
+m.ac.uk</a></span></p>
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-famil=
+y: Calibri, Helvetica, sans-serif; font-size: 12pt;" class=3D"elementToProo=
+f">
+<span style=3D"color: rgb(0, 0, 0);"><br>
+</span></p>
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px;" class=3D"=
+elementToProof">
+<span style=3D"font-family: Arial, sans-serif; font-size: 12px; color: rgb(=
+0, 0, 0);">Please note that my working days are Monday, Tuesday, Thursday a=
+nd Friday</span></p>
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px;" class=3D"=
+elementToProof">
+<span style=3D"font-family: Arial, sans-serif; font-size: 12px; color: rgb(=
+0, 0, 0);"><br>
+</span></p>
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-famil=
+y: Calibri, Helvetica, sans-serif; font-size: 12pt;" class=3D"elementToProo=
+f">
+<span style=3D"font-family: Georgia, serif; font-size: 9pt; color: rgb(21, =
+118, 158);"><b>Follow us</b></span></p>
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-famil=
+y: Calibri, Helvetica, sans-serif; font-size: 12pt;" class=3D"elementToProo=
+f">
+<span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0=
+, 0, 233);"><u><a style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-b=
+ottom: 0px;" href=3D"http://facebook.com/TheUniofNottingham">Facebook.com/U=
+niofNottingham</a></u></span></p>
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-famil=
+y: Calibri, Helvetica, sans-serif; font-size: 12pt;" class=3D"elementToProo=
+f">
+<span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0=
+, 0, 233);"><u><a style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-b=
+ottom: 0px;" href=3D"http://twitter.com/UniofNottingham">Twitter.com/UniofN=
+ottingham</a></u></span></p>
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-famil=
+y: Calibri, Helvetica, sans-serif; font-size: 12pt;" class=3D"elementToProo=
+f">
+<span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0=
+, 0, 233);"><u><a style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-b=
+ottom: 0px;" href=3D"http://youtube.com/nottmuniversity">Youtube.com/nottmu=
+niversity</a></u></span></p>
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-famil=
+y: Calibri, Helvetica, sans-serif; font-size: 12pt;" class=3D"elementToProo=
+f">
+<span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0=
+, 0, 233);"><u><a style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-b=
+ottom: 0px;" href=3D"http://instagram.com/uniofnottingham">Instagram.com/un=
+iofnottingham</a></u></span></p>
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-famil=
+y: Calibri, Helvetica, sans-serif; font-size: 12pt;" class=3D"elementToProo=
+f">
+<span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0=
+, 0, 233);"><u><a style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-b=
+ottom: 0px;" href=3D"http://linkedin.com/company/university-of-nottingham">=
+Linkedin.com/company/university-of-nottingham</a></u></span></p>
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-famil=
+y: Calibri, Helvetica, sans-serif; font-size: 12pt;" class=3D"elementToProo=
+f">
+<span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0=
+, 0, 233);"><u><a style=3D"color: rgb(0, 0, 233); margin-top: 0px; margin-b=
+ottom: 0px;" href=3D"http://www.foursquare.com/uniofnottingham">F</a><a sty=
+le=3D"margin-top: 0px; margin-bottom: 0px;" href=3D"http://www.foursquare.c=
+om/uniofnottingham">oursquare.com/uniofnottingham</a></u></span></p>
+<p style=3D"direction: ltr; margin-top: 0px; margin-bottom: 0px; font-famil=
+y: Calibri, Helvetica, sans-serif; font-size: 12pt;" class=3D"elementToProo=
+f">
+<span style=3D"font-family: Arial, sans-serif; font-size: 9pt; color: rgb(0=
+, 0, 233);"><u>&nbsp;</u></span></p>
+<div style=3D"direction: ltr; color: rgb(0, 0, 0);" class=3D"elementToProof=
+"><br>
+</div>
+</div>
+<table id=3D"pbpsiglinktable">
+<tbody>
+<tr>
+<td><a href=3D"https://outlook.office.com/bookwithme/user/68c1e07fca314c1a8=
+63a4fd4283d75ce@exmail.nottingham.ac.uk?anonymous&amp;ep=3DbwmEmailSignatur=
+e"><img data-outlook-trace=3D"F:1|T:1" src=3D"cid:8494b529-8928-471e-912a-b=
+d094258eba4"></a></td>
+<td></td>
+<td>
+<div style=3D"color: rgb(0, 120, 212);" class=3D"elementToProof"><a style=
+=3D"color: rgb(0, 120, 212); text-decoration: none;" href=3D"https://outloo=
+k.office.com/bookwithme/user/68c1e07fca314c1a863a4fd4283d75ce@exmail.nottin=
+gham.ac.uk?anonymous&amp;ep=3DbwmEmailSignature">Book
+ time to meet with me</a></div>
+</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id=3D"appendonsend"></div>
+<hr style=3D"display:inline-block;width:98%" tabindex=3D"-1">
+<div id=3D"divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" st=
+yle=3D"font-size:11pt" color=3D"#000000"><b>From:</b> Scott Moser (staff) &=
+lt;Scott.Moser@nottingham.ac.uk&gt;<br>
+<b>Sent:</b> 06 October 2025 18:33<br>
+<b>To:</b> Caroline Emberson (staff) &lt;Caroline.Emberson@nottingham.ac.uk=
+&gt;<br>
+<b>Subject:</b> Re: Submit Your Conference Proposal Before Tomorrow's Deadl=
+ine!</font>
+<div>&nbsp;</div>
+</div>
+<style>
+<!--
+@font-face
+	{font-family:Helvetica}
+@font-face
+	{font-family:"Cambria Math"}
+@font-face
+	{font-family:Calibri}
+@font-face
+	{font-family:Verdana}
+@font-face
+	{font-family:Aptos}
+p.x_MsoNormal, li.x_MsoNormal, div.x_MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Aptos",sans-serif}
+a:link, span.x_MsoHyperlink
+	{color:blue;
+	text-decoration:underline}
+span.x_EmailStyle23
+	{font-family:"Aptos",sans-serif;
+	color:windowtext}
+.x_MsoChpDefault
+	{font-size:10.0pt}
+@page WordSection1
+	{margin:72.0pt 72.0pt 72.0pt 72.0pt}
+div.x_WordSection1
+	{}
+-->
+</style>
+<div lang=3D"EN-GB" link=3D"blue" vlink=3D"purple" style=3D"background-colo=
+r:#FAFAFA; word-wrap:break-word; height:100%!important; width:100%!importan=
+t">
+<div class=3D"x_WordSection1">
+<p class=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">Just FYI.&nbsp; I=
+ do not know if this is a good idea for use for this paper=85&nbsp;&nbsp; B=
+ut it might be!&nbsp; MidWest is know to be a heavily =91quants=92 Poli. Sc=
+i.=92 Conference.&nbsp; Just FYI.&nbsp; I use to attend somewhat regularly
+ bug haven=92t since COVID.&nbsp; But it might be an idea, especially if we=
+ are going to with the =91Impact=92 angle that you emailed about.&nbsp;
+</span></p>
+<p class=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">Just a thought.</=
+span></p>
+<p class=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">&nbsp;</span></p>
+<p class=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">Ok, nap time.&nbs=
+p; Will wake up and work and email with you with an update Tuesday.</span><=
+/p>
+<p class=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">&nbsp;</span></p>
+<p class=3D"x_MsoNormal"><span style=3D"color:black">Best,</span></p>
+<p class=3D"x_MsoNormal"><span style=3D"color:black">Scott</span></p>
+<p class=3D"x_MsoNormal"><span style=3D"color:black">&nbsp;</span></p>
+<p class=3D"x_MsoNormal"><span style=3D"color:black">&nbsp;</span></p>
+<p class=3D"x_MsoNormal"><b><span style=3D"font-family:&quot;Arial&quot;,sa=
+ns-serif; color:#009BBD">Dr Scott Moser
+</span></b></p>
+<p class=3D"x_MsoNormal"><b><span style=3D"font-family:&quot;Arial&quot;,sa=
+ns-serif; color:#131B57">Associate Professor</span></b></p>
+<p class=3D"x_MsoNormal"><b><span style=3D"font-family:&quot;Arial&quot;,sa=
+ns-serif; color:#131B57">School of Politics and International Relations</sp=
+an></b><span style=3D"color:black"></span></p>
+<p class=3D"x_MsoNormal"><span style=3D"font-size:9.0pt; font-family:&quot;=
+Arial&quot;,sans-serif; color:black">&nbsp;</span><span style=3D"color:blac=
+k"></span></p>
+<p class=3D"x_MsoNormal"><span style=3D"font-size:9.0pt; font-family:&quot;=
+Arial&quot;,sans-serif; color:#131B57">Faculty of Social Science<br>
+University of Nottingham</span><span style=3D"color:black"></span></p>
+<p class=3D"x_MsoNormal"><span style=3D"font-size:9.0pt; font-family:&quot;=
+Arial&quot;,sans-serif; color:#131B57">C18, Law and Social Science (LaSS)</=
+span></p>
+<p class=3D"x_MsoNormal"><span style=3D"font-size:9.0pt; font-family:&quot;=
+Arial&quot;,sans-serif; color:#131B57">University Park</span></p>
+<p class=3D"x_MsoNormal"><span style=3D"font-size:9.0pt; font-family:&quot;=
+Arial&quot;,sans-serif; color:#131B57">Nottingham, NG7 2RD</span></p>
+<p class=3D"x_MsoNormal"><span style=3D"font-size:9.0pt; font-family:&quot;=
+Arial&quot;,sans-serif; color:#131B57">+44 (0) 115 &nbsp;9514998</span><b><=
+span style=3D"font-size:9.0pt; color:#131B57">|
+<a href=3D"mailto:scott.moser@nottingham.ac.uk"><span style=3D"color:#0563C=
+1">scott.moser@nottingham.ac.uk</span></a></span></b><span style=3D"color:b=
+lack"></span></p>
+<p class=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">&nbsp;</span></p>
+<p class=3D"x_MsoNormal"><span style=3D"font-size:11.0pt">&nbsp;</span></p>
+<div id=3D"x_mail-editor-reference-message-container">
+<div>
+<div>
+<div style=3D"border:none; border-top:solid #B5C4DF 1.0pt; padding:3.0pt 0c=
+m 0cm 0cm">
+<p class=3D"x_MsoNormal" style=3D"margin-right:0cm; margin-bottom:12.0pt; m=
+argin-left:36.0pt">
+<b><span style=3D"color:black">From: </span></b><span style=3D"color:black"=
+>MPSA &lt;mpsaconference@mpsanet.org&gt;<br>
+<b>Date: </b>Monday, 6 October 2025 at 18:23<br>
+<b>To: </b>Scott Moser (staff) &lt;Scott.Moser@nottingham.ac.uk&gt;<br>
+<b>Subject: </b>Submit Your Conference Proposal Before Tomorrow's Deadline!=
+</span></p>
+</div>
+<div align=3D"center">
+<table class=3D"x_MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpaddin=
+g=3D"0" width=3D"108%" id=3D"x_bodyTable" style=3D"width:108.94%; backgroun=
+d:#FAFAFA; border-collapse:collapse; border-collapse:collapse!important; he=
+ight:100%!important; width:100%!important">
+<tbody>
+<tr>
+<td valign=3D"top" id=3D"x_bodyCell" style=3D"border:none; border-top:solid=
+ #DDDDDD 3.0pt; padding:0cm 15.0pt 0cm 15.0pt; height:100%!important; width=
+:100%!important">
+<div align=3D"center">
+<table class=3D"x_MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpaddin=
+g=3D"0" width=3D"600" id=3D"x_templateContainer" style=3D"width:450.0pt; bo=
+rder-collapse:collapse; border:none">
+<tbody>
+<tr>
+<td valign=3D"top" style=3D"border:solid #DDDDDD 1.0pt; border-bottom:none;=
+ padding:0cm 0cm 0cm 0cm; border-collapse:collapse!important">
+<div align=3D"center">
+<table class=3D"x_MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpaddin=
+g=3D"0" width=3D"100%" id=3D"x_templatePreheader" style=3D"width:100.0%; ba=
+ckground:white; border-collapse:collapse; border:none; border-collapse:coll=
+apse!important">
+<tbody>
+<tr>
+<td valign=3D"top" style=3D"border:none; border-bottom:solid #CCCCCC 1.0pt;=
+ padding:7.5pt 15.0pt 7.5pt 15.0pt">
+<p class=3D"x_MsoNormal" style=3D"line-height:9.4pt"><span style=3D"font-si=
+ze:7.5pt; font-family:&quot;Verdana&quot;,sans-serif; color:black"><a href=
+=3D"https://go.mpsanet.org/e/875141/2025-10-06/2d4myh7/1267426734/h/TqDMeyv=
+KMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI"><span style=3D"color:black; text-deco=
+ration:none"><span style=3D"color:blue; border:solid windowtext 1.0pt; padd=
+ing:0cm"><img border=3D"0" width=3D"350" height=3D"70" id=3D"x__x0000_i1036=
+" alt=3D"Image removed by sender." style=3D"width:3.6458in; height:.7291in"=
+ data-outlook-trace=3D"F:0|T:1" src=3D"cid:~WRD0001.jpg"></span></span></a>=
+</span></p>
+</td>
+<td width=3D"340" valign=3D"top" style=3D"width:255.0pt; border:none; borde=
+r-bottom:solid #CCCCCC 1.0pt; padding:7.5pt 15.0pt 7.5pt 0cm">
+<p class=3D"x_MsoNormal" align=3D"right" style=3D"text-align:right; line-he=
+ight:9.4pt">
+<span style=3D"font-size:7.5pt; font-family:&quot;Verdana&quot;,sans-serif;=
+ color:black">&nbsp;</span></p>
+</td>
+<td width=3D"340" valign=3D"top" style=3D"width:255.0pt; border:none; borde=
+r-bottom:solid #CCCCCC 1.0pt; padding:7.5pt 15.0pt 7.5pt 0cm">
+<p class=3D"x_MsoNormal" align=3D"right" style=3D"text-align:right; line-he=
+ight:9.4pt">
+<span style=3D"font-size:7.5pt; font-family:&quot;Verdana&quot;,sans-serif;=
+ color:black"><a href=3D"https://go.mpsanet.org/webmail/875141/1267426734/4=
+6d4e8438a78e826719eb50fe6b9309184a5b1dc4f336ddbd72b1486c12ec554" target=3D"=
+_blank"><span style=3D"color:#0000EE">View&nbsp;in your
+ browser</span></a></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td valign=3D"top" style=3D"border-top:none; border-left:solid #DDDDDD 1.0p=
+t; border-bottom:none; border-right:solid #DDDDDD 1.0pt; padding:0cm 0cm 0c=
+m 0cm">
+<div align=3D"center">
+<table class=3D"x_MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpaddin=
+g=3D"0" width=3D"100%" id=3D"x_templateBody" style=3D"width:100.0%; backgro=
+und:white; border-collapse:collapse; border:none; border-collapse:collapse!=
+important">
+<tbody>
+<tr>
+<td valign=3D"top" style=3D"border:none; border-top:solid white 1.0pt; padd=
+ing:0cm 15.0pt 0cm 15.0pt">
+<p align=3D"center" style=3D"text-align:center; line-height:10.5pt"><span s=
+tyle=3D"font-size:8.5pt; font-family:&quot;Verdana&quot;,sans-serif; color:=
+black"><br>
+<a href=3D"https://go.mpsanet.org/e/875141/conference-/2d4myhb/1267426734/h=
+/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI"><span style=3D"color:black; t=
+ext-decoration:none"><span style=3D"color:blue; border:solid windowtext 1.0=
+pt; padding:0cm"><img border=3D"0" width=3D"595" height=3D"132" id=3D"x__x0=
+000_i1035" alt=3D"Image removed by sender." style=3D"width:6.1979in; height=
+:1.375in" data-outlook-trace=3D"F:0|T:1" src=3D"cid:~WRD0001.jpg"></span></=
+span></a></span></p>
+<p align=3D"center" style=3D"text-align:center; line-height:10.5pt"><strong=
+><span style=3D"font-size:8.5pt; font-family:&quot;Verdana&quot;,sans-serif=
+; color:black">Hybrid Format: In Person at the Palmer House Hilton in Chica=
+go, IL or Online</span></strong><span style=3D"font-size:8.5pt; font-family=
+:&quot;Verdana&quot;,sans-serif; color:black"><br>
+<em><span style=3D"font-family:&quot;Verdana&quot;,sans-serif">All panel/pa=
+per sessions, roundtables, lightning talks and working groups will feature =
+a hybrid format (for in-person or virtual participation). Undergraduate pos=
+ter sessions will be held in person only.</span></em><br>
+&nbsp;</span></p>
+<p style=3D"line-height:10.5pt"><strong><span style=3D"font-size:8.5pt; fon=
+t-family:&quot;Verdana&quot;,sans-serif; color:black">The deadline to submi=
+t your paper, roundtable,&nbsp;complete panel and working group&nbsp;propos=
+als to be considered for the 2026 MPSA Annual Conference
+ program is tomorrow, October 7!</span></strong><span style=3D"font-size:8.=
+5pt; font-family:&quot;Verdana&quot;,sans-serif; color:black"></span></p>
+<p style=3D"line-height:10.5pt"><span style=3D"font-size:8.5pt; font-family=
+:&quot;Verdana&quot;,sans-serif; color:black">The&nbsp;<a href=3D"https://g=
+o.mpsanet.org/e/875141/conference-/2d4myhf/1267426734/h/TqDMeyvKMmyUN1VGgu0=
+SGtFO77-HAVgzVq6Y9viN8iI"><span style=3D"color:#0000EE">Midwest
+ Political Science Association Annual Conference</span></a>&nbsp;is one of =
+the largest political&nbsp;science conferences in the discipline&nbsp;featu=
+ring over 1,000 panels, a large exhibit hall, a professional headshot loung=
+e, publisher's corner, and numerous opportunities
+ for networking and professional development.&nbsp;The conference historica=
+lly draws&nbsp;over 4,000 attendees from 65+ countries and features scholar=
+ship across
+<a href=3D"https://go.mpsanet.org/e/875141/ion-descriptions-and-contacts-/2=
+d4myk1/1267426734/h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI">
+<span style=3D"color:#0000EE">80+ political interest areas</span></a>.<br>
+<a href=3D"https://go.mpsanet.org/e/875141/mpsacommunity-s-/2d4myhm/1267426=
+734/h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI"><span style=3D"color:bla=
+ck; text-decoration:none"><span style=3D"color:blue; border:solid windowtex=
+t 1.0pt; padding:0cm"><img border=3D"0" width=3D"595" height=3D"73" id=3D"x=
+__x0000_i1034" alt=3D"Image removed by sender." style=3D"width:6.1979in; he=
+ight:.7604in" data-outlook-trace=3D"F:0|T:1" src=3D"cid:~WRD0001.jpg"></spa=
+n></span></a><br>
+View the&nbsp;<a href=3D"https://go.mpsanet.org/e/875141/ference-submission=
+-guidelines-/2d4myhq/1267426734/h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8=
+iI"><span style=3D"color:#0000EE">submission guidelines</span></a>&nbsp;bef=
+ore you submit your proposal.&nbsp;You must be&nbsp;<a href=3D"https://go.m=
+psanet.org/e/875141/mpsacommunity-s-/2d4myht/1267426734/h/TqDMeyvKMmyUN1VGg=
+u0SGtFO77-HAVgzVq6Y9viN8iI"><span style=3D"color:#0000EE">logged
+ into your MPSA account</span></a>&nbsp;to access the proposal submission s=
+ystem.<strong><span style=3D"font-family:&quot;Verdana&quot;,sans-serif">&n=
+bsp;</span></strong>If you do not have an account, or are unsure,&nbsp;<a h=
+ref=3D"https://go.mpsanet.org/e/875141/2Fmpsacommunity2Fs2Fmembership/2d4my=
+k4/1267426734/h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI"><span style=3D=
+"color:#0000EE">click
+ here</span></a>. If you need to create an MPSA account, view these&nbsp;<a=
+ href=3D"https://go.mpsanet.org/e/875141/roposal-Submission-Process-pdf/2d4=
+myk7/1267426734/h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI"><span style=
+=3D"color:#0000EE">helpful tips and screenshots</span></a>.&nbsp;<a href=3D=
+"https://go.mpsanet.org/e/875141/mmunity-s-login-ForgotPassword/2d4myj4/126=
+7426734/h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI"><span style=3D"color=
+:#0000EE">Click
+ here</span></a>&nbsp;if you need to reset your password.&nbsp;After loggin=
+g into your account, click the =93Submit a Proposal=94 button.<br>
+<br>
+Do you have an account associated with an email you no longer have access t=
+o? Contact
+<a href=3D"mailto:mpsainfo@mpsanet.org"><span style=3D"color:#0000EE">mpsai=
+nfo@mpsanet.org</span></a> to request the accounts be merged. Do not create=
+ a new account, as this will prevent you from accessing previously submitte=
+d proposals.</span></p>
+</td>
+</tr>
+<tr>
+<td valign=3D"top" style=3D"border:none; padding:0cm 15.0pt 0cm 15.0pt">
+<div class=3D"x_MsoNormal" align=3D"center" style=3D"text-align:center; lin=
+e-height:10.5pt">
+<span style=3D"font-size:8.5pt; font-family:&quot;Verdana&quot;,sans-serif;=
+ color:black">
+<hr size=3D"0" width=3D"56%" align=3D"center">
+</span></div>
+</td>
+</tr>
+<tr>
+<td valign=3D"top" style=3D"border:none; border-bottom:solid #CCCCCC 1.0pt;=
+ padding:0cm 15.0pt 0cm 15.0pt">
+<p style=3D"line-height:10.5pt"><strong><span style=3D"font-size:9.0pt; fon=
+t-family:&quot;Verdana&quot;,sans-serif; color:black">Organize a Working Gr=
+oup/Conference-within-a-Conference</span></strong><span style=3D"font-size:=
+8.5pt; font-family:&quot;Verdana&quot;,sans-serif; color:black"><br>
+Individuals holding a Ph.D. may submit a proposal to convene a conference-w=
+ithin-a-conference, or multiple organized sessions related to a single them=
+e, topic, or area of study. Proposals are reviewed on a case-by-case basis.=
+ The convenor(s) are responsible
+ for recruiting participants, organizing them into sessions, and facilitati=
+ng communication and cooperation within the group. MPSA staff will assign m=
+eeting space, provide for the logistical needs of the group, maintain a ros=
+ter of participants, help to promote
+ the event, and work with the convenor(s) to accommodate scheduling request=
+s. This is an excellent opportunity for cohorts to gather around specific a=
+reas of study that may not be well-represented in the normal conference sec=
+tions, or to develop specific projects
+ like an edited volume. If you are interested in organizing a&nbsp;<a href=
+=3D"https://go.mpsanet.org/e/875141/conference-working-groups-/2d4myj7/1267=
+426734/h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI"><span style=3D"color:=
+#0000EE">Working Group or Conference-within-a-Conference</span></a>,
+ contact MPSA Professional Development Manager, <a href=3D"mailto:hoss@mpsa=
+net.org">
+<span style=3D"color:#0000EE">Lewis Hoss, Ph.D</span></a>.<br>
+<br>
+</span><b><span style=3D"font-size:9.0pt; font-family:&quot;Verdana&quot;,s=
+ans-serif; color:black">Offer to Serve as a Chair or Discussant</span></b><=
+span style=3D"font-size:8.5pt; font-family:&quot;Verdana&quot;,sans-serif; =
+color:black"><br>
+Please consider volunteering your expertise to demonstrate your support of =
+your colleagues in the discipline. Professional-level members and submitter=
+s may volunteer to be a discussant or chair via the MPSA proposal system. S=
+econd-year graduate students may
+ volunteer to serve as a discussant on undergraduate sessions (poster sessi=
+ons are for in-person participation only, no virtual option is available). =
+You must be&nbsp;<a href=3D"https://go.mpsanet.org/e/875141/mpsacommunity-s=
+-/2d4myht/1267426734/h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI"><span s=
+tyle=3D"color:#0000EE">logged
+ in</span></a>&nbsp;with your MPSA username and password to volunteer.&nbsp=
+;<i>All users must complete their profile before volunteering for a chair o=
+r discussant role. You will be prompted to complete your account profile if=
+ you have not done so already.</i>&nbsp;After logging
+ in, click =93Volunteer to be a Chair or Discussant for a Section=94 in the=
+ proposal system. Learn more about conference participation roles&nbsp;<a h=
+ref=3D"https://go.mpsanet.org/e/875141/formats-and-role-descriptions-/2d4my=
+kb/1267426734/h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI"><span style=3D=
+"color:#0000EE">here</span></a>.<br>
+<br>
+</span><strong><span style=3D"font-size:9.0pt; font-family:&quot;Verdana&qu=
+ot;,sans-serif; color:black">Schedule a Meeting or Reception at the Confere=
+nce</span></strong><span style=3D"font-size:8.5pt; font-family:&quot;Verdan=
+a&quot;,sans-serif; color:black"><br>
+MPSA intends to hold some networking sessions,&nbsp;meetings&nbsp;and recep=
+tions. Attendees are also invited to propose meetings,&nbsp;receptions&nbsp=
+;and networking events for the conference.&nbsp;If your group needs to arra=
+nge for a meeting, reception, or catered meal in conjunction
+ with the 2026 MPSA Annual Conference, complimentary meeting and reception =
+space is available to our professional colleagues on a first-to-ask, first-=
+to-receive basis.&nbsp;If your group needs to arrange for a function at the=
+ conference, please email MPSA Conference
+ Administrator, <a href=3D"mailto:vandeventer@mpsanet.org"><span style=3D"c=
+olor:#0000EE">Bonnie Van Deventer</span></a>.<br>
+<br>
+<strong><span style=3D"font-family:&quot;Verdana&quot;,sans-serif">Question=
+s?</span></strong><br>
+Please contact MPSA staff at&nbsp;<a href=3D"mailto:mpsainfo@mpsanet.org"><=
+span style=3D"color:#0000EE">mpsainfo@mpsanet.org</span></a>.</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td valign=3D"top" style=3D"border-top:none; border-left:solid #DDDDDD 1.0p=
+t; border-bottom:none; border-right:solid #DDDDDD 1.0pt; padding:0cm 0cm 0c=
+m 0cm">
+<div align=3D"center">
+<table class=3D"x_MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpaddin=
+g=3D"0" width=3D"100%" id=3D"x_templateColumns" style=3D"width:100.0%; back=
+ground:white; border-collapse:collapse; border:none; border-collapse:collap=
+se!important">
+<tbody>
+<tr>
+<td style=3D"border-top:solid white 1.0pt; border-left:none; border-bottom:=
+solid #CCCCCC 1.0pt; border-right:none; padding:15.0pt 15.0pt 15.0pt 15.0pt=
+">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td valign=3D"top" style=3D"border:solid #DDDDDD 1.0pt; border-top:none; pa=
+dding:0cm 0cm 0cm 0cm">
+<div align=3D"center">
+<table class=3D"x_MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpaddin=
+g=3D"0" width=3D"100%" id=3D"x_templateFooter" style=3D"width:100.0%; backg=
+round:white; border-collapse:collapse; border:none; border-collapse:collaps=
+e!important">
+<tbody>
+<tr>
+<td valign=3D"top" style=3D"border:none; border-top:solid white 1.0pt; padd=
+ing:0cm 15.0pt 0cm 15.0pt">
+<p class=3D"x_MsoNormal" align=3D"center" style=3D"text-align:center; line-=
+height:11.25pt">
+<span style=3D"font-size:7.5pt; font-family:Helvetica; color:gray"><a href=
+=3D"https://go.mpsanet.org/e/875141/MyMPSA-/2d4myjf/1267426734/h/TqDMeyvKMm=
+yUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI"><span style=3D"color:gray; text-decorati=
+on:none"><span style=3D"color:blue; border:solid windowtext 1.0pt; padding:=
+0cm"><img border=3D"0" width=3D"40" height=3D"40" id=3D"x__x0000_i1032" alt=
+=3D"Image removed by sender." style=3D"width:.4166in; height:.4166in" data-=
+outlook-trace=3D"F:0|T:1" src=3D"cid:~WRD0001.jpg"></span></span></a><a hre=
+f=3D"https://go.mpsanet.org/e/875141/mpsanet/2d4myjj/1267426734/h/TqDMeyvKM=
+myUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI"><span style=3D"color:gray; text-decorat=
+ion:none"><span style=3D"color:blue; border:solid windowtext 1.0pt; padding=
+:0cm"><img border=3D"0" width=3D"40" height=3D"40" id=3D"x__x0000_i1031" al=
+t=3D"Image removed by sender. twitter" style=3D"width:.4166in; height:.4166=
+in" data-outlook-trace=3D"F:0|T:1" src=3D"cid:~WRD0001.jpg"></span></span><=
+/a><a href=3D"https://go.mpsanet.org/e/875141/profile-mpsa-bsky-social/2d4m=
+yjm/1267426734/h/TqDMeyvKMmyUN1VGgu0SGtFO77-HAVgzVq6Y9viN8iI"><span style=
+=3D"color:gray; text-decoration:none"><span style=3D"color:blue; border:sol=
+id windowtext 1.0pt; padding:0cm"><img border=3D"0" width=3D"40" height=3D"=
+35" id=3D"x__x0000_i1030" alt=3D"Image removed by sender." style=3D"width:.=
+4166in; height:.3645in" data-outlook-trace=3D"F:0|T:1" src=3D"cid:~WRD0001.=
+jpg"></span></span></a>&nbsp;<a href=3D"https://go.mpsanet.org/e/875141/pol=
+itical-science-association-/2d4myjq/1267426734/h/TqDMeyvKMmyUN1VGgu0SGtFO77=
+-HAVgzVq6Y9viN8iI"><span style=3D"color:gray; text-decoration:none"><span s=
+tyle=3D"color:blue; border:solid windowtext 1.0pt; padding:0cm"><img border=
+=3D"0" width=3D"40" height=3D"40" id=3D"x__x0000_i1029" alt=3D"Image remove=
+d by sender." style=3D"width:.4166in; height:.4166in" data-outlook-trace=3D=
+"F:0|T:1" src=3D"cid:~WRD0001.jpg"></span></span></a><a href=3D"https://go.=
+mpsanet.org/e/875141/mpsanet-/2d4myjt/1267426734/h/TqDMeyvKMmyUN1VGgu0SGtFO=
+77-HAVgzVq6Y9viN8iI"><span style=3D"color:gray; text-decoration:none"><span=
+ style=3D"color:blue; border:solid windowtext 1.0pt; padding:0cm"><img bord=
+er=3D"0" width=3D"40" height=3D"40" id=3D"x__x0000_i1028" alt=3D"Image remo=
+ved by sender." style=3D"width:.4166in; height:.4166in" data-outlook-trace=
+=3D"F:0|T:1" src=3D"cid:~WRD0001.jpg"></span></span></a><a href=3D"https://=
+go.mpsanet.org/e/875141/user-MPSAvideo/2d4myjx/1267426734/h/TqDMeyvKMmyUN1V=
+Ggu0SGtFO77-HAVgzVq6Y9viN8iI"><span style=3D"color:gray; text-decoration:no=
+ne"><span style=3D"color:blue; border:solid windowtext 1.0pt; padding:0cm">=
+<img border=3D"0" width=3D"40" height=3D"40" id=3D"x__x0000_i1027" alt=3D"I=
+mage removed by sender." style=3D"width:.4166in; height:.4166in" data-outlo=
+ok-trace=3D"F:0|T:1" src=3D"cid:~WRD0001.jpg"></span></span></a>&nbsp;&nbsp=
+;</span></p>
+</td>
+</tr>
+<tr>
+<td valign=3D"top" style=3D"border:none; padding:0cm 15.0pt 15.0pt 15.0pt">
+<p align=3D"center" style=3D"text-align:center; line-height:10.5pt"><em><sp=
+an style=3D"font-size:7.5pt; font-family:&quot;Verdana&quot;,sans-serif; co=
+lor:black">Copyright =A9 2025, All rights reserved.</span></em><span style=
+=3D"font-size:7.5pt; font-family:&quot;Verdana&quot;,sans-serif; color:blac=
+k"><br>
+<br>
+<strong><span style=3D"font-family:&quot;Verdana&quot;,sans-serif">Our mail=
+ing address is:</span></strong><br>
+<br>
+Midwest Political Science Association<br>
+885 S. College Mall Road, #382<br>
+Bloomington, Indiana 47401<br>
+<br>
+<a href=3D"https://go.mpsanet.org/email-preferences?ehash=3D46d4e8438a78e82=
+6719eb50fe6b9309184a5b1dc4f336ddbd72b1486c12ec554&amp;email_id=3D1267426734=
+&amp;epc_hash=3DCLn9FJLePbJFTryXBATcI2BqgQTQCyjD90ve77EhQbU">Unsubscribe or=
+ Manage Subscription Preferences</a></span><span style=3D"font-size:7.5pt; =
+font-family:Helvetica; color:black"></span></p>
+</td>
+</tr>
+<tr>
+<td valign=3D"top" style=3D"border:none; padding:0cm 15.0pt 15.0pt 15.0pt">
+<p class=3D"x_MsoNormal" style=3D"line-height:11.25pt"><span style=3D"font-=
+size:7.5pt; font-family:Helvetica; color:gray">&nbsp;</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><br>
+<span style=3D"border:solid windowtext 1.0pt; padding:0cm"><img border=3D"0=
+" width=3D"32" height=3D"32" id=3D"x__x0000_i1026" alt=3D"Image removed by =
+sender." style=3D"width:.3333in; height:.3333in" data-outlook-trace=3D"F:0|=
+T:1" src=3D"cid:~WRD0001.jpg"></span></p>
+<p class=3D"x_MsoNormal" style=3D"margin-left:36.0pt"><span style=3D"border=
+:solid windowtext 1.0pt; padding:0cm"><img border=3D"0" width=3D"1" height=
+=3D"1" id=3D"x__x0000_i1025" alt=3D"Image removed by sender." style=3D"widt=
+h:.0104in; height:.0104in" data-outlook-trace=3D"F:0|T:1" src=3D"cid:~WRD00=
+01.jpg"></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+
+--_000_DU0PR06MB855215410C31FA4B22D225B8D3EBADU0PR06MB8552eurp_--
+
+--_004_DU0PR06MB855215410C31FA4B22D225B8D3EBADU0PR06MB8552eurp_
+Content-Type: image/png; name="Outlook-0dvz5h3n.png"
+Content-Description: Outlook-0dvz5h3n.png
+Content-Disposition: inline; filename="Outlook-0dvz5h3n.png"; size=821;
+	creation-date="Tue, 14 Oct 2025 08:13:26 GMT";
+	modification-date="Fri, 22 May 2026 17:38:11 GMT"
+Content-ID: <8494b529-8928-471e-912a-bd094258eba4>
+Content-Transfer-Encoding: base64
+
+iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAcpJREFUOE9j
+ZAABr6aJDHqhuQwMDIxgPrHg19d3DLP91Bk+P3sD08IIN2x1hjPDy7NXiDWL4T8nM0NA33wGWRMP
+hg5NJgYGhv8gvYwMFdf/MYAMu3twP9GGISssv/qLYVdzMsP5FYthBv5nmO2pyfDzzVuyDEw/eJ3h
+xNyJDEenNSMMJMskJE2Hp9YxHJ2CZOBUM1GGz5/hAUuS+UVnXjOcXDCJygbOm4TqZUpcGDJjJcPz
+S1eoYyAvrzDD58/vGRgY/iHSYcX1/wykupBXWpghe89reEbY0RjNcGHFMkQsk2pgwYkXDBz84iiR
+16EJzmWghE26C8uv/mZgZGJBM5AZ5HXyDPRo7GMwCCuEG/jj40uGCRYS5LsQpNM6q4TBOLqE4emF
+gwxrs8NRI2WynSTD19cvSErQOBQzMhSdecvw8vophqWxngQNBCWTrBMvMMIPpnF7dQQjA6+UCEP2
+3tcM//7+Zvjx8QNOQydZizFk7bvNwCepgs9iWIHKyGAYEcPALaQEUQwq3mBplQmi5siUBoa0bRcZ
+hBT18Bj4n7QSWlhGmiF19xOcBh6aVEyagSCTQEEUNf8Ag6CcFjyn/Pz8hmF9cQjDg8MHAaiKxp0e
+iZJ4AAAAAElFTkSuQmCC
+
+--_004_DU0PR06MB855215410C31FA4B22D225B8D3EBADU0PR06MB8552eurp_--

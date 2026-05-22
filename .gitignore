@@ -1,6 +1,27 @@
+# R working files
 .Rproj.user
 .Rhistory
 .Ruserdata
 .Rproj
+.RData
+
+# OS
 *.DS_Store
+
+# Large local-only folders
 /Meetings
+/_snapshots
+
+# Old project clones (preserved in _snapshots/, removed from working tree)
+/DWeMSinUK_1
+/DWeMSinUK_RL
+
+# Claude Code working state
+/.claude
+
+# Audio recordings & Outlook archives (large binaries)
+*.m4a
+*.olm
+
+# Redundant zips (the unpacked folder is tracked instead)
+/paper/OneDrive_1_22-05-2026.zip

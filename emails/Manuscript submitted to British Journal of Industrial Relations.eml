@@ -1,0 +1,606 @@
+Received: from DB9PR06MB7433.eurprd06.prod.outlook.com (2603:10a6:10:260::20)
+ by AS8PR06MB7301.eurprd06.prod.outlook.com with HTTPS; Thu, 22 Jan 2026
+ 13:26:05 +0000
+Received: from CWLP123CA0051.GBRP123.PROD.OUTLOOK.COM (2603:10a6:401:59::15)
+ by DB9PR06MB7433.eurprd06.prod.outlook.com (2603:10a6:10:260::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.9; Thu, 22 Jan
+ 2026 13:26:03 +0000
+Received: from AM4PEPF00027A61.eurprd04.prod.outlook.com
+ (2603:10a6:401:59:cafe::85) by CWLP123CA0051.outlook.office365.com
+ (2603:10a6:401:59::15) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.10 via Frontend Transport; Thu,
+ 22 Jan 2026 13:26:01 +0000
+Authentication-Results: spf=pass (sender IP is 149.72.233.204)
+ smtp.mailfrom=remail.wiley.com; dkim=pass (signature was verified)
+ header.d=wiley.com;dmarc=pass action=none header.from=wiley.com;compauth=pass
+ reason=100
+Received-SPF: Pass (protection.outlook.com: domain of remail.wiley.com
+ designates 149.72.233.204 as permitted sender)
+ receiver=protection.outlook.com; client-ip=149.72.233.204;
+ helo=o4.remail.wiley.com; pr=C
+Received: from o4.remail.wiley.com (149.72.233.204) by
+ AM4PEPF00027A61.mail.protection.outlook.com (10.167.16.70) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9564.3
+ via Frontend Transport; Thu, 22 Jan 2026 13:26:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wiley.com;
+	h=content-transfer-encoding:content-type:date:from:mime-version:subject:
+	reply-to:to:cc:content-type:date:from:subject:to;
+	s=re; bh=jVTT9BFFutITF3sDTiygPxxhhK7rXBYqkkJlcHDAzSQ=;
+	b=WSnWDpUJLcR+BidM0BzQav8DI6HmUUYXViMlxt6SBNhxAOtIUFmLL8kTOEVRXgOlloZt
+	IJvGhsdHPl0HfWLwuvbwkVSnDaE5fSnBxm2zgnJtyeyqochQm9pjZwhH7xnYwS8zhZ8hZ0
+	xdtUNbeYz5IbMsPmTEf8S/zgAW6ohSN9qZ06zLhAKyLNEL4+8/8ZmIdWE9IgQFcU+MFBvD
+	f0cmwpl1hgob92o3AN5LnRI0SnGfOm9TaxQgYindNmMZOUJ9XX3TEZ74tReFgIiae6FRHA
+	LRNXThEJSfzNFneVLdFCxHoFcDR4j85qVAhW8wAoxR2u+kwpJoJHf4kPGR7Sr0iA==
+Received: by recvd-7d67db866d-pmqrh with SMTP id recvd-7d67db866d-pmqrh-1-69722568-1E
+	2026-01-22 13:26:00.416520604 +0000 UTC m=+3078708.406051551
+Received: from NTEyNTA4Nzc (unknown)
+	by geopod-ismtpd-2 (SG) with HTTP
+	id bwk5qS-kTN-QSzmkXcVUhg
+	Thu, 22 Jan 2026 13:26:00.376 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=us-ascii
+Date: Thu, 22 Jan 2026 13:26:00 +0000 (UTC)
+From: British Journal of Industrial Relations <bjiredoffice@wiley.com>
+Message-ID: <bwk5qS-kTN-QSzmkXcVUhg@geopod-ismtpd-2>
+Subject: Manuscript submitted to British Journal of Industrial Relations
+Reply-To: British Journal of Industrial Relations <bjiredoffice@wiley.com>
+X-SG-EID: =?us-ascii?Q?u001=2EtwR2kh5AT3zcbxQzTgQuqbGzQIc9KieSxf9KERqES032i9377sR75L87B?=
+ =?us-ascii?Q?k7dn1Oc8UTmH75T3Vq7JeAeov87UHXqHrMQ0DyS?=
+ =?us-ascii?Q?g1oNKnoKjEWK0xKBNGkCBE5fSDaCGeCJHBRcbXK?=
+ =?us-ascii?Q?ks8ARtIcwqHaA4CD1kR69IyavEpVR6mYhqkQczO?=
+ =?us-ascii?Q?oZVruwgkVwf33aI0IAC9Q5ysFwTEvtJ3Jj3xSiT?=
+ =?us-ascii?Q?ECdK=2FKQ3mfWkhMFEt4GT9nDO+NeWiwURpmT8229?=
+ =?us-ascii?Q?NCl2BQZBg6UtR6Lqs3BGjWUpYa6XDkanQOPKxg8?=
+ =?us-ascii?Q?bimkvOAk=3D?=
+X-SG-ID: =?us-ascii?Q?u001=2ESdBcvi+Evd=2FbQef8eZF3BsnnbQpOh50z+=2Fls0mtNbXOdKWMvJFIl6E4kk?=
+ =?us-ascii?Q?2rBEuabY4YYfpuLQEC7kJ4ZPvF+w5RvPQ7ZiL5M?=
+ =?us-ascii?Q?HII1DmJEwN29kEPjqODC1Qn8E8zE7NzHz7l6JEG?=
+ =?us-ascii?Q?iYstivvCTG5CADSWLjYnzjRmKWix8rKbDjYk4cK?=
+ =?us-ascii?Q?fat2dG5ns7VX5p=2FA48mqMtXBdlBjFbl=2FhJ5mhiu?=
+ =?us-ascii?Q?ZsjN7=2FzWyP1ZxieQeK55vhXqQr=2FSuJL4RfTLPFm?=
+ =?us-ascii?Q?YyW3?=
+To: Scott Moser <scott.moser@nottingham.ac.uk>
+X-Entity-ID: u001.qekQbKw7faAXlNtWw4fXNg==
+Return-Path: bounces+51250877-1088-scott.moser=nottingham.ac.uk@remail.wiley.com
+X-MS-Exchange-Organization-ExpirationStartTime: 22 Jan 2026 13:26:01.9152
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: a17bef7c-7331-4fc8-6136-08de59b9c997
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 67bda7ee-fd80-41ef-ac91-358418290a1e:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM4PEPF00027A61:EE_|DB9PR06MB7433:EE_|AS8PR06MB7301:EE_
+X-MS-Exchange-Organization-AuthSource: AM4PEPF00027A61.eurprd04.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id: a17bef7c-7331-4fc8-6136-08de59b9c997
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MAH-internal: external
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:0;ARA:13230040|5073199012|29132699027|69100299015|7053199007|4076899003|8096899003;
+X-Forefront-Antispam-Report: CIP:149.72.233.204;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:o4.remail.wiley.com;PTR:o4.remail.wiley.com;CAT:NONE;SFTY:9.25;SFS:(13230040)(5073199012)(29132699027)(69100299015)(7053199007)(4076899003)(8096899003);DIR:INB;SFTY:9.25;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Jan 2026 13:26:01.5858
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: a17bef7c-7331-4fc8-6136-08de59b9c997
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: AM4PEPF00027A61.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB9PR06MB7433
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:04.0393991
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.9542.003
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910005)(944506478)(944626604)(4710137)(4712097)(4999163)(920097)(930201)(20251009114)(140003);
+X-Microsoft-Antispam-Message-Info:
+	=?us-ascii?Q?+2KrmXzfJL6SiV/hIDT7y5LHEyB+k6v7voMPgOKNeIh3yVTJfRZRYMgiIoUU?=
+ =?us-ascii?Q?z6WvDGLKUx7EpwVtDwpjGWQ95+HBlnaUPr6MR28QtncOWKCmeyp4hk7G/ZYe?=
+ =?us-ascii?Q?+qB6hnjA9o4DyiyaND85caG9VkuOqQ4+1Qzxm/bhGP3ZvY5nEdkq6ZkGSOKf?=
+ =?us-ascii?Q?TQSgK+5RtJWkzN0m4cyC0GjDJqlDLxMiw6KQtZfnTXXLwOJqhstbSwTccb/R?=
+ =?us-ascii?Q?Ls9pP3QoKhnaT3eLhTG3JuCKzWjdC/xPc3ULm6uqeiXnO0N0dxCqQfFAKGn1?=
+ =?us-ascii?Q?1CW36JqdITWx0GktGc7vtunLWvkKv8e3ryi42KCfUS8iUOnC2I2uh+qBsjX2?=
+ =?us-ascii?Q?+F+wiYs5+oPmqfb/51oP0GXTkc9I8POlXERbHiPCNwuks1XPreMO3bSD6xN3?=
+ =?us-ascii?Q?tG9SNXTUuU5zfohJq3PaPqCR83mLdGjA4KXPfJ2co1+G0sUQzirKgCeuRpsN?=
+ =?us-ascii?Q?xb82W+qwR0TgeTi/WhrplJYGeOn1Lb4PHgobeBS6MJS2mzR99A3nKr/iNBq/?=
+ =?us-ascii?Q?ijOvwGF28FfjgtcTAAJu46jIeGh1Ex7PWteP2Bf1+EHDEzItbUgCvPDWy/ky?=
+ =?us-ascii?Q?MKGgT3eFMMRQoiYpe2Uq0jQ8awl+65sf1mdOj1oPo054qlgVOOTnUigGu4cE?=
+ =?us-ascii?Q?O1lukkfWdp5WGrZBaSciOBe5UIf2Nh/ZHxBM2wi0bivUo8/815KaZQ/3BsJq?=
+ =?us-ascii?Q?jyq4y4XIvQuPUvXh/sAVvJ5uXg241UVmH6j6OTWRdgAyP2bCISmSoXsxuWX+?=
+ =?us-ascii?Q?ozeVxC33hIA+sAdQREtC9Xeevxpm02OJqyUI9/RAvBH9JeKECWlonrqDMkW5?=
+ =?us-ascii?Q?xAZaLiEwyxsaad70bXD0fLhs6tNqmb86I/0IQ/9tGn3456ecAIYot8mwPo3p?=
+ =?us-ascii?Q?EmW9Z8iaIsS4pYI5E6yJi+C889d0PNqCw2QMlsnLYpWFkyjgIOekhQFZVWDc?=
+ =?us-ascii?Q?ecQrM+E9fbAXtnhA130alFAiyRpoc7wL2ESfyQo1MhLV6Kg+1d68sJgatrJ7?=
+ =?us-ascii?Q?wbCDsnf6u2ksNLUaYzzeT1i/0mdhfXNE7DJo/6RdcVsmkULYVtdghUnrvISL?=
+ =?us-ascii?Q?r4jeTKK+Q/s4Xio3s4NIjTl7ZLFWlMFpz7jEeMTxmStyAQgtRRmZEvyu9ZDa?=
+ =?us-ascii?Q?ArhJ7bWqtr2G7wiuB0bzgwWLRwSGtFXT+VvAFFfz6/WdExnKz9fAdHM5s+Iv?=
+ =?us-ascii?Q?nca1Iu6PuvodWCDB/ZNsX/ZDq/TgfysDLvKqg2Lwb559enz3gson5Z8tbS62?=
+ =?us-ascii?Q?euRBDXFzRXYC3VgjOQgsqgFhK9tIdAadfFMgOvb2vEcdMGkFDlxB/nKGBZzD?=
+ =?us-ascii?Q?jraCikzrlZSU3ho3w6PR6Ft+I6KfqLqfjSQATVbAKqqOvtt6IHmg/bowboa5?=
+ =?us-ascii?Q?w9k4MDdaIvVFeP7CEihJOn4PU1F2uiRZ63JRomIMuiNTVH6CvV61VPKt0v/Z?=
+ =?us-ascii?Q?92j8VGSCKscYgCLi576M0QU+XLupRhMOCcI73vSfzE/khhJ+NwaQlJZyyi8t?=
+ =?us-ascii?Q?TfoBQJR2CEj/LDq5KGOK4Ock5mwFLm693kVbfpo2b3k91icV7op6Lp5E4CuI?=
+ =?us-ascii?Q?Z2ZRhCKgnwhNdb1sIfVbWFApshhGHsH7rY8EVBME/9IAK5FzDsyKi7ORKYDU?=
+ =?us-ascii?Q?NCNnXeEHfQbNPxEIoo9EIPxQgGJUIcCpqL/r4ELrS9VLCNK3Xpv7HemKW8D/?=
+ =?us-ascii?Q?fhBeyhr+/FtQAkMik8G9bKiIgEeQ11K0XqRWDFcOx6h/GHSOe/7Q21qTfPFK?=
+ =?us-ascii?Q?EI45fY9kqcF3f9ucT6JgdGfcK5pS2iISAQMo95V/ElBjlPIrSIFlH3iG6vZJ?=
+ =?us-ascii?Q?Woa1KGzKCH7uH9nJuyxlliWB5dIkYvBM0urTY+P3PAYGW7xaw9T3bguGOkXU?=
+ =?us-ascii?Q?Qqpxl99+9OpScJ5cPTU4VjdMv1LqhdW2Cigh1EIB/rUUGVrYgKhfsdsKEXey?=
+ =?us-ascii?Q?nSgpkiKxN/TIM2ge4ZF3onLmAPDaRsFeI1+zrFXlu+U68CkMaj6L2XZENX1B?=
+ =?us-ascii?Q?sKO17uGkoEZZmI9F9RvnMR+d0+xnsBGxsp/pEoj8E+4KNlcuFrhVlqN4zZ7U?=
+ =?us-ascii?Q?KWQVna8B9ldBN1j0KRk/B77htaJeSyJjCIJcnYFuy3Au71VFuvliiUl6Dbc1?=
+ =?us-ascii?Q?44H6vUTDqPbBBxIJw/9SmlhW4eVdujjijvvm9jNnyBUN0qxtkwge10+E+0fB?=
+ =?us-ascii?Q?m1+l+KD6cq0DMjIRHXVjPfvUEcg/BOO3L2AsK6/pRS3IDoIQE57XMLVKUA82?=
+ =?us-ascii?Q?OJIa2kdoYPdi13MR/59jrCnNppD5MQf4WxhKvBc4YFJwoQtbNsFMe+xI+lar?=
+ =?us-ascii?Q?CFTDQfz13KG+T45x4khDihhvwC/sdtJLHopDZo2MQ3/g4tYr59lYlEoeItfH?=
+ =?us-ascii?Q?FsOBJzDuKbOs++SOn3+NLtMA7x7zRxlXFHABDpd4z9t/IE8ndHneRVouDN+8?=
+ =?us-ascii?Q?UgXiiX8FWSCcunSCkCymATxfwTn4d9XwP3v32pybLz7Qr2P4bDDcbPY6875k?=
+ =?us-ascii?Q?nkBeWN1AJcKj2648KS4kZAjhVkJzWTkQ/UkcVp9KwaXPnsriUYriQGEhqTTa?=
+ =?us-ascii?Q?U1/VD6bjzeGKwISrlyci9uUnrQYEWvm+gFHqfy+MqvvMbF28evCn/CNwD6b5?=
+ =?us-ascii?Q?4R2P7/MD79BrBPJPU0MMvl7IHeKhP4XSrq28l9rj/49l5b+T5Px4noBWPIMc?=
+ =?us-ascii?Q?Rfgest1ngi0zpESoN1+J/evZkPhMS2IVHqMgj+fb71Ppncxc/MR7mjgZufpa?=
+ =?us-ascii?Q?Ou9yuq/Ak6zDuKIOK1nGf+fmw3cXKoYMXj1doU4Z5/6fxBWi96cLGKhStIb0?=
+ =?us-ascii?Q?e7NwnYzXZdQr7w=3D=3D?=
+MIME-Version: 1.0
+
+<!doctype html><html lang=3D"und" dir=3D"auto" xmlns=3D"http://www.w3.org/1=
+999/xhtml" xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas=
+-microsoft-com:office:office"><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<title></title>
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1"=
+>
+<style type=3D"text/css">
+      #outlook a { padding:0; }
+      body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size=
+-adjust:100%; }
+      table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-r=
+space:0pt; }
+      img { border:0;height:auto;line-height:100%; outline:none;text-decora=
+tion:none;-ms-interpolation-mode:bicubic; }
+      p { display:block;margin:13px 0; }
+    </style><style type=3D"text/css">
+      @media only screen and (min-width:480px) {
+        .mj-column-per-100 { width:100% !important; max-width: 100%; }
+      }
+    </style><style media=3D"screen and (min-width:480px)">
+      .moz-text-html .mj-column-per-100 { width:100% !important; max-width:=
+ 100%; }
+    </style><style type=3D"text/css">
+
+    @media only screen and (max-width:479px) {
+      table.mj-full-width-mobile { width: 100% !important; }
+      td.mj-full-width-mobile { width: auto !important; }
+    }
+ =20
+    </style><style type=3D"text/css">
+.primary-button a {
+      background: #123d80 !important;
+      color: white !important;
+      padding: 10px 65px 10px 65px !important;
+      }
+      .primary-button td {
+      border: 2px solid #123d80 !important;
+      background: #123d80 !important;
+      border-radius: 4px !important;
+      height: 40px !important;
+      }
+      .secondary-button a {
+      background: #FFF !important;
+      color: #4F4F4F !important;
+      padding: 10px 65px 10px 65px !important;
+      }
+      .secondary-button td {
+      border: 2px solid #4F4F4F !important;
+      background: #FFF !important;
+      border-radius: 4px !important;
+      height: 40px !important;
+      }
+   =20
+            .non-editable-text {
+              font-size: 14px;
+              color: #4F4F4F;
+            }
+            .list-content {
+              font-size: 14px;
+              color: #4F4F4F;
+            }
+            .blockquote {
+              border-left:4px solid #56a03d ;
+              line-height:1.6;
+              margin-left:2px;
+            }
+            .blockquote-text {
+              font-style:italic;
+              margin-left:24px;
+              font-size:14px;
+              color:#4F4F4F;
+            }
+            .quotes {
+              font-family:Arial;
+              color:#56a03d;
+              font-size:4em;
+              margin-left:8px;
+              line-height:0.1;
+              padding-top: 30px;
+            }
+            .email-body * {
+              font-family:Arial, Helvetica, Verdana, sans-serif !important;
+              line-height: 20px;
+            }
+    </style>
+</head>
+<body style=3D"word-spacing:normal;background-color:#f4f4f4;">
+<table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" styl=
+e=3D" aspect-ratio: revert !important; background: revert !important; block=
+-size: revert !important; border: revert !important; bottom: revert !import=
+ant; color: revert !important; color-scheme: revert !important; content-vis=
+ibility: revert !important; cursor: revert !important; direction: revert !i=
+mportant; display: revert !important; font-size: revert !important; height:=
+ revert !important; hyphens: revert !important; letter-spacing: revert !imp=
+ortant; line-height: revert !important; margin: revert !important; opacity:=
+ revert !important; order: revert !important; outline: revert !important; o=
+verflow: revert !important; padding: revert !important; position: revert !i=
+mportant; resize: revert !important; rotate: revert !important; scale: reve=
+rt !important; tab-size: revert !important; table-layout: revert !important=
+; text-align: revert !important; text-indent: revert !important; text-orien=
+tation: revert !important; text-overflow: revert !important; text-shadow: r=
+evert !important; text-transform: revert !important; text-wrap: revert !imp=
+ortant; top: revert !important; transition: revert !important; user-select:=
+ revert !important; vertical-align: revert !important; visibility: revert !=
+important; white-space: revert !important; width: revert !important; word-b=
+reak: revert !important; word-spacing: revert !important; writing-mode: rev=
+ert !important; zoom: revert !important; cellpadding: 0 !important; border:=
+ 0 !important; cellspacing: 0 !important; display: table !important; width:=
+ 100% !important; table-layout: fixed !important; border-collapse: seperate=
+ !important; float: none !important; border-spacing: 0px 0px !important; " =
+align=3D"left">
+<tbody style=3D" aspect-ratio: revert !important; background: revert !impor=
+tant; block-size: revert !important; border: revert !important; bottom: rev=
+ert !important; color: revert !important; color-scheme: revert !important; =
+content-visibility: revert !important; cursor: revert !important; direction=
+: revert !important; display: revert !important; font-size: revert !importa=
+nt; height: revert !important; hyphens: revert !important; letter-spacing: =
+revert !important; line-height: revert !important; margin: revert !importan=
+t; opacity: revert !important; order: revert !important; outline: revert !i=
+mportant; overflow: revert !important; padding: revert !important; position=
+: revert !important; resize: revert !important; rotate: revert !important; =
+scale: revert !important; tab-size: revert !important; table-layout: revert=
+ !important; text-align: revert !important; text-indent: revert !important;=
+ text-orientation: revert !important; text-overflow: revert !important; tex=
+t-shadow: revert !important; text-transform: revert !important; text-wrap: =
+revert !important; top: revert !important; transition: revert !important; u=
+ser-select: revert !important; vertical-align: revert !important; visibilit=
+y: revert !important; white-space: revert !important; width: revert !import=
+ant; word-break: revert !important; word-spacing: revert !important; writin=
+g-mode: revert !important; zoom: revert !important; display: block !importa=
+nt; ">
+<tr style=3D" aspect-ratio: revert !important; background: revert !importan=
+t; block-size: revert !important; border: revert !important; bottom: revert=
+ !important; color: revert !important; color-scheme: revert !important; con=
+tent-visibility: revert !important; cursor: revert !important; direction: r=
+evert !important; display: revert !important; font-size: revert !important;=
+ height: revert !important; hyphens: revert !important; letter-spacing: rev=
+ert !important; line-height: revert !important; margin: revert !important; =
+opacity: revert !important; order: revert !important; outline: revert !impo=
+rtant; overflow: revert !important; padding: revert !important; position: r=
+evert !important; resize: revert !important; rotate: revert !important; sca=
+le: revert !important; tab-size: revert !important; table-layout: revert !i=
+mportant; text-align: revert !important; text-indent: revert !important; te=
+xt-orientation: revert !important; text-overflow: revert !important; text-s=
+hadow: revert !important; text-transform: revert !important; text-wrap: rev=
+ert !important; top: revert !important; transition: revert !important; user=
+-select: revert !important; vertical-align: revert !important; visibility: =
+revert !important; white-space: revert !important; width: revert !important=
+; word-break: revert !important; word-spacing: revert !important; writing-m=
+ode: revert !important; zoom: revert !important; ">
+<td valign=3D"middle" width=3D"1px" bgcolor=3D"#A6A6A6" cellpadding=3D"7px =
+2px 7px 2px" style=3D" aspect-ratio: revert !important; background: revert =
+!important; block-size: revert !important; border: revert !important; botto=
+m: revert !important; color: revert !important; color-scheme: revert !impor=
+tant; content-visibility: revert !important; cursor: revert !important; dir=
+ection: revert !important; display: revert !important; font-size: revert !i=
+mportant; height: revert !important; hyphens: revert !important; letter-spa=
+cing: revert !important; line-height: revert !important; margin: revert !im=
+portant; opacity: revert !important; order: revert !important; outline: rev=
+ert !important; overflow: revert !important; padding: revert !important; po=
+sition: revert !important; resize: revert !important; rotate: revert !impor=
+tant; scale: revert !important; tab-size: revert !important; table-layout: =
+revert !important; text-align: revert !important; text-indent: revert !impo=
+rtant; text-orientation: revert !important; text-overflow: revert !importan=
+t; text-shadow: revert !important; text-transform: revert !important; text-=
+wrap: revert !important; top: revert !important; transition: revert !import=
+ant; user-select: revert !important; vertical-align: revert !important; vis=
+ibility: revert !important; white-space: revert !important; width: revert !=
+important; word-break: revert !important; word-spacing: revert !important; =
+writing-mode: revert !important; zoom: revert !important; padding: 7px 2px =
+7px 2px !important; background-color: #A6A6A6 !important; valign: middle !i=
+mportant; width: 0px !important; ">
+</td>
+<td valign=3D"middle" width=3D"100%" bgcolor=3D"#EAEAEA" cellpadding=3D"7px=
+ 5px 7px 15px" color=3D"#212121" style=3D" aspect-ratio: revert !important;=
+ background: revert !important; block-size: revert !important; border: reve=
+rt !important; bottom: revert !important; color: revert !important; color-s=
+cheme: revert !important; content-visibility: revert !important; cursor: re=
+vert !important; direction: revert !important; display: revert !important; =
+font-size: revert !important; height: revert !important; hyphens: revert !i=
+mportant; letter-spacing: revert !important; line-height: revert !important=
+; margin: revert !important; opacity: revert !important; order: revert !imp=
+ortant; outline: revert !important; overflow: revert !important; padding: r=
+evert !important; position: revert !important; resize: revert !important; r=
+otate: revert !important; scale: revert !important; tab-size: revert !impor=
+tant; table-layout: revert !important; text-align: revert !important; text-=
+indent: revert !important; text-orientation: revert !important; text-overfl=
+ow: revert !important; text-shadow: revert !important; text-transform: reve=
+rt !important; text-wrap: revert !important; top: revert !important; transi=
+tion: revert !important; user-select: revert !important; vertical-align: re=
+vert !important; visibility: revert !important; white-space: revert !import=
+ant; width: revert !important; word-break: revert !important; word-spacing:=
+ revert !important; writing-mode: revert !important; zoom: revert !importan=
+t; width: 100% !important; background-color: #EAEAEA !important; padding: 7=
+px 5px 7px 15px !important; font-family: wf_segoe-ui_normal, Segoe UI, Sego=
+e WP, Tahoma, Arial, sans-serif !important; font-size: 12px !important; fon=
+t-weight: normal !important; color: #212121 !important; text-align: left !i=
+mportant; word-wrap: break-word !important; ">
+<div style=3D" aspect-ratio: revert !important; background: revert !importa=
+nt; block-size: revert !important; border: revert !important; bottom: rever=
+t !important; color: revert !important; color-scheme: revert !important; co=
+ntent-visibility: revert !important; cursor: revert !important; direction: =
+revert !important; display: revert !important; font-size: revert !important=
+; height: revert !important; hyphens: revert !important; letter-spacing: re=
+vert !important; line-height: revert !important; margin: revert !important;=
+ opacity: revert !important; order: revert !important; outline: revert !imp=
+ortant; overflow: revert !important; padding: revert !important; position: =
+revert !important; resize: revert !important; rotate: revert !important; sc=
+ale: revert !important; tab-size: revert !important; table-layout: revert !=
+important; text-align: revert !important; text-indent: revert !important; t=
+ext-orientation: revert !important; text-overflow: revert !important; text-=
+shadow: revert !important; text-transform: revert !important; text-wrap: re=
+vert !important; top: revert !important; transition: revert !important; use=
+r-select: revert !important; vertical-align: revert !important; visibility:=
+ revert !important; white-space: revert !important; width: revert !importan=
+t; word-break: revert !important; word-spacing: revert !important; writing-=
+mode: revert !important; zoom: revert !important; ">
+You don't often get email from bjiredoffice@wiley.com. <a href=3D"https://a=
+ka.ms/LearnAboutSenderIdentification" style=3D"background: revert !importan=
+t;color: revert !important;content-visibility: revert !important;direction:=
+ revert !important;display: revert !important;font-size: revert !important;=
+opacity: revert !important;rotate: revert !important;scale: revert !importa=
+nt;visibility: revert !important;">
+Learn why this is important</a> </div>
+</td>
+<td valign=3D"middle" align=3D"left" width=3D"75px" bgcolor=3D"#EAEAEA" cel=
+lpadding=3D"7px 5px 7px 5px" color=3D"#212121" style=3D" aspect-ratio: reve=
+rt !important; background: revert !important; block-size: revert !important=
+; border: revert !important; bottom: revert !important; color: revert !impo=
+rtant; color-scheme: revert !important; content-visibility: revert !importa=
+nt; cursor: revert !important; direction: revert !important; display: rever=
+t !important; font-size: revert !important; height: revert !important; hyph=
+ens: revert !important; letter-spacing: revert !important; line-height: rev=
+ert !important; margin: revert !important; opacity: revert !important; orde=
+r: revert !important; outline: revert !important; overflow: revert !importa=
+nt; padding: revert !important; position: revert !important; resize: revert=
+ !important; rotate: revert !important; scale: revert !important; tab-size:=
+ revert !important; table-layout: revert !important; text-align: revert !im=
+portant; text-indent: revert !important; text-orientation: revert !importan=
+t; text-overflow: revert !important; text-shadow: revert !important; text-t=
+ransform: revert !important; text-wrap: revert !important; top: revert !imp=
+ortant; transition: revert !important; user-select: revert !important; vert=
+ical-align: revert !important; visibility: revert !important; white-space: =
+revert !important; width: revert !important; word-break: revert !important;=
+ word-spacing: revert !important; writing-mode: revert !important; zoom: re=
+vert !important; width: 75px !important; background-color: #EAEAEA !importa=
+nt; padding: 7px 5px 7px 5px !important; font-family: wf_segoe-ui_normal, S=
+egoe UI, Segoe WP, Tahoma, Arial, sans-serif !important; font-size: 12px !i=
+mportant; font-weight: normal !important; color: #212121 !important; text-a=
+lign: left !important; word-wrap: break-word !important; align: left !impor=
+tant; ">
+</td>
+</tr>
+</tbody>
+</table>
+<div>
+<div class=3D"email-body" style=3D"font-family: Arial, Helvetica, Verdana, =
+sans-serif; line-height: 20px; background-color: #f4f4f4;" lang=3D"und" dir=
+=3D"auto">
+<div style=3D"margin:0px auto;max-width:600px;">
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"width:100%;">
+<tbody>
+<tr>
+<td style=3D"direction: ltr; font-size: 0px; padding: 20px 0; text-align: c=
+enter;" align=3D"center">
+<div class=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"font-size: 0=
+px; text-align: left; direction: ltr; display: inline-block; vertical-align=
+: top; width: 100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"vertical-align:top;" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"center" style=3D"font-size: 0px; padding: 10px 25px; word-brea=
+k: break-word;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"border-collapse:collapse;border-spacing:0px;">
+<tbody>
+<tr>
+<td style=3D"width:100px;"><img alt=3D"" src=3D"https://review.wiley.com/as=
+sets/wiley/email-logo.png" style=3D"border:0;display:block;outline:none;tex=
+t-decoration:none;height:auto;width:100%;font-size:13px;" width=3D"100" hei=
+ght=3D"auto">
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style=3D"background:#ffffff;background-color:#ffffff;margin:0px auto;m=
+ax-width:600px;">
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"background:#ffffff;background-color:#ffffff;wi=
+dth:100%;">
+<tbody>
+<tr>
+<td style=3D"border: 1px solid #f4f4f4; direction: ltr; font-size: 0px; pad=
+ding: 25px; text-align: center;" align=3D"center">
+<div style=3D"margin:0px auto;max-width:548px;">
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"width:100%;">
+<tbody>
+<tr>
+<td style=3D"direction: ltr; font-size: 0px; padding: 20px 0; padding-botto=
+m: 10px; padding-top: 10px; text-align: center;" align=3D"center">
+<div class=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"font-size: 0=
+px; text-align: left; direction: ltr; display: inline-block; vertical-align=
+: top; width: 100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"vertical-align:top;" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"left" class=3D"non-editable-text" style=3D"font-size: 0px; pad=
+ding: 10px 25px; word-break: break-word;">
+<div style=3D"font-family:Arial, Helvetica, Verdana, sans-serif;font-size:1=
+4px;line-height:20px;text-align:left;color:#4F4F4F;">
+<span id=3D"ir0hq" style=3D"line-height:20px;color:rgb(79, 79, 79);font-siz=
+e:14px;font-family:Arial, Helvetica, Verdana, sans-serif;">Dear&nbsp;</span=
+><span id=3D"i393j" style=3D"line-height:20px;color:rgb(79, 79, 79);font-si=
+ze:14px;font-family:Arial, Helvetica, Verdana, sans-serif;">Dr.
+ Scott Moser,</span><br id=3D"iosfk" draggable=3D"true">
+<br id=3D"iunye" draggable=3D"true">
+<span id=3D"ilvfg" style=3D"line-height:20px;color:rgb(79, 79, 79);font-siz=
+e:14px;font-family:Arial, Helvetica, Verdana, sans-serif;">We are pleased t=
+o inform you that the manuscript &quot;</span>Quantifying hidden exploitati=
+on: Dual method prevalence estimates of labour
+ exploitation among domestic workers in the United Kingdom&quot; has been s=
+ubmitted to British Journal of Industrial Relations by Caroline Emberson. Y=
+our unique manuscript ID is:&nbsp;5552682.<br id=3D"ip5d6" draggable=3D"tru=
+e">
+<span id=3D"ianb7" draggable=3D"true" style=3D"line-height:20px;color:rgb(7=
+9, 79, 79);font-size:14px;font-family:Arial, Helvetica, Verdana, sans-serif=
+;"><br id=3D"ipy75" draggable=3D"true">
+Please note that during the review process, the submitting author is solely=
+ responsible for communicating with the journal and providing any requested=
+ updates.&nbsp;
+<br>
+<br>
+If you believe you were incorrectly listed as a co-author, please contact t=
+he editorial office by replying to this email.
+<br id=3D"iur2p" draggable=3D"true">
+</span></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style=3D"margin:0px auto;max-width:548px;">
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"width:100%;">
+<tbody>
+<tr>
+<td style=3D"direction: ltr; font-size: 0px; padding: 20px 0; padding-botto=
+m: 10px; padding-top: 10px; text-align: center;" align=3D"center">
+<div class=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"font-size: 0=
+px; text-align: left; direction: ltr; display: inline-block; vertical-align=
+: top; width: 100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"vertical-align:top;" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"left" class=3D"non-editable-text" style=3D"font-size: 0px; pad=
+ding: 10px 25px; word-break: break-word;">
+<div style=3D"font-family:Arial, Helvetica, Verdana, sans-serif;font-size:1=
+4px;line-height:20px;text-align:left;color:#4F4F4F;">
+<span id=3D"ia02p" style=3D"line-height:20px;color:rgb(79, 79, 79);font-siz=
+e:14px;font-family:Arial, Helvetica, Verdana, sans-serif;">Kind regards,
+<br id=3D"ikqli">
+British Journal of Industrial Relations<br id=3D"ijqai">
+</span></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style=3D"background:#f4f4f4;background-color:#f4f4f4;margin:0px auto;m=
+ax-width:600px;">
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"background:#f4f4f4;background-color:#f4f4f4;wi=
+dth:100%;">
+<tbody>
+<tr>
+<td style=3D"direction: ltr; font-size: 0px; padding: 20px 0; text-align: c=
+enter;" align=3D"center">
+<div class=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"font-size: 0=
+px; text-align: left; direction: ltr; display: inline-block; vertical-align=
+: top; width: 100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"vertical-align:top;" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"center" style=3D"font-size: 0px; padding: 10px 25px; word-brea=
+k: break-word;">
+<div style=3D"font-family:Arial, Helvetica, Verdana, sans-serif;font-size:1=
+2px;line-height:20px;text-align:center;color:#586971;">
+This email was sent to scott.moser@nottingham.ac.uk by John Wiley &amp; Son=
+s, Inc. <br>
+111 River Street, Hoboken, NJ 07030 USA. 877-762-2974. <br>
+For more information, please see our <a href=3D"https://u51250877.ct.sendgr=
+id.net/ls/click?upn=3Du001.gfcv7tnN320fH9LcH8TwvwWxAtS7BEUU1-2BD77L4tsq5H-2=
+BpTqDlh3XFdeJRCta7EQvkvS_J0t3AyzaM4tXOmzaGF1QHoEhZ3Wh0wXOQfDb0kMOse-2FzQ7W9=
+Ni-2FOkpqVEnPr0JhB0ADpkVNXeM1j6VQAFTP01wClob7jqvnPuHKXgfni86I89SjL3RaXg0hlf=
+oo82oEmc-2FB17zqqGospO6cVrZnNTaqSVU5oDLclAbV3mqV4UWcul6BrQlA55rp5MjlD4-2BDf=
+UK9ZQ2oGgW829UF87JwY0bY5-2BV-2F2-2FlGPV6PZ642ZVgU8peTfzsz4KZCAhmDnJHgCOrLrD=
+HkZ7NW2-2BA0zOucs1qy1JhK3hkwcwgTnfz8u8JMf1rbwzXZ23B1L1dZdrzJkV5JZTXqvZZQtbs=
+xj-2FqD5pTRyidIXzqFLOP-2B3-2FfpEKfm05gWfbwI4q5ytNcHosz3Jwbq2xrB4ZjKEVVitCFB=
+4ts4sOwM1AwENT0iQetCmNZXNWq97BgkDSj95fL8-2Fye37">
+privacy policy</a>.</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<img src=3D"https://u51250877.ct.sendgrid.net/wf/open?upn=3Du001.zxn6UjfPdU=
+ia0YK7kqkObc6-2FGOoIHCJCh12zOHZKhePSU4ntReMOrS0fmbS3WZq9jvNCv2lFiyxwPjAE-2B=
+7om54OcP1iuUSXoLFlRwxZZ5sbGbs4DO6yvQ-2BUUQXwZHdVARTO9LUDG5BZh7a0hOwTglX0yWw=
+qOmqlepzRR71i8YuhNRcM2zttevYBwzUPtOH7h4BY1OWC8ZHKBls6VoDSgWg-2BrK9FIkz8monZ=
+4iuwgtIhpiYKunvWQNSLUgE3scpw4F7OzC-2FFJdAfbc15dYYPHVXx70YD-2FzslzgKw0imOpf6=
+aJtvXzZ0qLs3LHOJGe6rUFdRVNJZFX-2BLGupKiaazEaiFRp2sNgpYp3QalTTmK7fdg6weeZfgB=
+OYTHUMTffjoa2h-2BD00k57C51u1GS3Ac62jeeNREXa1LPnKU9jLN1bii3TR5a8aGbZ2x2QZ-2F=
+vmfKkN" alt=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D"height:1px =
+!important;width:1px !important;border-width:0 !important;margin-top:0 !imp=
+ortant;margin-bottom:0 !important;margin-right:0 !important;margin-left:0 !=
+important;padding-top:0 !important;padding-bottom:0 !important;padding-righ=
+t:0 !important;padding-left:0 !important;">
+</div>
+</body>
+</html>

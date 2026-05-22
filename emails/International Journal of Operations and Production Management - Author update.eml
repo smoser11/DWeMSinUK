@@ -1,0 +1,159 @@
+Received: from DB9PR06MB7963.eurprd06.prod.outlook.com (2603:10a6:10:26b::15)
+ by AS8PR06MB7301.eurprd06.prod.outlook.com with HTTPS; Mon, 13 Oct 2025
+ 15:45:14 +0000
+Received: from DUZPR01CA0244.eurprd01.prod.exchangelabs.com
+ (2603:10a6:10:4b5::13) by DB9PR06MB7963.eurprd06.prod.outlook.com
+ (2603:10a6:10:26b::15) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9203.12; Mon, 13 Oct
+ 2025 15:45:13 +0000
+Received: from DB5PEPF00014B93.eurprd02.prod.outlook.com
+ (2603:10a6:10:4b5:cafe::8c) by DUZPR01CA0244.outlook.office365.com
+ (2603:10a6:10:4b5::13) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9203.13 via Frontend Transport; Mon,
+ 13 Oct 2025 15:44:51 +0000
+Authentication-Results: spf=pass (sender IP is 54.240.27.197)
+ smtp.mailfrom=outbound.manuscriptcentral.com; dkim=pass (signature was
+ verified) header.d=manuscriptcentral.com;dkim=pass (signature was verified)
+ header.d=amazonses.com;dmarc=pass action=none
+ header.from=manuscriptcentral.com;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of
+ outbound.manuscriptcentral.com designates 54.240.27.197 as permitted sender)
+ receiver=protection.outlook.com; client-ip=54.240.27.197;
+ helo=a27-197.smtp-out.us-west-2.amazonses.com; pr=C
+Received: from a27-197.smtp-out.us-west-2.amazonses.com (54.240.27.197) by
+ DB5PEPF00014B93.mail.protection.outlook.com (10.167.8.231) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9228.7
+ via Frontend Transport; Mon, 13 Oct 2025 15:45:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6jaj7kuckl7yb52caon555zdwrgdb4r6; d=manuscriptcentral.com;
+	t=1760370311;
+	h=Date:From:Reply-To:To:Message-ID:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding;
+	bh=c1al5+lQ3MoZ6++hbzM/JuYap5r0I7iqH5YHbIHGe/w=;
+	b=PrFm3cZzvFjrhEL7H9lJDim8t5RgFeH/rGF2I6IkqUCNKA015fEjTjFbQ94BHcK+
+	1xGVLRIhc6UtCL4aybDr9vMTKPRUNxwaElFjU1zS84T6hcE8KpiuOdLmL04zkOUazZq
+	JtQizBDSBt7zugESt60W6wtlTZTOfR0fMIvR0CNM=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=gdwg2y3kokkkj5a55z2ilkup5wp5hhxx; d=amazonses.com; t=1760370311;
+	h=Date:From:Reply-To:To:Message-ID:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Feedback-ID;
+	bh=c1al5+lQ3MoZ6++hbzM/JuYap5r0I7iqH5YHbIHGe/w=;
+	b=FrmVSF7GssCoknCLplna/AwwhK0fq96kDOEAU+kYl+BJuCb1+8AoR3qnu3XBTY6p
+	Wm1Ld22x3GXeWmrQpG/IJuGJO5tX99CFp1/0elmHtwOhO+nOqf84sHvsJ4TN+XYHzOZ
+	g/aQiO3N/klPnKudU2ynEGSGcmQrCrgxLvU+oK8w=
+Date: Mon, 13 Oct 2025 15:45:11 +0000
+From: International Journal of Operations and Production Management <onbehalfof@manuscriptcentral.com>
+Reply-To: stefan.gold@tum.de
+To: caroline.emberson@nottingham.ac.uk, scott.moser@nottingham.ac.uk
+Message-ID: <01010199de3f3fef-9118eded-1669-4c0c-8fd9-e9c21e483304-000000@us-west-2.amazonses.com>
+Subject: International Journal of Operations and Production Management -
+ Author update
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-SID: 1
+X-PRODUCT: s1m
+X-ENV-TYPE: prod
+X-ENV-NAME: 4280
+X-S1Info: xik_2uDxLYqpbdkEBWLTHtrFQaRDQ74P2piVQAfCidVXYbZYRgfCE4eKyj2BLHyohfHEGxee3JB2T2WuYTjT6yxjM6BS
+Feedback-ID: ::1.us-west-2.y8789kd/oyDlGffYrP88IUZ2JiqaxJLDOSJ1+/ZSPI4=:AmazonSES
+X-SES-Outgoing: 2025.10.13-54.240.27.197
+Return-Path: 01010199de3f3fef-9118eded-1669-4c0c-8fd9-e9c21e483304-000000@outbound.manuscriptcentral.com
+X-MS-Exchange-Organization-ExpirationStartTime: 13 Oct 2025 15:45:13.4789
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: ed3c6fc8-8293-4564-1de6-08de0a6f7fca
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 67bda7ee-fd80-41ef-ac91-358418290a1e:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DB5PEPF00014B93:EE_|DB9PR06MB7963:EE_|AS8PR06MB7301:EE_
+X-MS-Exchange-Organization-AuthSource: DB5PEPF00014B93.eurprd02.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id: ed3c6fc8-8293-4564-1de6-08de0a6f7fca
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MAH-internal: external
+X-MS-Exchange-Organization-SCL: -1
+X-Microsoft-Antispam: BCL:4;ARA:13230040|5062899012|3072899012|3092899012|13102899012|2092899012|13012899012|32142699015|12012899012|8096899003;
+X-Forefront-Antispam-Report: CIP:54.240.27.197;CTRY:US;LANG:en;SCL:-1;SRV:;IPV:NLI;SFV:SKA;H:a27-197.smtp-out.us-west-2.amazonses.com;PTR:a27-197.smtp-out.us-west-2.amazonses.com;CAT:NONE;SFS:(13230040)(5062899012)(3072899012)(3092899012)(13102899012)(2092899012)(13012899012)(32142699015)(12012899012)(8096899003);DIR:INB;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Oct 2025 15:45:12.9072
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: ed3c6fc8-8293-4564-1de6-08de0a6f7fca
+X-MS-Exchange-CrossTenant-Id: 67bda7ee-fd80-41ef-ac91-358418290a1e
+X-MS-Exchange-CrossTenant-AuthSource: DB5PEPF00014B93.eurprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB9PR06MB7963
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:01.6190636
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.9203.007
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910005)(944506478)(944626604)(920097)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?eSt1ZGlYaDhDaEdkYUZPV0QySFB0a1NUamh0eWE1Q1BGdzRydkhFT0djYUdH?=
+ =?utf-8?B?UWZKOGlCRnFDaG1oT25raUVFR2pCUjI2RGtKSTBjdFp6dlhIY2VmbTQwamEv?=
+ =?utf-8?B?ZkNVUWRBTmlQQkJVcG5TNzdRK1diL0lhV1k1ak9uWTdlV2s3YlZaWG1kL3hQ?=
+ =?utf-8?B?RnIvbXYxYSs1VnByRzdlM1lYOHVBZXd4cWtQUGxjVEpyU2VIQUlWL2dDdDhT?=
+ =?utf-8?B?RjQ0RGJtWTU3cHBhOEF3TE1lSjJURlplRktpTW9nQnVBSmFqaUJ5SjZ2cVdv?=
+ =?utf-8?B?N2JUbTNBZVhGdU45MHNqN3NhNldYRmoybW94WTVDZVM4bEJPZG0vYUZGOXBD?=
+ =?utf-8?B?T3p6QXRLbXgzRFZTMGk1eW0yMEhHblhIV0kyRFozQjJMZUhQb3JyeUo2MCtG?=
+ =?utf-8?B?L3FJcytXdkY1ZFY3b3E2enZ2dHRiRWpONkZpTUNPeDBuQUVQbG9jRkxwTzlH?=
+ =?utf-8?B?ckVXdnd2dEdPYW0vWEpqMnNqd2FuTFpqcVFxRUlTQkM2VGZMK2xZc2Z5SDhq?=
+ =?utf-8?B?aVVTVFBmR0lRUVdrSkYycDJzZ2pyUE81VUU5NGZJNjBsc3hOeHRTOUJOK1Vi?=
+ =?utf-8?B?MU82UEw0WWVuNE5EWm5xSVJpVTVGTUR0TytZY3p4ZUt1YXFNcisweEtjbTJP?=
+ =?utf-8?B?OWNXblloUHVnazMvd2cwODgyVzJFWTFUekZHQWg3QnpFckxadnhIQVhwWmgw?=
+ =?utf-8?B?ZFdFMktrY0NYVmdPdWxyMEYyenR0MEk4dmRlemowZE5LbkwvYlFLREhKcEFn?=
+ =?utf-8?B?cmhaZlNhbGQrdzZydjc2NU5XblVYWUc3WDV2dHg4T1V4RUQ2dmtrTXBKZGov?=
+ =?utf-8?B?dmVJSVZNM1RSMDI4Y1oyQklXd0hmVUlIa09tWnhkRnpyZXVrSXYvSUIwTFlH?=
+ =?utf-8?B?dDN0Uk9JbzhZeGpCa2J5YW94K284WitEUEpTaDhzc2VOVG1NN3B0dEVkMElj?=
+ =?utf-8?B?dU10UW1oSHVKNVlFNjFHcXdhTDhob2NKc3NsSnZKTVppQnZqU0tSSUM3TnpJ?=
+ =?utf-8?B?VUU0MXJTMkt1dVZ2YVFweG9VSTg4UkxWSk9hNXJ2dFVzSERIam1GMkpJOGRk?=
+ =?utf-8?B?aFZ5OW5QNmtJV0JkSDhDcjgzWGp6cUlrVnVQOWRyMy8rZnV4VnpaV0Vna004?=
+ =?utf-8?B?NjB5N2lPNU1iNGx3VHdoeTdQZHFaRDQ3TG0zOEM2VU9KMENMemZHWDRVa1dK?=
+ =?utf-8?B?VWdad3dKWTJwVDM1S25rZmMzdmJvV2c5dURNVDlVL2tPUjh1ZS96WE55cmE5?=
+ =?utf-8?B?Yit3WC9zZmtBTWM0eDZmQ3FDc0RsZHZub1Qyem5udGVEdnYyVUZRbkNrREpC?=
+ =?utf-8?B?U1k3K0hFR3ZvQTFBdkYxblMza0dFQ2JCR3ZxZG9sOXZra3ppejNzSXFrcTBB?=
+ =?utf-8?B?alliWDBqTzVSbVU0NDJJd0VmRHdHV1E2K0h2azJOczd3M0FYY1pUa3Nmd1VL?=
+ =?utf-8?B?QlF0eGFPZlZSeWtIOWVyU0E1blJJMEs0QlV3aGFjaGtwTXZFT3VhcXIweWh3?=
+ =?utf-8?B?Y3ViMnNtQlpXQm5zM3d5MXB3ZE9FeFRhT1RiMldrOWdHTHhFb2t1em10Z0hz?=
+ =?utf-8?B?cU1EaFUzQ1dLV3RSaUZIcFlNeDlCc2E1bm5KZi9RUi94elBHS2dDWTNkdGRT?=
+ =?utf-8?B?eEpHS2Z2N3pwcC9ucEExdWRJeWhHaHAxY2hQV1dGOTNFY3lLNHJiSEhvMnVv?=
+ =?utf-8?B?bTM3OWtjcWxOUVFTVUY3ZDdxejdVUW5UOE1RUkljUFVMUDZoZnFublppeVFw?=
+ =?utf-8?B?NGdTMXVZQjFLcUNDMzFIUzdMWjNxdnJ4Z2ErUlFLdnlPS09rMlpjamFwRkI0?=
+ =?utf-8?B?Y0pnZ2U3QUJTWXNnT05kRFRaOHhhdVFCdUcwVkwwNFdJVzBYbUZWZFRWTG8r?=
+ =?utf-8?B?c20rV21rOHlQL3lJZlNZdVVlUm96UVAzRjNLMHNMMWZpbmxiTWNJN2U0S1Qw?=
+ =?utf-8?B?Qjh1UUpYdHZ3QmI1M21Bc0lycmRvaXdYVGd3dWFORThKK1ZzK0xkNXBQNGI0?=
+ =?utf-8?B?MEkwbk9BYWoxcnJha1BWeXovVWV5Q0tDT2RKVTN1Z0IwZzRwM2VmQi9vWFY5?=
+ =?utf-8?B?RlA5TFVvTWs2dkRDcU9QSFBkWVRlVFQ1bzJDYVpWT3Q0eUFEbUNkMWtNdUU5?=
+ =?utf-8?B?YlB2aEFCcDdiTHRTY1kxWFY4TjdnVGNnbm5lbWswSTU2TVZtYlBTZ1VNRjl3?=
+ =?utf-8?B?TmJ0SllYemUvMkx4cW5LaDVxcmxETEYzdmczZGVGNmw1cXhmQmNHY04vbTNh?=
+ =?utf-8?B?blNxUlNPbXRuZm5nWGxra3FKcFRSNGtrZ0VrTFNWNkw2SysvSVU0U0ZJdS84?=
+ =?utf-8?B?S0xKZWp0MFhRYVNvZCtwN2FMeXZQVm9TZktPV0ZDZnBCSG81bjhEVXpOQm1Z?=
+ =?utf-8?B?cXJIdG03UzFmVXJicHZDTUVQRFBvR0VzalIvSE1ROVQ1eng4emhZNE9CQWxR?=
+ =?utf-8?B?dmV1Y0xHdXBLdVBQbGJvcXZCNytuK3hSeE1sWURsRDkrTzJMdkt4OWNVeXYw?=
+ =?utf-8?B?TkNsYkNrU3NYeC9zVnRZblRZTkVUd3lXRFNvdUF1WG9STkRXcWtrTXZCMmgy?=
+ =?utf-8?B?WVRicFAyR3VGRjZIa0lpMlYramlteVFTR1MxY3BKdlg1MmV4QmprN0ZLMVlI?=
+ =?utf-8?B?VHczbmR1NGsvV3hEbXhYM3Fla0hUdGw1d2pZS1doMUExUU00VTFIeC9CQk1v?=
+ =?utf-8?B?UWFEQXBGaXNwR2N5VVBjSnZCbDlQSERadXF3S0RlMFZLeTRjQkw5eW82MHZ2?=
+ =?utf-8?B?eVV0cllwemhIOXVtZ3FJZzFqT29tdjBCU281S1kxdE5DNEh0aXFWK05rRzFx?=
+ =?utf-8?B?VEFiZmhEbmpndkJ3aVRyUG5EZTFpSjJ4UjczQTluWFM2bFMzVnd0QTBaTkN1?=
+ =?utf-8?B?eU9NSGNSdzVab1RjN2gwRDExWnZjVXppbCtGVzhUQll1ZFhlVlpKR254MHU3?=
+ =?utf-8?B?dTZkelpRWEpQTks1amlBVFdyQ3JxYlFmRnBVNGE5VUtiNVFLb09SelNpUDR0?=
+ =?utf-8?B?ZFZpSy9KZ2N3VjZRS3YwdnpUeHpWaVBpR0pReHgzMHFaTXVTNEpsTEhOR3dQ?=
+ =?utf-8?B?Wkx3LzB0SFc2UUp3Q2xEcGE2eW5ncDJtbW1oa3N0Y01xcGsvVGdMZDNJcjFC?=
+ =?utf-8?B?RnVjc1BaTldjaU9CVC9LWSsxaS9IdCtzQzVIK2puVkExNWhSU3ZranJwQnVK?=
+ =?utf-8?Q?QOlEF0O6ACQj98PsWlmf6J7BV3jd?=
+MIME-Version: 1.0
+
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8">13=
+-Oct-2025<br><br>Dear Author(s),<br><br>Your manuscript titled Quantifying =
+Hidden Exploitation: Dual-Method Prevalence Estimates of Modern Slavery Ris=
+k Among Domestic Workers in the United Kingdom (IJOPM-10-2025-1011) submitt=
+ed to =E2=80=9CLabour exploitation: OSCM research to combat modern slavery,=
+ human trafficking and precarious work=E2=80=9D special issue has passed in=
+itial screening and is now awaiting reviewer invitation.<br>The manuscript =
+was submitted by Dr. Caroline Anne Emberson with you listed as a co-author.=
+<br><br>As you are listed as a co-author, if you have not already done so p=
+lease log in to https://mc.manuscriptcentral.com/ijopm and check that your =
+account details are complete and correct, these details will be used should=
+ the paper be accepted for publication.<br><br>Yours sincerely,<br>Prof. St=
+efan Gold<br>Guest Editor, International Journal of Operations and Producti=
+on Management<br>stefan.gold@tum.de
