@@ -7,7 +7,7 @@ library(tidyverse)
 library(here)
 
 # Load existing results
-load('output/rds_subgroup_analysis_results_FIXED.RData')
+load('output/rds_subgroup_analysis_results.RData')
 
 cat("=== CREATING PROFESSIONAL LaTeX TABLES ===\n")
 
@@ -198,7 +198,7 @@ quarto_code <- paste0(
   'library(kableExtra)\n',
   'library(here)\n\n',
   '# Load results and create table\n',
-  'load(here("output", "rds_subgroup_analysis_results_FIXED.RData"))\n',
+  'load(here("output", "rds_subgroup_analysis_results.RData"))\n',
   'source(here("R", "analysis", "create_latex_tables.R"))\n',
   'latex_table1 <- create_latex_table1_standalone(cluster_summary)\n',
   'latex_table1\n',

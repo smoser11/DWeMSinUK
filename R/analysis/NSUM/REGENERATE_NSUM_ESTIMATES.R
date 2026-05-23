@@ -8,7 +8,7 @@
 # Workflow:
 # 1. Regenerate prepared data with correct RDS weights (02-data_preparation.R)
 # 2. Load or generate bootstrap samples (Boot_Step1.R)
-# 3. Apply correct RDS weights to bootstrap samples (Boot_Step2_FIXED.R)
+# 3. Apply correct RDS weights to bootstrap samples (Boot_Step2.R)
 # 4. Compute NSUM estimates on weighted bootstrap samples (Boot_Step3.R)
 # 5. Calculate bootstrap confidence intervals
 # 6. Save results
@@ -176,8 +176,8 @@ if (CONFIG$force_reweight || !file.exists(weighted_samples_path)) {
   cat("Weight method:", CONFIG$rds_weight_method, "\n")
   cat("Population size:", format(CONFIG$population_size, big.mark = ","), "\n\n")
 
-  # Source Boot_Step2_FIXED.R
-  source(here("R", "analysis", "NSUM", "Boot_Step2_FIXED.R"))
+  # Source Boot_Step2.R (the canonical version using standard RDS package functions)
+  source(here("R", "analysis", "NSUM", "Boot_Step2.R"))
 
   # Use the first outcome as reference for weight calculation
   reference_outcome <- CONFIG$nsum_outcomes[1]

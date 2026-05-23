@@ -118,7 +118,7 @@ cat("✓ Loaded prepared data: n =", nrow(dd), "\n")
 
 # Source required scripts
 source(here("R", "analysis", "NSUM", "Boot_Step1.r"))
-source(here("R", "analysis", "NSUM", "Boot_Step2_FIXED.R"))
+source(here("R", "analysis", "NSUM", "Boot_Step2.R"))
 source(here("R", "analysis", "NSUM", "Boot_Step3.R"))
 
 # ==============================================================================
