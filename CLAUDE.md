@@ -11,33 +11,83 @@ This repository contains a research project analyzing domestic worker exploitati
 ### Core Directory Structure
 ```
 DWeMSinUK/
-├── R/                          # All R analysis scripts
-│   ├── 00-main_pipeline.R     # Master analysis pipeline
-│   ├── data_processing/        # Data cleaning and preparation
-│   │   ├── 01-data_cleaning.R  # Raw data import and cleaning
-│   │   └── 02-data_preparation.R # Comparable indicators and RDS formatting
-│   ├── analysis/              # Statistical estimation methods
-│   │   ├── 03-rds_estimation.R # RDS-I/II/SS estimation and bootstrap
-│   │   ├── 04-nsum_estimation.R # Network scale-up methods
-│   │   └── 05-comparison_analysis.R # RDS vs NSUM comparison
-│   ├── utils/                 # Helper functions and utilities
-│   │   └── helper_functions.R # Shared utility functions
-│   └── archive/               # Archived old/experimental scripts
-│       ├── old_versions/      # Previous script versions
-│       ├── experiments/       # Experimental scripts
-│       └── scratch_work/      # Daily work files
-├── data/                      # Data files (raw and processed)
-│   ├── raw/                   # Original survey data
-│   └── processed/             # Cleaned datasets (.RData files)
-├── output/                    # Analysis results and outputs
-│   ├── figures/               # All plots and visualizations
-│   ├── tables/                # Summary tables and estimates
-│   └── reports/               # Generated analysis reports
-├── paper/                     # Academic papers and manuscripts
-├── GNSUM/                     # G-NSUM specific materials
-├── Replication/               # External replication studies
-└── Notes/                     # Research notes and documentation
+├── R/                            # All R analysis code
+│   ├── 00-main_pipeline.R        # Master analysis pipeline
+│   ├── config.R                  # Centralised global configuration
+│   ├── data_processing/          # Data cleaning and preparation
+│   │   ├── 01-data_cleaning.R
+│   │   └── 02-data_preparation.R
+│   ├── analysis/                 # Statistical estimation methods
+│   │   ├── 03-rds_estimation.R   # RDS-I/II/SS estimation + bootstrap
+│   │   ├── 04-bootstrap_analysis.R
+│   │   ├── 05-nsum_estimation.R  # NSUM estimation
+│   │   ├── 06-*.R                # Sensitivity, Bayesian, comparison
+│   │   ├── 07-*.R                # Convergence diagnostics + visualisation
+│   │   ├── 08-netclust_subgroup_analysis.R    # Clustered SS-PSE (was *_FIXED.R)
+│   │   ├── 08b-simple_subgroup_analysis.R     # RDS by subgroup (was *_FIXED.R)
+│   │   ├── NSUM/                 # NSUM bootstrap and regeneration scripts
+│   │   │   ├── Boot_Step1.r
+│   │   │   ├── Boot_Step2.R      # canonical version (was Boot_Step2_FIXED.R)
+│   │   │   ├── Boot_Step3.R
+│   │   │   └── REGENERATE_NSUM_*.R
+│   │   └── _docs/                # Workflow notes, refactoring docs, READMEs
+│   ├── utils/
+│   │   └── helper_functions.R
+│   ├── tests/                    # R test scripts (moved here from root tests/)
+│   └── archive/                  # Archived old/experimental scripts
+│       ├── old_versions/         # Previous script versions (incl. *_pre-fix)
+│       ├── analysis_consolidation_2025/   # Aug 2025 reorg intermediates
+│       ├── nsum_consolidation_2025/       # Sep-Oct 2025 NSUM intermediates
+│       ├── estimator_versions/   # Versioned 06-MODULAR_estimator drafts
+│       ├── experiments/          # Experimental scripts
+│       └── scratch_work/         # Daily work files
+├── data/                         # Data files
+│   ├── raw/                      # Original survey data
+│   ├── processed/                # Cleaned datasets (.RData/.csv)
+│   └── survey/                   # Survey instruments, codebooks
+├── output/                       # Analysis outputs
+│   ├── figures/                  # Plots and visualisations
+│   ├── tables/                   # Summary tables and estimates
+│   ├── reports/                  # Generated analysis reports
+│   ├── manuscripts/              # Manuscript-specific outputs
+│   └── (large binaries gitignored — see "Tracked vs untracked" below)
+├── paper/                        # Manuscript and submission materials
+│   ├── OneDrive_1_22-05-2026/    # CURRENT SIR submission package
+│   │   └── SIR/                  # Submitted draft, ESM files, figures, tables
+│   ├── archive/                  # All historical draft versions (IJOPM, BJMM, etc.)
+│   ├── decisions/                # Desk-rejection PDFs from IJOPM, JBE, IRJ, BJIR
+│   ├── references/               # .bib files, citation style, cited papers
+│   └── supporting/               # Tables, figures, descriptive stats, methods writeups
+├── correspondence/               # Project email history (merges old emails/ folder)
+│   ├── 2023/                     # 55 .eml / .txt files
+│   ├── 2024/                     # 60 files
+│   ├── 2025/                     # 23 files (incl. submission-related)
+│   ├── 2026/                     # 9 files (IRJ/BJIR responses, SIR planning)
+│   └── undated/                  # 123 files without parseable date headers
+├── Notes/                        # Research notes (Markdown)
+├── Literature/                   # Cited PDFs
+├── Replication/                  # External replication studies (Gile, Handcock)
+├── GNSUM/                        # G-NSUM specific materials (transcripts, notes)
+├── CRAN/                         # Vendored R-package source tarballs (kept tracked)
+└── _snapshots/                   # (GITIGNORED) safety-net tarballs from the
+                                  #   2026-05-22 reorganisation
 ```
+
+### Tracked vs untracked
+
+After the 2026-05-22 reorganisation:
+
+- **Source code, data, and the manuscript are tracked.**
+- **Derived analysis outputs are gitignored** (`output/*.RData`, `output/*.rds`,
+  `output/nsum_*/`, `output/archive_*/`, etc.). They stay on local disk so
+  the R pipeline can use cached intermediates via `force_recompute = FALSE`,
+  but they don't bloat git history. The snapshot at commit `722609c` (pushed
+  to GitHub) is the canonical "frozen" version of the outputs.
+- **`Meetings/` and `_snapshots/` are gitignored** and stay on local disk
+  only. The snapshot tarballs preserve the pre-reorg state.
+- **`CRAN/` is tracked** as a vendored package backup against future
+  upstream churn (especially `netclust`, which has known incompatibilities
+  with R 4.5+ and is not on CRAN).
 
 ### Key Analysis Files
 - `R/00-main_pipeline.R` - Master script that runs the complete analysis pipeline
@@ -226,8 +276,8 @@ Recent extensions provide additional analysis options:
   - `07-comprehensive_comparison.R` - Full method comparison across estimators
   - `07-convergence_diagnostics_and_visualization.R` - MCMC convergence checks
 - `08-*.R` scripts: Subgroup and nationality cluster analysis
-  - `08-netclust_subgroup_analysis_FIXED.R` - Clustered SS-PSE by nationality (requires netclust package)
-  - `08b-simple_subgroup_analysis_FIXED.R` - Standard RDS estimates by nationality cluster
+  - `08-netclust_subgroup_analysis.R` - Clustered SS-PSE by nationality (requires netclust package)
+  - `08b-simple_subgroup_analysis.R` - Standard RDS estimates by nationality cluster
 - Enhanced appendix materials generation for academic publications
 
 ### Technical Requirements
@@ -251,7 +301,7 @@ Recent extensions provide additional analysis options:
 - **Bootstrap convergence warnings** - Adjust `bootstrap_samples` parameter or check network topology
 - **Memory issues with large populations** - Reduce population size scenarios or use parallel processing
 - **Missing RDS network connections** - Validate recruiter.id column for -1 values and network structure
-- **netclust package errors** - netclust 0.1.0 (2021) has compatibility issues with R 4.5.0+. Use alternative subgroup methods in `08b-simple_subgroup_analysis_FIXED.R` or install from source with fixes
+- **netclust package errors** - netclust 0.1.0 (2021) has compatibility issues with R 4.5.0+. Use alternative subgroup methods in `08b-simple_subgroup_analysis.R` or install from source with fixes
 
 #### Checking Results
 ```r
@@ -272,4 +322,4 @@ readRDS(here("output", "rds_convergence_diagnostics.RDS"))
 - Use smaller population size scenarios for testing: `c(50000, 100000)`
 - Disable expensive analyses in pipeline configuration: `run_bootstrap_analysis = FALSE`
 - Use pipeline configuration to skip completed steps during development
-- For subgroup analysis, combine small nationality clusters to meet minimum sample size requirements (see `08-netclust_subgroup_analysis_FIXED.R` configuration)
+- For subgroup analysis, combine small nationality clusters to meet minimum sample size requirements (see `08-netclust_subgroup_analysis.R` configuration)
