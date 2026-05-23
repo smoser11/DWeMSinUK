@@ -25,3 +25,18 @@
 
 # Redundant zips (the unpacked folder is tracked instead)
 /paper/OneDrive_1_22-05-2026.zip
+
+# Derived analysis artefacts — regenerable from R scripts.
+# Stay on local disk, but not tracked in git history.
+/output/*.RData
+/output/*.rds
+/output/*.RDS
+/output/nsum_quick_test/
+/output/nsum_corrected/
+/output/nsum_complete/
+/output/nsum_comprehensive/
+/output/archive_*/
+/output/figures20250827/
+# Other large derived binaries
+*.RData
+*.rds
