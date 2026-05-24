@@ -144,3 +144,36 @@ October 1, 2025
 
 ## Reason for Consolidation
 Claude Code analysis identified multiple critical errors and design issues that warranted a complete restructuring rather than incremental fixes.
+
+## Additional files archived 2026-05-24
+
+Three additional workflow files plus their test were archived here on 2026-05-24
+as part of the broader repo organizational cleanup:
+
+- **NSUM_complete_workflow.R** - Pre-consolidation NSUM workflow script
+- **NSUM_workflow_SEQUENTIAL.R** - Sequential-execution variant
+- **RUN_NSUM_ANALYSIS.R** - Runner that drove the above
+- **TEST_NSUM_workflow.R** - Test script for NSUM_complete_workflow.R
+
+These were sitting in `R/analysis/` alongside the canonical numbered pipeline
+files (03- through 08-) and the canonical NSUM helpers (`nsum_core_estimators.R`,
+`nsum_bootstrap.R`, `nsum_robust_adjustment.R`, `nsum_visualization.R`) and
+were creating confusion about which was the authoritative entry point. The
+canonical pathway is now unambiguous:
+
+```r
+source("R/00-main_pipeline.R")  # runs the full pipeline
+# or for NSUM specifically:
+source("R/analysis/05-nsum_estimation.R")
+# helpers in NSUM/ subdir:
+#   NSUM/Boot_Step1.r, NSUM/Boot_Step2.R, NSUM/Boot_Step3.R
+#   NSUM/REGENERATE_NSUM_ESTIMATES.R
+#   NSUM/REGENERATE_NSUM_COMPREHENSIVE.R
+```
+
+Note: the archived files retain their original `source()` calls, some of
+which point to paths in `R/analysis/`. Those paths still resolve correctly
+for the core helpers (which remain in place), but `TEST_NSUM_workflow.R`'s
+attempt to source `R/analysis/NSUM_complete_workflow.R` will fail because
+that file is now in this archive directory. Archived files are kept as
+historical snapshots and not maintained for executability.
