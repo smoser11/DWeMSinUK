@@ -40,3 +40,8 @@
 # Other large derived binaries
 *.RData
 *.rds
+# Microsoft Word lock files (created when a .docx is open)
+~$*.docx
+~$*.doc
+~$*.xlsx
+~$*.pptx
