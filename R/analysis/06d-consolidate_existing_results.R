@@ -1,4 +1,4 @@
-# 06c-consolidate_existing_results.R
+# 06d-consolidate_existing_results.R
 # Consolidate existing MA.estimates sensitivity results into bayesian_sensitivity_results.RData
 # WITHOUT running new computations - just loads existing individual files
 
