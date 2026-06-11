@@ -1,5 +1,6 @@
-# Draft email to Caroline Emberson — SIR submission strategy
+# Email to Caroline Emberson — SIR submission strategy
 
+**Sent:** 24 May 2026 (from Scott Moser to Caroline Emberson, caroline.emberson@nottingham.ac.uk)
 **Subject:** DWeMSinUK — repositioning for SIR, and an invite to the GitHub repo
 
 ---
@@ -49,4 +50,4 @@ Scott
 
 ---
 
-*Drafted 24 May 2026 — Scott, please review/edit before sending. The voice is mine, not yours; adjust to taste.*
+*Sent verbatim from this draft on 24 May 2026. The candid uncertainties I worked through with Claude in the same conversation (about the OSCM-language diagnosis being inference rather than proof, the "SIR-as-right-venue" claim being a judgment call, and the methodological contributions needing pressure-testing against prior HIV-/sex-work-prevalence literature) are deliberately not in the sent email — Scott chose to let Caroline surface her own objections in her reply rather than preempt them with a unilateral list of caveats. See the SIR positioning analysis memo for the substantive analysis these caveats apply to.*
