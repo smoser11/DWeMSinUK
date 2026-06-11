@@ -46,32 +46,41 @@ bayesian_config <- list(
   numeric_indicators = c("composite_risk", "sum_categories"),
   additional_indicators = c("whether_exploitation"),  # Binary but important
   
-  # Enhanced parameters for numeric/ordinal variables (YOUR PROVEN SETTINGS)
+  # Enhanced parameters for numeric/ordinal variables
+  # Updated 2026-05-25 per Statistical audit report findings 4, 5, 8:
+  # the previous values (number.of.iterations=3, M1=75, M2=50) were too small
+  # for the MA algorithm to converge - the reported estimates were essentially
+  # the unadjusted starting values, with implausible SEs and zero variation
+  # across seed-selection methods. New values follow RDS package guidance for
+  # production runs. NB: this WILL make each call expensive (~minutes per
+  # indicator). Run overnight if needed. See R/analysis/_docs/ma_convergence_study.md
+  # (to be created) for justification of these specific values.
   enhanced_params = list(
-    number.of.iterations = 3,        # Enhanced: 3 iterations for stability
-    M1 = 75,                         # Enhanced: larger network samples  
-    M2 = 50,                         # Enhanced: more RDS samples
-    MPLE.samplesize = 150000,        # Enhanced: better initialization
-    SAN.maxit = 25,                  # Enhanced: more annealing steps
-    SAN.nsteps = 2^22,               # Enhanced: 8x longer burn-in
-    sim.interval = 25000,            # Enhanced: more spacing
-    seed.selection = "random",       # Enhanced: may work better for numeric
+    number.of.iterations = 15,       # Production: enough for posterior convergence
+    M1 = 2000,                       # Production: network samples per iteration
+    M2 = 1000,                       # Production: RDS samples per iteration
+    MPLE.samplesize = 150000,        # Initialization (kept from prior)
+    SAN.maxit = 25,                  # Annealing steps (kept from prior)
+    SAN.nsteps = 2^22,               # Burn-in (kept from prior)
+    sim.interval = 25000,            # Spacing (kept from prior)
+    seed.selection = "random",       # Default for numeric
     parallel = 1,
     verbose = TRUE,
     full.output = TRUE,
     seed = 42
   ),
-  
+
   # Standard parameters for binary variables
+  # Updated 2026-05-25 - same reasoning as enhanced_params above.
   standard_params = list(
-    number.of.iterations = 2,        # Standard: 2 iterations sufficient for binary
-    M1 = 50,                         # Standard: default network samples
-    M2 = 25,                         # Standard: default RDS samples
-    MPLE.samplesize = 50000,         # Standard: default initialization
-    SAN.maxit = 10,                  # Standard: default annealing
-    SAN.nsteps = 2^19,               # Standard: default burn-in
-    sim.interval = 10000,            # Standard: default spacing
-    seed.selection = "degree",       # Standard: default seed selection
+    number.of.iterations = 10,       # Production: enough for posterior convergence
+    M1 = 1000,                       # Production: network samples per iteration
+    M2 = 500,                        # Production: RDS samples per iteration
+    MPLE.samplesize = 50000,         # Initialization (kept from prior)
+    SAN.maxit = 10,                  # Annealing (kept from prior)
+    SAN.nsteps = 2^19,               # Burn-in (kept from prior)
+    sim.interval = 10000,            # Spacing (kept from prior)
+    seed.selection = "degree",       # Default for binary
     parallel = 1,
     verbose = TRUE,
     full.output = TRUE,

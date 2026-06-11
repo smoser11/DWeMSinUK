@@ -61,32 +61,40 @@ sensitivity_config <- list(
   numeric_indicators = c("composite_risk", "sum_categories"), 
   additional_indicators = c("whether_exploitation"),
   
-  # Enhanced parameters (from proven settings or defaults)
+  # Enhanced parameters (numeric/ordinal indicators)
+  # Updated 2026-05-25 per Statistical audit report findings 4, 5:
+  # previous values were too small for MA algorithm convergence; seed-selection
+  # variation showed byte-identical estimates because the algorithm returned
+  # the starting value. New values follow RDS package guidance for production
+  # runs. Each call may take minutes; 96 sensitivity combinations may need
+  # overnight runtime. See R/analysis/_docs/ma_convergence_study.md
+  # (to be created) for justification.
   enhanced_params = if(!is.null(enhanced_ma_params)) enhanced_ma_params else list(
-    number.of.iterations = 3,        # Enhanced: 3 iterations for stability
-    M1 = 75,                         # Enhanced: larger network samples  
-    M2 = 50,                         # Enhanced: more RDS samples
-    MPLE.samplesize = 150000,        # Enhanced: better initialization
-    SAN.maxit = 25,                  # Enhanced: more annealing steps
-    SAN.nsteps = 2^22,               # Enhanced: 8x longer burn-in
-    sim.interval = 25000,            # Enhanced: more spacing
+    number.of.iterations = 15,       # Production: posterior convergence
+    M1 = 2000,                       # Production: network samples per iteration
+    M2 = 1000,                       # Production: RDS samples per iteration
+    MPLE.samplesize = 150000,        # Initialization (kept)
+    SAN.maxit = 25,                  # Annealing (kept)
+    SAN.nsteps = 2^22,               # Burn-in (kept)
+    sim.interval = 25000,            # Spacing (kept)
     parallel = 1,
-    verbose = FALSE,                 # Reduce output for batch runs
+    verbose = FALSE,
     full.output = TRUE,
     seed = 42
   ),
-  
-  # Standard parameters for comparison
+
+  # Standard parameters (binary indicators)
+  # Updated 2026-05-25 - same reasoning as enhanced_params above.
   standard_params = list(
-    number.of.iterations = 2,        # Standard: 2 iterations
-    M1 = 50,                         # Standard: default network samples
-    M2 = 25,                         # Standard: default RDS samples
-    MPLE.samplesize = 50000,         # Standard: default initialization
-    SAN.maxit = 10,                  # Standard: default annealing
-    SAN.nsteps = 2^19,               # Standard: default burn-in
-    sim.interval = 10000,            # Standard: default spacing
+    number.of.iterations = 10,       # Production: posterior convergence
+    M1 = 1000,                       # Production: network samples per iteration
+    M2 = 500,                        # Production: RDS samples per iteration
+    MPLE.samplesize = 50000,         # Initialization (kept)
+    SAN.maxit = 10,                  # Annealing (kept)
+    SAN.nsteps = 2^19,               # Burn-in (kept)
+    sim.interval = 10000,            # Spacing (kept)
     parallel = 1,
-    verbose = FALSE,                 # Reduce output for batch runs
+    verbose = FALSE,
     full.output = TRUE,
     seed = 42
   ),
