@@ -45,24 +45,24 @@ cat("- Total combinations:", length(all_indicators) * length(sensitivity_config$
 # ============================================================================
 
 get_sensitivity_parameters <- function(indicator, seed_selection) {
-  # Metadata recorded alongside loaded results. Updated 2026-05-25 to match the
-  # production iteration counts in 06b- and 06c- (audit findings 4, 5).
-  # NB: this function is a consolidator - it does not call MA.estimates() itself.
-  # These values describe what was used to GENERATE the .RData files being loaded.
+  # Metadata recorded alongside loaded results. Updated 2026-06-11 to match
+  # the memory-tractable values in 06b- and 06c-. This function is a
+  # consolidator - it does not call MA.estimates() itself. These values
+  # describe what was used to GENERATE the .RData files being loaded.
   if (indicator %in% sensitivity_config$numeric_indicators) {
     return(list(
       parameter_type = "enhanced",
       number.of.iterations = 15,
-      M1 = 2000,
-      M2 = 1000,
+      M1 = 1000,
+      M2 = 400,
       seed.selection = seed_selection
     ))
   } else {
     return(list(
       parameter_type = "standard",
       number.of.iterations = 10,
-      M1 = 1000,
-      M2 = 500,
+      M1 = 500,
+      M2 = 200,
       seed.selection = seed_selection
     ))
   }

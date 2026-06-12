@@ -62,17 +62,17 @@ sensitivity_config <- list(
   additional_indicators = c("whether_exploitation"),
   
   # Enhanced parameters (numeric/ordinal indicators)
-  # Updated 2026-05-25 per Statistical audit report findings 4, 5:
-  # previous values were too small for MA algorithm convergence; seed-selection
-  # variation showed byte-identical estimates because the algorithm returned
-  # the starting value. New values follow RDS package guidance for production
-  # runs. Each call may take minutes; 96 sensitivity combinations may need
-  # overnight runtime. See R/analysis/_docs/ma_convergence_study.md
-  # (to be created) for justification.
+  # Updated 2026-06-11. First fix (May 2026) used M1=2000, M2=1000 but that
+  # caused OOM on a 128GB workstation when running the 96-combination loop.
+  # Per Gile & Handcock 2015 the binding constraint for convergence is
+  # number.of.iterations (not M1/M2), so we keep iterations high and reduce
+  # M1/M2 to a memory-tractable range. To AVOID accumulating R session bloat
+  # across the 96 calls, prefer running via the session-restart wrapper at
+  # R/analysis/06c-run-all.sh rather than sourcing this script directly.
   enhanced_params = if(!is.null(enhanced_ma_params)) enhanced_ma_params else list(
-    number.of.iterations = 15,       # Production: posterior convergence
-    M1 = 2000,                       # Production: network samples per iteration
-    M2 = 1000,                       # Production: RDS samples per iteration
+    number.of.iterations = 15,       # Posterior convergence
+    M1 = 1000,                       # Memory-tractable
+    M2 = 400,                        # Memory-tractable
     MPLE.samplesize = 150000,        # Initialization (kept)
     SAN.maxit = 25,                  # Annealing (kept)
     SAN.nsteps = 2^22,               # Burn-in (kept)
@@ -84,11 +84,11 @@ sensitivity_config <- list(
   ),
 
   # Standard parameters (binary indicators)
-  # Updated 2026-05-25 - same reasoning as enhanced_params above.
+  # Updated 2026-06-11 - same reasoning as enhanced_params above.
   standard_params = list(
-    number.of.iterations = 10,       # Production: posterior convergence
-    M1 = 1000,                       # Production: network samples per iteration
-    M2 = 500,                        # Production: RDS samples per iteration
+    number.of.iterations = 10,       # Posterior convergence
+    M1 = 500,                        # Memory-tractable
+    M2 = 200,                        # Memory-tractable
     MPLE.samplesize = 50000,         # Initialization (kept)
     SAN.maxit = 10,                  # Annealing (kept)
     SAN.nsteps = 2^19,               # Burn-in (kept)

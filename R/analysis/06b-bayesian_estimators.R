@@ -47,18 +47,17 @@ bayesian_config <- list(
   additional_indicators = c("whether_exploitation"),  # Binary but important
   
   # Enhanced parameters for numeric/ordinal variables
-  # Updated 2026-05-25 per Statistical audit report findings 4, 5, 8:
-  # the previous values (number.of.iterations=3, M1=75, M2=50) were too small
-  # for the MA algorithm to converge - the reported estimates were essentially
-  # the unadjusted starting values, with implausible SEs and zero variation
-  # across seed-selection methods. New values follow RDS package guidance for
-  # production runs. NB: this WILL make each call expensive (~minutes per
-  # indicator). Run overnight if needed. See R/analysis/_docs/ma_convergence_study.md
-  # (to be created) for justification of these specific values.
+  # Updated 2026-06-11. Audit (May 2026) found the original values
+  # (iterations=3, M1=75, M2=50) were too small for the MA algorithm to converge.
+  # First fix raised them to (15, 2000, 1000) but those caused OOM on a 128GB
+  # workstation - per Gile & Handcock 2015, the critical parameter is iterations
+  # (not M1/M2), so we keep iterations high and reduce M1/M2 to a memory-tractable
+  # range. The seed-selection sensitivity bug should still be fixed since
+  # iterations is the binding constraint for convergence.
   enhanced_params = list(
-    number.of.iterations = 15,       # Production: enough for posterior convergence
-    M1 = 2000,                       # Production: network samples per iteration
-    M2 = 1000,                       # Production: RDS samples per iteration
+    number.of.iterations = 15,       # Posterior convergence
+    M1 = 1000,                       # Memory-tractable network samples
+    M2 = 400,                        # Memory-tractable RDS samples
     MPLE.samplesize = 150000,        # Initialization (kept from prior)
     SAN.maxit = 25,                  # Annealing steps (kept from prior)
     SAN.nsteps = 2^22,               # Burn-in (kept from prior)
@@ -71,11 +70,11 @@ bayesian_config <- list(
   ),
 
   # Standard parameters for binary variables
-  # Updated 2026-05-25 - same reasoning as enhanced_params above.
+  # Updated 2026-06-11 - same reasoning as enhanced_params above.
   standard_params = list(
-    number.of.iterations = 10,       # Production: enough for posterior convergence
-    M1 = 1000,                       # Production: network samples per iteration
-    M2 = 500,                        # Production: RDS samples per iteration
+    number.of.iterations = 10,       # Posterior convergence
+    M1 = 500,                        # Memory-tractable network samples
+    M2 = 200,                        # Memory-tractable RDS samples
     MPLE.samplesize = 50000,         # Initialization (kept from prior)
     SAN.maxit = 10,                  # Annealing (kept from prior)
     SAN.nsteps = 2^19,               # Burn-in (kept from prior)
