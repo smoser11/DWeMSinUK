@@ -82,7 +82,7 @@ if (indicator %in% numeric_indicators) {
     SAN.maxit = 25,
     SAN.nsteps = 2^22,
     sim.interval = 25000,
-    parallel = 1,
+    parallel = 4,
     verbose = FALSE,
     full.output = TRUE,
     seed = 42
@@ -96,7 +96,7 @@ if (indicator %in% numeric_indicators) {
     SAN.maxit = 10,
     SAN.nsteps = 2^19,
     sim.interval = 10000,
-    parallel = 1,
+    parallel = 4,
     verbose = FALSE,
     full.output = TRUE,
     seed = 42

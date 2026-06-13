@@ -77,7 +77,7 @@ sensitivity_config <- list(
     SAN.maxit = 25,                  # Annealing (kept)
     SAN.nsteps = 2^22,               # Burn-in (kept)
     sim.interval = 25000,            # Spacing (kept)
-    parallel = 1,
+    parallel = 4,
     verbose = FALSE,
     full.output = TRUE,
     seed = 42
@@ -93,14 +93,14 @@ sensitivity_config <- list(
     SAN.maxit = 10,                  # Annealing (kept)
     SAN.nsteps = 2^19,               # Burn-in (kept)
     sim.interval = 10000,            # Spacing (kept)
-    parallel = 1,
+    parallel = 4,
     verbose = FALSE,
     full.output = TRUE,
     seed = 42
   ),
   
   # Computational control
-  max_parallel_jobs = 1,             # Keep single-core for stability
+  max_parallel_jobs = 10,             # Keep single-core for stability
   save_individual_results = TRUE,
   batch_size = 5,                    # Process in batches to manage memory
   

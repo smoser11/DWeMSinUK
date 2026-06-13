@@ -63,7 +63,7 @@ bayesian_config <- list(
     SAN.nsteps = 2^22,               # Burn-in (kept from prior)
     sim.interval = 25000,            # Spacing (kept from prior)
     seed.selection = "random",       # Default for numeric
-    parallel = 1,
+    parallel = 4,
     verbose = TRUE,
     full.output = TRUE,
     seed = 42
@@ -80,7 +80,7 @@ bayesian_config <- list(
     SAN.nsteps = 2^19,               # Burn-in (kept from prior)
     sim.interval = 10000,            # Spacing (kept from prior)
     seed.selection = "degree",       # Default for binary
-    parallel = 1,
+    parallel = 4,
     verbose = TRUE,
     full.output = TRUE,
     seed = 42
