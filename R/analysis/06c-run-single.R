@@ -72,7 +72,8 @@ if (!exists("rd.dd")) {
 }
 
 # Parameters - kept in sync with 06c-bayesian_sensitivity.R (updated 2026-06-11)
-numeric_indicators <- c("composite_risk", "sum_categories")
+# sum_categories was dropped 2026-06-17 (duplicate of composite_risk in raw CSV).
+numeric_indicators <- c("composite_risk")
 if (indicator %in% numeric_indicators) {
   params <- list(
     number.of.iterations = 15,

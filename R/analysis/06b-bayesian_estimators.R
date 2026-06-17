@@ -43,7 +43,8 @@ bayesian_config <- list(
   
   # All indicators (binary + numeric/ordinal)
   binary_indicators = get_comparable_indicators()$rds_vars,
-  numeric_indicators = c("composite_risk", "sum_categories"),
+  # sum_categories was dropped 2026-06-17 (duplicate of composite_risk in raw CSV).
+  numeric_indicators = c("composite_risk"),
   additional_indicators = c("whether_exploitation"),  # Binary but important
   
   # Enhanced parameters for numeric/ordinal variables

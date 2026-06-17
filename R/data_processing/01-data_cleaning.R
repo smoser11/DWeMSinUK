@@ -16,7 +16,18 @@ clean_data <- function() {
   data <- read.csv(here("data", "raw", "UpdateSelimRiskIndex-sum_cat.csv")) %>%
     select(-contains("column")) %>%
     clean_names()
-  
+
+  # composite_risk and sum_categories are duplicate columns in the raw CSV
+  # (verified 2026-06-17: byte-identical across all 97 rows). Artefact of an
+  # earlier risk-index iteration. Keep composite_risk (more interpretable name);
+  # drop sum_categories. Assertion guards against the raw data changing.
+  if ("composite_risk" %in% names(data) && "sum_categories" %in% names(data)) {
+    stopifnot(isTRUE(all.equal(data$composite_risk, data$sum_categories,
+                               check.attributes = FALSE)))
+    data$sum_categories <- NULL
+    cat("Dropped duplicate column 'sum_categories' (identical to 'composite_risk').\n")
+  }
+
   # Basic data preparation
   cat("Processing basic variables...\n")
   data <- data %>%

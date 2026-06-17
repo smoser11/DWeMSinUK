@@ -58,7 +58,8 @@ sensitivity_config <- list(
   
   # Indicator categories for parameter selection
   binary_indicators = get_comparable_indicators()$rds_vars,
-  numeric_indicators = c("composite_risk", "sum_categories"), 
+  # sum_categories was dropped 2026-06-17 (duplicate of composite_risk in raw CSV).
+  numeric_indicators = c("composite_risk"),
   additional_indicators = c("whether_exploitation"),
   
   # Enhanced parameters (numeric/ordinal indicators)

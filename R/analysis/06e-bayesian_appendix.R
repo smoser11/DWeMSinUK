@@ -20,6 +20,7 @@ source(here("R", "utils", "helper_functions.R"))
 
 # --------------- Configuration (mirrors 06e-run-all.sh) ---------------
 POPSIZE <- 50000
+# sum_categories was dropped 2026-06-17 (duplicate of composite_risk in raw CSV).
 HEADLINE_INDICATORS <- c(
   "document_withholding_rds",
   "pay_issues_rds",
@@ -27,8 +28,7 @@ HEADLINE_INDICATORS <- c(
   "excessive_hours_rds",
   "access_to_help_rds",
   "whether_exploitation",
-  "composite_risk",
-  "sum_categories"
+  "composite_risk"
 )
 SEED_CHECK_INDICATOR <- "document_withholding_rds"
 SEED_CHECK_METHODS   <- c("degree", "random", "sample")  # all three for the seed-check table
