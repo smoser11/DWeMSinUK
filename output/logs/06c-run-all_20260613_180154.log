@@ -1,0 +1,403 @@
+[18:01:54] SKIP document_withholding_rds / N=50000 / degree (exists)
+[18:01:54] SKIP document_withholding_rds / N=50000 / random (exists)
+[18:01:54] SKIP document_withholding_rds / N=50000 / sample (exists)
+[18:01:54] SKIP document_withholding_rds / N=100000 / degree (exists)
+[18:01:54] RUN  document_withholding_rds / N=100000 / random
+06c-run-single.R: indicator=document_withholding_rds, N=1e+05, seed=random
+
+Attaching package: ‘janitor’
+
+The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+  Parameters: iterations=10 M1=500 M2=200
+
+Note: Using the data's maximum number of coupons as the number.of.coupons = 5 
+Warning message:
+In .Deprecate_once(msg = "Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.") :
+  Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.
+  MA.estimates finished in 1069.8 minutes
+  Saved: /data/home/Documents/GitHub/DWeMSinUK/output/ma_sensitivity_document_withholding_rds_100000_random.RData 
+  Done.
+[11:51:44]   ok
+[11:51:44] RUN  document_withholding_rds / N=100000 / sample
+06c-run-single.R: indicator=document_withholding_rds, N=1e+05, seed=sample
+
+Attaching package: ‘janitor’
+
+The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+  Parameters: iterations=10 M1=500 M2=200
+
+Note: Using the data's maximum number of coupons as the number.of.coupons = 5 
+
+Warning message:
+In .Deprecate_once(msg = "Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.") :
+  Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.
+Execution halted
+[17:09:08]   FAILED - see log
+[17:09:08] RUN  document_withholding_rds / N=980000 / degree
+06c-run-single.R: indicator=document_withholding_rds, N=980,000, seed=degree
+
+Execution halted
+[17:09:09]   FAILED - see log
+[17:09:09] RUN  document_withholding_rds / N=980000 / random
+06c-run-single.R: indicator=document_withholding_rds, N=980,000, seed=random
+
+Execution halted
+[17:09:09]   FAILED - see log
+[17:09:09] RUN  document_withholding_rds / N=980000 / sample
+
+Execution halted
+[17:09:09]   FAILED - see log
+[17:09:09] RUN  document_withholding_rds / N=1740000 / degree
+
+Execution halted
+[17:09:09]   FAILED - see log
+[17:09:09] RUN  document_withholding_rds / N=1740000 / random
+
+Execution halted
+[17:09:09]   FAILED - see log
+[17:09:09] RUN  document_withholding_rds / N=1740000 / sample
+
+Execution halted
+[17:09:09]   FAILED - see log
+[17:09:09] RUN  pay_issues_rds / N=50000 / degree
+
+Execution halted
+[17:09:10]   FAILED - see log
+[17:09:10] RUN  pay_issues_rds / N=50000 / random
+
+Execution halted
+[17:09:10]   FAILED - see log
+[17:09:10] RUN  pay_issues_rds / N=50000 / sample
+
+Execution halted
+[17:09:10]   FAILED - see log
+[17:09:10] RUN  pay_issues_rds / N=100000 / degree
+
+Execution halted
+[17:09:10]   FAILED - see log
+[17:09:10] RUN  pay_issues_rds / N=100000 / random
+
+Execution halted
+[17:09:10]   FAILED - see log
+[17:09:10] RUN  pay_issues_rds / N=100000 / sample
+
+Execution halted
+[17:09:10]   FAILED - see log
+[17:09:10] RUN  pay_issues_rds / N=980000 / degree
+
+Execution halted
+[17:09:10]   FAILED - see log
+[17:09:10] RUN  pay_issues_rds / N=980000 / random
+
+Execution halted
+[17:09:10]   FAILED - see log
+[17:09:10] RUN  pay_issues_rds / N=980000 / sample
+
+Execution halted
+[17:09:10]   FAILED - see log
+[17:09:10] RUN  pay_issues_rds / N=1740000 / degree
+
+Execution halted
+[17:09:10]   FAILED - see log
+[17:09:10] RUN  pay_issues_rds / N=1740000 / random
+
+Execution halted
+[17:09:10]   FAILED - see log
+[17:09:10] RUN  pay_issues_rds / N=1740000 / sample
+
+Execution halted
+[17:09:10]   FAILED - see log
+[17:09:10] RUN  threats_abuse_rds / N=50000 / degree
+
+Execution halted
+[17:09:10]   FAILED - see log
+[17:09:10] RUN  threats_abuse_rds / N=50000 / random
+
+Execution halted
+[17:09:10]   FAILED - see log
+[17:09:10] RUN  threats_abuse_rds / N=50000 / sample
+
+Execution halted
+[17:09:10]   FAILED - see log
+[17:09:10] RUN  threats_abuse_rds / N=100000 / degree
+
+Execution halted
+[17:09:10]   FAILED - see log
+[17:09:10] RUN  threats_abuse_rds / N=100000 / random
+
+Execution halted
+[17:09:10]   FAILED - see log
+[17:09:10] RUN  threats_abuse_rds / N=100000 / sample
+
+Execution halted
+[17:09:10]   FAILED - see log
+[17:09:10] RUN  threats_abuse_rds / N=980000 / degree
+
+Execution halted
+[17:09:10]   FAILED - see log
+[17:09:10] RUN  threats_abuse_rds / N=980000 / random
+
+Execution halted
+[17:09:10]   FAILED - see log
+[17:09:10] RUN  threats_abuse_rds / N=980000 / sample
+
+Execution halted
+[17:09:11]   FAILED - see log
+[17:09:11] RUN  threats_abuse_rds / N=1740000 / degree
+
+Execution halted
+[17:09:11]   FAILED - see log
+[17:09:11] RUN  threats_abuse_rds / N=1740000 / random
+
+Execution halted
+[17:09:11]   FAILED - see log
+[17:09:11] RUN  threats_abuse_rds / N=1740000 / sample
+
+Execution halted
+[17:09:11]   FAILED - see log
+[17:09:11] RUN  excessive_hours_rds / N=50000 / degree
+
+Execution halted
+[17:09:11]   FAILED - see log
+[17:09:11] RUN  excessive_hours_rds / N=50000 / random
+
+Execution halted
+[17:09:11]   FAILED - see log
+[17:09:11] RUN  excessive_hours_rds / N=50000 / sample
+
+Execution halted
+[17:09:11]   FAILED - see log
+[17:09:11] RUN  excessive_hours_rds / N=100000 / degree
+
+Execution halted
+[17:09:11]   FAILED - see log
+[17:09:11] RUN  excessive_hours_rds / N=100000 / random
+
+Execution halted
+[17:09:11]   FAILED - see log
+[17:09:11] RUN  excessive_hours_rds / N=100000 / sample
+
+Execution halted
+[17:09:11]   FAILED - see log
+[17:09:11] RUN  excessive_hours_rds / N=980000 / degree
+
+Execution halted
+[17:09:11]   FAILED - see log
+[17:09:11] RUN  excessive_hours_rds / N=980000 / random
+
+Execution halted
+[17:09:11]   FAILED - see log
+[17:09:11] RUN  excessive_hours_rds / N=980000 / sample
+
+Execution halted
+[17:09:11]   FAILED - see log
+[17:09:11] RUN  excessive_hours_rds / N=1740000 / degree
+
+Execution halted
+[17:09:11]   FAILED - see log
+[17:09:11] RUN  excessive_hours_rds / N=1740000 / random
+
+Execution halted
+[17:09:11]   FAILED - see log
+[17:09:11] RUN  excessive_hours_rds / N=1740000 / sample
+
+Execution halted
+[17:09:11]   FAILED - see log
+[17:09:11] RUN  access_to_help_rds / N=50000 / degree
+
+Execution halted
+[17:09:11]   FAILED - see log
+[17:09:11] RUN  access_to_help_rds / N=50000 / random
+
+Execution halted
+[17:09:11]   FAILED - see log
+[17:09:11] RUN  access_to_help_rds / N=50000 / sample
+
+Execution halted
+[17:09:11]   FAILED - see log
+[17:09:11] RUN  access_to_help_rds / N=100000 / degree
+
+Execution halted
+[17:09:11]   FAILED - see log
+[17:09:11] RUN  access_to_help_rds / N=100000 / random
+
+Execution halted
+[17:09:12]   FAILED - see log
+[17:09:12] RUN  access_to_help_rds / N=100000 / sample
+
+Execution halted
+[17:09:12]   FAILED - see log
+[17:09:12] RUN  access_to_help_rds / N=980000 / degree
+
+Execution halted
+[17:09:12]   FAILED - see log
+[17:09:12] RUN  access_to_help_rds / N=980000 / random
+
+Execution halted
+[17:09:12]   FAILED - see log
+[17:09:12] RUN  access_to_help_rds / N=980000 / sample
+
+Execution halted
+[17:09:12]   FAILED - see log
+[17:09:12] RUN  access_to_help_rds / N=1740000 / degree
+
+Execution halted
+[17:09:12]   FAILED - see log
+[17:09:12] RUN  access_to_help_rds / N=1740000 / random
+
+Execution halted
+[17:09:12]   FAILED - see log
+[17:09:12] RUN  access_to_help_rds / N=1740000 / sample
+
+Execution halted
+[17:09:12]   FAILED - see log
+[17:09:12] RUN  whether_exploitation / N=50000 / degree
+
+Execution halted
+[17:09:12]   FAILED - see log
+[17:09:12] RUN  whether_exploitation / N=50000 / random
+
+Execution halted
+[17:09:12]   FAILED - see log
+[17:09:12] RUN  whether_exploitation / N=50000 / sample
+
+Execution halted
+[17:09:12]   FAILED - see log
+[17:09:12] RUN  whether_exploitation / N=100000 / degree
+
+Execution halted
+[17:09:12]   FAILED - see log
+[17:09:12] RUN  whether_exploitation / N=100000 / random
+
+Execution halted
+[17:09:12]   FAILED - see log
+[17:09:12] RUN  whether_exploitation / N=100000 / sample
+
+Execution halted
+[17:09:12]   FAILED - see log
+[17:09:12] RUN  whether_exploitation / N=980000 / degree
+
+Execution halted
+[17:09:12]   FAILED - see log
+[17:09:12] RUN  whether_exploitation / N=980000 / random
+
+Execution halted
+[17:09:12]   FAILED - see log
+[17:09:12] RUN  whether_exploitation / N=980000 / sample
+
+Execution halted
+[17:09:12]   FAILED - see log
+[17:09:12] RUN  whether_exploitation / N=1740000 / degree
+
+Execution halted
+[17:09:12]   FAILED - see log
+[17:09:12] RUN  whether_exploitation / N=1740000 / random
+
+Execution halted
+[17:09:12]   FAILED - see log
+[17:09:12] RUN  whether_exploitation / N=1740000 / sample
+
+Execution halted
+[17:09:12]   FAILED - see log
+[17:09:12] RUN  composite_risk / N=50000 / degree
+
+Execution halted
+[17:09:13]   FAILED - see log
+[17:09:13] RUN  composite_risk / N=50000 / random
+
+Execution halted
+[17:09:13]   FAILED - see log
+[17:09:13] RUN  composite_risk / N=50000 / sample
+
+Execution halted
+[17:09:13]   FAILED - see log
+[17:09:13] RUN  composite_risk / N=100000 / degree
+
+Execution halted
+[17:09:13]   FAILED - see log
+[17:09:13] RUN  composite_risk / N=100000 / random
+
+Execution halted
+[17:09:13]   FAILED - see log
+[17:09:13] RUN  composite_risk / N=100000 / sample
+
+Execution halted
+[17:09:13]   FAILED - see log
+[17:09:13] RUN  composite_risk / N=980000 / degree
+
+Execution halted
+[17:09:13]   FAILED - see log
+[17:09:13] RUN  composite_risk / N=980000 / random
+
+Execution halted
+[17:09:13]   FAILED - see log
+[17:09:13] RUN  composite_risk / N=980000 / sample
+
+Execution halted
+[17:09:13]   FAILED - see log
+[17:09:13] RUN  composite_risk / N=1740000 / degree
+
+Execution halted
+[17:09:13]   FAILED - see log
+[17:09:13] RUN  composite_risk / N=1740000 / random
+
+Execution halted
+[17:09:13]   FAILED - see log
+[17:09:13] RUN  composite_risk / N=1740000 / sample
+
+Execution halted
+[17:09:13]   FAILED - see log
+[17:09:13] RUN  sum_categories / N=50000 / degree
+
+Execution halted
+[17:09:13]   FAILED - see log
+[17:09:13] RUN  sum_categories / N=50000 / random
+
+Execution halted
+[17:09:13]   FAILED - see log
+[17:09:13] RUN  sum_categories / N=50000 / sample
+
+Execution halted
+[17:09:13]   FAILED - see log
+[17:09:13] RUN  sum_categories / N=100000 / degree
+
+Execution halted
+[17:09:13]   FAILED - see log
+[17:09:13] RUN  sum_categories / N=100000 / random
+
+Execution halted
+[17:09:13]   FAILED - see log
+[17:09:13] RUN  sum_categories / N=100000 / sample
+
+Execution halted
+[17:09:13]   FAILED - see log
+[17:09:13] RUN  sum_categories / N=980000 / degree
+
+Execution halted
+[17:09:13]   FAILED - see log
+[17:09:13] RUN  sum_categories / N=980000 / random
+
+Execution halted
+[17:09:13]   FAILED - see log
+[17:09:13] RUN  sum_categories / N=980000 / sample
+
+Execution halted
+[17:09:14]   FAILED - see log
+[17:09:14] RUN  sum_categories / N=1740000 / degree
+
+Execution halted
+[17:09:14]   FAILED - see log
+[17:09:14] RUN  sum_categories / N=1740000 / random
+
+Execution halted
+[17:09:14]   FAILED - see log
+[17:09:14] RUN  sum_categories / N=1740000 / sample
+
+Execution halted
+[17:09:14]   FAILED - see log

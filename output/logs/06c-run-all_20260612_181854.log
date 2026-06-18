@@ -1,0 +1,484 @@
+[18:18:54] RUN  document_withholding_rds / N=50000 / degree
+06c-run-single.R: indicator=document_withholding_rds, N=50,000, seed=degree
+
+Attaching package: ‘janitor’
+
+The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+  Parameters: iterations=10 M1=500 M2=200
+
+Note: Using the data's maximum number of coupons as the number.of.coupons = 5 
+Warning message:
+In .Deprecate_once(msg = "Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.") :
+  Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.
+  MA.estimates finished in 186.2 minutes
+  Saved: /data/home/Documents/GitHub/DWeMSinUK/output/ma_sensitivity_document_withholding_rds_50000_degree.RData 
+  Done.
+[21:25:07]   ok
+[21:25:07] RUN  document_withholding_rds / N=50000 / random
+06c-run-single.R: indicator=document_withholding_rds, N=50,000, seed=random
+
+Attaching package: ‘janitor’
+
+The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+  Parameters: iterations=10 M1=500 M2=200
+
+Note: Using the data's maximum number of coupons as the number.of.coupons = 5 
+Warning message:
+In .Deprecate_once(msg = "Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.") :
+  Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.
+  MA.estimates finished in 187.0 minutes
+  Saved: /data/home/Documents/GitHub/DWeMSinUK/output/ma_sensitivity_document_withholding_rds_50000_random.RData 
+  Done.
+[00:32:07]   ok
+[00:32:07] RUN  document_withholding_rds / N=50000 / sample
+06c-run-single.R: indicator=document_withholding_rds, N=50,000, seed=sample
+
+Attaching package: ‘janitor’
+
+The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+  Parameters: iterations=10 M1=500 M2=200
+
+Note: Using the data's maximum number of coupons as the number.of.coupons = 5 
+Warning message:
+In .Deprecate_once(msg = "Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.") :
+  Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.
+  MA.estimates finished in 188.5 minutes
+  Saved: /data/home/Documents/GitHub/DWeMSinUK/output/ma_sensitivity_document_withholding_rds_50000_sample.RData 
+  Done.
+[03:40:40]   ok
+[03:40:40] RUN  document_withholding_rds / N=100000 / degree
+06c-run-single.R: indicator=document_withholding_rds, N=1e+05, seed=degree
+
+Attaching package: ‘janitor’
+
+The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+  Parameters: iterations=10 M1=500 M2=200
+
+Note: Using the data's maximum number of coupons as the number.of.coupons = 5 
+Warning message:
+In .Deprecate_once(msg = "Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.") :
+  Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.
+  MA.estimates finished in 370.5 minutes
+  Saved: /data/home/Documents/GitHub/DWeMSinUK/output/ma_sensitivity_document_withholding_rds_100000_degree.RData 
+  Done.
+[09:51:13]   ok
+[09:51:13] RUN  document_withholding_rds / N=100000 / random
+06c-run-single.R: indicator=document_withholding_rds, N=1e+05, seed=random
+
+Attaching package: ‘janitor’
+
+The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+  Parameters: iterations=10 M1=500 M2=200
+
+Note: Using the data's maximum number of coupons as the number.of.coupons = 5 
+
+Warning message:
+In .Deprecate_once(msg = "Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.") :
+  Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.
+Execution halted
+[10:27:24]   FAILED - see log
+[10:27:24] RUN  document_withholding_rds / N=100000 / sample
+06c-run-single.R: indicator=document_withholding_rds, N=1e+05, seed=sample
+
+Attaching package: ‘janitor’
+
+The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+  Parameters: iterations=10 M1=500 M2=200
+
+Note: Using the data's maximum number of coupons as the number.of.coupons = 5 
+
+Execution halted
+[10:27:27]   FAILED - see log
+[10:27:27] RUN  document_withholding_rds / N=980000 / degree
+06c-run-single.R: indicator=document_withholding_rds, N=980,000, seed=degree
+
+Execution halted
+[10:27:27]   FAILED - see log
+[10:27:27] RUN  document_withholding_rds / N=980000 / random
+06c-run-single.R: indicator=document_withholding_rds, N=980,000, seed=random
+
+Execution halted
+[10:27:28]   FAILED - see log
+[10:27:28] RUN  document_withholding_rds / N=980000 / sample
+06c-run-single.R: indicator=document_withholding_rds, N=980,000, seed=sample
+
+Execution halted
+[10:27:28]   FAILED - see log
+[10:27:28] RUN  document_withholding_rds / N=1740000 / degree
+06c-run-single.R: indicator=document_withholding_rds, N=1,740,000, seed=degree
+
+Execution halted
+[10:27:28]   FAILED - see log
+[10:27:28] RUN  document_withholding_rds / N=1740000 / random
+06c-run-single.R: indicator=document_withholding_rds, N=1,740,000, seed=random
+
+Execution halted
+[10:27:28]   FAILED - see log
+[10:27:28] RUN  document_withholding_rds / N=1740000 / sample
+06c-run-single.R: indicator=document_withholding_rds, N=1,740,000, seed=sample
+
+Execution halted
+[10:27:28]   FAILED - see log
+[10:27:28] RUN  pay_issues_rds / N=50000 / degree
+06c-run-single.R: indicator=pay_issues_rds, N=50,000, seed=degree
+
+Execution halted
+[10:27:28]   FAILED - see log
+[10:27:28] RUN  pay_issues_rds / N=50000 / random
+
+Execution halted
+[10:27:28]   FAILED - see log
+[10:27:28] RUN  pay_issues_rds / N=50000 / sample
+06c-run-single.R: indicator=pay_issues_rds, N=50,000, seed=sample
+
+Execution halted
+[10:27:29]   FAILED - see log
+[10:27:29] RUN  pay_issues_rds / N=100000 / degree
+06c-run-single.R: indicator=pay_issues_rds, N=1e+05, seed=degree
+
+Execution halted
+[10:27:29]   FAILED - see log
+[10:27:29] RUN  pay_issues_rds / N=100000 / random
+06c-run-single.R: indicator=pay_issues_rds, N=1e+05, seed=random
+
+Execution halted
+Warning message:
+In genericForBasic(f, mustFind = FALSE) :
+  restarting interrupted promise evaluation
+[10:27:29]   FAILED - see log
+[10:27:29] RUN  pay_issues_rds / N=100000 / sample
+
+Execution halted
+[10:27:29]   FAILED - see log
+[10:27:29] RUN  pay_issues_rds / N=980000 / degree
+06c-run-single.R: indicator=pay_issues_rds, N=980,000, seed=degree
+
+Execution halted
+[10:27:29]   FAILED - see log
+[10:27:29] RUN  pay_issues_rds / N=980000 / random
+06c-run-single.R: indicator=pay_issues_rds, N=980,000, seed=random
+
+Execution halted
+[10:27:30]   FAILED - see log
+[10:27:30] RUN  pay_issues_rds / N=980000 / sample
+
+Execution halted
+[10:27:30]   FAILED - see log
+[10:27:30] RUN  pay_issues_rds / N=1740000 / degree
+
+Execution halted
+[10:27:30]   FAILED - see log
+[10:27:30] RUN  pay_issues_rds / N=1740000 / random
+
+Execution halted
+[10:27:30]   FAILED - see log
+[10:27:30] RUN  pay_issues_rds / N=1740000 / sample
+
+Execution halted
+[10:27:30]   FAILED - see log
+[10:27:30] RUN  threats_abuse_rds / N=50000 / degree
+
+Execution halted
+[10:27:30]   FAILED - see log
+[10:27:30] RUN  threats_abuse_rds / N=50000 / random
+
+Execution halted
+[10:27:30]   FAILED - see log
+[10:27:30] RUN  threats_abuse_rds / N=50000 / sample
+
+Execution halted
+[10:27:30]   FAILED - see log
+[10:27:30] RUN  threats_abuse_rds / N=100000 / degree
+
+Execution halted
+[10:27:30]   FAILED - see log
+[10:27:30] RUN  threats_abuse_rds / N=100000 / random
+
+Execution halted
+[10:27:30]   FAILED - see log
+[10:27:30] RUN  threats_abuse_rds / N=100000 / sample
+
+Execution halted
+[10:27:30]   FAILED - see log
+[10:27:30] RUN  threats_abuse_rds / N=980000 / degree
+
+Execution halted
+[10:27:30]   FAILED - see log
+[10:27:30] RUN  threats_abuse_rds / N=980000 / random
+
+Execution halted
+[10:27:30]   FAILED - see log
+[10:27:30] RUN  threats_abuse_rds / N=980000 / sample
+
+Execution halted
+[10:27:30]   FAILED - see log
+[10:27:30] RUN  threats_abuse_rds / N=1740000 / degree
+
+Execution halted
+[10:27:30]   FAILED - see log
+[10:27:30] RUN  threats_abuse_rds / N=1740000 / random
+
+Execution halted
+[10:27:30]   FAILED - see log
+[10:27:30] RUN  threats_abuse_rds / N=1740000 / sample
+
+Execution halted
+[10:27:30]   FAILED - see log
+[10:27:30] RUN  excessive_hours_rds / N=50000 / degree
+
+Execution halted
+[10:27:30]   FAILED - see log
+[10:27:31] RUN  excessive_hours_rds / N=50000 / random
+
+Execution halted
+[10:27:31]   FAILED - see log
+[10:27:31] RUN  excessive_hours_rds / N=50000 / sample
+
+Execution halted
+[10:27:31]   FAILED - see log
+[10:27:31] RUN  excessive_hours_rds / N=100000 / degree
+
+Execution halted
+[10:27:31]   FAILED - see log
+[10:27:31] RUN  excessive_hours_rds / N=100000 / random
+
+Execution halted
+[10:27:31]   FAILED - see log
+[10:27:31] RUN  excessive_hours_rds / N=100000 / sample
+
+Execution halted
+[10:27:31]   FAILED - see log
+[10:27:31] RUN  excessive_hours_rds / N=980000 / degree
+
+Execution halted
+[10:27:31]   FAILED - see log
+[10:27:31] RUN  excessive_hours_rds / N=980000 / random
+
+Execution halted
+[10:27:31]   FAILED - see log
+[10:27:31] RUN  excessive_hours_rds / N=980000 / sample
+
+Execution halted
+[10:27:31]   FAILED - see log
+[10:27:31] RUN  excessive_hours_rds / N=1740000 / degree
+
+Execution halted
+[10:27:31]   FAILED - see log
+[10:27:31] RUN  excessive_hours_rds / N=1740000 / random
+
+Execution halted
+[10:27:31]   FAILED - see log
+[10:27:31] RUN  excessive_hours_rds / N=1740000 / sample
+
+Execution halted
+[10:27:31]   FAILED - see log
+[10:27:31] RUN  access_to_help_rds / N=50000 / degree
+
+Execution halted
+[10:27:31]   FAILED - see log
+[10:27:31] RUN  access_to_help_rds / N=50000 / random
+
+Execution halted
+[10:27:31]   FAILED - see log
+[10:27:31] RUN  access_to_help_rds / N=50000 / sample
+
+Execution halted
+[10:27:31]   FAILED - see log
+[10:27:31] RUN  access_to_help_rds / N=100000 / degree
+
+Execution halted
+[10:27:31]   FAILED - see log
+[10:27:31] RUN  access_to_help_rds / N=100000 / random
+
+Execution halted
+[10:27:31]   FAILED - see log
+[10:27:31] RUN  access_to_help_rds / N=100000 / sample
+
+Execution halted
+[10:27:31]   FAILED - see log
+[10:27:31] RUN  access_to_help_rds / N=980000 / degree
+
+Execution halted
+[10:27:31]   FAILED - see log
+[10:27:31] RUN  access_to_help_rds / N=980000 / random
+
+Execution halted
+[10:27:31]   FAILED - see log
+[10:27:31] RUN  access_to_help_rds / N=980000 / sample
+
+Execution halted
+[10:27:32]   FAILED - see log
+[10:27:32] RUN  access_to_help_rds / N=1740000 / degree
+
+Execution halted
+[10:27:32]   FAILED - see log
+[10:27:32] RUN  access_to_help_rds / N=1740000 / random
+
+Execution halted
+[10:27:32]   FAILED - see log
+[10:27:32] RUN  access_to_help_rds / N=1740000 / sample
+
+Execution halted
+[10:27:32]   FAILED - see log
+[10:27:32] RUN  whether_exploitation / N=50000 / degree
+
+Execution halted
+[10:27:32]   FAILED - see log
+[10:27:32] RUN  whether_exploitation / N=50000 / random
+
+Execution halted
+[10:27:32]   FAILED - see log
+[10:27:32] RUN  whether_exploitation / N=50000 / sample
+
+Execution halted
+[10:27:32]   FAILED - see log
+[10:27:32] RUN  whether_exploitation / N=100000 / degree
+
+Execution halted
+[10:27:32]   FAILED - see log
+[10:27:32] RUN  whether_exploitation / N=100000 / random
+
+Execution halted
+[10:27:32]   FAILED - see log
+[10:27:32] RUN  whether_exploitation / N=100000 / sample
+
+Execution halted
+[10:27:32]   FAILED - see log
+[10:27:32] RUN  whether_exploitation / N=980000 / degree
+
+Execution halted
+[10:27:32]   FAILED - see log
+[10:27:32] RUN  whether_exploitation / N=980000 / random
+
+Execution halted
+[10:27:32]   FAILED - see log
+[10:27:32] RUN  whether_exploitation / N=980000 / sample
+
+Execution halted
+[10:27:32]   FAILED - see log
+[10:27:32] RUN  whether_exploitation / N=1740000 / degree
+
+Execution halted
+[10:27:32]   FAILED - see log
+[10:27:32] RUN  whether_exploitation / N=1740000 / random
+
+Execution halted
+[10:27:32]   FAILED - see log
+[10:27:32] RUN  whether_exploitation / N=1740000 / sample
+
+Execution halted
+[10:27:32]   FAILED - see log
+[10:27:32] RUN  composite_risk / N=50000 / degree
+
+Execution halted
+[10:27:32]   FAILED - see log
+[10:27:32] RUN  composite_risk / N=50000 / random
+
+Execution halted
+[10:27:32]   FAILED - see log
+[10:27:32] RUN  composite_risk / N=50000 / sample
+
+Execution halted
+[10:27:32]   FAILED - see log
+[10:27:32] RUN  composite_risk / N=100000 / degree
+
+Execution halted
+[10:27:32]   FAILED - see log
+[10:27:32] RUN  composite_risk / N=100000 / random
+
+Execution halted
+[10:27:32]   FAILED - see log
+[10:27:32] RUN  composite_risk / N=100000 / sample
+
+Execution halted
+[10:27:33]   FAILED - see log
+[10:27:33] RUN  composite_risk / N=980000 / degree
+
+Execution halted
+[10:27:33]   FAILED - see log
+[10:27:33] RUN  composite_risk / N=980000 / random
+
+Execution halted
+[10:27:33]   FAILED - see log
+[10:27:33] RUN  composite_risk / N=980000 / sample
+
+Execution halted
+[10:27:33]   FAILED - see log
+[10:27:33] RUN  composite_risk / N=1740000 / degree
+
+Execution halted
+[10:27:33]   FAILED - see log
+[10:27:33] RUN  composite_risk / N=1740000 / random
+
+Execution halted
+[10:27:33]   FAILED - see log
+[10:27:33] RUN  composite_risk / N=1740000 / sample
+
+Execution halted
+[10:27:33]   FAILED - see log
+[10:27:33] RUN  sum_categories / N=50000 / degree
+
+Execution halted
+[10:27:33]   FAILED - see log
+[10:27:33] RUN  sum_categories / N=50000 / random
+
+Execution halted
+[10:27:33]   FAILED - see log
+[10:27:33] RUN  sum_categories / N=50000 / sample
+
+Execution halted
+[10:27:33]   FAILED - see log
+[10:27:33] RUN  sum_categories / N=100000 / degree
+
+Execution halted
+[10:27:33]   FAILED - see log
+[10:27:33] RUN  sum_categories / N=100000 / random
+
+Execution halted
+[10:27:33]   FAILED - see log
+[10:27:33] RUN  sum_categories / N=100000 / sample
+
+Execution halted
+[10:27:33]   FAILED - see log
+[10:27:33] RUN  sum_categories / N=980000 / degree
+
+Execution halted
+[10:27:33]   FAILED - see log
+[10:27:33] RUN  sum_categories / N=980000 / random
+
+Execution halted
+[10:27:33]   FAILED - see log
+[10:27:33] RUN  sum_categories / N=980000 / sample
+
+Execution halted
+[10:27:33]   FAILED - see log
+[10:27:33] RUN  sum_categories / N=1740000 / degree
+
+Execution halted
+[10:27:33]   FAILED - see log
+[10:27:33] RUN  sum_categories / N=1740000 / random
+
+Execution halted
+[10:27:33]   FAILED - see log
+[10:27:33] RUN  sum_categories / N=1740000 / sample
+
+Execution halted
+[10:27:33]   FAILED - see log

@@ -1,0 +1,61 @@
+[19:08:47] SKIP document_withholding_rds / N=50000 / degree (exists)
+[19:08:47] RUN  pay_issues_rds / N=50000 / degree
+06c-run-single.R: indicator=pay_issues_rds, N=50,000, seed=degree
+
+Attaching package: ‘janitor’
+
+The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+  Parameters: iterations=10 M1=500 M2=200
+
+Note: Using the data's maximum number of coupons as the number.of.coupons = 5 
+
+Execution halted
+[19:08:54]   FAILED - see log
+[19:08:54] RUN  threats_abuse_rds / N=50000 / degree
+06c-run-single.R: indicator=threats_abuse_rds, N=50,000, seed=degree
+
+Attaching package: ‘janitor’
+
+The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+  Parameters: iterations=10 M1=500 M2=200
+
+Note: Using the data's maximum number of coupons as the number.of.coupons = 5 
+
+Execution halted
+[19:09:17]   FAILED - see log
+[19:09:17] RUN  excessive_hours_rds / N=50000 / degree
+06c-run-single.R: indicator=excessive_hours_rds, N=50,000, seed=degree
+
+Execution halted
+[19:09:18]   FAILED - see log
+[19:09:18] RUN  access_to_help_rds / N=50000 / degree
+06c-run-single.R: indicator=access_to_help_rds, N=50,000, seed=degree
+
+Execution halted
+[19:09:18]   FAILED - see log
+[19:09:18] RUN  whether_exploitation / N=50000 / degree
+06c-run-single.R: indicator=whether_exploitation, N=50,000, seed=degree
+
+Execution halted
+[19:09:18]   FAILED - see log
+[19:09:18] RUN  composite_risk / N=50000 / degree
+06c-run-single.R: indicator=composite_risk, N=50,000, seed=degree
+
+Execution halted
+[19:09:18]   FAILED - see log
+[19:09:18] RUN  sum_categories / N=50000 / degree
+
+Execution halted
+[19:09:18]   FAILED - see log
+[19:09:18] RUN  document_withholding_rds / N=50000 / random
+06c-run-single.R: indicator=document_withholding_rds, N=50,000, seed=random
+
+Execution halted
+[19:09:19]   FAILED - see log
+[19:09:19] RUN  document_withholding_rds / N=50000 / sample
