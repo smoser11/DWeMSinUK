@@ -250,45 +250,31 @@ ggsave(file.path(FIG_DIR, "main_fig3_ma_forest_plot.png"),
 
 cat("Producing main_fig4_rds_forest_plot.png...\n")
 
-# rds_main_comparison.csv has columns: indicator, RDS_I, RDS_II, RDS_SS (percentages)
-# Need CIs from rds_appendix_comparison.csv or bootstrap_results. Build from
-# rds_main_results.csv which has CIs per indicator.
-rds_main_with_ci <- read_csv_quiet(here("output", "tables", "rds_main_results.csv")) %>%
-  mutate(method = "RDS_SS",
-         indicator_label = recode(gsub("_rds$", "", indicator_base),
-                                  document_withholding = "Document withholding",
-                                  pay_issues           = "Pay-related issues",
-                                  threats_abuse        = "Threats and abuse",
-                                  excessive_hours      = "Excessive working hours",
-                                  access_to_help       = "Limited access to help",
-                                  whether_exploitation = "Any exploitation",
-                                  composite_risk       = "Composite risk score"))
+# Uses per-method bootstrap CIs from output/tables/rds_per_method_bootstrap_ci.csv
+# (produced by run_per_method_bootstrap() in R/analysis/04-bootstrap_analysis.R).
+# Each of RDS-I, RDS-II, RDS-SS has its own bootstrap CI - no approximation.
+per_method_path <- here("output", "tables", "rds_per_method_bootstrap_ci.csv")
+if (!file.exists(per_method_path)) {
+  stop("Missing ", per_method_path,
+       " - run R/analysis/04-bootstrap_analysis.R first.")
+}
+per_method <- read_csv_quiet(per_method_path)
 
-# Per-method estimates from rds_main_comparison.csv (points only) - reshape long
-rds_methods_long <- rds_main %>%
-  pivot_longer(c(RDS_I, RDS_II, RDS_SS), names_to = "method", values_to = "estimate_str") %>%
-  mutate(estimate = as.numeric(gsub("%", "", estimate_str))) %>%
+rds_forest_df <- per_method %>%
   filter(method %in% c("RDS_I", "RDS_SS"),
-         indicator %in% c("Document withholding", "Pay issues", "Threats/abuse",
-                          "Excessive hours", "Limited access to help"))
-
-# CIs: approximate using rds_main_with_ci (RDS-SS CIs) and apply identical width to RDS-I
-# (rough; for a publication we'd want per-method bootstraps. Flagged as TODO.)
-ci_lookup <- rds_main_with_ci %>%
-  transmute(indicator_label, ci_lower = ci_lower * 100, ci_upper = ci_upper * 100)
-
-rds_forest_df <- rds_methods_long %>%
-  mutate(indicator_label = recode(indicator,
-                                  "Document withholding"   = "Document withholding",
-                                  "Pay issues"             = "Pay-related issues",
-                                  "Threats/abuse"          = "Threats and abuse",
-                                  "Excessive hours"        = "Excessive working hours",
-                                  "Limited access to help" = "Limited access to help")) %>%
-  left_join(ci_lookup, by = "indicator_label") %>%
-  mutate(indicator_label = factor(indicator_label,
-                                  levels = c("Document withholding", "Pay-related issues",
-                                             "Threats and abuse", "Limited access to help",
-                                             "Excessive working hours")))
+         indicator %in% c("document_withholding_rds", "pay_issues_rds",
+                          "threats_abuse_rds", "excessive_hours_rds",
+                          "access_to_help_rds")) %>%
+  mutate(
+    indicator_label = recode(indicator, !!!INDICATOR_LABELS),
+    indicator_label = factor(indicator_label,
+                             levels = c("Document withholding", "Pay-related issues",
+                                        "Threats and abuse", "Limited access to help",
+                                        "Excessive working hours")),
+    estimate = original_estimate * 100,
+    ci_lower = ci_lower * 100,
+    ci_upper = ci_upper * 100
+  )
 
 p4 <- ggplot(rds_forest_df, aes(x = estimate, y = indicator_label, colour = method, shape = method)) +
   geom_errorbarh(aes(xmin = ci_lower, xmax = ci_upper),
