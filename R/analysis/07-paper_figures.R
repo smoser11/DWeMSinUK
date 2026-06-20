@@ -250,7 +250,7 @@ ggsave(file.path(FIG_DIR, "main_fig2_composite_risk_comparison.png"),
 cat("Producing main_fig3_ma_forest_plot.png...\n")
 
 ma_forest_df <- ma_headline %>%
-  mutate(indicator_label = recode(indicator, !!!INDICATOR_LABELS)) %>%
+  mutate(indicator_label = unname(INDICATOR_LABELS[as.character(indicator)])) %>%
   filter(!is.na(point_estimate)) %>%
   arrange(point_estimate) %>%
   mutate(indicator_label = factor(indicator_label, levels = indicator_label))
@@ -285,7 +285,7 @@ rds_forest_df <- per_method %>%
                           "threats_abuse_rds", "excessive_hours_rds",
                           "access_to_help_rds")) %>%
   mutate(
-    indicator_label = recode(indicator, !!!INDICATOR_LABELS),
+    indicator_label = unname(INDICATOR_LABELS[as.character(indicator)]),
     indicator_label = factor(indicator_label,
                              levels = c("Document withholding", "Pay-related issues",
                                         "Threats and abuse", "Limited access to help",
@@ -325,12 +325,13 @@ cat("Producing main_fig5_nsum_forest_plot.png (replaces duplicate)...\n")
 nsum_forest_df <- nsum_pop %>%
   filter(`Population Size` %in% c("980000", "980,000")) %>%
   mutate(
-    outcome_label = recode(Outcome,
-                           "Document Withholding" = "Document withholding",
-                           "Pay Issues"           = "Pay-related issues",
-                           "Threats/Abuse"        = "Threats and abuse",
-                           "Excessive Hours"      = "Excessive working hours",
-                           "Access to Help"       = "Limited access to help"),
+    outcome_label = unname(c(
+      "Document Withholding" = "Document withholding",
+      "Pay Issues"           = "Pay-related issues",
+      "Threats/Abuse"        = "Threats and abuse",
+      "Excessive Hours"      = "Excessive working hours",
+      "Access to Help"       = "Limited access to help"
+    )[as.character(Outcome)]),
     prevalence = as.numeric(`Point Estimate`) / 980000 * 100,
     ci_lower_pct = as.numeric(`95% CI Lower`) / 980000 * 100,
     ci_upper_pct = as.numeric(`95% CI Upper`) / 980000 * 100
@@ -371,7 +372,7 @@ esm1_df <- per_method %>%
                           "threats_abuse_rds", "excessive_hours_rds",
                           "access_to_help_rds")) %>%
   mutate(
-    indicator_label = recode(indicator, !!!INDICATOR_LABELS),
+    indicator_label = unname(INDICATOR_LABELS[as.character(indicator)]),
     estimate        = original_estimate * 100,
     ci_lower        = ci_lower * 100,
     ci_upper        = ci_upper * 100
@@ -408,7 +409,7 @@ cat("Producing esm4_fig2_ma_seedcheck_facets.png...\n")
 # because seed-selection robustness held for that indicator and per the
 # 06e- design we did not run all indicators across all seeds.
 seedcheck_long <- ma_seedcheck %>%
-  mutate(indicator_label = recode(indicator, !!!INDICATOR_LABELS),
+  mutate(indicator_label = unname(INDICATOR_LABELS[as.character(indicator)]),
          seed_selection = factor(seed_selection, levels = c("degree", "random", "sample"),
                                  labels = c("Degree", "Random", "Sample")))
 
@@ -438,7 +439,7 @@ cat("Producing esm4_fig3_ma_seedcheck_lineplot.png...\n")
 # with CIs as error bars. Replaces the original Fig 3 which tried to show
 # 3 seed methods but they were artefact-identical.
 ma_lineplot_df <- ma_headline %>%
-  mutate(indicator_label = recode(indicator, !!!INDICATOR_LABELS)) %>%
+  mutate(indicator_label = unname(INDICATOR_LABELS[as.character(indicator)])) %>%
   arrange(point_estimate) %>%
   mutate(indicator_label = factor(indicator_label, levels = indicator_label))
 

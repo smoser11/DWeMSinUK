@@ -38,7 +38,7 @@ suppressMessages({
 source(here("R", "utils", "helper_functions.R"))
 source(here("R", "analysis", "nsum_core_estimators.R"))
 
-if (!exists("rd.dd") || !exists("dd")) {
+if (!exists("dd") || !exists("dd")) {
   load(here("data", "processed", "prepared_data.RData"))
 }
 
@@ -88,11 +88,11 @@ cat(sprintf("Weight variable:   %s\n", nsum_tau_config$weight_var))
 cat("\n")
 
 # Sanity checks
-if (!nsum_tau_config$degree_var %in% names(rd.dd)) {
-  stop("degree_var '", nsum_tau_config$degree_var, "' not found in rd.dd")
+if (!nsum_tau_config$degree_var %in% names(dd)) {
+  stop("degree_var '", nsum_tau_config$degree_var, "' not found in dd")
 }
-weights <- if (nsum_tau_config$weight_var %in% names(rd.dd)) {
-  rd.dd[[nsum_tau_config$weight_var]]
+weights <- if (nsum_tau_config$weight_var %in% names(dd)) {
+  dd[[nsum_tau_config$weight_var]]
 } else {
   cat("WARN: weight_var '", nsum_tau_config$weight_var,
       "' not found; falling back to unweighted MBSU.\n", sep = "")
@@ -139,13 +139,13 @@ qs <- c((1 - nsum_tau_config$confidence_level) / 2,
 
 results <- list()
 for (ind in nsum_tau_config$indicators_nsum) {
-  if (!(ind %in% names(rd.dd))) {
-    cat("SKIP - indicator missing from rd.dd:", ind, "\n")
+  if (!(ind %in% names(dd))) {
+    cat("SKIP - indicator missing from dd:", ind, "\n")
     next
   }
   for (tau in nsum_tau_config$tau_grid) {
     cat(sprintf("  %s  tau=%.2f", ind, tau))
-    point_count <- mbsu_adjusted(rd.dd, ind, weights, tau)
+    point_count <- mbsu_adjusted(dd, ind, weights, tau)
     if (is.na(point_count)) {
       cat("  FAIL (point estimate)\n"); next
     }
@@ -154,10 +154,10 @@ for (ind in nsum_tau_config$indicators_nsum) {
     # RDS bootstrap in 04-bootstrap_analysis.R)
     boot_counts <- numeric(nsum_tau_config$n_bootstrap)
     for (b in seq_len(nsum_tau_config$n_bootstrap)) {
-      idx <- sample(seq_len(nrow(rd.dd)), replace = TRUE)
-      boot_data <- rd.dd[idx, ]
-      class(boot_data) <- class(rd.dd)
-      attributes(boot_data) <- attributes(rd.dd)
+      idx <- sample(seq_len(nrow(dd)), replace = TRUE)
+      boot_data <- dd[idx, ]
+      class(boot_data) <- class(dd)
+      attributes(boot_data) <- attributes(dd)
       boot_w <- if (!is.null(weights)) weights[idx] else NULL
       boot_counts[b] <- mbsu_adjusted(boot_data, ind, boot_w, tau)
     }

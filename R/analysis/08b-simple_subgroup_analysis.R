@@ -34,6 +34,10 @@ source(here("R", "utils", "helper_functions.R"))
 # Apply updated nationality clustering to the data
 rd.dd <- rd.dd %>% create_nationality_clusters()
 
+# Provide an alias for downstream code that refers to `rds_data` (legacy name).
+# `rd.dd` is the RDS data.frame (rds.data.frame class).
+rds_data <- rd.dd
+
 # We'll use the regular dd data frame with pre-calculated RDS weights
 # No need to load the neighborhood bootstrap functions since we're using simple bootstrap
 
