@@ -80,7 +80,12 @@ headline_df <- map_df(headline_rows, as_tibble)
 if (nrow(headline_df) > 0) {
   headline_df <- headline_df %>%
     mutate(estimate_with_ci = format_pct_ci(point_estimate, ci_lower, ci_upper)) %>%
-    select(indicator, population_size, seed_selection, point_estimate, ci_lower, ci_upper, se, estimate_with_ci)
+    # SE deliberately dropped 2026-06-20: MA computes SE numerically and for
+    # indicators near the prevalence boundaries (e.g. whether_exploitation ~95%,
+    # composite_risk ~7%) the SE field collapses or explodes and carries no
+    # useful information. The credible interval IS the honest uncertainty signal.
+    select(indicator, population_size, seed_selection,
+           point_estimate, ci_lower, ci_upper, estimate_with_ci)
 }
 print(headline_df)
 
@@ -98,7 +103,12 @@ seedcheck_df <- map_df(seedcheck_rows, as_tibble)
 if (nrow(seedcheck_df) > 0) {
   seedcheck_df <- seedcheck_df %>%
     mutate(estimate_with_ci = format_pct_ci(point_estimate, ci_lower, ci_upper)) %>%
-    select(indicator, population_size, seed_selection, point_estimate, ci_lower, ci_upper, se, estimate_with_ci)
+    # SE deliberately dropped 2026-06-20: MA computes SE numerically and for
+    # indicators near the prevalence boundaries (e.g. whether_exploitation ~95%,
+    # composite_risk ~7%) the SE field collapses or explodes and carries no
+    # useful information. The credible interval IS the honest uncertainty signal.
+    select(indicator, population_size, seed_selection,
+           point_estimate, ci_lower, ci_upper, estimate_with_ci)
 }
 print(seedcheck_df)
 

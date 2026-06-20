@@ -87,7 +87,17 @@ cat(sprintf("Degree variable:   %s\n", nsum_tau_config$degree_var))
 cat(sprintf("Weight variable:   %s\n", nsum_tau_config$weight_var))
 cat("\n")
 
-# Sanity checks
+# Sanity checks + diagnostics (added 2026-06-20 - if 05b- silently fails this
+# block tells you exactly why)
+cat("Data object check:\n")
+cat(sprintf("  nrow(dd):                 %d\n", nrow(dd)))
+cat(sprintf("  degree_var in dd:         %s\n", nsum_tau_config$degree_var %in% names(dd)))
+cat(sprintf("  weight_var in dd:         %s\n", nsum_tau_config$weight_var %in% names(dd)))
+for (ind in nsum_tau_config$indicators_nsum) {
+  cat(sprintf("  indicator '%s' in dd: %s\n", ind, ind %in% names(dd)))
+}
+cat("\n")
+
 if (!nsum_tau_config$degree_var %in% names(dd)) {
   stop("degree_var '", nsum_tau_config$degree_var, "' not found in dd")
 }
@@ -100,6 +110,34 @@ weights <- if (nsum_tau_config$weight_var %in% names(dd)) {
 }
 method_name <- if (is.null(weights)) "basic" else "weighted"
 scheme_name <- if (is.null(weights)) "unweighted" else "SS"
+
+# Smoke test: try one call BEFORE the sweep, with verbose=TRUE so any
+# downstream error surfaces immediately rather than 65x silently.
+cat("Smoke test: single MBSU call with verbose=TRUE...\n")
+smoke <- tryCatch(
+  estimate_nsum_population(
+    data = dd,
+    weights = weights,
+    hidden_connections_var = nsum_tau_config$indicators_nsum[1],
+    degree_var = nsum_tau_config$degree_var,
+    total_population_size = nsum_tau_config$N_F,
+    method = method_name,
+    weighting_scheme = scheme_name,
+    verbose = TRUE
+  ),
+  error = function(e) list(error = conditionMessage(e))
+)
+if ("error" %in% names(smoke)) {
+  cat("\nSMOKE TEST FAILED:\n  ", smoke$error, "\n")
+  cat("All subsequent (indicator, tau) combinations will also fail.\n")
+  cat("Likely cause and fix candidates:\n")
+  cat("  - estimate_mbsu in nsum_core_estimators.R requires a column or class not present in `dd`\n")
+  cat("  - try passing `rd.dd` instead of `dd` if the rds.data.frame class is needed\n")
+  cat("  - check 05-nsum_estimation.R for the exact data object it passes\n")
+  stop("05b- smoke test failed - see diagnostics above")
+}
+cat("Smoke test OK. N_H_estimate =",
+    if (is.null(smoke$N_H_estimate)) "NULL" else format(round(smoke$N_H_estimate)), "\n\n")
 
 # --------------------------------------------------------------------------
 # Helper: one MBSU call with manual (delta, tau, eta) adjustment
