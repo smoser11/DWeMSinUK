@@ -21,7 +21,8 @@ sensitivity_config <- list(
   population_labels = c("50K", "100K", "980K", "1.74M"),
   seed_selection_methods = c("random", "degree", "sample"),
   binary_indicators = get_comparable_indicators()$rds_vars,
-  numeric_indicators = c("composite_risk", "sum_categories"),
+  # sum_categories was dropped 2026-06-17 (duplicate of composite_risk in raw CSV).
+  numeric_indicators = c("composite_risk"),
   additional_indicators = c("whether_exploitation"),
   save_detailed_results = TRUE
 )

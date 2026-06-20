@@ -113,9 +113,13 @@ prepare_legacy_indicators <- function(data) {
   data$zQ80 <- recode(data$q80, "4=NA")
   data$zQ80 <- recode(data$q80, "c(0,1) = 1; c(2,3,4,5)=0")
   
-  # Risk categories
-  data$sum_categories_factor <- as.factor(data$sum_categories)
-  data$sum_categories_cut <- cut_interval(data$sum_categories, n = 10)
+  # Risk categories. These derivatives were originally built from data$sum_categories,
+  # which was a duplicate of data$composite_risk (dropped in 01-data_cleaning.R as
+  # of 2026-06-17). The derivatives now reference composite_risk directly. Their
+  # names are kept (sum_categories_factor, sum_categories_cut) for backward
+  # compatibility with downstream RDS weighting code.
+  data$sum_categories_factor <- as.factor(data$composite_risk)
+  data$sum_categories_cut <- cut_interval(data$composite_risk, n = 10)
   
   return(data)
 }

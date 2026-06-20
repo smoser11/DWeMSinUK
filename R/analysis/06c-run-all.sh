@@ -20,6 +20,7 @@ REPO_ROOT="$( cd "$SCRIPT_DIR/../.." && pwd )"
 cd "$REPO_ROOT"
 
 # All combinations: 8 indicators x 4 population sizes x 3 seed selection methods = 96
+# sum_categories was dropped 2026-06-17 (duplicate of composite_risk in raw CSV).
 INDICATORS=(
   document_withholding_rds
   pay_issues_rds
@@ -28,7 +29,6 @@ INDICATORS=(
   access_to_help_rds
   whether_exploitation
   composite_risk
-  sum_categories
 )
 POPSIZES=(50000 100000 980000 1740000)
 SEEDS=(degree random sample)

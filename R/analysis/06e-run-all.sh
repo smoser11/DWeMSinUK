@@ -35,6 +35,7 @@ cd "$REPO_ROOT"
 POPSIZE=50000
 
 # Headline run: all 8 indicators with seed.selection="degree"
+# sum_categories was dropped 2026-06-17 (duplicate of composite_risk in raw CSV).
 HEADLINE_INDICATORS=(
   document_withholding_rds
   pay_issues_rds
@@ -43,7 +44,6 @@ HEADLINE_INDICATORS=(
   access_to_help_rds
   whether_exploitation
   composite_risk
-  sum_categories
 )
 
 # Seed-selection sensitivity: only for one representative indicator.

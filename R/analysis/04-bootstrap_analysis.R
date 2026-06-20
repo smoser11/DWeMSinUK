@@ -391,6 +391,123 @@ run_tree_bootstrap <- function(outcome_vars, n_bootstrap = 1000,
 }
 
 # ============================================================================
+# PER-METHOD BOOTSTRAP (RDS-I, RDS-II, RDS-SS) - added 2026-06-17
+# ============================================================================
+#
+# Existing get_simple_bootstrap_ci() uses RDS-II only. Main paper Figure 4 (RDS
+# forest plot) needs CIs computed separately for RDS-I and RDS-SS so each method
+# has its own bootstrap uncertainty (rather than approximating RDS-I CIs from
+# RDS-SS as previously done in 07c-paper_figures.R). This function runs a
+# simple bootstrap and computes ALL THREE RDS estimators on each resample.
+#
+# NB: this is a node-level simple bootstrap that does not preserve chain
+# structure. For full RDS-theoretic CIs the neighborhood bootstrap is
+# preferred, but it does not expose per-method estimators. We use simple
+# bootstrap here for consistency with the existing get_simple_bootstrap_ci()
+# and so that all three methods have comparable CI methodology. A more
+# rigorous per-method neighborhood bootstrap is a TODO for revision.
+
+run_per_method_bootstrap <- function(outcome_vars,
+                                     n_bootstrap = 1000,
+                                     confidence_level = 0.95,
+                                     population_size = 980000,
+                                     seed = 12345) {
+
+  cat("=== Per-Method Bootstrap (RDS-I / RDS-II / RDS-SS) ===\n")
+  cat("Population size (for RDS-SS):", format(population_size, big.mark = ","), "\n")
+  cat("Bootstrap samples:", n_bootstrap, "\n\n")
+
+  set.seed(seed)
+  alpha <- 1 - confidence_level
+  quantiles <- c(alpha / 2, 1 - alpha / 2)
+
+  rows <- list()
+
+  for (outcome_var in outcome_vars) {
+    cat("Per-method bootstrap for:", outcome_var, "\n")
+
+    if (!(outcome_var %in% names(rd.dd))) {
+      cat("  Variable not found in rd.dd; skipping.\n")
+      next
+    }
+
+    # Original (full-sample) estimates per method
+    orig_I <- tryCatch(RDS.I.estimates(rd.dd, outcome.variable = outcome_var)$estimate,
+                       error = function(e) { cat("  RDS-I original failed:", e$message, "\n"); NA })
+    orig_II <- tryCatch(RDS.II.estimates(rd.dd, outcome.variable = outcome_var)$estimate,
+                        error = function(e) { cat("  RDS-II original failed:", e$message, "\n"); NA })
+    orig_SS <- tryCatch(RDS.SS.estimates(rd.dd, outcome.variable = outcome_var,
+                                         N = population_size)$estimate,
+                        error = function(e) { cat("  RDS-SS original failed:", e$message, "\n"); NA })
+
+    # Bootstrap storage
+    boot_I  <- numeric(n_bootstrap)
+    boot_II <- numeric(n_bootstrap)
+    boot_SS <- numeric(n_bootstrap)
+
+    for (b in seq_len(n_bootstrap)) {
+      boot_indices <- sample(seq_len(nrow(rd.dd)), replace = TRUE)
+      boot_data <- rd.dd[boot_indices, ]
+      class(boot_data) <- class(rd.dd)
+      attributes(boot_data) <- attributes(rd.dd)
+
+      boot_I[b]  <- tryCatch(RDS.I.estimates(boot_data, outcome.variable = outcome_var)$estimate,
+                             error = function(e) NA)
+      boot_II[b] <- tryCatch(RDS.II.estimates(boot_data, outcome.variable = outcome_var)$estimate,
+                             error = function(e) NA)
+      boot_SS[b] <- tryCatch(RDS.SS.estimates(boot_data, outcome.variable = outcome_var,
+                                              N = population_size)$estimate,
+                             error = function(e) NA)
+    }
+
+    # One row per (indicator, method)
+    methods <- list(RDS_I = list(boot = boot_I,  orig = orig_I),
+                    RDS_II = list(boot = boot_II, orig = orig_II),
+                    RDS_SS = list(boot = boot_SS, orig = orig_SS))
+
+    for (method_name in names(methods)) {
+      m <- methods[[method_name]]
+      ci <- tryCatch(quantile(m$boot, quantiles, na.rm = TRUE),
+                     error = function(e) c(NA, NA))
+      se <- tryCatch(sd(m$boot, na.rm = TRUE), error = function(e) NA)
+      rows[[paste(outcome_var, method_name, sep = "__")]] <- data.frame(
+        indicator        = outcome_var,
+        method           = method_name,
+        original_estimate = m$orig,
+        ci_lower         = ci[1],
+        ci_upper         = ci[2],
+        bootstrap_se     = se,
+        n_bootstrap      = n_bootstrap,
+        confidence_level = confidence_level,
+        population_size  = population_size,
+        stringsAsFactors = FALSE
+      )
+    }
+
+    cat(sprintf("  RDS-I:  %.3f [%.3f, %.3f]\n", orig_I,
+                rows[[paste(outcome_var, "RDS_I", sep = "__")]]$ci_lower,
+                rows[[paste(outcome_var, "RDS_I", sep = "__")]]$ci_upper))
+    cat(sprintf("  RDS-II: %.3f [%.3f, %.3f]\n", orig_II,
+                rows[[paste(outcome_var, "RDS_II", sep = "__")]]$ci_lower,
+                rows[[paste(outcome_var, "RDS_II", sep = "__")]]$ci_upper))
+    cat(sprintf("  RDS-SS: %.3f [%.3f, %.3f]\n", orig_SS,
+                rows[[paste(outcome_var, "RDS_SS", sep = "__")]]$ci_lower,
+                rows[[paste(outcome_var, "RDS_SS", sep = "__")]]$ci_upper))
+  }
+
+  per_method_df <- do.call(rbind, rows)
+  rownames(per_method_df) <- NULL
+
+  out_path <- here("output", "tables", "rds_per_method_bootstrap_ci.csv")
+  dir.create(dirname(out_path), showWarnings = FALSE, recursive = TRUE)
+  write.csv(per_method_df, out_path, row.names = FALSE)
+  cat("\nSaved per-method bootstrap CIs to:", out_path, "\n\n")
+
+  per_method_df
+}
+
+
+# ============================================================================
 # COMBINE BOOTSTRAP METHODS
 # ============================================================================
 
@@ -640,6 +757,17 @@ main_bootstrap_analysis <- function() {
     tree_results <- list()
   }
   
+  # Step 3b (added 2026-06-17): Per-method bootstrap (RDS-I, RDS-II, RDS-SS).
+  # Produces output/tables/rds_per_method_bootstrap_ci.csv consumed by
+  # R/analysis/07c-paper_figures.R for main paper Figure 4.
+  per_method_results <- run_per_method_bootstrap(
+    outcome_vars = bootstrap_config$outcome_vars,
+    n_bootstrap = bootstrap_config$n_bootstrap,
+    confidence_level = bootstrap_config$confidence_level,
+    population_size = bootstrap_config$main_population_size,
+    seed = bootstrap_config$seed
+  )
+
   # Step 4: Combine results from all methods
   combined_results <- combine_bootstrap_results(simple_results, neighborhood_results, tree_results)
   
@@ -655,9 +783,10 @@ main_bootstrap_analysis <- function() {
     simple_results = simple_results,
     neighborhood_results = neighborhood_results,
     tree_results = tree_results,
+    per_method_results = per_method_results,   # added 2026-06-17
     combined_results = if(exists("combined_results")) combined_results else list(),
     summary_table = summary_table,
-    
+
     config = bootstrap_config,
     metadata = list(
       timestamp = Sys.time(),
