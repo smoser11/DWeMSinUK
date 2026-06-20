@@ -83,24 +83,27 @@ ma_seedcheck <- read_csv_quiet(here("output", "tables", "ESM_appendix_bayesian_s
 cat("Producing main_fig1_recruitment_network.png...\n")
 
 # Build edge list (recruiter -> recruit) excluding seeds (recruiter.id == -1 or 0 sentinel)
+# Find the nationality column (real name is 'nationality_cluster' in the
+# prepared data; fall back to other plausible names if the schema changes)
+nat_candidates <- c("nationality_cluster", "nat_cluster", "nationality")
+nat_col <- intersect(nat_candidates, names(rd.dd))
+nat_col <- if (length(nat_col) > 0) nat_col[1] else NA_character_
+
 edges_df <- rd.dd %>%
   as_tibble() %>%
-  select(id, recruiter.id, known_network_size, any_of(c("nat_cluster", "nationality"))) %>%
+  select(id, recruiter.id, known_network_size) %>%
   filter(!is.na(recruiter.id), recruiter.id != -1, recruiter.id != "0",
          recruiter.id != 0, !is.na(id))
 
-# Vertex attributes - use whichever nationality column exists
-nat_col <- intersect(c("nat_cluster", "nationality"), names(rd.dd))[1]
 vertices_df <- rd.dd %>%
   as_tibble() %>%
   mutate(
-    is_seed   = (recruiter.id == -1) | (recruiter.id == "0") | (recruiter.id == 0) | is.na(recruiter.id),
-    network_size = pmax(as.numeric(known_network_size), 1, na.rm = TRUE)
+    is_seed      = (recruiter.id == -1) | (recruiter.id == "0") |
+                   (recruiter.id == 0) | is.na(recruiter.id),
+    network_size = pmax(as.numeric(known_network_size), 1, na.rm = TRUE),
+    nationality  = if (!is.na(nat_col)) as.character(.data[[nat_col]]) else "Other"
   ) %>%
-  select(id, is_seed, network_size, any_of(nat_col))
-
-if (!is.null(nat_col)) names(vertices_df)[names(vertices_df) == nat_col] <- "nationality"
-if (!"nationality" %in% names(vertices_df)) vertices_df$nationality <- "Other"
+  select(id, is_seed, network_size, nationality)
 
 # Drop edges whose endpoints aren't in vertices_df (safety)
 edges_df <- edges_df %>% filter(id %in% vertices_df$id, recruiter.id %in% vertices_df$id)
