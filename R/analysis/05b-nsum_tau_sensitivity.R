@@ -1,26 +1,33 @@
 # 05b-nsum_tau_sensitivity.R
-# Continuous-τ sensitivity analysis for the NSUM Modified Basic Scale-Up (MBSU)
-# estimator. Addresses the IJOPM reviewer's "wide 34%-84% range" concern by
-# showing per-indicator NSUM prevalence as a continuous function of the
-# visibility / true-positive-rate adjustment factor τ_F.
+# Continuous-tau sensitivity analysis for the NSUM Modified Basic Scale-Up
+# (MBSU) estimator. Addresses the IJOPM reviewer's "wide 34%-84% range"
+# concern by showing per-indicator NSUM prevalence as a continuous function
+# of the visibility / true-positive-rate adjustment factor tau_F.
 #
-# The current paper reports three discrete (δ, τ) combinations:
-#   "No Adjustment":   δ=1.0, τ=1.0
-#   "Moderate":        δ=0.9, τ=0.85
-#   "Conservative":    δ=0.8, τ=0.70
+# The current paper reports three discrete (delta, tau) combinations:
+#   "No Adjustment":   delta=1.0,  tau=1.0
+#   "Moderate":        delta=0.9,  tau=0.85
+#   "Conservative":    delta=0.8,  tau=0.70
 #
-# This script keeps δ fixed at 0.9 and sweeps τ across a fine grid (0.40 - 1.00
-# in 0.05 steps = 13 values). For each (indicator, τ) it computes:
-#   - MBSU population count
-#   - MBSU prevalence (count / N_F)
-#   - Bootstrap 95% CI (B = nsum_tau_config$n_bootstrap replicates of the
-#     NSUM-aware neighborhood bootstrap)
+# This script keeps delta fixed at 0.9 and sweeps tau across a fine grid
+# (0.40 to 1.00 in 0.05 steps = 13 values). For each (indicator, tau) it
+# computes the MBSU population count + bootstrap 95% CI, then converts to
+# prevalence (count / N_F).
+#
+# Implementation note: this project's NSUM uses known_network_size directly
+# as the degree variable (per the design note in 05-nsum_estimation.R: "NO
+# traditional probe questions - uses direct network size from RDS"). The
+# adjustment factors are applied multiplicatively post-hoc:
+#   adjusted_count = basic_count * (1/delta) * (1/tau) * eta
+# This matches Feehan & Salganik (2016, Eq. 24) with the network-size-based
+# basic estimate substituting for the probe-question-based basic estimate.
 #
 # Outputs:
 #   output/tables/nsum_tau_sensitivity.csv
 #   output/figures/paper/nsum_tau_sensitivity.png
 #
-# Created 2026-06-20.
+# Created 2026-06-20. Reworked 2026-06-20 to use the project-native NSUM
+# call pattern (degree_var = known_network_size, no probe questions).
 
 suppressMessages({
   library(here)
@@ -28,13 +35,9 @@ suppressMessages({
   library(scales)
 })
 
-# Project setup + NSUM machinery
 source(here("R", "utils", "helper_functions.R"))
 source(here("R", "analysis", "nsum_core_estimators.R"))
-source(here("R", "analysis", "nsum_robust_adjustment.R"))
-source(here("R", "analysis", "nsum_bootstrap.R"))
 
-# Load prepared RDS data
 if (!exists("rd.dd") || !exists("dd")) {
   load(here("data", "processed", "prepared_data.RData"))
 }
@@ -44,17 +47,13 @@ if (!exists("rd.dd") || !exists("dd")) {
 # --------------------------------------------------------------------------
 
 nsum_tau_config <- list(
-  # Population size for prevalence calculations
-  N_F = 980000,
-
-  # Fixed delta (degree ratio). Moderate value; main paper sensitivity already
-  # covers delta variation across the discrete (No / Moderate / Conservative) tiers.
-  delta_F = 0.9,
-
-  # Tau sweep: visibility / true-positive-rate
+  N_F      = 980000,
+  delta_F  = 0.9,
+  eta      = 1.0,
   tau_grid = seq(0.40, 1.00, by = 0.05),
 
-  # Indicators (NSUM-side names; one per binary ILO indicator)
+  # NSUM-side indicators: respondents' reports about exploitation in their
+  # alter network (paired with the _rds ego-self-report indicators).
   indicators_nsum = c(
     "document_withholding_nsum",
     "pay_issues_nsum",
@@ -63,150 +62,135 @@ nsum_tau_config <- list(
     "access_to_help_nsum"
   ),
 
-  # Probe questions (used to estimate d_F,F = average degree in the frame
-  # population from respondents' reports about known groups of known size)
-  probe_sizes = list(
-    # Reasonable defaults; if 02-data_preparation.R defines probe_sizes globally
-    # we should pick those up. Documented in the codebook.
-    "q_probe_brothers"  = 1.31,    # placeholder; replace with actual probe sizes
-    "q_probe_sisters"   = 1.40,
-    "q_probe_doctors"   = 0.003
-  ),
+  # Degree variable (Q13: number of domestic workers respondent knows).
+  degree_var = "known_network_size",
 
-  # Weighting scheme for NSUM (SS = Sequential Sampling = RDS-SS weights)
-  weighting_scheme = "SS",
-  weight_var = "wt.SS",
+  # RDS-SS weight column for the main population size (per project convention)
+  weight_var = "wt.SS_980k",
 
   # Bootstrap
-  n_bootstrap = 500,
+  n_bootstrap      = 500,
   confidence_level = 0.95,
-  seed = 12345
+  seed             = 12345
 )
 
 cat("=== NSUM continuous-tau sensitivity ===\n")
-cat("Indicators:", length(nsum_tau_config$indicators_nsum), "\n")
-cat("Tau grid:  ", length(nsum_tau_config$tau_grid),
-    "values from", min(nsum_tau_config$tau_grid),
-    "to", max(nsum_tau_config$tau_grid), "\n")
-cat("delta_F:   ", nsum_tau_config$delta_F, "\n")
-cat("N_F:       ", format(nsum_tau_config$N_F, big.mark = ","), "\n")
-cat("Bootstrap: ", nsum_tau_config$n_bootstrap, "replicates\n\n")
+cat(sprintf("Indicators:        %d\n", length(nsum_tau_config$indicators_nsum)))
+cat(sprintf("Tau grid:          %d values from %.2f to %.2f\n",
+            length(nsum_tau_config$tau_grid),
+            min(nsum_tau_config$tau_grid), max(nsum_tau_config$tau_grid)))
+cat(sprintf("delta_F:           %.2f  eta: %.2f\n",
+            nsum_tau_config$delta_F, nsum_tau_config$eta))
+cat(sprintf("N_F:               %s\n", format(nsum_tau_config$N_F, big.mark = ",")))
+cat(sprintf("Bootstrap reps:    %d\n", nsum_tau_config$n_bootstrap))
+cat(sprintf("Degree variable:   %s\n", nsum_tau_config$degree_var))
+cat(sprintf("Weight variable:   %s\n", nsum_tau_config$weight_var))
+cat("\n")
 
-# --------------------------------------------------------------------------
-# Sanity-check probe variables present in data
-# --------------------------------------------------------------------------
-
-degree_vars <- intersect(names(rd.dd), names(nsum_tau_config$probe_sizes))
-if (length(degree_vars) == 0) {
-  # Fall back: search for any q_probe_* variables in the data
-  candidate <- grep("^q_probe_|^probe_|^known_", names(rd.dd), value = TRUE)
-  if (length(candidate) > 0) {
-    cat("WARN: configured probe names not found; using these instead:",
-        paste(candidate, collapse = ", "), "\n")
-    degree_vars <- candidate
-  } else {
-    stop("No probe-question variables found in rd.dd. Required for NSUM degree estimation. ",
-         "Edit nsum_tau_config$probe_sizes to match the actual probe-variable names in ",
-         "data/processed/prepared_data.RData.")
-  }
+# Sanity checks
+if (!nsum_tau_config$degree_var %in% names(rd.dd)) {
+  stop("degree_var '", nsum_tau_config$degree_var, "' not found in rd.dd")
 }
-probe_sizes <- nsum_tau_config$probe_sizes[degree_vars]
+weights <- if (nsum_tau_config$weight_var %in% names(rd.dd)) {
+  rd.dd[[nsum_tau_config$weight_var]]
+} else {
+  cat("WARN: weight_var '", nsum_tau_config$weight_var,
+      "' not found; falling back to unweighted MBSU.\n", sep = "")
+  NULL
+}
+method_name <- if (is.null(weights)) "basic" else "weighted"
+scheme_name <- if (is.null(weights)) "unweighted" else "SS"
 
 # --------------------------------------------------------------------------
-# Core sweep: for each indicator, for each tau, run MBSU and bootstrap CI
+# Helper: one MBSU call with manual (delta, tau, eta) adjustment
+# --------------------------------------------------------------------------
+
+mbsu_adjusted <- function(data, ind, weights_vec, tau,
+                          delta = nsum_tau_config$delta_F,
+                          eta = nsum_tau_config$eta,
+                          N_F = nsum_tau_config$N_F) {
+  basic <- tryCatch(
+    estimate_nsum_population(
+      data = data,
+      weights = weights_vec,
+      hidden_connections_var = ind,
+      degree_var = nsum_tau_config$degree_var,
+      total_population_size = N_F,
+      method = method_name,
+      weighting_scheme = scheme_name,
+      verbose = FALSE
+    ),
+    error = function(e) list(error = e$message)
+  )
+  if ("error" %in% names(basic) || is.null(basic$N_H_estimate) ||
+      is.na(basic$N_H_estimate)) {
+    return(NA_real_)
+  }
+  basic$N_H_estimate * (1 / delta) * (1 / tau) * eta
+}
+
+# --------------------------------------------------------------------------
+# Sweep
 # --------------------------------------------------------------------------
 
 set.seed(nsum_tau_config$seed)
-quantiles <- c((1 - nsum_tau_config$confidence_level) / 2,
-               1 - (1 - nsum_tau_config$confidence_level) / 2)
+qs <- c((1 - nsum_tau_config$confidence_level) / 2,
+        1 - (1 - nsum_tau_config$confidence_level) / 2)
 
 results <- list()
 for (ind in nsum_tau_config$indicators_nsum) {
-
   if (!(ind %in% names(rd.dd))) {
     cat("SKIP - indicator missing from rd.dd:", ind, "\n")
     next
   }
-
   for (tau in nsum_tau_config$tau_grid) {
-
     cat(sprintf("  %s  tau=%.2f", ind, tau))
-
-    # Point estimate via the existing robust-NSUM function
-    pt <- tryCatch(
-      calculate_robust_nsum(
-        data = rd.dd,
-        nsum_var = ind,
-        degree_vars = degree_vars,
-        probe_sizes = probe_sizes,
-        weight_var = if (nsum_tau_config$weight_var %in% names(rd.dd))
-                       nsum_tau_config$weight_var else NULL,
-        N_F = nsum_tau_config$N_F,
-        degree_ratio = nsum_tau_config$delta_F,
-        true_positive_rate = tau,
-        precision = 1.0,
-        scheme_name = nsum_tau_config$weighting_scheme
-      ),
-      error = function(e) list(error = e$message)
-    )
-
-    if ("error" %in% names(pt)) {
-      cat("  ERROR:", pt$error, "\n")
-      next
+    point_count <- mbsu_adjusted(rd.dd, ind, weights, tau)
+    if (is.na(point_count)) {
+      cat("  FAIL (point estimate)\n"); next
     }
 
-    point_count   <- pt$adjusted_estimate
-    point_prev    <- point_count / nsum_tau_config$N_F
-
-    # Bootstrap CI via the existing NSUM bootstrap (passes adjustment factors)
-    boot_pts <- numeric(nsum_tau_config$n_bootstrap)
+    # Bootstrap: simple node-level resample (consistent with the per-method
+    # RDS bootstrap in 04-bootstrap_analysis.R)
+    boot_counts <- numeric(nsum_tau_config$n_bootstrap)
     for (b in seq_len(nsum_tau_config$n_bootstrap)) {
-      boot_indices <- sample(seq_len(nrow(rd.dd)), replace = TRUE)
-      boot_data <- rd.dd[boot_indices, ]
+      idx <- sample(seq_len(nrow(rd.dd)), replace = TRUE)
+      boot_data <- rd.dd[idx, ]
       class(boot_data) <- class(rd.dd)
       attributes(boot_data) <- attributes(rd.dd)
-
-      boot_pts[b] <- tryCatch({
-        r <- calculate_robust_nsum(
-          data = boot_data,
-          nsum_var = ind,
-          degree_vars = degree_vars,
-          probe_sizes = probe_sizes,
-          weight_var = if (nsum_tau_config$weight_var %in% names(boot_data))
-                         nsum_tau_config$weight_var else NULL,
-          N_F = nsum_tau_config$N_F,
-          degree_ratio = nsum_tau_config$delta_F,
-          true_positive_rate = tau,
-          precision = 1.0,
-          scheme_name = nsum_tau_config$weighting_scheme
-        )
-        if ("error" %in% names(r)) NA_real_ else r$adjusted_estimate
-      }, error = function(e) NA_real_)
+      boot_w <- if (!is.null(weights)) weights[idx] else NULL
+      boot_counts[b] <- mbsu_adjusted(boot_data, ind, boot_w, tau)
     }
-    ci <- quantile(boot_pts, quantiles, na.rm = TRUE)
+    ci <- quantile(boot_counts, qs, na.rm = TRUE)
+    if (any(!is.finite(ci))) ci <- c(NA_real_, NA_real_)
 
     results[[paste(ind, tau, sep = "__")]] <- tibble(
       indicator        = ind,
       tau              = tau,
       delta            = nsum_tau_config$delta_F,
+      eta              = nsum_tau_config$eta,
       point_count      = point_count,
-      point_prevalence = point_prev,
+      point_prevalence = point_count / nsum_tau_config$N_F,
       ci_lower_count   = unname(ci[1]),
       ci_upper_count   = unname(ci[2]),
       ci_lower_prev    = unname(ci[1]) / nsum_tau_config$N_F,
       ci_upper_prev    = unname(ci[2]) / nsum_tau_config$N_F,
       n_bootstrap      = nsum_tau_config$n_bootstrap,
-      N_F              = nsum_tau_config$N_F
+      N_F              = nsum_tau_config$N_F,
+      weight_scheme    = scheme_name
     )
 
-    cat(sprintf("  -> %.2f%% (%.2f%%, %.2f%%)\n",
-                100 * point_prev,
+    cat(sprintf("  -> %.2f%% (%.2f-%.2f%%)\n",
+                100 * point_count / nsum_tau_config$N_F,
                 100 * unname(ci[1]) / nsum_tau_config$N_F,
                 100 * unname(ci[2]) / nsum_tau_config$N_F))
   }
 }
 
 results_df <- bind_rows(results)
+if (nrow(results_df) == 0) {
+  stop("No NSUM tau sensitivity results were produced. Check the configuration.")
+}
 
 # --------------------------------------------------------------------------
 # Write CSV
@@ -215,10 +199,10 @@ results_df <- bind_rows(results)
 out_csv <- here("output", "tables", "nsum_tau_sensitivity.csv")
 dir.create(dirname(out_csv), showWarnings = FALSE, recursive = TRUE)
 write_csv(results_df, out_csv)
-cat("Saved CSV:", out_csv, "\n")
+cat("\nSaved CSV:", out_csv, "\n")
 
 # --------------------------------------------------------------------------
-# Figure: prevalence vs tau, one line per indicator, CI ribbon
+# Figure
 # --------------------------------------------------------------------------
 
 INDICATOR_LABELS <- c(
@@ -246,13 +230,13 @@ p <- ggplot(plot_df,
   scale_y_continuous(labels = function(x) paste0(x, "%")) +
   scale_colour_viridis_d(name = "Indicator") +
   scale_fill_viridis_d(name = "Indicator") +
-  labs(title = "NSUM (MBSU) Prevalence as a Continuous Function of Visibility τ",
+  labs(title = "NSUM (MBSU) Prevalence as a Continuous Function of Visibility tau",
        subtitle = sprintf(
-         "delta fixed at %.2f; bootstrap 95%% CI; N_F = %s; %d bootstrap replicates",
-         nsum_tau_config$delta_F,
-         format(nsum_tau_config$N_F, big.mark = ","),
-         nsum_tau_config$n_bootstrap),
-       x = expression("Visibility / true-positive-rate adjustment τ"),
+         "delta fixed at %.2f; %s weights; bootstrap 95%% CI (B = %d); N_F = %s",
+         nsum_tau_config$delta_F, scheme_name,
+         nsum_tau_config$n_bootstrap,
+         format(nsum_tau_config$N_F, big.mark = ",")),
+       x = "Visibility / true-positive-rate adjustment tau",
        y = "Estimated prevalence (%)") +
   theme_minimal(base_size = 11) +
   theme(plot.title = element_text(face = "bold"),
@@ -262,5 +246,5 @@ p <- ggplot(plot_df,
 out_png <- here("output", "figures", "paper", "nsum_tau_sensitivity.png")
 dir.create(dirname(out_png), showWarnings = FALSE, recursive = TRUE)
 ggsave(out_png, p, width = 9, height = 5.5, dpi = 300)
-cat("Saved figure:", out_png, "\n")
-cat("\nDone.\n")
+cat("Saved figure:", out_png, "\n\n")
+cat("Done.\n")
