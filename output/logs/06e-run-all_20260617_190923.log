@@ -67,3 +67,126 @@ The following objects are masked from ‘package:stats’:
   Parameters: iterations=10 M1=500 M2=200
 
 Note: Using the data's maximum number of coupons as the number.of.coupons = 5 
+Warning message:
+In .Deprecate_once(msg = "Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.") :
+  Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.
+  MA.estimates finished in 1529.5 minutes
+  Saved: /data/home/Documents/GitHub/DWeMSinUK/output/ma_sensitivity_excessive_hours_rds_50000_degree.RData 
+  Done.
+[12:08:35]   ok
+[12:08:35] RUN  access_to_help_rds / N=50000 / degree
+06c-run-single.R: indicator=access_to_help_rds, N=50,000, seed=degree
+
+Attaching package: ‘janitor’
+
+The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+  Parameters: iterations=10 M1=500 M2=200
+
+Note: Using the data's maximum number of coupons as the number.of.coupons = 5 
+Warning message:
+In .Deprecate_once(msg = "Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.") :
+  Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.
+  MA.estimates finished in 58.2 minutes
+  Saved: /data/home/Documents/GitHub/DWeMSinUK/output/ma_sensitivity_access_to_help_rds_50000_degree.RData 
+  Done.
+[13:06:50]   ok
+[13:06:50] RUN  whether_exploitation / N=50000 / degree
+06c-run-single.R: indicator=whether_exploitation, N=50,000, seed=degree
+
+Attaching package: ‘janitor’
+
+The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+  Parameters: iterations=10 M1=500 M2=200
+
+Note: Using the data's maximum number of coupons as the number.of.coupons = 5 
+Warning message:
+In .Deprecate_once(msg = "Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.") :
+  Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.
+  MA.estimates finished in 52.0 minutes
+  Saved: /data/home/Documents/GitHub/DWeMSinUK/output/ma_sensitivity_whether_exploitation_50000_degree.RData 
+  Done.
+[13:58:52]   ok
+[13:58:52] RUN  composite_risk / N=50000 / degree
+06c-run-single.R: indicator=composite_risk, N=50,000, seed=degree
+
+Attaching package: ‘janitor’
+
+The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+  Parameters: iterations=15 M1=1000 M2=400
+
+Note: Using the data's maximum number of coupons as the number.of.coupons = 5 
+ Markov chain appears to be periodic.
+Warning message:
+In .Deprecate_once(msg = "Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.") :
+  Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.
+  MA.estimates finished in 277.3 minutes
+  Saved: /data/home/Documents/GitHub/DWeMSinUK/output/ma_sensitivity_composite_risk_50000_degree.RData 
+  Done.
+[18:36:16]   ok
+[18:36:16] RUN  sum_categories / N=50000 / degree
+06c-run-single.R: indicator=sum_categories, N=50,000, seed=degree
+
+Attaching package: ‘janitor’
+
+The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+  Parameters: iterations=15 M1=1000 M2=400
+
+Note: Using the data's maximum number of coupons as the number.of.coupons = 5 
+ Markov chain appears to be periodic.
+Warning message:
+In .Deprecate_once(msg = "Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.") :
+  Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.
+  MA.estimates finished in 276.2 minutes
+  Saved: /data/home/Documents/GitHub/DWeMSinUK/output/ma_sensitivity_sum_categories_50000_degree.RData 
+  Done.
+[23:12:30]   ok
+[23:12:30] RUN  document_withholding_rds / N=50000 / random
+06c-run-single.R: indicator=document_withholding_rds, N=50,000, seed=random
+
+Attaching package: ‘janitor’
+
+The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+  Parameters: iterations=10 M1=500 M2=200
+
+Note: Using the data's maximum number of coupons as the number.of.coupons = 5 
+Warning message:
+In .Deprecate_once(msg = "Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.") :
+  Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.
+  MA.estimates finished in 55.8 minutes
+  Saved: /data/home/Documents/GitHub/DWeMSinUK/output/ma_sensitivity_document_withholding_rds_50000_random.RData 
+  Done.
+[00:08:18]   ok
+[00:08:18] RUN  document_withholding_rds / N=50000 / sample
+06c-run-single.R: indicator=document_withholding_rds, N=50,000, seed=sample
+
+Attaching package: ‘janitor’
+
+The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+
+  Parameters: iterations=10 M1=500 M2=200
+
+Note: Using the data's maximum number of coupons as the number.of.coupons = 5 
+Warning message:
+In .Deprecate_once(msg = "Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.") :
+  Using x$coef to access the coefficient vector of an ergm is deprecated. Use coef(x) instead.
+  MA.estimates finished in 55.3 minutes
+  Saved: /data/home/Documents/GitHub/DWeMSinUK/output/ma_sensitivity_document_withholding_rds_50000_sample.RData 
+  Done.
+[01:03:39]   ok
