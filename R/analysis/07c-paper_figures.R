@@ -76,6 +76,16 @@ nsum_method  <- read_csv_quiet(here("output", "tables", "AppendixA4_nsum_method_
 ma_headline  <- read_csv_quiet(here("output", "tables", "ESM_appendix_bayesian_summary.csv"))
 ma_seedcheck <- read_csv_quiet(here("output", "tables", "ESM_appendix_bayesian_seedcheck.csv"))
 
+# Per-method bootstrap CIs - produced by R/analysis/04-bootstrap_analysis.R.
+# Used by Main Fig 2 (composite_risk comparison), Main Fig 4 (RDS-I vs RDS-SS
+# forest), and ESM Fig 1 (RDS-SS forest with bootstrap CIs).
+per_method_path <- here("output", "tables", "rds_per_method_bootstrap_ci.csv")
+if (!file.exists(per_method_path)) {
+  stop("Missing ", per_method_path,
+       " - run R/analysis/04-bootstrap_analysis.R first.")
+}
+per_method <- read_csv_quiet(per_method_path)
+
 # ===========================================================================
 # MAIN FIGURE 1 - RDS Recruitment Network
 # ===========================================================================
@@ -266,15 +276,8 @@ ggsave(file.path(FIG_DIR, "main_fig3_ma_forest_plot.png"),
 
 cat("Producing main_fig4_rds_forest_plot.png...\n")
 
-# Uses per-method bootstrap CIs from output/tables/rds_per_method_bootstrap_ci.csv
-# (produced by run_per_method_bootstrap() in R/analysis/04-bootstrap_analysis.R).
+# Uses per-method bootstrap CIs (loaded at the top of the script).
 # Each of RDS-I, RDS-II, RDS-SS has its own bootstrap CI - no approximation.
-per_method_path <- here("output", "tables", "rds_per_method_bootstrap_ci.csv")
-if (!file.exists(per_method_path)) {
-  stop("Missing ", per_method_path,
-       " - run R/analysis/04-bootstrap_analysis.R first.")
-}
-per_method <- read_csv_quiet(per_method_path)
 
 rds_forest_df <- per_method %>%
   filter(method %in% c("RDS_I", "RDS_SS"),
