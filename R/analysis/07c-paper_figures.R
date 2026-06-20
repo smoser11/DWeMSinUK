@@ -13,7 +13,7 @@
 #
 # Produces (in output/figures/paper/):
 #   main_fig1_recruitment_network.png
-#   main_fig2_composite_risk_distribution.png
+#   main_fig2_composite_risk_comparison.png  (replaced 2026-06-20: was a misleading two-panel sample-vs-MA; now a three-estimator comparison forest)
 #   main_fig3_ma_forest_plot.png
 #   main_fig4_rds_forest_plot.png
 #   main_fig5_nsum_forest_plot.png      # replaces the Fig 4 duplicate
@@ -162,63 +162,76 @@ ggsave(file.path(FIG_DIR, "main_fig1_recruitment_network.png"),
        p1, width = 7, height = 5, dpi = 300)
 
 # ===========================================================================
-# MAIN FIGURE 2 - Composite risk: sample distribution vs MA population estimate
+# MAIN FIGURE 2 - Composite risk: three-estimator comparison forest
 # ===========================================================================
+# Was a two-panel sample-vs-MA plot; the MA panel was misleading because
+# MA.estimates() doesn't converge for continuous traits and the wide CI made
+# the flat-line representation visually deceptive. Now a simple three-row
+# forest comparing sample mean, RDS-SS adjusted mean, and MA Bayesian mean
+# of the composite risk index, with their respective uncertainties. The huge
+# MA CI is the honest signal that MA fails on continuous outcomes.
 
-cat("Producing main_fig2_composite_risk_distribution.png...\n")
+cat("Producing main_fig2_composite_risk_comparison.png...\n")
 
 risk_data <- tibble(composite_risk = rd.dd$composite_risk) %>%
   filter(!is.na(composite_risk))
-
 sample_mean <- mean(risk_data$composite_risk)
+sample_n    <- nrow(risk_data)
 
-# Pull MA composite risk row from headline summary
+# RDS-SS composite risk - pull from per-method bootstrap CSV (run by 04-)
+rds_ss_comp <- per_method %>%
+  filter(indicator == "composite_risk", method == "RDS_SS")
+rds_ss_point <- if (nrow(rds_ss_comp) > 0) rds_ss_comp$original_estimate[1] else NA_real_
+rds_ss_lower <- if (nrow(rds_ss_comp) > 0) rds_ss_comp$ci_lower[1] else NA_real_
+rds_ss_upper <- if (nrow(rds_ss_comp) > 0) rds_ss_comp$ci_upper[1] else NA_real_
+
+# MA Bayesian composite risk - from ESM_appendix_bayesian_summary.csv
 ma_composite <- ma_headline %>% filter(indicator == "composite_risk")
-ma_point  <- ma_composite$point_estimate[1]
-ma_lower  <- ma_composite$ci_lower[1]
-ma_upper  <- ma_composite$ci_upper[1]
+ma_point <- if (nrow(ma_composite) > 0) ma_composite$point_estimate[1] else NA_real_
+ma_lower <- if (nrow(ma_composite) > 0) ma_composite$ci_lower[1] else NA_real_
+ma_upper <- if (nrow(ma_composite) > 0) ma_composite$ci_upper[1] else NA_real_
 
-panel_a <- ggplot(risk_data, aes(x = composite_risk)) +
-  geom_histogram(aes(y = after_stat(density)), bins = 20,
-                 fill = "steelblue", colour = "white", alpha = 0.7) +
-  geom_density(colour = "navy", size = 1) +
-  geom_vline(xintercept = sample_mean, colour = "red", linetype = "dashed", size = 1) +
-  annotate("text", x = sample_mean + 0.02, y = Inf,
-           label = sprintf("Sample mean = %.3f", sample_mean),
-           hjust = 0, vjust = 1.5, colour = "red") +
-  scale_x_continuous(limits = c(0, 1)) +
-  labs(title = "A. Observed Sample Distribution",
-       subtitle = sprintf("n = %d", nrow(risk_data)),
-       x = "Composite Risk Index", y = "Density") +
-  paper_theme()
+forest_df <- tibble(
+  estimator = c("Sample mean", "RDS-SS adjusted", "MA Bayesian"),
+  point     = c(sample_mean, rds_ss_point, ma_point),
+  lower     = c(NA_real_,    rds_ss_lower, ma_lower),
+  upper     = c(NA_real_,    rds_ss_upper, ma_upper)
+) %>%
+  mutate(
+    estimator = factor(estimator, levels = c("MA Bayesian", "RDS-SS adjusted", "Sample mean")),
+    point_pct = point * 100,
+    lower_pct = lower * 100,
+    upper_pct = upper * 100,
+    label_str = ifelse(
+      is.na(lower),
+      sprintf("%.1f%%", point_pct),
+      sprintf("%.1f%% (%.1f-%.1f%%)", point_pct, lower_pct, upper_pct)
+    )
+  )
 
-ma_band_df <- tibble(
-  composite_risk = seq(0, 1, length.out = 100),
-  estimate = ma_point,
-  ci_lower = ma_lower,
-  ci_upper = ma_upper
-)
+p2 <- ggplot(forest_df, aes(x = point_pct, y = estimator)) +
+  geom_errorbarh(aes(xmin = lower_pct, xmax = upper_pct),
+                 height = 0.18, colour = "grey40", size = 0.7,
+                 na.rm = TRUE) +
+  geom_point(aes(colour = estimator), size = 4) +
+  geom_text(aes(label = label_str), hjust = -0.1, vjust = -0.8, size = 3.4) +
+  scale_x_continuous(labels = function(x) paste0(x, "%"),
+                     limits = c(-2, 105)) +
+  scale_colour_manual(values = c("Sample mean"     = "#7f7f7f",
+                                 "RDS-SS adjusted" = "#2980b9",
+                                 "MA Bayesian"     = "#e67e22"),
+                      guide = "none") +
+  labs(title = "Composite Risk Index: Three Estimator Comparison",
+       subtitle = sprintf(
+         "Sample mean is descriptive (no CI; n=%d). RDS-SS shown with bootstrap 95%% CI. MA shown with 95%% credible interval - the wide CI reflects known MA limitations for continuous outcomes.",
+         sample_n),
+       x = "Mean Composite Risk Index (% of maximum)",
+       y = NULL) +
+  paper_theme() +
+  theme(plot.subtitle = element_text(size = rel(0.8)))
 
-panel_b <- ggplot(ma_band_df, aes(x = composite_risk)) +
-  geom_ribbon(aes(ymin = ci_lower * 100, ymax = ci_upper * 100),
-              fill = "orange", alpha = 0.25) +
-  geom_hline(yintercept = ma_point * 100, colour = "orange", size = 1) +
-  geom_vline(xintercept = ma_point, colour = "red", linetype = "dashed", size = 1) +
-  annotate("text", x = ma_point + 0.02, y = Inf,
-           label = sprintf("Pop. mean = %.3f", ma_point),
-           hjust = 0, vjust = 1.5, colour = "red") +
-  scale_y_continuous(labels = function(x) paste0(x, "%"), limits = c(0, 100)) +
-  labs(title = "B. Model-Assisted Population Estimate",
-       subtitle = "Population-adjusted with 95% credible interval",
-       x = "Composite Risk Index", y = "Estimated Population (%)") +
-  paper_theme()
-
-p2 <- panel_a + panel_b +
-  plot_annotation(title = "Composite Risk Index: Sample vs. Population-Adjusted Estimates",
-                  theme = theme(plot.title = element_text(face = "bold", size = 13)))
-
-ggsave(file.path(FIG_DIR, "main_fig2_composite_risk_distribution.png"),
-       p2, width = 10, height = 4.5, dpi = 300)
+ggsave(file.path(FIG_DIR, "main_fig2_composite_risk_comparison.png"),
+       p2, width = 9, height = 4.0, dpi = 300)
 
 # ===========================================================================
 # MAIN FIGURE 3 - MA forest plot (Bayesian estimates with credible intervals)
