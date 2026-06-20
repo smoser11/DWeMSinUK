@@ -17,7 +17,7 @@
 #   main_fig3_ma_forest_plot.png
 #   main_fig4_rds_forest_plot.png
 #   main_fig5_nsum_forest_plot.png      # replaces the Fig 4 duplicate
-#   esm4_fig1_rds_by_popsize.png
+#   esm4_fig1_rds_ss_forest.png  (replaces former rds_by_popsize - flat lines were a non-finding)
 #   esm4_fig2_ma_seedcheck_facets.png
 #   esm4_fig3_ma_seedcheck_lineplot.png
 
@@ -339,37 +339,47 @@ ggsave(file.path(FIG_DIR, "main_fig5_nsum_forest_plot.png"),
        p5, width = 8, height = 5, dpi = 300)
 
 # ===========================================================================
-# ESM FIGURE 1 - RDS estimates across population sizes (RDS-I, RDS-II, RDS-SS)
+# ESM FIGURE 1 - RDS-SS forest plot with per-method bootstrap CIs
 # ===========================================================================
+# Replaces the original "RDS Estimates Across Population Sizes" figure, which
+# showed flat lines (RDS-I/II don't depend on N; RDS-SS depends only weakly when
+# n/N << 1). That non-finding is now a single sentence in the methods section;
+# this figure surfaces the more substantive content: per-indicator point
+# estimates with REAL bootstrap CIs from the RDS-SS estimator at N = 980,000.
 
-cat("Producing esm4_fig1_rds_by_popsize.png...\n")
+cat("Producing esm4_fig1_rds_ss_forest.png...\n")
 
-esm1_df <- rds_appendix %>%
+esm1_df <- per_method %>%
+  filter(method == "RDS_SS",
+         indicator %in% c("document_withholding_rds", "pay_issues_rds",
+                          "threats_abuse_rds", "excessive_hours_rds",
+                          "access_to_help_rds")) %>%
   mutate(
-    indicator_label = recode(indicator,
-                             "Document withholding"   = "Document withholding",
-                             "Pay issues"             = "Pay-related issues",
-                             "Threats/abuse"          = "Threats and abuse",
-                             "Excessive hours"        = "Excessive working hours",
-                             "Limited access to help" = "Limited access to help"),
-    pop_label = factor(population_label, levels = c("50k", "100k", "980k", "1.74M"),
-                       labels = c("50K", "100K", "980K", "1.74M"))
-  )
+    indicator_label = recode(indicator, !!!INDICATOR_LABELS),
+    estimate        = original_estimate * 100,
+    ci_lower        = ci_lower * 100,
+    ci_upper        = ci_upper * 100
+  ) %>%
+  arrange(estimate) %>%
+  mutate(indicator_label = factor(indicator_label, levels = indicator_label))
 
-p_esm1 <- ggplot(esm1_df, aes(x = pop_label, y = estimate_pct,
-                              group = indicator_label, colour = indicator_label)) +
-  geom_point(size = 2.5) +
-  geom_line(alpha = 0.6) +
-  facet_wrap(~ method, ncol = 3) +
-  scale_colour_viridis_d(name = "Indicator") +
-  labs(title = "RDS Estimates Across Population Sizes",
-       subtitle = "Comparison of estimation methods (RDS-I, RDS-II, RDS-SS)",
-       x = "Population Size", y = "Estimated Prevalence (%)") +
-  paper_theme() +
-  theme(legend.position = "bottom")
+p_esm1 <- ggplot(esm1_df, aes(x = estimate, y = indicator_label)) +
+  geom_errorbarh(aes(xmin = ci_lower, xmax = ci_upper),
+                 height = 0.2, colour = "#2980b9", size = 0.8) +
+  geom_point(colour = "#1f5582", size = 3, shape = 17) +
+  geom_text(aes(label = sprintf("%.1f%%", estimate)),
+            vjust = -1.2, colour = "#1f5582", size = 3.5) +
+  scale_x_continuous(labels = function(x) paste0(x, "%"),
+                     limits = c(0, 100)) +
+  labs(title = "RDS-SS Prevalence Estimates with Bootstrap Confidence Intervals",
+       subtitle = sprintf("Gile's Successive Sampling estimator, N = 980,000, %d bootstrap replicates",
+                          unique(per_method$n_bootstrap)[1]),
+       x = "Estimated Prevalence (%)",
+       y = "Exploitation Indicator") +
+  paper_theme()
 
-ggsave(file.path(FIG_DIR, "esm4_fig1_rds_by_popsize.png"),
-       p_esm1, width = 10, height = 5, dpi = 300)
+ggsave(file.path(FIG_DIR, "esm4_fig1_rds_ss_forest.png"),
+       p_esm1, width = 8, height = 5, dpi = 300)
 
 # ===========================================================================
 # ESM FIGURE 2 - MA seed-selection check (facet by indicator)
