@@ -127,13 +127,12 @@ smoke <- tryCatch(
   ),
   error = function(e) list(error = conditionMessage(e))
 )
-if ("error" %in% names(smoke)) {
-  cat("\nSMOKE TEST FAILED:\n  ", smoke$error, "\n")
+if ((!is.null(smoke$error) && !is.na(smoke$error)) ||
+    is.null(smoke$N_H_estimate) || is.na(smoke$N_H_estimate)) {
+  cat("\nSMOKE TEST FAILED:\n  ",
+      if (is.null(smoke$error) || is.na(smoke$error)) "N_H_estimate missing" else smoke$error,
+      "\n")
   cat("All subsequent (indicator, tau) combinations will also fail.\n")
-  cat("Likely cause and fix candidates:\n")
-  cat("  - estimate_mbsu in nsum_core_estimators.R requires a column or class not present in `dd`\n")
-  cat("  - try passing `rd.dd` instead of `dd` if the rds.data.frame class is needed\n")
-  cat("  - check 05-nsum_estimation.R for the exact data object it passes\n")
   stop("05b- smoke test failed - see diagnostics above")
 }
 cat("Smoke test OK. N_H_estimate =",
@@ -160,8 +159,11 @@ mbsu_adjusted <- function(data, ind, weights_vec, tau,
     ),
     error = function(e) list(error = e$message)
   )
-  if ("error" %in% names(basic) || is.null(basic$N_H_estimate) ||
-      is.na(basic$N_H_estimate)) {
+    # estimate_mbsu() returns `error = NA` as a list field on SUCCESS (always
+  # present), so we cannot check `"error" %in% names(basic)`. Check whether
+  # error is non-NA (actual failure) OR estimate is missing.
+  if ((!is.null(basic$error) && !is.na(basic$error)) ||
+      is.null(basic$N_H_estimate) || is.na(basic$N_H_estimate)) {
     return(NA_real_)
   }
   basic$N_H_estimate * (1 / delta) * (1 / tau) * eta
