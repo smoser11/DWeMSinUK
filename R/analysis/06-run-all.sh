@@ -68,7 +68,7 @@ run_one() {
     return
   fi
   echo "[$(date +%H:%M:%S)] RUN  $ind / N=$pop / $seed" | tee -a "$RUN_LOG"
-  if Rscript R/analysis/06c-run-single.R "$ind" "$pop" "$seed" >> "$RUN_LOG" 2>&1; then
+  if Rscript R/analysis/06-run-single.R "$ind" "$pop" "$seed" >> "$RUN_LOG" 2>&1; then
     SUCCEEDED=$((SUCCEEDED + 1))
     echo "[$(date +%H:%M:%S)]   ok" | tee -a "$RUN_LOG"
   else

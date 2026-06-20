@@ -1,4 +1,4 @@
-# 07c-paper_figures.R
+# 07-paper_figures.R
 # Reproducibly generate every figure in the SIR submission (main paper + ESM_4).
 # Created 2026-06-17 to fix audit finding #3: all 8 manuscript figures were
 # orphaned from the canonical pipeline. This script is the producer of record.
@@ -9,7 +9,7 @@
 #   - The cached frequentist outputs in output/tables/ are up to date
 #
 # Usage:
-#   Rscript R/analysis/07c-paper_figures.R
+#   Rscript R/analysis/07-paper_figures.R
 #
 # Produces (in output/figures/paper/):
 #   main_fig1_recruitment_network.png

@@ -1,9 +1,9 @@
-# 06e-bayesian_appendix.R
+# 06-bayesian_appendix.R
 # Consolidate the appendix-only Bayesian MA results into a summary table
 # for ESM_4. Created 2026-06-11 as a successor to 06d-consolidate_existing_results.R
 # tailored to the minimal appendix-only Bayesian approach.
 #
-# Run AFTER R/analysis/06e-run-all.sh has produced the individual
+# Run AFTER R/analysis/06-run-all.sh has produced the individual
 # ma_sensitivity_*.RData files in output/.
 #
 # Produces:
@@ -18,7 +18,7 @@ suppressMessages({
 })
 source(here("R", "utils", "helper_functions.R"))
 
-# --------------- Configuration (mirrors 06e-run-all.sh) ---------------
+# --------------- Configuration (mirrors 06-run-all.sh) ---------------
 POPSIZE <- 50000
 # sum_categories was dropped 2026-06-17 (duplicate of composite_risk in raw CSV).
 HEADLINE_INDICATORS <- c(
