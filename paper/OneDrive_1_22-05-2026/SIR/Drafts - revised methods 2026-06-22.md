@@ -22,7 +22,7 @@ Methods section is well-structured already (subsections 3.1 through 3.7). Five M
 > We apply these adjustments with sensitivity analysis across multiple parameter values: δ ∈ {0.8, 0.9, 1.0} and τ ∈ {0.7, 0.85, 1.0}, where δ=1.0 and τ=1.0 represent the unadjusted MBSU baseline.
 
 **Proposed:**
-> We apply these adjustments with two complementary sensitivity analyses. First, three discrete (δ, τ) tiers — Unadjusted (δ=1.0, τ=1.0), Moderate (δ=0.9, τ=0.85), and Conservative (δ=0.8, τ=0.70) — reported in ESM_4 Tables 4–7 for direct comparison with the literature. Second, a continuous-τ sweep across τ ∈ [0.40, 1.00] in 0.05 increments with δ fixed at 0.9, producing per-indicator prevalence as a function of τ with bootstrap 95% confidence intervals (R/analysis/05b-nsum_tau_sensitivity.R; figure in ESM_4). The continuous sweep responds to the observation that any single (δ, τ) choice is a point assumption; reporting prevalence as a function of τ lets readers locate their own preferred assumption on the curve.
+> We apply these adjustments with two complementary sensitivity analyses. First, three discrete (δ, τ) tiers — Unadjusted (δ=1.0, τ=1.0), Moderate (δ=0.9, τ=0.85), and Conservative (δ=0.8, τ=0.70) — reported in ESM_4 Tables 4–7 for direct comparison with the literature. Second, a continuous-τ sweep across τ ∈ [0.40, 1.00] in 0.05 increments with δ fixed at 0.9, producing per-indicator prevalence as a function of τ with bootstrap 95% confidence intervals (full results in ESM_4). The continuous sweep responds to the observation that any single (δ, τ) choice is a point assumption; reporting prevalence as a function of τ lets readers locate their own preferred assumption on the curve.
 
 **Why:** Track 1 added the continuous-τ analysis specifically to address the IJOPM reviewer's "wide 34–84% range" concern. The methods section needs to mention it.
 
@@ -65,7 +65,7 @@ This was originally a single sentence inserted in the sensitivity-procedures par
 ## Edit 5 (MUST) — Add OSF code-availability footnote
 
 **Proposed insertion** as a new sentence at the end of P54 (or as a footnote to the section heading 3.4 Estimation Framework):
-> All analysis code, including the canonical pipeline (`R/00-main_pipeline.R`), per-method bootstrap (`R/analysis/04-bootstrap_analysis.R`), continuous-τ sensitivity (`R/analysis/05b-nsum_tau_sensitivity.R`), and Bayesian appendix consolidation (`R/analysis/06-bayesian_appendix.R`), is available at an anonymised OSF mirror: [OSF URL TO BE INSERTED]. The repository on GitHub (https://github.com/smoser11/DWeMSinUK) will be made public on acceptance.
+> All analysis code is available at an anonymised OSF mirror: [OSF URL TO BE INSERTED]. The repository (currently private on GitHub at https://github.com/smoser11/DWeMSinUK) will be made public on acceptance.
 
 **Why:** SIR's 2024 author-guidance editorial (Bartram et al.) requires anonymised reviewer code share. This sentence is the placeholder; once you set up the OSF mirror, swap in the URL.
 
