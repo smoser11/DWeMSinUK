@@ -28,12 +28,25 @@ Methods section is well-structured already (subsections 3.1 through 3.7). Five M
 
 ---
 
-## Edit 3 (MUST) — Add invariance-to-N sentence (task #21)
+## Edit 3 (MUST) — New subsection 3.6 "Choice of population size N and invariance of prevalence"
 
-**Proposed insertion** as a new sentence at the end of P66 (the existing sensitivity-procedures paragraph):
-> Empirically, RDS prevalence estimates are invariant to the assumed total UK domestic-worker population N across the four scenarios tested (50,000; 100,000; 980,000; 1,740,000), consistent with the theoretical insensitivity of RDS-I/RDS-II to N and the negligible finite-population effect on RDS-SS when n/N ≤ 0.001. The same invariance holds for MBSU prevalence (ESM_4 Table 6). All headline estimates use N = 980,000 throughout; conclusions are unchanged at other plausible values. For computational tractability, the MA-RDS Bayesian sensitivity in ESM_4 was computed at N = 50,000 only and prevalence scaled to the headline N for count-based reporting.
+This was originally a single sentence inserted in the sensitivity-procedures paragraph. Promoted to a full ~290-word subsection per Scott's request, written for a non-specialist reader, addressing the "why are different N's used in different parts of the analysis?" question prominently rather than burying the answer.
 
-**Why:** This was on the outstanding-tasks list as #21. Insertion in P66 (the existing sensitivity-procedures paragraph) is the natural home. Pre-empts the obvious reviewer question "why N = 980,000?" with the empirical answer.
+**Proposed new subsection** to be inserted as Section 3.6 (renumbering existing 3.6 Bootstrap and Sensitivity Procedures to 3.7, and 3.7 Use of AI to 3.8):
+
+> ### 3.6 Choice of population size and the invariance of prevalence
+>
+> Throughout the paper we report prevalence — the proportion of UK domestic workers subject to each exploitation indicator — rather than absolute counts of affected people. This distinction matters because the assumed total domestic-worker population N enters our estimators in different ways depending on whether we are computing a proportion or a count.
+>
+> For prevalence specifically, every estimator we use is either exactly invariant to N or essentially invariant to N at our sample size. RDS-I (Salganik and Heckathorn 2004) and RDS-II / Volz-Heckathorn (2008) are weighted averages of the binary indicator across respondents; the weights depend on network degree and recruitment-chain structure but not on N. The algebra simply does not contain N. The same is true of the Modified Basic Scale-Up NSUM prevalence: the formula p̂ = ȳ_FH / d̄_FF (alter reports divided by average network size) has no N in it; only when we multiply through by N to get an absolute count does N matter at all.
+>
+> RDS-SS (Gile 2011) and the Bayesian Model-Assisted estimator (MA-RDS; Gile and Handcock 2015) do formally depend on N, because they use without-replacement successive-sampling models that incorporate finite-population corrections. The size of that correction is determined by the sampling fraction n/N. At our sample size of n=85, this fraction is vanishingly small across every plausible UK domestic-worker population: 0.17% at N=50,000, 0.087% at N=100,000, 0.009% at N=980,000, and 0.005% at N=1,740,000. By comparison, the finite-population correction is conventionally considered negligible when the sampling fraction is below 5%; our fractions are 30–1000 times smaller than that threshold. Both estimators are therefore in the asymptotic regime where they converge to their infinite-population limits. We confirm this empirically: cached estimates across all four N values agree to within bootstrap noise (ESM_4 Table 6 for NSUM; equivalent invariance documented for RDS-SS).
+>
+> Why, then, are different N values used in different parts of the analysis? RDS and NSUM headline estimates use N = 980,000, the EU baseline estimate for UK domestic workers; this is the value most readers will expect to see and against which any absolute-count reporting should be benchmarked. The MA-RDS Bayesian analysis (ESM_4) uses N = 50,000, chosen purely for computational tractability: the MA algorithm must instantiate and simulate a network of size N at each iteration, and at N = 980,000 a single MA call takes hours; the full 8-indicator × 3-seed-selection sensitivity at that scale would take weeks. At N = 50,000 the same sensitivity runs overnight. Because prevalence is N-invariant in the asymptotic regime as established above, the two N's produce equivalent prevalence stories and the choice is one of computation rather than substance. Where the paper reports absolute counts (rather than prevalence), the count is computed by multiplying the prevalence by the headline N = 980,000 regardless of which N was used to compute the prevalence.
+
+**Why a full subsection rather than a sentence:** The "why are the N values inconsistent?" question is the kind of thing a careful reviewer will flag in the first reading pass. Placing the answer in its own subsection — flagged in the table of contents, easy to find, written in non-specialist language with intuitive numerical anchors (n/N ≤ 0.17% vs the conventional 5% threshold) — pre-empts the objection cleanly. The mathematical claims are factually correct (RDS-I and RDS-II are algebraically N-free; RDS-SS and MA-RDS have asymptotic N-invariance; MBSU prevalence is algebraically N-free). The empirical confirmation comes from cached results already in the appendix.
+
+**Renumbering implication:** Inserting as new 3.6 means existing 3.6 (Bootstrap and Sensitivity Procedures) becomes 3.7 and existing 3.7 (Use of AI) becomes 3.8. Any internal cross-references to "Section 3.6" or "Section 3.7" would need updating; a scan of the manuscript suggests there are none, but worth confirming when applying.
 
 ---
 
@@ -88,12 +101,12 @@ Methods section is well-structured already (subsections 3.1 through 3.7). Five M
 |---|---|---|---|---|
 | 1 | Must | P57 (MA limitations) | 0 | +70 |
 | 2 | Must | P59 (continuous-τ sweep) | 38 | +130 |
-| 3 | Must | P66 (invariance-to-N) | 0 | +110 |
+| 3 | Must | NEW subsection 3.6 (invariance-to-N) | 0 | +470 |
 | 4 | Must | P58 (MBSU formula) | 0 | +100 |
 | 5 | Must | P54 (OSF footnote) | 0 | +60 |
 | 6 | Recommend | P55 (novel-bootstrap softening) | 12 | +50 |
 | 7 | Recommend | P67-68 (AI disclosure tighten) | 50 | +60 |
 
-Net effect: methods section grows by ~580 words (with all 7 applied) — still well under any reasonable budget given current ~7,000-word manuscript versus SIR's 10,000-word cap.
+Net effect: methods section grows by ~940 words (with all 7 applied; up from ~580 in the earlier version of this memo, because Edit 3 was promoted from a single sentence to a full subsection per Scott's 2026-06-22 feedback). Still under the SIR 10,000-word cap given the current manuscript at ~7,000 words; the new subsection is the largest addition and earns its space by pre-empting the obvious reviewer objection about inconsistent N values.
 
 Tell me which to apply (recommend all 7) and any text edits, then I'll produce a new dated copy + redline.
