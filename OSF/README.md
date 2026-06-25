@@ -123,13 +123,15 @@ Individual analyses can be run separately after the data preparation step (which
 
 ## Notes on data anonymisation
 
-The original survey data contained the following personally-identifying columns, which have been removed from all data files included in this package:
+The original survey data contained the following personally-identifying columns, which have been removed (nulled) from all data files included in this package:
 
 - `q2` (respondent name)
-- `q3` and `q117` (respondent email — same value collected twice for verification)
-- `q4` and `q116` (respondent phone — same value collected twice)
-- `q105` (referrer phone)
+- `q3` and `q117` (respondent email — collected twice for verification)
+- `q4` and `q116` (respondent phone — collected twice for verification)
+- `q105` through `q115` (phone numbers of the up-to-five respondents the focal respondent referred via RDS plus up-to-five backup numbers)
 - `q118` (referrer email; in `data_full_anon.csv` only)
+
+Total: 17 PII columns stripped, leaving 191 non-PII columns intact across all four CSV files.
 
 All other survey-question columns (`q1`, `q5` onward) are retained verbatim. Network structure (`recruiter.id`, referral linkages) is preserved using the numeric `id` column, which is internal to the dataset and not linkable to external identifiers.
 
