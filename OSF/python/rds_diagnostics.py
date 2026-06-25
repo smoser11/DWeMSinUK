@@ -14,7 +14,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import os
 
-df = pd.read_csv("../data/data_nonzero_anon.csv")
+df = pd.read_csv("../data/processed/data_nonzero.csv")
 print(f"Loaded {len(df)} respondents")
 
 # Build parent map and compute wave + chain root

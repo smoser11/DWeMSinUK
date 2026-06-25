@@ -10,7 +10,7 @@ import pandas as pd, numpy as np, json, os
 from scipy.stats import spearmanr
 
 np.random.seed(20260622)
-df = pd.read_csv("../data/data_full_anon.csv")
+df = pd.read_csv("../data/processed/data_full.csv")
 cats = [f'category_{i}' for i in range(1, 12)]  # composite uses 1..11
 baseline = df['composite_risk'].values
 vals = df[cats].values

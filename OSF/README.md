@@ -4,7 +4,7 @@
 
 **OSF project:** <https://osf.io/vf5yb/>
 
-**Repository contents:** all data, code, figures, tables, and supplementary materials needed to reproduce the tables, figures, estimates, and ESMs reported in the manuscript. Author-identifying material has been removed from data files; the manuscript file is included as a Quarto source.
+**Repository contents:** all data, code, figures, tables, and supplementary materials needed to reproduce the tables, figures, estimates, and ESMs reported in the manuscript. Author-identifying material has been removed from data files. This OSF folder is self-contained: scripts use `here()` paths relative to this folder's root (the `.here` marker file at the top of `OSF/` makes the resolution work).
 
 ---
 
@@ -13,19 +13,23 @@
 ```
 OSF/
 ├── README.md                            (this file)
-├── data/                                anonymised survey data + codebook
-│   ├── data_full_anon.csv               n = 97, raw analytical CSV (PII columns nulled)
-│   ├── data_nonzero_anon.csv            n = 85, analytical sample (non-zero degree)
-│   ├── prepared_data_anon.csv           n = 85, with RDS weights computed
-│   ├── long_format_data_anon.csv        long-format alter-report data
-│   ├── Codebook.pdf                     survey question wording
-│   └── Risk_Index_Construction.docx     composite risk index specification
-├── R/                                   R analysis pipeline
+├── .here                                marker for here::here() resolution
+├── data/
+│   ├── raw/
+│   │   ├── README.md                    (explains why raw CSV not included)
+│   │   ├── Codebook.pdf                 survey question wording
+│   │   └── Risk_Index_Construction.docx composite risk index specification
+│   └── processed/                       anonymised analytical data (4 CSVs)
+│       ├── data_full.csv                n = 97, full cleaned sample
+│       ├── data_nonzero.csv             n = 85, non-zero network degree (analytical)
+│       ├── long_format_data.csv         long-format alter-report data
+│       └── prepared_data.csv            n = 85 with RDS weights computed
+├── R/                                   R analysis pipeline (use `here()` paths)
 │   ├── 00-main_pipeline.R               master script (sources 01–09 in order)
 │   ├── config.R                         global configuration
 │   ├── data_processing/
-│   │   ├── 01-data_cleaning.R           reads data/, applies cleaning
-│   │   └── 02-data_preparation.R        creates ILO-aligned indicators + RDS weights
+│   │   ├── 01-data_cleaning.R           builds cleaned_data.RData from anon CSV
+│   │   └── 02-data_preparation.R        creates ILO indicators + RDS weights
 │   ├── analysis/
 │   │   ├── 03-rds_estimation.R          RDS-I, RDS-II, RDS-SS
 │   │   ├── 04-bootstrap_analysis.R      per-method bootstrap CIs
@@ -41,24 +45,9 @@ OSF/
 │   ├── rds_diagnostics.py               generates Figure 2 + Table 4 (RDS diagnostics)
 │   └── composite_weight_sensitivity.py  generates the weight-perturbation analysis
 │                                         reported in Section 5.5
-├── output/                              regenerated outputs (included so reviewers can
-│   │                                    verify without re-running the full pipeline)
-│   ├── figures/
-│   │   ├── figure1_recruitment_network.png
-│   │   ├── figure2_rds_diagnostics.png
-│   │   ├── figure3_composite_risk_estimators.png
-│   │   ├── figure4_ma_binary_estimates.png
-│   │   ├── figure_nsum_moderate.png
-│   │   ├── esm_b1_rds_methods_comparison.png
-│   │   └── convergence_*.png            (per-indicator MA convergence plots, ESM_4)
-│   └── tables/
-│       ├── rds_main_results.csv         headline RDS-SS prevalence estimates
-│       ├── rds_per_method_bootstrap_ci.csv   per-method bootstrap CIs
-│       ├── rds_nsum_comparison.csv      RDS vs NSUM side-by-side (Table 5)
-│       ├── nsum_main_results.csv        MBSU NSUM by tier
-│       ├── nsum_tau_sensitivity.csv     continuous-tau sweep results
-│       ├── AppendixA1_…csv …            ESM_4 robustness tables
-│       └── composite_risk_weight_sensitivity.json   weight-perturbation summary
+├── output/                              regenerated outputs
+│   ├── figures/                         13 figures (6 main paper + 7 ESM_4 convergence)
+│   └── tables/                          17 CSV tables for main paper + ESMs
 └── manuscript/                          paper artifacts
     ├── manuscript.qmd                   Quarto source (renders to PDF/DOCX/HTML)
     ├── ESM_1.docx                       codebook + composite risk index construction
@@ -74,103 +63,90 @@ OSF/
 
 ### Software requirements
 
-- **R** version 4.0 or later, with packages: `tidyverse`, `janitor`, `here`, `RDS`, `igraph`, `boot`, `parallel`, `ggplot2`, `scales`, `viridis`, `sspse`. Optional: `netclust` (for the nationality-subgroup analysis in `08-netclust_subgroup_analysis.R`; note this package has compatibility issues with R 4.5+ and may need installation from source).
+- **R** version 4.0 or later, with packages: `tidyverse`, `janitor`, `here`, `RDS`, `igraph`, `boot`, `parallel`, `ggplot2`, `scales`, `viridis`, `sspse`. Optional: `netclust` (for the nationality-subgroup analysis in `08-netclust_subgroup_analysis.R`; this package has compatibility issues with R 4.5+ and may need installation from source).
 - **Python** 3.9 or later, with packages: `pandas`, `numpy`, `scipy`, `matplotlib`.
 - **Quarto** 1.4 or later (to render the manuscript).
 
 ### Full pipeline reproduction
 
-From the OSF folder root:
+From the `OSF/` folder root, with R working directory set to `OSF/R/`:
 
 ```r
-# In R, with working directory set to OSF/R/
+# Source the full pipeline (~15 minutes; ~90 minutes if MA-RDS Bayesian is re-run)
 source("00-main_pipeline.R")
 ```
 
-This runs the full pipeline (~15 minutes on a modern laptop, ~90 minutes if the MA-RDS Bayesian sensitivity is re-run from scratch). Outputs are written to `../output/`.
+Or run scripts individually in order (each script uses `here()` to resolve paths
+back to the OSF root via the `.here` marker):
 
-```bash
-# Then in Python, from OSF/python/
-python3 rds_diagnostics.py
-python3 composite_weight_sensitivity.py
+```r
+source("data_processing/01-data_cleaning.R")     # builds cleaned_data.RData
+source("data_processing/02-data_preparation.R")  # builds prepared_data.RData + rd.dd
+source("analysis/03-rds_estimation.R")
+source("analysis/04-bootstrap_analysis.R")
+source("analysis/05-nsum_estimation.R")
+source("analysis/05b-nsum_tau_sensitivity.R")
+source("analysis/06-bayesian_appendix.R")
+source("analysis/07-paper_figures.R")
+source("analysis/08b-simple_subgroup_analysis.R")
+source("analysis/09-create_latex_tables.R")
 ```
 
-To render the manuscript:
+For the two Python analyses (from `OSF/python/`):
 
 ```bash
-# From OSF/manuscript/
+python3 rds_diagnostics.py              # writes ../output/figures/rds_diagnostics.png
+python3 composite_weight_sensitivity.py # writes ../output/tables/composite_risk_weight_sensitivity.json
+```
+
+To render the manuscript (from `OSF/manuscript/`):
+
+```bash
 quarto render manuscript.qmd --to docx
 quarto render manuscript.qmd --to pdf
 ```
 
-### Selective reproduction
+### About the cleaning step (01-data_cleaning.R)
 
-Individual analyses can be run separately after the data preparation step (which produces `prepared_data.RData`):
+The original 01 script reads the raw survey CSV (`data/raw/UpdateSelimRiskIndex-sum_cat.csv`) to produce the cleaned data files. **The raw CSV is not included in this OSF package** because it contains PII (names, emails, phone numbers, identifying free-text responses).
 
-| To reproduce | Run |
-|---|---|
-| Table 2 (sample composition) | `R/analysis/03-rds_estimation.R` |
-| Table 3 (estimands) | (descriptive; no script) |
-| Figure 2 + Table 4 (RDS diagnostics) | `python/rds_diagnostics.py` |
-| Figure 3 (composite risk) | `R/analysis/03-rds_estimation.R` + `R/analysis/07-paper_figures.R` |
-| Figure 4 (MA binary) | `R/analysis/06-bayesian_appendix.R` |
-| Table 5 (RDS-SS + NSUM preferred) | `R/analysis/03-rds_estimation.R` + `R/analysis/05-nsum_estimation.R` |
-| NSUM continuous-tau sweep (Section 4.5) | `R/analysis/05b-nsum_tau_sensitivity.R` |
-| Section 5.5 composite weight sensitivity | `python/composite_weight_sensitivity.py` |
-| ESM_4 Tables 1–7 (full sensitivity matrix) | `R/analysis/04-bootstrap_analysis.R`, `06-bayesian_appendix.R`, `05-nsum_estimation.R` |
+The OSF version of 01-data_cleaning.R loads the already-anonymised `data/processed/data_full.csv` instead and writes the `cleaned_data.RData` cache that 02-data_preparation.R expects. So running 01-data_cleaning.R in the OSF package is a no-op equivalent to copying the anonymised CSV into the cache file. Reviewers who want to verify the cleaning logic against the raw data can request access from the editor (see PII note below).
 
 ---
 
-## Notes on data anonymisation
+## PII anonymisation
 
-The original survey data contained the following personally-identifying columns, which have been removed (nulled) from all data files included in this package:
+The following columns were stripped (set to empty string) from all four CSVs in `data/processed/`:
 
+**Direct identifiers (17 columns):**
 - `q2` (respondent name)
-- `q3` and `q117` (respondent email — collected twice for verification)
-- `q4` and `q116` (respondent phone — collected twice for verification)
-- `q105` through `q115` (phone numbers of the up-to-five respondents the focal respondent referred via RDS plus up-to-five backup numbers)
-- `q118` (referrer email; in `data_full_anon.csv` only)
+- `q3`, `q117` (respondent email, collected twice for verification)
+- `q4`, `q116` (respondent phone, collected twice)
+- `q105`–`q115` (RDS-referral phone numbers, up to five primary + five backup)
+- `q118` (referrer email; in `data_full.csv` only)
 
-Total: 17 PII columns stripped, leaving 191 non-PII columns intact across all four CSV files.
+**Free-text "other-specify" responses (21 columns):**
+- `q8_a` (nationality "other" specifier)
+- `q18_a`, `q34_a`, `q44_a`, `q44_b`, `q48_a`, `q51_a`, `q58_a`, `q59_a`, `q67_a`,
+  `q82_a`, `q85_90_93_96`, `q86`, `q87_95`, `q98`, `q99`, `q100`, `q101`,
+  `q103_a`, `q26_a`, `q26_b`
 
-A further round of anonymisation removed all free-text responses to "other, please specify" follow-up questions, on the grounds that free-text content in an n = 85 hidden-population sample can enable re-identification even when names and contact details are removed. The 14 stripped free-text columns and 7 mixed numeric/text columns are:
+The free-text columns add qualitative texture but were not used in any quantitative analysis reported in the manuscript. They were removed because narrative content in an n = 85 hidden-population sample can enable re-identification by someone who knows the respondent.
 
-- `q8_a` (nationality "other" specifier — single-respondent nationalities could be re-identifying)
-- `q18_a` (job-duties free-text)
-- `q34_a` (free-text reflection on work conditions)
-- `q44_a`, `q44_b` (physical-violence "specify" — kept numeric flag, stripped any text)
-- `q48_a` (verbal-abuse "specify")
-- `q51_a` (unpaid-tasks "specify")
-- `q58_a` (employer-type "other")
-- `q59_a` (recruitment-source "other")
-- `q67_a` (general-feeling free-text)
-- `q82_a` (advocacy-organisation "other")
-- `q85_90_93_96` (survey discovery "other")
-- `q86`, `q87_95`, `q98`, `q99`, `q100`, `q101`, `q103_a` (longer free-text responses)
-- `q26_a`, `q26_b` (specifier follow-ups)
+The underlying coded responses (`q1`, `q5`–`q104`) are retained verbatim across all four CSVs, preserving every analytical column the R pipeline reads. Network structure (`recruiter.id`, referral linkages) is preserved through the numeric `id` column, which is internal to the dataset and not linkable to external identifiers.
 
-The underlying coded responses (q1, q5–q104, etc.) are retained verbatim, preserving the analytical content used by the R pipeline (composite risk index, binary indicator construction, RDS weighting). The free-text answers added qualitative texture but were not used in any of the quantitative analyses reported in the manuscript.
+The original raw data, the survey-instrument source Excel files, and email logs are retained on the authors' institutional storage and are available to the editor on confidential request to verify the anonymisation procedure if needed.
 
-All other survey-question columns (`q1`, `q5` onward) are retained verbatim. Network structure (`recruiter.id`, referral linkages) is preserved using the numeric `id` column, which is internal to the dataset and not linkable to external identifiers.
-
-The original (non-anonymised) raw data, survey-instrument source Excel files, and email logs are not included in this OSF package. They are retained on the authors' institutional storage and are available to the editor on confidential request to verify the anonymisation procedure if needed.
-
-## Notes on output files
-
-The `output/` folder contains the most recent versions of the published tables and figures, regenerated from the included data and code. Re-running the pipeline will overwrite these files with bit-identical (or within-bootstrap-noise identical for Monte Carlo procedures) copies. The Bayesian model-assisted estimates use a random seed fixed in `06-bayesian_appendix.R` and the Python composite-weight sensitivity uses a seed fixed in `composite_weight_sensitivity.py`; both should reproduce exactly under those seeds.
-
-If a reviewer's regenerated results differ from the included `output/` files by more than bootstrap noise (e.g., > 1 percentage point on a prevalence estimate), please contact the authors via the OSF project page.
+---
 
 ## Manuscript-to-output mapping
 
-For convenience, every table and figure in the main manuscript (and its ESMs) corresponds to a specific output file:
-
 | Main paper | OSF output file |
 |---|---|
-| Table 1 (indicator mapping) | hand-constructed; see `data/Risk_Index_Construction.docx` |
-| Table 2 (sample composition) | `output/tables/table1_publication_ready.csv` (renamed in manuscript) |
-| Table 3 (estimands) | hand-constructed; see Section 3.4 of manuscript |
-| Table 4 (RDS diagnostics) | `output/tables/` + `python/rds_diagnostics.py` output |
+| Table 1 (indicator mapping) | hand-constructed; see `data/raw/Risk_Index_Construction.docx` |
+| Table 2 (sample composition) | `output/tables/table1_publication_ready.csv` |
+| Table 3 (estimands) | hand-constructed; see manuscript Section 3.4 |
+| Table 4 (RDS diagnostics) | `python/rds_diagnostics.py` output |
 | Table 5 (preferred prevalence: RDS-SS + NSUM Moderate) | `output/tables/rds_nsum_comparison.csv` |
 | Figure 1 (recruitment network) | `output/figures/figure1_recruitment_network.png` |
 | Figure 2 (RDS diagnostics) | `output/figures/figure2_rds_diagnostics.png` |
