@@ -7,6 +7,7 @@ author:
     affiliation: University of Nottingham
 date: today
 date-format: "DD MMMM YYYY"
+subtitle: "Manuscript v3 (2026-06-25) — Items 1–10 of critical-comments revision pass applied"
 abstract: |
   Reliable indicators for SDG Target 8.7 are difficult to construct because the populations most affected by labour exploitation are often absent from standard household and labour-force surveys. This paper develops a matched ego/alter survey design for measuring labour exploitation among hidden populations. We apply respondent-driven sampling and a network scale-up approach to the same survey instrument, asking migrant domestic workers in the United Kingdom both about their own experiences and about exploitation among domestic workers they know. The design produces two complementary estimands: own-experience prevalence and network-visible prevalence. We measure five ILO-aligned indicators: excessive working hours, pay-related issues, limited access to help, threats and abuse, and document withholding. We also construct a formative composite risk index to capture gradations of exploitation severity. In a civil-society-mediated web-RDS sample of 85 migrant domestic workers, RDS-SS estimates indicate high own-experience prevalence, while network scale-up estimates are substantially lower. The divergence is consistent with a visibility gradient in which some exploitation behaviours are more observable across peer networks than others. The results should be interpreted as exploratory population-adjusted estimates for an RDS-reachable population rather than definitive national prevalence figures. The paper contributes a replicable measurement design for hidden-population social indicators relevant to SDG 8.7 monitoring.
 keywords: [social indicators, SDG 8.7, labour exploitation, migrant domestic work, respondent-driven sampling, network scale-up method]
@@ -51,7 +52,26 @@ format:
 ---
 
 <!--
-MANUSCRIPT v2 (2026-06-25)
+MANUSCRIPT v3 (2026-06-25)
+
+This .qmd is the canonical source for the SIR submission. v3 represents
+the completion of all ten items of the critical-comments revision worklist
+plus the relocation of three sections into ESM_4 (population-size
+invariance, supporting estimates with Tables 3-5, and incentive-design
+literature). v2 is preserved alongside for redline comparison.
+
+CHANGES IN v3 vs v2:
+  - Item 10 (overarching reframing pass): replaced 'triangulate
+    prevalence' with 'compare ego- and alter-based estimates' /
+    'produces two complementary estimands' (Intro, Section 5.2,
+    Conclusion P1). Softened 'for the first time in a developed-
+    economy setting' to 'among the first applications'. Added the
+    'developing and demonstrating a defensible social-indicator
+    measurement strategy' framing as the explicit positioning,
+    aligning with Scott's Step 6 bottom-line guidance.
+  - Cross-references to ESM_4 specified as ESM_4 Section A
+    (population-size invariance), Section B (supporting estimates +
+    Table B.1 RDS-I vs RDS-SS), and Section C (incentive literature).
 
 This .qmd is the canonical source for the SIR submission. The .docx is
 a downstream artefact rendered via:
