@@ -1,0 +1,6 @@
+"indicator","estimate","absolute_estimate","confidence","estimate_pct","indicator_clean","absolute_formatted"
+"excessive_hours_nsum",0.0232199456776274,22755.5467640748,"Medium",2.32199456776274,"Excessive working hours","22,756"
+"pay_issues_nsum",0.0223892666816833,21941.4813480497,"High",2.23892666816833,"Pay-related issues","21,941"
+"threats_abuse_nsum",0.0209128317700852,20494.5751346835,"High",2.09128317700852,"Threats and abuse","20,495"
+"access_to_help_nsum",0.0158247490500347,15508.254069034,"Lowest",1.58247490500347,"Limited access to help","15,508"
+"document_withholding_nsum",0.0086332292213474,8460.56463692045,"Highest",0.86332292213474,"Document withholding"," 8,461"

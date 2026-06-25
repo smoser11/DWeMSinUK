@@ -1,0 +1,25 @@
+{
+  "n_perturbations": 5000,
+  "perturbation_pm50": {
+    "spearman_rho_mean": 0.9914576254955173,
+    "spearman_rho_ci": [
+      0.9848829574844161,
+      0.996530721297257
+    ],
+    "spearman_rho_min": 0.9742812414881966,
+    "top_quartile_preservation_mean_pct": 97.50880000000001,
+    "top_quartile_preservation_ci_pct": [
+      92.0,
+      100.0
+    ]
+  },
+  "perturbation_pm75": {
+    "spearman_rho_mean": 0.9823927928103723,
+    "spearman_rho_ci": [
+      0.9661649166890937,
+      0.9934856402592448
+    ],
+    "spearman_rho_min": 0.9447972278955223,
+    "top_quartile_preservation_mean_pct": 94.42399999999999
+  }
+}
