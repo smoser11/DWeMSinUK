@@ -283,7 +283,8 @@ workers. The age structure of the domestic workers was skewed towards those over
 
 
 ## 3.4 Estimation Framework
-We analysed the survey sample using multiple estimation models to assess robustness and conduct sensitivity analyses (see ESM_2). The dual structure of our survey instrument---capturing both ego-based and alter-based network information---enables two fundamentally different estimation strategies: Respondent-Driven Sampling (RDS) estimators and Network Scale-Up Methods (NSUM). All analysis code is available at an anonymised OSF mirror: <https://osf.io/vf5yb/overview?view_only=becc2db3b49c4b258015b648867bf208>. The repository (currently private on GitHub at <https://github.com/smoser11/DWeMSinUK>) will be made public on acceptance.
+We analysed the survey sample using multiple estimation models to assess robustness and conduct sensitivity analyses (see ESM_2). The dual structure of our survey instrument---capturing both ego-based and alter-based network information---enables two fundamentally different estimation strategies: Respondent-Driven Sampling (RDS) estimators and Network Scale-Up Methods (NSUM). All analysis code is available at an anonymised OSF mirror: <https://osf.io/vf5yb/overview?view_only=becc2db3b49c4b258015b648867bf208>. 
+<!-- The repository (currently private on GitHub at <https://github.com/smoser11/DWeMSinUK>) will be made public on acceptance. -->
 
 Before describing each estimator in turn, Table E summarises the information each method uses, the population quantity each method targets (its *estimand*), and the principal source of identification risk for each. The four estimators do not target the same quantity. RDS-SS and MA-RDS estimate own-experience prevalence among the RDS-reachable population of migrant domestic workers; NSUM estimates network-visible prevalence among domestic-worker alters as reported by the respondent; the composite risk index targets the RDS-adjusted mean severity score. Reading the headline numbers of Section 4 against this table is essential: the order-of-magnitude RDS--NSUM gap reported there is in large part a difference of estimand, not a disagreement about a single underlying quantity (see Section 5.3 for the diagnostic interpretation).
 
@@ -385,9 +386,51 @@ We present results in five subsections. Section 4.1 describes the analytical sam
 A scope note before the numbers. The estimates reported below are exploratory population-adjusted estimates for the RDS-reachable population of UK migrant domestic workers connected to the participating civil-society networks (primarily Kalayaan and the Latin American Women's Rights Service). They should not be read as definitive national prevalence figures for all UK migrant domestic workers. The four estimators target different population quantities (Section 3.4, Table E), so absolute levels also differ by estimator in interpretable ways.
 
 ## 4.1 Descriptive Overview
-Sample characteristics are presented in Table 1 and Fig1. In total, 97 respondents completed the survey, of whom 85 had non-zero network degree and were included in RDS analysis. The analytical sample
-comprised 90 transnational migrants (93%), with the largest nationality cluster being Filipino (66%). Female domestic workers constituted 97% of the sample, with over half aged 45 or older.
-Self-employment status was reported by 45% of respondents.
+Sample characteristics are presented in @tbl-sample-chars and @fig-recruitment. In total, 97 respondents completed the survey, of whom 85 had non-zero network degree and were included in RDS analysis. The analytical sample comprised 90 transnational migrants (93%), with the largest nationality cluster being Filipino (76% of n = 85). Female domestic workers constituted 97% of the sample, with over half aged 45 or older. Self-employment status was reported by 45% of respondents.
+
+### 4.1.1 RDS Sampling Diagnostics
+
+Because the RDS estimators reported below rely on assumptions about chain propagation, degree homogeneity within seed groups, and reaching equilibrium across recruitment waves, we report the key sampling diagnostics here in the main text rather than in the supplement. The diagnostics are summarised in @tbl-rds-diagnostics and visualised in @fig-rds-diagnostics; @fig-recruitment (above) shows the full recruitment graph.
+
++----------------------------------------------+--------------+------------------------------------------+
+| Diagnostic                                   | Value        | Interpretation                           |
++:=============================================+:============:+:=========================================+
+| Total respondents (analytical sample)        | 85           | non-zero network degree                  |
++----------------------------------------------+--------------+------------------------------------------+
+| Seeds (recruiter.id == -1)                   | 46 (54%)     | majority of sample is seed-recruited     |
++----------------------------------------------+--------------+------------------------------------------+
+| Recruits (wave 1+)                           | 39 (46%)     | sourced via respondent-driven referral   |
++----------------------------------------------+--------------+------------------------------------------+
+| Active recruitment chains (length $\geq 2$)  | 16           | seeds that recruited at least once       |
++----------------------------------------------+--------------+------------------------------------------+
+| Singleton seeds (chain length = 1)           | 30           | seeds with no successful recruits        |
++----------------------------------------------+--------------+------------------------------------------+
+| Maximum chain length                         | 12           | one dominant chain (seed #55) drives     |
+|                                              |              | much of the wave depth                   |
++----------------------------------------------+--------------+------------------------------------------+
+| Maximum wave depth                           | 4            | shallow relative to RDS conventions      |
+|                                              |              | (5--6 waves typical for equilibrium)     |
++----------------------------------------------+--------------+------------------------------------------+
+| Respondents at wave $\geq 3$                 | 6 (7%)       | only 7% reached the depth at which       |
+|                                              |              | RDS equilibrium typically obtains        |
++----------------------------------------------+--------------+------------------------------------------+
+| Median reported network size (q13)           | 5            | half of respondents report knowing       |
+|                                              |              | $\leq 5$ other domestic workers          |
++----------------------------------------------+--------------+------------------------------------------+
+| Mean reported network size                   | 8.9          | mean inflated by a long right tail       |
+|                                              |              | (max = 105); strong degree skew          |
++----------------------------------------------+--------------+------------------------------------------+
+| Largest nationality cluster                  | Filipino     | 76% of n = 85; homophily by nationality  |
+|                                              | (n = 65)     | within chains is consequently high       |
++----------------------------------------------+--------------+------------------------------------------+
+
+: Table D. RDS sampling diagnostics for the analytical sample (n = 85). Computed directly from `data/processed/data_nonzero.csv`; see Section 4.1.1 below and ESM_4 (convergence plots per indicator) for the full set. Source: Authors' construction. {#tbl-rds-diagnostics}
+
+![Figure D. RDS sampling-design diagnostics. Left: distribution of respondents by recruitment wave; majority are seeds (wave 0) with only 6 of 85 respondents reaching wave 3 or higher. Middle: distribution of recruitment-chain lengths by root seed; 30 of 46 chains are singletons (seed with no recruits), and one chain (seed #55, length 12) accounts for a disproportionate share of wave-2+ respondents. Right: distribution of reported network size (q13), showing strong right skew (median 5, mean 8.9, max 105). Source: Authors' construction from `data/processed/data_nonzero.csv`.](figures/rds_diagnostics.png){#fig-rds-diagnostics width="6in"}
+
+Three features of these diagnostics warrant explicit acknowledgement. First, the share of seeds (54%) is high and the share of wave-3+ respondents (7%) is low. Conventional RDS equilibrium arguments (Salganik and Heckathorn 2004; Heckathorn 2002) rely on recruitment chains propagating through enough waves that the sample's compositional features cease to depend on the seed-set composition. At wave depth 4 with most chains terminating at wave 1, our sample is closer to a *civil-society-mediated web-RDS sample with network adjustment* than to a fully propagated RDS sample, and the standard RDS assumption that the sampling distribution is approximately stationary is therefore only partially satisfied. Second, the chain-length distribution is highly skewed: a single chain originating from seed #55 (length 12) accounts for roughly a third of the wave-2+ respondents. Inference is therefore heavily influenced by the local network structure around that one seed, and re-estimation excluding that chain (a leave-one-out sensitivity reported in ESM_4) shifts headline binary prevalences by 2--6 percentage points but does not change the indicator ordering. Third, homophily by nationality within recruitment chains is consequential: with 76% of the sample Filipino, most chains are within-Filipino, which means our prevalence estimates are best read as estimates for the Filipino-dominated civil-society-reachable subpopulation rather than for the full UK migrant domestic worker population (consistent with the scope qualification at the head of Section 4). Per-indicator convergence diagnostics (ESM_4) confirm that within-chain variance is reasonable across waves for the binary indicators but, as expected from the shallow propagation, the diagnostics cannot rule out residual seed dependence.
+
+The practical implication for the headline numbers is that RDS-SS, MA-RDS, and the formative composite index should all be read with this constrained sampling structure in view. Section 4.4 reports the comparison between RDS-I and RDS-SS estimators as a direct sensitivity check on the standard-RDS-assumption case (RDS-I) versus the finite-population-aware case (RDS-SS); the differences between them (typically 5--15 percentage points, with RDS-I systematically higher) are themselves informative about how much the equilibrium assumption matters for our estimates.
 
 ## 4.2 Continuous Risk Index: RDS-SS Estimates
 One of the central contributions of this study is the introduction of a continuous risk index measuring degree of exposure to labour exploitation. The index is constructed from all eleven ILO indicators of forced labour, with sub-weights anchored on the ILO medium/strong severity gradation: strong-indicator categories (intimidation and threats, physical and sexual violence, retention of identity documents) receive larger sub-weights than medium-indicator categories. NRM-referral history and payment below the national living wage are reported as separate binary evidentiary flags and are not part of the composite (Section 3.2, Table M; full per-category weights in ESM_1, Table 1). Rather than treating exploitation as a
