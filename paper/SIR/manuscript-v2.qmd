@@ -1,0 +1,640 @@
+---
+title: "Quantifying Hidden Exploitation: Dual-Method Prevalence Estimates of Labour Exploitation among Domestic Workers in the United Kingdom"
+author:
+  - name: Caroline Emberson
+    affiliation: University of Nottingham
+  - name: Scott Moser
+    affiliation: University of Nottingham
+date: today
+date-format: "DD MMMM YYYY"
+abstract: |
+  Reliable indicators for SDG Target 8.7 are difficult to construct because the populations most affected by labour exploitation are often absent from standard household and labour-force surveys. This paper develops a matched ego/alter survey design for measuring labour exploitation among hidden populations. We apply respondent-driven sampling and a network scale-up approach to the same survey instrument, asking migrant domestic workers in the United Kingdom both about their own experiences and about exploitation among domestic workers they know. The design produces two complementary estimands: own-experience prevalence and network-visible prevalence. We measure five ILO-aligned indicators: excessive working hours, pay-related issues, limited access to help, threats and abuse, and document withholding. We also construct a formative composite risk index to capture gradations of exploitation severity. In a civil-society-mediated web-RDS sample of 85 migrant domestic workers, RDS-SS estimates indicate high own-experience prevalence, while network scale-up estimates are substantially lower. The divergence is consistent with a visibility gradient in which some exploitation behaviours are more observable across peer networks than others. The results should be interpreted as exploratory population-adjusted estimates for an RDS-reachable population rather than definitive national prevalence figures. The paper contributes a replicable measurement design for hidden-population social indicators relevant to SDG 8.7 monitoring.
+keywords: [social indicators, SDG 8.7, labour exploitation, migrant domestic work, respondent-driven sampling, network scale-up method]
+bibliography:
+  - ../references/references.bib
+  - ../references/MyLibrary2025-08-25.bib
+csl: ../references/apa.csl
+fontsize: 12pt
+geometry: margin=1in
+linestretch: 1.15
+number-sections: false
+format:
+  docx:
+    highlight-style: github
+    fig-cap-location: bottom
+    tbl-cap-location: top
+  pdf:
+    pdf-engine: xelatex
+    cite-method: biblatex
+    keep-tex: true
+    biblatexoptions:
+      - backend=biber
+      - style=apa
+      - sorting=nyt
+      - maxcitenames=2
+    include-in-header:
+      text: |
+        \usepackage{amsthm,amsmath,amsfonts,amssymb,float,caption,subcaption}
+        \usepackage{pdflscape}
+        \DeclareLanguageMapping{english}{english-apa}
+    fig-pos: "H"
+    fig-width: 6.5
+    fig-height: 4
+    colorlinks: true
+    linkcolor: black
+    citecolor: RoyalBlue
+    urlcolor: BrickRed
+    link-citations: true
+  html:
+    toc: true
+    toc-depth: 3
+---
+
+<!--
+MANUSCRIPT v2 (2026-06-25)
+
+This .qmd is the canonical source for the SIR submission. The .docx is
+a downstream artefact rendered via:
+  quarto render manuscript-v2.qmd --to docx
+
+CHANGES IN v2 vs v1:
+  - Removed leftover '*[Figure/Table N inserted below]*' scaffolding.
+  - Wrapped Unicode Greek/math symbols (delta, tau, in, le, rho, times) in
+    math mode, e.g. (delta=0.9, tau=0.85) -> ($\delta = 0.9$, $\tau = 0.85$)
+    so XeLaTeX renders them reliably.
+  - Normalized 'Source: Authors' own work.' across all captions.
+  - Wrapped the bare GitHub URL in <...> so pandoc handles it cleanly.
+  - DELETED the trailing 'Figure Legend' section that listed every figure
+    and table caption a second time. Pandoc was treating these as
+    setext-style level-1 headings, breaking the document structure.
+  - All 5 figures now use Quarto cross-ref syntax with semantic labels:
+    fig-recruitment, fig-composite-risk, fig-ma-binary, fig-rds-methods,
+    fig-nsum. Caption text is now in the alt-text portion of the image
+    syntax (no separate italic caption paragraph).
+  - Table 1 reconstructed as a proper Quarto markdown table with
+    {#tbl-sample-chars} cross-reference (was an embedded image).
+  - Tables 2-5 captions tagged with {#tbl-X} labels: tbl-preferred-estimates,
+    tbl-ma-estimates, tbl-rds-comparison, tbl-nsum-sensitivity.
+
+NOTE: In-text references to 'Figure 1', 'Table 3' etc. are still plain text
+rather than Quarto @-references. These can be converted progressively to
+@fig-recruitment, @tbl-ma-estimates etc. for cross-reference linking; doing
+the conversion in one automated pass risks rewriting caption text by
+accident (which is what happened in an earlier attempt).
+
+OUTSTANDING (deferred per Scott):
+  - Citations still in plain '(Author Year)' form, not @key syntax.
+  - Word count still ~1,100 over the SIR 10,000 cap; addressed in the
+    trim pass after items 3-8 of the critical-comments worklist.
+
+Render commands (run on your machine):
+  quarto render manuscript-v2.qmd                # all formats
+  quarto render manuscript-v2.qmd --to docx      # Word only
+  quarto render manuscript-v2.qmd --to pdf       # PDF (needs LaTeX)
+-->
+
+# Introduction
+Modern slavery --- forced labour, debt bondage, document and identity-document withholding, and related coercive practices --- is named under Sustainable Development Goal Target 8.7 as a priority for
+elimination by 2030. Reliable prevalence measurement is a precondition for monitoring that target, yet the populations most affected are largely invisible to the household and labour-force surveys on
+which official social indicators rely. Conventional household surveys underestimate prevalence in this domain by an order of magnitude or more, both because the populations affected (undocumented
+migrants, live-in domestic workers, sex workers, agricultural day labourers) are excluded from sampling frames, and because exploitation behaviours --- especially those at the more severe end of the
+spectrum --- are typically not self-reported even when the respondent is contacted. The civil-society and grey-literature evidence base on UK domestic workers (Kalayaan 2008; Latin American Women's
+Rights Service 2023) is qualitatively rich but does not yield population-level prevalence estimates suitable for SDG monitoring or comparison across populations. The International Labour
+Organization's eleven indicators of forced labour (ILO 2012, 2017) provide an operational framework for measuring modern slavery, but the empirical question of which indicators are observable through
+which survey design remains open. Studies typically apply one design --- household survey, respondent-driven sampling (RDS), or the network scale-up method (NSUM) --- and report prevalence
+accordingly. None to our knowledge applies both RDS and NSUM to the same survey instrument for the same indicators, the design that would allow direct triangulation of ego-based against alter-based
+estimates and, where the two diverge, diagnostic inference about which exploitation behaviours are visible within personal networks and which are not.
+
+This paper makes two contributions. First, we apply RDS and NSUM to the same survey instrument with the same respondents, eliciting ego-based and alter-based estimates of an identical set of five
+ILO-aligned indicators. This dual-method design lets the two estimators triangulate prevalence, and where they diverge, exposes the visibility gradient of different exploitation behaviours within
+workers' personal networks. Second, we operationalise modern slavery as a graded hierarchy of indicators rather than a binary condition, organised around the ILO's operational distinction (ILO 2012,
+2017) between 'medium' indicators (multiple required to indicate forced labour: excessive working hours, pay-related issues, limited access to help) and 'strong' indicators (any one alone
+sufficient: threats and abuse, document and passport withholding). This hierarchy lets a single survey instrument capture exploitation across the full spectrum of severity and supports a continuous
+risk index for analyses that need one. We demonstrate the approach with a respondent-driven sample of 85 UK migrant domestic workers, the hardest realistic case for measurement in a developed-economy
+setting; the methodology generalises to other hidden populations relevant to SDG 8.7 monitoring.
+
+The remainder of the paper is organised as follows. Section 2 conceptualises labour exploitation as a graded latent construct measured by five ILO-aligned indicators arranged hierarchically by
+severity. Section 3 describes the matched-instrument survey design (Section 3.1) and the dual sampling approach combining RDS and NSUM (Section 3.2). Section 4 presents prevalence estimates by
+indicator and method, including frequentist RDS-I/RDS-II/RDS-SS estimators (Section 4.1), Bayesian Model-Assisted inference (Section 4.2), and NSUM with continuous-$\tau$ sensitivity analysis (Section
+4.3). Section 5 reads the RDS-NSUM divergence as diagnostic evidence about visibility within workers' personal networks and discusses implications for SDG 8.7 monitoring.
+
+# Conceptualising Labour Exploitation and the Degree of Risk
+The International Labour Organization's eleven indicators of forced labour (ILO 2012, 2017) provide the canonical operational framework for measuring modern slavery. The ILO distinguishes two grades
+of indicator: 'medium' indicators (excessive overtime, wage withholding, debt bondage, restriction of movement, isolation, abusive working and living conditions, abuse of vulnerability, deception)
+whose presence individually is suggestive but not definitive of forced labour, and 'strong' indicators (intimidation and threats, physical and sexual violence, retention of identity documents) any
+one of which alone is sufficient to indicate forced labour. This medium/strong distinction is itself a graded hierarchy of evidentiary weight, not a binary. We measure five indicators across that
+hierarchy, chosen to span the ILO conceptual space efficiently within the constraints of a matched-instrument ego/alter survey design. Three are medium indicators --- excessive working hours,
+pay-related issues (combining wage withholding with elements of debt bondage), and limited access to help (combining restriction of movement with isolation, as both manifest in the same observable
+behaviour in the domestic-work context). Two are strong indicators --- threats and abuse (combining intimidation/threats with physical and sexual violence, which prior qualitative work suggests
+co-occur in this population: Yilmaz and Emberson 2023) and document and passport withholding. The remaining four ILO indicators --- abuse of vulnerability, deception, induced addiction, and sale of a
+person --- were not measured: the first two are too retrospective and judgemental to elicit reliably through a brief survey, and the last two are too rare in the UK domestic-work context to estimate
+meaningfully at our sample size (n=85). Where appropriate we note this scope limitation in the discussion of results.
+
+The composite risk index we construct is a synthetic indicator in the sense of Mazziotta and Pareto (2013, 2016), aggregating five binary indicators of labour exploitation into a single continuous
+quality-of-life-relevant measure. The five indicators correspond to formative rather than reflective measurement: an individual is exploited if they are subject to any of these conditions, and the
+conditions are constitutive rather than reflective of an underlying latent severity (Diamantopoulos and Siguaw 2006; Diamantopoulos et al. 2008). We adopt a non-compensatory weighting scheme in which
+the presence of any indicator contributes positive weight to the index but no indicator can offset another, consistent with the ILO operational definition of forced labour (ILO 2012, 2017). Polarity
+is uniform --- each indicator has the same direction with respect to the latent construct of exploitation severity. The choice of aggregation follows the guidance of Maggino (2017) and the SIR
+editorial team (Bartram et al. 2024): we use a weighted-additive index with the five ILO indicators given equal substantive weight (with a 0.35 weight assigned separately to NRM referral, reflecting
+its diagnostic priority in UK policy practice), and we conduct robustness assessment by perturbing the weights.
+
+## 2.1 Evaluating the Degree of Risk
+In our study, we conceptualise the risk of labour exploitation from the workers' perspective. We conceive severe forms of labour exploitation such as forced labour as one end of a spectrum ranging
+from illegal employment practices that constitute labour abuse, such as wage payments below legal minimum wage levels and health and safety violations, through to the likelihood of criminal
+exploitation recognized in the UK as modern slavery. Our assessment of this personal risk permits a degree of risk to be assigned to various clusters of forced labour indicators with the more
+indicators present, the stronger the likelihood that the working conditions may be considered exploitative. Along with this novel conceptualization of labour exploitation (LE) as a continuous risk
+index (or risk score -- see ESM_1 for full details of its construction) we also employ a series of dichotomous indicators. These indicators allowed us to operationalise exploitation in two ways.
+First, we constructed binary indicators classifying respondents as exploited or not exploited, based on threshold criteria. Second, we developed a continuous risk index, designed to capture gradations
+of vulnerability across the full sample.
+
+Case Setting: Labour Exploitation Risk Among Transnational Migrant Domestic Workers In The UK
+=============================================================================================
+
+Domestic work forms part of a broader industrial category of Personal and Household Service work (PHS). Work in this category includes those employed in 'social work activities without accommodation'
+and 'activities of households as employers of domestic personnel' (European Commission, 2012). In 2017, an estimated 980,000 people were engaged in PHS work in the UK (Manoudi *et al.*, 2018). Manoudi
+et al. (2018) highlight that the PHS sector is dominated by women and migrants, with many undeclared foreign workers. Detailed statistics related to the country of origin of domestic workers migrating
+to work in PHS in the UK are difficult to isolate before 2019. Since that time, annual migration has fluctuated -- falling sharply in 2021 due in part to the COVID-19 pandemic, before later rising
+again above pre-pandemic levels. In the year to December 2022, the UK Home Office reported that it had issued 18,533 Overseas Domestic Worker visas (Home Office, 2023). These domestic workers came
+from various countries in South America and Asia, including many from the Philippines.
+
+The grey literature bears testimony to a long history of reports of exploitation in the domestic work sector in the UK. In 2008, the civil society organisation Kalayaan, which was formed to campaign
+for the formal recognition of migrant domestic workers' rights in the UK, reported on the impact of proposed changes to the UK immigration system on migrant domestic workers (Kalayaan, 2008). At this
+stage, new policies, including the development of a specialised visa allowing domestic workers to change employer during their stay were introduced. However, in 2012, these visa conditions were
+modified, tying domestic workers to a single employer and restricting the length of time that they are permitted to remain in the country to a period of six months (Gower, 2016). Overseas domestic
+worker visa holders are now, again, permitted to change employers, but not to apply to renew their six-month long visa unless they receive a positive 'Conclusive Grounds' decision related to
+exploitation considered to be modern slavery through the UK's NRM (Romero and Fisher, 2025). As a result, transnational domestic workers are vulnerable to abuse ranging from minor breaches of
+employment and health and safety law, to physical and sexual violence, slavery, forced labour and trafficking.
+
+That these conditions may persist is evidenced by a report from another civil society organisation, the Latin American Women's Rights Service. This report depicts high levels of isolation,
+exploitation and abuse including a failure by employers to provide written contracts or pay slips; breaches of verbal agreements; a requirement to perform different tasks from those indicated during
+recruitment; increasing working hours with little or no time off; excessive work days; a lack of paid holiday; many domestic workers not registered with a GP; sexual harassment in the workplace;
+verbal or physical abuse; employer surveillance; a lack of opportunity to change working conditions; isolation and fear of seeking help; and high reported levels of trafficking for labour exploitation
+(Latin American Women's Rights Service, 2023).
+
+Against this backdrop, we worked with civil society organisations to use respondent driven sampling (RDS) as a sampling technique to recruit and survey domestic workers in the UK about the working
+conditions they were experiencing to estimate the nature and scale of abuse and exploitation based upon reports of their conditions by domestic workers themselves.
+
+# Materials & Methods
+## 3.1 Study Design and Sampling
+Respondent-Driven Sampling (RDS) is a network-based sampling method designed to study hidden or hard-to-reach populations (Heckathorn, 1997, 2011; Gile *et al.*, 2018). It combines chain-referral
+sampling with a statistical framework to produce population estimates that adjust for network structure and differential recruitment probabilities. The method begins with a set of initial participants
+("seeds"), who recruit peers from their social networks. Recruits, in turn, recruit others, creating waves of participation. Each participant reports their network degree (the number of eligible
+contacts they know), which is used to adjust for selection bias---especially the oversampling of high-degree individuals.
+
+RDS has been widely used to sample hidden populations in public health and social science research (McCreesh *et al.*, 2012; Schwitters, Swaminathan and Serwadda, 2012), and network-based referrals
+have been described as the only viable method to reach many types of labour trafficking victims (Zhang, 2012). Recent applications include studies of exploitation among low-wage workers in American
+cities (Bernhardt, Milkman, and N., 2009), labour trafficking in migrant communities (Vincent and Thompson, 2017), child labour in India (Zhang *et al.*, 2019), and commercial sexual exploitation in
+Nepal (Jordan *et al.*, 2020).
+
+Our approach can best be described as Web-based RDS (Wejnert and Heckathorn, 2008). We designed a web survey using the JISC online survey interface, suitable for respondents to complete via mobile
+phone. The main survey was conducted over five months between February and July 2023.
+
+*Seed Selection and Recruitment*
+
+We selected our first wave of participants nonrandomly by convenience sampling. Mobile phone numbers were used both to identify seed participants and to act as a unique identifier for those whom they
+referred. To avoid sample homophily, original sample members were selected from three distinct domestic worker communities facilitated by civil society organisations. One was an exclusively online
+community of transnational domestic workers working in the UK, the second represented UK domestic workers of Filipino origin, and the third drew its membership from the Latin American community of
+domestic workers, also in the UK. Representatives from these organisations, along with other academics with expertise in exploitation within domestic work, contributed to survey question design and
+facilitated piloting of an initial version of the survey, which was translated and made available in four languages: English, Spanish, Tagalog, and Portuguese.
+
+*Incentive Design and Participation Verification*
+
+A double incentive scheme rewarded respondents both for completing the questionnaire and for each referral who went on to engage with the survey. The challenge of incentive design is to set the
+incentive at a level that adequately rewards respondents' time and participation, but that also avoids the risk of fraudulent participation due to too high a monetary gain (Jordan *et al.*, 2020). A
+sum of £10 was provided for survey completion with a further £5 for each successful nomination. While respondents were asked to nominate up to 10 domestic workers within their existing social network,
+participation from up to five of these was requested in subsequent waves. This approach is akin to the use of vouchers in face-to-face studies as advocated by Thompson (2020).
+
+The ethical and practical issues related to the design and effective use of incentives for RDS among vulnerable populations has been much discussed in the literature; see, for example, Wang et al.
+(2005); Abdul-Quader et al. (2006); Singer and Bossarte (2006); DeJong et al. (2009); Semaan et al. (2009); Brunovskis and Surtees (2010); Semaan (2010); Platt, Luthra, and Frere-Smith (2015),
+including the specificities of incentive use within web-based surveys (Cobanoglu and Cobanoglu, 2003). Following the principles of lottery use established by Brown, Schonfeld, and Gordon (2006) and
+Laguilles, Williams, and Saunders (2011), we also designed our survey to encourage the maximum extent of participation by entering all respondents completing the questionnaire into a free prize draw
+for £150. Research suggests that a high lottery provides the most cost-effective incentive for obtaining complete responses (Gajic, Cameron and Hurley, 2012). While using incentives to encourage
+participation would seem to be desirable, it is worth noting the potential downside of respondents fabricating responses to increase their remuneration (Robinson, 2014). To minimise this risk, mobile
+phone numbers for each respondent and those whom they referred were collated, and each of these numbers was called by one of the authors of the paper to ascertain the veracity of the respondent as a
+migrant domestic worker. The data collection that underpins the analysis presented in this paper was given favourable ethical approval by the lead author's School Research Ethics Committee in January
+2023. All participants were informed about the aims of the study, provided informed consent, and were assured that participation was voluntary and confidential.
+
+## 3.2 Survey Instrument and Indicators
+The survey instrument was designed to capture both egocentric (ego-based) and altercentric (alter-based) network information, enabling the application of both RDS and NSUM estimation methods.
+Composite measures to quantify the extent to which respondents were at risk of labour exploitation, including severe forms of exploitation such as forced labour, were constructed from existing
+exploitation typologies, notably the ILO's Indicators of Forced Labour (I.L.O., 2012).
+
+The survey consisted of 11 composite indicators and included questions related to domestic workers' level of job satisfaction, employment conditions, and demographic data such as nationality, age, and
+gender. Based on these indicators, we operationalize exploitation in two ways: (1) five dichotomous (binary) indicators classifying respondents as exploited or not exploited based on threshold
+criteria, and (2) one continuous risk index designed to capture gradations of vulnerability across the full sample.
+
+Ego-based questions capture respondents' own experiences of exploitation (used for RDS estimation), while alter-based questions ask respondents to report on the exploitation experiences of domestic
+workers they know (used for NSUM estimation). See Online Resource ESM_1 and ESM_2 for details of these survey questions and the construction of comparable ego- and alter-based indicators.
+
+## 3.3 Sample Characteristics
+In total, we received completed online surveys from 97 respondents. Twelve participants reported knowing zero domestic workers in the UK---that is, having a null social network---and were excluded
+from RDS analysis because network degree information is required for RDS weighting procedures. This resulted in an analytical sample of 85 respondents for RDS-based estimation. Although the analytic
+sample comprises 85 respondents, this is within the range used in comparable respondent-driven sampling (RDS) and network scale-up (NSUM) studies of hidden populations (Gile and Handcock, 2010; Goel
+and Salganik, 2010; Gile, 2011). Statistical inference in these designs depends not on the absolute sample size but on the structure of the recruitment network, degree distribution, and convergence to
+equilibrium (Salganik and Heckathorn, 2004). Furthermore, model-assisted and Bayesian RDS estimators (Gile, 2011; Gile *et al.*, 2018) provide valid population estimates even for modest sample sizes,
+particularly when uncertainty is appropriately quantified through resampling or posterior distributions. In this study, we additionally employ a neighbourhood bootstrap procedure that propagates
+sampling and network uncertainty, providing robust confidence intervals consistent with small-sample design-based inference (Handcock, Gile and Mar, 2014).
+
+Of the 97 initial respondents, 90 identified themselves as transnational migrants. Forty-five percent regarded themselves as self-employed, 39% identified themselves as employees, and 16% categorised
+their employment status as that of a worker. The largest single nationality group, comprising 64 respondents (66% of the total), reported a Filipina background. Other nationalities represented
+included Dominican, Brazilian, Spanish, Colombian, Bolivian, Venezuelan, Cuban, and Panamanian. Female domestic workers made up 97% of the sample, with 3% of the sample comprised of male domestic
+workers. The age structure of the domestic workers was skewed towards those over 45 years old, with such workers representing over half of the sample (see Table 1).
+
+![Figure 1. RDS Recruitment Network Structure. Recruitment chains showing seed nodes (triangles) and recruit nodes (circles). Node colours represent nationality clusters; node size is proportional to network degree. Lines show recruiter-recruit relationships. Source: Authors' own work.](figures/image1.png){#fig-recruitment width="6in"}
+
++--------------------------+----------+----------+----------+----------+-----------+
+| Nationality cluster      | Wave 0   | Wave 1   | Wave 2   | Wave 3+  | Total (n) |
+|                          | (seeds)  |          |          |          |           |
++:=========================+:========:+:========:+:========:+:========:+:=========:+
+| Filipino                 | 35       | 18       | 9        | 3        | 65        |
++--------------------------+----------+----------+----------+----------+-----------+
+| Latinx                   | 4        | 2        | 0        | 0        | 6         |
++--------------------------+----------+----------+----------+----------+-----------+
+| British                  | 2        | 0        | 0        | 0        | 2         |
++--------------------------+----------+----------+----------+----------+-----------+
+| Other                    | 5        | 5        | 2        | 0        | 12        |
++--------------------------+----------+----------+----------+----------+-----------+
+| **Total**                | **46**   | **25**   | **11**   | **3**    | **85**    |
++--------------------------+----------+----------+----------+----------+-----------+
+
+: Table 1. Sample composition by nationality cluster and recruitment wave (n = 85). Wave 0 indicates seed respondents; subsequent waves are respondent-driven recruits. Filipino respondents dominate the sample (76%) and contribute the deepest recruitment chains; other nationality clusters are smaller and shallower. Source: Authors' own work. {#tbl-sample-chars}
+
+
+## 3.4 Estimation Framework
+We analysed the survey sample using multiple estimation models to assess robustness and conduct sensitivity analyses (see ESM_2). The dual structure of our survey instrument---capturing both
+ego-based and alter-based network information---enables two fundamentally different estimation strategies: Respondent-Driven Sampling (RDS) estimators and Network Scale-Up Methods (NSUM). All analysis
+code is available at an anonymised OSF mirror: [OSF URL TO BE INSERTED]. The repository (currently private on GitHub at <https://github.com/smoser11/DWeMSinUK>) will be made public on acceptance.
+
+To the best of the authors' knowledge, the combined use of both methods in the same study is rare in peer-reviewed academic research, though it has appeared in government-funded reports and technical
+documents from NGOs and research organizations (IST Research and University of California, Los Angeles, 2020; Hickman *et al.*, 2025). This paper contributes to the emerging methodological literature
+on combining RDS and NSUM in survey research for hidden populations. We also developed a novel three-step bootstrap procedure to address uncertainty in NSUM estimates.
+
+*RDS Estimation:* We implemented three RDS estimators, each with distinct assumptions: RDS-I (Salganik and Heckathorn, 2004), the Volz--Heckathorn (VH) estimator (Volz and Heckathorn, 2008), and
+Gile's Successive Sampling (RDS-SS) estimator (Gile, 2011). Given our small sample (85 respondents) and non-negligible sampling fraction, RDS-SS serves as our primary estimator for binary outcomes
+because it accounts for finite population effects. RDS-I, which performs poorly in small samples and is highly sensitive to seed dependence, is retained as a historical benchmark.
+
+For continuous outcomes such as the exploitation risk index, we employ Model-Assisted (MA-RDS) estimators (Gile and Handcock, 2015). MA-RDS is design-based yet leverages a working Exponential Random
+Graph Model (ERGM) with degree and homophily terms to approximate inclusion probabilities conditional on observed seeds. This approach directly addresses seed bias and homophily that conventional RDS
+estimators cannot correct, accommodates finite-population effects through successive-sampling logic, and supports valid estimation of both binary and continuous outcomes. By conditioning on actual
+seed composition and subgroup structure, the method reduces bias, improves efficiency, and provides design-compatible bootstrap uncertainty (Gile, 2011). We note one important limitation: the MA-RDS
+implementation in the RDS package (MA.estimates) is designed primarily for binary traits, and we find that for the continuous composite risk index it does not converge to a useful posterior at our
+sample size (n=85); the credible interval covers essentially the full support of the variable. We therefore report frequentist RDS-SS estimates as the headline for the composite index and reserve
+MA-RDS estimates for the five binary indicators (see Section 4.2 and ESM_4).
+
+*NSUM Estimation:* We employ the Modified Basic Scale-Up (MBSU) model (Feehan and Salganick, 2016), which improves upon the original Basic Scale-Up Method by accounting for key sources of bias. The
+traditional method assumes that respondents can accurately report how many people they know in the hidden population and that all members are equally likely to be known. These assumptions often fail
+due to stigma, recall issues, or social barriers. Modified Basic Scale-Up (MBSU; Feehan and Salganik, 2016) addresses these failures through two multiplicative adjustment factors applied to the
+unadjusted scale-up estimate: $\delta$_F, the ratio of the average hidden-population network size to the average frame-population network size (values \< 1 indicate the hidden population has smaller
+networks, biasing the unadjusted estimate downward); and $\tau$_F, the true-positive rate of respondents' reports about hidden-population alters (values \< 1 indicate underreporting due to stigma, lack
+of awareness, or social distance). The adjusted estimate is N_H = N_H_basic $\times$ (1/$\delta$_F) $\times$ (1/$\tau$_F).
+
+The MBSU addresses this through two primary adjustments. First, the degree ratio adjustment ($\delta$) accounts for differences in network size between the hidden population and frame population. Second, the
+visibility/true positive rate adjustment ($\tau$) corrects for underreporting of connections to hidden population members due to stigma or lack of awareness. We apply these adjustments with two
+complementary sensitivity analyses. First, three discrete ($\delta$, $\tau$) tiers --- Unadjusted ($\delta = 1.0$, $\tau = 1.0$), Moderate ($\delta = 0.9$, $\tau = 0.85$), and Conservative ($\delta = 0.8$, $\tau = 0.70$) --- reported in ESM_4 Tables 4--7 for
+direct comparison with the literature. Second, a continuous-$\tau$ sweep across $\tau \in [0.40, 1.00]$ in 0.05 increments with $\delta$ fixed at 0.9, producing per-indicator prevalence as a function of $\tau$ with
+bootstrap 95% confidence intervals (full results in ESM_4). The continuous sweep responds to the observation that any single ($\delta$, $\tau$) choice is a point assumption; reporting prevalence as a function of
+$\tau$ lets readers locate their own preferred assumption on the curve.
+
+## 3.5 Comparative Rationale: Ego-Based vs. Alter-Based Inference
+RDS and NSUM both exploit social network structures but use fundamentally different information for inference. RDS uses ego-based information: respondents report their own characteristics and network
+degree, which are combined with recruitment wave to adjust for unequal inclusion probabilities. The underlying logic is that individuals with larger networks are more likely to be recruited, creating
+bias toward highly connected respondents. RDS estimators explicitly correct for this by weighting observations according to network degree and recruitment path.
+
+NSUM uses alter-based information -- respondents serve as informants about the wider hidden population, reporting how many people they know with specific traits. These reports are scaled up using
+assumptions about network size and visibility to infer prevalence in the broader population. NSUM does not depend on recruitment chains but instead on the accuracy of respondents' knowledge about
+others in their social circles.
+
+Applying both methods to the same dataset allows for triangulation across two fundamentally different inferential logics---one anchored in "who recruited whom" (RDS), the other in "how many alters fit
+this category" (NSUM).
+
+**3.6 Choice of population size and the invariance of prevalence**
+
+Throughout the paper we report prevalence --- the proportion of UK domestic workers subject to each exploitation indicator --- rather than absolute counts of affected people. This distinction matters
+because the assumed total domestic-worker population N enters our estimators in different ways depending on whether we are computing a proportion or a count.
+
+For prevalence specifically, every estimator we use is either exactly invariant to N or essentially invariant to N at our sample size. RDS-I (Salganik and Heckathorn 2004) and RDS-II / Volz-Heckathorn
+(2008) are weighted averages of the binary indicator across respondents; the weights depend on network degree and recruitment-chain structure but not on N. The algebra simply does not contain N. The
+same is true of the Modified Basic Scale-Up NSUM prevalence: the formula p̂ = ȳ_FH / d̄_FF (alter reports divided by average network size) has no N in it; only when we multiply through by N to get an
+absolute count does N matter at all.
+
+RDS-SS (Gile 2011) and the Bayesian Model-Assisted estimator (MA-RDS; Gile and Handcock 2015) do formally depend on N, because they use without-replacement successive-sampling models that incorporate
+finite-population corrections. The size of that correction is determined by the sampling fraction n/N. At our sample size of n=85, this fraction is vanishingly small across every plausible UK
+domestic-worker population: 0.17% at N=50,000, 0.087% at N=100,000, 0.009% at N=980,000, and 0.005% at N=1,740,000. By comparison, the finite-population correction is conventionally considered
+negligible when the sampling fraction is below 5%; our fractions are 30--1000 times smaller than that threshold. Both estimators are therefore in the asymptotic regime where they converge to their
+infinite-population limits. We confirm this empirically: cached estimates across all four N values agree to within bootstrap noise (ESM_4 Table 6 for NSUM; equivalent invariance documented for
+RDS-SS).
+
+Different N values used in different parts of the analysis?.RDS and NSUM headline estimates use N = 980,000, the EU baseline estimate for UK domestic workers. The MA-RDS Bayesian analysis (ESM_4)
+uses N = 50,000, chosen purely for computational tractability: the MA algorithm must instantiate and simulate a network of size N at each iteration, and at N = 980,000 a single MA call takes hours;
+the full 8-indicator $\times$ 3-seed-selection sensitivity at that scale would take weeks. At N = 50,000 the same sensitivity runs overnight. Because prevalence is N-invariant in the asymptotic regime as
+established above, the two N's produce equivalent prevalence stories and the choice is one of computation rather than substance. Where the paper reports absolute counts (rather than prevalence), the
+count is computed by multiplying the prevalence by the headline N = 980,000 regardless of which N was used to compute the prevalence.
+
+## 3.7 Bootstrap and Sensitivity Procedures
+To appropriately characterise uncertainty in NSUM estimates, we implement a three-step bootstrap procedure. This approach resamples respondents, their reported alters, and the exploitation
+classifications simultaneously, thereby capturing uncertainty at each stage of the inference process. This procedure provides more realistic confidence intervals than those generated by conventional
+variance estimators, particularly for small samples such as ours. Details of the bootstrap implementation and diagnostic checks are provided in Online Resource ESM_3. Several of the estimation
+procedures implemented here adopt Bayesian or model-assisted frameworks, which are particularly appropriate for modest sample sizes because they incorporate uncertainty directly into the estimation
+process (Gile et al., 2018). Our custom neighbourhood bootstrap procedure similarly quantifies uncertainty by repeatedly resampling ego and alter information, producing empirically grounded confidence
+intervals rather than relying on asymptotic approximations that assume large samples.
+
+For RDS estimators, we employ neighborhood bootstrap methods that preserve the network structure while resampling (Yauck *et al.*, 2022). Sensitivity analyses examine robustness to population size
+assumptions (50K, 100K, 980K, 1.74M) and NSUM adjustment factor values. Full results are reported in Online Resource ESM_4.
+
+# Results
+We present results in five subsections. Section 4.1 describes the analytical sample. Sections 4.2 and 4.3 report the preferred prevalence estimates for the continuous composite risk index and the five binary ILO-aligned indicators respectively. For binary indicators, the preferred estimator is RDS-SS (Gile's Successive Sampling) with neighbourhood-bootstrap 95% confidence intervals; for the composite risk index, also RDS-SS, because the Bayesian Model-Assisted estimator does not converge to a useful posterior on continuous outcomes at our sample size (Section 3.4). The preferred NSUM estimator is the Modified Basic Scale-Up with Moderate adjustment ($\delta = 0.9$, $\tau = 0.85$). Section 4.4 reports supporting estimates --- Bayesian Model-Assisted estimates for the five binary indicators, alternative RDS estimators (RDS-I, RDS-II), and NSUM under alternative adjustment-factor scenarios --- included for comparison and to support the robustness claims in Section 4.5. Section 4.5 summarises the sensitivity analyses, with full details in ESM_4.
+===================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
+
+## 4.1 Descriptive Overview
+Sample characteristics are presented in Table 1 and Fig1. In total, 97 respondents completed the survey, of whom 85 had non-zero network degree and were included in RDS analysis. The analytical sample
+comprised 90 transnational migrants (93%), with the largest nationality cluster being Filipino (66%). Female domestic workers constituted 97% of the sample, with over half aged 45 or older.
+Self-employment status was reported by 45% of respondents.
+
+## 4.2 Continuous Risk Index: RDS-SS Estimates
+One of the central contributions of this study is the introduction of a continuous risk index measuring degree of exposure to labour exploitation. The index is constructed from the five binary
+ILO-aligned indicators (Section 2), weighted equally with an additional 0.35 weight for NRM referral reflecting its diagnostic priority in UK policy practice. Rather than treating exploitation as a
+dichotomy, the risk index conceptualises every domestic worker as facing some degree of potential exploitation, varying continuously in intensity from low to high.
+
+The preferred population-adjusted estimate uses Gile's Successive Sampling (RDS-SS) Horvitz-Thompson estimator with neighbourhood bootstrap. The estimated mean risk index in the UK domestic-worker
+population is 37.0% of the theoretical maximum (95% CI 30.9--44.0%), very close to the observed sample mean of 37.5% --- indicating that the RDS-SS finite-population adjustment makes only a small
+correction at our sampling fraction. We report RDS-SS rather than the Bayesian Model-Assisted estimator for the composite index because, as noted in Section 3.4, MA-RDS does not converge to a useful
+posterior on continuous traits at this sample size; for completeness Figure 2 shows the MA estimate alongside the RDS-SS and sample estimates, with the wide MA credible interval making the limitation
+visible.
+
+![Figure 2. Composite Risk Index: Comparison of Three Estimators. Mean composite risk index across the observed RDS sample (descriptive; n=85), the RDS-SS adjusted estimator (Gile's Successive Sampling with bootstrap 95% CI), and the Bayesian Model-Assisted (MA) estimator (with 95% credible interval). The wide MA credible interval reflects known limitations of model-assisted inference for continuous outcomes; the RDS-SS estimate is the more reliable population-adjusted figure. Source: Authors' own work.](figures/image3.png){#fig-composite-risk width="6in"}
+
+## 4.3 Binary Exploitation Indicators: Preferred Prevalence Estimates
+Table 2 reports the preferred prevalence estimates for each of the five binary ILO-aligned indicators in the UK domestic-worker population, presenting both RDS-SS (ego-based; Salganik-Heckathorn and
+Gile's Successive Sampling lineage) and MBSU NSUM (alter-based; Feehan and Salganik 2016) estimates side by side. Figure 4 shows the RDS-SS estimates with per-method bootstrap confidence intervals
+for visual comparison with the RDS-I estimator. Reported as a supporting Bayesian comparison; the preferred binary-indicator estimator is RDS-SS (see Section 4.3, Figure 4, and Table 2).
+
+Prevalence is high for most indicators in this hidden population. RDS-SS estimates range from 35.4% for document withholding to 84.2% for excessive working hours; MBSU Moderate NSUM estimates range
+from 1.08% (document withholding) to 2.98% (excessive hours). The order-of-magnitude difference between RDS and NSUM is itself a substantive finding (Section 4.4), reflecting the difference between
+ego-based reports (the respondent's own experience) and alter-based reports (what the respondent observes in their network). Within methods, the ordering of indicators by prevalence is remarkably
+stable: excessive working hours consistently the highest, followed by threats and abuse and pay-related issues, with document withholding the lowest. This consistency across methods, even where
+absolute levels differ, is a robustness signal for the indicator hierarchy itself.
+
+| **Indicator**           | **RDS-SS (95% CI)** | **MBSU NSUM (Moderate) (95% CI)** |
+|-------------------------|---------------------|-----------------------------------|
+| Document withholding    | 35.4% (21.1--49.8%) | 1.08% (0.30--3.13%)               |
+| Threats and abuse       | 56.9% (42.3--72.1%) | 2.69% (1.86--5.86%)               |
+| Pay-related issues      | 51.6% (36.5--65.5%) | 2.88% (1.90--5.68%)               |
+| Excessive working hours | 84.2% (72.2--93.6%) | 2.98% (1.84--5.51%)               |
+| Limited access to help  | 60.6% (45.2--74.1%) | 2.03% (0.67--4.88%)               |
+
+![Figure 3. Model-Assisted Estimates of Exploitation Prevalence. Population prevalence estimates with 95% credible intervals for each exploitation indicator, ordered by prevalence magnitude. Posterior intervals are from Bayesian Model-Assisted inference (Gile & Handcock, 2015) at N=50,000 with seed.selection='degree'. Source: Authors' own work.](figures/image4.png){#fig-ma-binary width="6in"}
+
+## 4.4 Supporting Estimates and Method Comparison
+For each of the five binary indicators, three additional families of estimates are reported in the appendices for transparency and robustness.
+
+Bayesian Model-Assisted (MA-RDS). Table 3 reports the Gile-Handcock (2015) MA-RDS Bayesian estimates at N = 50,000 with 95% credible intervals. Posterior means range from 34.1% (document withholding)
+to 84.0% (excessive working hours), broadly tracking the RDS-SS preferred estimates with slightly wider credible intervals --- appropriate uncertainty quantification at n = 85. Figure 3 plots these as
+a forest.
+
+Frequentist RDS-I and RDS-II. Table 4 compares RDS-I (Salganik-Heckathorn) and RDS-SS estimates for each indicator with per-method bootstrap 95% CIs. RDS-I estimates run systematically higher than
+RDS-SS --- for document withholding, 50.7% versus 35.4% --- reflecting the known downward bias of RDS-I relative to the Successive Sampling estimator in this regime. Figure 4 visualises the
+comparison; we treat RDS-SS as the preferred binary estimator on standard methodological grounds (Gile 2011; Goel and Salganik 2010).
+
+NSUM under alternative adjustment-factor tiers. Table 5 reports MBSU NSUM estimates under three ($\delta$, $\tau$) tiers --- Unadjusted, Moderate, Conservative. Conservative adjustments produce estimates
+approximately 1.8 times higher than Unadjusted; Moderate adjustments produce estimates approximately 1.3 times higher. Figure 5 shows the Moderate-tier NSUM forest plot. The continuous-$\tau$ sensitivity
+analysis (Section 4.5) supersedes this discrete-tier comparison for the substantive inference, but the tier comparison is retained here for direct comparability with the existing NSUM literature.
+
+Table 3. Model-Assisted Estimates of Binary Exploitation Indicators: Population prevalence estimates adjusted for RDS sampling bias. Values represent the estimated proportion of domestic workers experiencing each form of exploitation. Source: Authors' own work. {#tbl-ma-estimates}
+
+| **Exploitation Indicator**                                                                                                                                                                              | **Population Prevalence (95% CrI)**  |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
+| Any Exploitation                                                                                                                                                                                        | 95.0% (62.2-100.0%)                  |
+| Excessive Hours                                                                                                                                                                                         | 83.7% (71.9-95.6%)                   |
+| Limited Access to Help                                                                                                                                                                                  | 58.3% (46.1-70.6%)                   |
+| Threats/Abuse                                                                                                                                                                                           | 57.3% (35.4-79.3%)                   |
+| Pay-Related Issues                                                                                                                                                                                      | 49.5% (35.6-63.5%)                   |
+| Document Withholding                                                                                                                                                                                    | 34.3% (16.4-52.2%)                   |
+| *Note:* Estimates adjusted for RDS sampling bias using Bayesian Model Assisted Inference of Gile & Handcock (2015) (N=980,000, sample seed selection). Credible intervals from posterior distribution.  |                                      |
+
+![Figure 4. RDS Prevalence Estimates by Method (RDS-I vs RDS-SS). Point estimates and per-method bootstrap 95% confidence intervals for the five binary exploitation indicators at N=980,000 domestic workers. RDS-I (Salganik-Heckathorn) shown in red; RDS-SS (Gile's Successive Sampling) shown in blue. Source: Authors' own work.](figures/image5.png){#fig-rds-methods width="6in"}
+
+Table 4. RDS Estimates of Binary Exploitation Indicators: Comparison of RDS-I and RDS-SS estimators with neighbourhood bootstrap confidence intervals (N=980,000). Source: Authors' own work. {#tbl-rds-comparison}
+| **Exploitation Indicator**                                                                                                                                                                          | **RDS-I**          | **RDS-SS**         |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|--------------------|
+| Document withholding                                                                                                                                                                                | 49.4% (25.3--56.3) | 34.2% (25.2--56.0) |
+| Excessive working hours                                                                                                                                                                             | 92.8% (71.4--92.9) | 83.7% (71.5--93.0) |
+| Limited access to help                                                                                                                                                                              | 57.7% (55.1--80.3) | 59.4% (54.7--80.2) |
+| Pay-related issues                                                                                                                                                                                  | 59.3% (34.2--63.5) | 49.7% (34.8--63.4) |
+| Threats and abuse                                                                                                                                                                                   | 65.2% (40.5--72.1) | 57.2% (40.1--72.3) |
+| *Note:* RDS-I: Salganik-Heckathorn estimator. RDS-SS: Gile's Successive Sampling estimator. Confidence intervals from neighbourhood bootstrap (n=1000). Population size: 980,000 domestic workers. |                    |                    |
+
+![Figure 5. NSUM Prevalence Estimates. Modified Basic Scale-Up (MBSU, Moderate adjustment) estimator with neighbourhood-bootstrap 95% confidence intervals for the five binary exploitation indicators at N=980,000 domestic workers. Source: Authors' own work.](figures/image6.png){#fig-nsum width="6in"} Reported here at the Moderate ($\delta = 0.9$, $\tau = 0.85$) adjustment tier; for the continuous-$\tau$ sensitivity analysis see Section 4.5 and ESM_4 Figure 1.
+
+Using the Modified Basic Scale-Up (MBSU) estimator (Feehan and Salganick, 2016) with Sequential Sampling weights and a UK domestic worker population of 980,000, Table 5 presents prevalence estimates under three adjustment scenarios: (1) unadjusted baseline ($\delta = 1.0$, $\tau = 1.0$), (2) moderate adjustments ($\delta = 0.9$, $\tau = 0.85$), and (3) conservative adjustments ($\delta = 0.8$, $\tau = 0.7$).
+
+Table 5. NSUM Prevalence Estimates for Labour Exploitation Indicators: Estimates using Modified Basic Scale-Up (MBSU) method with Sequential Sampling weights and population size of 980,000 domestic workers. Adjustment factors: $\delta$ (degree ratio) controls for network size differences; $\tau$ (visibility / true positive rate) controls for reporting accuracy and visibility barriers. Bootstrap confidence intervals based on neighbourhood resampling (B=1000). Source: Authors' own work. {#tbl-nsum-sensitivity}
+
+| **Adjustment Method**                                                                                                                                                                                                                                                                                                                                                                                          | **Outcome**          | **Point Estimate** | **95% CI Lower** | **95% CI Upper** | **Prevalence (%)**    |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------|--------------------|------------------|------------------|-----------------------|
+| MBSU (Conservative)                                                                                                                                                                                                                                                                                                                                                                                            | Access to Help       | 27,164.671         | 8,933.933        | 65,323.13        | 2.77% (0.91% - 6.67%) |
+| MBSU (Conservative)                                                                                                                                                                                                                                                                                                                                                                                            | Document Withholding | 14,500.488         | 3,968.605        | 41,872.57        | 1.48% (0.40% - 4.27%) |
+| MBSU (Conservative)                                                                                                                                                                                                                                                                                                                                                                                            | Excessive Hours      | 39,955.494         | 24,677.066       | 73,760.07        | 4.08% (2.52% - 7.53%) |
+| MBSU (Conservative)                                                                                                                                                                                                                                                                                                                                                                                            | Pay Issues           | 38,499.114         | 25,438.688       | 76,102.17        | 3.93% (2.60% - 7.77%) |
+| MBSU (Conservative)                                                                                                                                                                                                                                                                                                                                                                                            | Threats/Abuse        | 35,966.277         | 24,834.407       | 78,445.77        | 3.67% (2.53% - 8.00%) |
+| MBSU (Moderate)                                                                                                                                                                                                                                                                                                                                                                                                | Access to Help       | 19,885.249         | 6,539.872        | 47,818.24        | 2.03% (0.67% - 4.88%) |
+| MBSU (Moderate)                                                                                                                                                                                                                                                                                                                                                                                                | Document Withholding | 10,614.737         | 2,905.123        | 30,651.82        | 1.08% (0.30% - 3.13%) |
+| MBSU (Moderate)                                                                                                                                                                                                                                                                                                                                                                                                | Excessive Hours      | 29,248.467         | 18,064.258       | 53,994.30        | 2.98% (1.84% - 5.51%) |
+| MBSU (Moderate)                                                                                                                                                                                                                                                                                                                                                                                                | Pay Issues           | 28,182.358         | 18,621.784       | 55,708.78        | 2.88% (1.90% - 5.68%) |
+| MBSU (Moderate)                                                                                                                                                                                                                                                                                                                                                                                                | Threats/Abuse        | 26,328.255         | 18,179.435       | 57,424.35        | 2.69% (1.86% - 5.86%) |
+| MBSU (No Adjustment)                                                                                                                                                                                                                                                                                                                                                                                           | Access to Help       | 15,212.216         | 5,003.002        | 36,580.95        | 1.55% (0.51% - 3.73%) |
+| MBSU (No Adjustment)                                                                                                                                                                                                                                                                                                                                                                                           | Document Withholding | 8,120.274          | 2,222.419        | 23,448.64        | 0.83% (0.23% - 2.39%) |
+| MBSU (No Adjustment)                                                                                                                                                                                                                                                                                                                                                                                           | Excessive Hours      | 22,375.077         | 13,819.157       | 41,305.64        | 2.28% (1.41% - 4.21%) |
+| MBSU (No Adjustment)                                                                                                                                                                                                                                                                                                                                                                                           | Pay Issues           | 21,559.504         | 14,245.665       | 42,617.22        | 2.20% (1.45% - 4.35%) |
+| MBSU (No Adjustment)                                                                                                                                                                                                                                                                                                                                                                                           | Threats/Abuse        | 20,141.115         | 13,907.268       | 43,929.63        | 2.06% (1.42% - 4.48%) |
+| *Note:* MBSU = Modified Basic Scale-Up method; $\delta$ = degree ratio (d̄_H,F/d̄_F,F, ratio of hidden population network degree to frame population degree); $\tau$ = visibility/true positive rate (v̄_H,F/d̄_H,F, proportion of edges correctly reported, measures transmission and reporting accuracy); Bootstrap method: neighbourhood resampling with 1000 iterations; Population base: 980,000 UK domestic workers. |                      |                    |                  |                  |                       |
+
+## 4.5 Sensitivity and Robustness
+Three sensitivity analyses are reported in full in ESM_4. First, the continuous-$\tau$ NSUM sweep (Section 3.5; ESM_4 Figure 1) shows MBSU prevalence as a continuous function of the
+visibility/true-positive-rate adjustment $\tau$ for each of the five indicators, with $\delta$ fixed at 0.9. Prevalence estimates increase monotonically as $\tau$ decreases (as expected algebraically); the increase is
+modest in absolute terms across the plausible range $\tau \in [0.7, 1.0]$ and substantial only at low $\tau$ $\le$ 0.5. This continuous picture supersedes the discrete-tier comparison (Section 4.4) for substantive
+inference about how visibility assumptions affect estimates.
+
+Second, the MA-RDS seed-selection sensitivity (ESM_4 Figure 2) shows that the Bayesian MA posterior estimates are insensitive to the choice of seed-selection method (degree, random, sample) at our
+sample size --- different chains converge to the same posterior, confirming model robustness to initialisation.
+
+Third, cross-indicator and cross-method consistency: across the five indicators and the four main estimators (RDS-I, RDS-SS, MA-RDS, MBSU NSUM Moderate), the rank-ordering of indicators by prevalence
+is stable. Excessive working hours is consistently highest, followed by threats and abuse and pay-related issues, with document withholding the lowest. Absolute prevalence levels vary by method but
+the substantive picture --- which exploitation behaviours are most common, which least --- does not.
+
+# Discussion
+## 5.1 Summary of Findings
+Across five ILO-aligned binary indicators measured on a respondent-driven sample of 85 UK migrant domestic workers, RDS-SS Horvitz-Thompson prevalence estimates range from 35.4% for document
+withholding (95% CI 21.1--49.8%) to 84.2% for excessive working hours (95% CI 72.2--93.6%); a composite continuous risk index covering all eleven indicator dimensions gives an estimated mean
+exploitation intensity of 37.0% (95% CI 30.9--44.0%). MBSU Moderate NSUM estimates of the same five binary indicators range from 1.08% (document withholding) to 2.98% (excessive hours), an
+order-of-magnitude lower than the RDS-SS figures. The within-method ordering of indicators is consistent across methods: excessive working hours always highest, followed by threats and abuse and
+pay-related issues, with document withholding always lowest. This consistency, alongside the order-of-magnitude gap between ego-based (RDS) and alter-based (NSUM) estimates, is the central empirical
+finding of the paper. The remainder of this section interprets both the absolute estimates and the inter-method divergence.
+
+## 5.2 Methodological Reflections and Contributions
+This paper makes two contributions to the measurement of modern slavery and related forms of severe labour exploitation among hidden vulnerable populations. First, we develop and apply a dual-method
+design that elicits respondent-driven sampling (RDS) and network scale-up method (NSUM) estimates for the same set of ILO-aligned indicators from the same matched survey instrument. To our knowledge,
+this is the first application of RDS and NSUM to a single matched survey instrument for the measurement of forced-labour and modern-slavery indicators in any developed-economy setting, allowing direct
+triangulation of ego-based and alter-based prevalence estimates on a like-for-like indicator set. Second, we operationalise modern slavery as a graded latent construct rather than a binary condition,
+supporting both indicator-level prevalence estimates and a continuous composite risk index for analyses that require ordinal severity gradation.
+
+Dual conceptualisation of exploitation: We introduce two distinct approaches to operationalising exploitation. First, we treat exploitation as a binary outcome (exploited versus not exploited),
+enabling direct comparison of prevalence estimates across RDS and NSUM methods. Second, we construct a continuous composite risk index spanning thirteen indicator categories drawn from the ILO
+conceptual framework, anchored to the ILO medium/strong severity hierarchy.
+
+Combining RDS and NSUM on the same survey instrument: By designing a survey that captures both ego and alter information, we are able to apply RDS and NSUM to the same sample. This dual approach has
+rarely been implemented in studies of labour exploitation. It provides an opportunity to cross-validate prevalence estimates against the visibility structure of the underlying network, and where the
+two methods diverge, exposes the visibility gradient of different exploitation behaviours within workers' personal networks (Section 5.3).
+
+Three-step bootstrap procedure for NSUM: Recognising the non-random nature of an RDS sample, we implement a three-step bootstrap procedure tailored for NSUM estimation that resamples respondents,
+their reported alters, and the exploitation classifications in succession, propagating uncertainty from each source through to the final confidence interval. The procedure captures multiple layers of
+variability and produces per-indicator confidence intervals that are honest about the cumulative uncertainty in the design.
+
+Application to domestic workers in the UK: By working with civil society organisations to apply these methods to a population that is both highly stigmatised and under-researched, we demonstrate the
+feasibility of using advanced network-based estimation techniques in contexts where traditional sampling frames fail. The methodology generalises to other hidden populations relevant to SDG 8.7
+monitoring (Section 5.6).
+
+## 5.3 The RDS--NSUM Divergence as Diagnostic
+Two related concerns are taken up here: that the reported prevalence estimates span a wide range, and that the sample size (n = 85) is small for population-level inference. We argue that the apparent
+"wide range" in fact reflects three conceptually distinct sources of dispersion, each of which carries a different epistemic status; and that on the only one of the three sources where sample size
+matters, n = 85 is competitive for hidden-population designs and the per-method bootstrap confidence intervals we now report propagate the implied uncertainty honestly.
+
+The "wide range" concern conflates three distinct sources of dispersion in the reported numbers. We should not treat them as a single undifferentiated band of uncertainty. The first source is
+across-indicator variation. Within any single method, prevalence varies substantially across the five ILO-aligned indicators --- under RDS-SS, from 35.4% for document withholding to 84.2% for
+excessive working hours, a 49-percentage-point spread. This is a substantive finding, not noise. It tells us that severe forms of coercion (document confiscation, which the ILO classifies as a strong
+indicator any one of which alone is sufficient to indicate forced labour) are less common in this population than less severe forms of abuse (excessive hours, an ILO medium indicator whose presence
+individually is suggestive but not definitive). The hierarchy is interpretable, matches the ILO severity gradation, and is reproduced across methods. Collapsing this hierarchy into a single "wide
+range" headline obscures what is arguably the paper's most policy-relevant finding: that different exploitation behaviours have meaningfully different population frequencies.
+
+The second source is across-method variation. For any single indicator, RDS and NSUM estimates differ by roughly an order of magnitude: document withholding sits at 35.4% under RDS-SS but at 1.08%
+under MBSU Moderate NSUM; excessive hours at 84.2% versus 2.98%. This too is a substantive finding, not noise. It is the visibility gradient diagnostic that lies at the centre of this paper's
+contribution: ego-based RDS asks what happened to you, alter-based NSUM asks what you can see happening to others, and the two answer related but different questions for behaviours that occur behind
+closed doors --- almost by definition for domestic work conducted inside a private home. The order-of-magnitude gap between our RDS and NSUM estimates is therefore not a methodological pathology but a
+quantification of the visibility gradient that separates lived experience from network-observable behaviour. Reporting RDS and NSUM side-by-side (Table 2) is the paper's design choice precisely
+because the gap is the point.
+
+The third source --- and the only one that is irreducibly statistical uncertainty in the conventional sense --- is within-method, within-indicator sampling variation. This is what the bootstrap
+confidence intervals capture, and these are much tighter than the across-indicator and across-method spreads taken together. RDS-SS within-indicator CIs span 21--30 percentage points; MBSU Moderate
+within-indicator CIs span 1--4 percentage points. A residual component of within-method uncertainty for NSUM specifically comes from the unknown true-positive rate $\tau$, which the continuous-$\tau$ sweep
+across $\tau \in [0.40, 1.00]$ in ESM_4 reports as a sensitivity curve rather than committing to a single point estimate. Sample-size effects operate through this third channel and only this third
+channel: more respondents would narrow the bootstrap CIs but would not narrow the across-indicator hierarchy (which is real) or the across-method gap (which is the diagnostic finding).
+
+Three further observations support the visibility-gradient interpretation of the across-method gap. First, the gap is largest for the indicators we would expect to be least visible across network
+ties. Document withholding is concealed by definition: the document is taken and the worker either complies under duress or has limited recourse to alert others. Excessive working hours is
+comparatively more visible to other domestic workers, who can often infer working hours from communication patterns, time off, and meeting availability --- and the ratio of ego to alter estimates is
+correspondingly smaller for hours than for documents (28$\times$ versus 33$\times$). Second, the within-method ordering of indicators is remarkably stable across methodologically unrelated estimators, which is the
+robustness signal that justifies treating the indicators as measuring meaningfully distinct gradations of severity, even where absolute levels differ. Third, the direction of the bias is consistent
+with what the NSUM literature predicts. Feehan and Salganik (2016) and the subsequent transmission-bias literature (Maltiel et al. 2015, Killworth et al. 1998) document systematic alter
+under-reporting for stigmatised or concealed traits, with the underestimation factor often an order of magnitude. Our findings are squarely in line with this pattern.
+
+On the sample-size sub-concern: n = 85 is small by household-survey standards but competitive for hidden-population studies. Published applications of RDS to similar populations operate at sample
+sizes in the 100--300 range, and UK domestic-worker NGO samples (Kalayaan, Latin American Women's Rights Service) are typically smaller and self-selected rather than network-recruited. The dual
+ego/alter survey design extracts substantially more information per respondent than a household survey, because each respondent contributes both their own exploitation status and observations of
+network alters; the 85 respondents therefore yield 170 indicator measurements per ILO category once both reports are counted, before any network-weighting amplification. A further sample-related
+limitation is that recruitment chains did not propagate as deeply as the RDS design envisaged --- most respondents are original sample members (seeds) drawn from the participating civil-society
+organisations' immediate contact networks, rather than later-wave recruits accessed through respondent-driven referral. A longer field period or higher per-referral incentive in future replications
+would help propagate chains further and yield a sample less dependent on seed properties.
+
+## 5.4 Generalisability and Indicator Coverage
+One may reasonably question whether estimates from a single civil-society-mediated sample can support population-level claims, and whether the five indicators we measure capture the full ILO
+conceptual space. Both are valid concerns and both warrant qualification of the paper's claims rather than retreat from them.
+
+On generalisability: the sample is drawn from two civil-society networks based in London (Kalayaan and the Latin American Women's Rights Service) and is not representative of all UK migrant domestic
+workers, much less all migrant domestic workers globally or all hidden populations relevant to SDG Target 8.7. The respondent demographics skew toward Filipino and Latinx nationalities, both of which
+are well-represented in the participating organisations' membership but which together do not reflect the full ethnonational composition of the UK migrant domestic worker population (which also
+includes substantial South Asian, East African, and Eastern European communities not reached by these networks within the field period). What the paper demonstrates is methodological feasibility on
+the hardest realistic case --- a hidden migrant population in a developed economy with restrictive visa conditions, mediated by under-resourced civil-society partners --- and a set of specific
+prevalence estimates for that sample. The methodology generalises (the dual RDS--NSUM design can be applied to other hidden populations and other geographies); the specific prevalence numbers should
+not be extrapolated beyond this sample.
+
+On indicator coverage: the paper measures five ILO indicators directly (excessive working hours, pay-related issues, threats and abuse, document withholding, limited access to help --- see Section 2.1
+for the mapping to the eleven canonical ILO indicators). Two further ILO indicators (abuse of vulnerability, deception) are absorbed thematically into the composite risk index but not estimated as
+standalone prevalence figures, because they require retrospective interpretation that brief-survey self-report cannot reliably elicit at our sample size --- a respondent asked "were you deceived about
+your working conditions" must reconstruct intent and knowledge states from the perspective of months or years after the fact. Two further indicators (induced addiction, sale of a person) are too rare
+in the UK domestic-work context to estimate meaningfully at n = 85 --- we record zero affirmative responses to both indicators in this sample, but a zero in an n = 85 sample is statistically
+uninformative about the population rate. Debt bondage is partially captured under the pay-related issues composite. The paper's claim is therefore not "prevalence of forced labour as defined by the
+eleven ILO indicators" but "prevalence of nine of the eleven ILO indicators, with two principled exclusions and one thematic consolidation", as set out in the mapping in Section 2.1.
+
+Taking the divergence diagnostic, the generalisability qualifications, and the indicator coverage qualifications together, what does this design licence the paper to claim? Not a single point estimate
+of "the prevalence of forced labour among UK domestic workers", because no single point estimate is identified --- the truth for any given indicator lies between the ego-based and alter-based reports,
+with the location on that interval depending on assumptions about visibility that the data cannot fully pin down. What the design does licence is (a) a credible lower bound for population-level
+estimates of severe coercion (the MBSU Moderate figures are conservative under any reasonable parameterisation of $\tau$); (b) a credible characterisation of relative incidence among respondents from the
+RDS estimates, and of the indicator severity hierarchy from the cross-method robustness; and (c) a diagnostic of which exploitation behaviours are visible to other workers and which are not --- a
+finding with direct implications for the design of network-mediated outreach interventions (Section 5.6).
+
+## 5.5 Composite Risk Index: Construction and Weight Sensitivity
+A further question is whether the composite risk index reported in Section 4.2 is sensitive to the specific weights assigned to its eleven sub-indicators. The index is constructed as a weighted sum of
+binary or partial-credit responses across eleven indicator categories drawn from the ILO framework, with weights anchored on the medium/strong severity gradation: strong-indicator categories
+(intimidation and threats, physical and sexual violence, retention of identity documents) receive larger sub-weights than medium-indicator categories. A reviewer could reasonably ask whether the
+qualitative conclusions of the paper --- particularly the ranking of respondents by composite-risk and the 37.0% population mean estimate --- would change under a different but equally defensible
+choice of weights.
+
+To address this we conducted a weight-perturbation sensitivity analysis. We multiplied each of the eleven sub-indicator weights by an independent uniform random factor in [0.5, 1.5] (that is,
+allowed each weight to vary by ±50% of its baseline value), recomputed the composite-risk score for each respondent under the perturbed weights, and compared the resulting ranking to the baseline
+ranking. We repeated the procedure for 5,000 independent perturbations.
+
+The ranking of respondents by composite-risk is essentially weight-invariant. Mean Spearman rank correlation between the perturbed and baseline composites was $\rho = 0.992$ (95% range across
+perturbations: 0.985--0.997), with the worst-case $\rho$ across all 5,000 draws being 0.974. The 97.5% interval of perturbed composites that fell in the same top quartile as the baseline composite was
+92--100%, with a mean of 97.5%. Even under a more aggressive ±75% perturbation, Spearman $\rho$ remained above 0.944 in the worst case across 5,000 draws and the top-quartile preservation averaged 94.4%.
+We conclude that the substantive conclusions of the composite-risk analysis --- which respondents are at highest risk, the population mean of 37.0%, and the rank-ordering used for downstream analyses
+--- do not depend on the specific weighting choice within any plausible alternative parameterisation. Full perturbation results are reported in ESM_4.
+
+## 5.6 Policy Implications and SDG 8.7 Monitoring
+The dual RDS--NSUM design and the visibility-gradient diagnostic developed here are themselves policy-useful outputs for SDG 8.7 monitoring. Target 8.7 of the Sustainable Development Goals commits
+signatory states to "take immediate and effective measures to eradicate forced labour, end modern slavery and human trafficking" by 2030, with monitoring requiring credible population-level prevalence
+estimation for populations that are largely invisible to official statistics. The methodology demonstrated in this paper --- matched ego-alter instruments fielded through civil-society partnerships,
+estimated with parallel RDS and NSUM frameworks, and reported with explicit visibility-adjustment sensitivity --- is replicable for other hidden populations relevant to 8.7 monitoring (undocumented
+agricultural workers, sex workers, day labourers in informal construction, kafala-system migrants in Gulf-state economies). The specific numerical estimates in this paper apply only to the UK migrant
+domestic worker case; the design is the contribution to the broader SDG monitoring effort.
+
+These transnational migrants are at particular risk of exploitation due to regulatory visa restrictions and intersecting structural issues related to their gender, the relative isolation of domestic
+work and a lack of supportive social networks. Workers enter on restricted visas where their employment is tied to a specific employer, with limited routes to change employer in cases of exploitation
+and limited access to mainstream labour-market protections. The structural features of the visa regime themselves create the conditions under which the high prevalence of indicators reported in
+Section 4 becomes possible.
+
+To reduce the vulnerability of transnational domestic workers to this---and other---forms of labour exploitation, we urge policy-makers to reconsider these discriminatory visa conditions and offer the
+same freedoms to domestic workers that are enjoyed by other groups of workers under UK law.
+
+In addition, given the vulnerabilities experienced by workers due to the private nature of the workplace, we would urge the UK government to consider the regulation of domestic worker employers.
+
+Finally, given the stigma and very real danger of deportation of those transnational migrant domestic workers who may have fallen out of legal migration status, our evidence suggests that there is an
+urgent need for the UK Government to enforce a firewall between immigration control and labour exploitation enforcement, so that workers fearing immigration consequences are not deterred from
+reporting exploitation.
+
+The UK Visa and Immigration service already offers rights-based training to migrant domestic workers via UK embassies in certain source countries. To reduce migrant domestic workers' vulnerabilities,
+we advocate the expansion of this training both to include explicit training related to employment and labour rights, and to extend its geographical reach to all source countries.
+
+The visibility-gradient diagnostic developed in this paper adds a further policy dimension. Programmes designed to identify and intervene in cases of exploitation typically operate through
+network-mediated outreach: peer-to-peer referral, civil-society partnership, and warm-handover models. Such programmes can only reach exploitation behaviours that are visible across network ties. Our
+findings suggest that excessive working hours (with a comparatively small ego--alter gap) is well-suited to network-mediated identification, whereas document withholding (with the largest ego--alter
+gap in our sample) is largely invisible across network ties and will require different intervention designs --- embassy-level or institutional intake screening rather than peer outreach. The
+dual-method design therefore not only estimates prevalence but also helps programme designers calibrate their identification strategy to the visibility profile of the specific exploitation behaviour
+they aim to address.
+
+Future work in this programme of research should extend the methodology to web-RDS implementations capable of reaching larger and more dispersed samples, and explore integration with administrative
+data sources (NRM referrals, immigration enforcement data subject to firewall safeguards, employment-tribunal records) for triangulating prevalence estimates against complementary data streams. The
+methodology presented here is one component of a broader monitoring architecture for SDG 8.7 reporting; integration with that broader architecture is left for future work.
+
+# Conclusion
+This paper applies respondent-driven sampling and the network scale-up method to the same matched survey instrument for the first time in a developed-economy study of forced-labour and modern-slavery
+indicators, using a sample of 85 UK migrant domestic workers recruited through two civil-society partnerships. The paper makes two contributions to the measurement of modern slavery among hidden
+populations. First, the dual RDS--NSUM design lets the two estimators triangulate prevalence on a like-for-like indicator set, and --- where the two diverge --- yields a visibility-gradient diagnostic
+that locates each exploitation behaviour on a spectrum from network-visible to network-concealed. Second, we operationalise modern slavery as a graded latent construct rather than a binary condition,
+supporting both indicator-level prevalence estimates and a continuous composite risk index anchored on the ILO medium/strong severity hierarchy.
+
+The central empirical finding is the order-of-magnitude gap between ego-based (RDS) and alter-based (NSUM) estimates. For document withholding, RDS-SS estimates 35.4% prevalence while MBSU Moderate
+NSUM estimates 1.08%; for excessive working hours, the figures are 84.2% and 2.98% respectively. We argue this gap should be read not as a methodological inconsistency to be reconciled but as a
+substantive quantification of the visibility structure of the exploitation behaviour itself. The policy implication, developed in Section 5.6, is that network-mediated outreach programmes can credibly
+reach exploitation behaviours that are visible across network ties, but require complementary intake-screening or institutional-level designs for behaviours that are not.
+
+The dual-method design demonstrated here is replicable. The matched ego-alter survey instrument, parallel RDS and NSUM estimation framework, and explicit visibility-adjustment sensitivity reporting
+can be applied to other hidden populations relevant to SDG Target 8.7 monitoring --- undocumented agricultural workers, sex workers, informal-construction day labourers, kafala-system migrants in
+Gulf-state economies, and any population for which official statistics are silent. The methodology presented here is one component of a broader monitoring architecture for credible, comparable, and
+policy-useful prevalence estimation in support of the 2030 SDG commitments.
+
+References
+==========
+
+Abdul-Quader, A.S. *et al.* (2006) 'Effectiveness of respondent-driven sampling for recruiting drug users in New York City: findings from a pilot study', *Journal of Urban Health*, 83(3), pp. 459--76.Alberti, G. and Cutter, J. (2022) 'Labour migration policy post-Brexit: The contested meaning of regulation by old and new actors', *Industrial Relations Journal*, 53(5), pp. 430--445. Available at: https://doi.org/10.1111/irj.12382.Alberti, G. and Però, D. (2018) 'Migrating Industrial Relations: Migrant Workers' Initiative Within and Outside Trade Unions', *British Journal of Industrial Relations*, 56(4), pp. 693--715. Available at: https://doi.org/10.1111/bjir.12308.Benstead, A.V., Hendry, L.C. and Stevenson, M. (2018) 'Horizontal collaboration in response to modern slavery legislation: An action research project', *International Journal of Operations &amp; Production Management*, 38(12), pp. 2286--2312. Available at: https://doi.org/10.1108/IJOPM-10-2017-0611.Bernhardt, A., Milkman, R.T., and N. (2009) *Broken laws, unprotected workers: Violations of employment and labor laws in america's cities*. UCLA IRLE Report.Brown, J.S., Schonfeld, T.L. and Gordon, B.G. (2006) 'You may have already won...": An examination of the use of lottery payments in research', *IRB: Ethics & Human Research*, 28(1), pp. 12--16.Brunovskis, A. and Surtees, R. (2010) 'Untold stories: biases and selection effects in research with victims of trafficking for sexual exploitation', *International Migration*, 48(4), pp. 1--37.Cobanoglu, C. and Cobanoglu, N. (2003) 'The effect of incentives in web surveys: application and ethical considerations', *International Journal of Market Research*, 45(4), pp. 1--13.DeJong, J. *et al.* (2009) 'Ethical considerations in HIV/AIDS biobehavioral surveys that use respondent-driven sampling: illustrations from Lebanon', *American Journal of Public Health*, 99(9), pp. 1562--1567.European Commission (2012) 'Staff Working Docuemnt on exploitating the employment potential of the personal and household services, SWD (2012) final'.European Union for Fundamental Rights (2015) 'Severe labour exploitation: workers moving within or into the European Union'. Available at: https://doi.org/10.1163/2210-7975_HRD-9992-2016018.Feehan, D.M. and Salganick, M.J. (2016) *Generalizing the Network Scale-up Method: A New Estimator for the Size of Hidden Populations - Dennis M. Feehan, Matthew J. Salganik, 2016*. Available at: https://journals.sagepub.com/doi/10.1177/0081175016665425 (Accessed: 12 March 2024).Gajic, A., Cameron, D. and Hurley, J. (2012) 'The cost-effectiveness of cash versus lottery incentives for a web-based, stated-preference community survey', *The European Journal of Health Economics*, 13(6), pp. 789--799.Gile, K.J. (2011) 'Improved Inference for Respondent-Driven Sampling Data With Application to HIV Prevalence Estimation', *Journal of the American Statistical Association*, 106(493), pp. 135--146. Available at: https://doi.org/10.1198/jasa.2011.ap09475.Gile, K.J. *et al.* (2018) 'Methods for inference from respondent-driven sampling data', *Annual Review of Statistics and Its Application*, 5(1), pp. 65--93. Available at: https://doi.org/10.1146/annurev-statistics-031017-100704.Gile, K.J. and Handcock, M.S. (2010) 'Respondent-Driven Sampling: An Assessment of Current Methodology', *Sociological Methodology*, 40(1), pp. 285--327. Available at: https://doi.org/10.1111/j.1467-9531.2010.01223.x.Gile, K.J. and Handcock, M.S. (2015) 'Network Model-Assisted Inference from Respondent-Driven Sampling Data', *Journal of the Royal Statistical Society. Series A, (Statistics in Society)*, 178(3), pp. 619--639. Available at: https://doi.org/10.1111/rssa.12091.Goel, S. and Salganik, M.J. (2010) 'Assessing respondent-driven sampling', *Proceedings of the National Academy of Sciences*, 107(15), pp. 6743--6747. Available at: https://doi.org/10.1073/pnas.1000261107.Gold, S., Trautrims, A. and Trodd, Z. (2015) 'Modern slavery challenges to supply chain management', *Supply Chain Management: An International Journal*, 20(5), pp. 485--494. Available at: https://doi.org/10.1108/SCM-02-2015-0046.Gower, M. (2016) 'Calls to change overseas domestic worker visa conditions'. Available at: https://researchbriefings.files.parliament.uk/documents/SN04786/SN04786.pdf.Handcock, M.S., Gile, K.J. and Mar, C.M. (2014) 'Estimating hidden population size using Respondent-Driven Sampling data', *Electronic Journal of Statistics*, 8(1), pp. 1491--1521. Available at: https://doi.org/10.1214/14-EJS923.Heckathorn, D.D. (1997) 'Respondent-Driven Sampling: A New Approach to the Study of Hidden Populations', *Social Problems*, 44(2), pp. 174--199. Available at: https://doi.org/10.2307/3096941.Heckathorn, D.D. (2011) 'Comment: Snowball versus respondent-driven sampling', *Sociological Methodology*, 41(1), pp. 355--366.Hickman, S. *et al.* (2025) *Human Trafficking Prevalence Estimation Feasibility Study \| Bureau of Justice Statistics*. Available at: https://bjs.ojp.gov/library/publications/human-trafficking-prevalence-estimation-feasibility-study (Accessed: 19 December 2025).Home Office (2023) 'Why do people come to the UK to work?' Available at: https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-june-2023/why-do-people-come-to-the-uk-to-work.ILO (2011) *C189 - Domestic Workers Convention, 2011 (No. 189)*. Available at: https://normlex.ilo.org/dyn/nrmlx_en/f?p=NORMLEXPUB:55:0::NO::P55_TYPE%2CP55_LANG%2CP55_DOCUMENT%2CP55_NODE:SUP%2Cen%2CC189%2C%2FDocument (Accessed: 19 December 2025).I.L.O. (2012) 'ILO indicators of forced labour'. Available at: https://www.ilo.org/global/topics/forced-labour/publications/WCMS_203832/lang\--en/index.htm.IST Research and University of California, Los Angeles (2020) *Estimating the Prevalence of Child Sex Trafficking in Mahashtra, India*. Technical Report. Global Fund to End Modern Slavery.Jordan, L. *et al.* (2020) 'Overcoming methodological challenges in prevalence studies in developing contexts with vulnerable children', *International Social Work*, 63(3), pp. 371--385.Kalayaan (2008) 'The new bonded labour?' Available at: http://www.kalayaan.org.uk/documents/Kalayaan%20Oxfam%20report.pdf.Laguilles, J.S., Williams, E.A. and Saunders, D.B. (2011) 'Can lottery incentives boost web survey response rates? Findings from four experiments', *Research in Higher Education*, 52(5), pp. 537--553.Latin American Women's Rights Service (2023) 'Behind closed doors: Experiences of Latin American domestic workers in the UK'. Available at: https://lawrs.org.uk/wp-content/uploads/2023/08/Behind-closed-doors_domestic_work.pdf.Manoudi, A. *et al.* (2018) *An analysis of Personal and Household Services to support work life balance for working parents and carers - Google Search*. Synthesis Report ECE Thematic Review. European Commission. Available at: https://www.google.com/search?q=An+analysis+of+Personal+and+Household+Services+to+support+work+life+balance+for+working+parents+and+carers&rlz=1C1GCEB_enGB932GB935&oq=An+analysis+of+Personal+and+Household+Services+to+support+work+life+balance+for+working+parents+and+carers&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCDIzNjNqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8 (Accessed: 28 October 2024).Mantouvalou, V. (2016) 'Modern slavery? The UK visa system and the exploitation of migrant domestic workers', in *British politics and policy at LSE*. Available at: https://blogs.lse.ac.uk/politicsandpolicy/exploitation-of-migrant-domestic-workers-in-the-uk/.McCreesh, N. *et al.* (2012) 'Evaluation of respondent-driven sampling', *Epidemiology*, 23(1), pp. 138--147. Available at: https://www.jstor.org/stable/23214188 (Accessed: 25 April 2023).New, S.J. (2015) 'modern slavery and the supply chain: the limits of corporate social responsibility?', *Supply Chain Management*, 20(6), pp. 697--707. Available at: https://doi.org/10.1108/SCM-06-2015-0201.Platt, L., Luthra, R. and Frere-Smith, T. (2015) 'Adapting chain referral methods to sample new migrants: Possibilities and limitations', *Demographic Research*, 33, pp. 665--700.Robinson, O.C. (2014) 'Sampling in interview-based qualitative research: A theoretical and practical guide', *Qualitative research in psychology*, 11(1), pp. 25--41.Romero, A. and Fisher, O. (2025) 'Blueprint for safer and fairer migration for low-paid work'. Focus on Labour Exploitation. Available at: https://labourexploitation.org/app/uploads/2025/06/Flex-Report-Blueprint-for-safer-and-fairer-migration-for-low-paid-work_final_30_June-.pdf (Accessed: 11 July 2025).Salganik, M.J. and Heckathorn, D.D. (2004) '5. Sampling and Estimation in Hidden Populations Using Respondent-Driven Sampling', *Sociological Methodology*, 34(1), pp. 193--240. Available at: https://doi.org/10.1111/j.0081-1750.2004.00152.x.Schwitters, A., Swaminathan, M. and Serwadda, D. (2012) 'Prevalence of rape and client-initiated gender-based violence among female sex workers: Kampala, uganda', *AIDS Behaviour*, 19(Supply Nr 1), pp. 68--76.Semaan, S. *et al.* (2009) 'Ethical and regulatory considerations in HIV prevention studies employing respondent-driven sampling', *International Journal of Drug Policy*, 20(1), pp. 14--27.Semaan, S. (2010) 'Time-space sampling and respondent-driven sampling with hard-to-reach populations', *Methodological Innovations Online*, 5(2), pp. 60--75.Singer, E. and Bossarte, R.M. (2006) 'Incentives for survey participation: when are they "coercive"?', *American journal of preventive medicine*, 31(5), pp. 411--418.Stevenson, M. and Cole, R. (2018) 'Modern slavery in supply chains: a secondary data analysis of detection, remediation and disclosure', *Supply Chain Management: An International Journal*, 23. Available at: https://doi.org/10.1108/SCM-11-2017-0382.Thompson, S. (2020) 'New estimates for network sampling'.Varman, R. *et al.* (2021) 'Normative Violence in Domestic Service: A Study of Exploitation, Status, and Grievability', *Journal of Business Ethics*, 171(4), pp. 645--665. Available at: https://www.jstor.org/stable/45390479 (Accessed: 3 November 2025).Vincent, K. and Thompson, S. (2017) 'Estimating population size with link-tracing sampling', *Journal of the American Statistical Association*, 112(519), pp. 1286--1295. Available at: https://doi.org/10.1080/01621459.2016.1212712.Volz, E. and Heckathorn, D. (2008) 'Probability Based Estimation Theory for Respondent Driven Sampling', *Journal of Official Statistics*, 24, pp. 79--97.Wang, J. *et al.* (2005) 'Respondent-driven sampling to recruit MDMA users: a methodological assessment', *Drug and alcohol dependence*, 78(2), pp. 147--157.Wejnert, C. and Heckathorn, D.D. (2008) 'Web-based network sampling: efficiency and efficacy of respondent-driven sampling for online research', *Sociological Methods & Research*, 37(1), pp. 105--134.Yauck, M. *et al.* (2022) 'Neighborhood Bootstrap for Respondent-Driven Sampling', *Journal of Survey Statistics and Methodology*, 10(2), pp. 419--438. Available at: https://doi.org/10.1093/jssam/smab057.Zhang, S.X. (2012) 'Measuring labour trafficking: a research note', *Crime, Law and Social Change*, 58, pp. 469--482.Zhang, S.X. *et al.* (2019) 'Victims without a voice: Measuring worst forms of child labor in the Indian State of Bihar', *Victims & Offenders*, 14(7), pp. 832--858.
+==========================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
+
+: Table 2. Preferred Prevalence Estimates for the Five Binary ILO-Aligned Indicators (UK Domestic Workers, N = 980,000). RDS-SS columns from neighbourhood-bootstrap 95% CIs (B = 1000); MBSU NSUM (Moderate: $\delta = 0.9$, $\tau = 0.85$) columns from neighbourhood-bootstrap 95% CIs. Indicators ordered from highest to lowest ILO severity (strong $\rightarrow$ medium). Source: Authors' own work. {#tbl-preferred-estimates}
