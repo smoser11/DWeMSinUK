@@ -133,6 +133,24 @@ The original survey data contained the following personally-identifying columns,
 
 Total: 17 PII columns stripped, leaving 191 non-PII columns intact across all four CSV files.
 
+A further round of anonymisation removed all free-text responses to "other, please specify" follow-up questions, on the grounds that free-text content in an n = 85 hidden-population sample can enable re-identification even when names and contact details are removed. The 14 stripped free-text columns and 7 mixed numeric/text columns are:
+
+- `q8_a` (nationality "other" specifier — single-respondent nationalities could be re-identifying)
+- `q18_a` (job-duties free-text)
+- `q34_a` (free-text reflection on work conditions)
+- `q44_a`, `q44_b` (physical-violence "specify" — kept numeric flag, stripped any text)
+- `q48_a` (verbal-abuse "specify")
+- `q51_a` (unpaid-tasks "specify")
+- `q58_a` (employer-type "other")
+- `q59_a` (recruitment-source "other")
+- `q67_a` (general-feeling free-text)
+- `q82_a` (advocacy-organisation "other")
+- `q85_90_93_96` (survey discovery "other")
+- `q86`, `q87_95`, `q98`, `q99`, `q100`, `q101`, `q103_a` (longer free-text responses)
+- `q26_a`, `q26_b` (specifier follow-ups)
+
+The underlying coded responses (q1, q5–q104, etc.) are retained verbatim, preserving the analytical content used by the R pipeline (composite risk index, binary indicator construction, RDS weighting). The free-text answers added qualitative texture but were not used in any of the quantitative analyses reported in the manuscript.
+
 All other survey-question columns (`q1`, `q5` onward) are retained verbatim. Network structure (`recruiter.id`, referral linkages) is preserved using the numeric `id` column, which is internal to the dataset and not linkable to external identifiers.
 
 The original (non-anonymised) raw data, survey-instrument source Excel files, and email logs are not included in this OSF package. They are retained on the authors' institutional storage and are available to the editor on confidential request to verify the anonymisation procedure if needed.
