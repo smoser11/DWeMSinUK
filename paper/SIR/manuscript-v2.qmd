@@ -126,17 +126,9 @@ one of which alone is sufficient to indicate forced labour. This medium/strong d
 hierarchy, chosen to span the ILO conceptual space efficiently within the constraints of a matched-instrument ego/alter survey design. Three are medium indicators --- excessive working hours,
 pay-related issues (combining wage withholding with elements of debt bondage), and limited access to help (combining restriction of movement with isolation, as both manifest in the same observable
 behaviour in the domestic-work context). Two are strong indicators --- threats and abuse (combining intimidation/threats with physical and sexual violence, which prior qualitative work suggests
-co-occur in this population: Yilmaz and Emberson 2023) and document and passport withholding. The remaining four ILO indicators --- abuse of vulnerability, deception, induced addiction, and sale of a
-person --- were not measured: the first two are too retrospective and judgemental to elicit reliably through a brief survey, and the last two are too rare in the UK domestic-work context to estimate
-meaningfully at our sample size (n=85). Where appropriate we note this scope limitation in the discussion of results.
+co-occur in this population: Yilmaz and Emberson 2023) and document and passport withholding. The remaining two ILO indicators --- abuse of vulnerability and deception --- are not measured as standalone binary prevalence indicators: both are too retrospective and judgemental to elicit reliably through a brief survey of n=85 respondents (the respondent would need to reconstruct intent and knowledge states from the perspective of months or years after the fact). Both are nonetheless included in the composite risk index (Section 4.2; ESM_1 Table 1, Categories 1 and 2). Where appropriate we note this scope limitation in the discussion of results.
 
-The composite risk index we construct is a synthetic indicator in the sense of Mazziotta and Pareto (2013, 2016), aggregating five binary indicators of labour exploitation into a single continuous
-quality-of-life-relevant measure. The five indicators correspond to formative rather than reflective measurement: an individual is exploited if they are subject to any of these conditions, and the
-conditions are constitutive rather than reflective of an underlying latent severity (Diamantopoulos and Siguaw 2006; Diamantopoulos et al. 2008). We adopt a non-compensatory weighting scheme in which
-the presence of any indicator contributes positive weight to the index but no indicator can offset another, consistent with the ILO operational definition of forced labour (ILO 2012, 2017). Polarity
-is uniform --- each indicator has the same direction with respect to the latent construct of exploitation severity. The choice of aggregation follows the guidance of Maggino (2017) and the SIR
-editorial team (Bartram et al. 2024): we use a weighted-additive index with the five ILO indicators given equal substantive weight (with a 0.35 weight assigned separately to NRM referral, reflecting
-its diagnostic priority in UK policy practice), and we conduct robustness assessment by perturbing the weights.
+The composite risk index we construct is a formative additive composite in the sense of Diamantopoulos and Siguaw (2006) and Mazziotta and Pareto (2013, 2016), aggregating all eleven ILO indicators of forced labour into a single continuous quality-of-life-relevant measure (see Section 3.2, Table M for the indicator-to-category mapping; ESM_1 Table 1 for per-category weights). The composite is formative rather than reflective: an individual is exploited if they are subject to any of these conditions, and the conditions are constitutive rather than reflective of an underlying latent severity (Diamantopoulos and Siguaw 2006; Diamantopoulos et al. 2008). Polarity is uniform across categories --- each indicator has the same direction with respect to the latent construct of exploitation severity. The choice of aggregation follows the guidance of Maggino (2017) and the SIR editorial team (Bartram et al. 2024): we use a weighted additive index in which weights are anchored on the ILO medium/strong severity gradation (strong-indicator categories receive larger sub-weights than medium-indicator categories), and we conduct robustness assessment by perturbing the weights (Section 5.5). Two further evidentiary markers --- NRM-referral history and payment below the national living wage --- are reported as separate binary flags and are not part of the composite, as their direct evidentiary status under UK policy makes them more useful read independently of the composite construction.
 
 ## 2.1 Evaluating the Degree of Risk
 In our study, we conceptualise the risk of labour exploitation from the workers' perspective. We conceive severe forms of labour exploitation such as forced labour as one end of a spectrum ranging
@@ -218,10 +210,40 @@ migrant domestic worker. The data collection that underpins the analysis present
 The survey instrument was designed to capture both egocentric (ego-based) and altercentric (alter-based) network information, enabling the application of both RDS and NSUM estimation methods.
 Composite measures to quantify the extent to which respondents were at risk of labour exploitation, including severe forms of exploitation such as forced labour, were constructed from existing
 exploitation typologies, notably the ILO's Indicators of Forced Labour (I.L.O., 2012).
+The eleven ILO indicators of forced labour (ILO 2012, 2017) provide the operational framework for our measurement strategy. Table M (below) maps each ILO indicator to its measurement status in this paper: whether it is measured directly as a binary prevalence indicator (reported in Section 4.3), whether it is included in the formative additive composite risk index (reported in Section 4.2), and which survey questions elicit the ego- and alter-based reports.
 
-The survey consisted of 11 composite indicators and included questions related to domestic workers' level of job satisfaction, employment conditions, and demographic data such as nationality, age, and
-gender. Based on these indicators, we operationalize exploitation in two ways: (1) five dichotomous (binary) indicators classifying respondents as exploited or not exploited based on threshold
-criteria, and (2) one continuous risk index designed to capture gradations of vulnerability across the full sample.
++-----+---------------------------------------+--------------+--------------------------+--------------------+----------------+
+| #   | ILO indicator (2012, 2017)            | ILO severity | Binary prevalence        | Composite index    | Survey item(s) |
+|     |                                       |              | indicator (Section 4.3)  | (Section 4.2,      |                |
+|     |                                       |              |                          | Category)          |                |
++:===:+:======================================+:============:+:=========================+:==================:+:==============:+
+| 1   | Abuse of vulnerability                | Medium       | --- (composite only)     | Yes (Cat 1)        | Q29, Q51       |
++-----+---------------------------------------+--------------+--------------------------+--------------------+----------------+
+| 2   | Deception                             | Medium       | --- (composite only)     | Yes (Cat 2)        | Q45            |
++-----+---------------------------------------+--------------+--------------------------+--------------------+----------------+
+| 3   | Restriction of movement               | Medium       | Limited access to help   | Yes (Cat 3)        | Q32, Q46       |
++-----+---------------------------------------+--------------+--------------------------+--------------------+----------------+
+| 4   | Isolation                             | Medium       | Limited access to help   | Yes (Cat 4)        | Q65            |
++-----+---------------------------------------+--------------+--------------------------+--------------------+----------------+
+| 5   | Physical and sexual violence          | Strong       | Threats and abuse        | Yes (Cat 5)        | Q44 (5c1, 5c1-b) |
++-----+---------------------------------------+--------------+--------------------------+--------------------+----------------+
+| 6   | Intimidation and threats              | Strong       | Threats and abuse        | Yes (Cat 6)        | Q47            |
++-----+---------------------------------------+--------------+--------------------------+--------------------+----------------+
+| 7   | Retention of identity documents       | Strong       | Document withholding     | Yes (Cat 7)        | Q70            |
++-----+---------------------------------------+--------------+--------------------------+--------------------+----------------+
+| 8   | Withholding of wages                  | Medium       | Pay-related issues       | Yes (Cat 8)        | Q42            |
++-----+---------------------------------------+--------------+--------------------------+--------------------+----------------+
+| 9   | Debt bondage                          | Medium       | Pay-related issues       | Yes (Cat 9)        | Q39            |
++-----+---------------------------------------+--------------+--------------------------+--------------------+----------------+
+| 10  | Abusive working and living conditions | Medium       | Partial (Q48 feeds       | Yes (Cat 10)       | Q48, Q63, Q72, |
+|     |                                       |              | Threats and abuse)       |                    | Q76            |
++-----+---------------------------------------+--------------+--------------------------+--------------------+----------------+
+| 11  | Excessive overtime                    | Medium       | Excessive working hours  | Yes (Cat 11)       | Q16, Q61, Q62  |
++-----+---------------------------------------+--------------+--------------------------+--------------------+----------------+
+
+: Table M. Mapping of the eleven ILO Indicators of Forced Labour to this paper's measurement scheme. The five binary prevalence indicators (right-hand grouping in column 4: document withholding, threats and abuse, pay-related issues, limited access to help, excessive working hours) jointly cover nine of the eleven ILO indicators (all except abuse of vulnerability and deception, which are captured in the composite only). The composite risk index covers all eleven ILO indicators through eleven weighted sub-categories. Two further evidentiary markers --- NRM-referral history (Q80) and payment below the national living wage (Q36) --- are reported as separate binary flags and are not part of the composite. Full per-category weight values are given in ESM_1, Table 1. Source: Authors' construction following ILO (2012, 2017). {#tbl-indicator-mapping}
+
+Based on this mapping, we operationalise exploitation in two ways: (1) five binary prevalence indicators classifying respondents as exploited or not exploited on each dimension based on threshold criteria (Section 4.3), and (2) one continuous formative additive composite risk index designed to capture gradations of vulnerability across the full sample (Section 4.2).
 
 Ego-based questions capture respondents' own experiences of exploitation (used for RDS estimation), while alter-based questions ask respondents to report on the exploitation experiences of domestic
 workers they know (used for NSUM estimation). See Online Resource ESM_1 and ESM_2 for details of these survey questions and the construction of comparable ego- and alter-based indicators.
@@ -478,7 +500,7 @@ triangulation of ego-based and alter-based prevalence estimates on a like-for-li
 supporting both indicator-level prevalence estimates and a continuous composite risk index for analyses that require ordinal severity gradation.
 
 Dual conceptualisation of exploitation: We introduce two distinct approaches to operationalising exploitation. First, we treat exploitation as a binary outcome (exploited versus not exploited),
-enabling direct comparison of prevalence estimates across RDS and NSUM methods. Second, we construct a continuous composite risk index spanning thirteen indicator categories drawn from the ILO
+enabling direct comparison of prevalence estimates across RDS and NSUM methods. Second, we construct a continuous formative additive composite risk index spanning eleven indicator categories (one per ILO indicator) drawn from the ILO
 conceptual framework, anchored to the ILO medium/strong severity hierarchy.
 
 Combining RDS and NSUM on the same survey instrument: By designing a survey that captures both ego and alter information, we are able to apply RDS and NSUM to the same sample. This dual approach has
@@ -549,10 +571,7 @@ not be extrapolated beyond this sample.
 On indicator coverage: the paper measures five ILO indicators directly (excessive working hours, pay-related issues, threats and abuse, document withholding, limited access to help --- see Section 2.1
 for the mapping to the eleven canonical ILO indicators). Two further ILO indicators (abuse of vulnerability, deception) are absorbed thematically into the composite risk index but not estimated as
 standalone prevalence figures, because they require retrospective interpretation that brief-survey self-report cannot reliably elicit at our sample size --- a respondent asked "were you deceived about
-your working conditions" must reconstruct intent and knowledge states from the perspective of months or years after the fact. Two further indicators (induced addiction, sale of a person) are too rare
-in the UK domestic-work context to estimate meaningfully at n = 85 --- we record zero affirmative responses to both indicators in this sample, but a zero in an n = 85 sample is statistically
-uninformative about the population rate. Debt bondage is partially captured under the pay-related issues composite. The paper's claim is therefore not "prevalence of forced labour as defined by the
-eleven ILO indicators" but "prevalence of nine of the eleven ILO indicators, with two principled exclusions and one thematic consolidation", as set out in the mapping in Section 2.1.
+your working conditions" must reconstruct intent and knowledge states from the perspective of months or years after the fact. Both unmeasured ILO indicators (abuse of vulnerability and deception) are nonetheless retained in the formative composite risk index (Section 4.2; ESM_1, Table 1, Categories 1 and 2). The paper's claim is therefore not "prevalence of forced labour as defined by the eleven ILO indicators" but "prevalence of nine of the eleven ILO indicators as direct binary measures, with the remaining two (abuse of vulnerability and deception) captured through the composite index only", as set out in the master mapping in Section 3.2 (Table M).
 
 Taking the divergence diagnostic, the generalisability qualifications, and the indicator coverage qualifications together, what does this design licence the paper to claim? Not a single point estimate
 of "the prevalence of forced labour among UK domestic workers", because no single point estimate is identified --- the truth for any given indicator lies between the ego-based and alter-based reports,
