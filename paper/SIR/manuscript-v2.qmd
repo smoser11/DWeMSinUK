@@ -283,9 +283,33 @@ workers. The age structure of the domestic workers was skewed towards those over
 
 
 ## 3.4 Estimation Framework
-We analysed the survey sample using multiple estimation models to assess robustness and conduct sensitivity analyses (see ESM_2). The dual structure of our survey instrument---capturing both
-ego-based and alter-based network information---enables two fundamentally different estimation strategies: Respondent-Driven Sampling (RDS) estimators and Network Scale-Up Methods (NSUM). All analysis
-code is available at an anonymised OSF mirror: <https://osf.io/vf5yb/overview?view_only=becc2db3b49c4b258015b648867bf208>. The repository (currently private on GitHub at <https://github.com/smoser11/DWeMSinUK>) will be made public on acceptance.
+We analysed the survey sample using multiple estimation models to assess robustness and conduct sensitivity analyses (see ESM_2). The dual structure of our survey instrument---capturing both ego-based and alter-based network information---enables two fundamentally different estimation strategies: Respondent-Driven Sampling (RDS) estimators and Network Scale-Up Methods (NSUM). All analysis code is available at an anonymised OSF mirror: <https://osf.io/vf5yb/overview?view_only=becc2db3b49c4b258015b648867bf208>. The repository (currently private on GitHub at <https://github.com/smoser11/DWeMSinUK>) will be made public on acceptance.
+
+Before describing each estimator in turn, Table E summarises the information each method uses, the population quantity each method targets (its *estimand*), and the principal source of identification risk for each. The four estimators do not target the same quantity. RDS-SS and MA-RDS estimate own-experience prevalence among the RDS-reachable population of migrant domestic workers; NSUM estimates network-visible prevalence among domestic-worker alters as reported by the respondent; the composite risk index targets the RDS-adjusted mean severity score. Reading the headline numbers of Section 4 against this table is essential: the order-of-magnitude RDS--NSUM gap reported there is in large part a difference of estimand, not a disagreement about a single underlying quantity (see Section 5.3 for the diagnostic interpretation).
+
++---------------------+--------------------------------+------------------------------------+--------------------------------------+
+| Method              | Information used               | Estimand                           | Main vulnerability                   |
++:====================+:===============================+:===================================+:=====================================+
+| RDS-SS              | Respondent's own experience    | Own-experience prevalence among    | Seed dependence, shallow             |
+| (Section 4.3)       | + reported degree +            | the RDS-reachable population of    | recruitment chains, homophily,       |
+|                     | recruitment-chain structure    | UK migrant domestic workers        | unobserved degree heterogeneity      |
++---------------------+--------------------------------+------------------------------------+--------------------------------------+
+| MA-RDS              | Same as RDS-SS, plus a working | Model-assisted own-experience      | Network-model misspecification,      |
+| (Section 4.4,       | Exponential Random Graph       | prevalence (same target as RDS-SS  | convergence limits at small $n$;     |
+| supporting)         | network model conditional on   | but with explicit network          | does not reliably converge for       |
+|                     | seeds, degree, and homophily   | structure adjustment)              | continuous outcomes                  |
++---------------------+--------------------------------+------------------------------------+--------------------------------------+
+| NSUM (MBSU)         | Respondent reports about       | Network-visible prevalence among   | Transmission bias, visibility        |
+| (Section 4.3,       | alters in their personal       | domestic-worker alters in the      | gradient across exploitation         |
+| preferred)          | network                        | respondents' aggregated network    | behaviours, alter misclassification, |
+|                     |                                |                                    | unknown true-positive rate ($\tau$)  |
++---------------------+--------------------------------+------------------------------------+--------------------------------------+
+| Composite risk      | Respondent's own indicator     | RDS-adjusted population mean of    | Weight specification, construct      |
+| index (Section 4.2) | profile across all eleven      | the formative-additive severity    | validity, formative-vs-reflective    |
+|                     | ILO indicators                 | score                              | measurement assumptions              |
++---------------------+--------------------------------+------------------------------------+--------------------------------------+
+
+: Table E. Estimands and identification vulnerabilities of the four estimators applied in this paper. Each row characterises one estimator: what information from the survey it uses, what population quantity it targets, and what the principal threat to identification is. Source: Authors' construction. {#tbl-estimands}
 
 To the best of the authors' knowledge, the combined use of both methods in the same study is rare in peer-reviewed academic research, though it has appeared in government-funded reports and technical
 documents from NGOs and research organizations (IST Research and University of California, Los Angeles, 2020; Hickman *et al.*, 2025). This paper contributes to the emerging methodological literature
