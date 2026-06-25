@@ -263,7 +263,7 @@ workers. The age structure of the domestic workers was skewed towards those over
 ## 3.4 Estimation Framework
 We analysed the survey sample using multiple estimation models to assess robustness and conduct sensitivity analyses (see ESM_2). The dual structure of our survey instrument---capturing both
 ego-based and alter-based network information---enables two fundamentally different estimation strategies: Respondent-Driven Sampling (RDS) estimators and Network Scale-Up Methods (NSUM). All analysis
-code is available at an anonymised OSF mirror: [OSF URL TO BE INSERTED]. The repository (currently private on GitHub at <https://github.com/smoser11/DWeMSinUK>) will be made public on acceptance.
+code is available at an anonymised OSF mirror: <https://osf.io/vf5yb/overview?view_only=becc2db3b49c4b258015b648867bf208>. The repository (currently private on GitHub at <https://github.com/smoser11/DWeMSinUK>) will be made public on acceptance.
 
 To the best of the authors' knowledge, the combined use of both methods in the same study is rare in peer-reviewed academic research, though it has appeared in government-funded reports and technical
 documents from NGOs and research organizations (IST Research and University of California, Los Angeles, 2020; Hickman *et al.*, 2025). This paper contributes to the emerging methodological literature
@@ -630,6 +630,20 @@ The dual-method design demonstrated here is replicable. The matched ego-alter su
 can be applied to other hidden populations relevant to SDG Target 8.7 monitoring --- undocumented agricultural workers, sex workers, informal-construction day labourers, kafala-system migrants in
 Gulf-state economies, and any population for which official statistics are silent. The methodology presented here is one component of a broader monitoring architecture for credible, comparable, and
 policy-useful prevalence estimation in support of the 2030 SDG commitments.
+
+# Declarations
+
+**Funding.** [To be completed: funding sources, grant numbers, or "The authors received no specific funding for this work."]
+
+**Competing interests.** [To be completed: disclose any competing financial or non-financial interests, or "The authors have no competing interests to declare."]
+
+**Ethics approval and consent to participate.** [To be completed: ethics committee name and reference number, consent procedures. Note: the manuscript currently refers to "the lead author's School Research Ethics Committee" in Section 3 — this language requires anonymisation for double-anonymous review.]
+
+**Data availability.** Anonymised respondent-level data and all analysis code are available at the project's Open Science Framework mirror: [OSF URL to be inserted on submission]. The underlying GitHub repository is currently private and will be made public on acceptance.
+
+**Use of large language models.** The authors used a large language model assistant (Anthropic Claude) for textual editing and for code-review support during R script development. All final analysis decisions, statistical interpretations, and prose are the authors' own. No generative models were used to simulate, augment, or fabricate data. This disclosure follows the Springer Nature editorial guidance on the use of generative AI tools in scholarly work.
+
+**Authors' contributions.** [To be completed.]
 
 References
 ==========
