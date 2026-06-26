@@ -1,0 +1,36 @@
+DWeMSinUK Analysis Pipeline - summary
+Generated: 2026-06-25 18:49:08.228681
+
+Artefacts produced:
+  [x] Cleaned data
+  [x] Prepared data
+  [x] RDS estimation results
+  [x] Bootstrap CIs (per-method)
+  [x] NSUM estimation results
+  [x] NSUM tau sensitivity
+  [x] Bayesian appendix summary
+  [x] Bayesian seed-check
+  [x] Paper figures (8)
+
+Pipeline steps run:
+  run_data_cleaning = TRUE
+  run_data_preparation = TRUE
+  run_rds_estimation = TRUE
+  run_bootstrap_analysis = TRUE
+  run_nsum_estimation = TRUE
+  run_nsum_tau_sensitivity = TRUE
+  run_bayesian_appendix = TRUE
+  run_paper_figures = TRUE
+  run_subgroup_analysis = TRUE
+  run_latex_tables = TRUE
+
+Output locations:
+  data/processed/   - processed RDS data
+  output/           - top-level cached results (.RData, .rds)
+  output/tables/    - .csv summaries
+  output/figures/   - cached figures (including output/figures/paper/ canonical set)
+  output/reports/   - text summary reports
+
+For manual / out-of-band steps:
+  bash R/analysis/06-run-all.sh   - Bayesian MA sensitivity (~overnight)
+
