@@ -106,7 +106,7 @@ This paper makes two contributions. First, we apply RDS and NSUM to the same sur
 
 The remainder of the paper is organised as follows. Section 2 conceptualises labour exploitation as a graded formative indicator framework measured by five ILO-aligned indicators arranged hierarchically by
 severity. Section 3 describes the matched-instrument survey design (Section 3.1) and the dual sampling approach combining RDS and NSUM (Section 3.2). Section 4 presents prevalence estimates by
-indicator and method, including frequentist RDS-I/RDS-II/RDS-SS estimators (Section 4.1), Bayesian Model-Assisted inference (Section 4.2), and NSUM with continuous-$\tau$ sensitivity analysis (Section
+indicator and method, including frequentist RDS-I/RDS-II/RDS-SS estimators (Section 4.1), Bayesian Model-Assisted inference (Section 4.2), and NSUM with sensitivity analysis (Section
 4.3). Section 5 reads the RDS-NSUM divergence as diagnostic evidence about visibility within workers' personal networks and discusses implications for SDG 8.7 monitoring.
 
 # Conceptualising Labour Exploitation and the Degree of Risk

@@ -487,7 +487,7 @@ The dual-method design demonstrated here is replicable. The matched ego-alter su
 
 **Competing interests.** The authors have no competing interests to declare.
 
-**Ethics approval and consent to participate.** [To be completed: ethics committee name and reference number, consent procedures. Note: the manuscript currently refers to "the lead author's School Research Ethics Committee" in Section 3 — this language requires anonymisation for double-anonymous review.]
+**Ethics approval and consent to participate.** The data collection that underpins the analysis presented in this paper was given favourable ethical approval by the lead author’s School Research Ethics Committee in January 2023. All participants were informed about the aims of the study, provided informed consent, and were assured that participation was voluntary and confidential.
 
 **Data availability.** Anonymised respondent-level data and all analysis code are available at the project's Open Science Framework mirror: <https://osf.io/vf5yb/overview?view_only=becc2db3b49c4b258015b648867bf208>. The underlying GitHub repository is currently private and will be made public on acceptance.
 

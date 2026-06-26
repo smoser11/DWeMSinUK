@@ -4,7 +4,7 @@
 
 **OSF project:** <https://osf.io/vf5yb/>
 
-**Repository contents:** all data, code, figures, tables, and supplementary materials needed to reproduce the tables, figures, estimates, and ESMs reported in the manuscript. Author-identifying material has been removed from data files. This OSF folder is self-contained: scripts use `here()` paths relative to this folder's root (the `.here` marker file at the top of `OSF/` makes the resolution work).
+**Repository contents:** all data, code, figures, tables, and supplementary materials needed to reproduce the tables, figures, estimates, and ESMs reported in the manuscript are compressed in the file `Archive.zip`. Author-identifying material has been removed from data files. This OSF folder is self-contained: scripts use `here()` paths relative to this folder's root (the `.here` marker file at the top of `OSF/` makes the resolution work).
 
 ---
 
@@ -108,9 +108,9 @@ quarto render manuscript.qmd --to pdf
 
 ### About the cleaning step (01-data_cleaning.R)
 
-The original 01 script reads the raw survey CSV (`data/raw/UpdateSelimRiskIndex-sum_cat.csv`) to produce the cleaned data files. **The raw CSV is not included in this OSF package** because it contains PII (names, emails, phone numbers, identifying free-text responses).
+The original 01 script reads the raw survey CSV (`data/raw/UpdateSelimRiskIndex-sum_cat.csv`) to produce the cleaned data files. **The raw CSV is not included in this OSF package** because it contains PII.
 
-The OSF version of 01-data_cleaning.R loads the already-anonymised `data/processed/data_full.csv` instead and writes the `cleaned_data.RData` cache that 02-data_preparation.R expects. So running 01-data_cleaning.R in the OSF package is a no-op equivalent to copying the anonymised CSV into the cache file. Reviewers who want to verify the cleaning logic against the raw data can request access from the editor (see PII note below).
+The OSF version of 01-data_cleaning.R loads the already-anonymised `data/processed/data_full.csv` instead and writes the `cleaned_data.RData` cache that `02-data_preparation.R` expects. Reviewers who want to verify the cleaning logic against the raw data can request access from the editor (see PII note below).
 
 ---
 
@@ -135,7 +135,6 @@ The free-text columns add qualitative texture but were not used in any quantitat
 
 The underlying coded responses (`q1`, `q5`–`q104`) are retained verbatim across all four CSVs, preserving every analytical column the R pipeline reads. Network structure (`recruiter.id`, referral linkages) is preserved through the numeric `id` column, which is internal to the dataset and not linkable to external identifiers.
 
-The original raw data, the survey-instrument source Excel files, and email logs are retained on the authors' institutional storage and are available to the editor on confidential request to verify the anonymisation procedure if needed.
 
 ---
 
