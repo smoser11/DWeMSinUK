@@ -40,6 +40,18 @@
 # Other large derived binaries
 *.RData
 *.rds
+# LaTeX build artifacts (regenerable)
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.log
+*.run.xml
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.qmd.bak
+
 # Microsoft Word lock files (created when a .docx is open)
 ~$*.docx
 ~$*.doc
