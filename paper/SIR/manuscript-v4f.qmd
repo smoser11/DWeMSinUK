@@ -12,8 +12,8 @@ abstract: |
   Reliable indicators for SDG Target 8.7 are difficult to construct because the populations most affected by labour exploitation are often absent from standard household and labour-force surveys. This paper develops a matched ego/alter survey design for measuring labour exploitation among hidden populations. We apply respondent-driven sampling and a network scale-up approach to the same survey instrument, asking migrant domestic workers in the United Kingdom both about their own experiences and about exploitation among domestic workers they know. The design produces two complementary estimands: own-experience prevalence and network-visible prevalence. We measure five ILO-aligned indicators: excessive working hours, pay-related issues, limited access to help, threats and abuse, and document withholding. We also construct a formative composite risk index to capture gradations of exploitation severity. In a civil-society-mediated web-RDS sample of 85 migrant domestic workers, RDS-SS estimates indicate high own-experience prevalence, while network scale-up estimates are substantially lower. The divergence is consistent with a visibility gradient in which some exploitation behaviours are more observable across peer networks than others. The results should be interpreted as exploratory population-adjusted estimates for an RDS-reachable population rather than definitive national prevalence figures.  The relative ordering of prevelance of different forms of laour exploitation are robust across a number of paramters. The paper contributes a replicable measurement design for hidden-population social indicators relevant to SDG 8.7 monitoring.
 Keywords: [social indicators, SDG 8.7, labour exploitation, migrant domestic work, respondent-driven sampling, network scale-up method]
 bibliography:
-  - ce-library.bib
-  - sm-references.bib
+  - ../references/ce-library.bib
+  - ../references/sm-cited.bib
 csl: ../references/apa.csl
 fontsize: 12pt
 geometry: margin=1in

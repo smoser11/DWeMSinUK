@@ -6,6 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This repository contains a research project analyzing domestic worker exploitation and modern slavery in the UK using Network Scale-Up Method (NSUM) and Respondent-Driven Sampling (RDS). The project implements multiple statistical estimation methods to measure prevalence of labor exploitation among UK domestic workers.
 
+**Active submission**: Social Indicators Research (Springer). Current draft: `paper/SIR/manuscript-v4e.qmd` (Quarto) and compiled outputs in `paper/SIR/`.
+
+**Authors**: Caroline Emberson (lead, Nottingham University Business School) & Scott Moser (School of Politics and International Relations, University of Nottingham).
+
 ## Architecture and Code Structure
 
 ### Core Directory Structure
@@ -20,178 +24,126 @@ DWeMSinUK/
 │   ├── analysis/                 # Statistical estimation methods
 │   │   ├── 03-rds_estimation.R   # RDS-I/II/SS estimation + bootstrap
 │   │   ├── 04-bootstrap_analysis.R
-│   │   ├── 05-nsum_estimation.R  # NSUM estimation
-│   │   ├── 06-*.R                # Sensitivity, Bayesian, comparison
-│   │   ├── 07-*.R                # Convergence diagnostics + visualisation
-│   │   ├── 08-netclust_subgroup_analysis.R    # Clustered SS-PSE (was *_FIXED.R)
-│   │   ├── 08b-simple_subgroup_analysis.R     # RDS by subgroup (was *_FIXED.R)
-│   │   ├── NSUM/                 # NSUM bootstrap and regeneration scripts
-│   │   │   ├── Boot_Step1.r
-│   │   │   ├── Boot_Step2.R      # canonical version (was Boot_Step2_FIXED.R)
-│   │   │   ├── Boot_Step3.R
-│   │   │   └── REGENERATE_NSUM_*.R
-│   │   └── _docs/                # Workflow notes, refactoring docs, READMEs
+│   │   ├── 05-nsum_estimation.R  # NSUM estimation (uses modules below)
+│   │   ├── 05b-nsum_tau_sensitivity.R   # Continuous-tau NSUM sensitivity
+│   │   ├── 06-bayesian_appendix.R       # Consolidates overnight MA runs
+│   │   ├── 06-run-all.sh                # Overnight bash driver (see below)
+│   │   ├── 06-run-single.R              # Single MA.estimates call
+│   │   ├── 07-paper_figures.R           # All publication figures
+│   │   ├── 08-netclust_subgroup_analysis.R   # Clustered SS-PSE (netclust required)
+│   │   ├── 08b-simple_subgroup_analysis.R    # RDS by subgroup
+│   │   ├── 09-create_latex_tables.R          # LaTeX table generation
+│   │   ├── nsum_core_estimators.R       # NSUM estimation engine
+│   │   ├── nsum_bootstrap.R             # NSUM bootstrap CIs
+│   │   ├── nsum_robust_adjustment.R     # Feehan & Salganik adjustment
+│   │   ├── nsum_visualization.R         # NSUM plots
+│   │   └── NSUM/                        # Three-step NSUM bootstrap scripts
+│   │       ├── Boot_Step1.r / Boot_Step2.R / Boot_Step3.R
+│   │       └── REGENERATE_NSUM_*.R
 │   ├── utils/
 │   │   └── helper_functions.R
-│   ├── tests/                    # R test scripts (moved here from root tests/)
+│   ├── tests/                    # R test scripts
 │   └── archive/                  # Archived old/experimental scripts
-│       ├── old_versions/         # Previous script versions (incl. *_pre-fix)
-│       ├── analysis_consolidation_2025/   # Aug 2025 reorg intermediates
-│       ├── nsum_consolidation_2025/       # Sep-Oct 2025 NSUM intermediates
-│       ├── estimator_versions/   # Versioned 06-MODULAR_estimator drafts
-│       ├── experiments/          # Experimental scripts
-│       └── scratch_work/         # Daily work files
-├── data/                         # Data files
+├── data/
 │   ├── raw/                      # Original survey data
 │   ├── processed/                # Cleaned datasets (.RData/.csv)
 │   └── survey/                   # Survey instruments, codebooks
 ├── output/                       # Analysis outputs
-│   ├── figures/                  # Plots and visualisations
-│   ├── tables/                   # Summary tables and estimates
+│   ├── figures/                  # Plots and visualisations (.png, tracked)
+│   ├── tables/                   # Summary tables (.csv, tracked)
 │   ├── reports/                  # Generated analysis reports
-│   ├── manuscripts/              # Manuscript-specific outputs
-│   └── (large binaries gitignored — see "Tracked vs untracked" below)
-├── paper/                        # Manuscript and submission materials
-│   ├── OneDrive_1_22-05-2026/    # CURRENT SIR submission package
-│   │   └── SIR/                  # Submitted draft, ESM files, figures, tables
-│   ├── archive/                  # All historical draft versions (IJOPM, BJMM, etc.)
-│   ├── decisions/                # Desk-rejection PDFs from IJOPM, JBE, IRJ, BJIR
-│   ├── references/               # .bib files, citation style, cited papers
-│   └── supporting/               # Tables, figures, descriptive stats, methods writeups
-├── correspondence/               # Project email history (merges old emails/ folder)
-│   ├── 2023/                     # 55 .eml / .txt files
-│   ├── 2024/                     # 60 files
-│   ├── 2025/                     # 23 files (incl. submission-related)
-│   ├── 2026/                     # 9 files (IRJ/BJIR responses, SIR planning)
-│   └── undated/                  # 123 files without parseable date headers
-├── Notes/                        # Research notes (Markdown)
-├── Literature/                   # Cited PDFs
-├── Replication/                  # External replication studies (Gile, Handcock)
-├── GNSUM/                        # G-NSUM specific materials (transcripts, notes)
-├── CRAN/                         # Vendored R-package source tarballs (kept tracked)
-└── _snapshots/                   # (GITIGNORED) safety-net tarballs from the
-                                  #   2026-05-22 reorganisation
+│   └── logs/                     # Bash run logs (gitignored)
+├── paper/
+│   ├── SIR/                      # CURRENT submission (manuscript-v4e.qmd + ESMs)
+│   ├── archive/                  # Historical draft versions (IJOPM, BJMM, etc.)
+│   ├── decisions/                # Desk-rejection PDFs
+│   └── references/               # .bib files and cited papers
+├── correspondence/               # Project email history, by year
+├── CRAN/                         # Vendored R-package source tarballs (tracked)
+└── _snapshots/                   # GITIGNORED safety-net tarballs (2026-05-22 reorg)
 ```
 
 ### Tracked vs untracked
 
-After the 2026-05-22 reorganisation:
+- **Source code, data, and manuscripts are tracked.**
+- **Derived analysis outputs are gitignored** (`output/*.RData`, `output/*.rds`, `output/nsum_*/`, `output/archive_*/`, `output/logs/`). They stay on local disk so the pipeline can use cached intermediates via `force_recompute = FALSE`.
+- **`Meetings/` and `_snapshots/` are gitignored.**
+- **`CRAN/` is tracked** as a vendored package backup (especially `netclust`, which has known incompatibilities with R 4.5+ and is not on CRAN).
 
-- **Source code, data, and the manuscript are tracked.**
-- **Derived analysis outputs are gitignored** (`output/*.RData`, `output/*.rds`,
-  `output/nsum_*/`, `output/archive_*/`, etc.). They stay on local disk so
-  the R pipeline can use cached intermediates via `force_recompute = FALSE`,
-  but they don't bloat git history. The snapshot at commit `722609c` (pushed
-  to GitHub) is the canonical "frozen" version of the outputs.
-- **`Meetings/` and `_snapshots/` are gitignored** and stay on local disk
-  only. The snapshot tarballs preserve the pre-reorg state.
-- **`CRAN/` is tracked** as a vendored package backup against future
-  upstream churn (especially `netclust`, which has known incompatibilities
-  with R 4.5+ and is not on CRAN).
+## Running the Analysis
 
-### Key Analysis Files
-- `R/00-main_pipeline.R` - Master script that runs the complete analysis pipeline
-- `R/config.R` - Centralized global configuration for all analyses
-- `R/data_processing/01-data_cleaning.R` - Raw data import, cleaning, and network size calculation
-- `R/data_processing/02-data_preparation.R` - CE's comparable indicators and RDS weight calculation
-- `R/analysis/03-rds_estimation.R` - RDS-I/II/SS estimation with configurable bootstrap confidence intervals
-- `R/analysis/04-bootstrap_analysis.R` - Standalone bootstrap analysis (can be integrated or separate)
-- `R/analysis/05-nsum_estimation.R` - Network scale-up method population estimates
-- `R/analysis/06-*.R` - Extended sensitivity analysis, Bayesian methods, and result comparisons
-- `R/analysis/07-*.R` - Convergence diagnostics and comprehensive visualization
-- `R/analysis/08-*.R` - Netclust clustered SS-PSE and nationality subgroup analyses
-- `R/utils/helper_functions.R` - Shared utility functions with proper path handling
-
-### Data Processing Pipeline
-1. Raw survey data is imported from `data/raw/`
-2. Data cleaning applies standardized column names and validation
-3. Network variables are calculated (degree measures, recruiter relationships)
-4. Processed data is saved as `.RData` files in `data/processed/`
-5. Multiple estimation methods are applied with results saved to `output/`
-
-### Statistical Methods Implemented
-- **RDS Estimators**: RDS-I, RDS-II, RDS-SS for different population sizes
-- **Bootstrap Methods**: Neighborhood bootstrap and tree bootstrap for confidence intervals
-- **NSUM**: Network scale-up method for hidden population estimation
-- **Risk Index**: 13-category risk assessment with weighted scoring
-
-## Common Development Commands
-
-### Running Complete Analysis Pipeline
+### Complete pipeline
 ```r
-# Run entire analysis pipeline (recommended)
 source("R/00-main_pipeline.R")
+```
+This sources `R/config.R`, sets `skip_execution <- FALSE`, then runs all nine steps in sequence. Toggle individual steps by editing `pipeline_config` flags at the top of `00-main_pipeline.R`.
 
-# Or run individual steps
+### Individual pipeline steps
+```r
 source("R/data_processing/01-data_cleaning.R")
-source("R/data_processing/02-data_preparation.R") 
+source("R/data_processing/02-data_preparation.R")
 source("R/analysis/03-rds_estimation.R")
 source("R/analysis/04-bootstrap_analysis.R")
 source("R/analysis/05-nsum_estimation.R")
+source("R/analysis/05b-nsum_tau_sensitivity.R")
+source("R/analysis/06-bayesian_appendix.R")   # only after bash step below
+source("R/analysis/07-paper_figures.R")
+source("R/analysis/08b-simple_subgroup_analysis.R")
+source("R/analysis/09-create_latex_tables.R")
 ```
 
-### Running Specific Analysis Methods
+### Bayesian MA estimation (step 6 — overnight)
+Step 6 has a prerequisite bash driver that must run first. Each `MA.estimates` call at N=50,000 takes ~2 hours; the full job runs overnight:
+```bash
+bash R/analysis/06-run-all.sh   # resumable; skips already-completed .RData files
+```
+Then consolidate in R:
 ```r
-# Individual analysis functions (after data preparation)
-rds_results <- run_rds_estimation()      # RDS estimates with bootstrap CIs
-nsum_results <- run_nsum_estimation()    # NSUM population estimates
-comparison <- run_comparison_analysis()  # RDS vs NSUM comparison
+source("R/analysis/06-bayesian_appendix.R")
 ```
 
-### Data Processing
+### Running tests
 ```r
-# Clean and prepare data
-data <- read_clean_data()
-processed_data <- process_network_data(data)
-
-# Save processed data
-save(processed_data, file = "data/processed/prepared_data.RData")
+source("R/tests/test_rds_functions.R")
+source("R/tests/test_nsum_estimation.R")
+source("R/tests/test_ma_extraction.R")
+# quick smoke-test
+source("R/tests/QUICK_TEST_nsum.R")
 ```
 
-### Paper Generation
+### Rendering the manuscript
 ```r
-# Render current Quarto manuscript (main paper)
-quarto::quarto_render("paper/IJOPM_paperDraft_202050930.qmd")
-
-# Alternative papers
-quarto::quarto_render("paper/BJMMcorner-draft.qmd")
-rmarkdown::render("paper/DWeMSinUK.Rmd")
+# Current draft
+quarto::quarto_render("paper/SIR/manuscript-v4e.qmd")
 ```
+Compiled PDFs, docx, and TeX outputs for each draft version are tracked in `paper/SIR/`.
 
-## Important Technical Details
+## `skip_execution` flag pattern
+
+Every analysis script checks `exists("skip_execution") && !skip_execution` before running its main body. When you `source()` a script directly for interactive use, the flag is unset so the script runs. When the master pipeline sets `skip_execution <- FALSE`, it explicitly enables execution. This lets scripts be sourced for their function definitions without triggering side effects.
+
+## Key Technical Details
 
 ### Population Parameters
-- UK domestic worker population estimate: ~980,000 (EU data baseline)
+- UK domestic worker population: ~980,000 (EU data baseline; main scenario)
 - NRM adult referrals baseline: 44,360
-- Multiple population size scenarios tested: 50K, 100K, 980K, 1.74M
+- Population scenarios tested: 50K, 100K, 980K, 1.74M
 
-### Key Survey Questions Mapping
-- Q70/Q71: Document withholding indicators
-- Q39+Q42/Q43: Pay-related exploitation
-- Q45+Q47+Q48/Q49: Abuse and threats
-- Q61+Q62/Q64: Excessive working hours
-- Q78/Q79: Access to help and support
+### CE's Comparable RDS/NSUM Indicators (2024-11-05 specification)
+`create_comparable_indicators()` in `02-data_preparation.R` matches egocentric (RDS) to alter-centric (NSUM) indicators:
 
-### CE's Comparable RDS/NSUM Indicators (2024-11-05)
-The `create_comparable_indicators()` function in `R/data_processing/02-data_preparation.R` implements CE's exact specifications for matched indicators between RDS (egocentric) and NSUM (alter-centric) estimation methods:
+| Indicator | Confidence | Survey questions |
+|---|---|---|
+| `document_withholding_rds/nsum` | Highest | Q70 5f2 = Q71 5f3 |
+| `pay_issues_rds/nsum` | High | Q39+Q42 = Q43 5b8 |
+| `threats_abuse_rds/nsum` | High | Q45+Q47+Q48 = Q49 5c6 |
+| `excessive_hours_rds/nsum` | Medium | Q61+Q62 = Q64 5d11 |
+| `access_to_help_rds/nsum` | Lowest | Q78 (reverse coded) = Q79 5f11 |
 
-**Highest Confidence:**
-- `document_withholding_rds/nsum`: Q70 5f2 = Q71 5f3 (document control)
+All indicators are binary (0/1); RDS composites use logical OR; missing/"don't know" handled explicitly.
 
-**High Confidence:**
-- `pay_issues_rds/nsum`: Q39 5b4 and Q42 5b7 = Q43 5b8 (debt/pay withholding)  
-- `threats_abuse_rds/nsum`: Q45 5c2 and Q47 5c4 and Q48 5c5 = Q49 5c6 (force/threats/abuse)
-
-**Medium Confidence:**
-- `excessive_hours_rds/nsum`: Q61 5d8 and Q62 5d9 = Q64 5d11 (work hours/rest, missing annual leave in RDS)
-
-**Lowest Confidence:**
-- `access_to_help_rds/nsum`: Q78 5f10 (reverse coded) = Q79 5f11 (access to support)
-
-**Additional Network Variable:**
-- `known_network_size`: Q13 2f (number of domestic workers with contact details)
-
-All indicators are binary (0/1) with logical OR for composite RDS measures and proper handling of missing/"don't know" responses.
+### NSUM Weighting (critical fix, 2025)
+An earlier `Boot_Step2.R` had **inverted** Volz-Heckathorn weights (weight ∝ degree instead of ∝ 1/degree), producing a VH/RDS-II correlation of −0.49. The current `nsum_core_estimators.R` and `05-nsum_estimation.R` use standard RDS package functions for all weight calculations. Use `REGENERATE_NSUM_COMPREHENSIVE.R` (2–4 h) for publication; `REGENERATE_NSUM_ESTIMATES.R` (10–30 min) for quick checks.
 
 ### Risk Index Weights
 - NRM referral indicator: 0.35
@@ -199,127 +151,47 @@ All indicators are binary (0/1) with logical OR for composite RDS measures and p
 - Below minimum wage: 0.10
 
 ### Network Analysis
-- Uses recruiter-recruit relationships from RDS sampling
-- Handles zero-degree nodes and missing network connections
-- Implements nationality clustering (Filipino, Latinx, British, Other)
-- Validates network size claims against survey responses
+- Recruiter-recruit relationships from RDS sampling
+- Missing recruiter IDs stored as −1; zero-degree nodes handled explicitly
+- Nationality clustering: Filipino, Latinx, British, Other
+
+### Project Configuration (`R/config.R`)
+```r
+get_global_config()  # returns:
+#   preferred_rds_method  = "RDS_SS"
+#   preferred_nsum_method = "weighted"
+#   population_sizes      = c(50000, 100000, 980000, 1740000)
+#   main_population_size  = 980000
+#   n_bootstrap           = 1000
+#   parallel_cores        = 4
+```
 
 ### Environment Setup
 ```r
-# Install required packages if not available
 install.packages(c("tidyverse", "janitor", "here", "RDS", "igraph",
-                   "boot", "parallel", "ggplot2", "scales", "viridis",
-                   "sspse"))
+                   "boot", "parallel", "ggplot2", "scales", "viridis", "sspse"))
 
-# Optional: Install netclust for clustered SS-PSE subgroup analysis
+# netclust (not on CRAN; R 4.5+ compatibility issues)
 devtools::install_github('LJGamble/netclust')
-
-# Load project with proper path setup
-library(here)
-source(here("R", "utils", "helper_functions.R"))
-setup_project_environment()
+# or install from CRAN/netclust_*.tar.gz in the vendored CRAN/ directory
 ```
 
-### Project Configuration
-The main pipeline uses a centralized configuration-driven approach:
-- Global configuration defined in `R/config.R` via `get_global_config()`:
-  ```r
-  global_config <- list(
-    preferred_rds_method = "RDS_SS",
-    preferred_nsum_method = "weighted",
-    population_sizes = c(50000, 100000, 980000, 1740000),
-    main_population_size = 980000,
-    include_bootstrap = TRUE,
-    n_bootstrap = 1000,
-    parallel_cores = 4,
-    save_tables = TRUE,
-    save_plots = TRUE
-  )
-  ```
-- Pipeline settings in `R/00-main_pipeline.R` control which analyses run
-- Individual analysis scripts have local configuration that inherits from global config
-- Skip execution flags prevent scripts from running when sourced
-- Results are cached to avoid recomputation via `force_recompute = FALSE` parameters
+## Debugging
 
-### Data Requirements
-- Survey data must be in `data/raw/` or `data/survey/`
-- Expected data files: CSV or Excel formats with RDS network structure
-- Required variables: recruiter.id, id, and survey question columns (Q##)
-- Network validation handles missing recruiter IDs (-1) and zero-degree nodes
+| Symptom | Fix |
+|---|---|
+| `Error in here()`: project root not found | Ensure `CLAUDE.md` exists at repo root |
+| Bootstrap convergence warnings | Adjust `bootstrap_samples`; check network topology |
+| Memory issues | Reduce `population_sizes` to `c(50000, 100000)` or increase `parallel_cores` |
+| `netclust` errors on R 4.5+ | Use `08b-simple_subgroup_analysis.R` instead, or install from source |
+| Step 6 missing `.RData` files | Run `bash R/analysis/06-run-all.sh` first |
 
-## Development Notes
-
-### Code Organization (August 2025 Reorganization)
-- **Modular Design**: Each analysis script can run independently after data preparation
-- **Path Management**: All file paths use `here()` package for reproducibility 
-- **CE's Specifications**: Comparable indicators implemented exactly per 2024-11-05 correspondence
-- **Sequential Focus**: RDS analysis first (03), then NSUM (04), then comparison (05)
-- **Archived Scripts**: Old/experimental code preserved in `R/archive/` with documentation
-
-#### Modular Architecture
-The analysis structure uses a sequential, coordinated approach:
-- `03-rds_estimation.R` - Main RDS estimation with comprehensive configuration system
-- `04-bootstrap_analysis.R` - Bootstrap confidence intervals (can be integrated or standalone)
-- `05-nsum_estimation.R` - Network scale-up method estimation
-- `06-*.R` - Extended analysis scripts for sensitivity testing and comparisons
-- `07-*.R` - Convergence diagnostics and visualization
-
-Analysis modules can be selectively enabled/disabled via configuration flags in each coordinator script for faster development cycles. The pipeline supports both sequential execution and individual module runs.
-
-#### Extended Analysis Capabilities
-Recent extensions provide additional analysis options:
-- `06-*.R` scripts: Sensitivity analysis, Bayesian methods, and result comparison tables
-  - `06-bayesian_sensitivity_analysis.R` - Bayesian SS-PSE sensitivity tests
-  - `06-modular_estimator_analysis.R` - Modular estimator comparison framework
-  - `06-RESULTS_analysis_comparison.R` - Consolidated results comparison
-- `07-*.R` scripts: Convergence diagnostics and comprehensive visualizations
-  - `07-comprehensive_comparison.R` - Full method comparison across estimators
-  - `07-convergence_diagnostics_and_visualization.R` - MCMC convergence checks
-- `08-*.R` scripts: Subgroup and nationality cluster analysis
-  - `08-netclust_subgroup_analysis.R` - Clustered SS-PSE by nationality (requires netclust package)
-  - `08b-simple_subgroup_analysis.R` - Standard RDS estimates by nationality cluster
-- Enhanced appendix materials generation for academic publications
-
-### Technical Requirements
-- Use `.RData` format for processed datasets to preserve R object structures
-- Bootstrap methods require careful handling of network topology  
-- Missing data ("don't know" responses) requires special treatment in estimation
-- Consider separate analyses for Filipino subgroup due to distinct network patterns
-- All estimation results should include confidence intervals and uncertainty measures
-- Path handling with `here()` package ensures reproducibility across systems
-
-### Output Structure
-- Results: `output/` (`.RData` files)
-- Tables: `output/tables/` (`.csv` files) 
-- Figures: `output/figures/` (`.png` files)
-- Reports: `output/reports/` (`.txt` files)
-
-### Debugging and Troubleshooting
-
-#### Common Issues
-- **"Error in here()": Project root not detected** - Ensure `CLAUDE.md` exists in project root
-- **Bootstrap convergence warnings** - Adjust `bootstrap_samples` parameter or check network topology
-- **Memory issues with large populations** - Reduce population size scenarios or use parallel processing
-- **Missing RDS network connections** - Validate recruiter.id column for -1 values and network structure
-- **netclust package errors** - netclust 0.1.0 (2021) has compatibility issues with R 4.5.0+. Use alternative subgroup methods in `08b-simple_subgroup_analysis.R` or install from source with fixes
-
-#### Checking Results
 ```r
-# Verify pipeline completion
-list.files(here("output"), pattern = "*.RData")
+# Verify outputs exist
+list.files(here("output"), pattern = "\\.RData$")
+list.files(here("output", "figures"))
 
-# Check processed data integrity  
+# Check processed data
 load(here("data", "processed", "prepared_data.RData"))
 summary(prepared_data)
-
-# Review convergence diagnostics
-readRDS(here("output", "rds_convergence_diagnostics.RDS"))
 ```
-
-#### Performance Optimization
-- Set `force_recompute = FALSE` to use cached results (available in most analysis scripts)
-- Adjust `parallel_cores` parameter in `R/config.R` for bootstrap methods (default: 4)
-- Use smaller population size scenarios for testing: `c(50000, 100000)`
-- Disable expensive analyses in pipeline configuration: `run_bootstrap_analysis = FALSE`
-- Use pipeline configuration to skip completed steps during development
-- For subgroup analysis, combine small nationality clusters to meet minimum sample size requirements (see `08-netclust_subgroup_analysis.R` configuration)
