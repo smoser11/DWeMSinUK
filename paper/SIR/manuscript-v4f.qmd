@@ -204,9 +204,28 @@ sampling and network uncertainty, providing robust confidence intervals consiste
 Of the 97 initial respondents, 90 identified themselves as transnational migrants. Forty-five percent regarded themselves as self-employed, 39% identified themselves as employees, and 16% categorised
 their employment status as that of a worker. The largest single nationality group, comprising 64 respondents (66% of the total), reported a Filipina background. Other nationalities represented
 included Dominican, Brazilian, Spanish, Colombian, Bolivian, Venezuelan, Cuban, and Panamanian. Female domestic workers made up 97% of the sample, with 3% of the sample comprised of male domestic
-workers. The age structure of the domestic workers was skewed towards those over 45 years old, with such workers representing over half of the sample (see @tbl-indicator-mapping).
+workers. The age structure of the domestic workers was skewed towards those over 45 years old, with such workers representing over half of the sample (see @tbl-sample-chars).
 
 ![RDS Recruitment Network Structure. Recruitment chains showing seed nodes (triangles) and recruit nodes (circles). Node colours represent nationality clusters; node size is proportional to network degree. Lines show recruiter-recruit relationships. Source: Authors' own work.](figures/image1.png){#fig-recruitment width="6in"}
+
++--------------------------+----------+----------+----------+----------+-----------+
+| Nationality cluster      | Wave 0   | Wave 1   | Wave 2   | Wave 3+  | Total (n) |
+|                          | (seeds)  |          |          |          |           |
++:=========================+:========:+:========:+:========:+:========:+:=========:+
+| Filipino                 | 35       | 18       | 9        | 3        | 65        |
++--------------------------+----------+----------+----------+----------+-----------+
+| Latinx                   | 4        | 2        | 0        | 0        | 6         |
++--------------------------+----------+----------+----------+----------+-----------+
+| British                  | 2        | 0        | 0        | 0        | 2         |
++--------------------------+----------+----------+----------+----------+-----------+
+| Other                    | 5        | 5        | 2        | 0        | 12        |
++--------------------------+----------+----------+----------+----------+-----------+
+| **Total**                | **46**   | **25**   | **11**   | **3**    | **85**    |
++--------------------------+----------+----------+----------+----------+-----------+
+
+: Sample composition by nationality cluster and recruitment wave (n = 85). Wave 0 indicates seed respondents; subsequent waves are respondent-driven recruits. Filipino respondents dominate the sample (76%) and contribute the deepest recruitment chains; other nationality clusters are smaller and shallower. Source: Authors' own work. {#tbl-sample-chars}
+
+## Estimation Framework {#sec-estimation-framework}
 
 | Method                     | Information used                                                                | Estimand                                                                              | Main vulnerability                                                                              |
 |:---------------------------|:--------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------|
