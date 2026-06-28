@@ -50,6 +50,9 @@ OSF/
 │   └── tables/                          17 CSV tables for main paper + ESMs
 ├── manuscript/                          paper artifacts
 │   ├── manuscript.qmd                   Quarto source (renders to PDF/DOCX/HTML)
+│   ├── ce-library.bib                   CE's reference library (biblatex/biber)
+│   ├── sm-cited.bib                     SM cited references (26-entry subset)
+│   ├── apa.csl                          APA citation style sheet
 │   └── figure2_rds_diagnostics.png      figure referenced from manuscript.qmd
 └── supporting/                          online supplementary materials (ESMs)
     ├── ESM_1.docx                       codebook + composite risk index construction
