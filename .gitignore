@@ -50,6 +50,7 @@
 *.synctex.gz
 *.fls
 *.fdb_latexmk
+*.toc
 *.qmd.bak
 
 # Microsoft Word lock files (created when a .docx is open)
