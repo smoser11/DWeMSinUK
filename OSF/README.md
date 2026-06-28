@@ -48,13 +48,14 @@ OSF/
 ├── output/                              regenerated outputs
 │   ├── figures/                         13 figures (6 main paper + 7 ESM_4 convergence)
 │   └── tables/                          17 CSV tables for main paper + ESMs
-└── manuscript/                          paper artifacts
-    ├── manuscript.qmd                   Quarto source (renders to PDF/DOCX/HTML)
+├── manuscript/                          paper artifacts
+│   ├── manuscript.qmd                   Quarto source (renders to PDF/DOCX/HTML)
+│   └── figure2_rds_diagnostics.png      figure referenced from manuscript.qmd
+└── supporting/                          online supplementary materials (ESMs)
     ├── ESM_1.docx                       codebook + composite risk index construction
     ├── ESM_2.docx                       survey instrument
     ├── ESM_3.docx                       three-step NSUM bootstrap procedure
-    ├── ESM_4.docx                       sensitivity analyses + relocated material
-    └── figure2_rds_diagnostics.png      figure referenced from manuscript.qmd
+    └── ESM_4.docx                       sensitivity analyses + supporting material
 ```
 
 ---
@@ -142,18 +143,19 @@ The underlying coded responses (`q1`, `q5`–`q104`) are retained verbatim acros
 
 | Main paper | OSF output file |
 |---|---|
-| Table 1 (indicator mapping) | hand-constructed; see `data/raw/Risk_Index_Construction.docx` |
-| Table 2 (sample composition) | `output/tables/table1_publication_ready.csv` |
-| Table 3 (estimands) | hand-constructed; see manuscript Section 3.4 |
-| Table 4 (RDS diagnostics) | `python/rds_diagnostics.py` output |
+| Table 1 (ILO indicator mapping) | hand-constructed; see `data/raw/Risk_Index_Construction.docx` and `supporting/ESM_1.docx` |
+| Table 2 (sample composition by nationality × wave) | `output/tables/table1_publication_ready.csv` |
+| Table 3 (estimands) | hand-constructed; see manuscript Section 3.4 and `supporting/ESM_1.docx` |
+| Table 4 (RDS diagnostics) | `python/rds_diagnostics.py` → `output/figures/figure2_rds_diagnostics.png` |
 | Table 5 (preferred prevalence: RDS-SS + NSUM Moderate) | `output/tables/rds_nsum_comparison.csv` |
 | Figure 1 (recruitment network) | `output/figures/figure1_recruitment_network.png` |
 | Figure 2 (RDS diagnostics) | `output/figures/figure2_rds_diagnostics.png` |
 | Figure 3 (composite risk estimators) | `output/figures/figure3_composite_risk_estimators.png` |
 | Figure 4 (MA binary estimates) | `output/figures/figure4_ma_binary_estimates.png` |
-| ESM_4 Tables 1–7 (sensitivity) | `output/tables/AppendixA{1..6}_*.csv`, `ESM_appendix_bayesian_*.csv` |
-| ESM_4 Figure B.1 (RDS-I vs RDS-SS) | `output/figures/esm_b1_rds_methods_comparison.png` |
-| ESM_4 Figure 1 (continuous-tau NSUM sweep) | `output/tables/nsum_tau_sensitivity.csv` + `R/analysis/05b-nsum_tau_sensitivity.R` |
+| ESM_1 | `supporting/ESM_1.docx` — codebook + composite risk index construction |
+| ESM_2 | `supporting/ESM_2.docx` — survey instrument |
+| ESM_3 | `supporting/ESM_3.docx` — three-step NSUM bootstrap procedure |
+| ESM_4 | `supporting/ESM_4.docx` — sensitivity analyses; source tables in `output/tables/AppendixA{1..6}_*.csv`, `ESM_appendix_bayesian_*.csv`; figures in `output/figures/` |
 
 ---
 

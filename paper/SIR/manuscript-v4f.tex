@@ -177,14 +177,6 @@
 
 \title{Quantifying Hidden Exploitation: Dual-Method Prevalence Estimates
 of Labour Exploitation among Domestic Workers in the United Kingdom}
-\usepackage{etoolbox}
-\makeatletter
-\providecommand{\subtitle}[1]{% add subtitle to \maketitle
-  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
-}
-\makeatother
-\subtitle{Manuscript v4e (2026-06-25) --- citations cleaned, word trim,
-Quarto cross-refs restored}
 \author{Caroline Emberson \and Scott Moser}
 \date{26 June 2026}
 \begin{document}
@@ -599,7 +591,7 @@ Panamanian. Female domestic workers made up 97\% of the sample, with 3\%
 of the sample comprised of male domestic workers. The age structure of
 the domestic workers was skewed towards those over 45 years old, with
 such workers representing over half of the sample (see
-Table~\ref{tbl-indicator-mapping}).
+Table~\ref{tbl-sample-chars}).
 
 \begin{figure}[H]
 
@@ -616,6 +608,63 @@ proportional to network degree. Lines show recruiter-recruit
 relationships. Source: Authors' own work.}
 
 \end{figure}%
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.3103}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1264}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1264}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1264}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1264}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1379}}@{}}
+\caption{Sample composition by nationality cluster and recruitment wave
+(n = 85). Wave 0 indicates seed respondents; subsequent waves are
+respondent-driven recruits. Filipino respondents dominate the sample
+(76\%) and contribute the deepest recruitment chains; other nationality
+clusters are smaller and shallower. Source: Authors' own
+work.}\label{tbl-sample-chars}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Nationality cluster
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Wave 0 (seeds)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Wave 1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Wave 2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Wave 3+
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Total (n)
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Nationality cluster
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Wave 0 (seeds)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Wave 1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Wave 2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Wave 3+
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Total (n)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Filipino & 35 & 18 & 9 & 3 & 65 \\
+Latinx & 4 & 2 & 0 & 0 & 6 \\
+British & 2 & 0 & 0 & 0 & 2 \\
+Other & 5 & 5 & 2 & 0 & 12 \\
+\textbf{Total} & \textbf{46} & \textbf{25} & \textbf{11} & \textbf{3} &
+\textbf{85} \\
+\end{longtable}
+
+\subsection{Estimation Framework}\label{sec-estimation-framework}
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.0956}}
@@ -828,9 +877,9 @@ Sampling) with neighbourhood-bootstrap 95\% confidence intervals; for
 the composite risk index, also RDS-SS, because the Bayesian
 Model-Assisted estimator does not converge to a useful posterior on
 continuous outcomes at our sample size
-(\textbf{?@sec-estimation-framework}). The preferred NSUM result is the
-continuous-\(\tau\) sweep over \(\tau \in [0.40, 1.00]\) with \(\delta\)
-fixed at 0.9 (\textbf{?@sec-estimation-framework}; ESM\_4
+(Section~\ref{sec-estimation-framework}). The preferred NSUM result is
+the continuous-\(\tau\) sweep over \(\tau \in [0.40, 1.00]\) with
+\(\delta\) fixed at 0.9 (Section~\ref{sec-estimation-framework}; ESM\_4
 Figure~\ref{fig-recruitment}); the Moderate discrete-tier point estimate
 (\(\delta = 0.9\), \(\tau = 0.85\)) is reported alongside as a reference
 scenario for direct comparison with the discrete-tier NSUM literature.
@@ -849,12 +898,12 @@ civil-society networks (primarily Kalayaan and the Latin American
 Women's Rights Service). They should not be read as definitive national
 prevalence figures for all UK migrant domestic workers. The four
 estimators target different population quantities
-(\textbf{?@sec-estimation-framework}, Table~\ref{tbl-estimands}), so
+(Section~\ref{sec-estimation-framework}, Table~\ref{tbl-estimands}), so
 absolute levels also differ by estimator in interpretable ways.
 
 \subsection{Descriptive Overview}\label{sec-descriptive}
 
-Sample characteristics are presented in \textbf{?@tbl-sample-chars} and
+Sample characteristics are presented in Table~\ref{tbl-sample-chars} and
 Figure~\ref{fig-recruitment}. 97 respondents completed the survey; 85
 with non-zero network degree were included in RDS analysis. The
 analytical sample is 93\% transnational migrant, 97\% female, 76\%
@@ -993,7 +1042,7 @@ civil-society networks is 37.0\% of the theoretical maximum (95\% CI
 indicating that the RDS-SS finite-population adjustment makes only a
 small correction at our sampling fraction. We report RDS-SS rather than
 the Bayesian Model-Assisted estimator for the composite index because,
-as noted in \textbf{?@sec-estimation-framework}, MA-RDS does not
+as noted in Section~\ref{sec-estimation-framework}, MA-RDS does not
 converge to a useful posterior on continuous traits at this sample size;
 for completeness Figure~\ref{fig-rds-diagnostics} shows the MA estimate
 alongside the RDS-SS and sample estimates, with the wide MA credible
@@ -1189,7 +1238,7 @@ applications of this dual design in any developed-economy setting for
 the measurement of forced-labour and modern-slavery indicators; the
 design supports direct comparison of ego-based and alter-based estimates
 on a like-for-like indicator set without claiming they target the same
-population quantity (\textbf{?@sec-estimation-framework},
+population quantity (Section~\ref{sec-estimation-framework},
 Table~\ref{tbl-estimands}). Second, we operationalise modern slavery as
 a graded formative indicator framework rather than a binary condition,
 supporting both indicator-level prevalence estimates and an
