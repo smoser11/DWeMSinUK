@@ -572,13 +572,13 @@ Statistical inference in these designs depends not on the absolute
 sample size but on the structure of the recruitment network, degree
 distribution, and convergence to equilibrium \autocite{salg04-sampling}.
 Furthermore, model-assisted and Bayesian RDS estimators
-\autocite{gile11-improved,gile18-methods} provide valid population
-estimates even for modest sample sizes, particularly when uncertainty is
-appropriately quantified through resampling or posterior distributions.
-In this study, we additionally employ a neighbourhood bootstrap
-procedure that propagates sampling and network uncertainty, providing
-robust confidence intervals consistent with small-sample design-based
-inference \autocite{hand14-estimating}.
+\autocite{gile11-improved,gile18-methods} can produce model-assisted,
+population-adjusted estimates under explicit assumptions, even in modest
+samples, provided uncertainty and design limitations are made
+transparent. In this study, we additionally employ a neighbourhood
+bootstrap procedure that propagates sampling and network uncertainty,
+providing robust confidence intervals consistent with small-sample
+design-based inference \autocite{hand14-estimating}.
 
 Of the 97 initial respondents, 90 identified themselves as transnational
 migrants. Forty-five percent regarded themselves as self-employed, 39\%
@@ -665,6 +665,20 @@ Other & 5 & 5 & 2 & 0 & 12 \\
 \end{longtable}
 
 \subsection{Estimation Framework}\label{sec-estimation-framework}
+
+Before describing each estimator in turn, Table~\ref{tbl-estimands}
+summarises the information each method uses, the population quantity
+each method targets (its \emph{estimand}), and the principal source of
+identification risk for each. The four estimators do not target the same
+quantity. RDS-SS and MA-RDS estimate own-experience prevalence among the
+RDS-reachable population of migrant domestic workers; NSUM estimates
+network-visible prevalence among domestic-worker alters as reported by
+the respondent; the composite risk index targets the RDS-adjusted mean
+severity score. The order-of-magnitude RDS--NSUM gap should not be read
+as two methods disagreeing about the same estimand. RDS estimates
+own-experience prevalence, whereas NSUM estimates network-visible
+prevalence among alters; the divergence is therefore substantively
+interpretable rather than merely a discrepancy.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.0956}}
@@ -776,15 +790,29 @@ The estimand differs from the standard NSUM estimand and is documented
 in Table~\ref{tbl-estimands} above.
 
 The unadjusted MBSU estimator is
-\(\hat{p} = \bar{y}_{FH} / \bar{d}_{FF}\) (alter exploitation count
-divided by reported network size, averaged over respondents), adjusted
-multiplicatively by \(\delta_F\) (degree ratio between hidden and frame
-populations) and \(\tau_F\) (true-positive rate; values \(< 1\) capture
-under-reporting due to stigma or social distance). Because the frame and
-hidden populations coincide here, \(\delta_F\) measures
-within-population network-size differences; \(\tau_F\) captures peer-tie
-visibility, which is the substantive quantity of interest for the
-visibility-gradient diagnostic (Section~\ref{sec-divergence}).
+\begin{equation}\phantomsection\label{eq-1}{\hat p_h^{NSUM}  
+=  
+\frac{\sum_i w_i y_{ih}}{\sum_i w_i d_i},}\end{equation}
+
+where \(y_{ih}\) is respondent \(i\)'s reported number of known
+domestic-worker alters with indicator \(h\), \(d_i\) is respondent
+\(i\)'s reported number of known domestic workers, and \(w_i\) is the
+RDS-derived survey weight. The MBSU-adjusted prevalence is then:
+
+\begin{equation}\phantomsection\label{eq-2}{\hat p_{h}^{MBSU}  
+=  
+\frac{1}{\delta_h \tau_h}  
+\frac{\sum_i w_i y_{ih}}{\sum_i w_i d_i}.}\end{equation}
+
+i.e.~adjusted multiplicatively by \(\delta_h\) (degree ratio between
+hidden and frame populations) and \(\tau_h\) (true-positive rate; values
+\(< 1\) capture under-reporting due to stigma or social distance).
+Because the frame and hidden populations coincide here, \(\delta_F\)
+measures within-population network-size differences; \(\tau_F\) captures
+peer-tie visibility, which is the substantive quantity of interest for
+the visibility-gradient diagnostic (Section~\ref{sec-divergence}).
+
+STEP 6
 
 Our headline NSUM result is the \emph{continuous-\(\tau\) sweep}:
 per-indicator prevalence as a function of \(\tau\) over \([0.40, 1.00]\)
@@ -825,19 +853,22 @@ across two fundamentally different inferential logics---one anchored in
 category'' (NSUM).
 
 \textbf{3.6 Choice of population size and the invariance of prevalence.}
-Prevalence estimates reported throughout the paper are invariant to the
-assumed UK domestic-worker population size \(N\) in the asymptotic
-regime in which \(n/N\) is small. RDS-I, RDS-II/Volz-Heckathorn, and the
-MBSU NSUM prevalence formulas are algebraically free of \(N\); RDS-SS
-and MA-RDS contain \(N\) only through finite-population corrections
-whose magnitude scales with \(n/N\). At \(n = 85\) our sampling fraction
-is at most 0.17\% (for \(N = 50{,}000\)) and as low as 0.005\% (for
-\(N = 1{,}740{,}000\)), all well below the conventional 5\% threshold at
-which finite-population corrections become non-negligible. Headline
-estimates use \(N = 980{,}000\) (the EU baseline); the MA-RDS Bayesian
-analysis uses \(N = 50{,}000\) for computational tractability. Cached
-estimates across all four values agree to within bootstrap noise; full
-algebraic derivation and empirical confirmation are in ESM\_4 Section A
+
+For the prevalence estimates reported here, the assumed total
+domestic-worker population size \(N\) either cancels algebraically or
+has a negligible finite-population effect (related to \(n/N\) which is
+negligable here) over the range of \(N\) values considered. RDS-I,
+RDS-II/Volz-Heckathorn, and the MBSU NSUM prevalence formulas are
+algebraically free of \(N\); RDS-SS and MA-RDS contain \(N\) only
+through finite-population corrections whose magnitude scales with
+\(n/N\). At \(n = 85\) our sampling fraction is at most 0.17\% (for
+\(N = 50{,}000\)) and as low as 0.005\% (for \(N = 1{,}740{,}000\)), all
+well below the conventional 5\% threshold at which finite-population
+corrections become non-negligible. Headline estimates use
+\(N = 980{,}000\) (the EU baseline); the MA-RDS Bayesian analysis uses
+\(N = 50{,}000\) for computational tractability. Cached estimates across
+all four values agree to within bootstrap noise; full algebraic
+derivation and empirical confirmation are in ESM\_4 Section A
 (Population Size and the Invariance of Prevalence).
 
 \subsection{Bootstrap and Sensitivity Procedures}\label{sec-bootstrap}
@@ -896,8 +927,8 @@ estimates for the RDS-reachable population of UK migrant domestic
 workers connected to the participating civil-society networks (primarily
 Kalayaan and the Latin American Women's Rights Service). They should not
 be read as definitive national prevalence figures for all UK migrant
-domestic workers. The four estimators target different population
-quantities (Section~\ref{sec-estimation-framework},
+domestic workers. The reported quantities in Table 3 target different
+population quantities (Section~\ref{sec-estimation-framework},
 Table~\ref{tbl-estimands}), so absolute levels also differ by estimator
 in interpretable ways.
 
@@ -924,7 +955,8 @@ Figure~\ref{fig-recruitment} (above) shows the full recruitment graph.
   >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1415}}
   >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4057}}@{}}
 \caption{RDS sampling diagnostics for the analytical sample (n = 85).
-Computed directly from \texttt{data/processed/data\_nonzero.csv}; see
+Computed from the anonymised processed analysis dataset; replication
+code is available in the OSF repository. See
 Section~\ref{sec-rds-diagnostics} below and ESM\_4 (convergence plots
 per indicator) for the full set. Source: Authors'
 construction.}\label{tbl-rds-diagnostics}\tabularnewline
@@ -988,8 +1020,9 @@ Middle: distribution of recruitment-chain lengths by root seed; 30 of 46
 chains are singletons (seed with no recruits), and one chain (seed \#55,
 length 12) accounts for a disproportionate share of wave-2+ respondents.
 Right: distribution of reported network size (q13), showing strong right
-skew (median 5, mean 8.9, max 105). Source: Authors' construction from
-\texttt{data/processed/data\_nonzero.csv}.}
+skew (median 5, mean 8.9, max 105). Source: Authors' construction.
+Computed from the anonymised processed analysis dataset; replication
+code is available in the OSF repository.}
 
 \end{figure}%
 
@@ -1161,14 +1194,12 @@ Comparison}\label{sec-supporting-estimates}
 
 Three additional families of estimates are reported in full in ESM\_4
 Section B (Supporting Estimates and Method Comparison) for transparency
-and robustness: (a) Bayesian Model-Assisted estimates (MA-RDS) of the
-five binary indicators at \(N = 50{,}000\) with 95\% credible intervals
-(ESM\_4 Table~\ref{tbl-estimands}); posterior means range from 34.1\%
-(document withholding) to 84.0\% (excessive working hours) and
-substantively replicate the RDS-SS ordering reported in
-Table~\ref{tbl-preferred-estimates}. (b) Direct comparison of RDS-I and
-RDS-SS estimators for each indicator with per-method bootstrap 95\% CIs
-(ESM\_4 Table~\ref{tbl-rds-diagnostics}); RDS-I runs systematically
+and robustness: (a) The five relevant Bayesian Model-Assisted estimates
+(MA-RDS) posterior means in ESM\_4 Table 3 range from 34.1\% for
+document withholding to 84.0\% for excessive working hours, and
+reproduce the RDS-SS ordering in Table 5. (b) Direct comparison of RDS-I
+and RDS-SS estimators for each indicator with per-method bootstrap 95\%
+CIs (ESM\_4 Table~\ref{tbl-rds-diagnostics}); RDS-I runs systematically
 higher than RDS-SS by 5--15 percentage points, consistent with the
 standard finding that RDS-I is sensitive to seed dependence and performs
 poorly at the small sample sizes and shallow chain depths characteristic
