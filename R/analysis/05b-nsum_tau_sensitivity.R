@@ -38,6 +38,14 @@ suppressMessages({
 source(here("R", "utils", "helper_functions.R"))
 source(here("R", "analysis", "nsum_core_estimators.R"))
 
+# estimate_nsum_population() is defined in 05-nsum_estimation.R. Source it
+# with skip_execution = TRUE so its analysis body does not run.
+.prev_skip <- if (exists("skip_execution")) skip_execution else NULL
+skip_execution <- TRUE
+source(here("R", "analysis", "05-nsum_estimation.R"))
+if (is.null(.prev_skip)) rm(skip_execution) else skip_execution <- .prev_skip
+rm(.prev_skip)
+
 if (!exists("dd") || !exists("dd")) {
   load(here("data", "processed", "prepared_data.RData"))
 }
