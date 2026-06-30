@@ -2,9 +2,9 @@
 title: "Appendix: Quantifying Hidden Exploitation"
 subtitle: "Online Supplementary Materials for Social Indicators Research Submission"
 bibliography:
-  - ../references/ce-library.bib
-  - ../references/sm-cited.bib
-csl: ../references/apa.csl
+  - ce-library.bib
+  - sm-cited.bib
+csl: apa.csl
 fontsize: 12pt
 geometry: margin=1in
 linestretch: 1.15
