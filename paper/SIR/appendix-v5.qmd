@@ -16,13 +16,7 @@ format:
     tbl-cap-location: top
   pdf:
     pdf-engine: xelatex
-    cite-method: biblatex
     keep-tex: false
-    biblatexoptions:
-      - backend=biber
-      - style=apa
-      - sorting=nyt
-      - maxcitenames=2
     include-in-header:
       text: |
         \usepackage{xcolor}
