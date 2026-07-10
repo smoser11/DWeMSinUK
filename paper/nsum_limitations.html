@@ -1,0 +1,329 @@
+
+<title>NSUM — Limitations and Future Work</title>
+<style>
+  /* ── Tokens ── */
+  :root {
+    --bg:          #F6F7F9;
+    --bg-card:     #FFFFFF;
+    --ink:         #1A2235;
+    --ink-mid:     #4A5568;
+    --ink-light:   #7A8899;
+    --accent:      #2C6E8A;
+    --accent-dim:  #D4E8F0;
+    --rule:        #DDE3EB;
+    --label-bg:    #EAF3F7;
+    --serif:       Georgia, 'Times New Roman', serif;
+    --sans:        -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    --mono:        'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+    --max-w:       680px;
+    --lh:          1.75;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:         #111827;
+      --bg-card:    #1C2535;
+      --ink:        #E8EDF5;
+      --ink-mid:    #9AABBE;
+      --ink-light:  #6B7F96;
+      --accent:     #5BADCC;
+      --accent-dim: #1A3344;
+      --rule:       #2A3650;
+      --label-bg:   #1A3344;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg:          #F6F7F9;
+    --bg-card:     #FFFFFF;
+    --ink:         #1A2235;
+    --ink-mid:     #4A5568;
+    --ink-light:   #7A8899;
+    --accent:      #2C6E8A;
+    --accent-dim:  #D4E8F0;
+    --rule:        #DDE3EB;
+    --label-bg:    #EAF3F7;
+  }
+  :root[data-theme="dark"] {
+    --bg:         #111827;
+    --bg-card:    #1C2535;
+    --ink:        #E8EDF5;
+    --ink-mid:    #9AABBE;
+    --ink-light:  #6B7F96;
+    --accent:     #5BADCC;
+    --accent-dim: #1A3344;
+    --rule:       #2A3650;
+    --label-bg:   #1A3344;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: var(--lh);
+    padding: 3rem 1.5rem 5rem;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+
+  /* ── Section header ── */
+  .section-eyebrow {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: 1.65rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--ink);
+    text-wrap: balance;
+    margin-bottom: 0.35rem;
+  }
+
+  .section-sub {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-light);
+    margin-bottom: 2.4rem;
+    padding-bottom: 1.6rem;
+    border-bottom: 1.5px solid var(--rule);
+  }
+
+  /* ── Limitation blocks ── */
+  .limitation {
+    display: grid;
+    grid-template-columns: 2px 1fr;
+    gap: 0 1.5rem;
+    margin-bottom: 2.4rem;
+  }
+
+  .limitation-rail {
+    background: var(--accent-dim);
+    border-radius: 2px;
+    position: relative;
+  }
+
+  .limitation-rail::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: -4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .limitation-body {}
+
+  .limitation-label {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--label-bg);
+    display: inline-block;
+    padding: 2px 8px 2px 7px;
+    border-radius: 3px;
+    margin-bottom: 0.55rem;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.35;
+    margin-bottom: 0.6rem;
+    text-wrap: balance;
+  }
+
+  p {
+    color: var(--ink-mid);
+    font-size: 0.965rem;
+    margin-bottom: 0.75rem;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  /* ── Math/formula inline ── */
+  .math {
+    font-family: var(--mono);
+    font-size: 0.87em;
+    background: var(--accent-dim);
+    color: var(--accent);
+    padding: 1px 5px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+
+  /* ── Priority call-out ── */
+  .callout {
+    background: var(--accent-dim);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+    padding: 0.75rem 1rem;
+    margin-top: 0.8rem;
+  }
+
+  .callout p {
+    font-family: var(--sans);
+    font-size: 0.875rem;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .callout strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ── Divider before future work ── */
+  .divider {
+    border: none;
+    border-top: 1.5px solid var(--rule);
+    margin: 2.8rem 0 2.4rem;
+  }
+
+  .future-label {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 1.8rem;
+  }
+
+  /* ── Future work items (lighter treatment) ── */
+  .future-item {
+    padding-left: 1.25rem;
+    border-left: 2px solid var(--rule);
+    margin-bottom: 1.8rem;
+  }
+
+  .future-item h3 {
+    font-family: var(--serif);
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.45rem;
+  }
+
+  .future-item p {
+    font-size: 0.94rem;
+  }
+
+  /* ── Citation style ── */
+  cite {
+    font-style: normal;
+    color: var(--ink-light);
+    font-size: 0.88em;
+    font-family: var(--sans);
+  }
+</style>
+
+<div class="page">
+
+  <p class="section-eyebrow">Discussion</p>
+  <h1>Limitations and Directions for Future Work</h1>
+  <p class="section-sub">NSUM prevalence estimation · Romania and Bulgaria · NHS Wave 1</p>
+
+  <!-- ── LIMITATION 1 ── -->
+  <div class="limitation">
+    <div class="limitation-rail"></div>
+    <div class="limitation-body">
+      <span class="limitation-label">Current limitation</span>
+      <h2>Sparse observed counts for rare exploitation types</h2>
+      <p>
+        The NSUM estimator uses the aggregate of reported contacts across all respondents as its signal for hidden-population size. For well-represented outcomes — broad exploitative working conditions and forced labour — each respondent is expected to report roughly 0.4–0.5 contacts on average given our estimated mean network degree of approximately 100, yielding an adequate aggregate signal even at sample sizes in the low hundreds. For rarer outcomes such as forced commercial sex and forced begging, the expected contact count per respondent falls to approximately 0.02, so even a sample of 100 respondents is expected to yield only about two total events in the hidden-population columns. Under these conditions, posterior intervals are very wide regardless of the choice of likelihood family, sampler, or chain length — the data contain almost no usable signal.
+      </p>
+      <p>
+        This is not a failure of the model but an honest reflection of the data. It implies that point estimates for forced commercial sex and forced begging should be accompanied by explicit statements of their extreme uncertainty, and should not be compared or ranked alongside the better-identified outcomes in summary tables without qualification.
+      </p>
+    </div>
+  </div>
+
+  <!-- ── LIMITATION 2 ── -->
+  <div class="limitation">
+    <div class="limitation-rail"></div>
+    <div class="limitation-body">
+      <span class="limitation-label">Current limitation</span>
+      <h2>Count likelihood: Poisson versus Negative Binomial</h2>
+      <p>
+        A natural question is whether replacing the Poisson observation model with a Negative Binomial would improve estimation for sparse outcomes. It would not, for a structural reason: the Bayesian random-degree model of <cite>Maltiel &amp; Baraff (2015)</cite> already generates substantial count overdispersion implicitly. Integrating a Poisson likelihood over a lognormal degree distribution produces a Poisson-lognormal compound with heavier tails than the plain Poisson. Adding a Negative Binomial layer would introduce a second dispersion parameter — <span class="math">φ</span> — to absorb any <em>residual</em> overdispersion beyond what degree heterogeneity explains (for example, digit heaping in self-reported counts or anomalous individual reporters). With fewer than roughly a hundred observations and very sparse hidden-population counts, <span class="math">φ</span> is itself poorly identified, and the additional parameter destabilises inference rather than improving it.
+      </p>
+      <p>
+        We therefore retain the Poisson-lognormal specification as the primary model. A Negative Binomial robustness check is available in the analysis scaffold and may be worth running on the final analytic sample to assess whether residual ARD count overdispersion is present beyond what the random-degree model already absorbs. Large differences between Poisson and Negative Binomial posteriors would indicate a data-quality issue worth investigating; close agreement would confirm that the simpler model suffices.
+      </p>
+    </div>
+  </div>
+
+  <!-- ── LIMITATION 3 ── -->
+  <div class="limitation">
+    <div class="limitation-rail"></div>
+    <div class="limitation-body">
+      <span class="limitation-label">Current limitation</span>
+      <h2>Survey design effects not yet incorporated</h2>
+      <p>
+        The Romanian and Bulgarian samples were drawn as multi-stage probability samples — polling-station PSUs selected with probability proportional to size, followed by household and within-household selection. The Bayesian models in the current implementation treat observations as independently and identically distributed and do not incorporate survey weights, PSU clustering, or stratification. Ignoring the clustered design tends to understate standard errors, because observations within the same PSU are more similar to one another than a simple random sample of the same size would be.
+      </p>
+      <p>
+        Final published estimates should incorporate design weights provided by Ipsos and account for PSU clustering, either through a pseudo-likelihood with replicate weights or through a design-based bootstrap. A placeholder for this is already in the Model 1 scaffold and is straightforward to activate once the weight and PSU variables are confirmed.
+      </p>
+    </div>
+  </div>
+
+  <hr class="divider">
+  <p class="future-label">Directions for future work</p>
+
+  <!-- ── FUTURE 1 ── -->
+  <div class="future-item">
+    <h3>Informative priors from MSE and KII/KIS data</h3>
+    <p>
+      For outcomes where the NHS data provide little information, the posterior is driven largely by the prior. The current implementation places a vague logit-normal prior on log-prevalence, centred at roughly 0.7%. The single most effective methodological improvement available within the NSUM framework for sparse outcomes is to tighten these priors using external information. The MSE analysis of the SIMEV data provides a natural source: the range of plausible forced-labour prevalences identified through institutional channels can be translated into a weakly informative Beta prior on <span class="math">p<sub>h</sub></span>. Similarly, once the KII/KIS and Survivor Interview instruments return visibility estimates, these can be encoded as Beta priors on the transmission factor <span class="math">τ<sub>h</sub></span> rather than treated as a fixed sensitivity grid. We flag this as a priority for the August–September 2026 revision.
+    </p>
+    <div class="callout">
+      <p><strong>Priority:</strong> Coordinate with the MSE analysis to extract a plausible prevalence range for forced labour that can seed the NSUM prior before the next estimation round.</p>
+    </div>
+  </div>
+
+  <!-- ── FUTURE 2 ── -->
+  <div class="future-item">
+    <h3>Hierarchical pooling across exploitation types and countries</h3>
+    <p>
+      A natural extension of Models 2 and 3 is to place a shared hyperprior on the vector of log-prevalences across exploitation types and, separately, across Romania and Bulgaria. This partial-pooling structure allows estimates for data-sparse outcomes to borrow statistical strength from better-observed ones, shrinking extreme values toward a common mean while still permitting genuine heterogeneity. A joint Romania–Bulgaria model would additionally permit direct probabilistic comparison of the two country estimates — a quantity of direct interest to IJM — without the need for post-hoc informal comparison of two independent posteriors. We regard this as the highest-priority modelling extension for the next phase of work.
+    </p>
+  </div>
+
+  <!-- ── FUTURE 3 ── -->
+  <div class="future-item">
+    <h3>Visibility and transmission bias correction</h3>
+    <p>
+      The estimates reported here are best understood as estimates of the <em>visible</em> hidden population — the share of victims whose situation is known to at least one network member of a randomly chosen respondent. Correcting for visibility requires an estimate of the probability that a true victim is recognisable to a network contact, which the KII/KIS and Survivor Interview instruments are designed to elicit. Until those data are available, visibility-adjusted estimates are presented only as sensitivity analyses across a grid of assumed visibility values. Researchers and readers should note that applying a visibility correction to a sparse outcome — dividing an already-uncertain estimate by <span class="math">τ &lt; 1</span> — amplifies the posterior interval proportionally; the adjusted interval for a rare outcome with weak data can span an order of magnitude.
+    </p>
+  </div>
+
+  <!-- ── FUTURE 4 ── -->
+  <div class="future-item">
+    <h3>Recall and barrier bias</h3>
+    <p>
+      The current models do not adjust for systematic under-reporting of contacts in larger known-population groups (recall bias) or for social and structural barriers that prevent network links from forming between respondents and potential victims (barrier effects). The NSUM package provides barrier and transmission model variants, and the Stan scaffold in <em>nsum_rstan_models_romania_v3.qmd</em> documents the relationship between these and more recent respondent-level implementations. Incorporating barrier effects into the primary model — using Module 2 justice-system trust variables as barriers — is a natural next step once Model 3's covariate pipeline has been validated against the full dataset.
+    </p>
+  </div>
+
+</div>
