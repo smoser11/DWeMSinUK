@@ -35,13 +35,20 @@ format:
     link-citations: true
 ---
 
+# Online Appendix {.unnumbered}
+
+
+This appendix accompanies the main paper. Section A documents the codebook and how the composite risk index and the five binary exploitation indicators are constructed. Section B lists the survey-instrument questions used to elicit ego- and alter-based reports for each indicator. Section C describes the three-step bootstrap procedure used for the NSUM confidence intervals. Section D reports the sensitivity and robustness analyses summarised in the main paper.
+All data and replication code are available at OSF. The composite risk index and all indicator variables are constructed in `R/data_processing/02-data_preparation.R` via `create_comparable_indicators()`.
+
+
 # Section A: Variable Codebook and Indicator Definitions
 
 This section documents the composite risk index construction, the five binary exploitation indicators used as the primary prevalence outcomes, and the key RDS variables. Data and replication code are available at <https://osf.io/vf5yb/overview?view_only=becc2db3b49c4b258015b648867bf208>. The composite risk index and all indicator variables are constructed in `R/data_processing/02-data_preparation.R` via `create_comparable_indicators()`.
 
 ## Composite Risk Index
 
-The composite risk index aggregates all eleven ILO indicators of forced labour into a single continuous measure (range 0–0.99). The index is a formative additive composite: an individual is exposed to exploitation if any of the indicators is present, and the indicators are constitutive rather than reflective of an underlying severity construct. Polarity is uniform across categories. Each of the eleven ILO indicator categories contributes equally to the composite (maximum 0.09 per category, so the total maximum possible score is 11 × 0.09 = 0.99). Within a category, the 0.09 is distributed evenly across the sub-questions used to code that category (0.09 for one sub-question, 0.045 each for two, 0.03 each for three, 0.0225 each for four). Category-level weights are therefore uniform across the eleven ILO indicators; the medium/strong severity ordering from the ILO handbook on forced-labour surveys [@hard24-ilo] is used to organise reporting and interpretation but does not itself scale the sub-weights.
+The composite risk index aggregates all eleven ILO indicators of forced labour into a single continuous measure (range 0–0.99). The index is a formative additive composite: an individual is exposed to exploitation if any of the indicators is present, and the indicators are constitutive rather than reflective of an underlying severity construct. Polarity is uniform across categories. Each of the eleven ILO indicator categories contributes equally to the composite (maximum 0.09 per category, so the total maximum possible score is 11 × 0.09 = 0.99). Within a category, the 0.09 is distributed evenly across the sub-questions used to code that category (0.09 for one sub-question, 0.045 each for two, 0.03 each for three, 0.0225 each for four). All eleven ILO indicators contribute equally to the composite. The medium/strong severity labels (following  @hard24-ilo) are used for reporting; they do not enter the composite's arithmetic.
 
 Two further evidentiary markers — payment below the national living wage (Category 12) and NRM-referral history (Category 13) — are reported as separate binary flags and are **not** included in the composite, because their direct evidentiary status under UK policy makes them more useful when read independently.
 

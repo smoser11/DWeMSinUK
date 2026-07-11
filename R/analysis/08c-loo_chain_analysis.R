@@ -146,31 +146,36 @@ run_rds_ss <- function(rds_obj, indicators, N, n_boot, boot_seed) {
       cat("  SKIP (column missing):", ind, "\n"); next
     }
     cat("  Estimating:", ind, "... ")
+
+    # Point estimate (se.method not supported in this RDS version)
     est <- tryCatch(
-      RDS.SS.estimates(
-        rds.data    = rds_obj,
-        outcome.variable = ind,
-        N           = N,
-        se.method   = "bootstrap",
-        number.of.bootstrap.iterations = n_boot
-      ),
+      RDS.SS.estimates(rds.data = rds_obj, outcome.variable = ind, N = N),
       error = function(e) { cat("ERROR:", e$message, "\n"); NULL }
     )
     if (is.null(est)) next
+    pt <- as.numeric(est$estimate)
 
-    # RDS.SS.estimates returns a list; extract point estimate and CI
-    pt   <- est$estimate
-    ci_l <- tryCatch(est$confidence.interval[1], error = function(e) NA_real_)
-    ci_u <- tryCatch(est$confidence.interval[2], error = function(e) NA_real_)
+    # Manual bootstrap CIs — same pattern as 04-bootstrap_analysis.R
+    boot_ests <- numeric(n_boot)
+    for (b in seq_len(n_boot)) {
+      idx <- sample(seq_len(nrow(rds_obj)), replace = TRUE)
+      boot_data <- rds_obj[idx, ]
+      class(boot_data) <- class(rds_obj)
+      attributes(boot_data) <- attributes(rds_obj)
+      boot_ests[b] <- tryCatch(
+        as.numeric(RDS.SS.estimates(boot_data, outcome.variable = ind, N = N)$estimate),
+        error = function(e) NA_real_
+      )
+    }
+    ci <- quantile(boot_ests, c(0.025, 0.975), na.rm = TRUE)
 
     results[[ind]] <- tibble(
-      indicator   = ind,
-      estimate    = as.numeric(pt),
-      ci_lower    = as.numeric(ci_l),
-      ci_upper    = as.numeric(ci_u)
+      indicator = ind,
+      estimate  = pt,
+      ci_lower  = unname(ci[1]),
+      ci_upper  = unname(ci[2])
     )
-    cat(sprintf("%.3f (%.3f-%.3f)\n", as.numeric(pt),
-                as.numeric(ci_l), as.numeric(ci_u)))
+    cat(sprintf("%.3f (%.3f-%.3f)\n", pt, unname(ci[1]), unname(ci[2])))
   }
   bind_rows(results)
 }
@@ -277,7 +282,7 @@ p <- ggplot(combined,
     legend.position = "bottom"
   )
 
-out_png <- here("output", "figures", "paper", "figA5_loo_chain.png")
+out_png <- here("output", "figures", "figA5_loo_chain.png")
 dir.create(dirname(out_png), showWarnings = FALSE, recursive = TRUE)
 ggsave(out_png, p, width = 7.5, height = 4.5, dpi = 300)
 cat("Saved figure:", out_png, "\n\n")

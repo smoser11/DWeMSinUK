@@ -1,0 +1,11 @@
+indicator,estimate,ci_lower,ci_upper,sample,n,label
+document_withholding_rds,0.35380573757928907,0.20306559157719584,0.48149884544394295,Full,85,Document withholding
+pay_issues_rds,0.5157394884094875,0.37155230540450357,0.6589741106809324,Full,85,Pay/debt issues
+threats_abuse_rds,0.5686275037039625,0.4174463547806495,0.7134457057117258,Full,85,Threats and abuse
+excessive_hours_rds,0.8423066477726479,0.7287511570735596,0.9413637615038126,Full,85,Excessive hours
+access_to_help_rds,0.6055219293410307,0.4540967714951252,0.7320614917588866,Full,85,Limited access to help
+document_withholding_rds,0.3339271860885134,0.17515687314137482,0.4876937463978285,LOO (excl. seed #55 chain),73,Document withholding
+pay_issues_rds,0.5533654892845862,0.41045294044056535,0.7097684937374555,LOO (excl. seed #55 chain),73,Pay/debt issues
+threats_abuse_rds,0.6136778292586447,0.46509345725052653,0.7674111602732853,LOO (excl. seed #55 chain),73,Threats and abuse
+excessive_hours_rds,0.8253214317473068,0.6967056429322221,0.9368944305944281,LOO (excl. seed #55 chain),73,Excessive hours
+access_to_help_rds,0.5733275276816131,0.4127999231975301,0.7264639907476731,LOO (excl. seed #55 chain),73,Limited access to help
