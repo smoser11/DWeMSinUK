@@ -13,6 +13,9 @@ format:
   html:
     toc: true
     toc-depth: 3
+    code-fold: true
+    code-summary: "Show code"
+    include-after-body: expand-code.html
   docx:
     highlight-style: github
     fig-cap-location: bottom

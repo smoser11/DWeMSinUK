@@ -1,0 +1,22 @@
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.createElement("button");
+  btn.textContent = "Expand all code";
+  btn.style.cssText = "margin: 0 0 1rem 0; padding: 0.4rem 0.8rem;";
+
+  btn.addEventListener("click", function () {
+    const details = document.querySelectorAll("details");
+    const anyClosed = Array.from(details).some(d => !d.open);
+
+    details.forEach(d => d.open = anyClosed);
+    btn.textContent = anyClosed ? "Collapse all code" : "Expand all code";
+  });
+
+  const firstHeading = document.querySelector("h1, h2, h3");
+  if (firstHeading) {
+    firstHeading.parentNode.insertBefore(btn, firstHeading);
+  } else {
+    document.body.insertBefore(btn, document.body.firstChild);
+  }
+});
+</script>
