@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Appendix: Quantifying Hidden Exploitation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="appendix-v6b_files/libs/clipboard/clipboard.min.js"></script>
+<script src="appendix-v6b_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="appendix-v6b_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="appendix-v6b_files/libs/quarto-html/popper.min.js"></script>
+<script src="appendix-v6b_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="appendix-v6b_files/libs/quarto-html/anchor.min.js"></script>
+<link href="appendix-v6b_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="appendix-v6b_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="appendix-v6b_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="appendix-v6b_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="appendix-v6b_files/libs/bootstrap/bootstrap-c68fc2cee8b264b0f466057160500d73.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#section-a-variable-codebook-and-indicator-definitions" id="toc-section-a-variable-codebook-and-indicator-definitions" class="nav-link active" data-scroll-target="#section-a-variable-codebook-and-indicator-definitions">Section A: Variable Codebook and Indicator Definitions</a>
+  <ul class="collapse">
+  <li><a href="#composite-risk-index" id="toc-composite-risk-index" class="nav-link" data-scroll-target="#composite-risk-index">Composite Risk Index</a></li>
+  <li><a href="#five-binary-exploitation-indicators" id="toc-five-binary-exploitation-indicators" class="nav-link" data-scroll-target="#five-binary-exploitation-indicators">Five Binary Exploitation Indicators</a></li>
+  <li><a href="#key-rds-variables" id="toc-key-rds-variables" class="nav-link" data-scroll-target="#key-rds-variables">Key RDS Variables</a></li>
+  </ul></li>
+  <li><a href="#section-b-survey-questions-and-comparable-egoalter-indicators" id="toc-section-b-survey-questions-and-comparable-egoalter-indicators" class="nav-link" data-scroll-target="#section-b-survey-questions-and-comparable-egoalter-indicators">Section B: Survey Questions and Comparable Ego/Alter Indicators</a>
+  <ul class="collapse">
+  <li><a href="#b.1-document-withholding" id="toc-b.1-document-withholding" class="nav-link" data-scroll-target="#b.1-document-withholding">B.1 Document Withholding</a></li>
+  <li><a href="#b.2-paydebt-issues" id="toc-b.2-paydebt-issues" class="nav-link" data-scroll-target="#b.2-paydebt-issues">B.2 Pay/Debt Issues</a></li>
+  <li><a href="#b.3-threats-and-abuse" id="toc-b.3-threats-and-abuse" class="nav-link" data-scroll-target="#b.3-threats-and-abuse">B.3 Threats and Abuse</a></li>
+  <li><a href="#b.4-excessive-working-hours" id="toc-b.4-excessive-working-hours" class="nav-link" data-scroll-target="#b.4-excessive-working-hours">B.4 Excessive Working Hours</a></li>
+  <li><a href="#b.5-limited-access-to-help" id="toc-b.5-limited-access-to-help" class="nav-link" data-scroll-target="#b.5-limited-access-to-help">B.5 Limited Access to Help</a></li>
+  </ul></li>
+  <li><a href="#section-c-three-step-bootstrap-procedure" id="toc-section-c-three-step-bootstrap-procedure" class="nav-link" data-scroll-target="#section-c-three-step-bootstrap-procedure">Section C: Three-Step Bootstrap Procedure</a></li>
+  <li><a href="#section-d-sensitivity-analyses" id="toc-section-d-sensitivity-analyses" class="nav-link" data-scroll-target="#section-d-sensitivity-analyses">Section D: Sensitivity Analyses</a>
+  <ul class="collapse">
+  <li><a href="#d.1-population-size-and-invariance-of-prevalence" id="toc-d.1-population-size-and-invariance-of-prevalence" class="nav-link" data-scroll-target="#d.1-population-size-and-invariance-of-prevalence">D.1 Population Size and Invariance of Prevalence</a></li>
+  <li><a href="#d.2-supporting-estimates-bayesian-model-assisted-rds-ma-rds" id="toc-d.2-supporting-estimates-bayesian-model-assisted-rds-ma-rds" class="nav-link" data-scroll-target="#d.2-supporting-estimates-bayesian-model-assisted-rds-ma-rds">D.2 Supporting Estimates: Bayesian Model-Assisted RDS (MA-RDS)</a></li>
+  <li><a href="#d.3-supporting-estimates-rds-i-and-rds-ss-comparison" id="toc-d.3-supporting-estimates-rds-i-and-rds-ss-comparison" class="nav-link" data-scroll-target="#d.3-supporting-estimates-rds-i-and-rds-ss-comparison">D.3 Supporting Estimates: RDS-I and RDS-SS Comparison</a></li>
+  <li><a href="#d.4-supporting-estimates-nsum-under-alternative-adjustment-factor-tiers" id="toc-d.4-supporting-estimates-nsum-under-alternative-adjustment-factor-tiers" class="nav-link" data-scroll-target="#d.4-supporting-estimates-nsum-under-alternative-adjustment-factor-tiers">D.4 Supporting Estimates: NSUM under Alternative Adjustment-Factor Tiers</a></li>
+  <li><a href="#d.5-continuous-tau-nsum-sensitivity-sweep" id="toc-d.5-continuous-tau-nsum-sensitivity-sweep" class="nav-link" data-scroll-target="#d.5-continuous-tau-nsum-sensitivity-sweep">D.5 Continuous-<span class="math inline">\(\tau\)</span> NSUM Sensitivity Sweep</a></li>
+  <li><a href="#d.6-robustness-bootstrap-method-and-weighting-scheme" id="toc-d.6-robustness-bootstrap-method-and-weighting-scheme" class="nav-link" data-scroll-target="#d.6-robustness-bootstrap-method-and-weighting-scheme">D.6 Robustness: Bootstrap Method and Weighting Scheme</a></li>
+  <li><a href="#d.7-survey-incentive-design" id="toc-d.7-survey-incentive-design" class="nav-link" data-scroll-target="#d.7-survey-incentive-design">D.7 Survey Incentive Design</a></li>
+  <li><a href="#sec-loo-chain" id="toc-sec-loo-chain" class="nav-link" data-scroll-target="#sec-loo-chain">D.8 Leave-One-Out Chain Sensitivity</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="appendix-v6b.docx"><i class="bi bi-file-word"></i>MS Word</a></li><li><a href="appendix-v6b.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Appendix: Quantifying Hidden Exploitation</h1>
+<p class="subtitle lead">Online Supplementary Materials for Social Indicators Research Submission</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="section-a-variable-codebook-and-indicator-definitions" class="level1">
+<h1>Section A: Variable Codebook and Indicator Definitions</h1>
+<p>This section documents the composite risk index construction, the five binary exploitation indicators used as the primary prevalence outcomes, and the key RDS variables. Data and replication code are available at <a href="https://osf.io/vf5yb/overview?view_only=becc2db3b49c4b258015b648867bf208" class="uri">https://osf.io/vf5yb/overview?view_only=becc2db3b49c4b258015b648867bf208</a>. The composite risk index and all indicator variables are constructed in <code>R/data_processing/02-data_preparation.R</code> via <code>create_comparable_indicators()</code>.</p>
+<section id="composite-risk-index" class="level2">
+<h2 class="anchored" data-anchor-id="composite-risk-index">Composite Risk Index</h2>
+<p>The composite risk index aggregates all eleven ILO indicators of forced labour into a single continuous measure (range 0–0.99). The index is a formative additive composite: an individual is exposed to exploitation if any of the indicators is present, and the indicators are constitutive rather than reflective of an underlying severity construct. Polarity is uniform across categories. Each of the eleven ILO indicator categories contributes equally to the composite (maximum 0.09 per category, so the total maximum possible score is 11 × 0.09 = 0.99). Within a category, the 0.09 is distributed evenly across the sub-questions used to code that category (0.09 for one sub-question, 0.045 each for two, 0.03 each for three, 0.0225 each for four). Category-level weights are therefore uniform across the eleven ILO indicators; the medium/strong severity ordering from the ILO handbook on forced-labour surveys <span class="citation" data-cites="hard24-ilo">(<a href="#ref-hard24-ilo" role="doc-biblioref">International Labour Organization, 2024</a>)</span> is used to organise reporting and interpretation but does not itself scale the sub-weights.</p>
+<p>Two further evidentiary markers — payment below the national living wage (Category 12) and NRM-referral history (Category 13) — are reported as separate binary flags and are <strong>not</strong> included in the composite, because their direct evidentiary status under UK policy makes them more useful when read independently.</p>
+<table class="caption-top table">
+<caption>Table A1. Composite Risk Index: ILO indicator categories, survey items, coding rules, and sub-weights. All eleven ILO indicator categories carry the same maximum category weight of 0.09; this 0.09 is split evenly across the sub-questions used to code the category (0.09 for one, 0.045 each for two, 0.03 each for three, 0.0225 each for four sub-questions). The total maximum composite score is therefore 11 × 0.09 = 0.99. The medium/strong severity labels in column 2 follow the ILO handbook on forced-labour surveys <span class="citation" data-cites="hard24-ilo">(<a href="#ref-hard24-ilo" role="doc-biblioref">International Labour Organization, 2024</a>)</span>; the shorter ILO operational-indicators publications <span class="citation" data-cites="ILO11-indicators int25-ilo">(<a href="#ref-ILO11-indicators" role="doc-biblioref">International Labour Organization, 2012</a>, <a href="#ref-int25-ilo" role="doc-biblioref">2025</a>)</span> list the eleven indicators without publishing this severity ranking, and the labels do not scale the composite weights. Categories 12 and 13 are reported as separate binary flags and are excluded from the composite.</caption>
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>ILO Indicator (severity)</th>
+<th>Survey item(s)</th>
+<th>Coding rule</th>
+<th>Max weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Abuse of vulnerability (medium)</td>
+<td>Q29 (5a1): Forced to do work against will; Q51 (5d2-a): Unpaid tasks</td>
+<td>Q29: 0/1/2 → 0.045; Q51: 0 → 0.045</td>
+<td>0.09</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Deception (medium)</td>
+<td>Q45 (5c2): Forced/deceived/threatened into poor conditions</td>
+<td>Q45: 0 → 0.09</td>
+<td>0.09</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Restriction of movement (medium)</td>
+<td>Q32 (5a4): Could not leave premises; Q46 (5c3): Stay overnight permanently</td>
+<td>Q32: 0/1/2 → 0.045; Q46: 2 or 3 → 0.045</td>
+<td>0.09</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Isolation (medium)</td>
+<td>Q65: Have friends outside work</td>
+<td>Q65: 1 (No) → 0.09</td>
+<td>0.09</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Physical and sexual violence (strong)</td>
+<td>Q44 (5c1): Abuse/harassment/physical violence; Q44 (5c1-b): Sexual violence</td>
+<td>Q44 (5c1): 0 → 0.045; Q44 (5c1-b): 0 → 0.045</td>
+<td>0.09</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Intimidation and threats (strong)</td>
+<td>Q47 (5c4): Employer threatened/intimidated</td>
+<td>Q47: 0/1/2 → 0.09</td>
+<td>0.09</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Retention of identity documents (strong)</td>
+<td>Q70 (5f2): Travel/identity docs withheld</td>
+<td>Q70: 0/1/2 → 0.09</td>
+<td>0.09</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Withholding of wages (medium)</td>
+<td>Q42 (5b7): Pay ever withheld</td>
+<td>Q42: 0/1/2 → 0.09</td>
+<td>0.09</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>Debt bondage (medium)</td>
+<td>Q39 (5b4): Earnings to pay off debt to helper</td>
+<td>Q39: 0 → 0.09</td>
+<td>0.09</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>Abusive working and living conditions (medium)</td>
+<td>Q48 (5c5): Verbally abused; Q63 (5d10): Lack of privacy; Q72 (5f4): Safe/healthy environment; Q76 (5f8): Access to food/water/sanitation</td>
+<td>Q48: 0/1/2 → 0.0225; Q63: 0/1/2 → 0.0225; Q72: 2 or 3 → 0.0225; Q76: 1/2/3 → 0.0225</td>
+<td>0.09</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>Excessive overtime (medium)</td>
+<td>Q16 (3b): Weekly hours; Q61 (5d8): Weekly rest ≥ 24h; Q62 (5d9): Excessive overtime felt</td>
+<td>Q16: 6 or 7 → 0.03; Q61: 2 or 3 → 0.03; Q62: 0/1/2 → 0.03</td>
+<td>0.09</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>Payment below national living wage <em>(separate binary)</em></td>
+<td>Q36 (5b1): Hourly pay before tax</td>
+<td>Q36: 0/1/2 (below £10.42/hr) → 1</td>
+<td>Reported separately</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>NRM-referral indicator <em>(separate binary)</em></td>
+<td>Q80 (5f12): Advised to enter National Referral Mechanism</td>
+<td>Q80: 0 or 1 → 1</td>
+<td>Reported separately</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="five-binary-exploitation-indicators" class="level2">
+<h2 class="anchored" data-anchor-id="five-binary-exploitation-indicators">Five Binary Exploitation Indicators</h2>
+<p>The five binary indicators are the primary prevalence outcomes for both the ego-based RDS and alter-based NSUM analyses. All are binary (0/1). Multi-category RDS responses are recoded so that affirmative answers → 1, Never/no access → 0, and “Don’t know”/“Prefer not to say” → NA. Composite RDS indicators combine sub-questions using logical OR (any affirmative response across sub-questions → 1). NSUM count variables (number of domestic workers known with the characteristic) are converted to binary (&gt; 0 → 1).</p>
+<table class="caption-top table">
+<caption>Table A2. Five Binary Exploitation Indicators: ILO classification, survey questions, and coding rules.</caption>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Binary indicator</th>
+<th>ILO classification</th>
+<th>Survey item(s)</th>
+<th>Coding rule</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Document withholding</td>
+<td>Strong (Category 7)</td>
+<td>Q70 (5f2): Travel/identity docs withheld</td>
+<td>Q70: 0/1/2 → 1</td>
+</tr>
+<tr class="even">
+<td>Threats and abuse</td>
+<td>Strong (Categories 5+6)</td>
+<td>Q45 (5c2): Forced/deceived/threatened; Q47 (5c4): Intimidated; Q48 (5c5): Verbally abused</td>
+<td>Any of: Q45=0; Q47=0/1/2; Q48=0/1/2 → 1</td>
+</tr>
+<tr class="odd">
+<td>Pay issues</td>
+<td>Medium (Categories 8+9)</td>
+<td>Q39 (5b4): Debt bondage; Q42 (5b7): Pay withheld</td>
+<td>Either Q39=0 or Q42=0/1/2 → 1</td>
+</tr>
+<tr class="even">
+<td>Excessive hours</td>
+<td>Medium (Category 11)</td>
+<td>Q61 (5d8): Weekly rest &lt; 24h; Q62 (5d9): Excessive overtime</td>
+<td>Either Q61=2/3 or Q62=0/1/2 → 1</td>
+</tr>
+<tr class="odd">
+<td>Limited access to help</td>
+<td>Auxiliary</td>
+<td>Q78 (5f10): Knows where to get help (reverse-coded)</td>
+<td>Q78 indicating no access → 1</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="key-rds-variables" class="level2">
+<h2 class="anchored" data-anchor-id="key-rds-variables">Key RDS Variables</h2>
+<table class="caption-top table">
+<caption>Table A3. Key RDS Variables: variable name, type, definition, and survey source.</caption>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Type</th>
+<th>Definition</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id</td>
+<td>Numeric</td>
+<td>Unique respondent identifier</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>recruiter.id</td>
+<td>Numeric</td>
+<td>id of recruiter; −1 = seed</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>referral_1 through referral_5</td>
+<td>Numeric</td>
+<td>ids of up to five recruits</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>q13 (2f)</td>
+<td>Numeric (count)</td>
+<td>Personal network size: number of other domestic workers known with contact details. Used as degree variable in RDS weighting and NSUM denominator.</td>
+<td>Q13</td>
+</tr>
+<tr class="odd">
+<td>1a_eligibility</td>
+<td>Binary</td>
+<td>Worked as domestic worker in past 12 months</td>
+<td>Q1a</td>
+</tr>
+<tr class="even">
+<td>wave</td>
+<td>Numeric (0, 1, 2, …)</td>
+<td>Recruitment wave; 0 = seed; k = recruited by wave-(k−1) respondent</td>
+<td>Derived</td>
+</tr>
+<tr class="odd">
+<td>nationality_cluster</td>
+<td>Categorical (4 levels)</td>
+<td>Filipino, Latinx, British, Other</td>
+<td>Q3, Q5</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="section-b-survey-questions-and-comparable-egoalter-indicators" class="level1">
+<h1>Section B: Survey Questions and Comparable Ego/Alter Indicators</h1>
+<p>This section documents the full wording and response options for the ego-based (RDS) and alter-based (NSUM) survey questions underlying each of the five binary exploitation indicators. Ego-based questions ask respondents about their own experiences; alter-based questions ask what respondents observe in the domestic workers they know personally. This matched ego/alter pairing is the foundation of the dual-method design. All question numbers refer to the original survey instrument (<em>The Nature and Extent of Labour Exploitation among Domestic Workers in the UK</em>, administered via OnlineSurveys, University of Nottingham).</p>
+<p>Table B1 gives a summary overview; the subsections below provide the full question wording, response options, and coding rules for each indicator pair.</p>
+<table class="caption-top table">
+<caption>Table B1. Comparable Ego/Alter Indicator Pairs — Summary. Confidence ratings reflect the closeness of the conceptual match between the ego (RDS) and alter (NSUM) question framings.</caption>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Indicator</th>
+<th>Ego (RDS) question(s)</th>
+<th>Alter (NSUM) question</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Document withholding</td>
+<td>Q70 (5f2)</td>
+<td>Q71 (5f3)</td>
+<td>Highest</td>
+</tr>
+<tr class="even">
+<td>Pay/debt issues</td>
+<td>Q39 (5b4) + Q42 (5b7)</td>
+<td>Q43 (5b8)</td>
+<td>High</td>
+</tr>
+<tr class="odd">
+<td>Threats and abuse</td>
+<td>Q45 (5c2) + Q47 (5c4) + Q48 (5c5)</td>
+<td>Q49 (5c6)</td>
+<td>High</td>
+</tr>
+<tr class="even">
+<td>Excessive hours</td>
+<td>Q61 (5d8) + Q62 (5d9)</td>
+<td>Q64 (5d11)</td>
+<td>Medium</td>
+</tr>
+<tr class="odd">
+<td>Limited access to help</td>
+<td>Q78 (5f10) reverse-coded</td>
+<td>Q79 (5f11)</td>
+<td>Lower</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<section id="b.1-document-withholding" class="level2">
+<h2 class="anchored" data-anchor-id="b.1-document-withholding">B.1 Document Withholding</h2>
+<p><strong>Ego-based — Q70 (5f2):</strong></p>
+<blockquote class="blockquote">
+<p><em>Has your employer, or their agent, withheld from you your travel and identity documentation?</em></p>
+<p>Response options: Yes, always / Often / Sometimes / Never / I don’t know</p>
+</blockquote>
+<p><strong>Alter-based — Q71 (5f3):</strong></p>
+<blockquote class="blockquote">
+<p><em>Do you know personally of any other domestic workers who do not have access to their own travel and identity documents? If so, how many? (Please indicate the number, or state ‘0’ if this does not apply to anyone you know.)</em></p>
+<p>Response: Integer count</p>
+</blockquote>
+<p><strong>Coding.</strong> Ego: Q70 ∈ {Yes always, Often, Sometimes} → 1; {Never, I don’t know} → 0; missing → NA. Alter: Q71 &gt; 0 → 1; Q71 = 0 → 0; missing → NA.</p>
+<p><strong>Confidence: Highest.</strong> The ego and alter questions are direct mirror images of the same exploitation behaviour. The only difference is perspective (self vs.&nbsp;others), not concept or scope.</p>
+<hr>
+</section>
+<section id="b.2-paydebt-issues" class="level2">
+<h2 class="anchored" data-anchor-id="b.2-paydebt-issues">B.2 Pay/Debt Issues</h2>
+<p><strong>Ego-based — Q39 (5b4):</strong></p>
+<blockquote class="blockquote">
+<p><em>Do you have to use some or all of what you earn to pay off a debt to someone who helped you find work?</em></p>
+<p>Response options: Yes / No / I don’t know</p>
+</blockquote>
+<p><strong>Ego-based — Q42 (5b7):</strong></p>
+<blockquote class="blockquote">
+<p><em>Has your pay ever been withheld by your employer?</em></p>
+<p>Response options: Yes, always / Often / Sometimes / Never / I don’t know</p>
+</blockquote>
+<p><strong>Alter-based — Q43 (5b8):</strong></p>
+<blockquote class="blockquote">
+<p><em>Do you know personally of any other domestic workers who have experienced problems with debt or pay? If so, how many? (Please indicate the number, or state ‘0’ if this does not apply to anyone you know.)</em></p>
+<p>Response: Integer count</p>
+</blockquote>
+<p><strong>Coding.</strong> Ego: Q39 = Yes → 1; {No, I don’t know} → 0 (debt bondage component). Q42 ∈ {Yes always, Often, Sometimes} → 1; {Never, I don’t know} → 0 (pay withheld component). Composite <code>pay_issues_rds</code>: logical OR — Q39 = 1 OR Q42 = 1 → 1; both NA → NA. Alter: Q43 &gt; 0 → 1; Q43 = 0 → 0; missing → NA.</p>
+<p><strong>Confidence: High.</strong> The alter question (Q43) covers both debt and pay problems, matching the combined ego indicator. Some conceptual mismatch remains because the alter question aggregates two distinct ego concepts into one.</p>
+<hr>
+</section>
+<section id="b.3-threats-and-abuse" class="level2">
+<h2 class="anchored" data-anchor-id="b.3-threats-and-abuse">B.3 Threats and Abuse</h2>
+<p><strong>Ego-based — Q45 (5c2):</strong></p>
+<blockquote class="blockquote">
+<p><em>Have you been forced, deceived or threatened into poor working conditions?</em></p>
+<p>Response options: Yes / No / Prefer not to say</p>
+</blockquote>
+<p><strong>Ego-based — Q47 (5c4):</strong></p>
+<blockquote class="blockquote">
+<p><em>Has your employer ever threatened or intimidated you?</em></p>
+<p>Response options: Yes / Often / Sometimes / Never / I don’t know</p>
+</blockquote>
+<p><strong>Ego-based — Q48 (5c5):</strong></p>
+<blockquote class="blockquote">
+<p><em>Has your employer ever verbally abused you (e.g.&nbsp;shouted, insulted, tried to humiliate you, or called you names, etc.)?</em></p>
+<p>Response options: Yes, Often / Yes, Sometimes / Maybe once or twice / Never / I don’t know</p>
+</blockquote>
+<p><strong>Alter-based — Q49 (5c6):</strong></p>
+<blockquote class="blockquote">
+<p><em>Do you know personally of any other domestic workers that have had any experiences related to the use of threat or force? If so, how many? (Please indicate the number, or state ‘0’ if this does not apply to anyone you know.)</em></p>
+<p>Response: Integer count</p>
+</blockquote>
+<p><strong>Coding.</strong> Ego: Q45 = Yes → 1; {No, Prefer not to say} → 0. Q47 ∈ {Yes, Often, Sometimes} → 1; {Never, I don’t know} → 0. Q48 ∈ {Yes Often, Yes Sometimes, Maybe once or twice} → 1; {Never, I don’t know} → 0. Composite <code>threats_abuse_rds</code>: logical OR — any of Q45/Q47/Q48 = 1 → 1; all three NA → NA. Alter: Q49 &gt; 0 → 1; Q49 = 0 → 0; missing → NA.</p>
+<p><strong>Confidence: High.</strong> Q49 captures the combined concept of threat and force, aligning with the three ego sub-questions. The ego composite is slightly broader (it includes verbal abuse via Q48), so some scope mismatch remains at the margin.</p>
+<hr>
+</section>
+<section id="b.4-excessive-working-hours" class="level2">
+<h2 class="anchored" data-anchor-id="b.4-excessive-working-hours">B.4 Excessive Working Hours</h2>
+<p><strong>Ego-based — Q61 (5d8):</strong></p>
+<blockquote class="blockquote">
+<p><em>Does your weekly rest last longer than 24 hours consecutively?</em></p>
+<p>Response options: Yes, always / Often / Sometimes / Never / I don’t know</p>
+</blockquote>
+<p><strong>Ego-based — Q62 (5d9):</strong></p>
+<blockquote class="blockquote">
+<p><em>How often have you worked overtime that you felt was excessive?</em></p>
+<p>Response options: Always / Often / Sometimes / Never / I don’t know</p>
+</blockquote>
+<p><strong>Alter-based — Q64 (5d11):</strong></p>
+<blockquote class="blockquote">
+<p><em>Do you know personally of any other domestic workers who have experienced any of the above related to labour rights? (Including working excessive overtime, a failure to obtain daily or weekly breaks or annual leave.) If so, how many? (Please indicate the number, or state ‘0’ if this does not apply to anyone you know.)</em></p>
+<p>Response: Integer count</p>
+</blockquote>
+<p><strong>Coding.</strong> Ego: Q61 ∈ {Sometimes, Never} → 1 (indicates <em>inadequate</em> rest, i.e., rest rarely or never exceeds 24 h); {Yes always, Often, I don’t know} → 0. Q62 ∈ {Always, Often, Sometimes} → 1; {Never, I don’t know} → 0. Composite <code>excessive_hours_rds</code>: logical OR → 1 if either condition present; both NA → NA. Alter: Q64 &gt; 0 → 1; Q64 = 0 → 0; missing → NA.</p>
+<p><strong>Confidence: Medium.</strong> Q64 explicitly includes <em>annual leave</em> (“a failure to obtain … annual leave”) which is not captured by Q61 or Q62 on the ego side. This scope mismatch is the largest of the five indicator pairs and is acknowledged as a limitation of the comparable-indicator strategy.</p>
+<hr>
+</section>
+<section id="b.5-limited-access-to-help" class="level2">
+<h2 class="anchored" data-anchor-id="b.5-limited-access-to-help">B.5 Limited Access to Help</h2>
+<p><strong>Ego-based — Q78 (5f10):</strong></p>
+<blockquote class="blockquote">
+<p><em>Do you know who might help you if you are not being properly paid or properly treated?</em></p>
+<p>Response options: Yes / No</p>
+</blockquote>
+<p><strong>Alter-based — Q79 (5f11):</strong></p>
+<blockquote class="blockquote">
+<p><em>Do you know personally of any other domestic workers who do NOT know where to go for help? If so, how many? (Please indicate the number, or state ‘0’ if this does not apply to anyone you know.)</em></p>
+<p>Response: Integer count</p>
+</blockquote>
+<p><strong>Coding.</strong> Ego: Q78 is reverse-coded — Q78 = No → 1 (respondent lacks access to help); Q78 = Yes → 0; missing → NA. Alter: Q79 &gt; 0 → 1; Q79 = 0 → 0; missing → NA.</p>
+<p><strong>Confidence: Lower.</strong> Q78 directly reports the respondent’s own knowledge of available support, while Q79 asks the respondent to assess <em>others’</em> knowledge. The reverse-coding of Q78 aligns the polarity (both = 1 signals vulnerability), but the alter question requires the respondent to perceive and report on peers’ states of knowledge — a different and more demanding cognitive task than self-report. The conceptual match is therefore less direct than for the other four indicators.</p>
+<hr>
+<p><strong>General data processing notes.</strong> All five indicators are binary (0/1) after recoding. RDS multi-category responses are recoded so that affirmative responses → 1, and negative/unknown responses → 0 or NA as specified above. Composite RDS indicators (pay/debt issues, threats and abuse, excessive hours) apply logical OR: any single affirmative sub-response → indicator = 1; only if <em>all</em> sub-questions are missing does the composite take the value NA. NSUM count variables are converted to binary: count &gt; 0 → 1; count = 0 → 0. These constructions are implemented in <code>create_comparable_indicators()</code> in <code>R/data_processing/02-data_preparation.R</code>, following the comparable-indicator specification agreed between the authors in November 2024.</p>
+<hr>
+</section>
+</section>
+<section id="section-c-three-step-bootstrap-procedure" class="level1">
+<h1>Section C: Three-Step Bootstrap Procedure</h1>
+<p>This section documents the custom bootstrap procedure used to construct 95% confidence intervals for all NSUM (MBSU) prevalence estimates. The procedure preserves the RDS network topology while allowing standard resampling-based uncertainty quantification.</p>
+<p><strong>Step 1 — Resampling.</strong> We resample from the observed RDS sample using a neighbourhood bootstrap. In the neighbourhood bootstrap, each respondent is resampled along with their immediate network neighbourhood (recruiter and recruits), preserving the ego-network topology and recruitment-tie structure following Yauck et al.&nbsp;(2022). Let <span class="math inline">\(S^{(b)}\)</span> denote the bootstrap replicate for iteration <span class="math inline">\(b\)</span>. This resampling scheme is chosen over simple node-level resampling because it respects the dependent structure introduced by respondent-driven recruitment; it is the default bootstrap in the project’s NSUM estimation pipeline.</p>
+<p><strong>Step 2 — Reweighting.</strong> For each bootstrap replicate <span class="math inline">\(b\)</span>, RDS inclusion weights are recomputed from the replicate’s degree distribution. Two weighting schemes are implemented and shown to produce equivalent results (Appendix Table A8):</p>
+<ul>
+<li><em>Volz–Heckathorn (RDS-II) weights:</em> <span class="math inline">\(w_i^{(b)} \propto 1/d_i^{(b)}\)</span>, where <span class="math inline">\(d_i^{(b)}\)</span> is respondent <span class="math inline">\(i\)</span>’s network degree in replicate <span class="math inline">\(b\)</span>.</li>
+<li><em>Successive Sampling (SS) weights:</em> incorporate the sampling fraction and frame size <span class="math inline">\(N_F\)</span>, computed numerically via the <code>RDS</code> package’s successive-sampling estimator. At our sample sizes the SS and VH weights produce identical prevalence estimates (Table A8).</li>
+</ul>
+<p><strong>Step 3 — NSUM estimation and aggregation.</strong> The MBSU estimator is applied to each bootstrap replicate with the recomputed weights. The MBSU prevalence formula (Feehan &amp; Salganik, 2016) is:</p>
+<p><span class="math display">\[\hat{p}_H^{(b)} = \frac{\sum_i w_i^{(b)} \, y_{iH}^{(b)}}{\sum_i w_i^{(b)} \, d_i^{(b)}}\]</span></p>
+<p>where <span class="math inline">\(y_{iH}^{(b)}\)</span> is respondent <span class="math inline">\(i\)</span>’s binary indicator of knowing at least one member of hidden group <span class="math inline">\(H\)</span>, and <span class="math inline">\(d_i^{(b)}\)</span> is their network degree. For the adjusted estimate, the basic prevalence is multiplied by <span class="math inline">\(1/(\delta \cdot \tau)\)</span>:</p>
+<p><span class="math display">\[\hat{p}_{H,\text{adj}}^{(b)} = \hat{p}_H^{(b)} \cdot \frac{1}{\delta} \cdot \frac{1}{\tau}\]</span></p>
+<p>Bootstrap aggregation uses <span class="math inline">\(B = 500\)</span> replicates. The 95% confidence interval is the empirical 2.5th–97.5th percentile interval across the <span class="math inline">\(B\)</span> bootstrap prevalence estimates. Point estimates are computed from the full observed sample (not the bootstrap mean). Results are shown to be invariant to the choice of bootstrap resampling method (chain, neighbourhood, successive sampling, tree) in Appendix Table A7.</p>
+<p><em>Additional resampling options available in the pipeline but not used in the main analysis:</em> Tree Bootstrap (sample entire recruitment trees with replacement), Chain Bootstrap (sample chains or subchains), and a Successive Sampling Bootstrap that mirrors the SS weight construction. These alternatives are documented in the project code (<code>R/analysis/NSUM/</code>) and their equivalence to the neighbourhood bootstrap is confirmed in Table A7.</p>
+<hr>
+</section>
+<section id="section-d-sensitivity-analyses" class="level1">
+<h1>Section D: Sensitivity Analyses</h1>
+<section id="d.1-population-size-and-invariance-of-prevalence" class="level2">
+<h2 class="anchored" data-anchor-id="d.1-population-size-and-invariance-of-prevalence">D.1 Population Size and Invariance of Prevalence</h2>
+<p>All prevalence estimators used in this paper are either algebraically free of the assumed total population size <span class="math inline">\(N\)</span>, or depend on <span class="math inline">\(N\)</span> only through finite-population corrections that are negligible at our sample sizes.</p>
+<p><em>RDS-I (Salganik–Heckathorn) and RDS-II (Volz–Heckathorn):</em> The prevalence formula <span class="math inline">\(\hat{p} = \sum_i w_i y_i / \sum_i w_i\)</span> contains no <span class="math inline">\(N\)</span>; weights <span class="math inline">\(w_i \propto 1/d_i\)</span> are degree-based only.</p>
+<p><em>MBSU NSUM:</em> The prevalence formula <span class="math inline">\(\hat{p}_H = \bar{y}_{FH}/\bar{d}_{FF}\)</span> is a ratio of two weighted means and contains no <span class="math inline">\(N\)</span>. Only the absolute count estimate <span class="math inline">\(\hat{N}_H = \hat{p}_H \times N_F\)</span> depends on <span class="math inline">\(N_F\)</span>; prevalence does not.</p>
+<p><em>RDS-SS and MA-RDS:</em> These estimators formally depend on <span class="math inline">\(N\)</span> through finite-population corrections. At <span class="math inline">\(n = 85\)</span> our sampling fraction is:</p>
+<ul>
+<li><span class="math inline">\(n/N = 0.17\%\)</span> at <span class="math inline">\(N = 50{,}000\)</span></li>
+<li><span class="math inline">\(n/N = 0.085\%\)</span> at <span class="math inline">\(N = 100{,}000\)</span></li>
+<li><span class="math inline">\(n/N = 0.009\%\)</span> at <span class="math inline">\(N = 980{,}000\)</span></li>
+<li><span class="math inline">\(n/N = 0.005\%\)</span> at <span class="math inline">\(N = 1{,}740{,}000\)</span></li>
+</ul>
+<p>All values are well below the conventional 5% threshold at which finite-population corrections become non-negligible. Headline estimates use <span class="math inline">\(N = 980{,}000\)</span> (EU baseline for UK domestic workers); MA-RDS Bayesian analysis uses <span class="math inline">\(N = 50{,}000\)</span> for computational tractability. Cached estimates across all four <span class="math inline">\(N\)</span> values agree to within bootstrap noise. Full empirical confirmation across population sizes is reported in Appendix Table A9.</p>
+</section>
+<section id="d.2-supporting-estimates-bayesian-model-assisted-rds-ma-rds" class="level2">
+<h2 class="anchored" data-anchor-id="d.2-supporting-estimates-bayesian-model-assisted-rds-ma-rds">D.2 Supporting Estimates: Bayesian Model-Assisted RDS (MA-RDS)</h2>
+<p>Bayesian Model-Assisted (MA-RDS) posterior estimates follow Gile and Handcock (2015), implemented via the <code>sspse</code> package with <span class="math inline">\(N = 50{,}000\)</span> and <code>seed.selection = 'degree'</code>. Posterior means range from 34.1% (document withholding) to 84.0% (excessive hours), reproducing the RDS-SS indicator ordering. The MA-RDS posterior means and 95% credible intervals are insensitive to the choice of seed-selection method (degree, random, sample); all three methods converge to the same posterior (Appendix D.2, Figure A4). Because the MA Bayesian estimator does not converge to a useful posterior on continuous outcomes at <span class="math inline">\(n = 85\)</span>, MA-RDS is reported only for the five binary indicators, not for the composite risk index.</p>
+<table class="caption-top table">
+<caption>Table A5. Bayesian MA-RDS Estimates for Five Binary Indicators, N = 50,000, seed.selection = ‘degree’. Posterior mean (95% credible interval). Ordering of indicators preserved vs.&nbsp;RDS-SS estimates in Table 5 of the main text.</caption>
+<thead>
+<tr class="header">
+<th>Indicator</th>
+<th>MA-RDS posterior mean (95% CI)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Document withholding</td>
+<td>34.1% (16.1–52.1%)</td>
+</tr>
+<tr class="even">
+<td>Pay issues</td>
+<td>49.3% (35.2–63.4%)</td>
+</tr>
+<tr class="odd">
+<td>Threats and abuse</td>
+<td>57.1% (34.6–79.6%)</td>
+</tr>
+<tr class="even">
+<td>Limited access to help</td>
+<td>58.2% (46.0–70.4%)</td>
+</tr>
+<tr class="odd">
+<td>Excessive working hours</td>
+<td>84.0% (72.3–95.8%)</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<caption>Table A6. MA-RDS Sensitivity Analysis: Posterior Estimates across Population Sizes and Seed-Selection Methods. All combinations produce the same posterior means, confirming N-invariance and seed-method robustness. Posterior mean shown; 95% CI available on request.</caption>
+<colgroup>
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Indicator</th>
+<th>N = 50,000 degree</th>
+<th>N = 50,000 random</th>
+<th>N = 50,000 sample</th>
+<th>N = 980,000 degree</th>
+<th>N = 980,000 random</th>
+<th>N = 980,000 sample</th>
+<th>N = 1,740,000 degree</th>
+<th>N = 1,740,000 random</th>
+<th>N = 1,740,000 sample</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Document withholding</td>
+<td>34.1%</td>
+<td>34.1%</td>
+<td>34.1%</td>
+<td>34.1%</td>
+<td>34.1%</td>
+<td>34.1%</td>
+<td>34.1%</td>
+<td>34.1%</td>
+<td>34.1%</td>
+</tr>
+<tr class="even">
+<td>Pay issues</td>
+<td>49.3%</td>
+<td>49.3%</td>
+<td>49.3%</td>
+<td>49.3%</td>
+<td>49.3%</td>
+<td>49.3%</td>
+<td>49.3%</td>
+<td>49.3%</td>
+<td>49.3%</td>
+</tr>
+<tr class="odd">
+<td>Threats and abuse</td>
+<td>57.1%</td>
+<td>57.1%</td>
+<td>57.1%</td>
+<td>57.1%</td>
+<td>57.1%</td>
+<td>57.1%</td>
+<td>57.1%</td>
+<td>57.1%</td>
+<td>57.1%</td>
+</tr>
+<tr class="even">
+<td>Limited access to help</td>
+<td>58.2%</td>
+<td>58.2%</td>
+<td>58.2%</td>
+<td>58.2%</td>
+<td>58.2%</td>
+<td>58.2%</td>
+<td>58.2%</td>
+<td>58.2%</td>
+<td>58.2%</td>
+</tr>
+<tr class="odd">
+<td>Excessive working hours</td>
+<td>84.0%</td>
+<td>84.0%</td>
+<td>84.0%</td>
+<td>84.0%</td>
+<td>84.0%</td>
+<td>84.0%</td>
+<td>84.0%</td>
+<td>84.0%</td>
+<td>84.0%</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/figA4_ma_seedcheck.png" class="img-fluid figure-img" style="width:5.5in"></p>
+<figcaption>Figure A4. Model-Assisted Seed-Selection Sensitivity. Bayesian MA posterior estimates and 95% credible intervals for document withholding under three seed-selection methods (degree, random, sample) at N = 50,000. All three methods converge to the same posterior, supporting model robustness to initialisation. Source: Authors’ own work.</figcaption>
+</figure>
+</div>
+</section>
+<section id="d.3-supporting-estimates-rds-i-and-rds-ss-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="d.3-supporting-estimates-rds-i-and-rds-ss-comparison">D.3 Supporting Estimates: RDS-I and RDS-SS Comparison</h2>
+<p>Table A4 reports prevalence estimates and neighbourhood-bootstrap 95% confidence intervals for both the RDS-I (Salganik–Heckathorn) and RDS-SS (Gile’s Successive Sampling) estimators across all four assumed population sizes. RDS-I runs systematically higher than RDS-SS by 5–15 percentage points, consistent with the standard finding that RDS-I is sensitive to seed dependence and performs poorly at small sample sizes and shallow chain depths. The gap between RDS-I and RDS-SS is larger for indicators where seed-cluster homophily is strongest. Estimates are essentially invariant across population sizes (confirming Section D.1). The preferred estimator for binary outcomes is RDS-SS; see main text Section 3.2.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/figA2_rds_comparison.png" class="img-fluid figure-img" style="width:6in"></p>
+<figcaption>Figure A2. RDS Prevalence Estimates by Method. Neighbourhood-bootstrap 95% confidence intervals for RDS-I (Salganik–Heckathorn) and RDS-SS (Gile’s Successive Sampling) estimators for the five binary exploitation indicators, N = 980,000. RDS-I runs systematically higher than RDS-SS by 5–15 percentage points, consistent with seed dependence in the shallow-chain design. Source: Authors’ own work.</figcaption>
+</figure>
+</div>
+<table class="caption-top table">
+<caption>Table A4. Comprehensive RDS Estimates: Both Estimators across All Population Sizes. Neighbourhood-bootstrap 95% CI in parentheses. Estimates are invariant across N values; full table shows all four population sizes for completeness.</caption>
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Indicator</th>
+<th>Estimator</th>
+<th>N = 50,000</th>
+<th>N = 100,000</th>
+<th>N = 980,000</th>
+<th>N = 1,740,000</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Document withholding</td>
+<td>RDS-I</td>
+<td>49.4% (25.3–56.3%)</td>
+<td>49.4% (25.3–56.3%)</td>
+<td>49.4% (25.3–56.3%)</td>
+<td>49.4% (25.3–56.3%)</td>
+</tr>
+<tr class="even">
+<td>Document withholding</td>
+<td>RDS-SS</td>
+<td>34.2% (25.2–56.0%)</td>
+<td>34.2% (25.2–56.0%)</td>
+<td>34.2% (25.2–56.0%)</td>
+<td>34.2% (25.2–56.0%)</td>
+</tr>
+<tr class="odd">
+<td>Pay issues</td>
+<td>RDS-I</td>
+<td>59.3% (34.2–63.5%)</td>
+<td>59.3% (34.2–63.5%)</td>
+<td>59.3% (34.2–63.5%)</td>
+<td>59.3% (34.2–63.5%)</td>
+</tr>
+<tr class="even">
+<td>Pay issues</td>
+<td>RDS-SS</td>
+<td>49.7% (34.8–63.4%)</td>
+<td>49.7% (34.8–63.4%)</td>
+<td>49.7% (34.8–63.4%)</td>
+<td>49.7% (34.8–63.4%)</td>
+</tr>
+<tr class="odd">
+<td>Threats and abuse</td>
+<td>RDS-I</td>
+<td>65.2% (40.5–72.1%)</td>
+<td>65.2% (40.5–72.1%)</td>
+<td>65.2% (40.5–72.1%)</td>
+<td>65.2% (40.5–72.1%)</td>
+</tr>
+<tr class="even">
+<td>Threats and abuse</td>
+<td>RDS-SS</td>
+<td>57.2% (40.1–72.3%)</td>
+<td>57.2% (40.1–72.3%)</td>
+<td>57.2% (40.1–72.3%)</td>
+<td>57.2% (40.1–72.3%)</td>
+</tr>
+<tr class="odd">
+<td>Limited access to help</td>
+<td>RDS-I</td>
+<td>57.7% (55.1–80.3%)</td>
+<td>57.7% (55.1–80.3%)</td>
+<td>57.7% (55.1–80.3%)</td>
+<td>57.7% (55.1–80.3%)</td>
+</tr>
+<tr class="even">
+<td>Limited access to help</td>
+<td>RDS-SS</td>
+<td>59.4% (54.7–80.2%)</td>
+<td>59.4% (54.7–80.2%)</td>
+<td>59.4% (54.7–80.2%)</td>
+<td>59.4% (54.7–80.2%)</td>
+</tr>
+<tr class="odd">
+<td>Excessive working hours</td>
+<td>RDS-I</td>
+<td>92.8% (71.4–92.9%)</td>
+<td>92.8% (71.4–92.9%)</td>
+<td>92.8% (71.4–92.9%)</td>
+<td>92.8% (71.4–92.9%)</td>
+</tr>
+<tr class="even">
+<td>Excessive working hours</td>
+<td>RDS-SS</td>
+<td>83.7% (71.5–93.0%)</td>
+<td>83.7% (71.5–93.0%)</td>
+<td>83.7% (71.5–93.0%)</td>
+<td>83.7% (71.5–93.0%)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="d.4-supporting-estimates-nsum-under-alternative-adjustment-factor-tiers" class="level2">
+<h2 class="anchored" data-anchor-id="d.4-supporting-estimates-nsum-under-alternative-adjustment-factor-tiers">D.4 Supporting Estimates: NSUM under Alternative Adjustment-Factor Tiers</h2>
+<p>For comparison with the discrete-tier NSUM literature, Table A10 reports MBSU prevalence under three reference scenarios: Unadjusted (<span class="math inline">\(\delta = 1.0\)</span>, <span class="math inline">\(\tau = 1.0\)</span>), Moderate (<span class="math inline">\(\delta = 0.9\)</span>, <span class="math inline">\(\tau = 0.85\)</span>), and Conservative (<span class="math inline">\(\delta = 0.8\)</span>, <span class="math inline">\(\tau = 0.70\)</span>). These correspond to three points on the continuous sensitivity curve reported in Section D.5. The GNSUM Symmetric estimator produces results identical to MBSU No Adjustment. All estimates use <span class="math inline">\(N_F = 980{,}000\)</span> and neighbourhood-bootstrap 95% CIs (<span class="math inline">\(B = 500\)</span>).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/figA3_nsum_forest.png" class="img-fluid figure-img" style="width:5.5in"></p>
+<figcaption>Figure A3. NSUM (MBSU Moderate) Prevalence Estimates. Forest plot of MBSU Moderate (<span class="math inline">\(\delta = 0.9\)</span>, <span class="math inline">\(\tau = 0.85\)</span>) prevalence estimates with neighbourhood-bootstrap 95% confidence intervals for the five binary exploitation indicators, <span class="math inline">\(N_F = 980{,}000\)</span>. Source: Authors’ own work.</figcaption>
+</figure>
+</div>
+<table class="caption-top table">
+<caption>Table A10. NSUM Prevalence under Alternative Estimators and Adjustment-Factor Scenarios, N = 980,000. Neighbourhood-bootstrap 95% CI in parentheses (B = 500). GNSUM Symmetric produces results identical to MBSU No Adjustment.</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>NSUM method</th>
+<th>Indicator</th>
+<th>Prevalence (95% CI)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MBSU No Adjustment (δ=1.0, <span class="math inline">\(\tau\)</span>=1.0)</td>
+<td>Access to help</td>
+<td>1.55% (0.51–3.73%)</td>
+</tr>
+<tr class="even">
+<td>MBSU No Adjustment (δ=1.0, <span class="math inline">\(\tau\)</span>=1.0)</td>
+<td>Document withholding</td>
+<td>0.83% (0.23–2.39%)</td>
+</tr>
+<tr class="odd">
+<td>MBSU No Adjustment (δ=1.0, <span class="math inline">\(\tau\)</span>=1.0)</td>
+<td>Excessive hours</td>
+<td>2.28% (1.41–4.21%)</td>
+</tr>
+<tr class="even">
+<td>MBSU No Adjustment (δ=1.0, <span class="math inline">\(\tau\)</span>=1.0)</td>
+<td>Pay issues</td>
+<td>2.20% (1.45–4.35%)</td>
+</tr>
+<tr class="odd">
+<td>MBSU No Adjustment (δ=1.0, <span class="math inline">\(\tau\)</span>=1.0)</td>
+<td>Threats and abuse</td>
+<td>2.06% (1.42–4.48%)</td>
+</tr>
+<tr class="even">
+<td>MBSU Moderate (δ=0.9, <span class="math inline">\(\tau\)</span>=0.85)</td>
+<td>Access to help</td>
+<td>2.03% (0.67–4.88%)</td>
+</tr>
+<tr class="odd">
+<td>MBSU Moderate (δ=0.9, <span class="math inline">\(\tau\)</span>=0.85)</td>
+<td>Document withholding</td>
+<td>1.08% (0.30–3.13%)</td>
+</tr>
+<tr class="even">
+<td>MBSU Moderate (δ=0.9, <span class="math inline">\(\tau\)</span>=0.85)</td>
+<td>Excessive hours</td>
+<td>2.98% (1.84–5.51%)</td>
+</tr>
+<tr class="odd">
+<td>MBSU Moderate (δ=0.9, <span class="math inline">\(\tau\)</span>=0.85)</td>
+<td>Pay issues</td>
+<td>2.88% (1.90–5.68%)</td>
+</tr>
+<tr class="even">
+<td>MBSU Moderate (δ=0.9, <span class="math inline">\(\tau\)</span>=0.85)</td>
+<td>Threats and abuse</td>
+<td>2.69% (1.86–5.86%)</td>
+</tr>
+<tr class="odd">
+<td>MBSU Conservative (δ=0.8, <span class="math inline">\(\tau\)</span>=0.70)</td>
+<td>Access to help</td>
+<td>2.77% (0.91–6.67%)</td>
+</tr>
+<tr class="even">
+<td>MBSU Conservative (δ=0.8, <span class="math inline">\(\tau\)</span>=0.70)</td>
+<td>Document withholding</td>
+<td>1.48% (0.40–4.27%)</td>
+</tr>
+<tr class="odd">
+<td>MBSU Conservative (δ=0.8, <span class="math inline">\(\tau\)</span>=0.70)</td>
+<td>Excessive hours</td>
+<td>4.08% (2.52–7.53%)</td>
+</tr>
+<tr class="even">
+<td>MBSU Conservative (δ=0.8, <span class="math inline">\(\tau\)</span>=0.70)</td>
+<td>Pay issues</td>
+<td>3.93% (2.60–7.77%)</td>
+</tr>
+<tr class="odd">
+<td>MBSU Conservative (δ=0.8, <span class="math inline">\(\tau\)</span>=0.70)</td>
+<td>Threats and abuse</td>
+<td>3.67% (2.53–8.00%)</td>
+</tr>
+<tr class="even">
+<td>GNSUM Symmetric</td>
+<td>Access to help</td>
+<td>1.55% (0.51–3.73%)</td>
+</tr>
+<tr class="odd">
+<td>GNSUM Symmetric</td>
+<td>Document withholding</td>
+<td>0.83% (0.23–2.39%)</td>
+</tr>
+<tr class="even">
+<td>GNSUM Symmetric</td>
+<td>Excessive hours</td>
+<td>2.28% (1.41–4.21%)</td>
+</tr>
+<tr class="odd">
+<td>GNSUM Symmetric</td>
+<td>Pay issues</td>
+<td>2.20% (1.45–4.35%)</td>
+</tr>
+<tr class="even">
+<td>GNSUM Symmetric</td>
+<td>Threats and abuse</td>
+<td>2.06% (1.42–4.48%)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="d.5-continuous-tau-nsum-sensitivity-sweep" class="level2">
+<h2 class="anchored" data-anchor-id="d.5-continuous-tau-nsum-sensitivity-sweep">D.5 Continuous-<span class="math inline">\(\tau\)</span> NSUM Sensitivity Sweep</h2>
+<p>The headline NSUM result in this paper is not the discrete-tier comparison of Section D.4 but rather the continuous sensitivity sweep: for each of the five exploitation indicators, MBSU prevalence is shown as a continuous function of the visibility/true-positive-rate adjustment parameter <span class="math inline">\(\tau \in [0.40, 1.00]\)</span>, in increments of 0.05 (13 values), with <span class="math inline">\(\delta\)</span> fixed at 0.9 and <span class="math inline">\(B = 500\)</span> neighbourhood-bootstrap 95% confidence intervals at each <span class="math inline">\(\tau\)</span> value.</p>
+<p>The three discrete tiers reported in Section D.4 correspond to three points on these continuous curves: Unadjusted at <span class="math inline">\(\tau = 1.0\)</span>, Moderate at <span class="math inline">\(\tau = 0.85\)</span>, and Conservative at <span class="math inline">\(\tau = 0.70\)</span>. Prevalence increases monotonically as <span class="math inline">\(\tau\)</span> decreases (lower <span class="math inline">\(\tau\)</span> means lower assumed visibility, hence the estimator must scale up the raw alter-report count). The increase is modest across the plausible range <span class="math inline">\(\tau \in [0.7, 1.0]\)</span> and becomes substantial only at <span class="math inline">\(\tau \leq 0.5\)</span>, which corresponds to an assumption that fewer than half of true exploitation cases are visible to the respondent’s network — an extreme scenario. The continuous picture in Figure A1 supersedes the discrete-tier comparison for substantive inference about how visibility assumptions affect estimates: it makes explicit that the paper’s conclusions about indicator ordering and the RDS–NSUM visibility gradient are robust across all plausible <span class="math inline">\(\tau\)</span> values.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/figA1_tau_sweep.png" class="img-fluid figure-img" style="width:6.5in"></p>
+<figcaption>Figure A1. NSUM (MBSU) Prevalence as a Continuous Function of Visibility Parameter <span class="math inline">\(\tau\)</span>. MBSU prevalence estimates for five exploitation indicators as a function of the visibility/true-positive-rate adjustment <span class="math inline">\(\tau\)</span>, with δ fixed at 0.9 and B = 500 neighbourhood-bootstrap 95% confidence intervals. Three discrete scenarios from the main text (Unadjusted: <span class="math inline">\(\tau\)</span> = 1.0; Moderate: <span class="math inline">\(\tau\)</span> = 0.85; Conservative: <span class="math inline">\(\tau\)</span> = 0.70) correspond to three points on each curve. N_F = 980,000. Source: Authors’ own work.</figcaption>
+</figure>
+</div>
+</section>
+<section id="d.6-robustness-bootstrap-method-and-weighting-scheme" class="level2">
+<h2 class="anchored" data-anchor-id="d.6-robustness-bootstrap-method-and-weighting-scheme">D.6 Robustness: Bootstrap Method and Weighting Scheme</h2>
+<p>Tables A7–A9 confirm that the headline NSUM estimates are robust to the choice of bootstrap resampling method, RDS weighting scheme, and assumed population size. In all cases the MBSU Moderate (<span class="math inline">\(\delta = 0.9\)</span>, <span class="math inline">\(\tau = 0.85\)</span>) point estimates are identical across variants; only confidence interval widths vary slightly across bootstrap methods, and the differences are substantively negligible.</p>
+<table class="caption-top table">
+<caption>Table A7. Bootstrap Method Comparison. MBSU Moderate prevalence and neighbourhood-bootstrap 95% CI under four resampling methods. N = 980,000, SS weights. Point estimates identical across methods; CI widths vary within ±0.5 percentage points.</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Bootstrap method</th>
+<th>Indicator</th>
+<th>Prevalence (95% CI)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Chain</td>
+<td>Access to help</td>
+<td>2.03% (0.93–4.73%)</td>
+</tr>
+<tr class="even">
+<td>Chain</td>
+<td>Document withholding</td>
+<td>1.08% (0.43–2.83%)</td>
+</tr>
+<tr class="odd">
+<td>Chain</td>
+<td>Excessive hours</td>
+<td>2.98% (2.07–5.39%)</td>
+</tr>
+<tr class="even">
+<td>Chain</td>
+<td>Pay issues</td>
+<td>2.88% (1.99–5.08%)</td>
+</tr>
+<tr class="odd">
+<td>Chain</td>
+<td>Threats and abuse</td>
+<td>2.69% (1.92–4.85%)</td>
+</tr>
+<tr class="even">
+<td>Neighbourhood (main analysis)</td>
+<td>Access to help</td>
+<td>2.03% (0.67–4.88%)</td>
+</tr>
+<tr class="odd">
+<td>Neighbourhood (main analysis)</td>
+<td>Document withholding</td>
+<td>1.08% (0.30–3.13%)</td>
+</tr>
+<tr class="even">
+<td>Neighbourhood (main analysis)</td>
+<td>Excessive hours</td>
+<td>2.98% (1.84–5.51%)</td>
+</tr>
+<tr class="odd">
+<td>Neighbourhood (main analysis)</td>
+<td>Pay issues</td>
+<td>2.88% (1.90–5.68%)</td>
+</tr>
+<tr class="even">
+<td>Neighbourhood (main analysis)</td>
+<td>Threats and abuse</td>
+<td>2.69% (1.86–5.86%)</td>
+</tr>
+<tr class="odd">
+<td>Successive Sampling</td>
+<td>Access to help</td>
+<td>2.03% (0.99–4.66%)</td>
+</tr>
+<tr class="even">
+<td>Successive Sampling</td>
+<td>Document withholding</td>
+<td>1.08% (0.41–2.77%)</td>
+</tr>
+<tr class="odd">
+<td>Successive Sampling</td>
+<td>Excessive hours</td>
+<td>2.98% (2.13–5.27%)</td>
+</tr>
+<tr class="even">
+<td>Successive Sampling</td>
+<td>Pay issues</td>
+<td>2.88% (2.06–4.94%)</td>
+</tr>
+<tr class="odd">
+<td>Successive Sampling</td>
+<td>Threats and abuse</td>
+<td>2.69% (1.92–4.56%)</td>
+</tr>
+<tr class="even">
+<td>Tree</td>
+<td>Access to help</td>
+<td>2.03% (0.96–4.59%)</td>
+</tr>
+<tr class="odd">
+<td>Tree</td>
+<td>Document withholding</td>
+<td>1.08% (0.45–2.71%)</td>
+</tr>
+<tr class="even">
+<td>Tree</td>
+<td>Excessive hours</td>
+<td>2.98% (2.09–5.40%)</td>
+</tr>
+<tr class="odd">
+<td>Tree</td>
+<td>Pay issues</td>
+<td>2.88% (2.06–5.05%)</td>
+</tr>
+<tr class="even">
+<td>Tree</td>
+<td>Threats and abuse</td>
+<td>2.69% (1.91–4.70%)</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<caption>Table A8. Weighting Scheme Comparison. MBSU Moderate prevalence under Successive Sampling (SS) and Volz–Heckathorn (VH) weights, neighbourhood bootstrap, N = 980,000. SS and VH produce identical point estimates and confidence intervals.</caption>
+<thead>
+<tr class="header">
+<th>Weight scheme</th>
+<th>Indicator</th>
+<th>Prevalence (95% CI)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SS (main analysis)</td>
+<td>Access to help</td>
+<td>2.03% (0.67–4.88%)</td>
+</tr>
+<tr class="even">
+<td>SS (main analysis)</td>
+<td>Document withholding</td>
+<td>1.08% (0.30–3.13%)</td>
+</tr>
+<tr class="odd">
+<td>SS (main analysis)</td>
+<td>Excessive hours</td>
+<td>2.98% (1.84–5.51%)</td>
+</tr>
+<tr class="even">
+<td>SS (main analysis)</td>
+<td>Pay issues</td>
+<td>2.88% (1.90–5.68%)</td>
+</tr>
+<tr class="odd">
+<td>SS (main analysis)</td>
+<td>Threats and abuse</td>
+<td>2.69% (1.86–5.86%)</td>
+</tr>
+<tr class="even">
+<td>VH (Volz–Heckathorn)</td>
+<td>Access to help</td>
+<td>2.03% (0.67–4.88%)</td>
+</tr>
+<tr class="odd">
+<td>VH (Volz–Heckathorn)</td>
+<td>Document withholding</td>
+<td>1.08% (0.30–3.13%)</td>
+</tr>
+<tr class="even">
+<td>VH (Volz–Heckathorn)</td>
+<td>Excessive hours</td>
+<td>2.98% (1.84–5.51%)</td>
+</tr>
+<tr class="odd">
+<td>VH (Volz–Heckathorn)</td>
+<td>Pay issues</td>
+<td>2.88% (1.90–5.68%)</td>
+</tr>
+<tr class="even">
+<td>VH (Volz–Heckathorn)</td>
+<td>Threats and abuse</td>
+<td>2.69% (1.86–5.86%)</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<caption>Table A9. Population Size Comparison. MBSU Moderate prevalence across four assumed domestic-worker population sizes. Neighbourhood bootstrap, SS weights. Prevalence is invariant across N values; absolute count estimates scale proportionally with N.</caption>
+<thead>
+<tr class="header">
+<th>Indicator</th>
+<th>N = 50,000</th>
+<th>N = 100,000</th>
+<th>N = 980,000</th>
+<th>N = 1,740,000</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Access to help</td>
+<td>2.03%</td>
+<td>2.03%</td>
+<td>2.03%</td>
+<td>2.03%</td>
+</tr>
+<tr class="even">
+<td>Document withholding</td>
+<td>1.08%</td>
+<td>1.08%</td>
+<td>1.08%</td>
+<td>1.08%</td>
+</tr>
+<tr class="odd">
+<td>Excessive hours</td>
+<td>2.98%</td>
+<td>2.98%</td>
+<td>2.98%</td>
+<td>2.98%</td>
+</tr>
+<tr class="even">
+<td>Pay issues</td>
+<td>2.88%</td>
+<td>2.88%</td>
+<td>2.88%</td>
+<td>2.88%</td>
+</tr>
+<tr class="odd">
+<td>Threats and abuse</td>
+<td>2.69%</td>
+<td>2.69%</td>
+<td>2.69%</td>
+<td>2.69%</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="d.7-survey-incentive-design" class="level2">
+<h2 class="anchored" data-anchor-id="d.7-survey-incentive-design">D.7 Survey Incentive Design</h2>
+<p>The survey incentive structure followed the recommendations of Cobanoglu and Cobanoglu (2003), Brown, Schonfeld and Gordon (2006), and Laguilles, Williams and Saunders (2011). A lottery entry into a free prize draw for £150 was offered to all respondents completing the questionnaire. Research by Gajic, Cameron and Hurley (2012) suggests that a high-value lottery provides the most cost-effective incentive for survey participation in this type of study.</p>
+<p>To minimise fraudulent responses, mobile phone numbers for each respondent and those they referred were collated, and each was called by one of the authors to verify respondent status as a domestic worker in the UK. This verification step is particularly important in an RDS study where respondents are recruited by peers, as it guards against chain contamination.</p>
+<p>The ethics of survey incentives for hidden and potentially vulnerable populations have been carefully considered following Semaan et al.&nbsp;(2009), DeJong et al.&nbsp;(2009), and Singer and Bossarte (2006). Our incentive design follows the consensus recommendations of that literature: the incentive is proportionate and not coercive; participation is voluntary; and additional support resources were made available to respondents through the partner organisations (Kalayaan and the Latin American Women’s Rights Service) who facilitated the data collection. Full ethical approval was obtained prior to fieldwork.</p>
+<hr>
+</section>
+<section id="sec-loo-chain" class="level2">
+<h2 class="anchored" data-anchor-id="sec-loo-chain">D.8 Leave-One-Out Chain Sensitivity</h2>
+<p>The main text notes that one chain (root seed #55, length 12) accounts for roughly a third of wave-2+ respondents, raising a question about whether the rank ordering of exploitation indicators is driven by that single chain. This section reports a leave-one-out (LOO) sensitivity analysis in which the chain rooted at seed #55 is entirely excluded, and RDS-SS point estimates and 95% bootstrap confidence intervals are recomputed on the reduced sample.</p>
+<p><strong>Chain identification.</strong> Chain membership is determined by breadth-first search (BFS) from the root node: starting with seed #55, all respondents whose <code>recruiter.id</code> traces back to seed #55 (directly or transitively) are collected. The BFS is implemented in <code>R/analysis/08c-loo_chain_analysis.R</code>. The resulting chain contains 12 respondents (the root seed plus 11 recruits across waves 1–3), leaving a LOO analysis sample of <span class="math inline">\(n = 73\)</span>.</p>
+<p><strong>Re-estimation.</strong> For each of the five comparable indicators, RDS-SS estimates (Gile’s Successive Sampling Horvitz-Thompson estimator) are computed on (a) the full sample (<span class="math inline">\(n = 85\)</span>) and (b) the LOO sample (<span class="math inline">\(n = 73\)</span>), using identical settings: <span class="math inline">\(N_F = 980{,}000\)</span>, successive-sampling weights, neighbourhood-bootstrap 95% CIs (<span class="math inline">\(B = 500\)</span>). The LOO <code>rds.data.frame</code> object is reconstructed with the same parameters as the main analysis (network size variable: <code>known_network_size</code>, max coupons: 5).</p>
+<p><strong>Result.</strong> Figure A5 displays the full-sample and LOO point estimates side by side. The rank ordering of the five indicators — document withholding (lowest prevalence) &lt; threats and abuse ≈ excessive hours ≈ pay issues &lt; access to help — is identical in both samples. Point estimates shift slightly (as expected when removing approximately 14% of the sample), but no indicator crosses its neighbours in the ranking. The conclusion that all five indicators cluster in the 2–5% range under the Moderate adjustment scenario is unchanged. The LOO sensitivity therefore confirms that the chain-length imbalance does not drive the substantive findings.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/figA5_loo_chain.png" class="img-fluid figure-img" style="width:6in"></p>
+<figcaption>Figure A5. Leave-One-Out Chain Sensitivity. RDS-SS point estimates and neighbourhood-bootstrap 95% confidence intervals for the five exploitation indicators in the full sample (n = 85) and in the LOO sample with seed #55’s chain excluded (n = 73). N = 980,000. Source: Authors’ own work.</figcaption>
+</figure>
+</div>
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-ILO11-indicators" class="csl-entry" role="listitem">
+International Labour Organization. (2012). <em>ILO indicators of forced labour</em>. International Labour Organization. <a href="https://www.ilo.org/publications/ilo-indicators-forced-labour">https://www.ilo.org/publications/ilo-indicators-forced-labour</a>
+</div>
+<div id="ref-hard24-ilo" class="csl-entry" role="listitem">
+International Labour Organization. (2024). <em>Hard to see, harder to count handbook on forced labour surveys</em> (Third Edition). International Labour Organization. <a href="https://www.ilo.org/forcedlabour">https://www.ilo.org/forcedlabour</a>
+</div>
+<div id="ref-int25-ilo" class="csl-entry" role="listitem">
+International Labour Organization. (2025). <em>ILO indicators of forced labour</em> [2025 revised edition]. International Labour Organization. <a href="https://www.ilo.org/forcedlabour">https://www.ilo.org/forcedlabour</a>
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
