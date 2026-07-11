@@ -12,7 +12,7 @@
 #
 # Outputs:
 #   output/tables/loo_chain_sensitivity.csv
-#   output/figures/paper/figA5_loo_chain.png
+#   paper/SIR/figures/figA5_loo_chain.png
 #
 # Created 2026-06-30.
 
@@ -282,7 +282,7 @@ p <- ggplot(combined,
     legend.position = "bottom"
   )
 
-out_png <- here("output", "figures", "figA5_loo_chain.png")
+out_png <- here("paper", "SIR", "figures", "figA5_loo_chain.png")
 dir.create(dirname(out_png), showWarnings = FALSE, recursive = TRUE)
 ggsave(out_png, p, width = 7.5, height = 4.5, dpi = 300)
 cat("Saved figure:", out_png, "\n\n")
