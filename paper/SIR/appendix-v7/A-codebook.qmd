@@ -1,14 +1,15 @@
-# Section A: Variable Codebook and Indicator Definitions {#sec-a}
+# Variable Codebook and Indicator Definitions {#sec-a}
 
 This section documents the composite risk index construction, the five binary exploitation indicators used as the primary prevalence outcomes, and the key RDS variables.
 
-## A.1 Composite Risk Index {#sec-a-composite}
+## Composite Risk Index {#sec-a-composite}
 
 The composite risk index aggregates all eleven ILO indicators of forced labour into a single continuous measure (range 0–0.99). The index is a formative additive composite: an individual is exposed to exploitation if any of the indicators is present, and the indicators are constitutive rather than reflective of an underlying severity construct. Polarity is uniform across categories. Each of the eleven ILO indicator categories contributes equally to the composite (maximum 0.09 per category, so the total maximum possible score is 11 × 0.09 = 0.99). Within a category, the 0.09 is distributed evenly across the sub-questions used to code that category (0.09 for one sub-question, 0.045 each for two, 0.03 each for three, 0.0225 each for four). All eleven ILO indicators contribute equally to the composite. The medium/strong severity labels (following @hard24-ilo) are used for reporting; they do not enter the composite's arithmetic.
 
 Two further evidentiary markers — payment below the national living wage (Category 12) and NRM-referral history (Category 13) — are reported as separate binary flags and are **not** included in the composite, because their direct evidentiary status under UK policy makes them more useful when read independently.
 
-[**Table A.1.** Composite Risk Index: ILO indicator categories, survey items, coding rules, and sub-weights. All eleven ILO indicator categories carry the same maximum category weight of 0.09; this 0.09 is split evenly across the sub-questions used to code the category (0.09 for one, 0.045 each for two, 0.03 each for three, 0.0225 each for four sub-questions). The total maximum composite score is therefore 11 × 0.09 = 0.99. The medium/strong severity labels in column 2 follow the ILO handbook on forced-labour surveys [@hard24-ilo]; the shorter ILO operational-indicators publications [@ILO11-indicators; @int25-ilo] list the eleven indicators without publishing this severity ranking, and the labels do not scale the composite weights. Categories 12 and 13 are reported as separate binary flags and are excluded from the composite.]{#tbl-composite}
+: Composite Risk Index: ILO indicator categories, survey items, coding rules, and sub-weights. All eleven ILO indicator categories carry the same maximum category weight of 0.09; this 0.09 is split evenly across the sub-questions used to code the category (0.09 for one, 0.045 each for two, 0.03 each for three, 0.0225 each for four sub-questions). The total maximum composite score is therefore 11 × 0.09 = 0.99. The medium/strong severity labels in column 2 follow the ILO handbook on forced-labour surveys [@hard24-ilo]; the shorter ILO operational-indicators publications [@ILO11-indicators; @int25-ilo] list the eleven indicators without publishing this severity ranking, and the labels do not scale the composite weights. Categories 12 and 13 are reported as separate binary flags and are excluded from the composite. {#tbl-composite}
+
 | # | ILO Indicator (severity) | Survey item(s) | Coding rule | Max weight |
 |---|---|---|---|---|
 | 1 | Abuse of vulnerability (medium) | Q29 (5a1): Forced to do work against will; Q51 (5d2-a): Unpaid tasks | Q29: 0/1/2 → 0.045; Q51: 0 → 0.045 | 0.09 |
@@ -25,11 +26,12 @@ Two further evidentiary markers — payment below the national living wage (Cate
 | 12 | Payment below national living wage *(separate binary)* | Q36 (5b1): Hourly pay before tax | Q36: 0/1/2 (below £10.42/hr) → 1 | Reported separately |
 | 13 | NRM-referral indicator *(separate binary)* | Q80 (5f12): Advised to enter National Referral Mechanism | Q80: 0 or 1 → 1 | Reported separately |
 
-## A.2 Five Binary Exploitation Indicators {#sec-a-binary}
+## Five Binary Exploitation Indicators {#sec-a-binary}
 
 The five binary indicators are the primary prevalence outcomes for both the ego-based RDS and alter-based NSUM analyses. All are binary (0/1). Multi-category RDS responses are recoded so that affirmative answers → 1, Never/no access → 0, and "Don't know"/"Prefer not to say" → NA. Composite RDS indicators combine sub-questions using logical OR (any affirmative response across sub-questions → 1). NSUM count variables (number of domestic workers known with the characteristic) are converted to binary (> 0 → 1).
 
-[**Table A.2.** Five Binary Exploitation Indicators: ILO classification, survey questions, and coding rules.]{#tbl-binary}
+: Five Binary Exploitation Indicators: ILO classification, survey questions, and coding rules. {#tbl-binary}
+
 | Binary indicator | ILO classification | Survey item(s) | Coding rule |
 |---|---|---|---|
 | Document withholding | Strong (Category 7) | Q70 (5f2): Travel/identity docs withheld | Q70: 0/1/2 → 1 |
@@ -38,9 +40,10 @@ The five binary indicators are the primary prevalence outcomes for both the ego-
 | Excessive hours | Medium (Category 11) | Q61 (5d8): Weekly rest < 24h; Q62 (5d9): Excessive overtime | Either Q61=2/3 or Q62=0/1/2 → 1 |
 | Limited access to help | Auxiliary | Q78 (5f10): Knows where to get help (reverse-coded) | Q78 indicating no access → 1 |
 
-## A.3 Key RDS Variables {#sec-a-rds}
+## Key RDS Variables {#sec-a-rds}
 
-[**Table A.3.** Key RDS Variables: variable name, type, definition, and survey source.]{#tbl-rds-vars}
+: Key RDS Variables: variable name, type, definition, and survey source. {#tbl-rds-vars}
+
 | Variable | Type | Definition | Source |
 |---|---|---|---|
 | id | Numeric | Unique respondent identifier | — |

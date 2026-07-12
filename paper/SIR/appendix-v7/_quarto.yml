@@ -1,6 +1,6 @@
 project:
   type: book
-  output-dir: _output
+  output-dir: . #_output
 
 book:
   title: "Appendix: Quantifying Hidden Exploitation"

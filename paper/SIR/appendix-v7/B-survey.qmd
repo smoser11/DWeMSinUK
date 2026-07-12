@@ -1,10 +1,11 @@
-# Section B: Survey Questions and Comparable Ego/Alter Indicators {#sec-b}
+# Survey Questions and Comparable Ego/Alter Indicators {#sec-b}
 
 This section documents the full wording and response options for the ego-based (RDS) and alter-based (NSUM) survey questions underlying each of the five binary exploitation indicators. Ego-based questions ask respondents about their own experiences; alter-based questions ask what respondents observe in the domestic workers they know personally. This matched ego/alter pairing is the foundation of the dual-method design. All question numbers refer to the original survey instrument (*The Nature and Extent of Labour Exploitation among Domestic Workers in the UK*, administered via OnlineSurveys, University of Nottingham).
 
-[Table B.1](#tbl-ego-alter-summary) gives a summary overview; the subsections below provide the full question wording, response options, and coding rules for each indicator pair.
+@tbl-ego-alter-summary gives a summary overview; the subsections below provide the full question wording, response options, and coding rules for each indicator pair.
 
-[**Table B.1.** Comparable Ego/Alter Indicator Pairs — Summary. Confidence ratings reflect the closeness of the conceptual match between the ego (RDS) and alter (NSUM) question framings.]{#tbl-ego-alter-summary}
+: Comparable Ego/Alter Indicator Pairs — Summary. Confidence ratings reflect the closeness of the conceptual match between the ego (RDS) and alter (NSUM) question framings. {#tbl-ego-alter-summary}
+
 | Indicator | Ego (RDS) question(s) | Alter (NSUM) question | Confidence |
 |---|---|---|---|
 | Document withholding | Q70 (5f2) | Q71 (5f3) | Highest |
@@ -13,7 +14,7 @@ This section documents the full wording and response options for the ego-based (
 | Excessive hours | Q61 (5d8) + Q62 (5d9) | Q64 (5d11) | Medium |
 | Limited access to help | Q78 (5f10) reverse-coded | Q79 (5f11) | Lower |
 
-## B.1 Document Withholding {#sec-b-doc}
+## Document Withholding {#sec-b-doc}
 
 **Ego-based — Q70 (5f2):**
 
@@ -31,7 +32,7 @@ This section documents the full wording and response options for the ego-based (
 
 **Confidence: Highest.** The ego and alter questions are direct mirror images of the same exploitation behaviour. The only difference is perspective (self vs. others), not concept or scope.
 
-## B.2 Pay/Debt Issues {#sec-b-pay}
+## Pay/Debt Issues {#sec-b-pay}
 
 **Ego-based — Q39 (5b4):**
 
@@ -55,7 +56,7 @@ This section documents the full wording and response options for the ego-based (
 
 **Confidence: High.** The alter question (Q43) covers both debt and pay problems, matching the combined ego indicator. Some conceptual mismatch remains because the alter question aggregates two distinct ego concepts into one.
 
-## B.3 Threats and Abuse {#sec-b-threats}
+## Threats and Abuse {#sec-b-threats}
 
 **Ego-based — Q45 (5c2):**
 
@@ -85,7 +86,7 @@ This section documents the full wording and response options for the ego-based (
 
 **Confidence: High.** Q49 captures the combined concept of threat and force, aligning with the three ego sub-questions. The ego composite is slightly broader (it includes verbal abuse via Q48), so some scope mismatch remains at the margin.
 
-## B.4 Excessive Working Hours {#sec-b-hours}
+## Excessive Working Hours {#sec-b-hours}
 
 **Ego-based — Q61 (5d8):**
 
@@ -109,7 +110,7 @@ This section documents the full wording and response options for the ego-based (
 
 **Confidence: Medium.** Q64 explicitly includes *annual leave* ("a failure to obtain … annual leave") which is not captured by Q61 or Q62 on the ego side. This scope mismatch is the largest of the five indicator pairs and is acknowledged as a limitation of the comparable-indicator strategy.
 
-## B.5 Limited Access to Help {#sec-b-help}
+## Limited Access to Help {#sec-b-help}
 
 **Ego-based — Q78 (5f10):**
 
@@ -127,6 +128,6 @@ This section documents the full wording and response options for the ego-based (
 
 **Confidence: Lower.** Q78 directly reports the respondent's own knowledge of available support, while Q79 asks the respondent to assess *others'* knowledge. The reverse-coding of Q78 aligns the polarity (both = 1 signals vulnerability), but the alter question requires the respondent to perceive and report on peers' states of knowledge — a different and more demanding cognitive task than self-report. The conceptual match is therefore less direct than for the other four indicators.
 
-## B.6 General Data-Processing Notes {#sec-b-notes}
+## General Data-Processing Notes {#sec-b-notes}
 
 All five indicators are binary (0/1) after recoding. RDS multi-category responses are recoded so that affirmative responses → 1, and negative/unknown responses → 0 or NA as specified above. Composite RDS indicators (pay/debt issues, threats and abuse, excessive hours) apply logical OR: any single affirmative sub-response → indicator = 1; only if *all* sub-questions are missing does the composite take the value NA. NSUM count variables are converted to binary: count > 0 → 1; count = 0 → 0. These constructions are implemented in `create_comparable_indicators()` in `R/data_processing/02-data_preparation.R`, following the comparable-indicator specification agreed between the authors in November 2024.

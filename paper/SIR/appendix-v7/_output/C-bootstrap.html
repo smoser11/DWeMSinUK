@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Appendix A — Variable Codebook and Indicator Definitions – Appendix: Quantifying Hidden Exploitation</title>
+<title>Appendix C — Three-Step Bootstrap Procedure – Appendix: Quantifying Hidden Exploitation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -50,8 +50,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./B-survey.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./D-sensitivity.html" rel="next">
+<link href="./B-survey.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -90,6 +90,35 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -102,7 +131,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./A-codebook.html">Appendices</a></li><li class="breadcrumb-item"><a href="./A-codebook.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Variable Codebook and Indicator Definitions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./A-codebook.html">Appendices</a></li><li class="breadcrumb-item"><a href="./C-bootstrap.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Three-Step Bootstrap Procedure</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -144,7 +173,7 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./A-codebook.html" class="sidebar-item-text sidebar-link active">
+  <a href="./A-codebook.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Variable Codebook and Indicator Definitions</span></span></a>
   </div>
 </li>
@@ -156,7 +185,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./C-bootstrap.html" class="sidebar-item-text sidebar-link">
+  <a href="./C-bootstrap.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Three-Step Bootstrap Procedure</span></span></a>
   </div>
 </li>
@@ -173,23 +202,15 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#sec-a-composite" id="toc-sec-a-composite" class="nav-link active" data-scroll-target="#sec-a-composite"><span class="header-section-number">A.1</span> Composite Risk Index</a></li>
-  <li><a href="#sec-a-binary" id="toc-sec-a-binary" class="nav-link" data-scroll-target="#sec-a-binary"><span class="header-section-number">A.2</span> Five Binary Exploitation Indicators</a></li>
-  <li><a href="#sec-a-rds" id="toc-sec-a-rds" class="nav-link" data-scroll-target="#sec-a-rds"><span class="header-section-number">A.3</span> Key RDS Variables</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./A-codebook.html">Appendices</a></li><li class="breadcrumb-item"><a href="./A-codebook.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Variable Codebook and Indicator Definitions</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./A-codebook.html">Appendices</a></li><li class="breadcrumb-item"><a href="./C-bootstrap.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Three-Step Bootstrap Procedure</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-a" class="quarto-section-identifier">Appendix A — Variable Codebook and Indicator Definitions</span></h1>
+<h1 class="title"><span id="sec-c" class="quarto-section-identifier">Appendix C — Three-Step Bootstrap Procedure</span></h1>
 </div>
 
 
@@ -206,278 +227,29 @@ div.csl-indent {
 </header>
 
 
-<p>This section documents the composite risk index construction, the five binary exploitation indicators used as the primary prevalence outcomes, and the key RDS variables.</p>
-<section id="sec-a-composite" class="level2" data-number="A.1">
-<h2 data-number="A.1" class="anchored" data-anchor-id="sec-a-composite"><span class="header-section-number">A.1</span> Composite Risk Index</h2>
-<p>The composite risk index aggregates all eleven ILO indicators of forced labour into a single continuous measure (range 0–0.99). The index is a formative additive composite: an individual is exposed to exploitation if any of the indicators is present, and the indicators are constitutive rather than reflective of an underlying severity construct. Polarity is uniform across categories. Each of the eleven ILO indicator categories contributes equally to the composite (maximum 0.09 per category, so the total maximum possible score is 11 × 0.09 = 0.99). Within a category, the 0.09 is distributed evenly across the sub-questions used to code that category (0.09 for one sub-question, 0.045 each for two, 0.03 each for three, 0.0225 each for four). All eleven ILO indicators contribute equally to the composite. The medium/strong severity labels (following <span class="citation" data-cites="hard24-ilo">International Labour Organization (<a href="#ref-hard24-ilo" role="doc-biblioref">2024</a>)</span>) are used for reporting; they do not enter the composite’s arithmetic.</p>
-<p>Two further evidentiary markers — payment below the national living wage (Category 12) and NRM-referral history (Category 13) — are reported as separate binary flags and are <strong>not</strong> included in the composite, because their direct evidentiary status under UK policy makes them more useful when read independently.</p>
-<div id="tbl-composite" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-composite-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;A.1: Composite Risk Index: ILO indicator categories, survey items, coding rules, and sub-weights. All eleven ILO indicator categories carry the same maximum category weight of 0.09; this 0.09 is split evenly across the sub-questions used to code the category (0.09 for one, 0.045 each for two, 0.03 each for three, 0.0225 each for four sub-questions). The total maximum composite score is therefore 11 × 0.09 = 0.99. The medium/strong severity labels in column 2 follow the ILO handbook on forced-labour surveys <span class="citation" data-cites="hard24-ilo">(<a href="#ref-hard24-ilo" role="doc-biblioref">International Labour Organization, 2024</a>)</span>; the shorter ILO operational-indicators publications <span class="citation" data-cites="ILO11-indicators int25-ilo">(<a href="#ref-ILO11-indicators" role="doc-biblioref">International Labour Organization, 2012</a>, <a href="#ref-int25-ilo" role="doc-biblioref">2025</a>)</span> list the eleven indicators without publishing this severity ranking, and the labels do not scale the composite weights. Categories 12 and 13 are reported as separate binary flags and are excluded from the composite.
-</figcaption>
-<div aria-describedby="tbl-composite-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>#</th>
-<th>ILO Indicator (severity)</th>
-<th>Survey item(s)</th>
-<th>Coding rule</th>
-<th>Max weight</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>Abuse of vulnerability (medium)</td>
-<td>Q29 (5a1): Forced to do work against will; Q51 (5d2-a): Unpaid tasks</td>
-<td>Q29: 0/1/2 → 0.045; Q51: 0 → 0.045</td>
-<td>0.09</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>Deception (medium)</td>
-<td>Q45 (5c2): Forced/deceived/threatened into poor conditions</td>
-<td>Q45: 0 → 0.09</td>
-<td>0.09</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>Restriction of movement (medium)</td>
-<td>Q32 (5a4): Could not leave premises; Q46 (5c3): Stay overnight permanently</td>
-<td>Q32: 0/1/2 → 0.045; Q46: 2 or 3 → 0.045</td>
-<td>0.09</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>Isolation (medium)</td>
-<td>Q65: Have friends outside work</td>
-<td>Q65: 1 (No) → 0.09</td>
-<td>0.09</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>Physical and sexual violence (strong)</td>
-<td>Q44 (5c1): Abuse/harassment/physical violence; Q44 (5c1-b): Sexual violence</td>
-<td>Q44 (5c1): 0 → 0.045; Q44 (5c1-b): 0 → 0.045</td>
-<td>0.09</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>Intimidation and threats (strong)</td>
-<td>Q47 (5c4): Employer threatened/intimidated</td>
-<td>Q47: 0/1/2 → 0.09</td>
-<td>0.09</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>Retention of identity documents (strong)</td>
-<td>Q70 (5f2): Travel/identity docs withheld</td>
-<td>Q70: 0/1/2 → 0.09</td>
-<td>0.09</td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td>Withholding of wages (medium)</td>
-<td>Q42 (5b7): Pay ever withheld</td>
-<td>Q42: 0/1/2 → 0.09</td>
-<td>0.09</td>
-</tr>
-<tr class="odd">
-<td>9</td>
-<td>Debt bondage (medium)</td>
-<td>Q39 (5b4): Earnings to pay off debt to helper</td>
-<td>Q39: 0 → 0.09</td>
-<td>0.09</td>
-</tr>
-<tr class="even">
-<td>10</td>
-<td>Abusive working and living conditions (medium)</td>
-<td>Q48 (5c5): Verbally abused; Q63 (5d10): Lack of privacy; Q72 (5f4): Safe/healthy environment; Q76 (5f8): Access to food/water/sanitation</td>
-<td>Q48: 0/1/2 → 0.0225; Q63: 0/1/2 → 0.0225; Q72: 2 or 3 → 0.0225; Q76: 1/2/3 → 0.0225</td>
-<td>0.09</td>
-</tr>
-<tr class="odd">
-<td>11</td>
-<td>Excessive overtime (medium)</td>
-<td>Q16 (3b): Weekly hours; Q61 (5d8): Weekly rest ≥ 24h; Q62 (5d9): Excessive overtime felt</td>
-<td>Q16: 6 or 7 → 0.03; Q61: 2 or 3 → 0.03; Q62: 0/1/2 → 0.03</td>
-<td>0.09</td>
-</tr>
-<tr class="even">
-<td>12</td>
-<td>Payment below national living wage <em>(separate binary)</em></td>
-<td>Q36 (5b1): Hourly pay before tax</td>
-<td>Q36: 0/1/2 (below £10.42/hr) → 1</td>
-<td>Reported separately</td>
-</tr>
-<tr class="odd">
-<td>13</td>
-<td>NRM-referral indicator <em>(separate binary)</em></td>
-<td>Q80 (5f12): Advised to enter National Referral Mechanism</td>
-<td>Q80: 0 or 1 → 1</td>
-<td>Reported separately</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-</section>
-<section id="sec-a-binary" class="level2" data-number="A.2">
-<h2 data-number="A.2" class="anchored" data-anchor-id="sec-a-binary"><span class="header-section-number">A.2</span> Five Binary Exploitation Indicators</h2>
-<p>The five binary indicators are the primary prevalence outcomes for both the ego-based RDS and alter-based NSUM analyses. All are binary (0/1). Multi-category RDS responses are recoded so that affirmative answers → 1, Never/no access → 0, and “Don’t know”/“Prefer not to say” → NA. Composite RDS indicators combine sub-questions using logical OR (any affirmative response across sub-questions → 1). NSUM count variables (number of domestic workers known with the characteristic) are converted to binary (&gt; 0 → 1).</p>
-<div id="tbl-binary" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-binary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;A.2: Five Binary Exploitation Indicators: ILO classification, survey questions, and coding rules.
-</figcaption>
-<div aria-describedby="tbl-binary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Binary indicator</th>
-<th>ILO classification</th>
-<th>Survey item(s)</th>
-<th>Coding rule</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Document withholding</td>
-<td>Strong (Category 7)</td>
-<td>Q70 (5f2): Travel/identity docs withheld</td>
-<td>Q70: 0/1/2 → 1</td>
-</tr>
-<tr class="even">
-<td>Threats and abuse</td>
-<td>Strong (Categories 5+6)</td>
-<td>Q45 (5c2): Forced/deceived/threatened; Q47 (5c4): Intimidated; Q48 (5c5): Verbally abused</td>
-<td>Any of: Q45=0; Q47=0/1/2; Q48=0/1/2 → 1</td>
-</tr>
-<tr class="odd">
-<td>Pay issues</td>
-<td>Medium (Categories 8+9)</td>
-<td>Q39 (5b4): Debt bondage; Q42 (5b7): Pay withheld</td>
-<td>Either Q39=0 or Q42=0/1/2 → 1</td>
-</tr>
-<tr class="even">
-<td>Excessive hours</td>
-<td>Medium (Category 11)</td>
-<td>Q61 (5d8): Weekly rest &lt; 24h; Q62 (5d9): Excessive overtime</td>
-<td>Either Q61=2/3 or Q62=0/1/2 → 1</td>
-</tr>
-<tr class="odd">
-<td>Limited access to help</td>
-<td>Auxiliary</td>
-<td>Q78 (5f10): Knows where to get help (reverse-coded)</td>
-<td>Q78 indicating no access → 1</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-</section>
-<section id="sec-a-rds" class="level2" data-number="A.3">
-<h2 data-number="A.3" class="anchored" data-anchor-id="sec-a-rds"><span class="header-section-number">A.3</span> Key RDS Variables</h2>
-<div id="tbl-rds-vars" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-rds-vars-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;A.3: Key RDS Variables: variable name, type, definition, and survey source.
-</figcaption>
-<div aria-describedby="tbl-rds-vars-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Variable</th>
-<th>Type</th>
-<th>Definition</th>
-<th>Source</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>id</td>
-<td>Numeric</td>
-<td>Unique respondent identifier</td>
-<td>—</td>
-</tr>
-<tr class="even">
-<td>recruiter.id</td>
-<td>Numeric</td>
-<td>id of recruiter; −1 = seed</td>
-<td>—</td>
-</tr>
-<tr class="odd">
-<td>referral_1 through referral_5</td>
-<td>Numeric</td>
-<td>ids of up to five recruits</td>
-<td>—</td>
-</tr>
-<tr class="even">
-<td>q13 (2f)</td>
-<td>Numeric (count)</td>
-<td>Personal network size: number of other domestic workers known with contact details. Used as degree variable in RDS weighting and NSUM denominator.</td>
-<td>Q13</td>
-</tr>
-<tr class="odd">
-<td>1a_eligibility</td>
-<td>Binary</td>
-<td>Worked as domestic worker in past 12 months</td>
-<td>Q1a</td>
-</tr>
-<tr class="even">
-<td>wave</td>
-<td>Numeric (0, 1, 2, …)</td>
-<td>Recruitment wave; 0 = seed; k = recruited by wave-(k−1) respondent</td>
-<td>Derived</td>
-</tr>
-<tr class="odd">
-<td>nationality_cluster</td>
-<td>Categorical (4 levels)</td>
-<td>Filipino, Latinx, British, Other</td>
-<td>Q3, Q5</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
+<p>This section documents the custom bootstrap procedure used to construct 95% confidence intervals for all NSUM (MBSU) prevalence estimates. The procedure preserves the RDS network topology while allowing standard resampling-based uncertainty quantification.</p>
+<p><strong>Step 1 — Resampling.</strong> We resample from the observed RDS sample using a neighbourhood bootstrap. In the neighbourhood bootstrap, each respondent is resampled along with their immediate network neighbourhood (recruiter and recruits), preserving the ego-network topology and recruitment-tie structure following <span class="citation" data-cites="yauck_neighboot_2022">Yauck &amp; Moodie (<a href="#ref-yauck_neighboot_2022" role="doc-biblioref">2022</a>)</span>. Let <span class="math inline">\(S^{(b)}\)</span> denote the bootstrap replicate for iteration <span class="math inline">\(b\)</span>. This resampling scheme is chosen over simple node-level resampling because it respects the dependent structure introduced by respondent-driven recruitment; it is the default bootstrap in the project’s NSUM estimation pipeline.</p>
+<p><strong>Step 2 — Reweighting.</strong> For each bootstrap replicate <span class="math inline">\(b\)</span>, RDS inclusion weights are recomputed from the replicate’s degree distribution. Two weighting schemes are implemented and shown to produce equivalent results (<a href="D-sensitivity.html#tbl-weighting" class="quarto-xref">Table&nbsp;<span>D.6</span></a>):</p>
+<ul>
+<li><em>Volz–Heckathorn (RDS-II) weights:</em> <span class="math inline">\(w_i^{(b)} \propto 1/d_i^{(b)}\)</span>, where <span class="math inline">\(d_i^{(b)}\)</span> is respondent <span class="math inline">\(i\)</span>’s network degree in replicate <span class="math inline">\(b\)</span>.</li>
+<li><em>Successive Sampling (SS) weights:</em> incorporate the sampling fraction and frame size <span class="math inline">\(N_F\)</span>, computed numerically via the <code>RDS</code> package’s successive-sampling estimator. At our sample sizes the SS and VH weights produce identical prevalence estimates (<a href="D-sensitivity.html#tbl-weighting" class="quarto-xref">Table&nbsp;<span>D.6</span></a>).</li>
+</ul>
+<p><strong>Step 3 — NSUM estimation and aggregation.</strong> The MBSU estimator is applied to each bootstrap replicate with the recomputed weights. The MBSU prevalence formula <span class="citation" data-cites="feeh16-generalizing">(<a href="#ref-feeh16-generalizing" role="doc-biblioref">Feehan &amp; Salganik, 2016</a>)</span> is:</p>
+<p><span class="math display">\[\hat{p}_H^{(b)} = \frac{\sum_i w_i^{(b)} \, y_{iH}^{(b)}}{\sum_i w_i^{(b)} \, d_i^{(b)}}\]</span></p>
+<p>where <span class="math inline">\(y_{iH}^{(b)}\)</span> is respondent <span class="math inline">\(i\)</span>’s binary indicator of knowing at least one member of hidden group <span class="math inline">\(H\)</span>, and <span class="math inline">\(d_i^{(b)}\)</span> is their network degree. For the adjusted estimate, the basic prevalence is multiplied by <span class="math inline">\(1/(\delta \cdot \tau)\)</span>:</p>
+<p><span class="math display">\[\hat{p}_{H,\text{adj}}^{(b)} = \hat{p}_H^{(b)} \cdot \frac{1}{\delta} \cdot \frac{1}{\tau}\]</span></p>
+<p>Bootstrap aggregation uses <span class="math inline">\(B = 500\)</span> replicates. The 95% confidence interval is the empirical 2.5th–97.5th percentile interval across the <span class="math inline">\(B\)</span> bootstrap prevalence estimates. Point estimates are computed from the full observed sample (not the bootstrap mean). Results are shown to be invariant to the choice of bootstrap resampling method (chain, neighbourhood, successive sampling, tree) in <a href="D-sensitivity.html#tbl-bootstrap-methods" class="quarto-xref">Table&nbsp;<span>D.5</span></a>.</p>
+<p><em>Additional resampling options available in the pipeline but not used in the main analysis:</em> Tree Bootstrap (sample entire recruitment trees with replacement), Chain Bootstrap (sample chains or subchains), and a Successive Sampling Bootstrap that mirrors the SS weight construction. These alternatives are documented in the project code (<code>R/analysis/NSUM/</code>) and their equivalence to the neighbourhood bootstrap is confirmed in <a href="D-sensitivity.html#tbl-bootstrap-methods" class="quarto-xref">Table&nbsp;<span>D.5</span></a>.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
-<div id="ref-ILO11-indicators" class="csl-entry" role="listitem">
-International Labour Organization. (2012). <em>ILO indicators of forced labour</em>. International Labour Organization. <a href="https://www.ilo.org/publications/ilo-indicators-forced-labour">https://www.ilo.org/publications/ilo-indicators-forced-labour</a>
+<div id="ref-feeh16-generalizing" class="csl-entry" role="listitem">
+Feehan, D. M., &amp; Salganik, M. J. (2016). Generalizing the <span>Network Scale-Up Method</span>: <span>A New Estimator</span> for the <span>Size</span> of <span>Hidden Populations</span>. <em>Sociological Methodology</em>, <em>46</em>(1), 153–186.
 </div>
-<div id="ref-hard24-ilo" class="csl-entry" role="listitem">
-International Labour Organization. (2024). <em>Hard to see, harder to count handbook on forced labour surveys</em> (Third Edition). International Labour Organization. <a href="https://www.ilo.org/forcedlabour">https://www.ilo.org/forcedlabour</a>
-</div>
-<div id="ref-int25-ilo" class="csl-entry" role="listitem">
-International Labour Organization. (2025). <em>ILO indicators of forced labour</em> [2025 revised edition]. International Labour Organization. <a href="https://www.ilo.org/forcedlabour">https://www.ilo.org/forcedlabour</a>
+<div id="ref-yauck_neighboot_2022" class="csl-entry" role="listitem">
+Yauck, M., &amp; Moodie, E. E. M. (2022). <em>Neighboot: Neighborhood bootstrap method for <span>RDS</span></em> (Version 1.0.1) [Computer software]. <a href="https://cran.r-project.org/web/packages/Neighboot/index.html">https://cran.r-project.org/web/packages/Neighboot/index.html</a>
 </div>
 </div>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -881,13 +653,13 @@ International Labour Organization. (2025). <em>ILO indicators of forced labour</
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="./B-survey.html" class="pagination-link" aria-label="Survey Questions and Comparable Ego/Alter Indicators">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Survey Questions and Comparable Ego/Alter Indicators</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./B-survey.html" class="pagination-link" aria-label="Survey Questions and Comparable Ego/Alter Indicators">
-        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Survey Questions and Comparable Ego/Alter Indicators</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./D-sensitivity.html" class="pagination-link" aria-label="Sensitivity Analyses">
+        <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Sensitivity Analyses</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
