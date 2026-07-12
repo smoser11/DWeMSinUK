@@ -1,0 +1,52 @@
+# Section A: Variable Codebook and Indicator Definitions {#sec-a}
+
+This section documents the composite risk index construction, the five binary exploitation indicators used as the primary prevalence outcomes, and the key RDS variables.
+
+## A.1 Composite Risk Index {#sec-a-composite}
+
+The composite risk index aggregates all eleven ILO indicators of forced labour into a single continuous measure (range 0–0.99). The index is a formative additive composite: an individual is exposed to exploitation if any of the indicators is present, and the indicators are constitutive rather than reflective of an underlying severity construct. Polarity is uniform across categories. Each of the eleven ILO indicator categories contributes equally to the composite (maximum 0.09 per category, so the total maximum possible score is 11 × 0.09 = 0.99). Within a category, the 0.09 is distributed evenly across the sub-questions used to code that category (0.09 for one sub-question, 0.045 each for two, 0.03 each for three, 0.0225 each for four). All eleven ILO indicators contribute equally to the composite. The medium/strong severity labels (following @hard24-ilo) are used for reporting; they do not enter the composite's arithmetic.
+
+Two further evidentiary markers — payment below the national living wage (Category 12) and NRM-referral history (Category 13) — are reported as separate binary flags and are **not** included in the composite, because their direct evidentiary status under UK policy makes them more useful when read independently.
+
+[**Table A.1.** Composite Risk Index: ILO indicator categories, survey items, coding rules, and sub-weights. All eleven ILO indicator categories carry the same maximum category weight of 0.09; this 0.09 is split evenly across the sub-questions used to code the category (0.09 for one, 0.045 each for two, 0.03 each for three, 0.0225 each for four sub-questions). The total maximum composite score is therefore 11 × 0.09 = 0.99. The medium/strong severity labels in column 2 follow the ILO handbook on forced-labour surveys [@hard24-ilo]; the shorter ILO operational-indicators publications [@ILO11-indicators; @int25-ilo] list the eleven indicators without publishing this severity ranking, and the labels do not scale the composite weights. Categories 12 and 13 are reported as separate binary flags and are excluded from the composite.]{#tbl-composite}
+| # | ILO Indicator (severity) | Survey item(s) | Coding rule | Max weight |
+|---|---|---|---|---|
+| 1 | Abuse of vulnerability (medium) | Q29 (5a1): Forced to do work against will; Q51 (5d2-a): Unpaid tasks | Q29: 0/1/2 → 0.045; Q51: 0 → 0.045 | 0.09 |
+| 2 | Deception (medium) | Q45 (5c2): Forced/deceived/threatened into poor conditions | Q45: 0 → 0.09 | 0.09 |
+| 3 | Restriction of movement (medium) | Q32 (5a4): Could not leave premises; Q46 (5c3): Stay overnight permanently | Q32: 0/1/2 → 0.045; Q46: 2 or 3 → 0.045 | 0.09 |
+| 4 | Isolation (medium) | Q65: Have friends outside work | Q65: 1 (No) → 0.09 | 0.09 |
+| 5 | Physical and sexual violence (strong) | Q44 (5c1): Abuse/harassment/physical violence; Q44 (5c1-b): Sexual violence | Q44 (5c1): 0 → 0.045; Q44 (5c1-b): 0 → 0.045 | 0.09 |
+| 6 | Intimidation and threats (strong) | Q47 (5c4): Employer threatened/intimidated | Q47: 0/1/2 → 0.09 | 0.09 |
+| 7 | Retention of identity documents (strong) | Q70 (5f2): Travel/identity docs withheld | Q70: 0/1/2 → 0.09 | 0.09 |
+| 8 | Withholding of wages (medium) | Q42 (5b7): Pay ever withheld | Q42: 0/1/2 → 0.09 | 0.09 |
+| 9 | Debt bondage (medium) | Q39 (5b4): Earnings to pay off debt to helper | Q39: 0 → 0.09 | 0.09 |
+| 10 | Abusive working and living conditions (medium) | Q48 (5c5): Verbally abused; Q63 (5d10): Lack of privacy; Q72 (5f4): Safe/healthy environment; Q76 (5f8): Access to food/water/sanitation | Q48: 0/1/2 → 0.0225; Q63: 0/1/2 → 0.0225; Q72: 2 or 3 → 0.0225; Q76: 1/2/3 → 0.0225 | 0.09 |
+| 11 | Excessive overtime (medium) | Q16 (3b): Weekly hours; Q61 (5d8): Weekly rest ≥ 24h; Q62 (5d9): Excessive overtime felt | Q16: 6 or 7 → 0.03; Q61: 2 or 3 → 0.03; Q62: 0/1/2 → 0.03 | 0.09 |
+| 12 | Payment below national living wage *(separate binary)* | Q36 (5b1): Hourly pay before tax | Q36: 0/1/2 (below £10.42/hr) → 1 | Reported separately |
+| 13 | NRM-referral indicator *(separate binary)* | Q80 (5f12): Advised to enter National Referral Mechanism | Q80: 0 or 1 → 1 | Reported separately |
+
+## A.2 Five Binary Exploitation Indicators {#sec-a-binary}
+
+The five binary indicators are the primary prevalence outcomes for both the ego-based RDS and alter-based NSUM analyses. All are binary (0/1). Multi-category RDS responses are recoded so that affirmative answers → 1, Never/no access → 0, and "Don't know"/"Prefer not to say" → NA. Composite RDS indicators combine sub-questions using logical OR (any affirmative response across sub-questions → 1). NSUM count variables (number of domestic workers known with the characteristic) are converted to binary (> 0 → 1).
+
+[**Table A.2.** Five Binary Exploitation Indicators: ILO classification, survey questions, and coding rules.]{#tbl-binary}
+| Binary indicator | ILO classification | Survey item(s) | Coding rule |
+|---|---|---|---|
+| Document withholding | Strong (Category 7) | Q70 (5f2): Travel/identity docs withheld | Q70: 0/1/2 → 1 |
+| Threats and abuse | Strong (Categories 5+6) | Q45 (5c2): Forced/deceived/threatened; Q47 (5c4): Intimidated; Q48 (5c5): Verbally abused | Any of: Q45=0; Q47=0/1/2; Q48=0/1/2 → 1 |
+| Pay issues | Medium (Categories 8+9) | Q39 (5b4): Debt bondage; Q42 (5b7): Pay withheld | Either Q39=0 or Q42=0/1/2 → 1 |
+| Excessive hours | Medium (Category 11) | Q61 (5d8): Weekly rest < 24h; Q62 (5d9): Excessive overtime | Either Q61=2/3 or Q62=0/1/2 → 1 |
+| Limited access to help | Auxiliary | Q78 (5f10): Knows where to get help (reverse-coded) | Q78 indicating no access → 1 |
+
+## A.3 Key RDS Variables {#sec-a-rds}
+
+[**Table A.3.** Key RDS Variables: variable name, type, definition, and survey source.]{#tbl-rds-vars}
+| Variable | Type | Definition | Source |
+|---|---|---|---|
+| id | Numeric | Unique respondent identifier | — |
+| recruiter.id | Numeric | id of recruiter; −1 = seed | — |
+| referral_1 through referral_5 | Numeric | ids of up to five recruits | — |
+| q13 (2f) | Numeric (count) | Personal network size: number of other domestic workers known with contact details. Used as degree variable in RDS weighting and NSUM denominator. | Q13 |
+| 1a_eligibility | Binary | Worked as domestic worker in past 12 months | Q1a |
+| wave | Numeric (0, 1, 2, …) | Recruitment wave; 0 = seed; k = recruited by wave-(k−1) respondent | Derived |
+| nationality_cluster | Categorical (4 levels) | Filipino, Latinx, British, Other | Q3, Q5 |

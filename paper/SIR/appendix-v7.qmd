@@ -1,0 +1,67 @@
+---
+title: "Appendix: Quantifying Hidden Exploitation"
+subtitle: "Online Supplementary Materials for Social Indicators Research Submission"
+author:
+  - name: Caroline Emberson
+    affiliation: University of Nottingham
+  - name: Scott Moser
+    affiliation: University of Nottingham
+date: 11 July 2026
+date-format: "DD MMMM YYYY"
+bibliography:
+  - ../references/ce-library.bib
+  - ../references/sm-cited.bib
+csl: ../references/apa.csl
+fontsize: 12pt
+geometry: margin=1in
+linestretch: 1.15
+number-sections: false
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    code-summary: "Show code"
+  docx:
+    toc: true
+    toc-depth: 3
+    highlight-style: github
+    fig-cap-location: bottom
+    tbl-cap-location: top
+  pdf:
+    pdf-engine: xelatex
+    toc: true
+    toc-depth: 3
+    keep-tex: false
+    include-in-header:
+      text: |
+        \usepackage{xcolor}
+        \usepackage{amsthm,amsmath,amsfonts,amssymb,float,caption,subcaption}
+        \usepackage{booktabs,longtable,array}
+    fig-pos: "H"
+    fig-width: 6.5
+    fig-height: 4
+    colorlinks: true
+    linkcolor: blue
+    citecolor: BrickRed
+    urlcolor: blue
+    link-citations: true
+---
+
+{{< include appendix-v7/index.qmd >}}
+
+{{< include appendix-v7/A-codebook.qmd >}}
+
+{{< include appendix-v7/B-survey.qmd >}}
+
+{{< include appendix-v7/C-bootstrap.qmd >}}
+
+{{< include appendix-v7/D-sensitivity.qmd >}}
+
+
+\newpage
+
+# References {.unnumbered}
+
+::: {#refs}
+:::

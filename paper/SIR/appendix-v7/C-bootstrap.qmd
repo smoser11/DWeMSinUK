@@ -1,0 +1,22 @@
+# Section C: Three-Step Bootstrap Procedure {#sec-c}
+
+This section documents the custom bootstrap procedure used to construct 95% confidence intervals for all NSUM (MBSU) prevalence estimates. The procedure preserves the RDS network topology while allowing standard resampling-based uncertainty quantification.
+
+**Step 1 — Resampling.** We resample from the observed RDS sample using a neighbourhood bootstrap. In the neighbourhood bootstrap, each respondent is resampled along with their immediate network neighbourhood (recruiter and recruits), preserving the ego-network topology and recruitment-tie structure following @yauck_neighboot_2022. Let $S^{(b)}$ denote the bootstrap replicate for iteration $b$. This resampling scheme is chosen over simple node-level resampling because it respects the dependent structure introduced by respondent-driven recruitment; it is the default bootstrap in the project's NSUM estimation pipeline.
+
+**Step 2 — Reweighting.** For each bootstrap replicate $b$, RDS inclusion weights are recomputed from the replicate's degree distribution. Two weighting schemes are implemented and shown to produce equivalent results ([Table D.6](#tbl-weighting)):
+
+- *Volz–Heckathorn (RDS-II) weights:* $w_i^{(b)} \propto 1/d_i^{(b)}$, where $d_i^{(b)}$ is respondent $i$'s network degree in replicate $b$.
+- *Successive Sampling (SS) weights:* incorporate the sampling fraction and frame size $N_F$, computed numerically via the `RDS` package's successive-sampling estimator. At our sample sizes the SS and VH weights produce identical prevalence estimates ([Table D.6](#tbl-weighting)).
+
+**Step 3 — NSUM estimation and aggregation.** The MBSU estimator is applied to each bootstrap replicate with the recomputed weights. The MBSU prevalence formula [@feeh16-generalizing] is:
+
+$$\hat{p}_H^{(b)} = \frac{\sum_i w_i^{(b)} \, y_{iH}^{(b)}}{\sum_i w_i^{(b)} \, d_i^{(b)}}$$
+
+where $y_{iH}^{(b)}$ is respondent $i$'s binary indicator of knowing at least one member of hidden group $H$, and $d_i^{(b)}$ is their network degree. For the adjusted estimate, the basic prevalence is multiplied by $1/(\delta \cdot \tau)$:
+
+$$\hat{p}_{H,\text{adj}}^{(b)} = \hat{p}_H^{(b)} \cdot \frac{1}{\delta} \cdot \frac{1}{\tau}$$
+
+Bootstrap aggregation uses $B = 500$ replicates. The 95% confidence interval is the empirical 2.5th–97.5th percentile interval across the $B$ bootstrap prevalence estimates. Point estimates are computed from the full observed sample (not the bootstrap mean). Results are shown to be invariant to the choice of bootstrap resampling method (chain, neighbourhood, successive sampling, tree) in [Table D.5](#tbl-bootstrap-methods).
+
+*Additional resampling options available in the pipeline but not used in the main analysis:* Tree Bootstrap (sample entire recruitment trees with replacement), Chain Bootstrap (sample chains or subchains), and a Successive Sampling Bootstrap that mirrors the SS weight construction. These alternatives are documented in the project code (`R/analysis/NSUM/`) and their equivalence to the neighbourhood bootstrap is confirmed in [Table D.5](#tbl-bootstrap-methods).

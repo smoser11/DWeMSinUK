@@ -1,0 +1,56 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Appendix: Quantifying Hidden Exploitation",
+    "section": "",
+    "text": "Preface\nThis appendix accompanies the main paper. Appendix A documents the codebook and how the composite risk index and the five binary exploitation indicators are constructed. Appendix B lists the survey-instrument questions used to elicit ego- and alter-based reports for each indicator. Appendix C describes the three-step bootstrap procedure used for the NSUM confidence intervals. Appendix D reports the sensitivity and robustness analyses summarised in the main paper.\nAll data and replication code are available at OSF. The composite risk index and all indicator variables are constructed in R/data_processing/02-data_preparation.R via create_comparable_indicators().",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "A-codebook.html",
+    "href": "A-codebook.html",
+    "title": "Appendix A — Variable Codebook and Indicator Definitions",
+    "section": "",
+    "text": "A.1 Composite Risk Index\nThis section documents the composite risk index construction, the five binary exploitation indicators used as the primary prevalence outcomes, and the key RDS variables.\nThe composite risk index aggregates all eleven ILO indicators of forced labour into a single continuous measure (range 0–0.99). The index is a formative additive composite: an individual is exposed to exploitation if any of the indicators is present, and the indicators are constitutive rather than reflective of an underlying severity construct. Polarity is uniform across categories. Each of the eleven ILO indicator categories contributes equally to the composite (maximum 0.09 per category, so the total maximum possible score is 11 × 0.09 = 0.99). Within a category, the 0.09 is distributed evenly across the sub-questions used to code that category (0.09 for one sub-question, 0.045 each for two, 0.03 each for three, 0.0225 each for four). All eleven ILO indicators contribute equally to the composite. The medium/strong severity labels (following International Labour Organization (2024)) are used for reporting; they do not enter the composite’s arithmetic.\nTwo further evidentiary markers — payment below the national living wage (Category 12) and NRM-referral history (Category 13) — are reported as separate binary flags and are not included in the composite, because their direct evidentiary status under UK policy makes them more useful when read independently.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Variable Codebook and Indicator Definitions</span>"
+    ]
+  },
+  {
+    "objectID": "A-codebook.html#sec-a-composite",
+    "href": "A-codebook.html#sec-a-composite",
+    "title": "Appendix A — Variable Codebook and Indicator Definitions",
+    "section": "",
+    "text": "Table A.1: Composite Risk Index: ILO indicator categories, survey items, coding rules, and sub-weights. All eleven ILO indicator categories carry the same maximum category weight of 0.09; this 0.09 is split evenly across the sub-questions used to code the category (0.09 for one, 0.045 each for two, 0.03 each for three, 0.0225 each for four sub-questions). The total maximum composite score is therefore 11 × 0.09 = 0.99. The medium/strong severity labels in column 2 follow the ILO handbook on forced-labour surveys (International Labour Organization, 2024); the shorter ILO operational-indicators publications (International Labour Organization, 2012, 2025) list the eleven indicators without publishing this severity ranking, and the labels do not scale the composite weights. Categories 12 and 13 are reported as separate binary flags and are excluded from the composite.\n\n\n\n\n\n\n\n\n\n\n\n\n#\nILO Indicator (severity)\nSurvey item(s)\nCoding rule\nMax weight\n\n\n\n\n1\nAbuse of vulnerability (medium)\nQ29 (5a1): Forced to do work against will; Q51 (5d2-a): Unpaid tasks\nQ29: 0/1/2 → 0.045; Q51: 0 → 0.045\n0.09\n\n\n2\nDeception (medium)\nQ45 (5c2): Forced/deceived/threatened into poor conditions\nQ45: 0 → 0.09\n0.09\n\n\n3\nRestriction of movement (medium)\nQ32 (5a4): Could not leave premises; Q46 (5c3): Stay overnight permanently\nQ32: 0/1/2 → 0.045; Q46: 2 or 3 → 0.045\n0.09\n\n\n4\nIsolation (medium)\nQ65: Have friends outside work\nQ65: 1 (No) → 0.09\n0.09\n\n\n5\nPhysical and sexual violence (strong)\nQ44 (5c1): Abuse/harassment/physical violence; Q44 (5c1-b): Sexual violence\nQ44 (5c1): 0 → 0.045; Q44 (5c1-b): 0 → 0.045\n0.09\n\n\n6\nIntimidation and threats (strong)\nQ47 (5c4): Employer threatened/intimidated\nQ47: 0/1/2 → 0.09\n0.09\n\n\n7\nRetention of identity documents (strong)\nQ70 (5f2): Travel/identity docs withheld\nQ70: 0/1/2 → 0.09\n0.09\n\n\n8\nWithholding of wages (medium)\nQ42 (5b7): Pay ever withheld\nQ42: 0/1/2 → 0.09\n0.09\n\n\n9\nDebt bondage (medium)\nQ39 (5b4): Earnings to pay off debt to helper\nQ39: 0 → 0.09\n0.09\n\n\n10\nAbusive working and living conditions (medium)\nQ48 (5c5): Verbally abused; Q63 (5d10): Lack of privacy; Q72 (5f4): Safe/healthy environment; Q76 (5f8): Access to food/water/sanitation\nQ48: 0/1/2 → 0.0225; Q63: 0/1/2 → 0.0225; Q72: 2 or 3 → 0.0225; Q76: 1/2/3 → 0.0225\n0.09\n\n\n11\nExcessive overtime (medium)\nQ16 (3b): Weekly hours; Q61 (5d8): Weekly rest ≥ 24h; Q62 (5d9): Excessive overtime felt\nQ16: 6 or 7 → 0.03; Q61: 2 or 3 → 0.03; Q62: 0/1/2 → 0.03\n0.09\n\n\n12\nPayment below national living wage (separate binary)\nQ36 (5b1): Hourly pay before tax\nQ36: 0/1/2 (below £10.42/hr) → 1\nReported separately\n\n\n13\nNRM-referral indicator (separate binary)\nQ80 (5f12): Advised to enter National Referral Mechanism\nQ80: 0 or 1 → 1\nReported separately",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Variable Codebook and Indicator Definitions</span>"
+    ]
+  },
+  {
+    "objectID": "A-codebook.html#sec-a-binary",
+    "href": "A-codebook.html#sec-a-binary",
+    "title": "Appendix A — Variable Codebook and Indicator Definitions",
+    "section": "A.2 Five Binary Exploitation Indicators",
+    "text": "A.2 Five Binary Exploitation Indicators\nThe five binary indicators are the primary prevalence outcomes for both the ego-based RDS and alter-based NSUM analyses. All are binary (0/1). Multi-category RDS responses are recoded so that affirmative answers → 1, Never/no access → 0, and “Don’t know”/“Prefer not to say” → NA. Composite RDS indicators combine sub-questions using logical OR (any affirmative response across sub-questions → 1). NSUM count variables (number of domestic workers known with the characteristic) are converted to binary (&gt; 0 → 1).\n\n\n\nTable A.2: Five Binary Exploitation Indicators: ILO classification, survey questions, and coding rules.\n\n\n\n\n\n\n\n\n\n\n\nBinary indicator\nILO classification\nSurvey item(s)\nCoding rule\n\n\n\n\nDocument withholding\nStrong (Category 7)\nQ70 (5f2): Travel/identity docs withheld\nQ70: 0/1/2 → 1\n\n\nThreats and abuse\nStrong (Categories 5+6)\nQ45 (5c2): Forced/deceived/threatened; Q47 (5c4): Intimidated; Q48 (5c5): Verbally abused\nAny of: Q45=0; Q47=0/1/2; Q48=0/1/2 → 1\n\n\nPay issues\nMedium (Categories 8+9)\nQ39 (5b4): Debt bondage; Q42 (5b7): Pay withheld\nEither Q39=0 or Q42=0/1/2 → 1\n\n\nExcessive hours\nMedium (Category 11)\nQ61 (5d8): Weekly rest &lt; 24h; Q62 (5d9): Excessive overtime\nEither Q61=2/3 or Q62=0/1/2 → 1\n\n\nLimited access to help\nAuxiliary\nQ78 (5f10): Knows where to get help (reverse-coded)\nQ78 indicating no access → 1",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Variable Codebook and Indicator Definitions</span>"
+    ]
+  },
+  {
+    "objectID": "A-codebook.html#sec-a-rds",
+    "href": "A-codebook.html#sec-a-rds",
+    "title": "Appendix A — Variable Codebook and Indicator Definitions",
+    "section": "A.3 Key RDS Variables",
+    "text": "A.3 Key RDS Variables\n\n\n\nTable A.3: Key RDS Variables: variable name, type, definition, and survey source.\n\n\n\n\n\n\n\n\n\n\n\nVariable\nType\nDefinition\nSource\n\n\n\n\nid\nNumeric\nUnique respondent identifier\n—\n\n\nrecruiter.id\nNumeric\nid of recruiter; −1 = seed\n—\n\n\nreferral_1 through referral_5\nNumeric\nids of up to five recruits\n—\n\n\nq13 (2f)\nNumeric (count)\nPersonal network size: number of other domestic workers known with contact details. Used as degree variable in RDS weighting and NSUM denominator.\nQ13\n\n\n1a_eligibility\nBinary\nWorked as domestic worker in past 12 months\nQ1a\n\n\nwave\nNumeric (0, 1, 2, …)\nRecruitment wave; 0 = seed; k = recruited by wave-(k−1) respondent\nDerived\n\n\nnationality_cluster\nCategorical (4 levels)\nFilipino, Latinx, British, Other\nQ3, Q5\n\n\n\n\n\n\n\n\n\n\nInternational Labour Organization. (2012). ILO indicators of forced labour. International Labour Organization. https://www.ilo.org/publications/ilo-indicators-forced-labour\n\n\nInternational Labour Organization. (2024). Hard to see, harder to count handbook on forced labour surveys (Third Edition). International Labour Organization. https://www.ilo.org/forcedlabour\n\n\nInternational Labour Organization. (2025). ILO indicators of forced labour [2025 revised edition]. International Labour Organization. https://www.ilo.org/forcedlabour",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Variable Codebook and Indicator Definitions</span>"
+    ]
+  }
+]

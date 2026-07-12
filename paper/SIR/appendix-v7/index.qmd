@@ -1,0 +1,5 @@
+# Preface {.unnumbered}
+
+This appendix accompanies the main paper. Appendix A documents the codebook and how the composite risk index and the five binary exploitation indicators are constructed. Appendix B lists the survey-instrument questions used to elicit ego- and alter-based reports for each indicator. Appendix C describes the three-step bootstrap procedure used for the NSUM confidence intervals. Appendix D reports the sensitivity and robustness analyses summarised in the main paper.
+
+All data and replication code are available at [OSF](https://osf.io/vf5yb/overview?view_only=becc2db3b49c4b258015b648867bf208). The composite risk index and all indicator variables are constructed in `R/data_processing/02-data_preparation.R` via `create_comparable_indicators()`.
