@@ -327,14 +327,13 @@ binary prevalence indicators: both are too retrospective and judgemental
 to elicit reliably through a brief survey of n=85 respondents (the
 respondent would need to reconstruct intent and knowledge states from
 the perspective of months or years after the fact). Both are nonetheless
-included in the composite risk index
-(Section~\ref{sec-composite-results}; Appendix Table A.1, Categories 1
-and 2). Where appropriate we note this scope limitation in the
-discussion of results.
+included in the composite risk index (Appendix Table A.1, Categories 1
+and 2; results in Section~\ref{sec-composite-results}). Where
+appropriate we note this scope limitation in the discussion of results.
 
 The composite risk index aggregates all eleven ILO indicators of forced
 labour into a single continuous measure
-(Section~\ref{sec-survey-instrument} Table~\ref{tbl-indicator-mapping};
+(Section~\ref{sec-survey-instrument}, Table~\ref{tbl-indicator-mapping};
 Appendix Table A.1 for per-category weights). It is constructed as a
 formative additive composite: an individual is exposed to exploitation
 if any of the indicators is present, and the indicators are constitutive
@@ -597,17 +596,18 @@ providing robust confidence intervals consistent with small-sample
 design-based inference \autocite{hand14-estimating}.
 
 Of the 97 initial respondents, 90 identified themselves as transnational
-migrants. Forty-five percent regarded themselves as self-employed, 39\%
-identified themselves as employees, and 16\% categorised their
-employment status as that of a worker. The largest single nationality
-group, comprising 64 respondents (66\% of the total), reported a
-Filipina background. Other nationalities represented included Dominican,
-Brazilian, Spanish, Colombian, Bolivian, Venezuelan, Cuban, and
-Panamanian. Female domestic workers made up 97\% of the sample, with 3\%
-of the sample comprised of male domestic workers. The age structure of
-the domestic workers was skewed towards those over 45 years old, with
-such workers representing over half of the sample (see
-Table~\ref{tbl-sample-chars}).
+migrants. In the analytical sample of \(n = 85\)
+(Table~\ref{tbl-demographics}), 47\% regarded themselves as
+self-employed, 37\% identified themselves as employees, and 17\%
+categorised their employment status as agency workers. Filipino
+respondents constitute the largest nationality cluster (65 respondents,
+76\% of the analytical sample; Table~\ref{tbl-sample-chars} for the full
+nationality × wave breakdown); other nationalities represented include
+Dominican, Brazilian, Spanish, Colombian, Bolivian, Venezuelan, Cuban,
+and Panamanian. Female domestic workers made up 98\% of the analytical
+sample, with the remaining 2\% male. The age structure is skewed towards
+older workers: 49\% of respondents are aged 45+, and a further 26\% are
+aged 35--40 (Table~\ref{tbl-demographics}).
 
 \begin{figure}[H]
 
@@ -625,15 +625,45 @@ relationships. Source: Authors' own work.}
 
 \end{figure}%
 
+\begin{longtable}[]{@{}llrr@{}}
+\caption{Sample demographics (n = 85 analytical sample). Response
+categories for age and length of time in the UK follow the survey
+codebook (Appendix A.3); the codebook's original response options
+include a small ordinal gap between 40 and 45 years of age. Source:
+Authors' construction from
+\texttt{data/processed/prepared\_data.csv}.}\label{tbl-demographics}\tabularnewline
+\toprule\noalign{}
+Characteristic & Category & n & \% \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Characteristic & Category & n & \% \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Gender} & Female & 83 & 97.6\% \\
+& Male & 2 & 2.4\% \\
+\textbf{Age} & 23--25 & 1 & 1.2\% \\
+& 26--35 & 20 & 23.5\% \\
+& 35--40 & 22 & 25.9\% \\
+& 45+ & 42 & 49.4\% \\
+\textbf{Employment status} & Self-employed & 40 & 47.1\% \\
+& Employee & 31 & 36.5\% \\
+& Agency worker & 14 & 16.5\% \\
+\textbf{Length of time in UK} & Less than 3 months & 3 & 3.5\% \\
+& 3 months to 1 year & 19 & 22.4\% \\
+& 1 to 3 years & 14 & 16.5\% \\
+& More than 3 years & 49 & 57.6\% \\
+\end{longtable}
+
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.2639}}
-  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1111}}
-  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1111}}
-  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0417}}
-  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0694}}
-  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0833}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0278}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2877}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2192}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1096}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1096}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1233}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1507}}@{}}
 \caption{Sample composition by nationality cluster and recruitment wave
 (n = 85). Wave 0 indicates seed respondents; subsequent waves are
 respondent-driven recruits. Filipino respondents dominate the sample
@@ -641,49 +671,45 @@ respondent-driven recruits. Filipino respondents dominate the sample
 clusters are smaller and shallower. Source: Authors' own
 work.}\label{tbl-sample-chars}\tabularnewline
 \toprule\noalign{}
-\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.3750} + 2\tabcolsep}}{%
 \begin{minipage}[b]{\linewidth}\raggedright
 Nationality cluster
-\end{minipage}} &
-\multicolumn{6}{>{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.4583} + 10\tabcolsep}@{}}{%
-\begin{minipage}[b]{\linewidth}\centering
-Wave 0 \textbar{} Wave 1 \textbar{} Wave 2 (seeds) \textbar{} \textbar{}
-\end{minipage}} \\
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Wave 0 (seeds)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Wave 1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Wave 2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Wave 3+
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Total (n)
+\end{minipage} \\
 \midrule\noalign{}
 \endfirsthead
 \toprule\noalign{}
-\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.3750} + 2\tabcolsep}}{%
 \begin{minipage}[b]{\linewidth}\raggedright
 Nationality cluster
-\end{minipage}} &
-\multicolumn{6}{>{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.4583} + 10\tabcolsep}@{}}{%
-\begin{minipage}[b]{\linewidth}\centering
-Wave 0 \textbar{} Wave 1 \textbar{} Wave 2 (seeds) \textbar{} \textbar{}
-\end{minipage}} \\
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Wave 0 (seeds)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Wave 1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Wave 2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Wave 3+
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Total (n)
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.3750} + 2\tabcolsep}}{%
-Filipino} &
-\multicolumn{6}{>{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.4583} + 10\tabcolsep}@{}}{%
-35 \textbar{} 18 \textbar{} 9} \\
-\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.3750} + 2\tabcolsep}}{%
-Latinx} &
-\multicolumn{6}{>{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.4583} + 10\tabcolsep}@{}}{%
-4 \textbar{} 2 \textbar{} 0} \\
-\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.3750} + 2\tabcolsep}}{%
-British} &
-\multicolumn{6}{>{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.4583} + 10\tabcolsep}@{}}{%
-2 \textbar{} 0 \textbar{} 0} \\
-\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.3750} + 2\tabcolsep}}{%
-Other} &
-\multicolumn{6}{>{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.4583} + 10\tabcolsep}@{}}{%
-5 \textbar{} 5 \textbar{} 2} \\
-\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.3750} + 2\tabcolsep}}{%
-\textbf{Total}} &
-\multicolumn{6}{>{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.4583} + 10\tabcolsep}@{}}{%
-\textbf{46} \textbar{} \textbf{25} \textbar{} \textbf{11}} \\
+Filipino & 35 & 18 & 9 & 3 & 65 \\
+Latinx & 4 & 2 & 0 & 0 & 6 \\
+British & 2 & 0 & 0 & 0 & 2 \\
+Other & 5 & 5 & 2 & 0 & 12 \\
+\textbf{Total} & \textbf{46} & \textbf{25} & \textbf{11} & \textbf{3} &
+\textbf{85} \\
 \end{longtable}
 
 \subsection{Estimation Framework}\label{sec-estimation-framework}
@@ -797,7 +823,7 @@ posterior at our sample size (\(n=85\)); the credible interval covers
 essentially the full support of the variable. We therefore report
 frequentist RDS-SS estimates as the headline for the composite index and
 reserve MA-RDS estimates for the five binary indicators (see
-Section~\ref{sec-composite-results} and the Appendix D.2).
+Section~\ref{sec-supporting-estimates} and the Appendix D.2).
 
 \emph{Within-Population Scale-Up Estimation (NSUM):} We employ the
 Modified Basic Scale-Up (MBSU) logic of \textcite{feeh16-generalizing}
@@ -968,10 +994,10 @@ Model-Assisted estimator does not converge to a useful posterior on
 continuous outcomes at our sample size
 (Section~\ref{sec-estimation-framework}). The preferred NSUM result is
 the continuous-\(\tau\) sweep over \(\tau \in [0.40, 1.00]\) with
-\(\delta\) fixed at 0.9 (Section~\ref{sec-estimation-framework};
-Appendix Figure D.4); the Moderate discrete-tier point estimate
-(\(\delta = 0.9\), \(\tau = 0.85\)) is reported alongside as a reference
-scenario for direct comparison with the discrete-tier NSUM literature.
+\(\delta\) fixed at 0.9 (Section~\ref{sec-sensitivity}; Appendix Figure
+D.4); the Moderate discrete-tier point estimate (\(\delta = 0.9\),
+\(\tau = 0.85\)) is reported alongside as a reference scenario for
+direct comparison with the discrete-tier NSUM literature.
 Section~\ref{sec-supporting-estimates} reports supporting estimates --
 Bayesian Model-Assisted estimates for the five binary indicators,
 alternative RDS estimators (RDS-I, RDS-II), and NSUM under alternative
@@ -985,18 +1011,20 @@ estimates for the RDS-reachable population of UK migrant domestic
 workers connected to the participating civil-society networks (primarily
 Kalayaan and the Latin American Women's Rights Service). They should not
 be read as definitive national prevalence figures for all UK migrant
-domestic workers. The reported quantities in Table 3 target different
-population quantities (Section~\ref{sec-estimation-framework},
-Table~\ref{tbl-estimands}), so absolute levels also differ by estimator
-in interpretable ways.
+domestic workers. The reported quantities in Table~\ref{tbl-estimands}
+target different population quantities
+(Section~\ref{sec-estimation-framework}), so absolute levels also differ
+by estimator in interpretable ways.
 
 \subsection{Descriptive Overview}\label{sec-descriptive}
 
-Sample characteristics are presented in Table~\ref{tbl-sample-chars} and
+Sample demographics are presented in Table~\ref{tbl-demographics};
+sample composition by nationality cluster and recruitment wave in
+Table~\ref{tbl-sample-chars}; the recruitment network in
 Figure~\ref{fig-recruitment}. 97 respondents completed the survey; 85
 with non-zero network degree were included in RDS analysis. The
-analytical sample is 93\% transnational migrant, 97\% female, 76\%
-Filipino, with over half aged 45+ and 45\% self-employed.
+analytical sample is 93\% transnational migrant, 98\% female, 76\%
+Filipino, with 49\% aged 45+ and 47\% self-employed.
 
 \subsubsection{RDS Sampling Diagnostics}\label{sec-rds-diagnostics}
 
@@ -1227,18 +1255,18 @@ Three additional families of estimates are reported in full in the
 Appendix (Section D) for transparency and robustness: (a) The five
 Bayesian Model-Assisted (MA-RDS) posterior means (Appendix Table D.1)
 range from 34.1\% for document withholding to 84.0\% for excessive
-working hours, reproducing the RDS-SS ordering in Table 5. (b) Direct
-comparison of RDS-I and RDS-SS estimators for each indicator with
-per-method bootstrap 95\% CIs (Appendix Table D.3); RDS-I runs
-systematically higher than RDS-SS by 5--15 percentage points, consistent
-with the standard finding that RDS-I is sensitive to seed dependence and
-performs poorly at the small sample sizes and shallow chain depths
-characteristic of our design (Section~\ref{sec-rds-diagnostics}). (c)
-NSUM under the three discrete adjustment-factor tiers (Unadjusted,
-Moderate, Conservative; Appendix Table D.4), presented for direct
-comparison with the discrete-tier NSUM literature. The substantive
-headline NSUM result is the continuous-\(\tau\) sweep reported in
-Section~\ref{sec-sensitivity}.
+working hours, reproducing the RDS-SS ordering in
+Table~\ref{tbl-preferred-estimates}. (b) Direct comparison of RDS-I and
+RDS-SS estimators for each indicator with per-method bootstrap 95\% CIs
+(Appendix Table D.3); RDS-I runs systematically higher than RDS-SS by
+5--15 percentage points, consistent with the standard finding that RDS-I
+is sensitive to seed dependence and performs poorly at the small sample
+sizes and shallow chain depths characteristic of our design
+(Section~\ref{sec-rds-diagnostics}). (c) NSUM under the three discrete
+adjustment-factor tiers (Unadjusted, Moderate, Conservative; Appendix
+Table D.4), presented for direct comparison with the discrete-tier NSUM
+literature. The substantive headline NSUM result is the
+continuous-\(\tau\) sweep reported in Section~\ref{sec-sensitivity}.
 
 \subsection{Sensitivity and Robustness}\label{sec-sensitivity}
 
