@@ -20,6 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+q { quotes: "“" "”" "‘" "’"; }
 </style>
 
 
@@ -257,7 +258,7 @@ Table&nbsp;B.1: Comparable Ego/Alter Indicator Pairs — Summary. Confidence rat
 </blockquote>
 <p><strong>Alter-based — Q71 (5f3):</strong></p>
 <blockquote class="blockquote">
-<p><em>Do you know personally of any other domestic workers who do not have access to their own travel and identity documents? If so, how many? (Please indicate the number, or state ‘0’ if this does not apply to anyone you know.)</em></p>
+<p><em>Do you know personally of any other domestic workers who do not have access to their own travel and identity documents? If so, how many? (Please indicate the number, or state <q>0</q> if this does not apply to anyone you know.)</em></p>
 <p>Response: Integer count</p>
 </blockquote>
 <p><strong>Coding.</strong> Ego: Q70 ∈ {Yes always, Often, Sometimes} → 1; {Never, I don’t know} → 0; missing → NA. Alter: Q71 &gt; 0 → 1; Q71 = 0 → 0; missing → NA.</p>
@@ -277,7 +278,7 @@ Table&nbsp;B.1: Comparable Ego/Alter Indicator Pairs — Summary. Confidence rat
 </blockquote>
 <p><strong>Alter-based — Q43 (5b8):</strong></p>
 <blockquote class="blockquote">
-<p><em>Do you know personally of any other domestic workers who have experienced problems with debt or pay? If so, how many? (Please indicate the number, or state ‘0’ if this does not apply to anyone you know.)</em></p>
+<p><em>Do you know personally of any other domestic workers who have experienced problems with debt or pay? If so, how many? (Please indicate the number, or state <q>0</q> if this does not apply to anyone you know.)</em></p>
 <p>Response: Integer count</p>
 </blockquote>
 <p><strong>Coding.</strong> Ego: Q39 = Yes → 1; {No, I don’t know} → 0 (debt bondage component). Q42 ∈ {Yes always, Often, Sometimes} → 1; {Never, I don’t know} → 0 (pay withheld component). Composite <code>pay_issues_rds</code>: logical OR — Q39 = 1 OR Q42 = 1 → 1; both NA → NA. Alter: Q43 &gt; 0 → 1; Q43 = 0 → 0; missing → NA.</p>
@@ -302,7 +303,7 @@ Table&nbsp;B.1: Comparable Ego/Alter Indicator Pairs — Summary. Confidence rat
 </blockquote>
 <p><strong>Alter-based — Q49 (5c6):</strong></p>
 <blockquote class="blockquote">
-<p><em>Do you know personally of any other domestic workers that have had any experiences related to the use of threat or force? If so, how many? (Please indicate the number, or state ‘0’ if this does not apply to anyone you know.)</em></p>
+<p><em>Do you know personally of any other domestic workers that have had any experiences related to the use of threat or force? If so, how many? (Please indicate the number, or state <q>0</q> if this does not apply to anyone you know.)</em></p>
 <p>Response: Integer count</p>
 </blockquote>
 <p><strong>Coding.</strong> Ego: Q45 = Yes → 1; {No, Prefer not to say} → 0. Q47 ∈ {Yes, Often, Sometimes} → 1; {Never, I don’t know} → 0. Q48 ∈ {Yes Often, Yes Sometimes, Maybe once or twice} → 1; {Never, I don’t know} → 0. Composite <code>threats_abuse_rds</code>: logical OR — any of Q45/Q47/Q48 = 1 → 1; all three NA → NA. Alter: Q49 &gt; 0 → 1; Q49 = 0 → 0; missing → NA.</p>
@@ -322,11 +323,11 @@ Table&nbsp;B.1: Comparable Ego/Alter Indicator Pairs — Summary. Confidence rat
 </blockquote>
 <p><strong>Alter-based — Q64 (5d11):</strong></p>
 <blockquote class="blockquote">
-<p><em>Do you know personally of any other domestic workers who have experienced any of the above related to labour rights? (Including working excessive overtime, a failure to obtain daily or weekly breaks or annual leave.) If so, how many? (Please indicate the number, or state ‘0’ if this does not apply to anyone you know.)</em></p>
+<p><em>Do you know personally of any other domestic workers who have experienced any of the above related to labour rights? (Including working excessive overtime, a failure to obtain daily or weekly breaks or annual leave.) If so, how many? (Please indicate the number, or state <q>0</q> if this does not apply to anyone you know.)</em></p>
 <p>Response: Integer count</p>
 </blockquote>
 <p><strong>Coding.</strong> Ego: Q61 ∈ {Sometimes, Never} → 1 (indicates <em>inadequate</em> rest, i.e., rest rarely or never exceeds 24 h); {Yes always, Often, I don’t know} → 0. Q62 ∈ {Always, Often, Sometimes} → 1; {Never, I don’t know} → 0. Composite <code>excessive_hours_rds</code>: logical OR → 1 if either condition present; both NA → NA. Alter: Q64 &gt; 0 → 1; Q64 = 0 → 0; missing → NA.</p>
-<p><strong>Confidence: Medium.</strong> Q64 explicitly includes <em>annual leave</em> (“a failure to obtain … annual leave”) which is not captured by Q61 or Q62 on the ego side. This scope mismatch is the largest of the five indicator pairs and is acknowledged as a limitation of the comparable-indicator strategy.</p>
+<p><strong>Confidence: Medium.</strong> Q64 explicitly includes <em>annual leave</em> (<q>a failure to obtain … annual leave</q>) which is not captured by Q61 or Q62 on the ego side. This scope mismatch is the largest of the five indicator pairs and is acknowledged as a limitation of the comparable-indicator strategy.</p>
 </section>
 <section id="sec-b-help" class="level2" data-number="B.5">
 <h2 data-number="B.5" class="anchored" data-anchor-id="sec-b-help"><span class="header-section-number">B.5</span> Limited Access to Help</h2>
@@ -337,7 +338,7 @@ Table&nbsp;B.1: Comparable Ego/Alter Indicator Pairs — Summary. Confidence rat
 </blockquote>
 <p><strong>Alter-based — Q79 (5f11):</strong></p>
 <blockquote class="blockquote">
-<p><em>Do you know personally of any other domestic workers who do NOT know where to go for help? If so, how many? (Please indicate the number, or state ‘0’ if this does not apply to anyone you know.)</em></p>
+<p><em>Do you know personally of any other domestic workers who do NOT know where to go for help? If so, how many? (Please indicate the number, or state <q>0</q> if this does not apply to anyone you know.)</em></p>
 <p>Response: Integer count</p>
 </blockquote>
 <p><strong>Coding.</strong> Ego: Q78 is reverse-coded — Q78 = No → 1 (respondent lacks access to help); Q78 = Yes → 0; missing → NA. Alter: Q79 &gt; 0 → 1; Q79 = 0 → 0; missing → NA.</p>
