@@ -50,8 +50,7 @@ suppressMessages({
 source(here("R", "utils", "helper_functions.R"))
 
 # Load prepared RDS data. The data-preparation pipeline creates a processed
-# .RData containing the rd.dd object used by all 06* scripts; the path matches
-# the convention documented in CLAUDE.md.
+# .RData containing the rd.dd object used by all 06* scripts
 prepared_path <- here("data", "processed", "prepared_data.RData")
 if (!file.exists(prepared_path)) {
   cat("ERROR: prepared_data.RData not found at", prepared_path, "\n")

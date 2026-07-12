@@ -1,10 +1,8 @@
 ---
 title: "Quantifying Hidden Exploitation: Dual-Method Prevalence Estimates of Labour Exploitation among Domestic Workers in the United Kingdom"
 author:
-  - name: Caroline Emberson
-    affiliation: University of Nottingham
-  - name: Scott Moser
-    affiliation: University of Nottingham
+  - name: "[Author(s) anonymised for review]"
+    affiliation: "[Affiliation anonymised for review]"
 date: 11 July 2026 #today
 date-format: "DD MMMM YYYY"
 # subtitle: "Manuscript v5 (2026-06-30) — consolidated appendix; all ESM cross-refs resolved; figures updated"
@@ -12,9 +10,9 @@ abstract: |
   Reliable indicators for SDG Target 8.7 are difficult to construct because the populations most affected by labour exploitation are often absent from standard household and labour-force surveys. This paper develops a matched ego/alter survey design for measuring labour exploitation among hidden populations. We apply respondent-driven sampling and a network scale-up approach to the same survey instrument, asking migrant domestic workers in the United Kingdom both about their own experiences and about exploitation among domestic workers they know. The design produces two complementary estimands: own-experience prevalence and network-visible prevalence. We measure five ILO-aligned indicators: excessive working hours, pay-related issues, limited access to help, threats and abuse, and document withholding. We also construct a formative composite risk index to capture gradations of exploitation severity. In a civil-society-mediated web-RDS sample of 85 migrant domestic workers, RDS-SS estimates indicate high own-experience prevalence, while network scale-up estimates are substantially lower. The divergence is consistent with a visibility gradient in which some exploitation behaviours are more observable across peer networks than others. The results should be interpreted as exploratory population-adjusted estimates for an RDS-reachable population rather than definitive national prevalence figures.  The relative ordering of prevalence of different forms of labour exploitation are robust across a number of parameters. The paper contributes a replicable measurement design for hidden-population social indicators relevant to SDG 8.7 monitoring.
 Keywords: [social indicators, SDG 8.7, labour exploitation, migrant domestic work, respondent-driven sampling, network scale-up method]
 bibliography:
-  - ce-library.bib
-  - sm-cited.bib
-csl: apa.csl
+  - references/ce-library.bib
+  - references/sm-cited.bib
+csl: references/apa.csl
 fontsize: 12pt
 geometry: margin=1in
 linestretch: 1.15
@@ -480,13 +478,13 @@ The dual-method design demonstrated here is replicable. The matched ego-alter su
 
 # Declarations {#sec-declarations}
 
-**Funding.** CE received funding from the University of Nottingham under its Nottingham Research Fellowship scheme. 
+**Funding.** [Funding source anonymised for review; details on Title Page.]
 
 **Competing interests.** The authors have no competing interests to declare.
 
 **Ethics approval and consent to participate.** The data collection that underpins the analysis presented in this paper was given favourable ethical approval by the lead author’s School Research Ethics Committee in January 2023 (Ethics Review Application number 202223021). All participants were informed about the aims of the study, provided informed consent, and were assured that participation was voluntary and confidential.
 
-**Data availability.** Anonymised respondent-level data and all analysis code are available at the project's Open Science Framework mirror: <https://osf.io/vf5yb/overview?view_only=becc2db3b49c4b258015b648867bf208>. The underlying GitHub repository is currently private and will be made public on acceptance.
+**Data availability.** Anonymised respondent-level data and all analysis code are available at the project's Open Science Framework mirror: <[OSF view-only URL redacted for anonymised review; will be provided upon request]>. The underlying GitHub repository is currently private and will be made public on acceptance.
 
 **Use of large language models.** The authors used a large language model assistant (Anthropic Claude) for textual editing and for code-review support during R script development. All final analysis decisions, statistical interpretations, and prose are the authors' own. No generative models were used to simulate, augment, or fabricate data. This disclosure follows the Springer Nature editorial guidance on the use of generative AI tools in scholarly work.
 

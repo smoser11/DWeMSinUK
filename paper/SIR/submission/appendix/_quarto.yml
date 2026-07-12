@@ -1,0 +1,64 @@
+project:
+  type: book
+  output-dir: . #_output
+
+book:
+  title: "Appendix: Quantifying Hidden Exploitation"
+  subtitle: "Online Supplementary Materials for Social Indicators Research Submission"
+  author:
+    - name: "[Author(s) anonymised for review]"
+      affiliation: "[Affiliation anonymised for review]"
+  date: "11 July 2026"
+  date-format: "DD MMMM YYYY"
+  chapters:
+    - index.qmd
+  appendices:
+    - A-codebook.qmd
+    - B-survey.qmd
+    - C-bootstrap.qmd
+    - D-sensitivity.qmd
+
+bibliography:
+  - ../references/ce-library.bib
+  - ../references/sm-cited.bib
+csl: ../references/apa.csl
+
+fontsize: 12pt
+linestretch: 1.15
+number-sections: true
+
+crossref:
+  chapters: true
+
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    code-summary: "Show code"
+  docx:
+    toc: true
+    toc-depth: 3
+    highlight-style: github
+    fig-cap-location: bottom
+    tbl-cap-location: top
+  pdf:
+    documentclass: scrreprt
+    pdf-engine: xelatex
+    toc: true
+    toc-depth: 3
+    keep-tex: true
+    geometry: margin=1in
+    include-in-header:
+      text: |
+        \usepackage{xcolor}
+        \usepackage{amsthm,amsmath,amsfonts,amssymb,float,caption,subcaption}
+        \usepackage{booktabs,longtable,array}
+    fig-pos: "H"
+    fig-width: 6.5
+    fig-height: 4
+    colorlinks: true
+    linkcolor: blue
+    citecolor: BrickRed
+    urlcolor: blue
+    link-citations: true

@@ -5,7 +5,7 @@
 #
 # Updated 2026-06-20 for the cleaned, coherent R/analysis/ structure.
 #
-# Pipeline steps:
+# Pipeline steps (all produce results cited by the paper or the online appendix):
 #   1.  Data cleaning           (R/data_processing/01-data_cleaning.R)
 #   2.  Data preparation        (R/data_processing/02-data_preparation.R)
 #   3.  RDS estimation          (R/analysis/03-rds_estimation.R)
@@ -15,9 +15,13 @@
 #   6.  Bayesian appendix       (R/analysis/06-bayesian_appendix.R)
 #       PREREQ: bash R/analysis/06-run-all.sh   (long-running; runs out-of-band)
 #   7.  Paper figures           (R/analysis/07-paper_figures.R)
-#   8.  Subgroup analysis       (R/analysis/08b-simple_subgroup_analysis.R)
-#       (08-netclust_subgroup_analysis.R requires netclust; not on CRAN; skip by default)
-#   9.  LaTeX tables            (R/analysis/09-create_latex_tables.R)
+#   8.  LOO chain sensitivity   (R/analysis/08c-loo_chain_analysis.R)
+#
+# Two previously-included pipeline steps have been retired for this OSF
+# release because their outputs are not cited by the paper or appendix:
+#   - Subgroup analysis (08-netclust and 08b-simple)
+#   - LaTeX table producer (09-create_latex_tables)
+# Both scripts are in _archive/R_scripts_unused/ if you want to reinstate them.
 
 cat("=== DWeMSinUK Analysis Pipeline ===\n")
 cat("Domestic Worker Exploitation and Modern Slavery in the UK\n")
@@ -51,8 +55,7 @@ pipeline_config <- list(
   run_nsum_tau_sensitivity       = TRUE,   # NEW (continuous-tau NSUM sensitivity)
   run_bayesian_appendix          = TRUE,   # consolidator only; see PREREQ note below
   run_paper_figures              = TRUE,
-  run_subgroup_analysis          = TRUE,
-  run_latex_tables               = TRUE,
+  run_loo_chain_analysis         = TRUE,   # Appendix D.8/D.9 + Figure D.5
 
   # Parameters
   preferred_rds_method   = global_config$preferred_rds_method,
@@ -160,26 +163,28 @@ if (pipeline_config$run_bayesian_appendix) {
   }
 }
 
-# Step 7: Paper figures (canonical producer of record for all 8 manuscript figures)
+# Step 7: Paper figures (canonical producer of record for all main-paper figures)
 if (pipeline_config$run_paper_figures) {
-  run_step("Step 7: Paper figures (8 figures -> output/figures/paper/)",
+  run_step("Step 7: Paper figures (Figures 1, 3, 4 -> output/figures/)",
            file.path("R", "analysis", "07-paper_figures.R"))
 }
 
-# Step 8: Subgroup analysis (08b- = simple; 08- = netclust, optional)
-if (pipeline_config$run_subgroup_analysis) {
-  run_step("Step 8: Subgroup analysis by nationality (simple variant)",
-           file.path("R", "analysis", "08b-simple_subgroup_analysis.R"))
-  # Optional netclust version (requires netclust 0.1.0 with R 4.5+ compat patch):
-  # run_step("Step 8 (alt): Clustered SS-PSE via netclust",
-  #          file.path("R", "analysis", "08-netclust_subgroup_analysis.R"))
+# Step 8: Leave-One-Out chain sensitivity (Appendix D.8/D.9 + Figure D.5)
+if (pipeline_config$run_loo_chain_analysis) {
+  run_step("Step 8: LOO chain sensitivity (seed #55 excluded; Tables D.8/D.9 + Figure D.5)",
+           file.path("R", "analysis", "08c-loo_chain_analysis.R"))
 }
 
-# Step 9: LaTeX tables for the manuscript
-if (pipeline_config$run_latex_tables) {
-  run_step("Step 9: Generate LaTeX tables",
-           file.path("R", "analysis", "09-create_latex_tables.R"))
-}
+# NOTE:  Two earlier pipeline steps have been retired for this OSF release
+# because their outputs are NOT cited by the published paper or the online
+# appendix:
+#   - 08-netclust_subgroup_analysis.R and 08b-simple_subgroup_analysis.R
+#     (subgroup analysis by nationality cluster; not reported)
+#   - 09-create_latex_tables.R
+#     (LaTeX-only table producer; the paper renders tables via Quarto directly)
+# The scripts remain available in `_archive/R_scripts_unused/` for anyone who
+# wants to explore the subgroup or LaTeX-table pathways. Restore them into
+# R/analysis/ and add the corresponding run_step() calls here if needed.
 
 # --------------------------------------------------------------------------
 # Summary report
@@ -239,4 +244,4 @@ rm(skip_execution)
 
 cat("\n=== PIPELINE COMPLETE ===\n")
 cat("Inspect output/reports/, output/tables/, output/figures/paper/.\n")
-cat("For documentation, see CLAUDE.md and AGENTS.md at repo root.\n")
+

@@ -1,0 +1,133 @@
+# Survey Questions and Comparable Ego/Alter Indicators {#sec-b}
+
+This section documents the full wording and response options for the ego-based (RDS) and alter-based (NSUM) survey questions underlying each of the five binary exploitation indicators. Ego-based questions ask respondents about their own experiences; alter-based questions ask what respondents observe in the domestic workers they know personally. This matched ego/alter pairing is the foundation of the dual-method design. All question numbers refer to the original survey instrument (*The Nature and Extent of Labour Exploitation among Domestic Workers in the UK*, administered via OnlineSurveys, [Institution anonymised for review]).
+
+@tbl-ego-alter-summary gives a summary overview; the subsections below provide the full question wording, response options, and coding rules for each indicator pair.
+
+: Comparable Ego/Alter Indicator Pairs — Summary. Confidence ratings reflect the closeness of the conceptual match between the ego (RDS) and alter (NSUM) question framings. {#tbl-ego-alter-summary}
+
+| Indicator | Ego (RDS) question(s) | Alter (NSUM) question | Confidence |
+|---|---|---|---|
+| Document withholding | Q70 (5f2) | Q71 (5f3) | Highest |
+| Pay/debt issues | Q39 (5b4) + Q42 (5b7) | Q43 (5b8) | High |
+| Threats and abuse | Q45 (5c2) + Q47 (5c4) + Q48 (5c5) | Q49 (5c6) | High |
+| Excessive hours | Q61 (5d8) + Q62 (5d9) | Q64 (5d11) | Medium |
+| Limited access to help | Q78 (5f10) reverse-coded | Q79 (5f11) | Lower |
+
+## Document Withholding {#sec-b-doc}
+
+**Ego-based — Q70 (5f2):**
+
+> *Has your employer, or their agent, withheld from you your travel and identity documentation?*
+>
+> Response options: Yes, always / Often / Sometimes / Never / I don't know
+
+**Alter-based — Q71 (5f3):**
+
+> *Do you know personally of any other domestic workers who do not have access to their own travel and identity documents? If so, how many? (Please indicate the number, or state '0' if this does not apply to anyone you know.)*
+>
+> Response: Integer count
+
+**Coding.** Ego: Q70 ∈ {Yes always, Often, Sometimes} → 1; {Never, I don't know} → 0; missing → NA. Alter: Q71 > 0 → 1; Q71 = 0 → 0; missing → NA.
+
+**Confidence: Highest.** The ego and alter questions are direct mirror images of the same exploitation behaviour. The only difference is perspective (self vs. others), not concept or scope.
+
+## Pay/Debt Issues {#sec-b-pay}
+
+**Ego-based — Q39 (5b4):**
+
+> *Do you have to use some or all of what you earn to pay off a debt to someone who helped you find work?*
+>
+> Response options: Yes / No / I don't know
+
+**Ego-based — Q42 (5b7):**
+
+> *Has your pay ever been withheld by your employer?*
+>
+> Response options: Yes, always / Often / Sometimes / Never / I don't know
+
+**Alter-based — Q43 (5b8):**
+
+> *Do you know personally of any other domestic workers who have experienced problems with debt or pay? If so, how many? (Please indicate the number, or state '0' if this does not apply to anyone you know.)*
+>
+> Response: Integer count
+
+**Coding.** Ego: Q39 = Yes → 1; {No, I don't know} → 0 (debt bondage component). Q42 ∈ {Yes always, Often, Sometimes} → 1; {Never, I don't know} → 0 (pay withheld component). Composite `pay_issues_rds`: logical OR — Q39 = 1 OR Q42 = 1 → 1; both NA → NA. Alter: Q43 > 0 → 1; Q43 = 0 → 0; missing → NA.
+
+**Confidence: High.** The alter question (Q43) covers both debt and pay problems, matching the combined ego indicator. Some conceptual mismatch remains because the alter question aggregates two distinct ego concepts into one.
+
+## Threats and Abuse {#sec-b-threats}
+
+**Ego-based — Q45 (5c2):**
+
+> *Have you been forced, deceived or threatened into poor working conditions?*
+>
+> Response options: Yes / No / Prefer not to say
+
+**Ego-based — Q47 (5c4):**
+
+> *Has your employer ever threatened or intimidated you?*
+>
+> Response options: Yes / Often / Sometimes / Never / I don't know
+
+**Ego-based — Q48 (5c5):**
+
+> *Has your employer ever verbally abused you (e.g. shouted, insulted, tried to humiliate you, or called you names, etc.)?*
+>
+> Response options: Yes, Often / Yes, Sometimes / Maybe once or twice / Never / I don't know
+
+**Alter-based — Q49 (5c6):**
+
+> *Do you know personally of any other domestic workers that have had any experiences related to the use of threat or force? If so, how many? (Please indicate the number, or state '0' if this does not apply to anyone you know.)*
+>
+> Response: Integer count
+
+**Coding.** Ego: Q45 = Yes → 1; {No, Prefer not to say} → 0. Q47 ∈ {Yes, Often, Sometimes} → 1; {Never, I don't know} → 0. Q48 ∈ {Yes Often, Yes Sometimes, Maybe once or twice} → 1; {Never, I don't know} → 0. Composite `threats_abuse_rds`: logical OR — any of Q45/Q47/Q48 = 1 → 1; all three NA → NA. Alter: Q49 > 0 → 1; Q49 = 0 → 0; missing → NA.
+
+**Confidence: High.** Q49 captures the combined concept of threat and force, aligning with the three ego sub-questions. The ego composite is slightly broader (it includes verbal abuse via Q48), so some scope mismatch remains at the margin.
+
+## Excessive Working Hours {#sec-b-hours}
+
+**Ego-based — Q61 (5d8):**
+
+> *Does your weekly rest last longer than 24 hours consecutively?*
+>
+> Response options: Yes, always / Often / Sometimes / Never / I don't know
+
+**Ego-based — Q62 (5d9):**
+
+> *How often have you worked overtime that you felt was excessive?*
+>
+> Response options: Always / Often / Sometimes / Never / I don't know
+
+**Alter-based — Q64 (5d11):**
+
+> *Do you know personally of any other domestic workers who have experienced any of the above related to labour rights? (Including working excessive overtime, a failure to obtain daily or weekly breaks or annual leave.) If so, how many? (Please indicate the number, or state '0' if this does not apply to anyone you know.)*
+>
+> Response: Integer count
+
+**Coding.** Ego: Q61 ∈ {Sometimes, Never} → 1 (indicates *inadequate* rest, i.e., rest rarely or never exceeds 24 h); {Yes always, Often, I don't know} → 0. Q62 ∈ {Always, Often, Sometimes} → 1; {Never, I don't know} → 0. Composite `excessive_hours_rds`: logical OR → 1 if either condition present; both NA → NA. Alter: Q64 > 0 → 1; Q64 = 0 → 0; missing → NA.
+
+**Confidence: Medium.** Q64 explicitly includes *annual leave* ("a failure to obtain … annual leave") which is not captured by Q61 or Q62 on the ego side. This scope mismatch is the largest of the five indicator pairs and is acknowledged as a limitation of the comparable-indicator strategy.
+
+## Limited Access to Help {#sec-b-help}
+
+**Ego-based — Q78 (5f10):**
+
+> *Do you know who might help you if you are not being properly paid or properly treated?*
+>
+> Response options: Yes / No
+
+**Alter-based — Q79 (5f11):**
+
+> *Do you know personally of any other domestic workers who do NOT know where to go for help? If so, how many? (Please indicate the number, or state '0' if this does not apply to anyone you know.)*
+>
+> Response: Integer count
+
+**Coding.** Ego: Q78 is reverse-coded — Q78 = No → 1 (respondent lacks access to help); Q78 = Yes → 0; missing → NA. Alter: Q79 > 0 → 1; Q79 = 0 → 0; missing → NA.
+
+**Confidence: Lower.** Q78 directly reports the respondent's own knowledge of available support, while Q79 asks the respondent to assess *others'* knowledge. The reverse-coding of Q78 aligns the polarity (both = 1 signals vulnerability), but the alter question requires the respondent to perceive and report on peers' states of knowledge — a different and more demanding cognitive task than self-report. The conceptual match is therefore less direct than for the other four indicators.
+
+## General Data-Processing Notes {#sec-b-notes}
+
+All five indicators are binary (0/1) after recoding. RDS multi-category responses are recoded so that affirmative responses → 1, and negative/unknown responses → 0 or NA as specified above. Composite RDS indicators (pay/debt issues, threats and abuse, excessive hours) apply logical OR: any single affirmative sub-response → indicator = 1; only if *all* sub-questions are missing does the composite take the value NA. NSUM count variables are converted to binary: count > 0 → 1; count = 0 → 0. These constructions are implemented in `create_comparable_indicators()` in `R/data_processing/02-data_preparation.R`, following the comparable-indicator specification agreed between the authors in November 2024.
