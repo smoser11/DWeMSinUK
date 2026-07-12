@@ -1,0 +1,95 @@
+---
+title: "Appendix: Quantifying Hidden Exploitation"
+subtitle: "Online Supplementary Materials for Social Indicators Research Submission"
+# preferred:
+# cd paper/SIR/appendix-v7 && quarto render 
+author:
+  - name: Caroline Emberson
+    affiliation: University of Nottingham
+  - name: Scott Moser
+    affiliation: University of Nottingham
+date: 11 July 2026
+date-format: "DD MMMM YYYY"
+bibliography:
+  - ../references/ce-library.bib
+  - ../references/sm-cited.bib
+csl: ../references/apa.csl
+fontsize: 12pt
+geometry: margin=1in
+linestretch: 1.15
+number-sections: true
+tbl-cap-location: top
+fig-cap-location: bottom
+crossref:
+  chapters: true
+format:
+  html:
+    toc: true
+    toc-depth: 3
+  docx:
+    toc: true
+    toc-depth: 3
+    highlight-style: github
+    fig-cap-location: bottom
+    tbl-cap-location: top
+  pdf:
+    pdf-engine: xelatex
+    toc: true
+    toc-depth: 3
+    keep-tex: false
+    include-in-header:
+      text: |
+        \usepackage{xcolor}
+        \usepackage{amsthm,amsmath,amsfonts,amssymb,float,caption,subcaption}
+        \usepackage{booktabs,longtable,array}
+    fig-pos: "H"
+    fig-width: 6.5
+    fig-height: 4
+    colorlinks: true
+    linkcolor: blue
+    citecolor: BrickRed
+    urlcolor: blue
+    link-citations: true
+---
+
+<!--
+Master orchestrator for the SIR appendix.
+
+Rendering:
+  From RStudio: open this file and click 'Render'.
+  From terminal (article mode):
+    quarto render paper/SIR/appendix-v7.qmd
+  From terminal (book mode, letter-based A.1/B.1/D.1 numbering):
+    cd paper/SIR/appendix-v7 && quarto render
+
+Numbering trade-off:
+  - Book render (terminal) uses appendix letter numbering: Table A.1, B.1, D.1, ...
+  - Article render (RStudio or single-file terminal command) uses numeric chapter
+    scoping: Table 1.1 (Section 1 = Codebook), 2.1 (Section 2 = Survey), 4.1
+    onward (Section 4 = Sensitivity), etc.
+
+The section files under appendix-v7/ are identical in either mode; only the
+numbering scheme differs. All internal @-refs resolve correctly in both.
+
+Figure paths in the included files are '../figures/...', which resolves
+relative to the section file's own location (paper/SIR/appendix-v7/) and
+therefore to paper/SIR/figures/ regardless of which orchestrator invokes them.
+-->
+
+{{< include appendix-v7/index.qmd >}}
+
+{{< include appendix-v7/A-codebook.qmd >}}
+
+{{< include appendix-v7/B-survey.qmd >}}
+
+{{< include appendix-v7/C-bootstrap.qmd >}}
+
+{{< include appendix-v7/D-sensitivity.qmd >}}
+
+
+\newpage
+
+# References {.unnumbered}
+
+::: {#refs}
+:::

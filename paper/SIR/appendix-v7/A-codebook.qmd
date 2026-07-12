@@ -8,6 +8,8 @@ The composite risk index aggregates all eleven ILO indicators of forced labour i
 
 Two further evidentiary markers — payment below the national living wage (Category 12) and NRM-referral history (Category 13) — are reported as separate binary flags and are **not** included in the composite, because their direct evidentiary status under UK policy makes them more useful when read independently.
 
+@tbl-composite lists each of the eleven ILO categories that enter the composite alongside the survey items used to code them, the coding rules, and the maximum weight per category. Categories 12 and 13 are shown at the bottom of the table for completeness but do not enter the composite score.
+
 : Composite Risk Index: ILO indicator categories, survey items, coding rules, and sub-weights. All eleven ILO indicator categories carry the same maximum category weight of 0.09; this 0.09 is split evenly across the sub-questions used to code the category (0.09 for one, 0.045 each for two, 0.03 each for three, 0.0225 each for four sub-questions). The total maximum composite score is therefore 11 × 0.09 = 0.99. The medium/strong severity labels in column 2 follow the ILO handbook on forced-labour surveys [@hard24-ilo]; the shorter ILO operational-indicators publications [@ILO11-indicators; @int25-ilo] list the eleven indicators without publishing this severity ranking, and the labels do not scale the composite weights. Categories 12 and 13 are reported as separate binary flags and are excluded from the composite. {#tbl-composite}
 
 | # | ILO Indicator (severity) | Survey item(s) | Coding rule | Max weight |
@@ -28,7 +30,7 @@ Two further evidentiary markers — payment below the national living wage (Cate
 
 ## Five Binary Exploitation Indicators {#sec-a-binary}
 
-The five binary indicators are the primary prevalence outcomes for both the ego-based RDS and alter-based NSUM analyses. All are binary (0/1). Multi-category RDS responses are recoded so that affirmative answers → 1, Never/no access → 0, and "Don't know"/"Prefer not to say" → NA. Composite RDS indicators combine sub-questions using logical OR (any affirmative response across sub-questions → 1). NSUM count variables (number of domestic workers known with the characteristic) are converted to binary (> 0 → 1).
+The five binary indicators are the primary prevalence outcomes for both the ego-based RDS and alter-based NSUM analyses. All are binary (0/1). Multi-category RDS responses are recoded so that affirmative answers → 1, Never/no access → 0, and "Don't know"/"Prefer not to say" → NA. Composite RDS indicators combine sub-questions using logical OR (any affirmative response across sub-questions → 1). NSUM count variables (number of domestic workers known with the characteristic) are converted to binary (> 0 → 1). @tbl-binary summarises the mapping from each binary indicator to its ILO classification, the survey items that code it, and the coding rule applied.
 
 : Five Binary Exploitation Indicators: ILO classification, survey questions, and coding rules. {#tbl-binary}
 
@@ -41,6 +43,8 @@ The five binary indicators are the primary prevalence outcomes for both the ego-
 | Limited access to help | Auxiliary | Q78 (5f10): Knows where to get help (reverse-coded) | Q78 indicating no access → 1 |
 
 ## Key RDS Variables {#sec-a-rds}
+
+@tbl-rds-vars lists the variables used by the RDS estimation pipeline (`R/analysis/03-rds_estimation.R` and downstream scripts). The `id`/`recruiter.id` pair defines the recruitment network on which all RDS weighting and successive-sampling procedures operate; `q13` is the reported network-degree variable used to weight respondents in inverse proportion to their reported degree; `wave` and `nationality_cluster` are stratifying variables used in diagnostic plots and subgroup sensitivity analyses. All variables are constructed in `R/data_processing/02-data_preparation.R`.
 
 : Key RDS Variables: variable name, type, definition, and survey source. {#tbl-rds-vars}
 
